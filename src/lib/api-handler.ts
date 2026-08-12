@@ -16,6 +16,7 @@ type HandlerFn<T = unknown> = (ctx: HandlerContext) => Promise<T>;
 interface ApiHandlerOptions {
   requireAuth?: boolean;
   requireAdmin?: boolean;
+  requireInstructor?: boolean;
   bodySchema?: ZodSchema;
   querySchema?: ZodSchema;
   rateLimit?: {
@@ -89,7 +90,7 @@ export function apiHandler<T = unknown>(
       }
 
       let user = null;
-      if (options.requireAuth || options.requireAdmin) {
+      if (options.requireAuth || options.requireAdmin || options.requireInstructor) {
         user = await getAuthUser(request);
         if (!user) {
           reqLogger.warn("Unauthorized access attempt");
@@ -101,6 +102,14 @@ export function apiHandler<T = unknown>(
 
         if (options.requireAdmin && user.role !== "admin") {
           reqLogger.warn("Forbidden - admin only", { userId: user.id });
+          return NextResponse.json(
+            { error: "Forbidden", code: "FORBIDDEN" },
+            { status: 403 }
+          );
+        }
+
+        if (options.requireInstructor && user.role !== "instructor" && user.role !== "admin") {
+          reqLogger.warn("Forbidden - instructor only", { userId: user.id });
           return NextResponse.json(
             { error: "Forbidden", code: "FORBIDDEN" },
             { status: 403 }

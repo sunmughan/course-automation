@@ -27,6 +27,12 @@ model User {
   aiSessions    AISession[]
   assessmentScores AssessmentScore[]
   enrolledCourses EnrolledCourse[]
+  taughtBatches  Batch[]
+  interventions  Intervention[]       @relation("InterventionInstructor")
+  studentInterventions Intervention[] @relation("InterventionStudent")
+  batchMemberships BatchStudent[]
+  assignmentSubmissions AssignmentSubmission[]
+  announcements  Announcement[]
 }
 
 model Account {
@@ -80,6 +86,7 @@ model Course {
   modules    Module[]
   projects   Project[]
   enrollments EnrolledCourse[]
+  batches    Batch[]
 }
 
 model EnrolledCourse {
@@ -130,6 +137,8 @@ model Topic {
   lessons       Lesson[]
   prerequisites TopicPrerequisite[] @relation("TopicPrerequisites")
   dependedBy    TopicPrerequisite[] @relation("TopicDependedBy")
+  assignments   Assignment[]
+  studentSkills StudentSkill[]
 
   @@unique([moduleId, slug])
 }
@@ -373,7 +382,8 @@ model StudentSkill {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
 
   @@unique([userId, topicId])
 }
@@ -469,4 +479,105 @@ model AnalyticsEvent {
   event     String
   data      String
   createdAt DateTime @default(now())
+}
+
+model Batch {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  instructorId String
+  courseId    String?
+  startDate   DateTime?
+  endDate     DateTime?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  instructor   User           @relation(fields: [instructorId], references: [id], onDelete: Cascade)
+  course       Course?        @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  students     BatchStudent[]
+  assignments  Assignment[]
+  announcements Announcement[]
+}
+
+model BatchStudent {
+  id        String   @id @default(cuid())
+  batchId   String
+  studentId String
+  status    String   @default("active")
+  joinedAt  DateTime @default(now())
+
+  batch   Batch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  student User  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([batchId, studentId])
+}
+
+model Assignment {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  instructions String?
+  batchId     String
+  topicId     String?
+  difficulty  Int      @default(2)
+  maxScore    Int      @default(100)
+  dueDate     DateTime?
+  type        String   @default("coding")
+  starterCode String?
+  rubric      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  batch       Batch                  @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  topic       Topic?                 @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  submissions AssignmentSubmission[]
+}
+
+model AssignmentSubmission {
+  id           String   @id @default(cuid())
+  assignmentId String
+  studentId    String
+  code         String?
+  answer       String?
+  score        Int?
+  feedback     String?
+  status       String   @default("submitted")
+  submittedAt  DateTime @default(now())
+  gradedAt     DateTime?
+  gradedBy     String?
+
+  assignment Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  student    User       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([assignmentId, studentId])
+}
+
+model Intervention {
+  id          String   @id @default(cuid())
+  studentId   String
+  instructorId String
+  type        String
+  title       String
+  description String
+  status      String   @default("active")
+  outcome     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  student    User @relation("InterventionStudent", fields: [studentId], references: [id], onDelete: Cascade)
+  instructor User @relation("InterventionInstructor", fields: [instructorId], references: [id], onDelete: Cascade)
+}
+
+model Announcement {
+  id           String   @id @default(cuid())
+  title        String
+  content      String
+  batchId      String?
+  instructorId String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  batch      Batch? @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  instructor User   @relation(fields: [instructorId], references: [id], onDelete: Cascade)
 }

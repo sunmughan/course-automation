@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { useAuthContext } from "@/components/providers/auth-provider";
 import {
   SparklesIcon,
@@ -19,10 +20,14 @@ import {
   LogOutIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  GraduationCapIcon,
+  UsersIcon,
+  AlertTriangleIcon,
+  FileTextIcon,
 } from "lucide-react";
 import { useState } from "react";
 
-const navItems = [
+const studentNavItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboardIcon },
   { href: "/dashboard/courses", label: "Courses", icon: BookOpenIcon },
   { href: "/dashboard/playground", label: "Playground", icon: PlayIcon },
@@ -32,10 +37,18 @@ const navItems = [
   { href: "/dashboard/adaptive", label: "Adaptive", icon: BrainIcon },
 ];
 
+const instructorNavItems = [
+  { href: "/dashboard/instructor", label: "Instructor", icon: GraduationCapIcon },
+  { href: "/dashboard/instructor/batches", label: "Batches", icon: UsersIcon },
+];
+
 export function Sidebar() {
   const pathname = usePathname();
   const { user, logout } = useAuthContext();
   const [collapsed, setCollapsed] = useState(false);
+
+  const isInstructor = user?.role === "instructor" || user?.role === "admin";
+  const navItems = isInstructor ? instructorNavItems : studentNavItems;
 
   const initials = user?.name
     ? user.name
@@ -121,6 +134,11 @@ export function Sidebar() {
               <p className="truncate text-xs text-muted-foreground">
                 {user?.email || ""}
               </p>
+              {isInstructor && (
+                <Badge variant="secondary" className="mt-1 text-xs">
+                  {user?.role === "admin" ? "Admin" : "Instructor"}
+                </Badge>
+              )}
             </div>
           )}
         </div>

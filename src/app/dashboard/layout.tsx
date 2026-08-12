@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuthContext } from "@/components/providers/auth-provider";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
@@ -12,6 +12,7 @@ import type { ReactNode } from "react";
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const { user, loading } = useAuthContext();
   const router = useRouter();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -19,6 +20,14 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       router.push("/login");
     }
   }, [loading, user, router]);
+
+  useEffect(() => {
+    if (!loading && user && (user.role === "instructor" || user.role === "admin")) {
+      if (pathname === "/dashboard") {
+        router.replace("/dashboard/instructor");
+      }
+    }
+  }, [loading, user, pathname, router]);
 
   if (loading) {
     return (
