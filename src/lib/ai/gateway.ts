@@ -1,4 +1,12 @@
 import { prisma } from "@/lib/db";
+import { providerHealthMonitor } from "./health-monitor";
+import { semanticCache } from "./cache";
+import { requestDeduplicator } from "./deduplication";
+import { tokenBudgetManager } from "./token-budget";
+import { modelCooldownManager } from "./cooldown";
+import { aiTracer } from "./tracing";
+import { getCapabilityScore, checkContextWindow, getContextWindowUtilization } from "./capability-matrix";
+import type { TaskCapability } from "./capability-matrix";
 
 export interface AIModelInfo {
   name: string;
@@ -32,6 +40,8 @@ export interface ProviderCallResult {
   latency: number;
   cost: number;
   routedTo?: string | null;
+  cached?: boolean;
+  deduplicated?: boolean;
 }
 
 export interface StreamChunk {
@@ -41,20 +51,23 @@ export interface StreamChunk {
   outputTokens?: number;
 }
 
-interface CircuitState {
-  failures: number;
-  lastFailure: number;
-  isOpen: boolean;
-  halfOpenAt: number | null;
-  consecutiveSuccesses: number;
+export interface GatewayCallOptions {
+  userId?: string;
+  task?: TaskCapability;
+  complexity?: "low" | "medium" | "high";
+  maxTokens?: number;
+  temperature?: number;
+  retries?: number;
+  cacheTtlMs?: number;
+  cacheTags?: string[];
+  skipCache?: boolean;
+  traceId?: string;
+  signal?: AbortSignal;
 }
 
-const CIRCUIT_BREAKER_THRESHOLD = 5;
-const CIRCUIT_BREAKER_TIMEOUT_MS = 30_000;
-const CIRCUIT_HALF_OPEN_MAX = 3;
-const HEALTH_CHECK_INTERVAL_MS = 60_000;
 const MAX_RETRIES = 3;
 const RETRY_BASE_DELAY_MS = 1000;
+const HEALTH_CHECK_INTERVAL_MS = 60_000;
 
 const DEFAULT_PROVIDERS: AIProviderConfig[] = [
   {
@@ -189,10 +202,7 @@ const DEFAULT_PROVIDERS: AIProviderConfig[] = [
 
 export class AIGateway {
   private providers: Map<string, AIProviderConfig> = new Map();
-  private circuits: Map<string, CircuitState> = new Map();
-  private healthCache: Map<string, ProviderHealthStatus> = new Map();
   private lastHealthCheck: Map<string, number> = new Map();
-  private latencyHistory: Map<string, number[]> = new Map();
 
   constructor() {
     this.initializeDefaultProviders();
@@ -208,23 +218,13 @@ export class AIGateway {
 
   registerProvider(config: AIProviderConfig): void {
     this.providers.set(config.name, config);
-    this.circuits.set(config.name, {
-      failures: 0,
-      lastFailure: 0,
-      isOpen: false,
-      halfOpenAt: null,
-      consecutiveSuccesses: 0,
-    });
-    this.latencyHistory.set(config.name, []);
     this.syncProviderToDb(config).catch(() => {});
   }
 
   removeProvider(name: string): void {
     this.providers.delete(name);
-    this.circuits.delete(name);
-    this.healthCache.delete(name);
     this.lastHealthCheck.delete(name);
-    this.latencyHistory.delete(name);
+    providerHealthMonitor.reset(name);
   }
 
   getProvider(name: string): AIProviderConfig | undefined {
@@ -238,7 +238,9 @@ export class AIGateway {
   }
 
   getActiveProviders(): AIProviderConfig[] {
-    return this.getAllProviders().filter((p) => !this.isCircuitOpen(p.name));
+    return this.getAllProviders().filter(
+      (p) => providerHealthMonitor.isProviderAvailable(p.name)
+    );
   }
 
   getProviderModels(name: string): AIModelInfo[] {
@@ -266,8 +268,15 @@ export class AIGateway {
     const now = Date.now();
     const lastCheck = this.lastHealthCheck.get(name) || 0;
 
-    if (now - lastCheck < HEALTH_CHECK_INTERVAL_MS && this.healthCache.has(name)) {
-      return this.healthCache.get(name)!;
+    if (now - lastCheck < HEALTH_CHECK_INTERVAL_MS) {
+      const metrics = providerHealthMonitor.getHealthSummary(name);
+      return {
+        isHealthy: metrics.isHealthy,
+        successRate: metrics.successRate,
+        avgLatency: metrics.avgLatency,
+        errorRate: 100 - metrics.successRate,
+        lastChecked: new Date(metrics.lastChecked || now),
+      };
     }
 
     const provider = this.providers.get(name);
@@ -280,37 +289,41 @@ export class AIGateway {
       const isHealthy = await this.pingProvider(provider);
       const latency = performance.now() - startTime;
 
-      this.recordLatency(name, latency);
+      if (isHealthy) {
+        providerHealthMonitor.recordSuccess(name, latency);
+      } else {
+        providerHealthMonitor.recordFailure(name, latency, "Health check ping failed");
+      }
 
-      const avgLatency = this.getAverageLatency(name);
+      providerHealthMonitor.markHealthChecked(name);
+      this.lastHealthCheck.set(name, now);
+
+      const metrics = providerHealthMonitor.getHealthSummary(name);
       const status: ProviderHealthStatus = {
-        isHealthy,
-        successRate: isHealthy ? this.calculateSmoothedSuccessRate(name, true) : 0,
-        avgLatency,
-        errorRate: isHealthy ? 0 : this.calculateSmoothedSuccessRate(name, false),
+        isHealthy: metrics.isHealthy,
+        successRate: metrics.successRate,
+        avgLatency: metrics.avgLatency,
+        errorRate: 100 - metrics.successRate,
         lastChecked: new Date(),
       };
 
-      this.healthCache.set(name, status);
-      this.lastHealthCheck.set(name, now);
       await this.saveHealthToDb(name, status);
-
       return status;
-    } catch {
+    } catch (error) {
       const latency = performance.now() - startTime;
+      providerHealthMonitor.recordFailure(name, latency, error instanceof Error ? error.message : "Unknown error");
+      providerHealthMonitor.markHealthChecked(name);
+      this.lastHealthCheck.set(name, now);
+
       const status: ProviderHealthStatus = {
         isHealthy: false,
-        successRate: this.calculateSmoothedSuccessRate(name, false),
-        avgLatency: this.getAverageLatency(name),
-        errorRate: this.calculateSmoothedSuccessRate(name, false),
+        successRate: providerHealthMonitor.getHealthSummary(name).successRate,
+        avgLatency: providerHealthMonitor.getHealthSummary(name).avgLatency,
+        errorRate: 100 - providerHealthMonitor.getHealthSummary(name).successRate,
         lastChecked: new Date(),
       };
 
-      this.healthCache.set(name, status);
-      this.lastHealthCheck.set(name, now);
-      this.recordFailure(name);
       await this.saveHealthToDb(name, status);
-
       return status;
     }
   }
@@ -377,62 +390,208 @@ export class AIGateway {
     name: string,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number; retries?: number }
+    options?: GatewayCallOptions
   ): Promise<ProviderCallResult> {
     const provider = this.providers.get(name);
     if (!provider) {
       throw new Error(`Provider '${name}' not found`);
     }
 
-    const circuit = this.circuits.get(name);
-    if (circuit?.isOpen) {
-      if (circuit.halfOpenAt && Date.now() - circuit.halfOpenAt > CIRCUIT_BREAKER_TIMEOUT_MS) {
-        circuit.isOpen = false;
-        circuit.halfOpenAt = null;
-        circuit.failures = 0;
-        circuit.consecutiveSuccesses = 0;
-      } else {
-        throw new Error(`Circuit breaker is open for provider '${name}'`);
-      }
+    if (providerHealthMonitor.isCircuitOpen(name)) {
+      throw new Error(`Circuit breaker is open for provider '${name}'`);
     }
 
-    const maxRetries = options?.retries ?? MAX_RETRIES;
-    let lastError: Error | null = null;
+    if (modelCooldownManager.isCoolingDown(name, model)) {
+      const status = modelCooldownManager.getCooldownStatus(name, model);
+      throw new Error(
+        `Model '${name}/${model}' is cooling down: ${status.reason}. Retry in ${Math.round(status.remainingMs / 1000)}s`
+      );
+    }
 
-    for (let attempt = 0; attempt <= maxRetries; attempt++) {
-      if (attempt > 0) {
-        const delay = RETRY_BASE_DELAY_MS * Math.pow(2, attempt - 1);
-        await new Promise((resolve) => setTimeout(resolve, delay));
+    const traceId = options?.traceId;
+    const spanId = traceId ? aiTracer.startSpan(traceId, `call.${name}.${model}`, "provider.call.start") : null;
+
+    if (traceId && spanId) {
+      aiTracer.addEvent(traceId, spanId, "provider.call.start", {
+        provider: name,
+        model,
+        messageCount: messages.length,
+      });
+    }
+
+    const estimatedTokens = aiGateway.estimateTokens(
+      messages.map((m) => m.content).join("\n")
+    );
+
+    if (options?.task && !checkContextWindow(name, model, estimatedTokens)) {
+      const utilization = getContextWindowUtilization(name, model, estimatedTokens);
+      if (traceId && spanId) {
+        aiTracer.addEvent(traceId, spanId, "provider.call.error", {
+          error: "context_window_exceeded",
+          utilization,
+        });
       }
+      throw new Error(
+        `Context window exceeded for ${name}/${model}. Estimated ${estimatedTokens} tokens (${Math.round(utilization * 100)}% of window)`
+      );
+    }
 
-      try {
-        const startTime = performance.now();
-        const result = await this.executeProviderCall(provider, model, messages, options);
-        const latency = performance.now() - startTime;
-
-        this.recordSuccess(name);
-        this.recordLatency(name, latency);
-
-        return { ...result, latency: Math.round(latency) };
-      } catch (error) {
-        lastError = error instanceof Error ? error : new Error(String(error));
-        this.recordFailure(name);
-
-        if (attempt === maxRetries) {
-          throw lastError;
+    if (options?.userId) {
+      const estimatedCost = this.getEstimatedCost(name, model, estimatedTokens);
+      const budgetCheck = await tokenBudgetManager.checkRequestBudget(
+        options.userId,
+        estimatedTokens,
+        estimatedCost
+      );
+      if (!budgetCheck.allowed) {
+        if (traceId && spanId) {
+          aiTracer.addEvent(traceId, spanId, "budget.exceeded", { reason: budgetCheck.reason });
         }
+        throw new Error(`Budget exceeded: ${budgetCheck.reason}`);
       }
     }
 
-    throw lastError || new Error(`Provider '${name}' failed after ${maxRetries} retries`);
+    const cacheKey = !options?.skipCache
+      ? semanticCache.generateKey(name, model, messages, {
+          maxTokens: options?.maxTokens,
+          temperature: options?.temperature,
+        })
+      : null;
+
+    if (cacheKey && !options?.skipCache) {
+      const cached = semanticCache.get(cacheKey);
+      if (cached) {
+        if (traceId) {
+          aiTracer.addEvent(traceId, spanId || traceId, "cache.hit", { provider: name, model });
+          aiTracer.incrementMetric(traceId, "cacheHits");
+        }
+        return {
+          content: cached,
+          model,
+          provider: name,
+          inputTokens: 0,
+          outputTokens: 0,
+          latency: 0,
+          cost: 0,
+          cached: true,
+        };
+      }
+    }
+
+    const dedupHash = requestDeduplicator.generateHash(name, model, messages, {
+      maxTokens: options?.maxTokens,
+      temperature: options?.temperature,
+    });
+
+    const { result, wasDeduplicated } = await requestDeduplicator.deduplicate(
+      dedupHash,
+      async () => {
+        const maxRetries = options?.retries ?? MAX_RETRIES;
+        let lastError: Error | null = null;
+
+        for (let attempt = 0; attempt <= maxRetries; attempt++) {
+          if (attempt > 0) {
+            const delay = RETRY_BASE_DELAY_MS * Math.pow(2, attempt - 1);
+            await new Promise((resolve) => setTimeout(resolve, delay));
+            if (traceId && spanId) {
+              aiTracer.addEvent(traceId, spanId, "retry.attempt", {
+                attempt,
+                provider: name,
+                model,
+              });
+              aiTracer.incrementMetric(traceId, "retryCount");
+            }
+          }
+
+          if (options?.signal?.aborted) {
+            throw new Error("Request aborted");
+          }
+
+          try {
+            const startTime = performance.now();
+            const callResult = await this.executeProviderCall(provider, model, messages, {
+              maxTokens: options?.maxTokens,
+              temperature: options?.temperature,
+              signal: options?.signal,
+            });
+            const latency = performance.now() - startTime;
+
+            providerHealthMonitor.recordSuccess(name, latency);
+            modelCooldownManager.recordSuccess(name, model);
+
+            if (traceId && spanId) {
+              aiTracer.addEvent(traceId, spanId, "provider.call.end", {
+                latency,
+                inputTokens: callResult.inputTokens,
+                outputTokens: callResult.outputTokens,
+              });
+              aiTracer.addCost(traceId, callResult.inputTokens + callResult.outputTokens, callResult.cost);
+              aiTracer.incrementMetric(traceId, "providerCalls");
+            }
+
+            if (options?.userId) {
+              await tokenBudgetManager.recordUsage(options.userId, callResult);
+            }
+
+            if (cacheKey && !options?.skipCache) {
+              semanticCache.set(cacheKey, callResult.content, {
+                ttlMs: options?.cacheTtlMs,
+                tags: options?.cacheTags,
+              });
+            }
+
+            return { ...callResult, latency: Math.round(latency) };
+          } catch (error) {
+            lastError = error instanceof Error ? error : new Error(String(error));
+            providerHealthMonitor.recordFailure(name, 0, lastError.message);
+            modelCooldownManager.recordFailure(name, model, lastError.message);
+
+            if (traceId && spanId) {
+              aiTracer.addEvent(traceId, spanId, "provider.call.error", {
+                error: lastError.message,
+                attempt,
+              });
+            }
+
+            if (options?.userId) {
+              await tokenBudgetManager.recordFailedUsage(
+                options.userId,
+                name,
+                model,
+                lastError.message
+              );
+            }
+
+            if (attempt === maxRetries) {
+              if (traceId && spanId) {
+                aiTracer.endSpan(traceId, spanId, "error", lastError.message);
+              }
+              throw lastError;
+            }
+          }
+        }
+
+        throw lastError || new Error(`Provider '${name}' failed after ${maxRetries} retries`);
+      }
+    );
+
+    if (traceId && spanId) {
+      aiTracer.endSpan(traceId, spanId, "success");
+    }
+
+    if (wasDeduplicated && traceId) {
+      aiTracer.incrementMetric(traceId, "dedupSavings");
+    }
+
+    return { ...result, deduplicated: wasDeduplicated };
   }
 
   private async executeProviderCall(
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
-  ): Promise<Omit<ProviderCallResult, "latency">> {
+    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
+  ): Promise<Omit<ProviderCallResult, "latency" | "cached" | "deduplicated">> {
     if (provider.name === "gemini") {
       return this.callGemini(provider, model, messages, options);
     }
@@ -446,15 +605,27 @@ export class AIGateway {
     name: string,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
+    options?: GatewayCallOptions
   ): AsyncGenerator<StreamChunk> {
     const provider = this.providers.get(name);
     if (!provider) {
       throw new Error(`Provider '${name}' not found`);
     }
 
-    if (this.isCircuitOpen(name)) {
+    if (providerHealthMonitor.isCircuitOpen(name)) {
       throw new Error(`Circuit breaker is open for provider '${name}'`);
+    }
+
+    if (modelCooldownManager.isCoolingDown(name, model)) {
+      const status = modelCooldownManager.getCooldownStatus(name, model);
+      throw new Error(`Model is cooling down: ${status.reason}`);
+    }
+
+    const traceId = options?.traceId;
+    const spanId = traceId ? aiTracer.startSpan(traceId, `stream.${name}.${model}`, "provider.call.start") : null;
+
+    if (options?.signal?.aborted) {
+      throw new Error("Request aborted");
     }
 
     try {
@@ -465,9 +636,20 @@ export class AIGateway {
       } else {
         yield* this.streamOpenAICompatible(provider, model, messages, options);
       }
-      this.recordSuccess(name);
+      providerHealthMonitor.recordSuccess(name, 0);
+      modelCooldownManager.recordSuccess(name, model);
+
+      if (traceId && spanId) {
+        aiTracer.endSpan(traceId, spanId, "success");
+      }
     } catch (error) {
-      this.recordFailure(name);
+      const errMsg = error instanceof Error ? error.message : "Unknown error";
+      providerHealthMonitor.recordFailure(name, 0, errMsg);
+      modelCooldownManager.recordFailure(name, model, errMsg);
+
+      if (traceId && spanId) {
+        aiTracer.endSpan(traceId, spanId, "error", errMsg);
+      }
       throw error;
     }
   }
@@ -476,8 +658,8 @@ export class AIGateway {
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
-  ): Promise<Omit<ProviderCallResult, "latency">> {
+    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
+  ): Promise<Omit<ProviderCallResult, "latency" | "cached" | "deduplicated">> {
     const url = `${provider.baseUrl}/chat/completions`;
 
     const response = await fetch(url, {
@@ -493,7 +675,7 @@ export class AIGateway {
         temperature: options?.temperature ?? 0.7,
         top_p: 0.95,
       }),
-      signal: AbortSignal.timeout(120000),
+      signal: options?.signal || AbortSignal.timeout(120000),
     });
 
     if (!response.ok) {
@@ -518,7 +700,7 @@ export class AIGateway {
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
+    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
   ): AsyncGenerator<StreamChunk> {
     const url = `${provider.baseUrl}/chat/completions`;
 
@@ -535,7 +717,7 @@ export class AIGateway {
         temperature: options?.temperature ?? 0.7,
         stream: true,
       }),
-      signal: AbortSignal.timeout(120000),
+      signal: options?.signal || AbortSignal.timeout(120000),
     });
 
     if (!response.ok) {
@@ -588,8 +770,8 @@ export class AIGateway {
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
-  ): Promise<Omit<ProviderCallResult, "latency">> {
+    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
+  ): Promise<Omit<ProviderCallResult, "latency" | "cached" | "deduplicated">> {
     const systemMessage = messages.find((m) => m.role === "system");
     const userMessages = messages.filter((m) => m.role !== "system");
     const input = userMessages.map((m) => `${m.role}: ${m.content}`).join("\n\n");
@@ -614,7 +796,7 @@ export class AIGateway {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(120000),
+      signal: options?.signal || AbortSignal.timeout(120000),
     });
 
     if (!response.ok) {
@@ -644,7 +826,7 @@ export class AIGateway {
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
+    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
   ): AsyncGenerator<StreamChunk> {
     const systemMessage = messages.find((m) => m.role === "system");
     const userMessages = messages.filter((m) => m.role !== "system");
@@ -671,7 +853,7 @@ export class AIGateway {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(120000),
+      signal: options?.signal || AbortSignal.timeout(120000),
     });
 
     if (!response.ok) {
@@ -720,8 +902,8 @@ export class AIGateway {
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
-  ): Promise<Omit<ProviderCallResult, "latency">> {
+    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
+  ): Promise<Omit<ProviderCallResult, "latency" | "cached" | "deduplicated">> {
     const url = `${provider.baseUrl}/models/${model}:generateContent?key=${provider.apiKey}`;
 
     const systemMessage = messages.find((m) => m.role === "system");
@@ -757,7 +939,7 @@ export class AIGateway {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(120000),
+      signal: options?.signal || AbortSignal.timeout(120000),
     });
 
     if (!response.ok) {
@@ -786,7 +968,7 @@ export class AIGateway {
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number }
+    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
   ): AsyncGenerator<StreamChunk> {
     const url = `${provider.baseUrl}/models/${model}:streamGenerateContent?alt=sse&key=${provider.apiKey}`;
 
@@ -814,7 +996,7 @@ export class AIGateway {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(120000),
+      signal: options?.signal || AbortSignal.timeout(120000),
     });
 
     if (!response.ok) {
@@ -866,59 +1048,35 @@ export class AIGateway {
     return Math.ceil(text.length / 4);
   }
 
-  recordSuccess(name: string): void {
-    const circuit = this.circuits.get(name);
-    if (circuit) {
-      circuit.consecutiveSuccesses++;
-      if (circuit.consecutiveSuccesses >= CIRCUIT_HALF_OPEN_MAX) {
-        circuit.failures = 0;
-        circuit.isOpen = false;
-        circuit.halfOpenAt = null;
-      }
-    }
-  }
-
-  recordFailure(name: string): void {
-    const circuit = this.circuits.get(name);
-    if (!circuit) return;
-
-    circuit.consecutiveSuccesses = 0;
-    circuit.failures++;
-    circuit.lastFailure = Date.now();
-
-    if (circuit.failures >= CIRCUIT_BREAKER_THRESHOLD) {
-      circuit.isOpen = true;
-      circuit.halfOpenAt = Date.now();
-    }
-  }
-
-  isCircuitOpen(name: string): boolean {
-    const circuit = this.circuits.get(name);
-    if (!circuit) return false;
-    if (circuit.isOpen && circuit.halfOpenAt && Date.now() - circuit.halfOpenAt > CIRCUIT_BREAKER_TIMEOUT_MS) {
-      circuit.isOpen = false;
-      circuit.halfOpenAt = null;
-      circuit.failures = 0;
-      circuit.consecutiveSuccesses = 0;
-      return false;
-    }
-    return circuit.isOpen;
-  }
-
   getProviderStatus(name: string): {
     circuitOpen: boolean;
+    circuitState: string;
     failures: number;
     consecutiveSuccesses: number;
     health: ProviderHealthStatus | null;
     averageLatency: number;
+    isCoolingDown: boolean;
+    cooldowns: number;
   } {
-    const circuit = this.circuits.get(name);
+    const summary = providerHealthMonitor.getHealthSummary(name);
+    const metrics = providerHealthMonitor.getMetrics(name);
+    const cooldowns = modelCooldownManager.getProviderCooldowns(name);
+
     return {
-      circuitOpen: circuit?.isOpen || false,
-      failures: circuit?.failures || 0,
-      consecutiveSuccesses: circuit?.consecutiveSuccesses || 0,
-      health: this.healthCache.get(name) || null,
-      averageLatency: this.getAverageLatency(name),
+      circuitOpen: summary.circuitState === "open",
+      circuitState: summary.circuitState,
+      failures: metrics.consecutiveFailures,
+      consecutiveSuccesses: metrics.consecutiveSuccesses,
+      health: {
+        isHealthy: summary.isHealthy,
+        successRate: summary.successRate,
+        avgLatency: summary.avgLatency,
+        errorRate: 100 - summary.successRate,
+        lastChecked: new Date(summary.lastChecked),
+      },
+      averageLatency: summary.avgLatency,
+      isCoolingDown: cooldowns.length > 0,
+      cooldowns: cooldowns.length,
     };
   }
 
@@ -928,26 +1086,6 @@ export class AIGateway {
       statuses.set(name, this.getProviderStatus(name));
     }
     return statuses;
-  }
-
-  private recordLatency(name: string, latency: number): void {
-    const history = this.latencyHistory.get(name) || [];
-    history.push(latency);
-    if (history.length > 20) history.shift();
-    this.latencyHistory.set(name, history);
-  }
-
-  private getAverageLatency(name: string): number {
-    const history = this.latencyHistory.get(name) || [];
-    if (history.length === 0) return 0;
-    return history.reduce((a, b) => a + b, 0) / history.length;
-  }
-
-  private calculateSmoothedSuccessRate(name: string, success: boolean): number {
-    const existing = this.healthCache.get(name);
-    const previousRate = existing?.successRate ?? 100;
-    const alpha = 0.3;
-    return Math.round(previousRate * (1 - alpha) + (success ? 100 : 0) * alpha);
   }
 
   private async syncProviderToDb(config: AIProviderConfig): Promise<void> {

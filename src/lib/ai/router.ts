@@ -1,5 +1,10 @@
 import { prisma } from "@/lib/db";
-import { aiGateway, type AIProviderConfig, type AIModelInfo, type ProviderCallResult } from "./gateway";
+import { aiGateway, type AIProviderConfig, type AIModelInfo, type ProviderCallResult, type GatewayCallOptions } from "./gateway";
+import { getCapabilityProfile, getBestModelForTask, getModelsForTask } from "./capability-matrix";
+import type { TaskCapability } from "./capability-matrix";
+import { scoreProvider, scoreAllProviders, generateFallbackChain, createScoringConfig, isScoreAcceptable } from "./scoring";
+import type { ProviderScore } from "./scoring";
+import { providerHealthMonitor } from "./health-monitor";
 
 export type TaskType =
   | "explain"
@@ -14,22 +19,15 @@ export interface RouterDecision {
   model: string;
   score: number;
   fallbackChain: string[];
+  scoredCandidates: Array<{ provider: string; model: string; score: number }>;
+  reasoning: string;
 }
 
 export interface TaskClassification {
   taskType: TaskType;
+  capability: TaskCapability;
   confidence: number;
   complexity: "low" | "medium" | "high";
-}
-
-interface ProviderScore {
-  provider: string;
-  model: string;
-  score: number;
-  reliability: number;
-  latency: number;
-  cost: number;
-  taskCompatibility: number;
 }
 
 const TASK_CLASSIFICATION_PATTERNS: Record<TaskType, RegExp[]> = {
@@ -69,45 +67,13 @@ const TASK_COMPLEXITY_INDICATORS = {
   ],
 };
 
-const COMPLEXITY_MODEL_MAP: Record<string, Record<string, string[]>> = {
-  low: {
-    nvidia: ["meta/llama-3.3-70b-instruct"],
-    gemini: ["gemini-2.5-flash"],
-  },
-  medium: {
-    nvidia: ["meta/llama-3.3-70b-instruct", "qwen/qwen3-235b-a22b"],
-    gemini: ["gemini-2.5-flash", "gemini-2.5-pro"],
-  },
-  high: {
-    nvidia: ["deepseek-ai/deepseek-r1", "meta/llama-3.3-70b-instruct"],
-    gemini: ["gemini-2.5-pro"],
-  },
-};
-
-const TASK_COMPATIBILITY_WEIGHTS: Record<TaskType, Record<string, number>> = {
-  explain: { nvidia: 0.85, gemini: 0.9 },
-  code_generation: { nvidia: 0.9, gemini: 0.85 },
-  debugging: { nvidia: 0.8, gemini: 0.85 },
-  architecture: { nvidia: 0.85, gemini: 0.9 },
-  visualization: { nvidia: 0.75, gemini: 0.85 },
-  simple_qa: { nvidia: 0.8, gemini: 0.9 },
-};
-
-const LATENCY_WEIGHTS: Record<string, number> = {
-  nvidia: 0.7,
-  gemini: 0.85,
-};
-
-const COST_WEIGHTS: Record<string, number> = {
-  nvidia: 0.9,
-  gemini: 0.8,
-};
-
-const SCORE_WEIGHTS = {
-  reliability: 0.35,
-  latency: 0.2,
-  cost: 0.15,
-  taskCompatibility: 0.3,
+const TASK_TO_CAPABILITY_MAP: Record<TaskType, TaskCapability> = {
+  explain: "explain",
+  code_generation: "code_generation",
+  debugging: "debugging",
+  architecture: "architecture",
+  visualization: "visualization",
+  simple_qa: "simple_qa",
 };
 
 export class AIRouter {
@@ -143,8 +109,9 @@ export class AIRouter {
     const confidence = totalMatches > 0 ? bestScore / totalMatches : 0.5;
 
     const complexity = this.classifyComplexity(message);
+    const capability = TASK_TO_CAPABILITY_MAP[bestType];
 
-    return { taskType: bestType, confidence, complexity };
+    return { taskType: bestType, capability, confidence, complexity };
   }
 
   private classifyComplexity(message: string): "low" | "medium" | "high" {
@@ -159,91 +126,113 @@ export class AIRouter {
     return "medium";
   }
 
-  scoreProvider(
+  scoreProviderV2(
     providerName: string,
-    taskType: TaskType,
-    complexity: "low" | "medium" | "high"
+    task: TaskCapability,
+    complexity: "low" | "medium" | "high",
+    estimatedTokens: number
   ): ProviderScore | null {
     const provider = aiGateway.getProvider(providerName);
     if (!provider) return null;
 
-    const status = aiGateway.getProviderStatus(providerName);
-    if (status.circuitOpen) return null;
+    const health = providerHealthMonitor.getHealthSummary(providerName);
+    if (!health.isHealthy) return null;
 
-    const eligibleModels = this.getEligibleModels(provider, taskType, complexity);
-    if (eligibleModels.length === 0) return null;
+    const config = createScoringConfig(task, complexity, estimatedTokens);
 
-    const bestModel = eligibleModels[0];
+    const bestModel = getBestModelForTask(task, complexity, "quality");
+    if (!bestModel) return null;
 
-    const reliability = status.health
-      ? (status.health.successRate / 100) * (1 - status.health.errorRate / 100)
-      : 0.8;
-
-    const latency = LATENCY_WEIGHTS[providerName] || 0.7;
-    const cost = COST_WEIGHTS[providerName] || 0.8;
-    const taskCompatibility = TASK_COMPATIBILITY_WEIGHTS[taskType]?.[providerName] || 0.5;
-
-    const score =
-      reliability * SCORE_WEIGHTS.reliability +
-      latency * SCORE_WEIGHTS.latency +
-      cost * SCORE_WEIGHTS.cost +
-      taskCompatibility * SCORE_WEIGHTS.taskCompatibility;
-
-    return {
-      provider: providerName,
-      model: bestModel.name,
-      score,
-      reliability,
-      latency,
-      cost,
-      taskCompatibility,
+    const healthStatus = {
+      isHealthy: health.isHealthy,
+      successRate: health.successRate,
+      avgLatency: health.avgLatency,
+      errorRate: 100 - health.successRate,
+      lastChecked: new Date(health.lastChecked),
     };
-  }
 
-  private getEligibleModels(
-    provider: AIProviderConfig,
-    taskType: TaskType,
-    complexity: "low" | "medium" | "high"
-  ): AIModelInfo[] {
-    const complexityModels = COMPLEXITY_MODEL_MAP[complexity]?.[provider.name] || [];
-    return provider.models
-      .filter((m) => m.capabilities.includes(taskType))
-      .sort((a, b) => {
-        const aIdx = complexityModels.indexOf(a.name);
-        const bIdx = complexityModels.indexOf(b.name);
-        if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
-        if (aIdx !== -1) return -1;
-        if (bIdx !== -1) return 1;
-        return b.maxTokens - a.maxTokens;
-      });
+    return scoreProvider(providerName, bestModel.modelName, task, healthStatus, config);
   }
 
   selectProvider(
     taskType: TaskType,
-    complexity: "low" | "medium" | "high"
+    complexity: "low" | "medium" | "high",
+    estimatedTokens?: number
   ): RouterDecision | null {
-    const scores: ProviderScore[] = [];
+    const capability = TASK_TO_CAPABILITY_MAP[taskType];
+    const tokens = estimatedTokens || 4096;
+    const config = createScoringConfig(capability, complexity, tokens);
 
-    for (const providerName of aiGateway.getAllProviders().map((p) => p.name)) {
-      const score = this.scoreProvider(providerName, taskType, complexity);
-      if (score) {
-        scores.push(score);
-      }
-    }
+    const providers = aiGateway.getActiveProviders().map((p) => p.name);
+    const models = providers.flatMap((name) =>
+      aiGateway.getProviderModels(name).map((m) => ({ provider: name, model: m.name }))
+    );
 
-    if (scores.length === 0) return null;
+    const healthMap = new Map(
+      providers.map((name) => {
+        const summary = providerHealthMonitor.getHealthSummary(name);
+        return [
+          name,
+          {
+            isHealthy: summary.isHealthy,
+            successRate: summary.successRate,
+            avgLatency: summary.avgLatency,
+            errorRate: 100 - summary.successRate,
+            lastChecked: new Date(summary.lastChecked),
+          },
+        ];
+      })
+    );
 
-    scores.sort((a, b) => b.score - a.score);
+    const allScores = scoreAllProviders(
+      providers.map((name) => ({
+        name,
+        models: aiGateway.getProviderModels(name).map((m) => m.name),
+      })),
+      capability,
+      healthMap,
+      config
+    );
 
-    const primary = scores[0];
-    const fallbackChain = scores.slice(1).map((s) => s.provider);
+    if (allScores.length === 0) return null;
+
+    const fallbackChain = generateFallbackChain(allScores);
+    const primary = fallbackChain[0];
 
     return {
       provider: primary.provider,
       model: primary.model,
-      score: primary.score,
-      fallbackChain,
+      score: primary.totalScore,
+      fallbackChain: fallbackChain.slice(1).map((s) => s.provider),
+      scoredCandidates: allScores.slice(0, 5).map((s) => ({
+        provider: s.provider,
+        model: s.model,
+        score: s.totalScore,
+      })),
+      reasoning: this.generateReasoning(primary, allScores, capability, complexity),
     };
+  }
+
+  private generateReasoning(
+    primary: ProviderScore,
+    allScores: ProviderScore[],
+    task: TaskCapability,
+    complexity: string
+  ): string {
+    const parts: string[] = [];
+    parts.push(`Selected ${primary.provider}/${primary.model} for ${task} task (${complexity} complexity)`);
+    parts.push(`Quality: ${(primary.breakdown.quality * 100).toFixed(0)}%`);
+    parts.push(`Estimated cost: $${primary.meta.estimatedCost.toFixed(4)}`);
+    parts.push(`Context utilization: ${primary.meta.contextUtilization}%`);
+
+    if (allScores.length > 1) {
+      const second = allScores[1];
+      parts.push(
+        `Alternative: ${second.provider}/${second.model} (score: ${(second.totalScore * 100).toFixed(0)}%)`
+      );
+    }
+
+    return parts.join(" | ");
   }
 
   async route(
@@ -252,21 +241,31 @@ export class AIRouter {
       preferredProvider?: string;
       preferredModel?: string;
       complexity?: "low" | "medium" | "high";
+      estimatedTokens?: number;
     }
   ): Promise<{ decision: RouterDecision; classification: TaskClassification }> {
     const classification = this.classifyTask(message);
     const complexity = options?.complexity || classification.complexity;
+    const estimatedTokens = options?.estimatedTokens || aiGateway.estimateTokens(message);
 
-    let decision = this.selectProvider(classification.taskType, complexity);
+    let decision = this.selectProvider(classification.taskType, complexity, estimatedTokens);
 
     if (options?.preferredProvider && options?.preferredModel) {
       const preferredProvider = aiGateway.getProvider(options.preferredProvider);
-      if (preferredProvider && !aiGateway.isCircuitOpen(options.preferredProvider)) {
+      if (preferredProvider && providerHealthMonitor.isProviderAvailable(options.preferredProvider)) {
+        const prefScore = this.scoreProviderV2(
+          options.preferredProvider,
+          classification.capability,
+          complexity,
+          estimatedTokens
+        );
         decision = {
           provider: options.preferredProvider,
           model: options.preferredModel,
-          score: 1.0,
+          score: prefScore?.totalScore || 1.0,
           fallbackChain: decision?.fallbackChain || [],
+          scoredCandidates: decision?.scoredCandidates || [],
+          reasoning: `Using preferred provider: ${options.preferredProvider}/${options.preferredModel}`,
         };
       }
     }
@@ -288,6 +287,8 @@ export class AIRouter {
       maxTokens?: number;
       temperature?: number;
       complexity?: "low" | "medium" | "high";
+      userId?: string;
+      traceId?: string;
     }
   ): Promise<ProviderCallResult> {
     const userMessage = messages.find((m) => m.role === "user")?.content || "";
@@ -304,44 +305,35 @@ export class AIRouter {
       try {
         const provider = aiGateway.getProvider(providerName);
         if (!provider) continue;
-        if (aiGateway.isCircuitOpen(providerName)) continue;
+        if (!providerHealthMonitor.isProviderAvailable(providerName)) continue;
 
         const model = providerName === decision.provider
           ? decision.model
-          : this.getFallbackModel(providerName, classification.taskType, classification.complexity);
+          : getBestModelForTask(
+              classification.capability,
+              classification.complexity,
+              "quality"
+            )?.modelName || "";
+
+        if (!model) continue;
 
         const result = await aiGateway.callProvider(providerName, model, messages, {
           maxTokens: options?.maxTokens,
           temperature: options?.temperature,
+          userId: options?.userId,
+          traceId: options?.traceId,
+          task: classification.capability,
+          complexity: classification.complexity,
         });
 
         return result;
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
-        aiGateway.recordFailure(providerName);
         continue;
       }
     }
 
     throw lastError || new Error("All AI providers failed");
-  }
-
-  private getFallbackModel(
-    providerName: string,
-    taskType: TaskType,
-    complexity: "low" | "medium" | "high"
-  ): string {
-    const provider = aiGateway.getProvider(providerName);
-    if (!provider) return "";
-
-    const complexityModels = COMPLEXITY_MODEL_MAP[complexity]?.[providerName] || [];
-    const eligible = provider.models.filter((m) => m.capabilities.includes(taskType));
-
-    for (const modelName of complexityModels) {
-      if (eligible.some((m) => m.name === modelName)) return modelName;
-    }
-
-    return eligible[0]?.name || "";
   }
 
   private async saveRoutingDecision(

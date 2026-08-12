@@ -1,7 +1,9 @@
-import { prisma } from "@/lib/db";
 import { aiGateway, type ProviderCallResult, type StreamChunk } from "./gateway";
 import { aiRouter, type TaskType } from "./router";
 import { tokenRouter, type TokenAllocation } from "./token-router";
+import { tokenBudgetManager } from "./token-budget";
+import { providerHealthMonitor } from "./health-monitor";
+import { aiTracer } from "./tracing";
 import { buildContext, type ContextBuildOptions, type AIContext } from "./context";
 import { composePromptCompact, getModeSystemPrompt, getModeTaskInstruction } from "./prompts";
 import type { TutorMode } from "@/types";
@@ -205,10 +207,9 @@ export class AgentOrchestrator {
             {
               maxTokens: task.allocation.maxOutputTokens,
               temperature,
+              userId,
             }
           );
-
-          await tokenRouter.recordUsage(userId, result);
 
           return { agentRole: task.agentRole, result };
         } catch (error) {
@@ -282,10 +283,9 @@ export class AgentOrchestrator {
           {
             maxTokens: allocation.maxOutputTokens,
             temperature,
+            userId,
           }
         );
-
-        await tokenRouter.recordUsage(userId, result);
 
         previousOutput = result.content;
         agentResults.push({ agentRole: agent, result });
@@ -335,10 +335,9 @@ export class AgentOrchestrator {
             {
               maxTokens: task.allocation.maxOutputTokens,
               temperature,
+              userId,
             }
           );
-
-          await tokenRouter.recordUsage(userId, result);
 
           return { agentRole: task.agentRole, result };
         } catch (error) {
@@ -392,9 +391,8 @@ export class AgentOrchestrator {
             task.allocation.provider,
             task.allocation.model,
             task.messages,
-            { maxTokens: task.allocation.maxOutputTokens, temperature }
+            { maxTokens: task.allocation.maxOutputTokens, temperature, userId }
           );
-          await tokenRouter.recordUsage(userId, result);
           return { agentRole: task.agentRole, result };
         } catch {
           return null;
@@ -443,10 +441,8 @@ export class AgentOrchestrator {
             allocation.provider,
             allocation.model,
             debatePrompt,
-            { maxTokens: allocation.maxOutputTokens, temperature: (temperature ?? 0.7) + 0.1 }
+            { maxTokens: allocation.maxOutputTokens, temperature: (temperature ?? 0.7) + 0.1, userId }
           );
-
-          await tokenRouter.recordUsage(userId, result);
 
           currentAgent.result = result;
           allDebateMessages.push({
@@ -478,6 +474,7 @@ export class AgentOrchestrator {
     const result = await aiRouter.executeWithFallback(messages, {
       complexity: classification.complexity,
       temperature,
+      userId,
     });
 
     const agent: AgentRole = {
@@ -554,7 +551,7 @@ export class AgentOrchestrator {
   ): TokenAllocation | null {
     if (agent.preferredProvider && agent.preferredModel) {
       const provider = aiGateway.getProvider(agent.preferredProvider);
-      if (provider && !aiGateway.isCircuitOpen(agent.preferredProvider)) {
+      if (provider && !providerHealthMonitor.isCircuitOpen(agent.preferredProvider)) {
         const model = provider.models.find((m) => m.name === agent.preferredModel);
         if (model && model.capabilities.some((c) => taskType.includes(c) || c.includes(taskType) || c === "explain")) {
           const { inputTokens, outputTokens } = tokenRouter.estimateTaskTokens(taskType, complexity, inputText);
@@ -654,7 +651,7 @@ Provide your synthesis in this format:
           { role: "system", content: "You are a synthesis agent that combines multiple AI perspectives into a coherent answer." },
           { role: "user", content: synthesisPrompt },
         ],
-        { maxTokens: 4096, temperature: 0.3 }
+        { maxTokens: 4096, temperature: 0.3, userId: options.userId }
       );
 
       return `## Multi-Agent Consensus (${results.length} agents)\n\n${synthesisResult.content}\n\n<details>\n<summary>View Individual Agent Responses</summary>\n\n${individualResponses}\n</details>`;

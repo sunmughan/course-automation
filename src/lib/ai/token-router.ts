@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { providerHealthMonitor } from "./health-monitor";
 import {
   aiGateway,
   type AIModelInfo,
@@ -137,7 +138,7 @@ export class TokenRouter {
 
     if (preferredProvider && preferredModel) {
       const provider = aiGateway.getProvider(preferredProvider);
-      if (provider && !aiGateway.isCircuitOpen(preferredProvider)) {
+      if (provider && !providerHealthMonitor.isCircuitOpen(preferredProvider)) {
         const model = provider.models.find((m) => m.name === preferredModel);
         if (model) {
           const cost = this.estimateCost(preferredProvider, preferredModel, inputTokens, outputTokens);
@@ -211,7 +212,7 @@ export class TokenRouter {
     const allProviders = aiGateway.getAllProviders();
 
     for (const provider of allProviders) {
-      if (aiGateway.isCircuitOpen(provider.name)) continue;
+      if (providerHealthMonitor.isCircuitOpen(provider.name)) continue;
 
       for (const model of provider.models) {
         if (!model.capabilities.includes(taskType)) continue;
@@ -379,7 +380,7 @@ export class TokenRouter {
     const results: { provider: string; model: string; cost: number; isActive: boolean }[] = [];
 
     for (const provider of aiGateway.getAllProviders()) {
-      const isActive = !aiGateway.isCircuitOpen(provider.name);
+      const isActive = !providerHealthMonitor.isCircuitOpen(provider.name);
       for (const model of provider.models) {
         if (!model.capabilities.includes(taskType)) continue;
         const cost = this.estimateCost(provider.name, model.name, inputTokens, outputTokens);
