@@ -139,6 +139,7 @@ export function IDEPanel({
                 events={events}
                 loading={loading}
                 executionTime={executionTime}
+                language={language}
                 className="h-full"
               />
             </div>

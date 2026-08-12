@@ -12,6 +12,7 @@ import {
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { getLanguageDefinition } from "@/lib/execution/languages";
 import type { ExecutionEvent } from "@/types";
 
 interface CodeOutputProps {
@@ -20,6 +21,7 @@ interface CodeOutputProps {
   events: ExecutionEvent[];
   loading: boolean;
   executionTime: number;
+  language?: string;
   className?: string;
 }
 
@@ -114,7 +116,7 @@ export function CodeOutput({
                     <AlertCircle className="mt-0.5 size-4 shrink-0 text-destructive" />
                     <div>
                       <p className="text-sm font-medium text-destructive">
-                        Error
+                        {error.startsWith("Compilation Error") ? "Compilation Error" : error.startsWith("Runtime") ? "Runtime Error" : "Error"}
                       </p>
                       <pre className="mt-1 whitespace-pre-wrap text-sm text-destructive/80 font-mono">
                         {error}

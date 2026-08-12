@@ -1,5 +1,7 @@
 import { executeJavaScript } from "@/lib/execution/sandbox";
 import { analyzeTrace } from "@/lib/execution/tracer";
+import { executeMultiLanguage } from "@/lib/execution/multi-lang-sandbox";
+import { isExecutableLanguage } from "@/lib/execution/languages";
 import { prisma } from "@/lib/db";
 import { apiHandler } from "@/lib/api-handler";
 import { codeSchemas } from "@/lib/errors";
@@ -14,7 +16,7 @@ export const POST = apiHandler(async (ctx) => {
 
   const { code, language = "javascript", trace = false } = body;
 
-  const result = await executeJavaScript(code, language, { trace });
+  const result = await executeMultiLanguage({ code, language, trace });
 
   await prisma.executionRun.create({
     data: {

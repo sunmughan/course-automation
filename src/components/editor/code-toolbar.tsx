@@ -20,18 +20,21 @@ import {
 } from "@/components/ui/select";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { EXECUTABLE_LANGUAGES, DISPLAY_ONLY_LANGUAGES, LANGUAGE_REGISTRY } from "@/lib/execution/languages";
 
-const SUPPORTED_LANGUAGES = [
-  { value: "javascript", label: "JavaScript" },
-  { value: "typescript", label: "TypeScript" },
-  { value: "python", label: "Python" },
-  { value: "html", label: "HTML" },
-  { value: "css", label: "CSS" },
-  { value: "json", label: "JSON" },
-  { value: "sql", label: "SQL" },
-  { value: "markdown", label: "Markdown" },
-];
+const SUPPORTED_LANGUAGES = (() => {
+  const execLangs = EXECUTABLE_LANGUAGES.map((id) => {
+    const def = LANGUAGE_REGISTRY[id];
+    return { value: id, label: def?.name || id, executable: true };
+  });
+  const displayLangs = DISPLAY_ONLY_LANGUAGES.map((id) => {
+    const def = LANGUAGE_REGISTRY[id];
+    return { value: id, label: def?.name || id, executable: false };
+  });
+  return [...execLangs, ...displayLangs];
+})();
 
 const FONT_SIZES = [10, 12, 14, 16, 18, 20, 24];
 
@@ -156,7 +159,18 @@ export function CodeToolbar({
         <SelectContent>
           {SUPPORTED_LANGUAGES.map((lang) => (
             <SelectItem key={lang.value} value={lang.value}>
-              {lang.label}
+              <span className="flex items-center gap-2">
+                {lang.label}
+                {lang.executable ? (
+                  <Badge variant="outline" className="h-3.5 text-[9px] px-1 text-emerald-500 border-emerald-500/30">
+                    RUN
+                  </Badge>
+                ) : (
+                  <Badge variant="outline" className="h-3.5 text-[9px] px-1 text-muted-foreground/50">
+                    VIEW
+                  </Badge>
+                )}
+              </span>
             </SelectItem>
           ))}
         </SelectContent>

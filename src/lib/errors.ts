@@ -96,7 +96,8 @@ export const aiSchemas = {
 export const codeSchemas = {
   run: z.object({
     code: z.string().min(1, "Code is required").max(100000),
-    language: z.enum(["javascript", "python", "typescript"]).default("javascript"),
+    language: z.enum(["javascript", "python", "typescript", "java", "c", "cpp", "kotlin", "html", "css", "json", "sql", "markdown"]).default("javascript"),
     timeout: z.number().min(1000).max(30000).default(10000),
+    trace: z.boolean().optional(),
   }),
 };
