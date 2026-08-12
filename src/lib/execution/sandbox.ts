@@ -1,4 +1,5 @@
 import type { ExecutionEvent, ExecutionResult } from "@/types";
+import { instrumentCode, buildTraceWrapper, analyzeTrace } from "./tracer";
 
 const MAX_EXECUTION_TIME_MS = 5000;
 
@@ -113,9 +114,11 @@ function sanitizeCode(code: string): void {
 
 export async function executeJavaScript(
   code: string,
-  language: string = "javascript"
+  language: string = "javascript",
+  options?: { trace?: boolean }
 ): Promise<ExecutionResult> {
   const startTime = Date.now();
+  const enableTrace = options?.trace ?? false;
 
   if (language !== "javascript") {
     return {
@@ -150,7 +153,18 @@ export async function executeJavaScript(
     };
   }
 
-  const wrappedCode = wrapCodeWithInterception(trimmedCode);
+  if (enableTrace) {
+    return executeWithTrace(trimmedCode, startTime);
+  }
+
+  return executeSimple(trimmedCode, startTime);
+}
+
+async function executeSimple(
+  code: string,
+  startTime: number
+): Promise<ExecutionResult> {
+  const wrappedCode = wrapCodeWithInterception(code);
 
   let result: {
     error: string | null;
@@ -227,4 +241,115 @@ export async function executeJavaScript(
     executionTime,
     memoryUsed: 0,
   };
+}
+
+async function executeWithTrace(
+  code: string,
+  startTime: number
+): Promise<ExecutionResult> {
+  try {
+    const { instrumentedCode } = instrumentCode(code);
+    const wrappedCode = buildTraceWrapper(instrumentedCode);
+
+    const fn = new Function(wrappedCode);
+
+    const execPromise = new Promise<{ traceEvents: unknown[]; output: string[] }>((resolve, reject) => {
+      try {
+        const rawResult = fn();
+        if (Array.isArray(rawResult)) {
+          resolve({ traceEvents: rawResult, output: [] });
+        } else if (rawResult && typeof rawResult === "object" && "error" in rawResult) {
+          const errResult = rawResult as { error: string; output: string[] };
+          resolve({
+            traceEvents: [{
+              step: 0,
+              type: "error",
+              message: errResult.error,
+              line: 0,
+              scope: "global",
+              callStack: [],
+              timestamp: Date.now(),
+            }],
+            output: errResult.output || [],
+          });
+        } else {
+          resolve({ traceEvents: [], output: [] });
+        }
+      } catch (e) {
+        resolve({
+          traceEvents: [{
+            step: 0,
+            type: "error",
+            message: (e as Error).message || "Execution error",
+            line: 0,
+            scope: "global",
+            callStack: [],
+            timestamp: Date.now(),
+          }],
+          output: [],
+        });
+      }
+    });
+
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      setTimeout(() => reject(new Error("Execution timed out after 5 seconds")), MAX_EXECUTION_TIME_MS);
+    });
+
+    const { traceEvents, output } = await Promise.race([execPromise, timeoutPromise]);
+
+    const executionTime = Date.now() - startTime;
+
+    const events: ExecutionEvent[] = traceEvents.map((e: any, i: number) => ({
+      step: e.step || i + 1,
+      type: e.type || "expression",
+      variable: e.variable || e.name,
+      value: e.value,
+      line: e.line,
+      message: e.message || e.description,
+      scope: e.scope || "global",
+      callStack: e.callStack || [],
+      timestamp: e.timestamp,
+    }));
+
+    const { summary, maxDepth } = analyzeTrace(traceEvents as any);
+
+    const trace = {
+      steps: traceEvents.map((e: any, i: number) => ({
+        step: e.step || i + 1,
+        line: e.line || 0,
+        depth: e.depth || 0,
+        type: e.type || "expression",
+        description: e.description || "",
+        state: e.state || [],
+        callStack: e.callStack || [],
+        heap: e.heap || {},
+        timestamp: e.timestamp || Date.now(),
+      })),
+      totalSteps: traceEvents.length,
+      maxDepth,
+      summary,
+    };
+
+    const consoleOutput = traceEvents
+      .filter((e: any) => e.type === "console_output")
+      .map((e: any) => e.message || "")
+      .join("\n");
+
+    return {
+      output: output.length > 0 ? output.join("\n") : consoleOutput,
+      error: events.some((e) => e.type === "error") ? events.find((e) => e.type === "error")!.message || "Unknown error" : null,
+      events,
+      executionTime,
+      memoryUsed: 0,
+      trace,
+    };
+  } catch (e) {
+    return {
+      output: "",
+      error: (e as Error).message || "Trace execution failed",
+      events: [],
+      executionTime: Date.now() - startTime,
+      memoryUsed: 0,
+    };
+  }
 }

@@ -1,4 +1,5 @@
 import { executeJavaScript } from "@/lib/execution/sandbox";
+import { analyzeTrace } from "@/lib/execution/tracer";
 import { prisma } from "@/lib/db";
 import { apiHandler } from "@/lib/api-handler";
 import { codeSchemas } from "@/lib/errors";
@@ -8,11 +9,12 @@ export const POST = apiHandler(async (ctx) => {
   const body = (ctx as any).body as {
     code: string;
     language: string;
+    trace?: boolean;
   };
 
-  const { code, language = "javascript" } = body;
+  const { code, language = "javascript", trace = false } = body;
 
-  const result = await executeJavaScript(code, language);
+  const result = await executeJavaScript(code, language, { trace });
 
   await prisma.executionRun.create({
     data: {
@@ -36,6 +38,7 @@ export const POST = apiHandler(async (ctx) => {
         duration: result.executionTime,
         hasError: !!result.error,
         outputLength: (result.output || "").length,
+        traceEnabled: trace,
       }),
     },
   });
@@ -45,5 +48,6 @@ export const POST = apiHandler(async (ctx) => {
     events: result.events,
     executionTime: result.executionTime,
     error: result.error,
+    trace: result.trace || null,
   };
 }, { requireAuth: true, bodySchema: codeSchemas.run });

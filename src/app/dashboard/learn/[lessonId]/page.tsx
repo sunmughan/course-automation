@@ -16,6 +16,11 @@ import { useAuthContext } from "@/components/providers/auth-provider";
 import { AnimatedFlowExplainer, generateFlowSteps, type AnimatedFlowConfig } from "@/components/visualization/animated-flow-explainer";
 import { CallStack } from "@/components/visualization/call-stack";
 import { MemoryView } from "@/components/visualization/memory-view";
+import { MermaidViewer } from "@/components/visualization/mermaid-viewer";
+import { CodeDiffViewer } from "@/components/visualization/code-diff-viewer";
+import { ExecutionTimeline } from "@/components/visualization/execution-timeline";
+import { AsyncVisualizer } from "@/components/visualization/async-visualizer";
+import type { DiagramConfig, CodeDiff, ExecutionEvent, ExecutionTrace, AsyncTrace } from "@/types";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -392,6 +397,59 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
                                 )}
                                 currentStep={999}
                               />
+                            </CardContent>
+                          </Card>
+                        );
+                      }
+
+                      if (viz.type === "mermaid" || viz.type === "diagram") {
+                        const diagram = parsedConfig as unknown as DiagramConfig;
+                        return (
+                          <MermaidViewer key={viz.id} diagram={diagram} />
+                        );
+                      }
+
+                      if (viz.type === "timeline" || viz.type === "execution-trace") {
+                        const events = (parsedConfig.events as ExecutionEvent[]) || [];
+                        const trace = parsedConfig.trace as ExecutionTrace | undefined;
+                        return (
+                          <Card key={viz.id}>
+                            <CardHeader className="pb-0">
+                              <CardTitle className="text-base">{viz.title}</CardTitle>
+                              <Badge variant="outline" className="text-[10px]">Execution Trace</Badge>
+                            </CardHeader>
+                            <CardContent>
+                              <ExecutionTimeline events={events} trace={trace} />
+                            </CardContent>
+                          </Card>
+                        );
+                      }
+
+                      if (viz.type === "diff" || viz.type === "code-diff") {
+                        const diff = parsedConfig as unknown as CodeDiff;
+                        return (
+                          <Card key={viz.id}>
+                            <CardHeader className="pb-0">
+                              <CardTitle className="text-base">{viz.title}</CardTitle>
+                              <Badge variant="outline" className="text-[10px]">Code Diff</Badge>
+                            </CardHeader>
+                            <CardContent>
+                              <CodeDiffViewer diff={diff} />
+                            </CardContent>
+                          </Card>
+                        );
+                      }
+
+                      if (viz.type === "async" || viz.type === "async-trace") {
+                        const trace = parsedConfig as unknown as AsyncTrace;
+                        return (
+                          <Card key={viz.id}>
+                            <CardHeader className="pb-0">
+                              <CardTitle className="text-base">{viz.title}</CardTitle>
+                              <Badge variant="outline" className="text-[10px]">Async Trace</Badge>
+                            </CardHeader>
+                            <CardContent>
+                              <AsyncVisualizer trace={trace} />
                             </CardContent>
                           </Card>
                         );

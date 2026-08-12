@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import type { ExecutionResult, ExecutionEvent } from "@/types";
+import type { ExecutionResult, ExecutionEvent, ExecutionTrace } from "@/types";
 
 interface ExecutionHistoryEntry {
   id: string;
@@ -10,6 +10,7 @@ interface ExecutionHistoryEntry {
   error: string | null;
   events: ExecutionEvent[];
   executionTime: number;
+  trace: ExecutionTrace | null;
   timestamp: number;
 }
 
@@ -19,8 +20,9 @@ interface UseExecutionReturn {
   events: ExecutionEvent[];
   loading: boolean;
   executionTime: number;
+  trace: ExecutionTrace | null;
   history: ExecutionHistoryEntry[];
-  executeCode: (code: string, language?: string) => Promise<ExecutionResult | null>;
+  executeCode: (code: string, language?: string, trace?: boolean) => Promise<ExecutionResult | null>;
   clearOutput: () => void;
   clearHistory: () => void;
 }
@@ -33,11 +35,12 @@ export function useExecution(): UseExecutionReturn {
   const [events, setEvents] = useState<ExecutionEvent[]>([]);
   const [loading, setLoading] = useState(false);
   const [executionTime, setExecutionTime] = useState(0);
+  const [trace, setTrace] = useState<ExecutionTrace | null>(null);
   const [history, setHistory] = useState<ExecutionHistoryEntry[]>([]);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const executeCode = useCallback(
-    async (code: string, language: string = "javascript"): Promise<ExecutionResult | null> => {
+    async (code: string, language: string = "javascript", enableTrace: boolean = false): Promise<ExecutionResult | null> => {
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
       }
@@ -50,6 +53,7 @@ export function useExecution(): UseExecutionReturn {
       setOutput("");
       setEvents([]);
       setExecutionTime(0);
+      setTrace(null);
 
       try {
         const token = typeof window !== "undefined" ? localStorage.getItem("auth_token") : null;
@@ -60,7 +64,7 @@ export function useExecution(): UseExecutionReturn {
             "Content-Type": "application/json",
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
-          body: JSON.stringify({ code, language }),
+          body: JSON.stringify({ code, language, trace: enableTrace }),
           signal: controller.signal,
         });
 
@@ -80,6 +84,7 @@ export function useExecution(): UseExecutionReturn {
         setError(data.error);
         setEvents(data.events);
         setExecutionTime(data.executionTime);
+        setTrace(data.trace || null);
 
         const entry: ExecutionHistoryEntry = {
           id: `exec_${++idCounter}`,
@@ -88,6 +93,7 @@ export function useExecution(): UseExecutionReturn {
           error: data.error,
           events: data.events,
           executionTime: data.executionTime,
+          trace: data.trace || null,
           timestamp: Date.now(),
         };
 
@@ -113,6 +119,7 @@ export function useExecution(): UseExecutionReturn {
     setError(null);
     setEvents([]);
     setExecutionTime(0);
+    setTrace(null);
   }, []);
 
   const clearHistory = useCallback(() => {
@@ -125,6 +132,7 @@ export function useExecution(): UseExecutionReturn {
     events,
     loading,
     executionTime,
+    trace,
     history,
     executeCode,
     clearOutput,
