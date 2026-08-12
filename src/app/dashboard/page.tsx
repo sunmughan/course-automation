@@ -128,6 +128,53 @@ export default function DashboardPage() {
           { name: "Data Science", icon: BarChart3Icon, score: 0, status: "beginner" },
           { name: "Mobile", icon: SmartphoneIcon, score: 0, status: "beginner" },
         ]);
+
+        try {
+          const skillRes = await fetch("/api/adaptive/skills", { headers });
+          if (skillRes.ok) {
+            const skillData = await skillRes.json();
+            const nodes = skillData.graph?.nodes || [];
+            const streamMap: Record<string, { name: string; icon: typeof Code2Icon }> = {
+              frontend: { name: "Frontend", icon: Code2Icon },
+              backend: { name: "Backend", icon: ServerIcon },
+              ai: { name: "AI / ML", icon: BrainIcon },
+              "data-science": { name: "Data Science", icon: BarChart3Icon },
+              mobile: { name: "Mobile", icon: SmartphoneIcon },
+              devops: { name: "DevOps", icon: ServerIcon },
+            };
+            const streamScores: Record<string, { total: number; count: number }> = {};
+            nodes.forEach((n: { topicName: string; score: number; level: string }) => {
+              Object.entries(streamMap).forEach(([stream, info]) => {
+                if (n.topicName?.toLowerCase().includes(stream) || n.topicName?.toLowerCase().includes(info.name.toLowerCase())) {
+                  if (!streamScores[stream]) streamScores[stream] = { total: 0, count: 0 };
+                  streamScores[stream].total += n.score;
+                  streamScores[stream].count++;
+                }
+              });
+            });
+            const updatedSkills = [
+              { name: "Frontend", icon: Code2Icon, score: 0, status: "beginner" },
+              { name: "Backend", icon: ServerIcon, score: 0, status: "beginner" },
+              { name: "AI / ML", icon: BrainIcon, score: 0, status: "beginner" },
+              { name: "Data Science", icon: BarChart3Icon, score: 0, status: "beginner" },
+              { name: "Mobile", icon: SmartphoneIcon, score: 0, status: "beginner" },
+              { name: "DevOps", icon: ServerIcon, score: 0, status: "beginner" },
+            ];
+            updatedSkills.forEach((skill) => {
+              const stream = Object.entries(streamMap).find(([, info]) => info.name === skill.name)?.[0];
+              if (stream && streamScores[stream]) {
+                skill.score = Math.round(streamScores[stream].total / streamScores[stream].count);
+                if (skill.score >= 80) skill.status = "mastered";
+                else if (skill.score >= 60) skill.status = "strong";
+                else if (skill.score >= 40) skill.status = "competent";
+                else if (skill.score >= 20) skill.status = "developing";
+              }
+            });
+            setSkills(updatedSkills);
+          }
+        } catch {
+          // Keep default skills if adaptive API fails
+        }
       } catch {
         setError("Failed to load dashboard data");
       } finally {

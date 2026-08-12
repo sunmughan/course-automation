@@ -18,6 +18,7 @@ import {
   BrainIcon,
   BarChart3Icon,
   SmartphoneIcon,
+  CloudIcon,
 } from "lucide-react";
 
 interface Course {
@@ -46,6 +47,7 @@ const streams = [
   { label: "AI", value: "ai", icon: BrainIcon },
   { label: "Data Science", value: "data-science", icon: BarChart3Icon },
   { label: "Mobile", value: "mobile", icon: SmartphoneIcon },
+  { label: "DevOps", value: "devops", icon: CloudIcon },
 ];
 
 export default function CoursesPage() {
