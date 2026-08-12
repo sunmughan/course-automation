@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-Powered Software Engineering Training Platform
+
+Production-grade interactive learning platform for software engineering. Built with Next.js 16, PostgreSQL, Prisma 7, and a multi-provider AI Gateway.
+
+## Architecture
+
+```
+Student → Learning UI → { Lessons, IDE, AI Tutor }
+                            ↓
+              Execution API → Queue → Workers → Sandbox
+                            ↓
+              AI Gateway → { NVIDIA, Gemini, AgentRouter, TokenRouter }
+                            ↓
+              Visualization Engine → { Flow Diagrams, Call Stack, Memory View }
+                            ↓
+              Adaptive Learning → Assessment → Skill Graph
+```
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript (strict mode) |
+| Database | PostgreSQL 18 |
+| ORM | Prisma 7 |
+| Auth | JWT (jose) |
+| UI | shadcn/ui, Tailwind CSS, Framer Motion |
+| AI | NVIDIA NIM, Google Gemini, AgentRouter.org, TokenRouter.com |
+| Validation | Zod |
+| Editor | Monaco Editor |
+| Visualization | ReactFlow, Custom Canvas |
+
+## Courses
+
+1. **Frontend Development** (14 modules) - HTML, CSS, JavaScript, React, TypeScript, Next.js, Testing
+2. **Backend Development** (12 modules) - Node.js, Express, Laravel, PHP, Databases, REST, GraphQL, Microservices
+3. **Mobile App Development** (10 modules) - React Native, Flutter, Swift, Kotlin, Firebase
+4. **AI & Prompt Engineering** (10 modules) - ML Basics, NLP, LLMs, RAG, Agents, Prompt Design
+5. **Data Science** (10 modules) - Python, NumPy, Pandas, SQL, ML, Stats, Visualization
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- PostgreSQL 16+
+- npm or yarn
+
+### Installation
 
 ```bash
+git clone https://github.com/sunmughan/course-automation.git
+cd course-automation
+
+# Install dependencies
+npm install
+
+# Copy environment config
+cp .env.example .env
+
+# Edit .env with your PostgreSQL and AI API keys
+# DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/platform_db"
+# NVIDIA_API_KEY="nvapi-..."
+# GEMINI_API_KEY="..."
+# AGENTROUTER_API_KEY="..."
+# TOKENROUTER_API_KEY="sk-..."
+
+# Push schema to database
+npx prisma db push
+
+# Seed curriculum data
+npx tsx prisma/seed.ts
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### AI Providers
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The platform supports 4 AI providers with automatic fallback:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Provider | Purpose | Config |
+|----------|---------|--------|
+| NVIDIA NIM | High-quality code generation | `NVIDIA_API_KEY` |
+| Google Gemini | Explanations and tutoring | `GEMINI_API_KEY` |
+| AgentRouter.org | Agent orchestration | `AGENTROUTER_API_KEY` |
+| TokenRouter.com | Cost-optimized routing | `TOKENROUTER_API_KEY` |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── api/           # API routes (auth, courses, lessons, ai, code)
+│   ├── dashboard/     # Protected dashboard pages
+│   ├── login/         # Auth pages
+│   └── layout.tsx     # Root layout
+├── components/
+│   ├── ui/            # shadcn/ui components
+│   ├── tutor/         # AI Tutor component
+│   ├── visualization/ # Flow diagrams, call stack, memory view
+│   └── editor/        # Monaco code editor
+├── hooks/             # React hooks
+├── lib/
+│   ├── ai/            # AI Gateway, Router, Orchestrator, Token Router
+│   ├── curriculum/    # Seed data
+│   ├── auth.ts        # JWT authentication
+│   ├── db.ts          # Prisma client
+│   ├── api-handler.ts # API handler wrapper + validation
+│   ├── errors.ts      # Error classes + Zod schemas
+│   └── logger.ts      # Centralized logging
+└── types/             # TypeScript types
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Routes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Method | Route | Auth | Description |
+|--------|-------|------|-------------|
+| POST | `/api/auth/register` | No | User registration |
+| POST | `/api/auth/login` | No | User login |
+| GET | `/api/auth/session` | Yes | Current session |
+| GET | `/api/courses` | No | List courses |
+| GET | `/api/courses/:id` | No | Course detail |
+| POST | `/api/courses/:id/enroll` | Yes | Enroll in course |
+| GET | `/api/lessons/:id` | No | Lesson content |
+| POST | `/api/lessons/:id/complete` | Yes | Mark lesson complete |
+| POST | `/api/ai/chat` | Yes | AI Tutor chat |
+| POST | `/api/ai/orchestrate` | Yes | Agent orchestration |
+| POST | `/api/code/run` | Yes | Execute code |
+| GET | `/api/progress` | Yes | Student progress |
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev       # Development server (Turbopack)
+npm run build     # Production build
+npm run start     # Start production server
+npm run lint      # Lint code
+npm run db:push   # Push schema to database
+npm run db:seed   # Seed curriculum data
+npm run db:studio # Open Prisma Studio
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT
