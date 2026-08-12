@@ -15,6 +15,7 @@ import {
   FolderKanbanIcon,
   TrendingUpIcon,
   ClipboardCheckIcon,
+  BrainIcon,
   LogOutIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -28,6 +29,7 @@ const navItems = [
   { href: "/dashboard/projects", label: "Projects", icon: FolderKanbanIcon },
   { href: "/dashboard/progress", label: "Progress", icon: TrendingUpIcon },
   { href: "/dashboard/assessments", label: "Assessments", icon: ClipboardCheckIcon },
+  { href: "/dashboard/adaptive", label: "Adaptive", icon: BrainIcon },
 ];
 
 export function Sidebar() {

@@ -1,0 +1,10 @@
+export { buildSkillGraph, updateSkillAfterLesson, recordMistake, getTopicSkillBreakdown, computeSkillLevel, computeMasteryPercent, getLevelProgress, getNextLevel, getPointsToNextLevel } from "./skill-graph";
+export type { SkillGraph, SkillNode, SkillLevel } from "./skill-graph";
+export { detectWeakTopics, assessDifficulty } from "./weak-detection";
+export type { WeakTopic, DifficultyAssessment } from "./weak-detection";
+export { getDueReviews, getRevisionSchedule, markTopicReviewed, calculateNextReview, getQualityFromScore } from "./spaced-repetition";
+export type { SpacedRepetitionItem } from "./spaced-repetition";
+export { generatePersonalizedExercises } from "./exercise-generator";
+export type { GeneratedExercise, ExerciseRequest } from "./exercise-generator";
+export { generateRevisionPlan, generateTopicRevisionContent } from "./revision-engine";
+export type { RevisionPlan, RevisionTopic, RevisionSummary } from "./revision-engine";
