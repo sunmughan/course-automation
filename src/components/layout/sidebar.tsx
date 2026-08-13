@@ -22,8 +22,11 @@ import {
   ChevronRightIcon,
   GraduationCapIcon,
   UsersIcon,
-  AlertTriangleIcon,
-  FileTextIcon,
+  Building2Icon,
+  ShieldCheckIcon,
+  ScrollTextIcon,
+  CreditCardIcon,
+  KeyIcon,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -42,13 +45,21 @@ const instructorNavItems = [
   { href: "/dashboard/instructor/batches", label: "Batches", icon: UsersIcon },
 ];
 
+const adminNavItems = [
+  { href: "/dashboard/admin", label: "Admin", icon: ShieldCheckIcon },
+  { href: "/dashboard/admin/organizations", label: "Organizations", icon: Building2Icon },
+  { href: "/dashboard/admin/billing", label: "Billing", icon: CreditCardIcon },
+  { href: "/dashboard/admin/audit", label: "Audit Logs", icon: ScrollTextIcon },
+];
+
 export function Sidebar() {
   const pathname = usePathname();
   const { user, logout } = useAuthContext();
   const [collapsed, setCollapsed] = useState(false);
 
-  const isInstructor = user?.role === "instructor" || user?.role === "admin";
-  const navItems = isInstructor ? instructorNavItems : studentNavItems;
+  const isAdmin = user?.role === "admin";
+  const isInstructor = user?.role === "instructor" || isAdmin;
+  const navItems = isAdmin ? adminNavItems : isInstructor ? instructorNavItems : studentNavItems;
 
   const initials = user?.name
     ? user.name

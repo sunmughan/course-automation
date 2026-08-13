@@ -33,6 +33,9 @@ model User {
   batchMemberships BatchStudent[]
   assignmentSubmissions AssignmentSubmission[]
   announcements  Announcement[]
+  orgMemberships OrganizationMember[]
+  teamMemberships TeamMember[]
+  auditLogs      AuditLog[]
 }
 
 model Account {
@@ -580,4 +583,157 @@ model Announcement {
 
   batch      Batch? @relation(fields: [batchId], references: [id], onDelete: Cascade)
   instructor User   @relation(fields: [instructorId], references: [id], onDelete: Cascade)
+}
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  logoUrl     String?
+  primaryColor String  @default("#3B82F6")
+  accentColor  String  @default("#8B5CF6")
+  customDomain String?
+  isActive    Boolean  @default(true)
+  settings    String   @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  members       OrganizationMember[]
+  teams         Team[]
+  departments   Department[]
+  subscriptions Subscription[]
+  ssoConfigs    SSOConfig[]
+  auditLogs     AuditLog[]
+}
+
+model OrganizationMember {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  role           String   @default("member")
+  permissions    String   @default("[]")
+  joinedAt       DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+}
+
+model Team {
+  id             String   @id @default(cuid())
+  name           String
+  description    String?
+  organizationId String
+  departmentId   String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  department   Department?  @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  members      TeamMember[]
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  teamId    String
+  userId    String
+  role      String   @default("member")
+  joinedAt  DateTime @default(now())
+
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, userId])
+}
+
+model Department {
+  id             String   @id @default(cuid())
+  name           String
+  description    String?
+  organizationId String
+  parentId       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  parent       Department?  @relation("DepartmentHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children     Department[] @relation("DepartmentHierarchy")
+  teams        Team[]
+}
+
+model AuditLog {
+  id             String   @id @default(cuid())
+  organizationId String?
+  userId         String?
+  action         String
+  resource       String
+  resourceId     String?
+  details        String?
+  ipAddress      String?
+  userAgent      String?
+  createdAt      DateTime @default(now())
+
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  user         User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+model BillingPlan {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  description   String?
+  priceMonthly  Float    @default(0)
+  priceYearly   Float    @default(0)
+  maxStudents   Int      @default(10)
+  maxInstructors Int     @default(1)
+  maxTeams      Int      @default(3)
+  features      String   @default("[]")
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id             String   @id @default(cuid())
+  organizationId String
+  planId         String
+  status         String   @default("active")
+  billingCycle   String   @default("monthly")
+  currentPeriodStart DateTime
+  currentPeriodEnd   DateTime
+  cancelAtPeriodEnd  Boolean  @default(false)
+  paymentMethodId    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  plan         BillingPlan  @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId])
+}
+
+model SSOConfig {
+  id             String   @id @default(cuid())
+  organizationId String
+  provider       String
+  clientId       String?
+  clientSecret   String?
+  issuerUrl      String?
+  domain         String?
+  isEnabled      Boolean  @default(false)
+  settings       String   @default("{}")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, provider])
 }
