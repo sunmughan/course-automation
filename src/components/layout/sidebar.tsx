@@ -27,6 +27,8 @@ import {
   ScrollTextIcon,
   CreditCardIcon,
   KeyIcon,
+  SlidersHorizontalIcon,
+  BarChart3Icon,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -49,6 +51,8 @@ const adminNavItems = [
   { href: "/dashboard/admin", label: "Admin", icon: ShieldCheckIcon },
   { href: "/dashboard/admin/organizations", label: "Organizations", icon: Building2Icon },
   { href: "/dashboard/admin/billing", label: "Billing", icon: CreditCardIcon },
+  { href: "/dashboard/admin/customization", label: "Customization", icon: SlidersHorizontalIcon },
+  { href: "/dashboard/admin/analytics", label: "Analytics", icon: BarChart3Icon },
   { href: "/dashboard/admin/audit", label: "Audit Logs", icon: ScrollTextIcon },
 ];
 

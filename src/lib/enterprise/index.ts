@@ -4,3 +4,7 @@ export * from "./audit";
 export * from "./billing";
 export * from "./sso";
 export * from "./org-auth";
+export * from "./curriculum";
+export * from "./ai-models";
+export * from "./policies";
+export * from "./analytics";

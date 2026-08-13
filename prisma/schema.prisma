@@ -477,11 +477,18 @@ model Visualization {
 }
 
 model AnalyticsEvent {
-  id        String   @id @default(cuid())
-  userId    String?
-  event     String
-  data      String
-  createdAt DateTime @default(now())
+  id             String   @id @default(cuid())
+  userId         String?
+  organizationId String?
+  event          String
+  data           String
+  createdAt      DateTime @default(now())
+
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([event])
+  @@index([createdAt])
 }
 
 model Batch {
@@ -599,12 +606,16 @@ model Organization {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  members       OrganizationMember[]
-  teams         Team[]
-  departments   Department[]
-  subscriptions Subscription[]
-  ssoConfigs    SSOConfig[]
-  auditLogs     AuditLog[]
+  members          OrganizationMember[]
+  teams            Team[]
+  departments      Department[]
+  subscriptions    Subscription[]
+  ssoConfigs       SSOConfig[]
+  auditLogs        AuditLog[]
+  customCurriculums CustomCurriculum[]
+  customAIModels   CustomAIModel[]
+  policies         Policy[]
+  analyticsEvents  AnalyticsEvent[]
 }
 
 model OrganizationMember {
@@ -736,4 +747,70 @@ model SSOConfig {
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, provider])
+}
+
+model CustomCurriculum {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  description    String?
+  status         String   @default("draft")
+  settings       String   @default("{}")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  modules      CustomModule[]
+
+  @@index([organizationId])
+}
+
+model CustomModule {
+  id           String   @id @default(cuid())
+  curriculumId String
+  title        String
+  description  String?
+  order        Int      @default(0)
+  settings     String   @default("{}")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  curriculum CustomCurriculum @relation(fields: [curriculumId], references: [id], onDelete: Cascade)
+
+  @@index([curriculumId])
+}
+
+model CustomAIModel {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  provider       String
+  model          String
+  capabilities   String   @default("[]")
+  maxTokens      Int      @default(4096)
+  costPer1K      Float    @default(0)
+  settings       String   @default("{}")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+}
+
+model Policy {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  type           String
+  description    String?
+  rules          String   @default("{}")
+  isEnabled      Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
 }
