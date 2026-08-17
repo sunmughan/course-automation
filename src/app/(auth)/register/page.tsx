@@ -21,6 +21,7 @@ export default function RegisterPage() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    e.stopPropagation();
     setError(null);
     setLoading(true);
 
@@ -28,11 +29,11 @@ export default function RegisterPage() {
     setLoading(false);
 
     if (user) {
-      router.push("/dashboard");
-    } else {
-      setError(authError || "Registration failed. Please try again.");
+      window.location.href = "/dashboard";
     }
   }
+
+  const displayError = error || authError;
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-12">
@@ -50,10 +51,10 @@ export default function RegisterPage() {
             <CardDescription>Start your learning journey today</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {error && (
+            <form onSubmit={handleSubmit} action="javascript:void(0)" method="POST" className="space-y-4">
+              {displayError && (
                 <div className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
-                  {error}
+                  {displayError}
                 </div>
               )}
 

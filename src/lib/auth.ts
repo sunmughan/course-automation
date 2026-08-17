@@ -30,12 +30,16 @@ export async function verifyToken(token: string): Promise<UserPayload> {
 }
 
 export function extractToken(request: Request): string | null {
-  const authHeader = request.headers.get("Authorization");
+  const authHeader =
+    request.headers.get("authorization") ||
+    request.headers.get("Authorization");
   if (authHeader?.startsWith("Bearer ")) {
     return authHeader.slice(7);
   }
 
-  const cookieHeader = request.headers.get("cookie");
+  const cookieHeader =
+    request.headers.get("cookie") ||
+    request.headers.get("Cookie");
   if (cookieHeader) {
     const match = cookieHeader.match(/(?:^|;\s*)auth_token=([^;]+)/);
     if (match) return decodeURIComponent(match[1]);

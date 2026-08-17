@@ -5,16 +5,29 @@ import type { UserPayload } from "@/types";
 
 const TOKEN_KEY = "auth_token";
 
+function formatApiError(data: any, defaultMsg: string): string {
+  if (data?.details && Array.isArray(data.details) && data.details.length > 0) {
+    return data.details.map((d: any) => d.message).join(", ");
+  }
+  return data?.error || data?.message || defaultMsg;
+}
+
 async function fetchSession(token: string): Promise<UserPayload | null> {
-  const res = await fetch("/api/auth/session", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) {
-    localStorage.removeItem(TOKEN_KEY);
+  try {
+    const res = await fetch("/api/auth/session", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!res.ok) {
+      if (res.status === 401) {
+        localStorage.removeItem(TOKEN_KEY);
+      }
+      return null;
+    }
+    const data = await res.json();
+    return data.user;
+  } catch {
     return null;
   }
-  const data = await res.json();
-  return data.user;
 }
 
 function getStoredToken(): string | null {
@@ -53,18 +66,21 @@ export function useAuth() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: email.trim().toLowerCase(), password }),
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Login failed");
+        const errorMsg = formatApiError(data, "Invalid email or password");
+        setError(errorMsg);
         return null;
       }
-      localStorage.setItem(TOKEN_KEY, data.token);
+      if (data.token) {
+        localStorage.setItem(TOKEN_KEY, data.token);
+      }
       setUser(data.user);
       return data.user as UserPayload;
     } catch {
-      setError("Network error");
+      setError("Network error. Please check your connection.");
       return null;
     }
   }, []);
@@ -76,18 +92,21 @@ export function useAuth() {
         const res = await fetch("/api/auth/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, password }),
+          body: JSON.stringify({ name: name.trim(), email: email.trim().toLowerCase(), password }),
         });
         const data = await res.json();
         if (!res.ok) {
-          setError(data.error || "Registration failed");
+          const errorMsg = formatApiError(data, "Registration failed");
+          setError(errorMsg);
           return null;
         }
-        localStorage.setItem(TOKEN_KEY, data.token);
+        if (data.token) {
+          localStorage.setItem(TOKEN_KEY, data.token);
+        }
         setUser(data.user);
         return data.user as UserPayload;
       } catch {
-        setError("Network error");
+        setError("Network error. Please check your connection.");
         return null;
       }
     },
