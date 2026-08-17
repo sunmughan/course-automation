@@ -540,69 +540,44 @@ export function UnifiedInteractiveClassroom({
   }, [chaptersList, chapterSearchQuery]);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-slate-950 text-slate-100 overflow-hidden select-none relative">
+    <div className="flex flex-col h-screen w-full bg-slate-950 text-slate-100 overflow-hidden select-none relative">
       {/* ─────────────────────────────────────────────────────────────────────────────
-          1. TOP COMPACT BAR: ZERO WASTED SPACE (Breadcrumb + Title + Chapters + Floating Actions)
+          1. TOP SLIM HEADER BAR (BRAND / CHAPTERS / SLIM PILL / DESKTOP TOOLS / SUBHEADER TOGGLE)
           ───────────────────────────────────────────────────────────────────────────── */}
-      <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0 gap-2 flex-wrap">
-        {/* Left: Chapters Drawer Button + Breadcrumbs & Title */}
-        <div className="flex items-center gap-2 min-w-0">
-          {/* 📚 Chapters & Curriculum Navigation Drawer Button */}
+      <header className="h-12 bg-slate-900 border-b border-slate-800 px-3 flex items-center justify-between gap-2 shrink-0 z-30">
+        {/* Left: Back Button, Chapters Drawer Button, Slim Pill Title */}
+        <div className="flex items-center gap-1.5 min-w-0">
+          <button
+            onClick={() => { if (typeof window !== 'undefined') window.history.back(); }}
+            className="flex items-center gap-1 text-slate-400 hover:text-white text-xs font-mono transition-colors p-1.5 rounded-lg hover:bg-slate-800 shrink-0 cursor-pointer"
+            title="Back to Course Overview"
+          >
+            <ChevronLeft className="size-4" />
+          </button>
+
+          {/* 📚 Chapters Drawer Button */}
           <button
             onClick={() => setIsChaptersDrawerOpen(!isChaptersDrawerOpen)}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-bold bg-sky-600/20 text-sky-300 border border-sky-500/40 hover:bg-sky-600 hover:text-white transition-all cursor-pointer shadow-xs"
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-sky-600/20 text-sky-300 border border-sky-500/40 hover:bg-sky-600 hover:text-white transition-all cursor-pointer shrink-0 shadow-xs"
             title="Open Curriculum & Learning Phases Drawer"
           >
             <ListOrdered className="size-3.5 text-sky-400" />
             <span>Chapters</span>
           </button>
 
-          <div className="flex items-center gap-1 text-xs text-slate-400 font-mono truncate hidden sm:flex">
-            <span className="text-sky-400 font-bold">{courseTitle}</span>
-            <span>/</span>
-            <span className="truncate">{moduleTitle}</span>
+          {/* Slim Pill Title */}
+          <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950 border border-slate-800 text-xs text-slate-300 font-mono truncate max-w-[130px] sm:max-w-[220px] md:max-w-[300px]">
+            <span className="size-1.5 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+            <span className="truncate font-semibold text-white">{lessonTitle || topicTitle}</span>
           </div>
-          <span className="text-slate-600 hidden sm:inline">|</span>
-          <h1 className="text-sm font-bold text-white tracking-tight truncate flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
-            {lessonTitle} · {topicTitle}
-          </h1>
         </div>
 
-        {/* Mobile View Switcher (Visible on small screens) */}
-        <div className="flex sm:hidden items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-          <button
-            onClick={() => setMobileActiveView("notes")}
-            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-              mobileActiveView === "notes" ? "bg-sky-600 text-white" : "text-slate-400"
-            }`}
-          >
-            📖 Notes
-          </button>
-          <button
-            onClick={() => setMobileActiveView("code")}
-            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-              mobileActiveView === "code" ? "bg-sky-600 text-white" : "text-slate-400"
-            }`}
-          >
-            💻 Code
-          </button>
-          <button
-            onClick={() => setMobileActiveView("output")}
-            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-              mobileActiveView === "output" ? "bg-sky-600 text-white" : "text-slate-400"
-            }`}
-          >
-            ⚡ Output
-          </button>
-        </div>
-
-        {/* Center/Right: Floating Tools Toggles (Hidden on very small mobile, visible on tablet+) */}
-        <div className="hidden sm:flex items-center gap-1.5 flex-wrap">
+        {/* Desktop / Tablet Full Power Tools Row (All Options Visible on Desktop) */}
+        <div className="hidden lg:flex items-center gap-1.5 flex-wrap">
           {/* ⚡ Live Visual Flow Toggle */}
           <button
             onClick={() => handleTogglePanel("flow")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "flow"
                 ? "bg-indigo-600 text-white shadow-md font-bold ring-1 ring-indigo-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
@@ -610,13 +585,13 @@ export function UnifiedInteractiveClassroom({
             title="Open Live Step-by-Step Execution Flow Diagram"
           >
             <Workflow className="size-3.5 text-indigo-300" />
-            <span>Live Flow Diagram</span>
+            <span>Flow</span>
           </button>
 
           {/* 💻 How to Run in VS Code Guide */}
           <button
             onClick={() => handleTogglePanel("vscode_guide")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "vscode_guide"
                 ? "bg-amber-500 text-slate-950 shadow-md font-bold ring-1 ring-amber-300"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
@@ -624,13 +599,13 @@ export function UnifiedInteractiveClassroom({
             title="Where to create files and how to run in VS Code"
           >
             <Laptop className="size-3.5 text-amber-400" />
-            <span>Run in VS Code Guide</span>
+            <span>VS Code</span>
           </button>
 
           {/* 🤖 AI Tutor Assistant */}
           <button
             onClick={() => handleTogglePanel("ai_tutor")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "ai_tutor"
                 ? "bg-pink-600 text-white shadow-md font-bold ring-1 ring-pink-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
@@ -644,7 +619,7 @@ export function UnifiedInteractiveClassroom({
           {/* 🥞 Call Stack / Memory */}
           <button
             onClick={() => handleTogglePanel("memory")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "memory"
                 ? "bg-purple-600 text-white shadow-md font-bold ring-1 ring-purple-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
@@ -658,7 +633,7 @@ export function UnifiedInteractiveClassroom({
           {/* 📝 Topic Quiz & Practice */}
           <button
             onClick={() => handleTogglePanel("quiz")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "quiz"
                 ? "bg-emerald-600 text-white shadow-md font-bold ring-1 ring-emerald-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
@@ -672,7 +647,7 @@ export function UnifiedInteractiveClassroom({
           {/* 💼 Interview Questions & Answers */}
           <button
             onClick={() => handleTogglePanel("interview")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "interview"
                 ? "bg-cyan-600 text-white shadow-md font-bold ring-1 ring-cyan-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
@@ -680,13 +655,13 @@ export function UnifiedInteractiveClassroom({
             title="Senior Interview Questions & Solutions"
           >
             <Award className="size-3.5 text-cyan-300" />
-            <span>Interview Q&amp;A</span>
+            <span>Interview</span>
           </button>
 
           {/* 🎙️ Voice Microphone Assistant */}
           <button
             onClick={toggleListeningMic}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono border transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-semibold font-mono border transition-all cursor-pointer ${
               isListeningMic
                 ? "bg-rose-500/20 text-rose-300 border-rose-500 animate-pulse font-bold"
                 : "bg-slate-950 border-slate-800 text-slate-400 hover:text-white"
@@ -694,14 +669,25 @@ export function UnifiedInteractiveClassroom({
             title="Speak your doubt via microphone"
           >
             {isListeningMic ? <MicOff className="size-3.5" /> : <Mic className="size-3.5 text-rose-400" />}
-            <span className="hidden sm:inline">{isListeningMic ? "Listening..." : "Mic Doubt"}</span>
+            <span>Mic</span>
           </button>
 
-          {/* Language Switcher: English (Default) / Hindi */}
-          <div className="flex items-center gap-0.5 bg-slate-950 p-0.5 rounded-lg border border-slate-800 ml-1">
+          {/* 🔊 Text-To-Speech Speaker */}
+          <button
+            onClick={handleToggleVoice}
+            className={`p-1.5 rounded-lg border border-slate-800 transition-all cursor-pointer ${
+              isSpeaking ? "bg-amber-500/20 text-amber-300 border-amber-500/40" : "text-slate-400 hover:text-white"
+            }`}
+            title={isSpeaking ? "Stop voice explanation" : "Listen to lesson explanation"}
+          >
+            {isSpeaking ? <VolumeX className="size-3.5 text-emerald-400 animate-pulse" /> : <Volume2 className="size-3.5 text-slate-400" />}
+          </button>
+
+          {/* Language Switcher */}
+          <div className="flex items-center gap-0.5 bg-slate-950 p-0.5 rounded-lg border border-slate-800">
             <button
               onClick={() => handleSetLanguage("en")}
-              className={`px-2 py-0.5 rounded text-[11px] font-bold font-mono transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded text-[10px] font-bold font-mono transition-all cursor-pointer ${
                 language === "en" ? "bg-sky-600 text-white" : "text-slate-400 hover:text-white"
               }`}
             >
@@ -709,7 +695,7 @@ export function UnifiedInteractiveClassroom({
             </button>
             <button
               onClick={() => handleSetLanguage("hi")}
-              className={`px-2 py-0.5 rounded text-[11px] font-bold font-mono transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded text-[10px] font-bold font-mono transition-all cursor-pointer ${
                 language === "hi" ? "bg-sky-600 text-white" : "text-slate-400 hover:text-white"
               }`}
             >
@@ -717,198 +703,288 @@ export function UnifiedInteractiveClassroom({
             </button>
           </div>
 
-          {/* Voice Narration Button */}
-          <button
-            onClick={handleToggleVoice}
-            className={`p-1.5 rounded-lg border border-slate-800 transition-all cursor-pointer ${
-              isSpeaking ? "bg-amber-500/20 text-amber-300 border-amber-500/40" : "text-slate-400 hover:text-white"
-            }`}
-            title="Listen Voice Explanation"
-          >
-            {isSpeaking ? <VolumeX className="size-3.5" /> : <Volume2 className="size-3.5" />}
-          </button>
+          {/* Navigation: Prev / Next / Mark Done */}
+          <div className="flex items-center gap-1 border-l border-slate-800 pl-1.5 ml-0.5">
+            {onPrevLesson && (
+              <button
+                onClick={onPrevLesson}
+                className="p-1 rounded-lg bg-slate-950 border border-slate-800 text-slate-400 hover:text-white cursor-pointer"
+                title="Previous Lesson"
+              >
+                <ChevronLeft className="size-3.5" />
+              </button>
+            )}
+            {onNextLesson && (
+              <button
+                onClick={onNextLesson}
+                className="p-1 rounded-lg bg-slate-950 border border-slate-800 text-slate-400 hover:text-white cursor-pointer"
+                title="Next Lesson"
+              >
+                <ChevronRight className="size-3.5" />
+              </button>
+            )}
+            {onCompleteLesson && (
+              <button
+                onClick={onCompleteLesson}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold font-mono transition-all cursor-pointer ${
+                  isCompleted
+                    ? "bg-emerald-600/20 text-emerald-300 border border-emerald-500/40"
+                    : "bg-emerald-600 text-slate-950 hover:bg-emerald-500 shadow-sm"
+                }`}
+                title="Mark this lesson as completed"
+              >
+                <CheckCircle2 className="size-3.5" />
+                <span>{isCompleted ? "Done ✓" : "Mark Done"}</span>
+              </button>
+            )}
+          </div>
+        </div>
 
-          {/* Mark Complete & Next */}
-          {onCompleteLesson && (
-            <Button
-              size="sm"
-              onClick={onCompleteLesson}
-              className={`h-7 px-2.5 text-xs font-bold ${
-                isCompleted ? "bg-emerald-700 text-white" : "bg-emerald-600 hover:bg-emerald-500 text-slate-950 cursor-pointer"
+        {/* Right Corner: Subheader Toggle Icon (Show/Hide full width card below) */}
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setShowSubheaderCard(!showSubheaderCard)}
+            className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
+              showSubheaderCard
+                ? "bg-sky-600/20 text-sky-300 border-sky-500/40"
+                : "bg-slate-950 text-slate-400 border-slate-800 hover:text-white"
+            }`}
+            title="Toggle Subheader Bar"
+          >
+            <PanelTop className="size-3.5" />
+            <span className="hidden sm:inline text-[11px]">{showSubheaderCard ? "Hide Bar" : "Show Bar"}</span>
+          </button>
+        </div>
+      </header>
+
+      {/* ─────────────────────────────────────────────────────────────────────────────
+          FULL-WIDTH SUBHEADER CARD (NOTES | CODE | OUTPUT SWITCHER + [ MORE... ] FLOATING MODAL)
+          ───────────────────────────────────────────────────────────────────────────── */}
+      {showSubheaderCard && (
+        <div className="bg-slate-950 border-b border-slate-800 px-3 py-1.5 flex items-center justify-between gap-2 shrink-0 z-20 animate-in slide-in-from-top-1">
+          {/* Chapter Breadcrumb */}
+          <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono truncate min-w-0">
+            <span className="text-sky-400 font-bold truncate">{courseTitle}</span>
+            <span>/</span>
+            <span className="text-slate-300 truncate">{lessonTitle}</span>
+          </div>
+
+          {/* Switcher: Notes, Code, Output + [ ⚡ More... ] Button */}
+          <div className="flex items-center gap-1 bg-slate-900 p-0.5 rounded-xl border border-slate-800 shrink-0">
+            <button
+              onClick={() => setMobileActiveView("notes")}
+              className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                mobileActiveView === "notes" ? "bg-sky-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
               }`}
             >
-              {isCompleted ? "Completed ✓" : "Mark Done"}
-            </Button>
-          )}
-
-          {hasPrevLesson && onPrevLesson && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onPrevLesson}
-              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white cursor-pointer"
-              title="Previous Lesson"
+              📖 Notes
+            </button>
+            <button
+              onClick={() => setMobileActiveView("code")}
+              className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                mobileActiveView === "code" ? "bg-sky-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
+              }`}
             >
-              <ChevronLeft className="size-3.5" />
-            </Button>
-          )}
-
-          {hasNextLesson && onNextLesson && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onNextLesson}
-              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white cursor-pointer"
-              title="Next Lesson"
+              💻 Code
+            </button>
+            <button
+              onClick={() => setMobileActiveView("output")}
+              className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                mobileActiveView === "output" ? "bg-sky-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
+              }`}
             >
-              <ChevronRight className="size-3.5" />
-            </Button>
-          )}
-        </div>
-      </div>
+              ⚡ Output
+            </button>
 
-      {/* Mic Live Feedback Banner */}
-      {isListeningMic && (
-        <div className="px-4 py-2 bg-rose-950/80 border-b border-rose-800 text-rose-200 text-xs flex items-center justify-between animate-pulse">
-          <div className="flex items-center gap-2">
-            <Mic className="size-4 text-rose-400 animate-bounce" />
-            <span className="font-bold">
-              {language === "hi" ? "माइक सुन रहा है... अपना सवाल बोलें:" : "Listening to your voice... Speak your doubt:"}
-            </span>
-            <span className="font-mono text-white italic">"{spokenTranscript || "..."}"</span>
+            {/* ⚡ More Button for Floating Modal */}
+            <button
+              onClick={() => setIsFloatingToolsModalOpen(true)}
+              className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition-all cursor-pointer shadow-xs flex items-center gap-1 ml-1"
+              title="Open All Tools & Actions Pop-up"
+            >
+              <Sparkles className="size-3.5 fill-current" />
+              <span>More...</span>
+            </button>
           </div>
-          <button onClick={toggleListeningMic} className="text-rose-300 hover:text-white font-mono text-[11px] cursor-pointer">
-            Stop ✕
-          </button>
         </div>
       )}
 
       {/* ─────────────────────────────────────────────────────────────────────────────
-          SIDEBAR LESSONS DRAWER: ALL 110 CHAPTERS SEARCH & NAVIGATION
+          FLOATING MODAL POP-UP (CONTAINS ALL DESKTOP TOOLS FOR MOBILE & COMPACT SCREENS)
           ───────────────────────────────────────────────────────────────────────────── */}
-      {isChaptersDrawerOpen && (
-        <div className="fixed inset-0 z-50 flex">
-          <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
-            onClick={() => setIsChaptersDrawerOpen(false)}
-          />
+      {isFloatingToolsModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in">
           <motion.div
-            initial={{ x: -380, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -380, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="relative z-50 w-full max-w-sm h-full bg-slate-900 border-r border-slate-800 flex flex-col shadow-2xl"
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="w-full max-w-lg bg-slate-900 border border-sky-500/30 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4 text-white max-h-[85vh] overflow-y-auto"
           >
-            <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-              <div>
-                <h3 className="text-sm font-bold text-white font-mono flex items-center gap-2">
-                  <ListOrdered className="size-4 text-sky-400" />
-                  Curriculum &amp; Learning Phases
-                </h3>
-                <span className="text-[11px] text-slate-400 font-sans">
-                  Select any chapter to jump directly
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="flex size-8 items-center justify-center rounded-xl bg-sky-600 text-white font-bold">
+                  ⚡
                 </span>
+                <div>
+                  <h3 className="text-sm font-bold text-white font-mono">Classroom Power Tools</h3>
+                  <span className="text-[10px] text-slate-400 font-sans">Select any tool to practice or inspect</span>
+                </div>
               </div>
               <button
-                onClick={() => setIsChaptersDrawerOpen(false)}
-                className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer"
+                onClick={() => setIsFloatingToolsModalOpen(false)}
+                className="p-1.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-400 hover:text-white cursor-pointer"
               >
                 <X className="size-4" />
               </button>
             </div>
 
-            <div className="p-3 border-b border-slate-800 bg-slate-950">
-              <div className="relative">
-                <Search className="size-3.5 absolute left-3 top-2.5 text-slate-500" />
-                <input
-                  type="text"
-                  value={chapterSearchQuery}
-                  onChange={(e) => setChapterSearchQuery(e.target.value)}
-                  placeholder="Search chapters (e.g. express, stream, socket)..."
-                  className="w-full pl-8 pr-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-sky-500 font-sans"
-                />
+            {/* Tools Grid */}
+            <div className="grid grid-cols-2 gap-2.5">
+              <button
+                onClick={() => { handleTogglePanel("flow"); setIsFloatingToolsModalOpen(false); }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
+                  activeRightPanel === "flow" ? "bg-indigo-950/80 border-indigo-400 text-indigo-200 font-bold ring-1 ring-indigo-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-indigo-400">
+                  <Workflow className="size-4 text-indigo-400" />
+                  <span>Live Flow</span>
+                </div>
+                <p className="text-[10px] text-slate-400">Laser execution flow diagram</p>
+              </button>
+
+              <button
+                onClick={() => { handleTogglePanel("vscode_guide"); setIsFloatingToolsModalOpen(false); }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
+                  activeRightPanel === "vscode_guide" ? "bg-amber-950/80 border-amber-400 text-amber-200 font-bold ring-1 ring-amber-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400">
+                  <Laptop className="size-4 text-amber-400" />
+                  <span>VS Code Guide</span>
+                </div>
+                <p className="text-[10px] text-slate-400">File structure & commands</p>
+              </button>
+
+              <button
+                onClick={() => { handleTogglePanel("ai_tutor"); setIsFloatingToolsModalOpen(false); }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
+                  activeRightPanel === "ai_tutor" ? "bg-pink-950/80 border-pink-400 text-pink-200 font-bold ring-1 ring-pink-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-pink-400">
+                  <Sparkles className="size-4 text-pink-400" />
+                  <span>AI Tutor</span>
+                </div>
+                <p className="text-[10px] text-slate-400">Clear doubts in simple words</p>
+              </button>
+
+              <button
+                onClick={() => { handleTogglePanel("memory"); setIsFloatingToolsModalOpen(false); }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
+                  activeRightPanel === "memory" ? "bg-purple-950/80 border-purple-400 text-purple-200 font-bold ring-1 ring-purple-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-purple-400">
+                  <Layers className="size-4 text-purple-400" />
+                  <span>Call Stack</span>
+                </div>
+                <p className="text-[10px] text-slate-400">Memory & call frames view</p>
+              </button>
+
+              <button
+                onClick={() => { handleTogglePanel("quiz"); setIsFloatingToolsModalOpen(false); }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
+                  activeRightPanel === "quiz" ? "bg-emerald-950/80 border-emerald-400 text-emerald-200 font-bold ring-1 ring-emerald-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-400">
+                  <HelpCircle className="size-4 text-emerald-400" />
+                  <span>Practice Quiz</span>
+                </div>
+                <p className="text-[10px] text-slate-400">Topic knowledge practice</p>
+              </button>
+
+              <button
+                onClick={() => { handleTogglePanel("interview"); setIsFloatingToolsModalOpen(false); }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
+                  activeRightPanel === "interview" ? "bg-cyan-950/80 border-cyan-400 text-cyan-200 font-bold ring-1 ring-cyan-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-cyan-400">
+                  <Award className="size-4 text-cyan-400" />
+                  <span>Interview Q&amp;A</span>
+                </div>
+                <p className="text-[10px] text-slate-400">FAANG senior model answers</p>
+              </button>
+            </div>
+
+            {/* Language Switcher, Voice Mic & Speaker */}
+            <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-slate-400 font-mono">Language:</span>
+                <button
+                  onClick={() => handleSetLanguage(language === "en" ? "hi" : "en")}
+                  className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-sky-600 text-white cursor-pointer"
+                >
+                  {language === "en" ? "English (Switch HI)" : "Hindi (Switch EN)"}
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={toggleListeningMic}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold flex items-center gap-1 border cursor-pointer ${
+                    isListeningMic ? "bg-rose-600 text-white animate-pulse border-rose-500" : "bg-slate-900 text-slate-300 border-slate-800"
+                  }`}
+                >
+                  <Mic className="size-3.5 text-rose-400" />
+                  <span>{isListeningMic ? "Listening..." : "Mic"}</span>
+                </button>
+
+                <button
+                  onClick={handleToggleVoice}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold flex items-center gap-1 border cursor-pointer ${
+                    isSpeaking ? "bg-emerald-600 text-white" : "bg-slate-900 text-slate-300 border-slate-800"
+                  }`}
+                >
+                  {isSpeaking ? <VolumeX className="size-3.5" /> : <Volume2 className="size-3.5 text-emerald-400" />}
+                  <span>{isSpeaking ? "Stop Voice" : "Read Aloud"}</span>
+                </button>
               </div>
             </div>
 
-            {/* Phase-Wise Grouped Accordion Drawer */}
-            <div className="flex-1 overflow-y-auto p-2.5 space-y-3">
-              {Object.entries(
-                filteredChapters.reduce((acc, ch) => {
-                  const mod = ch.moduleTitle || "Phase 1: Core Curriculum";
-                  if (!acc[mod]) acc[mod] = [];
-                  acc[mod].push(ch);
-                  return acc;
-                }, {} as Record<string, ChapterItem[]>)
-              ).sort(([phaseA], [phaseB]) => getPhaseSortNumber(phaseA) - getPhaseSortNumber(phaseB)).map(([phaseTitle, phaseChapters], phaseIdx) => {
-                const hasActiveInPhase = phaseChapters.some(
-                  (c) => c.id === currentLessonId || c.title.includes(lessonTitle) || c.title.includes(topicTitle)
-                );
-
-                return (
-                  <div key={phaseTitle} className="space-y-1 rounded-2xl bg-slate-950/70 border border-slate-800/80 p-2.5">
-                    {/* Phase Header */}
-                    <div className="flex items-center justify-between px-2 py-1 border-b border-slate-800/60 pb-1.5 mb-1.5">
-                      <span className="text-xs font-bold text-sky-400 font-mono flex items-center gap-1.5">
-                        <FolderTree className="size-3.5 text-sky-400" />
-                        {phaseTitle}
-                      </span>
-                      <Badge className="bg-slate-800 text-slate-400 text-[9px] px-1.5 py-0">
-                        {phaseChapters.length} Lessons
-                      </Badge>
-                    </div>
-
-                    {/* Lessons inside Phase */}
-                    <div className="space-y-1">
-                      {phaseChapters.map((ch, chIdx) => {
-                        const isActive =
-                          ch.id === currentLessonId ||
-                          ch.title.includes(lessonTitle) ||
-                          ch.title.includes(topicTitle);
-                        const cleanTitle = formatCleanLessonTitle(ch.title);
-
-                        return (
-                          <button
-                            key={ch.id || chIdx}
-                            onClick={() => {
-                              setIsChaptersDrawerOpen(false);
-                              if (onSelectChapter && ch.id) {
-                                onSelectChapter(ch.id);
-                              }
-                            }}
-                            className={`w-full text-left p-2 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
-                              isActive
-                                ? "bg-sky-900/60 border-sky-400 text-white font-bold shadow-sm ring-1 ring-sky-400/40"
-                                : "bg-slate-900/50 border-slate-800/60 text-slate-300 hover:border-slate-700 hover:bg-slate-800/70 hover:text-white"
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 min-w-0">
-                              <span
-                                className={`flex size-4 items-center justify-center rounded text-[9px] font-mono font-bold shrink-0 ${
-                                  isActive ? "bg-sky-400 text-slate-950" : "bg-slate-800 text-slate-500"
-                                }`}
-                              >
-                                {chIdx + 1}
-                              </span>
-                              <span className="text-xs truncate font-sans font-medium">{cleanTitle}</span>
-                            </div>
-                            {isActive && (
-                              <Badge className="bg-sky-400 text-slate-950 text-[9px] px-1.5 py-0 shrink-0 font-bold">
-                                Current
-                              </Badge>
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
+            {/* Navigation & Mark Done Buttons */}
+            <div className="flex items-center gap-2 pt-1">
+              {onPrevLesson && (
+                <button
+                  onClick={() => { onPrevLesson(); setIsFloatingToolsModalOpen(false); }}
+                  className="flex-1 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-white font-mono text-xs cursor-pointer"
+                >
+                  ⬅ Prev Lesson
+                </button>
+              )}
+              {onNextLesson && (
+                <button
+                  onClick={() => { onNextLesson(); setIsFloatingToolsModalOpen(false); }}
+                  className="flex-1 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-white font-mono text-xs cursor-pointer"
+                >
+                  Next Lesson ➡
+                </button>
+              )}
+              {onCompleteLesson && (
+                <button
+                  onClick={() => { onCompleteLesson(); setIsFloatingToolsModalOpen(false); }}
+                  className="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold font-mono text-xs cursor-pointer"
+                >
+                  {isCompleted ? "Done ✓" : "Mark Done"}
+                </button>
+              )}
             </div>
           </motion.div>
         </div>
       )}
-
-      {/* ─────────────────────────────────────────────────────────────────────────────
+{/* ─────────────────────────────────────────────────────────────────────────────
           2. MAIN UNIFIED 3-COLUMN WORKSPACE: FULL SCALE & SCROLLABLE
           ───────────────────────────────────────────────────────────────────────────── */}
       <div className="flex flex-1 min-h-0 w-full overflow-hidden">

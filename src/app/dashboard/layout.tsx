@@ -15,6 +15,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isLearnPage = pathname.startsWith("/dashboard/learn");
+
   useEffect(() => {
     if (!loading && !user) {
       router.push("/login");
@@ -57,7 +59,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <Sidebar />
       </div>
 
-      {/* Mobile Drawer (Native, 100% Single Dark Container, Zero Secondary Layers) */}
+      {/* Mobile Drawer (Native Single Dark Layer, 100% Full Height) */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 flex lg:hidden animate-in fade-in duration-150">
           {/* Backdrop */}
@@ -74,8 +76,14 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
       {/* Main Content Area */}
       <div className="flex flex-1 flex-col overflow-hidden bg-slate-950">
-        <Header onMenuToggle={() => setMobileOpen(true)} />
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-slate-950 text-slate-100">
+        {!isLearnPage && <Header onMenuToggle={() => setMobileOpen(true)} />}
+        <main
+          className={
+            isLearnPage
+              ? "flex-1 overflow-hidden p-0 bg-slate-950 text-slate-100"
+              : "flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-slate-950 text-slate-100"
+          }
+        >
           {children}
         </main>
       </div>

@@ -154,7 +154,7 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
   }
 
   return (
-    <div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-hidden bg-slate-950">
+    <div className="flex flex-col w-full h-screen overflow-hidden bg-slate-950">
       <UnifiedInteractiveClassroom
         currentLessonId={lessonId}
         lessonTitle={lesson.title}
