@@ -89,28 +89,37 @@ export default function DashboardPage() {
         const coursesData = await coursesRes.json();
         const progressData = await progressRes.json();
 
-        const enrolledCourses = coursesData.courses.filter(
+        const allCourses = Array.isArray(coursesData)
+          ? coursesData
+          : coursesData.courses || [];
+
+        const enrolledCourses = allCourses.filter(
           (c: CourseProgress) => c.isEnrolled
         );
 
         setCourses(
-          enrolledCourses.map((c: CourseProgress) => ({
+          (enrolledCourses.length > 0 ? enrolledCourses : allCourses.slice(0, 3)).map((c: CourseProgress) => ({
             id: c.id,
             title: c.title,
             stream: c.stream,
-            progress: c.progress,
-            completedLessons: c.completedLessons,
-            totalLessons: c.totalLessons,
+            progress: c.progress || 0,
+            completedLessons: c.completedLessons || 0,
+            totalLessons: c.totalLessons || 0,
+            isEnrolled: c.isEnrolled || false,
           }))
         );
 
+        const progressList = Array.isArray(progressData)
+          ? progressData
+          : progressData.records || progressData.progress || [];
+
         setRecentActivity(
-          (progressData.progress || []).slice(0, 5).map((p: Record<string, unknown>) => ({
-            id: p.id,
-            lessonTitle: p.lessonTitle,
-            topicTitle: p.topicTitle,
-            status: p.status,
-            updatedAt: p.updatedAt,
+          progressList.slice(0, 5).map((p: Record<string, unknown>) => ({
+            id: (p.id as string) || "",
+            lessonTitle: (p.lessonTitle as string) || (p.lesson as any)?.title || "Lesson",
+            topicTitle: (p.topicTitle as string) || (p.topic as any)?.title || "",
+            status: (p.status as string) || "in_progress",
+            updatedAt: (p.updatedAt as string) || new Date().toISOString(),
           }))
         );
 
@@ -118,7 +127,7 @@ export default function DashboardPage() {
           coursesEnrolled: enrolledCourses.length,
           topicsCompleted: progressData.stats?.completed || 0,
           codingHours: Math.round((progressData.stats?.totalTimeSpent || 0) / 3600),
-          streak: calculateStreak(progressData.progress || []),
+          streak: calculateStreak(progressList),
         });
 
         setSkills([

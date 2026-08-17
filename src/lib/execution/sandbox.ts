@@ -452,11 +452,16 @@ window.alert = function(msg) { console.log('[Alert]', msg); };
 window.prompt = function() { return ''; };
 window.confirm = function() { return true; };
 
-var __traceEvents = (function() {
-  ${traceBody}
+(async function() {
+  try {
+    var __traceEvents = await (async function() {
+      ${traceBody}
+    })();
+    process.stdout.write("\\n__TRACE_OUTPUT_START__" + JSON.stringify({ traceEvents: __traceEvents || [], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
+  } catch(err) {
+    process.stdout.write("\\n__TRACE_OUTPUT_START__" + JSON.stringify({ traceEvents: [{ step: 0, type: "ERROR", message: err.message || String(err), line: 0, scope: "global", callStack: [], timestamp: Date.now() }], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
+  }
 })();
-
-process.stdout.write("\\n__TRACE_OUTPUT_START__" + JSON.stringify({ traceEvents: __traceEvents || [], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
 `;
 
   const runResult = await runNodeIsolated(runnerScript, timeoutMs);
@@ -536,8 +541,8 @@ process.stdout.write("\\n__TRACE_OUTPUT_START__" + JSON.stringify({ traceEvents:
         .map((event) => event.value ?? event.description ?? event.payload?.message ?? "")
         .join("\n");
 
-  const hasError = events.some((e) => e.type === "error");
-  const errorMessage = hasError ? events.find((e) => e.type === "error")?.message || "Trace error" : null;
+  const errorEvent = events.find((e) => e.type === "ERROR" || (e.type as string) === "error");
+  const errorMessage = errorEvent ? errorEvent.message || (errorEvent.payload?.message as string) || "Runtime error" : runResult.stderr ? runResult.stderr.trim() : null;
 
   return {
     output: consoleOutput,

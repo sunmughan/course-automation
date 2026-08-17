@@ -90,8 +90,13 @@ export function apiHandler<T = unknown>(
       }
 
       let user = null;
-      if (options.requireAuth || options.requireAdmin || options.requireInstructor) {
+      try {
         user = await getAuthUser(request);
+      } catch {
+        user = null;
+      }
+
+      if (options.requireAuth || options.requireAdmin || options.requireInstructor) {
         if (!user) {
           reqLogger.warn("Unauthorized access attempt");
           return NextResponse.json(

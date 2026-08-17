@@ -94,6 +94,18 @@ export function instrumentCode(code: string): InstrumentationResult {
       continue;
     }
 
+    const compoundAssignRegex = /^(\s*)(\w+)\s*(\+=|-=|\*=|\/=|%=)\s*(.+?);?\s*$/;
+    const compoundMatch = trimmed.match(compoundAssignRegex);
+    if (compoundMatch && !["if", "for", "while", "return", "const", "let", "var"].includes(compoundMatch[2])) {
+      const varName = compoundMatch[2];
+      instrumented.push(line);
+      instrumented.push(`${indent}__traceVarAssign("${varName}", ${varName}, ${originalLine}, ${depth});`);
+      traceLine += 2;
+      lineMap.set(traceLine - 1, originalLine);
+      lineMap.set(traceLine, originalLine);
+      continue;
+    }
+
     const reassignMatch = trimmed.match(reassignRegex);
     if (reassignMatch && !["if", "for", "while", "return", "const", "let", "var"].includes(reassignMatch[2])) {
       const varName = reassignMatch[2];
@@ -142,16 +154,18 @@ export function instrumentCode(code: string): InstrumentationResult {
       continue;
     }
 
-    if (returnRegex.test(trimmed) && !trimmed.includes("=>")) {
+    if (returnRegex.test(trimmed) && !trimmed.includes("=>") && !trimmed.endsWith("{") && !trimmed.endsWith("(")) {
       const returnValue = trimmed.replace(/^return\s*/, "").replace(/;$/, "");
-      instrumented.push(`${indent}const __retVal_${originalLine} = ${returnValue || "undefined"};`);
-      instrumented.push(`${indent}__exitFunction(__callStack[__callStack.length - 1], __retVal_${originalLine}, ${originalLine});`);
-      instrumented.push(`${indent}return __retVal_${originalLine};`);
-      traceLine += 3;
-      lineMap.set(traceLine - 2, originalLine);
-      lineMap.set(traceLine - 1, originalLine);
-      lineMap.set(traceLine, originalLine);
-      continue;
+      if (returnValue && !returnValue.includes("function")) {
+        instrumented.push(`${indent}const __retVal_${originalLine} = ${returnValue};`);
+        instrumented.push(`${indent}__exitFunction(__callStack[__callStack.length - 1], __retVal_${originalLine}, ${originalLine});`);
+        instrumented.push(`${indent}return __retVal_${originalLine};`);
+        traceLine += 3;
+        lineMap.set(traceLine - 2, originalLine);
+        lineMap.set(traceLine - 1, originalLine);
+        lineMap.set(traceLine, originalLine);
+        continue;
+      }
     }
 
     instrumented.push(line);
