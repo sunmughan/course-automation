@@ -45,6 +45,10 @@ import {
   MicOff,
   Radio,
   Sliders,
+  ArrowDown,
+  CornerDownRight,
+  Server,
+  Monitor,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -112,6 +116,7 @@ export function UnifiedInteractiveClassroom({
   const [activeRightPanel, setActiveRightPanel] = useState<FloatingPanelType | null>("flow");
   const [activeFlowStep, setActiveFlowStep] = useState<number>(0);
   const [isFlowAutoPlaying, setIsFlowAutoPlaying] = useState<boolean>(false);
+  const [isExecutionSyncing, setIsExecutionSyncing] = useState<boolean>(false);
 
   // Multi-File Code Editor State
   const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
@@ -129,6 +134,7 @@ export function UnifiedInteractiveClassroom({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [outputTab, setOutputTab] = useState<"terminal" | "preview">("terminal");
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+  const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack">("react");
 
   // Microphone Speech Input State
   const [isListeningMic, setIsListeningMic] = useState<boolean>(false);
@@ -238,16 +244,6 @@ export function UnifiedInteractiveClassroom({
 </html>`;
   }, [appCode, htmlCode, cssCode]);
 
-  const handleRunCode = useCallback(async () => {
-    await executeCode(appCode, "javascript", true);
-  }, [appCode, executeCode]);
-
-  const handleCopyCode = (id: string, text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
-
   // Structured Pedagogical Breakdown (Definition, What Does It Do, Use Cases, Syntax)
   const topicData = useMemo(() => {
     return buildCleanTopicBreakdown({
@@ -260,7 +256,36 @@ export function UnifiedInteractiveClassroom({
     });
   }, [lessonTitle, topicTitle, lessonExplanation, concepts, examples, language]);
 
-  // Auto-advance flow steps
+  // Handle Run Code with Real-Time Flow Pulse Sync
+  const handleRunCode = useCallback(async () => {
+    // Open flow panel if closed
+    setActiveRightPanel("flow");
+    setIsExecutionSyncing(true);
+    setActiveFlowStep(0);
+
+    // Sequence flow stage animations with laser pulse
+    const stepsCount = topicData.flowSteps.length;
+    let curStep = 0;
+    const interval = setInterval(() => {
+      curStep++;
+      if (curStep < stepsCount) {
+        setActiveFlowStep(curStep);
+      } else {
+        clearInterval(interval);
+        setIsExecutionSyncing(false);
+      }
+    }, 600);
+
+    await executeCode(appCode, "javascript", true);
+  }, [appCode, executeCode, topicData.flowSteps.length]);
+
+  const handleCopyCode = (id: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  // Auto-advance flow steps when playing
   useEffect(() => {
     if (!isFlowAutoPlaying || !topicData.flowSteps || topicData.flowSteps.length <= 1) return;
     const interval = setInterval(() => {
@@ -469,10 +494,10 @@ export function UnifiedInteractiveClassroom({
                 ? "bg-indigo-600 text-white shadow-md font-bold ring-1 ring-indigo-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
             }`}
-            title="Open Live Step-by-Step Execution Flow"
+            title="Open Live Step-by-Step Execution Flow Diagram"
           >
             <Workflow className="size-3.5 text-indigo-300" />
-            <span>Live Flow</span>
+            <span>Live Flow Diagram</span>
           </button>
 
           {/* 💻 How to Run in VS Code Guide */}
@@ -483,10 +508,10 @@ export function UnifiedInteractiveClassroom({
                 ? "bg-amber-500 text-slate-950 shadow-md font-bold ring-1 ring-amber-300"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
             }`}
-            title="Open VS Code Multi-File Setup Guide"
+            title="Where to create files and how to run in VS Code"
           >
             <Laptop className="size-3.5 text-amber-400" />
-            <span>Run in VS Code</span>
+            <span>Run in VS Code Guide</span>
           </button>
 
           {/* 🤖 AI Tutor Assistant */}
@@ -611,7 +636,7 @@ export function UnifiedInteractiveClassroom({
             </span>
             <span className="font-mono text-white italic">"{spokenTranscript || "..."}"</span>
           </div>
-          <button onClick={toggleListeningMic} className="text-rose-300 hover:text-white font-mono text-[11px]">
+          <button onClick={toggleListeningMic} className="text-rose-300 hover:text-white font-mono text-[11px] cursor-pointer">
             Stop ✕
           </button>
         </div>
@@ -778,10 +803,10 @@ export function UnifiedInteractiveClassroom({
                 size="sm"
                 onClick={handleRunCode}
                 disabled={loading}
-                className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs h-7 px-3 gap-1.5 shadow-sm"
+                className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs h-7 px-3 gap-1.5 shadow-sm cursor-pointer"
               >
                 <Play className="size-3 fill-current" />
-                {loading ? "Running..." : "Run & Preview (Ctrl+Enter)"}
+                {loading || isExecutionSyncing ? "Running Flow..." : "Run & Preview (Ctrl+Enter)"}
               </Button>
             </div>
           </div>
@@ -822,7 +847,7 @@ export function UnifiedInteractiveClassroom({
 
               <div className="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
                 {executionTime !== undefined && <span>{executionTime.toFixed(1)}ms</span>}
-                <button onClick={clearOutput} className="hover:text-slate-300">
+                <button onClick={clearOutput} className="hover:text-slate-300 cursor-pointer">
                   Clear
                 </button>
               </div>
@@ -857,18 +882,18 @@ export function UnifiedInteractiveClassroom({
         </div>
 
         {/* ═══════════════════════════════════════════════════════════════════════
-            COLUMN 3 (RIGHT): DYNAMIC FLOATING DRAWER (LIVE FLOW, VS CODE GUIDE, AI)
+            COLUMN 3 (RIGHT): DYNAMIC FLOATING DRAWER (LIVE FLOW DIAGRAM, VS CODE GUIDE, AI)
             ═══════════════════════════════════════════════════════════════════════ */}
         {activeRightPanel !== null && (
-          <div className="w-[340px] lg:w-[380px] shrink-0 bg-slate-900 border-l border-slate-800 flex flex-col min-h-0 overflow-hidden shadow-2xl">
+          <div className="w-[340px] lg:w-[400px] shrink-0 bg-slate-900 border-l border-slate-800 flex flex-col min-h-0 overflow-hidden shadow-2xl">
             {/* Header of Column 3 */}
             <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900 shrink-0">
               <div className="flex items-center gap-2">
                 {activeRightPanel === "flow" && (
                   <>
-                    <Workflow className="size-4 text-indigo-400" />
+                    <Workflow className="size-4 text-indigo-400 animate-pulse" />
                     <span className="text-xs font-bold text-indigo-300 uppercase font-mono">
-                      ⚡ Step-by-Step Live Flow
+                      ⚡ Animated Flow Diagram
                     </span>
                   </>
                 )}
@@ -876,7 +901,7 @@ export function UnifiedInteractiveClassroom({
                   <>
                     <Laptop className="size-4 text-amber-400" />
                     <span className="text-xs font-bold text-amber-300 uppercase font-mono">
-                      💻 VS Code Setup Guide
+                      💻 VS Code Project Setup Guide
                     </span>
                   </>
                 )}
@@ -909,12 +934,15 @@ export function UnifiedInteractiveClassroom({
 
             {/* Content Body of Column 3 */}
             <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-4">
-              {/* TOOL A: ⚡ LIVE STEP-BY-STEP EXECUTION FLOW */}
+              {/* TOOL A: ⚡ ANIMATED CONNECTED DIAGRAMMATIC FLOW (WITH LASER PULSES) */}
               {activeRightPanel === "flow" && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-400 font-mono">
-                      Stage {activeFlowStep + 1} of {topicData.flowSteps.length}
+                    <span className="text-xs text-indigo-300 font-mono font-bold flex items-center gap-1.5">
+                      <span className="size-2 rounded-full bg-emerald-400 animate-ping" />
+                      {isExecutionSyncing
+                        ? "⚡ Executing Code & Flow Sync..."
+                        : `Stage ${activeFlowStep + 1} of ${topicData.flowSteps.length}`}
                     </span>
                     <button
                       onClick={() => setIsFlowAutoPlaying(!isFlowAutoPlaying)}
@@ -924,40 +952,105 @@ export function UnifiedInteractiveClassroom({
                           : "border-slate-800 text-slate-400 hover:text-white"
                       }`}
                     >
-                      {isFlowAutoPlaying ? "Pause" : "▶ Auto Play"}
+                      {isFlowAutoPlaying ? "Pause Flow" : "▶ Auto Play"}
                     </button>
                   </div>
 
-                  {/* Flow Stages List */}
-                  <div className="space-y-2">
+                  {/* Connected Flow Diagram Nodes with Laser Connecting Lines */}
+                  <div className="space-y-0 relative py-1">
                     {topicData.flowSteps.map((step, idx) => {
                       const isActive = activeFlowStep === idx;
+                      const isPast = activeFlowStep > idx;
+                      const isLast = idx === topicData.flowSteps.length - 1;
+
                       return (
-                        <div
-                          key={idx}
-                          onClick={() => {
-                            setActiveFlowStep(idx);
-                            setIsFlowAutoPlaying(false);
-                          }}
-                          className={`p-3 rounded-xl border transition-all cursor-pointer ${
-                            isActive
-                              ? "bg-slate-950 border-indigo-500 text-white shadow-md ring-1 ring-indigo-500/50"
-                              : "bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-[11px] font-bold font-mono text-indigo-300">
-                              0{idx + 1}. {step.phase}
-                            </span>
-                            {isActive && <span className="size-2 rounded-full bg-indigo-400 animate-ping" />}
+                        <div key={idx} className="relative">
+                          {/* Node Card */}
+                          <div
+                            onClick={() => {
+                              setActiveFlowStep(idx);
+                              setIsFlowAutoPlaying(false);
+                            }}
+                            className={`relative z-10 p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                              isActive
+                                ? "bg-slate-950 border-sky-400 text-white shadow-xl ring-2 ring-sky-400/40 scale-[1.02]"
+                                : isPast
+                                ? "bg-slate-950/90 border-indigo-500/40 text-slate-300"
+                                : "bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between mb-1.5">
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className={`flex size-6 items-center justify-center rounded-full text-xs font-mono font-bold ${
+                                    isActive
+                                      ? "bg-gradient-to-r from-sky-400 to-indigo-500 text-slate-950 shadow-md animate-bounce"
+                                      : isPast
+                                      ? "bg-indigo-600 text-white"
+                                      : "bg-slate-800 text-slate-400"
+                                  }`}
+                                >
+                                  {isPast ? "✓" : `0${idx + 1}`}
+                                </span>
+                                <span
+                                  className={`text-xs font-bold font-mono tracking-tight ${
+                                    isActive ? "text-sky-300" : isPast ? "text-indigo-300" : "text-slate-300"
+                                  }`}
+                                >
+                                  {step.phase}
+                                </span>
+                              </div>
+
+                              {isActive && (
+                                <Badge className="bg-sky-500/20 text-sky-300 border-sky-500/40 text-[9px] px-1.5 py-0">
+                                  Active Stage
+                                </Badge>
+                              )}
+                            </div>
+
+                            <p className="text-xs text-slate-200 font-sans leading-relaxed pl-8">
+                              {step.whatHappens}
+                            </p>
+
+                            {/* Active Inspection Box */}
+                            {isActive && (
+                              <div className="mt-2.5 ml-8 p-2.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5 text-[11px] font-mono">
+                                <div className="flex items-center justify-between text-slate-400 text-[10px]">
+                                  <span className="text-indigo-300 font-bold uppercase">⚡ Data &amp; Memory State:</span>
+                                  <span className="text-emerald-400">Live Synced</span>
+                                </div>
+                                <pre className="text-sky-200 text-[11px] overflow-x-auto whitespace-pre-wrap">
+                                  <code>{step.dataState}</code>
+                                </pre>
+                              </div>
+                            )}
                           </div>
-                          <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                            {step.whatHappens}
-                          </p>
-                          {isActive && (
-                            <div className="mt-2 pt-2 border-t border-slate-800 text-[11px] font-mono text-indigo-200 space-y-1">
-                              <span className="text-slate-500 uppercase text-[9px] block">Data &amp; Memory State:</span>
-                              <code>{step.dataState}</code>
+
+                          {/* Connecting Laser Pulse Line */}
+                          {!isLast && (
+                            <div className="flex flex-col items-center justify-center my-0.5 relative z-0">
+                              <div className="h-6 w-1 relative flex items-center justify-center">
+                                {/* Base vertical wire */}
+                                <div
+                                  className={`w-0.5 h-full ${
+                                    isPast || isActive ? "bg-gradient-to-b from-sky-400 to-indigo-500" : "bg-slate-800"
+                                  }`}
+                                />
+                                {/* Laser Current Pulse Glow Dot */}
+                                {(isActive || isExecutionSyncing) && (
+                                  <motion.div
+                                    initial={{ y: -10, opacity: 0 }}
+                                    animate={{ y: 10, opacity: [0, 1, 1, 0] }}
+                                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                    className="absolute size-2 rounded-full bg-cyan-300 shadow-[0_0_8px_#38bdf8]"
+                                  />
+                                )}
+                              </div>
+                              <ArrowDown
+                                className={`size-3.5 -mt-1 ${
+                                  isPast || isActive ? "text-indigo-400 animate-pulse" : "text-slate-700"
+                                }`}
+                              />
                             </div>
                           )}
                         </div>
@@ -967,42 +1060,181 @@ export function UnifiedInteractiveClassroom({
                 </div>
               )}
 
-              {/* TOOL B: 💻 HOW TO RUN IN VS CODE GUIDE (MULTI-FILE) */}
+              {/* TOOL B: 💻 HOW TO RUN IN VS CODE GUIDE (CLEAR LOCATION & RUN INSTRUCTIONS) */}
               {activeRightPanel === "vscode_guide" && (
                 <div className="space-y-4 text-xs">
-                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                    <span className="text-xs font-bold text-amber-300 font-mono block">
-                      📁 Project Folder Structure:
-                    </span>
-                    <pre className="p-2 bg-slate-900 rounded border border-slate-800 text-[11px] font-mono text-cyan-300">
-                      {`my-app/
-├── index.html       <-- (<div id="root"></div>)
-├── src/
-│   ├── main.jsx     <-- ReactDOM.createRoot()
-│   ├── App.jsx      <-- Main Code Component
-│   └── App.css      <-- Stylesheet
-└── package.json     <-- Dependencies`}
-                    </pre>
+                  {/* Category Switcher: React / Node.js / Fullstack */}
+                  <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                    <button
+                      onClick={() => setActiveVsCodeTab("react")}
+                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
+                        activeVsCodeTab === "react"
+                          ? "bg-sky-600 text-white shadow-xs"
+                          : "text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      ⚛️ React Frontend
+                    </button>
+                    <button
+                      onClick={() => setActiveVsCodeTab("node")}
+                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
+                        activeVsCodeTab === "node"
+                          ? "bg-emerald-600 text-white shadow-xs"
+                          : "text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      🟢 Node.js Server
+                    </button>
+                    <button
+                      onClick={() => setActiveVsCodeTab("fullstack")}
+                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
+                        activeVsCodeTab === "fullstack"
+                          ? "bg-purple-600 text-white shadow-xs"
+                          : "text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      🔗 Full-Stack
+                    </button>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                    <span className="text-xs font-bold text-emerald-400 font-mono block">
-                      🚀 Terminal Commands:
-                    </span>
-                    <pre className="p-2 bg-slate-900 rounded border border-slate-800 text-[11px] font-mono text-emerald-300">
-                      {`# 1. Project Create Karein
-npm create vite@latest my-app -- --template react
+                  {/* TAB 1: REACT FRONTEND SETUP */}
+                  {activeVsCodeTab === "react" && (
+                    <div className="space-y-3">
+                      {/* Step 1: Folder Tree */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-amber-300 font-mono block">
+                          📁 1. Files Kahan Create Karni Hain:
+                        </span>
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed">
+                          {`my-react-app/
+├── index.html        <-- Root folder me (Directly inside project)
+├── package.json      <-- Root folder me
+└── src/              <-- (src Folder banayein)
+    ├── App.jsx       <-- [App.jsx Code yahan paste karein]
+    ├── style.css     <-- [style.css Code yahan paste karein]
+    └── main.jsx      <-- React Root Launcher`}
+                        </pre>
+                      </div>
 
-# 2. Folder me enter karein
-cd my-app && npm install
+                      {/* Step 2: Exact Terminal Commands */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-emerald-400 font-mono block">
+                          🚀 2. VS Code Terminal me Run Karein:
+                        </span>
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed">
+                          {`# 1. New React Project banayein
+npm create vite@latest my-react-app -- --template react
 
-# 3. Server start karein
+# 2. Folder me enter karein aur install karein
+cd my-react-app
+npm install
+
+# 3. React App Start Karein (Run File: main.jsx -> App.jsx)
 npm run dev`}
-                    </pre>
-                    <p className="text-[11px] text-slate-400">
-                      Browser me <code>http://localhost:5173</code> open karein.
-                    </p>
-                  </div>
+                        </pre>
+                        <p className="text-[11px] text-slate-300 font-sans">
+                          👉 Browser me <strong>http://localhost:5173</strong> open ho jayega aur aapka code live chalega!
+                        </p>
+                      </div>
+
+                      {/* Step 3: What to copy */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-sky-400 font-mono block">
+                          📝 3. File Contents:
+                        </span>
+                        <div className="flex items-center justify-between text-[11px] bg-slate-900 p-2 rounded border border-slate-800">
+                          <span className="font-mono text-slate-300">src/App.jsx</span>
+                          <button
+                            onClick={() => handleCopyCode("react_app", appCode)}
+                            className="text-sky-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                          >
+                            {copiedId === "react_app" ? "Copied ✓" : "Copy App.jsx Code"}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 2: NODE.JS BACKEND SETUP */}
+                  {activeVsCodeTab === "node" && (
+                    <div className="space-y-3">
+                      {/* Step 1: Folder Tree */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-amber-300 font-mono block">
+                          📁 1. Node.js Folder Structure:
+                        </span>
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed">
+                          {`my-node-api/
+├── server.js         <-- Root folder me (Main backend file)
+└── package.json      <-- Root folder me`}
+                        </pre>
+                      </div>
+
+                      {/* Step 2: Exact Terminal Commands */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-emerald-400 font-mono block">
+                          🚀 2. VS Code Terminal me Run Karein:
+                        </span>
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed">
+                          {`# 1. New Folder banayein aur enter karein
+mkdir my-node-api && cd my-node-api
+
+# 2. Package.json create karein
+npm init -y
+
+# 3. Express & CORS install karein
+npm install express cors dotenv
+
+# 4. Run Server File (server.js ko run karein)
+node server.js`}
+                        </pre>
+                        <p className="text-[11px] text-slate-300 font-sans">
+                          👉 Terminal me aayega: <code>Server active on http://localhost:5000</code>!
+                        </p>
+                      </div>
+
+                      {/* Step 3: What to copy */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-emerald-400 font-mono block">
+                          📝 3. File Contents:
+                        </span>
+                        <div className="flex items-center justify-between text-[11px] bg-slate-900 p-2 rounded border border-slate-800">
+                          <span className="font-mono text-slate-300">server.js</span>
+                          <button
+                            onClick={() => handleCopyCode("node_srv", serverCode)}
+                            className="text-emerald-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                          >
+                            {copiedId === "node_srv" ? "Copied ✓" : "Copy server.js Code"}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 3: FULLSTACK INTEGRATION */}
+                  {activeVsCodeTab === "fullstack" && (
+                    <div className="space-y-3">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-purple-300 font-mono block">
+                          🔗 How React &amp; Node.js Work Together:
+                        </span>
+                        <div className="space-y-2 text-slate-300 text-[11px]">
+                          <div className="p-2 bg-slate-900 rounded border border-slate-800">
+                            <strong>Step 1:</strong> Node.js server ko Port 5000 par start karein (<code>node server.js</code>).
+                          </div>
+                          <div className="p-2 bg-slate-900 rounded border border-slate-800">
+                            <strong>Step 2:</strong> React App me API call karein:
+                            <pre className="mt-1 text-sky-300 font-mono">
+                              {`fetch("http://localhost:5000/api/items")\n  .then(res => res.json())\n  .then(data => setItems(data));`}
+                            </pre>
+                          </div>
+                          <div className="p-2 bg-slate-900 rounded border border-slate-800">
+                            <strong>Step 3:</strong> React app start karein (<code>npm run dev</code>) ➔ Done! 🎉
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -1042,7 +1274,7 @@ npm run dev`}
                       placeholder={language === "hi" ? "कोई सवाल पूछें..." : "Ask a doubt..."}
                       className="flex-1 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-pink-500 font-sans"
                     />
-                    <Button type="submit" size="sm" className="bg-pink-600 hover:bg-pink-500 text-white h-8 px-2.5">
+                    <Button type="submit" size="sm" className="bg-pink-600 hover:bg-pink-500 text-white h-8 px-2.5 cursor-pointer">
                       <Send className="size-3.5" />
                     </Button>
                   </form>
@@ -1153,24 +1385,24 @@ function buildCleanTopicBreakdown({
           : "React instantly re-paints the screen with zero manual DOM manipulation!",
       flowSteps: [
         {
-          phase: "1. User Action",
-          whatHappens: language === "hi" ? "यूजर ने बटन क्लिक किया।" : "User clicks the interactive button.",
-          dataState: "Event: onClick trigger",
+          phase: "1. User Action / Trigger",
+          whatHappens: language === "hi" ? "यूजर ने बटन पर क्लिक किया।" : "User clicks the interactive button in UI.",
+          dataState: "Event: onClick(e) fired in Event Queue",
         },
         {
-          phase: "2. State Setter Executed",
-          whatHappens: language === "hi" ? "setCount(count + 1) चला।" : "setCount(prev => prev + 1) runs.",
-          dataState: "Memory: count updated in Heap",
+          phase: "2. State Setter Invoked",
+          whatHappens: language === "hi" ? "setCount(prev => prev + 1) चला।" : "setCount(count + 1) schedules re-render in React Fiber.",
+          dataState: "Memory: Component State updated in Heap",
         },
         {
-          phase: "3. React Re-render",
-          whatHappens: language === "hi" ? "React ने नया UI ट्री बनाया।" : "React executes component with new value.",
-          dataState: "Virtual DOM: Diff calculated",
+          phase: "3. Virtual DOM Diffing",
+          whatHappens: language === "hi" ? "React ने नया UI ट्री कैलकुलेट किया।" : "React executes component and compares old vs new VDOM tree.",
+          dataState: "Reconciliation: Diff found on <h1> element",
         },
         {
-          phase: "4. Screen Paint",
-          whatHappens: language === "hi" ? "स्क्रीन पर नया नंबर दिख गया!" : "DOM node updated on screen.",
-          dataState: "Final Output: UI Synced",
+          phase: "4. Screen Repainted",
+          whatHappens: language === "hi" ? "ब्राउज़र स्क्रीन पर नया नंबर अपडेट हो गया!" : "DOM node patched on screen with zero flicker.",
+          dataState: "Output: Screen displays new value smoothly",
         },
       ],
     };
@@ -1215,19 +1447,19 @@ function buildCleanTopicBreakdown({
           : "Create 1 master component and render thousands of unique cards instantly!",
       flowSteps: [
         {
-          phase: "1. Parent Renders",
-          whatHappens: language === "hi" ? "<Card name='Aman' /> पास हुआ।" : "Parent calls <Card name='Aman' />.",
-          dataState: "Props: { name: 'Aman' }",
+          phase: "1. Parent Component Passes Props",
+          whatHappens: language === "hi" ? "Parent ने <Card name='Aman' /> रेंडर किया।" : "Parent passes { name: 'Aman' } to child.",
+          dataState: "Props Object: { name: 'Aman', role: 'Dev' }",
         },
         {
-          phase: "2. Child Function Runs",
-          whatHappens: language === "hi" ? "Card(props) फंक्शन चला।" : "Child receives props object as argument.",
-          dataState: "Scope: Props bound to local scope",
+          phase: "2. Child Receives & Evaluates",
+          whatHappens: language === "hi" ? "Card(props) फंक्शन ने डेटा पढ़ा।" : "Child component function runs with injected props.",
+          dataState: "Scope: Read-only Props bound to function",
         },
         {
-          phase: "3. JSX Returned",
-          whatHappens: language === "hi" ? "JSX में डेटा इंजेक्ट हुआ।" : "JSX replaces {name} with 'Aman'.",
-          dataState: "DOM: Node painted with 'Aman'",
+          phase: "3. JSX Template Rendered",
+          whatHappens: language === "hi" ? "HTML में डेटा इंजेक्ट होकर स्क्रीन पर दिखा।" : "JSX nodes compiled into Virtual DOM nodes.",
+          dataState: "DOM: Painted on screen with customized text",
         },
       ],
     };
@@ -1272,19 +1504,24 @@ function buildCleanTopicBreakdown({
           : "Define clean, readable REST endpoints in 3 lines of code!",
       flowSteps: [
         {
-          phase: "1. Client Request",
-          whatHappens: language === "hi" ? "ब्राउज़र ने GET /api/users भेजा।" : "Client sends HTTP GET /api/users.",
-          dataState: "HTTP: GET /api/users Header",
+          phase: "1. HTTP Request Arrival",
+          whatHappens: language === "hi" ? "क्लाइंट ने GET /api/users रिक्वेस्ट भेजी।" : "Browser / Client sends HTTP GET /api/users.",
+          dataState: "Network: TCP packet received on Port 5000",
         },
         {
-          phase: "2. Route Matched",
-          whatHappens: language === "hi" ? "Express ने matching रूट खोजा।" : "Express matches path in route table.",
-          dataState: "Handler: (req, res) invoked",
+          phase: "2. Middleware & Router Match",
+          whatHappens: language === "hi" ? "CORS और JSON पार्सर के बाद रूट मैच हुआ।" : "Express runs middleware pipeline and matches route handler.",
+          dataState: "Router: Matched app.get('/api/users')",
         },
         {
-          phase: "3. JSON Sent",
-          whatHappens: language === "hi" ? "200 OK के साथ JSON रिटर्न हुआ।" : "res.json(data) returns 200 OK.",
-          dataState: "Response: 200 OK + JSON Payload",
+          phase: "3. Controller & Database Fetch",
+          whatHappens: language === "hi" ? "कंट्रोलर ने डेटाबेस से डेटा निकाला।" : "Handler queries array or DB for user objects.",
+          dataState: "Payload: [{ id: 1, name: 'Aman' }]",
+        },
+        {
+          phase: "4. HTTP 200 JSON Response",
+          whatHappens: language === "hi" ? "200 OK के साथ JSON क्लाइंट को डिलीवर हुआ।" : "res.json(data) sends 200 OK back to browser.",
+          dataState: "Network: HTTP 200 OK + application/json",
         },
       ],
     };
@@ -1330,18 +1567,18 @@ function buildCleanTopicBreakdown({
     flowSteps: [
       {
         phase: "1. Input Trigger",
-        whatHappens: language === "hi" ? "इनपुट डेटा सिस्टम में आया।" : "Input data enters the system.",
-        dataState: "State: PENDING",
+        whatHappens: language === "hi" ? "इनपुट डेटा सिस्टम में आया।" : "Input data enters the execution pipeline.",
+        dataState: "State: PENDING in Event Queue",
       },
       {
         phase: "2. Processing Logic",
-        whatHappens: language === "hi" ? "कोर लॉजिक ने डेटा प्रोसेस किया।" : "Core algorithm processes logic.",
-        dataState: "State: COMPUTING",
+        whatHappens: language === "hi" ? "कोर लॉजिक ने डेटा प्रोसेस किया।" : "Core algorithm processes logic in Call Stack.",
+        dataState: "State: COMPUTING in Heap Memory",
       },
       {
         phase: "3. Output Resolution",
-        whatHappens: language === "hi" ? "सफलतापूर्वक रिजल्ट मिला।" : "Clean result returned to caller.",
-        dataState: "State: 200 OK",
+        whatHappens: language === "hi" ? "सफलतापूर्वक रिजल्ट मिला।" : "Clean result returned to caller and UI rendered.",
+        dataState: "State: 200 OK / UI Painted",
       },
     ],
   };
