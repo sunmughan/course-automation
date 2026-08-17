@@ -28,7 +28,9 @@ export async function seedCurriculum() {
       },
     });
 
-    for (const module of course.modules || []) {
+    const modulesList = course.modules || [];
+    for (let mIdx = 0; mIdx < modulesList.length; mIdx++) {
+      const module = modulesList[mIdx];
       const createdModule = await prisma.module.upsert({
         where: {
           courseId_slug: {
@@ -39,12 +41,14 @@ export async function seedCurriculum() {
         update: {
           title: module.title,
           description: module.description,
+          order: mIdx + 1,
           published: true,
         },
         create: {
           title: module.title,
           description: module.description,
           slug: module.slug,
+          order: mIdx + 1,
           courseId: createdCourse.id,
           published: true,
         },

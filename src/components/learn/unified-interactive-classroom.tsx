@@ -1,6 +1,12 @@
 "use client";
 
 // Helper to clean chapter prefix and capitalize title
+function getPhaseSortNumber(phaseTitle: string): number {
+  if (!phaseTitle) return 999;
+  const match = phaseTitle.match(/Phase\s+(\d+)/i);
+  return match ? parseInt(match[1], 10) : 999;
+}
+
 function formatCleanLessonTitle(rawTitle: string): string {
   if (!rawTitle) return "";
   // Strip "Chapter X: ", "Section X: ", etc.
@@ -797,7 +803,7 @@ export function UnifiedInteractiveClassroom({
                   acc[mod].push(ch);
                   return acc;
                 }, {} as Record<string, ChapterItem[]>)
-              ).map(([phaseTitle, phaseChapters], phaseIdx) => {
+              ).sort(([phaseA], [phaseB]) => getPhaseSortNumber(phaseA) - getPhaseSortNumber(phaseB)).map(([phaseTitle, phaseChapters], phaseIdx) => {
                 const hasActiveInPhase = phaseChapters.some(
                   (c) => c.id === currentLessonId || c.title.includes(lessonTitle) || c.title.includes(topicTitle)
                 );

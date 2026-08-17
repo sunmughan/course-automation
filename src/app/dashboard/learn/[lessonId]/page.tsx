@@ -78,7 +78,8 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
               const courseData = await courseRes.json();
               const chapters: ChapterItem[] = [];
               if (courseData.course?.modules) {
-                courseData.course.modules.forEach((mod: any) => {
+                const sortedModules = [...courseData.course.modules].sort((a: any, b: any) => (a.order || 0) - (b.order || 0));
+                sortedModules.forEach((mod: any) => {
                   if (mod.topics) {
                     mod.topics.forEach((top: any) => {
                       if (top.lessons) {
