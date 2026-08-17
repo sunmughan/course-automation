@@ -1,10 +1,10 @@
 export const typescriptCompleteCourse = {
   "title": "TypeScript Enterprise Architecture (32 Chapters)",
-  "description": "Complete professional TypeScript course covering Generics, Utility Types, Decorators, TSConfig, React+TS, and AST Transformers.",
+  "description": "Generics, Utility Types, Decorators, TSConfig, React+TS, and AST Transformers.",
   "slug": "typescript-enterprise-architecture",
   "stream": "frontend",
   "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-  "order": 3,
+  "order": 5,
   "modules": [
     {
       "title": "Phase 1: Chapters 1 to 10",
@@ -35,8 +35,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Getting started with TypeScript Working Implementation",
               "description": "Complete working demonstration of Getting started with TypeScript",
-              "starterCode": "// Chapter 1: Getting started with TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with TypeScript');\n  return { success: true, topic: 'Getting started with TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with TypeScript');\n  return { success: true, topic: 'Getting started with TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 1: Getting started with TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with TypeScript\");\n    }\n}",
+              "solutionCode": "// Chapter 1: Getting started with TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with TypeScript\");\n    }\n}",
               "expectedOutput": "Executing: Getting started with TypeScript"
             }
           ],
@@ -44,9 +44,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Getting started with TypeScript",
               "description": "Write a clean solution for Getting started with TypeScript that returns expected status.",
-              "starterCode": "// Chapter 1: Getting started with TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with TypeScript');\n  return { success: true, topic: 'Getting started with TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with TypeScript');\n  return { success: true, topic: 'Getting started with TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 1: Getting started with TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with TypeScript\");\n    }\n}",
+              "solutionCode": "// Chapter 1: Getting started with TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with TypeScript\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -58,7 +58,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 1: Getting started with TypeScript",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with TypeScript?)\nGetting started with TypeScript in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Installation and setup to simplify development and prevent common bugs.**\n- **Provides Basic syntax to simplify development and prevent common bugs.**\n- **Provides Hello World to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 1: Getting started with TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with TypeScript');\n  return { success: true, topic: 'Getting started with TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with TypeScript?)\nGetting started with TypeScript in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Installation and setup to write clean, predictable code.**\n- **Provides Basic syntax to write clean, predictable code.**\n- **Provides Hello World to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 1: Getting started with TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with TypeScript\");\n    }\n}\n```\n",
             "explanation": "Mastering Getting started with TypeScript is essential for professional engineering."
           }
         },
@@ -86,8 +86,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Why and when to use TypeScript Working Implementation",
               "description": "Complete working demonstration of Why and when to use TypeScript",
-              "starterCode": "// Chapter 2: Why and when to use TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Why and when to use TypeScript');\n  return { success: true, topic: 'Why and when to use TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Why and when to use TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Why and when to use TypeScript');\n  return { success: true, topic: 'Why and when to use TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 2: Why and when to use TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Why and when to use TypeScript\");\n    }\n}",
+              "solutionCode": "// Chapter 2: Why and when to use TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Why and when to use TypeScript\");\n    }\n}",
               "expectedOutput": "Executing: Why and when to use TypeScript"
             }
           ],
@@ -95,9 +95,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Why and when to use TypeScript",
               "description": "Write a clean solution for Why and when to use TypeScript that returns expected status.",
-              "starterCode": "// Chapter 2: Why and when to use TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Why and when to use TypeScript');\n  return { success: true, topic: 'Why and when to use TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Why and when to use TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Why and when to use TypeScript');\n  return { success: true, topic: 'Why and when to use TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 2: Why and when to use TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Why and when to use TypeScript\");\n    }\n}",
+              "solutionCode": "// Chapter 2: Why and when to use TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Why and when to use TypeScript\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -109,7 +109,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 2: Why and when to use TypeScript",
-            "content": "### \ud83c\udf1f 1. Definition (What is Why and when to use TypeScript?)\nWhy and when to use TypeScript in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Safety to simplify development and prevent common bugs.**\n- **Provides Readability to simplify development and prevent common bugs.**\n- **Provides Tooling to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 2: Why and when to use TypeScript\nfunction runTopicDemo() {\n  console.log('Executing: Why and when to use TypeScript');\n  return { success: true, topic: 'Why and when to use TypeScript' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Why and when to use TypeScript?)\nWhy and when to use TypeScript in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Safety to write clean, predictable code.**\n- **Provides Readability to write clean, predictable code.**\n- **Provides Tooling to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 2: Why and when to use TypeScript\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Why and when to use TypeScript\");\n    }\n}\n```\n",
             "explanation": "Mastering Why and when to use TypeScript is essential for professional engineering."
           }
         },
@@ -137,8 +137,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "TypeScript Core Types Working Implementation",
               "description": "Complete working demonstration of TypeScript Core Types",
-              "starterCode": "// Chapter 3: TypeScript Core Types\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript Core Types');\n  return { success: true, topic: 'TypeScript Core Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: TypeScript Core Types\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript Core Types');\n  return { success: true, topic: 'TypeScript Core Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 3: TypeScript Core Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript Core Types\");\n    }\n}",
+              "solutionCode": "// Chapter 3: TypeScript Core Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript Core Types\");\n    }\n}",
               "expectedOutput": "Executing: TypeScript Core Types"
             }
           ],
@@ -146,9 +146,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement TypeScript Core Types",
               "description": "Write a clean solution for TypeScript Core Types that returns expected status.",
-              "starterCode": "// Chapter 3: TypeScript Core Types\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript Core Types');\n  return { success: true, topic: 'TypeScript Core Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: TypeScript Core Types\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript Core Types');\n  return { success: true, topic: 'TypeScript Core Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 3: TypeScript Core Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript Core Types\");\n    }\n}",
+              "solutionCode": "// Chapter 3: TypeScript Core Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript Core Types\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -160,7 +160,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 3: TypeScript Core Types",
-            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript Core Types?)\nTypeScript Core Types in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides String Literal Types to simplify development and prevent common bugs.**\n- **Provides Tuple to simplify development and prevent common bugs.**\n- **Provides Boolean to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 3: TypeScript Core Types\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript Core Types');\n  return { success: true, topic: 'TypeScript Core Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript Core Types?)\nTypeScript Core Types in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides String Literal Types to write clean, predictable code.**\n- **Provides Tuple to write clean, predictable code.**\n- **Provides Boolean to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 3: TypeScript Core Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript Core Types\");\n    }\n}\n```\n",
             "explanation": "Mastering TypeScript Core Types is essential for professional engineering."
           }
         },
@@ -180,8 +180,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Arrays Working Implementation",
               "description": "Complete working demonstration of Arrays",
-              "starterCode": "// Chapter 4: Arrays\nfunction runTopicDemo() {\n  console.log('Executing: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Arrays\nfunction runTopicDemo() {\n  console.log('Executing: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 4: Arrays\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Arrays\");\n    }\n}",
+              "solutionCode": "// Chapter 4: Arrays\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Arrays\");\n    }\n}",
               "expectedOutput": "Executing: Arrays"
             }
           ],
@@ -189,9 +189,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Arrays",
               "description": "Write a clean solution for Arrays that returns expected status.",
-              "starterCode": "// Chapter 4: Arrays\nfunction runTopicDemo() {\n  console.log('Executing: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Arrays\nfunction runTopicDemo() {\n  console.log('Executing: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 4: Arrays\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Arrays\");\n    }\n}",
+              "solutionCode": "// Chapter 4: Arrays\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Arrays\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -203,7 +203,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 4: Arrays",
-            "content": "### \ud83c\udf1f 1. Definition (What is Arrays?)\nArrays in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding Object in Array to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 4: Arrays\nfunction runTopicDemo() {\n  console.log('Executing: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Arrays?)\nArrays in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding Object in Array to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 4: Arrays\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Arrays\");\n    }\n}\n```\n",
             "explanation": "Mastering Arrays is essential for professional engineering."
           }
         },
@@ -231,8 +231,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Enums Working Implementation",
               "description": "Complete working demonstration of Enums",
-              "starterCode": "// Chapter 5: Enums\nfunction runTopicDemo() {\n  console.log('Executing: Enums');\n  return { success: true, topic: 'Enums' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Enums\nfunction runTopicDemo() {\n  console.log('Executing: Enums');\n  return { success: true, topic: 'Enums' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 5: Enums\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Enums\");\n    }\n}",
+              "solutionCode": "// Chapter 5: Enums\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Enums\");\n    }\n}",
               "expectedOutput": "Executing: Enums"
             }
           ],
@@ -240,9 +240,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Enums",
               "description": "Write a clean solution for Enums that returns expected status.",
-              "starterCode": "// Chapter 5: Enums\nfunction runTopicDemo() {\n  console.log('Executing: Enums');\n  return { success: true, topic: 'Enums' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Enums\nfunction runTopicDemo() {\n  console.log('Executing: Enums');\n  return { success: true, topic: 'Enums' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 5: Enums\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Enums\");\n    }\n}",
+              "solutionCode": "// Chapter 5: Enums\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Enums\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -254,7 +254,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 5: Enums",
-            "content": "### \ud83c\udf1f 1. Definition (What is Enums?)\nEnums in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Enums with explicit values to simplify development and prevent common bugs.**\n- **Provides How to get all enum values to simplify development and prevent common bugs.**\n- **Provides Extending enums without custom enum implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 5: Enums\nfunction runTopicDemo() {\n  console.log('Executing: Enums');\n  return { success: true, topic: 'Enums' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Enums?)\nEnums in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Enums with explicit values to write clean, predictable code.**\n- **Provides How to get all enum values to write clean, predictable code.**\n- **Provides Extending enums without custom enum implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 5: Enums\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Enums\");\n    }\n}\n```\n",
             "explanation": "Mastering Enums is essential for professional engineering."
           }
         },
@@ -282,8 +282,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Functions Working Implementation",
               "description": "Complete working demonstration of Functions",
-              "starterCode": "// Chapter 6: Functions\nfunction runTopicDemo() {\n  console.log('Executing: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Functions\nfunction runTopicDemo() {\n  console.log('Executing: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 6: Functions\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Functions\");\n    }\n}",
+              "solutionCode": "// Chapter 6: Functions\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Functions\");\n    }\n}",
               "expectedOutput": "Executing: Functions"
             }
           ],
@@ -291,9 +291,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Functions",
               "description": "Write a clean solution for Functions that returns expected status.",
-              "starterCode": "// Chapter 6: Functions\nfunction runTopicDemo() {\n  console.log('Executing: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Functions\nfunction runTopicDemo() {\n  console.log('Executing: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 6: Functions\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Functions\");\n    }\n}",
+              "solutionCode": "// Chapter 6: Functions\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Functions\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -305,7 +305,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 6: Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Functions?)\nFunctions in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Optional and Default Parameters to simplify development and prevent common bugs.**\n- **Provides Function as a parameter to simplify development and prevent common bugs.**\n- **Provides Functions with Union Types to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 6: Functions\nfunction runTopicDemo() {\n  console.log('Executing: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Functions?)\nFunctions in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Optional and Default Parameters to write clean, predictable code.**\n- **Provides Function as a parameter to write clean, predictable code.**\n- **Provides Functions with Union Types to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 6: Functions\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Functions\");\n    }\n}\n```\n",
             "explanation": "Mastering Functions is essential for professional engineering."
           }
         },
@@ -333,8 +333,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Classes Working Implementation",
               "description": "Complete working demonstration of Classes",
-              "starterCode": "// Chapter 7: Classes\nfunction runTopicDemo() {\n  console.log('Executing: Classes');\n  return { success: true, topic: 'Classes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Classes\nfunction runTopicDemo() {\n  console.log('Executing: Classes');\n  return { success: true, topic: 'Classes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 7: Classes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Classes\");\n    }\n}",
+              "solutionCode": "// Chapter 7: Classes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Classes\");\n    }\n}",
               "expectedOutput": "Executing: Classes"
             }
           ],
@@ -342,9 +342,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Classes",
               "description": "Write a clean solution for Classes that returns expected status.",
-              "starterCode": "// Chapter 7: Classes\nfunction runTopicDemo() {\n  console.log('Executing: Classes');\n  return { success: true, topic: 'Classes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Classes\nfunction runTopicDemo() {\n  console.log('Executing: Classes');\n  return { success: true, topic: 'Classes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 7: Classes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Classes\");\n    }\n}",
+              "solutionCode": "// Chapter 7: Classes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Classes\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -356,7 +356,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 7: Classes",
-            "content": "### \ud83c\udf1f 1. Definition (What is Classes?)\nClasses in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Abstract Classes to simplify development and prevent common bugs.**\n- **Provides Simple class to simplify development and prevent common bugs.**\n- **Provides Basic Inheritance to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 7: Classes\nfunction runTopicDemo() {\n  console.log('Executing: Classes');\n  return { success: true, topic: 'Classes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Classes?)\nClasses in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Abstract Classes to write clean, predictable code.**\n- **Provides Simple class to write clean, predictable code.**\n- **Provides Basic Inheritance to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 7: Classes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Classes\");\n    }\n}\n```\n",
             "explanation": "Mastering Classes is essential for professional engineering."
           }
         },
@@ -384,8 +384,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Class Decorator Working Implementation",
               "description": "Complete working demonstration of Class Decorator",
-              "starterCode": "// Chapter 8: Class Decorator\nfunction runTopicDemo() {\n  console.log('Executing: Class Decorator');\n  return { success: true, topic: 'Class Decorator' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Class Decorator\nfunction runTopicDemo() {\n  console.log('Executing: Class Decorator');\n  return { success: true, topic: 'Class Decorator' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 8: Class Decorator\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Class Decorator\");\n    }\n}",
+              "solutionCode": "// Chapter 8: Class Decorator\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Class Decorator\");\n    }\n}",
               "expectedOutput": "Executing: Class Decorator"
             }
           ],
@@ -393,9 +393,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Class Decorator",
               "description": "Write a clean solution for Class Decorator that returns expected status.",
-              "starterCode": "// Chapter 8: Class Decorator\nfunction runTopicDemo() {\n  console.log('Executing: Class Decorator');\n  return { success: true, topic: 'Class Decorator' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Class Decorator\nfunction runTopicDemo() {\n  console.log('Executing: Class Decorator');\n  return { success: true, topic: 'Class Decorator' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 8: Class Decorator\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Class Decorator\");\n    }\n}",
+              "solutionCode": "// Chapter 8: Class Decorator\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Class Decorator\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -407,7 +407,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 8: Class Decorator",
-            "content": "### \ud83c\udf1f 1. Definition (What is Class Decorator?)\nClass Decorator in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Generating metadata using a class decorator to simplify development and prevent common bugs.**\n- **Provides Passing arguments to a class decorator to simplify development and prevent common bugs.**\n- **Provides Basic class decorator to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 8: Class Decorator\nfunction runTopicDemo() {\n  console.log('Executing: Class Decorator');\n  return { success: true, topic: 'Class Decorator' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Class Decorator?)\nClass Decorator in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Generating metadata using a class decorator to write clean, predictable code.**\n- **Provides Passing arguments to a class decorator to write clean, predictable code.**\n- **Provides Basic class decorator to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 8: Class Decorator\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Class Decorator\");\n    }\n}\n```\n",
             "explanation": "Mastering Class Decorator is essential for professional engineering."
           }
         },
@@ -435,8 +435,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Interfaces Working Implementation",
               "description": "Complete working demonstration of Interfaces",
-              "starterCode": "// Chapter 9: Interfaces\nfunction runTopicDemo() {\n  console.log('Executing: Interfaces');\n  return { success: true, topic: 'Interfaces' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Interfaces\nfunction runTopicDemo() {\n  console.log('Executing: Interfaces');\n  return { success: true, topic: 'Interfaces' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 9: Interfaces\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Interfaces\");\n    }\n}",
+              "solutionCode": "// Chapter 9: Interfaces\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Interfaces\");\n    }\n}",
               "expectedOutput": "Executing: Interfaces"
             }
           ],
@@ -444,9 +444,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Interfaces",
               "description": "Write a clean solution for Interfaces that returns expected status.",
-              "starterCode": "// Chapter 9: Interfaces\nfunction runTopicDemo() {\n  console.log('Executing: Interfaces');\n  return { success: true, topic: 'Interfaces' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Interfaces\nfunction runTopicDemo() {\n  console.log('Executing: Interfaces');\n  return { success: true, topic: 'Interfaces' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 9: Interfaces\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Interfaces\");\n    }\n}",
+              "solutionCode": "// Chapter 9: Interfaces\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Interfaces\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -458,7 +458,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 9: Interfaces",
-            "content": "### \ud83c\udf1f 1. Definition (What is Interfaces?)\nInterfaces in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Extending Interface to simplify development and prevent common bugs.**\n- **Provides Class Interface to simplify development and prevent common bugs.**\n- **Provides Using Interfaces for Polymorphism to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 9: Interfaces\nfunction runTopicDemo() {\n  console.log('Executing: Interfaces');\n  return { success: true, topic: 'Interfaces' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Interfaces?)\nInterfaces in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Extending Interface to write clean, predictable code.**\n- **Provides Class Interface to write clean, predictable code.**\n- **Provides Using Interfaces for Polymorphism to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 9: Interfaces\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Interfaces\");\n    }\n}\n```\n",
             "explanation": "Mastering Interfaces is essential for professional engineering."
           }
         },
@@ -486,8 +486,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Generics Working Implementation",
               "description": "Complete working demonstration of Generics",
-              "starterCode": "// Chapter 10: Generics\nfunction runTopicDemo() {\n  console.log('Executing: Generics');\n  return { success: true, topic: 'Generics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Generics\nfunction runTopicDemo() {\n  console.log('Executing: Generics');\n  return { success: true, topic: 'Generics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 10: Generics\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Generics\");\n    }\n}",
+              "solutionCode": "// Chapter 10: Generics\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Generics\");\n    }\n}",
               "expectedOutput": "Executing: Generics"
             }
           ],
@@ -495,9 +495,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Generics",
               "description": "Write a clean solution for Generics that returns expected status.",
-              "starterCode": "// Chapter 10: Generics\nfunction runTopicDemo() {\n  console.log('Executing: Generics');\n  return { success: true, topic: 'Generics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Generics\nfunction runTopicDemo() {\n  console.log('Executing: Generics');\n  return { success: true, topic: 'Generics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 10: Generics\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Generics\");\n    }\n}",
+              "solutionCode": "// Chapter 10: Generics\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Generics\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -509,7 +509,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 10: Generics",
-            "content": "### \ud83c\udf1f 1. Definition (What is Generics?)\nGenerics in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Generic Interfaces to simplify development and prevent common bugs.**\n- **Provides Generic Class to simplify development and prevent common bugs.**\n- **Provides Type parameters as constraints to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 10: Generics\nfunction runTopicDemo() {\n  console.log('Executing: Generics');\n  return { success: true, topic: 'Generics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Generics?)\nGenerics in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Generic Interfaces to write clean, predictable code.**\n- **Provides Generic Class to write clean, predictable code.**\n- **Provides Type parameters as constraints to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 10: Generics\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Generics\");\n    }\n}\n```\n",
             "explanation": "Mastering Generics is essential for professional engineering."
           }
         }
@@ -540,8 +540,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Strict null checks Working Implementation",
               "description": "Complete working demonstration of Strict null checks",
-              "starterCode": "// Chapter 11: Strict null checks\nfunction runTopicDemo() {\n  console.log('Executing: Strict null checks');\n  return { success: true, topic: 'Strict null checks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Strict null checks\nfunction runTopicDemo() {\n  console.log('Executing: Strict null checks');\n  return { success: true, topic: 'Strict null checks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 11: Strict null checks\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Strict null checks\");\n    }\n}",
+              "solutionCode": "// Chapter 11: Strict null checks\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Strict null checks\");\n    }\n}",
               "expectedOutput": "Executing: Strict null checks"
             }
           ],
@@ -549,9 +549,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Strict null checks",
               "description": "Write a clean solution for Strict null checks that returns expected status.",
-              "starterCode": "// Chapter 11: Strict null checks\nfunction runTopicDemo() {\n  console.log('Executing: Strict null checks');\n  return { success: true, topic: 'Strict null checks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Strict null checks\nfunction runTopicDemo() {\n  console.log('Executing: Strict null checks');\n  return { success: true, topic: 'Strict null checks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 11: Strict null checks\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Strict null checks\");\n    }\n}",
+              "solutionCode": "// Chapter 11: Strict null checks\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Strict null checks\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -563,7 +563,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 11: Strict null checks",
-            "content": "### \ud83c\udf1f 1. Definition (What is Strict null checks?)\nStrict null checks in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Strict null checks in action to simplify development and prevent common bugs.**\n- **Provides Non: null assertions to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 11: Strict null checks\nfunction runTopicDemo() {\n  console.log('Executing: Strict null checks');\n  return { success: true, topic: 'Strict null checks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Strict null checks?)\nStrict null checks in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Strict null checks in action to write clean, predictable code.**\n- **Provides Non: null assertions to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 11: Strict null checks\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Strict null checks\");\n    }\n}\n```\n",
             "explanation": "Mastering Strict null checks is essential for professional engineering."
           }
         },
@@ -591,8 +591,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "User: de\ufb01ned Type Guards Working Implementation",
               "description": "Complete working demonstration of User: de\ufb01ned Type Guards",
-              "starterCode": "// Chapter 12: User: de\ufb01ned Type Guards\nfunction runTopicDemo() {\n  console.log('Executing: User: de\ufb01ned Type Guards');\n  return { success: true, topic: 'User: de\ufb01ned Type Guards' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: User: de\ufb01ned Type Guards\nfunction runTopicDemo() {\n  console.log('Executing: User: de\ufb01ned Type Guards');\n  return { success: true, topic: 'User: de\ufb01ned Type Guards' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 12: User: de\ufb01ned Type Guards\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: User: de\ufb01ned Type Guards\");\n    }\n}",
+              "solutionCode": "// Chapter 12: User: de\ufb01ned Type Guards\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: User: de\ufb01ned Type Guards\");\n    }\n}",
               "expectedOutput": "Executing: User: de\ufb01ned Type Guards"
             }
           ],
@@ -600,9 +600,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement User: de\ufb01ned Type Guards",
               "description": "Write a clean solution for User: de\ufb01ned Type Guards that returns expected status.",
-              "starterCode": "// Chapter 12: User: de\ufb01ned Type Guards\nfunction runTopicDemo() {\n  console.log('Executing: User: de\ufb01ned Type Guards');\n  return { success: true, topic: 'User: de\ufb01ned Type Guards' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: User: de\ufb01ned Type Guards\nfunction runTopicDemo() {\n  console.log('Executing: User: de\ufb01ned Type Guards');\n  return { success: true, topic: 'User: de\ufb01ned Type Guards' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 12: User: de\ufb01ned Type Guards\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: User: de\ufb01ned Type Guards\");\n    }\n}",
+              "solutionCode": "// Chapter 12: User: de\ufb01ned Type Guards\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: User: de\ufb01ned Type Guards\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -614,7 +614,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 12: User: de\ufb01ned Type Guards",
-            "content": "### \ud83c\udf1f 1. Definition (What is User: de\ufb01ned Type Guards?)\nUser: de\ufb01ned Type Guards in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type guarding functions to simplify development and prevent common bugs.**\n- **Provides Using instanceof to simplify development and prevent common bugs.**\n- **Provides Using typeof to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 12: User: de\ufb01ned Type Guards\nfunction runTopicDemo() {\n  console.log('Executing: User: de\ufb01ned Type Guards');\n  return { success: true, topic: 'User: de\ufb01ned Type Guards' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is User: de\ufb01ned Type Guards?)\nUser: de\ufb01ned Type Guards in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type guarding functions to write clean, predictable code.**\n- **Provides Using instanceof to write clean, predictable code.**\n- **Provides Using typeof to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 12: User: de\ufb01ned Type Guards\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: User: de\ufb01ned Type Guards\");\n    }\n}\n```\n",
             "explanation": "Mastering User: de\ufb01ned Type Guards is essential for professional engineering."
           }
         },
@@ -638,8 +638,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "TypeScript basic examples Working Implementation",
               "description": "Complete working demonstration of TypeScript basic examples",
-              "starterCode": "// Chapter 13: TypeScript basic examples\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript basic examples');\n  return { success: true, topic: 'TypeScript basic examples' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: TypeScript basic examples\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript basic examples');\n  return { success: true, topic: 'TypeScript basic examples' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 13: TypeScript basic examples\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript basic examples\");\n    }\n}",
+              "solutionCode": "// Chapter 13: TypeScript basic examples\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript basic examples\");\n    }\n}",
               "expectedOutput": "Executing: TypeScript basic examples"
             }
           ],
@@ -647,9 +647,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement TypeScript basic examples",
               "description": "Write a clean solution for TypeScript basic examples that returns expected status.",
-              "starterCode": "// Chapter 13: TypeScript basic examples\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript basic examples');\n  return { success: true, topic: 'TypeScript basic examples' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: TypeScript basic examples\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript basic examples');\n  return { success: true, topic: 'TypeScript basic examples' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 13: TypeScript basic examples\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript basic examples\");\n    }\n}",
+              "solutionCode": "// Chapter 13: TypeScript basic examples\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript basic examples\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -661,7 +661,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 13: TypeScript basic examples",
-            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript basic examples?)\nTypeScript basic examples in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides 1 basic class inheritance example using extends and super keyword to simplify development and prevent common bugs.**\n- **Provides 2 static class variable example: count how many time method is being invoked to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 13: TypeScript basic examples\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript basic examples');\n  return { success: true, topic: 'TypeScript basic examples' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript basic examples?)\nTypeScript basic examples in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides 1 basic class inheritance example using extends and super keyword to write clean, predictable code.**\n- **Provides 2 static class variable example: count how many time method is being invoked to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 13: TypeScript basic examples\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript basic examples\");\n    }\n}\n```\n",
             "explanation": "Mastering TypeScript basic examples is essential for professional engineering."
           }
         },
@@ -689,8 +689,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Importing external libraries Working Implementation",
               "description": "Complete working demonstration of Importing external libraries",
-              "starterCode": "// Chapter 14: Importing external libraries\nfunction runTopicDemo() {\n  console.log('Executing: Importing external libraries');\n  return { success: true, topic: 'Importing external libraries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Importing external libraries\nfunction runTopicDemo() {\n  console.log('Executing: Importing external libraries');\n  return { success: true, topic: 'Importing external libraries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 14: Importing external libraries\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Importing external libraries\");\n    }\n}",
+              "solutionCode": "// Chapter 14: Importing external libraries\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Importing external libraries\");\n    }\n}",
               "expectedOutput": "Executing: Importing external libraries"
             }
           ],
@@ -698,9 +698,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Importing external libraries",
               "description": "Write a clean solution for Importing external libraries that returns expected status.",
-              "starterCode": "// Chapter 14: Importing external libraries\nfunction runTopicDemo() {\n  console.log('Executing: Importing external libraries');\n  return { success: true, topic: 'Importing external libraries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Importing external libraries\nfunction runTopicDemo() {\n  console.log('Executing: Importing external libraries');\n  return { success: true, topic: 'Importing external libraries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 14: Importing external libraries\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Importing external libraries\");\n    }\n}",
+              "solutionCode": "// Chapter 14: Importing external libraries\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Importing external libraries\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -712,7 +712,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 14: Importing external libraries",
-            "content": "### \ud83c\udf1f 1. Definition (What is Importing external libraries?)\nImporting external libraries in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding de\ufb01nition \ufb01les to simplify development and prevent common bugs.**\n- **Provides Importing a module from npm to simplify development and prevent common bugs.**\n- **Provides Using global external libraries without typings to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 14: Importing external libraries\nfunction runTopicDemo() {\n  console.log('Executing: Importing external libraries');\n  return { success: true, topic: 'Importing external libraries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Importing external libraries?)\nImporting external libraries in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding de\ufb01nition \ufb01les to write clean, predictable code.**\n- **Provides Importing a module from npm to write clean, predictable code.**\n- **Provides Using global external libraries without typings to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 14: Importing external libraries\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Importing external libraries\");\n    }\n}\n```\n",
             "explanation": "Mastering Importing external libraries is essential for professional engineering."
           }
         },
@@ -740,8 +740,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Modules: exporting and importing Working Implementation",
               "description": "Complete working demonstration of Modules: exporting and importing",
-              "starterCode": "// Chapter 15: Modules: exporting and importing\nfunction runTopicDemo() {\n  console.log('Executing: Modules: exporting and importing');\n  return { success: true, topic: 'Modules: exporting and importing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Modules: exporting and importing\nfunction runTopicDemo() {\n  console.log('Executing: Modules: exporting and importing');\n  return { success: true, topic: 'Modules: exporting and importing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 15: Modules: exporting and importing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Modules: exporting and importing\");\n    }\n}",
+              "solutionCode": "// Chapter 15: Modules: exporting and importing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Modules: exporting and importing\");\n    }\n}",
               "expectedOutput": "Executing: Modules: exporting and importing"
             }
           ],
@@ -749,9 +749,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Modules: exporting and importing",
               "description": "Write a clean solution for Modules: exporting and importing that returns expected status.",
-              "starterCode": "// Chapter 15: Modules: exporting and importing\nfunction runTopicDemo() {\n  console.log('Executing: Modules: exporting and importing');\n  return { success: true, topic: 'Modules: exporting and importing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Modules: exporting and importing\nfunction runTopicDemo() {\n  console.log('Executing: Modules: exporting and importing');\n  return { success: true, topic: 'Modules: exporting and importing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 15: Modules: exporting and importing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Modules: exporting and importing\");\n    }\n}",
+              "solutionCode": "// Chapter 15: Modules: exporting and importing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Modules: exporting and importing\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -763,7 +763,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 15: Modules: exporting and importing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Modules: exporting and importing?)\nModules: exporting and importing in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hello world module to simplify development and prevent common bugs.**\n- **Provides Re: export to simplify development and prevent common bugs.**\n- **Provides Exporting/Importing declarations to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 15: Modules: exporting and importing\nfunction runTopicDemo() {\n  console.log('Executing: Modules: exporting and importing');\n  return { success: true, topic: 'Modules: exporting and importing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Modules: exporting and importing?)\nModules: exporting and importing in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hello world module to write clean, predictable code.**\n- **Provides Re: export to write clean, predictable code.**\n- **Provides Exporting/Importing declarations to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 15: Modules: exporting and importing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Modules: exporting and importing\");\n    }\n}\n```\n",
             "explanation": "Mastering Modules: exporting and importing is essential for professional engineering."
           }
         },
@@ -783,8 +783,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Publish TypeScript de\ufb01nition \ufb01les Working Implementation",
               "description": "Complete working demonstration of Publish TypeScript de\ufb01nition \ufb01les",
-              "starterCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\nfunction runTopicDemo() {\n  console.log('Executing: Publish TypeScript de\ufb01nition \ufb01les');\n  return { success: true, topic: 'Publish TypeScript de\ufb01nition \ufb01les' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\nfunction runTopicDemo() {\n  console.log('Executing: Publish TypeScript de\ufb01nition \ufb01les');\n  return { success: true, topic: 'Publish TypeScript de\ufb01nition \ufb01les' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Publish TypeScript de\ufb01nition \ufb01les\");\n    }\n}",
+              "solutionCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Publish TypeScript de\ufb01nition \ufb01les\");\n    }\n}",
               "expectedOutput": "Executing: Publish TypeScript de\ufb01nition \ufb01les"
             }
           ],
@@ -792,9 +792,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Publish TypeScript de\ufb01nition \ufb01les",
               "description": "Write a clean solution for Publish TypeScript de\ufb01nition \ufb01les that returns expected status.",
-              "starterCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\nfunction runTopicDemo() {\n  console.log('Executing: Publish TypeScript de\ufb01nition \ufb01les');\n  return { success: true, topic: 'Publish TypeScript de\ufb01nition \ufb01les' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\nfunction runTopicDemo() {\n  console.log('Executing: Publish TypeScript de\ufb01nition \ufb01les');\n  return { success: true, topic: 'Publish TypeScript de\ufb01nition \ufb01les' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Publish TypeScript de\ufb01nition \ufb01les\");\n    }\n}",
+              "solutionCode": "// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Publish TypeScript de\ufb01nition \ufb01les\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -806,7 +806,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 16: Publish TypeScript de\ufb01nition \ufb01les",
-            "content": "### \ud83c\udf1f 1. Definition (What is Publish TypeScript de\ufb01nition \ufb01les?)\nPublish TypeScript de\ufb01nition \ufb01les in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Include de\ufb01nition \ufb01le with library on npm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\nfunction runTopicDemo() {\n  console.log('Executing: Publish TypeScript de\ufb01nition \ufb01les');\n  return { success: true, topic: 'Publish TypeScript de\ufb01nition \ufb01les' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Publish TypeScript de\ufb01nition \ufb01les?)\nPublish TypeScript de\ufb01nition \ufb01les in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Include de\ufb01nition \ufb01le with library on npm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 16: Publish TypeScript de\ufb01nition \ufb01les\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Publish TypeScript de\ufb01nition \ufb01les\");\n    }\n}\n```\n",
             "explanation": "Mastering Publish TypeScript de\ufb01nition \ufb01les is essential for professional engineering."
           }
         },
@@ -826,8 +826,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Using TypeScript with webpack Working Implementation",
               "description": "Complete working demonstration of Using TypeScript with webpack",
-              "starterCode": "// Chapter 17: Using TypeScript with webpack\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with webpack');\n  return { success: true, topic: 'Using TypeScript with webpack' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Using TypeScript with webpack\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with webpack');\n  return { success: true, topic: 'Using TypeScript with webpack' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 17: Using TypeScript with webpack\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with webpack\");\n    }\n}",
+              "solutionCode": "// Chapter 17: Using TypeScript with webpack\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with webpack\");\n    }\n}",
               "expectedOutput": "Executing: Using TypeScript with webpack"
             }
           ],
@@ -835,9 +835,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Using TypeScript with webpack",
               "description": "Write a clean solution for Using TypeScript with webpack that returns expected status.",
-              "starterCode": "// Chapter 17: Using TypeScript with webpack\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with webpack');\n  return { success: true, topic: 'Using TypeScript with webpack' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Using TypeScript with webpack\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with webpack');\n  return { success: true, topic: 'Using TypeScript with webpack' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 17: Using TypeScript with webpack\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with webpack\");\n    }\n}",
+              "solutionCode": "// Chapter 17: Using TypeScript with webpack\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with webpack\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -849,7 +849,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 17: Using TypeScript with webpack",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using TypeScript with webpack?)\nUsing TypeScript with webpack in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides webpack.con\ufb01g.js to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 17: Using TypeScript with webpack\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with webpack');\n  return { success: true, topic: 'Using TypeScript with webpack' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using TypeScript with webpack?)\nUsing TypeScript with webpack in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides webpack.con\ufb01g.js to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 17: Using TypeScript with webpack\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with webpack\");\n    }\n}\n```\n",
             "explanation": "Mastering Using TypeScript with webpack is essential for professional engineering."
           }
         },
@@ -869,8 +869,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Mixins Working Implementation",
               "description": "Complete working demonstration of Mixins",
-              "starterCode": "// Chapter 18: Mixins\nfunction runTopicDemo() {\n  console.log('Executing: Mixins');\n  return { success: true, topic: 'Mixins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Mixins\nfunction runTopicDemo() {\n  console.log('Executing: Mixins');\n  return { success: true, topic: 'Mixins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 18: Mixins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Mixins\");\n    }\n}",
+              "solutionCode": "// Chapter 18: Mixins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Mixins\");\n    }\n}",
               "expectedOutput": "Executing: Mixins"
             }
           ],
@@ -878,9 +878,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Mixins",
               "description": "Write a clean solution for Mixins that returns expected status.",
-              "starterCode": "// Chapter 18: Mixins\nfunction runTopicDemo() {\n  console.log('Executing: Mixins');\n  return { success: true, topic: 'Mixins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Mixins\nfunction runTopicDemo() {\n  console.log('Executing: Mixins');\n  return { success: true, topic: 'Mixins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 18: Mixins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Mixins\");\n    }\n}",
+              "solutionCode": "// Chapter 18: Mixins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Mixins\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -892,7 +892,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 18: Mixins",
-            "content": "### \ud83c\udf1f 1. Definition (What is Mixins?)\nMixins in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Example of Mixins to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 18: Mixins\nfunction runTopicDemo() {\n  console.log('Executing: Mixins');\n  return { success: true, topic: 'Mixins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Mixins?)\nMixins in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Example of Mixins to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 18: Mixins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Mixins\");\n    }\n}\n```\n",
             "explanation": "Mastering Mixins is essential for professional engineering."
           }
         },
@@ -920,8 +920,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "How to use a JavaScript library without a type de\ufb01nition \ufb01le Working Implementation",
               "description": "Complete working demonstration of How to use a JavaScript library without a type de\ufb01nition \ufb01le",
-              "starterCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le');\n  return { success: true, topic: 'How to use a JavaScript library without a type de\ufb01nition \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le');\n  return { success: true, topic: 'How to use a JavaScript library without a type de\ufb01nition \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le\");\n    }\n}",
+              "solutionCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le\");\n    }\n}",
               "expectedOutput": "Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le"
             }
           ],
@@ -929,9 +929,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement How to use a JavaScript library without a type de\ufb01nition \ufb01le",
               "description": "Write a clean solution for How to use a JavaScript library without a type de\ufb01nition \ufb01le that returns expected status.",
-              "starterCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le');\n  return { success: true, topic: 'How to use a JavaScript library without a type de\ufb01nition \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le');\n  return { success: true, topic: 'How to use a JavaScript library without a type de\ufb01nition \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le\");\n    }\n}",
+              "solutionCode": "// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -943,7 +943,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le",
-            "content": "### \ud83c\udf1f 1. Definition (What is How to use a JavaScript library without a type de\ufb01nition \ufb01le?)\nHow to use a JavaScript library without a type de\ufb01nition \ufb01le in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Make a module that exports a default any to simplify development and prevent common bugs.**\n- **Provides Declare an any global to simplify development and prevent common bugs.**\n- **Provides Use an ambient module to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le');\n  return { success: true, topic: 'How to use a JavaScript library without a type de\ufb01nition \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is How to use a JavaScript library without a type de\ufb01nition \ufb01le?)\nHow to use a JavaScript library without a type de\ufb01nition \ufb01le in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Make a module that exports a default any to write clean, predictable code.**\n- **Provides Declare an any global to write clean, predictable code.**\n- **Provides Use an ambient module to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 19: How to use a JavaScript library without a type de\ufb01nition \ufb01le\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: How to use a JavaScript library without a type de\ufb01nition \ufb01le\");\n    }\n}\n```\n",
             "explanation": "Mastering How to use a JavaScript library without a type de\ufb01nition \ufb01le is essential for professional engineering."
           }
         },
@@ -963,8 +963,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "TypeScript installing typescript and running the typescript compiler tsc Working Implementation",
               "description": "Complete working demonstration of TypeScript installing typescript and running the typescript compiler tsc",
-              "starterCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript installing typescript and running the typescript compiler tsc');\n  return { success: true, topic: 'TypeScript installing typescript and running the typescript compiler tsc' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript installing typescript and running the typescript compiler tsc');\n  return { success: true, topic: 'TypeScript installing typescript and running the typescript compiler tsc' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript installing typescript and running the typescript compiler tsc\");\n    }\n}",
+              "solutionCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript installing typescript and running the typescript compiler tsc\");\n    }\n}",
               "expectedOutput": "Executing: TypeScript installing typescript and running the typescript compiler tsc"
             }
           ],
@@ -972,9 +972,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement TypeScript installing typescript and running the typescript compiler tsc",
               "description": "Write a clean solution for TypeScript installing typescript and running the typescript compiler tsc that returns expected status.",
-              "starterCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript installing typescript and running the typescript compiler tsc');\n  return { success: true, topic: 'TypeScript installing typescript and running the typescript compiler tsc' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript installing typescript and running the typescript compiler tsc');\n  return { success: true, topic: 'TypeScript installing typescript and running the typescript compiler tsc' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript installing typescript and running the typescript compiler tsc\");\n    }\n}",
+              "solutionCode": "// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript installing typescript and running the typescript compiler tsc\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -986,7 +986,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 20: TypeScript installing typescript and running the typescript compiler tsc",
-            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript installing typescript and running the typescript compiler tsc?)\nTypeScript installing typescript and running the typescript compiler tsc in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Steps to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript installing typescript and running the typescript compiler tsc');\n  return { success: true, topic: 'TypeScript installing typescript and running the typescript compiler tsc' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript installing typescript and running the typescript compiler tsc?)\nTypeScript installing typescript and running the typescript compiler tsc in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Steps to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 20: TypeScript installing typescript and running the typescript compiler tsc\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript installing typescript and running the typescript compiler tsc\");\n    }\n}\n```\n",
             "explanation": "Mastering TypeScript installing typescript and running the typescript compiler tsc is essential for professional engineering."
           }
         }
@@ -1013,8 +1013,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Con\ufb01gure typescript project to compile all \ufb01les in typescript. Working Implementation",
               "description": "Complete working demonstration of Con\ufb01gure typescript project to compile all \ufb01les in typescript.",
-              "starterCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.');\n  return { success: true, topic: 'Con\ufb01gure typescript project to compile all \ufb01les in typescript.' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.');\n  return { success: true, topic: 'Con\ufb01gure typescript project to compile all \ufb01les in typescript.' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\");\n    }\n}",
+              "solutionCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\");\n    }\n}",
               "expectedOutput": "Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript."
             }
           ],
@@ -1022,9 +1022,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Con\ufb01gure typescript project to compile all \ufb01les in typescript.",
               "description": "Write a clean solution for Con\ufb01gure typescript project to compile all \ufb01les in typescript. that returns expected status.",
-              "starterCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.');\n  return { success: true, topic: 'Con\ufb01gure typescript project to compile all \ufb01les in typescript.' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.');\n  return { success: true, topic: 'Con\ufb01gure typescript project to compile all \ufb01les in typescript.' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\");\n    }\n}",
+              "solutionCode": "// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1036,7 +1036,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.",
-            "content": "### \ud83c\udf1f 1. Definition (What is Con\ufb01gure typescript project to compile all \ufb01les in typescript.?)\nCon\ufb01gure typescript project to compile all \ufb01les in typescript. in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides TypeScript Con\ufb01guration \ufb01le setup to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.');\n  return { success: true, topic: 'Con\ufb01gure typescript project to compile all \ufb01les in typescript.' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Con\ufb01gure typescript project to compile all \ufb01les in typescript.?)\nCon\ufb01gure typescript project to compile all \ufb01les in typescript. in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides TypeScript Con\ufb01guration \ufb01le setup to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 21: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Con\ufb01gure typescript project to compile all \ufb01les in typescript.\");\n    }\n}\n```\n",
             "explanation": "Mastering Con\ufb01gure typescript project to compile all \ufb01les in typescript. is essential for professional engineering."
           }
         },
@@ -1064,8 +1064,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Integrating with Build Tools Working Implementation",
               "description": "Complete working demonstration of Integrating with Build Tools",
-              "starterCode": "// Chapter 22: Integrating with Build Tools\nfunction runTopicDemo() {\n  console.log('Executing: Integrating with Build Tools');\n  return { success: true, topic: 'Integrating with Build Tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Integrating with Build Tools\nfunction runTopicDemo() {\n  console.log('Executing: Integrating with Build Tools');\n  return { success: true, topic: 'Integrating with Build Tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 22: Integrating with Build Tools\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Integrating with Build Tools\");\n    }\n}",
+              "solutionCode": "// Chapter 22: Integrating with Build Tools\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Integrating with Build Tools\");\n    }\n}",
               "expectedOutput": "Executing: Integrating with Build Tools"
             }
           ],
@@ -1073,9 +1073,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Integrating with Build Tools",
               "description": "Write a clean solution for Integrating with Build Tools that returns expected status.",
-              "starterCode": "// Chapter 22: Integrating with Build Tools\nfunction runTopicDemo() {\n  console.log('Executing: Integrating with Build Tools');\n  return { success: true, topic: 'Integrating with Build Tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Integrating with Build Tools\nfunction runTopicDemo() {\n  console.log('Executing: Integrating with Build Tools');\n  return { success: true, topic: 'Integrating with Build Tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 22: Integrating with Build Tools\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Integrating with Build Tools\");\n    }\n}",
+              "solutionCode": "// Chapter 22: Integrating with Build Tools\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Integrating with Build Tools\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1087,7 +1087,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 22: Integrating with Build Tools",
-            "content": "### \ud83c\udf1f 1. Definition (What is Integrating with Build Tools?)\nIntegrating with Build Tools in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Browserify to simplify development and prevent common bugs.**\n- **Provides Webpack to simplify development and prevent common bugs.**\n- **Provides Grunt to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 22: Integrating with Build Tools\nfunction runTopicDemo() {\n  console.log('Executing: Integrating with Build Tools');\n  return { success: true, topic: 'Integrating with Build Tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Integrating with Build Tools?)\nIntegrating with Build Tools in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Browserify to write clean, predictable code.**\n- **Provides Webpack to write clean, predictable code.**\n- **Provides Grunt to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 22: Integrating with Build Tools\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Integrating with Build Tools\");\n    }\n}\n```\n",
             "explanation": "Mastering Integrating with Build Tools is essential for professional engineering."
           }
         },
@@ -1111,8 +1111,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Using TypeScript with RequireJS Working Implementation",
               "description": "Complete working demonstration of Using TypeScript with RequireJS",
-              "starterCode": "// Chapter 23: Using TypeScript with RequireJS\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with RequireJS');\n  return { success: true, topic: 'Using TypeScript with RequireJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Using TypeScript with RequireJS\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with RequireJS');\n  return { success: true, topic: 'Using TypeScript with RequireJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 23: Using TypeScript with RequireJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with RequireJS\");\n    }\n}",
+              "solutionCode": "// Chapter 23: Using TypeScript with RequireJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with RequireJS\");\n    }\n}",
               "expectedOutput": "Executing: Using TypeScript with RequireJS"
             }
           ],
@@ -1120,9 +1120,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Using TypeScript with RequireJS",
               "description": "Write a clean solution for Using TypeScript with RequireJS that returns expected status.",
-              "starterCode": "// Chapter 23: Using TypeScript with RequireJS\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with RequireJS');\n  return { success: true, topic: 'Using TypeScript with RequireJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Using TypeScript with RequireJS\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with RequireJS');\n  return { success: true, topic: 'Using TypeScript with RequireJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 23: Using TypeScript with RequireJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with RequireJS\");\n    }\n}",
+              "solutionCode": "// Chapter 23: Using TypeScript with RequireJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with RequireJS\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1134,7 +1134,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 23: Using TypeScript with RequireJS",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using TypeScript with RequireJS?)\nUsing TypeScript with RequireJS in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML example using RequireJS CDN to include an already compiled TypeScript \ufb01le to simplify development and prevent common bugs.**\n- **Provides tscon\ufb01g.json example to compile to view folder using RequireJS import style to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 23: Using TypeScript with RequireJS\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with RequireJS');\n  return { success: true, topic: 'Using TypeScript with RequireJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using TypeScript with RequireJS?)\nUsing TypeScript with RequireJS in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML example using RequireJS CDN to include an already compiled TypeScript \ufb01le to write clean, predictable code.**\n- **Provides tscon\ufb01g.json example to compile to view folder using RequireJS import style to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 23: Using TypeScript with RequireJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with RequireJS\");\n    }\n}\n```\n",
             "explanation": "Mastering Using TypeScript with RequireJS is essential for professional engineering."
           }
         },
@@ -1162,8 +1162,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "TypeScript with AngularJS Working Implementation",
               "description": "Complete working demonstration of TypeScript with AngularJS",
-              "starterCode": "// Chapter 24: TypeScript with AngularJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with AngularJS');\n  return { success: true, topic: 'TypeScript with AngularJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: TypeScript with AngularJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with AngularJS');\n  return { success: true, topic: 'TypeScript with AngularJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 24: TypeScript with AngularJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with AngularJS\");\n    }\n}",
+              "solutionCode": "// Chapter 24: TypeScript with AngularJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with AngularJS\");\n    }\n}",
               "expectedOutput": "Executing: TypeScript with AngularJS"
             }
           ],
@@ -1171,9 +1171,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement TypeScript with AngularJS",
               "description": "Write a clean solution for TypeScript with AngularJS that returns expected status.",
-              "starterCode": "// Chapter 24: TypeScript with AngularJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with AngularJS');\n  return { success: true, topic: 'TypeScript with AngularJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: TypeScript with AngularJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with AngularJS');\n  return { success: true, topic: 'TypeScript with AngularJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 24: TypeScript with AngularJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with AngularJS\");\n    }\n}",
+              "solutionCode": "// Chapter 24: TypeScript with AngularJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with AngularJS\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1185,7 +1185,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 24: TypeScript with AngularJS",
-            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript with AngularJS?)\nTypeScript with AngularJS in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Directive to simplify development and prevent common bugs.**\n- **Provides Simple example to simplify development and prevent common bugs.**\n- **Provides Component to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 24: TypeScript with AngularJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with AngularJS');\n  return { success: true, topic: 'TypeScript with AngularJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript with AngularJS?)\nTypeScript with AngularJS in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Directive to write clean, predictable code.**\n- **Provides Simple example to write clean, predictable code.**\n- **Provides Component to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 24: TypeScript with AngularJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with AngularJS\");\n    }\n}\n```\n",
             "explanation": "Mastering TypeScript with AngularJS is essential for professional engineering."
           }
         },
@@ -1205,8 +1205,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "TypeScript with SystemJS Working Implementation",
               "description": "Complete working demonstration of TypeScript with SystemJS",
-              "starterCode": "// Chapter 25: TypeScript with SystemJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with SystemJS');\n  return { success: true, topic: 'TypeScript with SystemJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: TypeScript with SystemJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with SystemJS');\n  return { success: true, topic: 'TypeScript with SystemJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 25: TypeScript with SystemJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with SystemJS\");\n    }\n}",
+              "solutionCode": "// Chapter 25: TypeScript with SystemJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with SystemJS\");\n    }\n}",
               "expectedOutput": "Executing: TypeScript with SystemJS"
             }
           ],
@@ -1214,9 +1214,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement TypeScript with SystemJS",
               "description": "Write a clean solution for TypeScript with SystemJS that returns expected status.",
-              "starterCode": "// Chapter 25: TypeScript with SystemJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with SystemJS');\n  return { success: true, topic: 'TypeScript with SystemJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: TypeScript with SystemJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with SystemJS');\n  return { success: true, topic: 'TypeScript with SystemJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 25: TypeScript with SystemJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with SystemJS\");\n    }\n}",
+              "solutionCode": "// Chapter 25: TypeScript with SystemJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with SystemJS\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1228,7 +1228,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 25: TypeScript with SystemJS",
-            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript with SystemJS?)\nTypeScript with SystemJS in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hello World in the browser with SystemJS to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 25: TypeScript with SystemJS\nfunction runTopicDemo() {\n  console.log('Executing: TypeScript with SystemJS');\n  return { success: true, topic: 'TypeScript with SystemJS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is TypeScript with SystemJS?)\nTypeScript with SystemJS in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hello World in the browser with SystemJS to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 25: TypeScript with SystemJS\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TypeScript with SystemJS\");\n    }\n}\n```\n",
             "explanation": "Mastering TypeScript with SystemJS is essential for professional engineering."
           }
         },
@@ -1252,8 +1252,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Using TypeScript with React (JS & native) Working Implementation",
               "description": "Complete working demonstration of Using TypeScript with React (JS & native)",
-              "starterCode": "// Chapter 26: Using TypeScript with React (JS & native)\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with React (JS & native)');\n  return { success: true, topic: 'Using TypeScript with React (JS & native)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Using TypeScript with React (JS & native)\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with React (JS & native)');\n  return { success: true, topic: 'Using TypeScript with React (JS & native)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 26: Using TypeScript with React (JS & native)\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with React (JS & native)\");\n    }\n}",
+              "solutionCode": "// Chapter 26: Using TypeScript with React (JS & native)\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with React (JS & native)\");\n    }\n}",
               "expectedOutput": "Executing: Using TypeScript with React (JS & native)"
             }
           ],
@@ -1261,9 +1261,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Using TypeScript with React (JS & native)",
               "description": "Write a clean solution for Using TypeScript with React (JS & native) that returns expected status.",
-              "starterCode": "// Chapter 26: Using TypeScript with React (JS & native)\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with React (JS & native)');\n  return { success: true, topic: 'Using TypeScript with React (JS & native)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Using TypeScript with React (JS & native)\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with React (JS & native)');\n  return { success: true, topic: 'Using TypeScript with React (JS & native)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 26: Using TypeScript with React (JS & native)\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with React (JS & native)\");\n    }\n}",
+              "solutionCode": "// Chapter 26: Using TypeScript with React (JS & native)\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with React (JS & native)\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1275,7 +1275,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 26: Using TypeScript with React (JS & native)",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using TypeScript with React (JS & native)?)\nUsing TypeScript with React (JS & native) in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides ReactJS component written in TypeScript to simplify development and prevent common bugs.**\n- **Provides TypeScript & react & webpack to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 26: Using TypeScript with React (JS & native)\nfunction runTopicDemo() {\n  console.log('Executing: Using TypeScript with React (JS & native)');\n  return { success: true, topic: 'Using TypeScript with React (JS & native)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using TypeScript with React (JS & native)?)\nUsing TypeScript with React (JS & native) in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides ReactJS component written in TypeScript to write clean, predictable code.**\n- **Provides TypeScript & react & webpack to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 26: Using TypeScript with React (JS & native)\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Using TypeScript with React (JS & native)\");\n    }\n}\n```\n",
             "explanation": "Mastering Using TypeScript with React (JS & native) is essential for professional engineering."
           }
         },
@@ -1303,8 +1303,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "TSLint: assuring code quality and consistency Working Implementation",
               "description": "Complete working demonstration of TSLint: assuring code quality and consistency",
-              "starterCode": "// Chapter 27: TSLint: assuring code quality and consistency\nfunction runTopicDemo() {\n  console.log('Executing: TSLint: assuring code quality and consistency');\n  return { success: true, topic: 'TSLint: assuring code quality and consistency' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: TSLint: assuring code quality and consistency\nfunction runTopicDemo() {\n  console.log('Executing: TSLint: assuring code quality and consistency');\n  return { success: true, topic: 'TSLint: assuring code quality and consistency' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 27: TSLint: assuring code quality and consistency\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TSLint: assuring code quality and consistency\");\n    }\n}",
+              "solutionCode": "// Chapter 27: TSLint: assuring code quality and consistency\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TSLint: assuring code quality and consistency\");\n    }\n}",
               "expectedOutput": "Executing: TSLint: assuring code quality and consistency"
             }
           ],
@@ -1312,9 +1312,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement TSLint: assuring code quality and consistency",
               "description": "Write a clean solution for TSLint: assuring code quality and consistency that returns expected status.",
-              "starterCode": "// Chapter 27: TSLint: assuring code quality and consistency\nfunction runTopicDemo() {\n  console.log('Executing: TSLint: assuring code quality and consistency');\n  return { success: true, topic: 'TSLint: assuring code quality and consistency' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: TSLint: assuring code quality and consistency\nfunction runTopicDemo() {\n  console.log('Executing: TSLint: assuring code quality and consistency');\n  return { success: true, topic: 'TSLint: assuring code quality and consistency' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 27: TSLint: assuring code quality and consistency\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TSLint: assuring code quality and consistency\");\n    }\n}",
+              "solutionCode": "// Chapter 27: TSLint: assuring code quality and consistency\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TSLint: assuring code quality and consistency\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1326,7 +1326,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 27: TSLint: assuring code quality and consistency",
-            "content": "### \ud83c\udf1f 1. Definition (What is TSLint: assuring code quality and consistency?)\nTSLint: assuring code quality and consistency in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Con\ufb01guration for fewer programming errors to simplify development and prevent common bugs.**\n- **Provides Installation and setup to simplify development and prevent common bugs.**\n- **Provides Sets of TSLint Rules to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 27: TSLint: assuring code quality and consistency\nfunction runTopicDemo() {\n  console.log('Executing: TSLint: assuring code quality and consistency');\n  return { success: true, topic: 'TSLint: assuring code quality and consistency' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is TSLint: assuring code quality and consistency?)\nTSLint: assuring code quality and consistency in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Con\ufb01guration for fewer programming errors to write clean, predictable code.**\n- **Provides Installation and setup to write clean, predictable code.**\n- **Provides Sets of TSLint Rules to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 27: TSLint: assuring code quality and consistency\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: TSLint: assuring code quality and consistency\");\n    }\n}\n```\n",
             "explanation": "Mastering TSLint: assuring code quality and consistency is essential for professional engineering."
           }
         },
@@ -1354,8 +1354,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "tscon\ufb01g.json Working Implementation",
               "description": "Complete working demonstration of tscon\ufb01g.json",
-              "starterCode": "// Chapter 28: tscon\ufb01g.json\nfunction runTopicDemo() {\n  console.log('Executing: tscon\ufb01g.json');\n  return { success: true, topic: 'tscon\ufb01g.json' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: tscon\ufb01g.json\nfunction runTopicDemo() {\n  console.log('Executing: tscon\ufb01g.json');\n  return { success: true, topic: 'tscon\ufb01g.json' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 28: tscon\ufb01g.json\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: tscon\ufb01g.json\");\n    }\n}",
+              "solutionCode": "// Chapter 28: tscon\ufb01g.json\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: tscon\ufb01g.json\");\n    }\n}",
               "expectedOutput": "Executing: tscon\ufb01g.json"
             }
           ],
@@ -1363,9 +1363,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement tscon\ufb01g.json",
               "description": "Write a clean solution for tscon\ufb01g.json that returns expected status.",
-              "starterCode": "// Chapter 28: tscon\ufb01g.json\nfunction runTopicDemo() {\n  console.log('Executing: tscon\ufb01g.json');\n  return { success: true, topic: 'tscon\ufb01g.json' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: tscon\ufb01g.json\nfunction runTopicDemo() {\n  console.log('Executing: tscon\ufb01g.json');\n  return { success: true, topic: 'tscon\ufb01g.json' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 28: tscon\ufb01g.json\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: tscon\ufb01g.json\");\n    }\n}",
+              "solutionCode": "// Chapter 28: tscon\ufb01g.json\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: tscon\ufb01g.json\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1377,7 +1377,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 28: tscon\ufb01g.json",
-            "content": "### \ud83c\udf1f 1. Definition (What is tscon\ufb01g.json?)\ntscon\ufb01g.json in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create TypeScript project with tscon\ufb01g.json to simplify development and prevent common bugs.**\n- **Provides Con\ufb01guration for fewer programming errors to simplify development and prevent common bugs.**\n- **Provides compileOnSave to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 28: tscon\ufb01g.json\nfunction runTopicDemo() {\n  console.log('Executing: tscon\ufb01g.json');\n  return { success: true, topic: 'tscon\ufb01g.json' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is tscon\ufb01g.json?)\ntscon\ufb01g.json in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create TypeScript project with tscon\ufb01g.json to write clean, predictable code.**\n- **Provides Con\ufb01guration for fewer programming errors to write clean, predictable code.**\n- **Provides compileOnSave to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 28: tscon\ufb01g.json\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: tscon\ufb01g.json\");\n    }\n}\n```\n",
             "explanation": "Mastering tscon\ufb01g.json is essential for professional engineering."
           }
         },
@@ -1405,8 +1405,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Debugging Working Implementation",
               "description": "Complete working demonstration of Debugging",
-              "starterCode": "// Chapter 29: Debugging\nfunction runTopicDemo() {\n  console.log('Executing: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Debugging\nfunction runTopicDemo() {\n  console.log('Executing: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 29: Debugging\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Debugging\");\n    }\n}",
+              "solutionCode": "// Chapter 29: Debugging\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Debugging\");\n    }\n}",
               "expectedOutput": "Executing: Debugging"
             }
           ],
@@ -1414,9 +1414,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Debugging",
               "description": "Write a clean solution for Debugging that returns expected status.",
-              "starterCode": "// Chapter 29: Debugging\nfunction runTopicDemo() {\n  console.log('Executing: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Debugging\nfunction runTopicDemo() {\n  console.log('Executing: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 29: Debugging\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Debugging\");\n    }\n}",
+              "solutionCode": "// Chapter 29: Debugging\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Debugging\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1428,7 +1428,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 29: Debugging",
-            "content": "### \ud83c\udf1f 1. Definition (What is Debugging?)\nDebugging in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides TypeScript with ts: node in WebStorm to simplify development and prevent common bugs.**\n- **Provides TypeScript with ts: node in Visual Studio Code to simplify development and prevent common bugs.**\n- **Provides JavaScript with SourceMaps in Visual Studio Code to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 29: Debugging\nfunction runTopicDemo() {\n  console.log('Executing: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Debugging?)\nDebugging in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides TypeScript with ts: node in WebStorm to write clean, predictable code.**\n- **Provides TypeScript with ts: node in Visual Studio Code to write clean, predictable code.**\n- **Provides JavaScript with SourceMaps in Visual Studio Code to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 29: Debugging\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Debugging\");\n    }\n}\n```\n",
             "explanation": "Mastering Debugging is essential for professional engineering."
           }
         },
@@ -1456,8 +1456,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Unit Testing Working Implementation",
               "description": "Complete working demonstration of Unit Testing",
-              "starterCode": "// Chapter 30: Unit Testing\nfunction runTopicDemo() {\n  console.log('Executing: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Unit Testing\nfunction runTopicDemo() {\n  console.log('Executing: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 30: Unit Testing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Unit Testing\");\n    }\n}",
+              "solutionCode": "// Chapter 30: Unit Testing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Unit Testing\");\n    }\n}",
               "expectedOutput": "Executing: Unit Testing"
             }
           ],
@@ -1465,9 +1465,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Unit Testing",
               "description": "Write a clean solution for Unit Testing that returns expected status.",
-              "starterCode": "// Chapter 30: Unit Testing\nfunction runTopicDemo() {\n  console.log('Executing: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Unit Testing\nfunction runTopicDemo() {\n  console.log('Executing: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 30: Unit Testing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Unit Testing\");\n    }\n}",
+              "solutionCode": "// Chapter 30: Unit Testing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Unit Testing\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1479,7 +1479,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 30: Unit Testing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Unit Testing?)\nUnit Testing in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides tape to simplify development and prevent common bugs.**\n- **Provides jest (ts: jest) to simplify development and prevent common bugs.**\n- **Provides Alsatian to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 30: Unit Testing\nfunction runTopicDemo() {\n  console.log('Executing: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Unit Testing?)\nUnit Testing in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides tape to write clean, predictable code.**\n- **Provides jest (ts: jest) to write clean, predictable code.**\n- **Provides Alsatian to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 30: Unit Testing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Unit Testing\");\n    }\n}\n```\n",
             "explanation": "Mastering Unit Testing is essential for professional engineering."
           }
         }
@@ -1506,8 +1506,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "Credits Working Implementation",
               "description": "Complete working demonstration of Credits",
-              "starterCode": "// Chapter 31: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 31: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
+              "solutionCode": "// Chapter 31: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
               "expectedOutput": "Executing: Credits"
             }
           ],
@@ -1515,9 +1515,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement Credits",
               "description": "Write a clean solution for Credits that returns expected status.",
-              "starterCode": "// Chapter 31: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 31: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
+              "solutionCode": "// Chapter 31: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1529,7 +1529,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 31: Credits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 31: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 31: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}\n```\n",
             "explanation": "Mastering Credits is essential for professional engineering."
           }
         },
@@ -1549,8 +1549,8 @@ export const typescriptCompleteCourse = {
             {
               "title": "You may also like Working Implementation",
               "description": "Complete working demonstration of You may also like",
-              "starterCode": "// Chapter 32: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 32: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
+              "solutionCode": "// Chapter 32: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
               "expectedOutput": "Executing: You may also like"
             }
           ],
@@ -1558,9 +1558,9 @@ export const typescriptCompleteCourse = {
             {
               "title": "Implement You may also like",
               "description": "Write a clean solution for You may also like that returns expected status.",
-              "starterCode": "// Chapter 32: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 32: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
+              "solutionCode": "// Chapter 32: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1572,7 +1572,7 @@ export const typescriptCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 32: You may also like",
-            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 32: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 32: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}\n```\n",
             "explanation": "Mastering You may also like is essential for professional engineering."
           }
         }

@@ -1,10 +1,10 @@
 export const postgresqlCompleteCourse = {
   "title": "PostgreSQL Advanced Architecture (31 Chapters)",
-  "description": "Mastering PostgreSQL JSONB, Window Functions, Full-Text Search, Connection Pooling, Partitioning, and Performance.",
+  "description": "JSONB, Window Functions, Full-Text Search, Connection Pooling, and Partitioning.",
   "slug": "postgresql-advanced-architecture",
-  "stream": "backend",
+  "stream": "database",
   "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-  "order": 3,
+  "order": 5,
   "modules": [
     {
       "title": "Phase 1: Chapters 1 to 10",
@@ -35,8 +35,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Getting started with PostgreSQL Working Implementation",
               "description": "Complete working demonstration of Getting started with PostgreSQL",
-              "starterCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runDemo() {\n  console.log('Running: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runDemo() {\n  console.log('Running: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Getting started with PostgreSQL"
             }
           ],
@@ -44,9 +44,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Getting started with PostgreSQL",
               "description": "Write a clean solution for Getting started with PostgreSQL that returns expected status.",
-              "starterCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runDemo() {\n  console.log('Running: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with PostgreSQL\nfunction runDemo() {\n  console.log('Running: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -58,7 +58,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 1: Getting started with PostgreSQL",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with PostgreSQL?)\nGetting started with PostgreSQL stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Installing PostgreSQL on Windows to simplify development and prevent common bugs.**\n- **Provides Install PostgreSQL from Source on Linux to simplify development and prevent common bugs.**\n- **Provides Installation on GNU+Linux to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 1: Getting started with PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with PostgreSQL?)\nGetting started with PostgreSQL manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Installing PostgreSQL on Windows to write clean, predictable code.**\n- **Provides Install PostgreSQL from Source on Linux to write clean, predictable code.**\n- **Provides Installation on GNU+Linux to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 1: Getting started with PostgreSQL\nfunction runDemo() {\n  console.log('Running: Getting started with PostgreSQL');\n  return { success: true, topic: 'Getting started with PostgreSQL' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Getting started with PostgreSQL is essential for professional engineering."
           }
         },
@@ -86,8 +86,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Data Types Working Implementation",
               "description": "Complete working demonstration of Data Types",
-              "starterCode": "// Chapter 2: Data Types\nfunction runTopicDemo() {\n  console.log('Executing: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Data Types\nfunction runTopicDemo() {\n  console.log('Executing: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 2: Data Types\nfunction runDemo() {\n  console.log('Running: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Data Types\nfunction runDemo() {\n  console.log('Running: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Data Types"
             }
           ],
@@ -95,9 +95,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Data Types",
               "description": "Write a clean solution for Data Types that returns expected status.",
-              "starterCode": "// Chapter 2: Data Types\nfunction runTopicDemo() {\n  console.log('Executing: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Data Types\nfunction runTopicDemo() {\n  console.log('Executing: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 2: Data Types\nfunction runDemo() {\n  console.log('Running: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Data Types\nfunction runDemo() {\n  console.log('Running: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -109,7 +109,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 2: Data Types",
-            "content": "### \ud83c\udf1f 1. Definition (What is Data Types?)\nData Types stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Numeric Types to simplify development and prevent common bugs.**\n- **Provides Date/ Time Types to simplify development and prevent common bugs.**\n- **Provides Geometric Types to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 2: Data Types\nfunction runTopicDemo() {\n  console.log('Executing: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Data Types?)\nData Types manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Numeric Types to write clean, predictable code.**\n- **Provides Date/ Time Types to write clean, predictable code.**\n- **Provides Geometric Types to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 2: Data Types\nfunction runDemo() {\n  console.log('Running: Data Types');\n  return { success: true, topic: 'Data Types' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Data Types is essential for professional engineering."
           }
         },
@@ -137,8 +137,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Dates, Timestamps, and Intervals Working Implementation",
               "description": "Complete working demonstration of Dates, Timestamps, and Intervals",
-              "starterCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runTopicDemo() {\n  console.log('Executing: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runTopicDemo() {\n  console.log('Executing: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runDemo() {\n  console.log('Running: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runDemo() {\n  console.log('Running: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Dates, Timestamps, and Intervals"
             }
           ],
@@ -146,9 +146,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Dates, Timestamps, and Intervals",
               "description": "Write a clean solution for Dates, Timestamps, and Intervals that returns expected status.",
-              "starterCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runTopicDemo() {\n  console.log('Executing: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runTopicDemo() {\n  console.log('Executing: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runDemo() {\n  console.log('Running: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Dates, Timestamps, and Intervals\nfunction runDemo() {\n  console.log('Running: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -160,7 +160,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 3: Dates, Timestamps, and Intervals",
-            "content": "### \ud83c\udf1f 1. Definition (What is Dates, Timestamps, and Intervals?)\nDates, Timestamps, and Intervals stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SELECT the last day of month to simplify development and prevent common bugs.**\n- **Provides Cast a timestamp or interval to a string to simplify development and prevent common bugs.**\n- **Provides Count the number of records per week to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 3: Dates, Timestamps, and Intervals\nfunction runTopicDemo() {\n  console.log('Executing: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Dates, Timestamps, and Intervals?)\nDates, Timestamps, and Intervals manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SELECT the last day of month to write clean, predictable code.**\n- **Provides Cast a timestamp or interval to a string to write clean, predictable code.**\n- **Provides Count the number of records per week to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 3: Dates, Timestamps, and Intervals\nfunction runDemo() {\n  console.log('Running: Dates, Timestamps, and Intervals');\n  return { success: true, topic: 'Dates, Timestamps, and Intervals' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Dates, Timestamps, and Intervals is essential for professional engineering."
           }
         },
@@ -188,8 +188,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Table Creation Working Implementation",
               "description": "Complete working demonstration of Table Creation",
-              "starterCode": "// Chapter 4: Table Creation\nfunction runTopicDemo() {\n  console.log('Executing: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Table Creation\nfunction runTopicDemo() {\n  console.log('Executing: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 4: Table Creation\nfunction runDemo() {\n  console.log('Running: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Table Creation\nfunction runDemo() {\n  console.log('Running: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Table Creation"
             }
           ],
@@ -197,9 +197,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Table Creation",
               "description": "Write a clean solution for Table Creation that returns expected status.",
-              "starterCode": "// Chapter 4: Table Creation\nfunction runTopicDemo() {\n  console.log('Executing: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Table Creation\nfunction runTopicDemo() {\n  console.log('Executing: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 4: Table Creation\nfunction runDemo() {\n  console.log('Running: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Table Creation\nfunction runDemo() {\n  console.log('Running: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -211,7 +211,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 4: Table Creation",
-            "content": "### \ud83c\udf1f 1. Definition (What is Table Creation?)\nTable Creation stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Show table de\ufb01nition to simplify development and prevent common bugs.**\n- **Provides Create table from select to simplify development and prevent common bugs.**\n- **Provides Create unlogged table to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 4: Table Creation\nfunction runTopicDemo() {\n  console.log('Executing: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Table Creation?)\nTable Creation manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Show table de\ufb01nition to write clean, predictable code.**\n- **Provides Create table from select to write clean, predictable code.**\n- **Provides Create unlogged table to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 4: Table Creation\nfunction runDemo() {\n  console.log('Running: Table Creation');\n  return { success: true, topic: 'Table Creation' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Table Creation is essential for professional engineering."
           }
         },
@@ -231,8 +231,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "SELECT Working Implementation",
               "description": "Complete working demonstration of SELECT",
-              "starterCode": "// Chapter 5: SELECT\nfunction runTopicDemo() {\n  console.log('Executing: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: SELECT\nfunction runTopicDemo() {\n  console.log('Executing: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 5: SELECT\nfunction runDemo() {\n  console.log('Running: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: SELECT\nfunction runDemo() {\n  console.log('Running: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: SELECT"
             }
           ],
@@ -240,9 +240,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement SELECT",
               "description": "Write a clean solution for SELECT that returns expected status.",
-              "starterCode": "// Chapter 5: SELECT\nfunction runTopicDemo() {\n  console.log('Executing: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: SELECT\nfunction runTopicDemo() {\n  console.log('Executing: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 5: SELECT\nfunction runDemo() {\n  console.log('Running: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: SELECT\nfunction runDemo() {\n  console.log('Running: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -254,7 +254,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 5: SELECT",
-            "content": "### \ud83c\udf1f 1. Definition (What is SELECT?)\nSELECT stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SELECT using WHERE to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 5: SELECT\nfunction runTopicDemo() {\n  console.log('Executing: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is SELECT?)\nSELECT manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SELECT using WHERE to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 5: SELECT\nfunction runDemo() {\n  console.log('Running: SELECT');\n  return { success: true, topic: 'SELECT' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering SELECT is essential for professional engineering."
           }
         },
@@ -274,8 +274,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Find String Length / Character Length Working Implementation",
               "description": "Complete working demonstration of Find String Length / Character Length",
-              "starterCode": "// Chapter 6: Find String Length / Character Length\nfunction runTopicDemo() {\n  console.log('Executing: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Find String Length / Character Length\nfunction runTopicDemo() {\n  console.log('Executing: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 6: Find String Length / Character Length\nfunction runDemo() {\n  console.log('Running: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Find String Length / Character Length\nfunction runDemo() {\n  console.log('Running: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Find String Length / Character Length"
             }
           ],
@@ -283,9 +283,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Find String Length / Character Length",
               "description": "Write a clean solution for Find String Length / Character Length that returns expected status.",
-              "starterCode": "// Chapter 6: Find String Length / Character Length\nfunction runTopicDemo() {\n  console.log('Executing: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Find String Length / Character Length\nfunction runTopicDemo() {\n  console.log('Executing: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 6: Find String Length / Character Length\nfunction runDemo() {\n  console.log('Running: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Find String Length / Character Length\nfunction runDemo() {\n  console.log('Running: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -297,7 +297,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 6: Find String Length / Character Length",
-            "content": "### \ud83c\udf1f 1. Definition (What is Find String Length / Character Length?)\nFind String Length / Character Length stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Example to get length of a character varying \ufb01eld to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 6: Find String Length / Character Length\nfunction runTopicDemo() {\n  console.log('Executing: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Find String Length / Character Length?)\nFind String Length / Character Length manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Example to get length of a character varying \ufb01eld to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 6: Find String Length / Character Length\nfunction runDemo() {\n  console.log('Running: Find String Length / Character Length');\n  return { success: true, topic: 'Find String Length / Character Length' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Find String Length / Character Length is essential for professional engineering."
           }
         },
@@ -325,8 +325,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "COALESCE Working Implementation",
               "description": "Complete working demonstration of COALESCE",
-              "starterCode": "// Chapter 7: COALESCE\nfunction runTopicDemo() {\n  console.log('Executing: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: COALESCE\nfunction runTopicDemo() {\n  console.log('Executing: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 7: COALESCE\nfunction runDemo() {\n  console.log('Running: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: COALESCE\nfunction runDemo() {\n  console.log('Running: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: COALESCE"
             }
           ],
@@ -334,9 +334,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement COALESCE",
               "description": "Write a clean solution for COALESCE that returns expected status.",
-              "starterCode": "// Chapter 7: COALESCE\nfunction runTopicDemo() {\n  console.log('Executing: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: COALESCE\nfunction runTopicDemo() {\n  console.log('Executing: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 7: COALESCE\nfunction runDemo() {\n  console.log('Running: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: COALESCE\nfunction runDemo() {\n  console.log('Running: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -348,7 +348,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 7: COALESCE",
-            "content": "### \ud83c\udf1f 1. Definition (What is COALESCE?)\nCOALESCE stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Single non null argument to simplify development and prevent common bugs.**\n- **Provides Multiple non null arguments to simplify development and prevent common bugs.**\n- **Provides All null arguments to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 7: COALESCE\nfunction runTopicDemo() {\n  console.log('Executing: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is COALESCE?)\nCOALESCE manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Single non null argument to write clean, predictable code.**\n- **Provides Multiple non null arguments to write clean, predictable code.**\n- **Provides All null arguments to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 7: COALESCE\nfunction runDemo() {\n  console.log('Running: COALESCE');\n  return { success: true, topic: 'COALESCE' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering COALESCE is essential for professional engineering."
           }
         },
@@ -376,8 +376,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "INSERT Working Implementation",
               "description": "Complete working demonstration of INSERT",
-              "starterCode": "// Chapter 8: INSERT\nfunction runTopicDemo() {\n  console.log('Executing: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: INSERT\nfunction runTopicDemo() {\n  console.log('Executing: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 8: INSERT\nfunction runDemo() {\n  console.log('Running: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: INSERT\nfunction runDemo() {\n  console.log('Running: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: INSERT"
             }
           ],
@@ -385,9 +385,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement INSERT",
               "description": "Write a clean solution for INSERT that returns expected status.",
-              "starterCode": "// Chapter 8: INSERT\nfunction runTopicDemo() {\n  console.log('Executing: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: INSERT\nfunction runTopicDemo() {\n  console.log('Executing: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 8: INSERT\nfunction runDemo() {\n  console.log('Running: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: INSERT\nfunction runDemo() {\n  console.log('Running: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -399,7 +399,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 8: INSERT",
-            "content": "### \ud83c\udf1f 1. Definition (What is INSERT?)\nINSERT stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Insert data using COPY to simplify development and prevent common bugs.**\n- **Provides Inserting multiple rows to simplify development and prevent common bugs.**\n- **Provides INSERT data and RETURING values to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 8: INSERT\nfunction runTopicDemo() {\n  console.log('Executing: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is INSERT?)\nINSERT manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Insert data using COPY to write clean, predictable code.**\n- **Provides Inserting multiple rows to write clean, predictable code.**\n- **Provides INSERT data and RETURING values to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 8: INSERT\nfunction runDemo() {\n  console.log('Running: INSERT');\n  return { success: true, topic: 'INSERT' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering INSERT is essential for professional engineering."
           }
         },
@@ -427,8 +427,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "UPDATE Working Implementation",
               "description": "Complete working demonstration of UPDATE",
-              "starterCode": "// Chapter 9: UPDATE\nfunction runTopicDemo() {\n  console.log('Executing: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: UPDATE\nfunction runTopicDemo() {\n  console.log('Executing: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 9: UPDATE\nfunction runDemo() {\n  console.log('Running: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: UPDATE\nfunction runDemo() {\n  console.log('Running: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: UPDATE"
             }
           ],
@@ -436,9 +436,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement UPDATE",
               "description": "Write a clean solution for UPDATE that returns expected status.",
-              "starterCode": "// Chapter 9: UPDATE\nfunction runTopicDemo() {\n  console.log('Executing: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: UPDATE\nfunction runTopicDemo() {\n  console.log('Executing: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 9: UPDATE\nfunction runDemo() {\n  console.log('Running: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: UPDATE\nfunction runDemo() {\n  console.log('Running: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -450,7 +450,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 9: UPDATE",
-            "content": "### \ud83c\udf1f 1. Definition (What is UPDATE?)\nUPDATE stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Updating a table based on joining another table to simplify development and prevent common bugs.**\n- **Provides Update all rows in a table to simplify development and prevent common bugs.**\n- **Provides Update all rows meeting a condition to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 9: UPDATE\nfunction runTopicDemo() {\n  console.log('Executing: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is UPDATE?)\nUPDATE manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Updating a table based on joining another table to write clean, predictable code.**\n- **Provides Update all rows in a table to write clean, predictable code.**\n- **Provides Update all rows meeting a condition to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 9: UPDATE\nfunction runDemo() {\n  console.log('Running: UPDATE');\n  return { success: true, topic: 'UPDATE' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering UPDATE is essential for professional engineering."
           }
         },
@@ -478,8 +478,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "JSON Support Working Implementation",
               "description": "Complete working demonstration of JSON Support",
-              "starterCode": "// Chapter 10: JSON Support\nfunction runTopicDemo() {\n  console.log('Executing: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: JSON Support\nfunction runTopicDemo() {\n  console.log('Executing: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 10: JSON Support\nfunction runDemo() {\n  console.log('Running: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: JSON Support\nfunction runDemo() {\n  console.log('Running: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: JSON Support"
             }
           ],
@@ -487,9 +487,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement JSON Support",
               "description": "Write a clean solution for JSON Support that returns expected status.",
-              "starterCode": "// Chapter 10: JSON Support\nfunction runTopicDemo() {\n  console.log('Executing: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: JSON Support\nfunction runTopicDemo() {\n  console.log('Executing: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 10: JSON Support\nfunction runDemo() {\n  console.log('Running: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: JSON Support\nfunction runDemo() {\n  console.log('Running: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -501,7 +501,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 10: JSON Support",
-            "content": "### \ud83c\udf1f 1. Definition (What is JSON Support?)\nJSON Support stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using JSONb operators to simplify development and prevent common bugs.**\n- **Provides Querying complex JSON documents to simplify development and prevent common bugs.**\n- **Provides Creating a pure JSON table to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 10: JSON Support\nfunction runTopicDemo() {\n  console.log('Executing: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is JSON Support?)\nJSON Support manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using JSONb operators to write clean, predictable code.**\n- **Provides Querying complex JSON documents to write clean, predictable code.**\n- **Provides Creating a pure JSON table to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 10: JSON Support\nfunction runDemo() {\n  console.log('Running: JSON Support');\n  return { success: true, topic: 'JSON Support' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering JSON Support is essential for professional engineering."
           }
         }
@@ -536,8 +536,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Aggregate Functions Working Implementation",
               "description": "Complete working demonstration of Aggregate Functions",
-              "starterCode": "// Chapter 11: Aggregate Functions\nfunction runTopicDemo() {\n  console.log('Executing: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Aggregate Functions\nfunction runTopicDemo() {\n  console.log('Executing: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 11: Aggregate Functions\nfunction runDemo() {\n  console.log('Running: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Aggregate Functions\nfunction runDemo() {\n  console.log('Running: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Aggregate Functions"
             }
           ],
@@ -545,9 +545,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Aggregate Functions",
               "description": "Write a clean solution for Aggregate Functions that returns expected status.",
-              "starterCode": "// Chapter 11: Aggregate Functions\nfunction runTopicDemo() {\n  console.log('Executing: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Aggregate Functions\nfunction runTopicDemo() {\n  console.log('Executing: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 11: Aggregate Functions\nfunction runDemo() {\n  console.log('Running: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Aggregate Functions\nfunction runDemo() {\n  console.log('Running: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -559,7 +559,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 11: Aggregate Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Aggregate Functions?)\nAggregate Functions stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple statistics: min(), max(), avg() to simplify development and prevent common bugs.**\n- **Provides regr_slope(Y, X) : slope of the least: squares: \ufb01t linear equation determined by the (X, Y) pairs to simplify development and prevent common bugs.**\n- **Provides string_agg(expression, delimiter) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 11: Aggregate Functions\nfunction runTopicDemo() {\n  console.log('Executing: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Aggregate Functions?)\nAggregate Functions manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple statistics: min(), max(), avg() to write clean, predictable code.**\n- **Provides regr_slope(Y, X) : slope of the least: squares: \ufb01t linear equation determined by the (X, Y) pairs to write clean, predictable code.**\n- **Provides string_agg(expression, delimiter) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 11: Aggregate Functions\nfunction runDemo() {\n  console.log('Running: Aggregate Functions');\n  return { success: true, topic: 'Aggregate Functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Aggregate Functions is essential for professional engineering."
           }
         },
@@ -583,8 +583,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Common Table Expressions (WITH) Working Implementation",
               "description": "Complete working demonstration of Common Table Expressions (WITH)",
-              "starterCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runTopicDemo() {\n  console.log('Executing: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runTopicDemo() {\n  console.log('Executing: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runDemo() {\n  console.log('Running: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runDemo() {\n  console.log('Running: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Common Table Expressions (WITH)"
             }
           ],
@@ -592,9 +592,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Common Table Expressions (WITH)",
               "description": "Write a clean solution for Common Table Expressions (WITH) that returns expected status.",
-              "starterCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runTopicDemo() {\n  console.log('Executing: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runTopicDemo() {\n  console.log('Executing: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runDemo() {\n  console.log('Running: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Common Table Expressions (WITH)\nfunction runDemo() {\n  console.log('Running: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -606,7 +606,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 12: Common Table Expressions (WITH)",
-            "content": "### \ud83c\udf1f 1. Definition (What is Common Table Expressions (WITH)?)\nCommon Table Expressions (WITH) stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Common Table Expressions in SELECT Queries to simplify development and prevent common bugs.**\n- **Provides Traversing tree using WITH RECURSIVE to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 12: Common Table Expressions (WITH)\nfunction runTopicDemo() {\n  console.log('Executing: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Common Table Expressions (WITH)?)\nCommon Table Expressions (WITH) manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Common Table Expressions in SELECT Queries to write clean, predictable code.**\n- **Provides Traversing tree using WITH RECURSIVE to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 12: Common Table Expressions (WITH)\nfunction runDemo() {\n  console.log('Running: Common Table Expressions (WITH)');\n  return { success: true, topic: 'Common Table Expressions (WITH)' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Common Table Expressions (WITH) is essential for professional engineering."
           }
         },
@@ -630,8 +630,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Window Functions Working Implementation",
               "description": "Complete working demonstration of Window Functions",
-              "starterCode": "// Chapter 13: Window Functions\nfunction runTopicDemo() {\n  console.log('Executing: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Window Functions\nfunction runTopicDemo() {\n  console.log('Executing: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 13: Window Functions\nfunction runDemo() {\n  console.log('Running: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Window Functions\nfunction runDemo() {\n  console.log('Running: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Window Functions"
             }
           ],
@@ -639,9 +639,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Window Functions",
               "description": "Write a clean solution for Window Functions that returns expected status.",
-              "starterCode": "// Chapter 13: Window Functions\nfunction runTopicDemo() {\n  console.log('Executing: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Window Functions\nfunction runTopicDemo() {\n  console.log('Executing: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 13: Window Functions\nfunction runDemo() {\n  console.log('Running: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Window Functions\nfunction runDemo() {\n  console.log('Running: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -653,7 +653,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 13: Window Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Window Functions?)\nWindow Functions stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides generic example to simplify development and prevent common bugs.**\n- **Provides column values vs dense_rank vs rank vs row_number to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 13: Window Functions\nfunction runTopicDemo() {\n  console.log('Executing: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Window Functions?)\nWindow Functions manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides generic example to write clean, predictable code.**\n- **Provides column values vs dense_rank vs rank vs row_number to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 13: Window Functions\nfunction runDemo() {\n  console.log('Running: Window Functions');\n  return { success: true, topic: 'Window Functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Window Functions is essential for professional engineering."
           }
         },
@@ -673,8 +673,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Recursive queries Working Implementation",
               "description": "Complete working demonstration of Recursive queries",
-              "starterCode": "// Chapter 14: Recursive queries\nfunction runTopicDemo() {\n  console.log('Executing: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Recursive queries\nfunction runTopicDemo() {\n  console.log('Executing: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 14: Recursive queries\nfunction runDemo() {\n  console.log('Running: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Recursive queries\nfunction runDemo() {\n  console.log('Running: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Recursive queries"
             }
           ],
@@ -682,9 +682,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Recursive queries",
               "description": "Write a clean solution for Recursive queries that returns expected status.",
-              "starterCode": "// Chapter 14: Recursive queries\nfunction runTopicDemo() {\n  console.log('Executing: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Recursive queries\nfunction runTopicDemo() {\n  console.log('Executing: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 14: Recursive queries\nfunction runDemo() {\n  console.log('Running: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Recursive queries\nfunction runDemo() {\n  console.log('Running: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -696,7 +696,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 14: Recursive queries",
-            "content": "### \ud83c\udf1f 1. Definition (What is Recursive queries?)\nRecursive queries stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sum of Integers to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 14: Recursive queries\nfunction runTopicDemo() {\n  console.log('Executing: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Recursive queries?)\nRecursive queries manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sum of Integers to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 14: Recursive queries\nfunction runDemo() {\n  console.log('Running: Recursive queries');\n  return { success: true, topic: 'Recursive queries' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Recursive queries is essential for professional engineering."
           }
         },
@@ -724,8 +724,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Programming with PL/pgSQL Working Implementation",
               "description": "Complete working demonstration of Programming with PL/pgSQL",
-              "starterCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runTopicDemo() {\n  console.log('Executing: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runTopicDemo() {\n  console.log('Executing: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runDemo() {\n  console.log('Running: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runDemo() {\n  console.log('Running: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Programming with PL/pgSQL"
             }
           ],
@@ -733,9 +733,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Programming with PL/pgSQL",
               "description": "Write a clean solution for Programming with PL/pgSQL that returns expected status.",
-              "starterCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runTopicDemo() {\n  console.log('Executing: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runTopicDemo() {\n  console.log('Executing: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runDemo() {\n  console.log('Running: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Programming with PL/pgSQL\nfunction runDemo() {\n  console.log('Running: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -747,7 +747,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 15: Programming with PL/pgSQL",
-            "content": "### \ud83c\udf1f 1. Definition (What is Programming with PL/pgSQL?)\nProgramming with PL/pgSQL stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic PL/pgSQL Function to simplify development and prevent common bugs.**\n- **Provides custom exceptions to simplify development and prevent common bugs.**\n- **Provides PL/pgSQL Syntax to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 15: Programming with PL/pgSQL\nfunction runTopicDemo() {\n  console.log('Executing: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Programming with PL/pgSQL?)\nProgramming with PL/pgSQL manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic PL/pgSQL Function to write clean, predictable code.**\n- **Provides custom exceptions to write clean, predictable code.**\n- **Provides PL/pgSQL Syntax to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 15: Programming with PL/pgSQL\nfunction runDemo() {\n  console.log('Running: Programming with PL/pgSQL');\n  return { success: true, topic: 'Programming with PL/pgSQL' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Programming with PL/pgSQL is essential for professional engineering."
           }
         },
@@ -767,8 +767,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Inheritance Working Implementation",
               "description": "Complete working demonstration of Inheritance",
-              "starterCode": "// Chapter 16: Inheritance\nfunction runTopicDemo() {\n  console.log('Executing: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Inheritance\nfunction runTopicDemo() {\n  console.log('Executing: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 16: Inheritance\nfunction runDemo() {\n  console.log('Running: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Inheritance\nfunction runDemo() {\n  console.log('Running: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Inheritance"
             }
           ],
@@ -776,9 +776,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Inheritance",
               "description": "Write a clean solution for Inheritance that returns expected status.",
-              "starterCode": "// Chapter 16: Inheritance\nfunction runTopicDemo() {\n  console.log('Executing: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Inheritance\nfunction runTopicDemo() {\n  console.log('Executing: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 16: Inheritance\nfunction runDemo() {\n  console.log('Running: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Inheritance\nfunction runDemo() {\n  console.log('Running: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -790,7 +790,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 16: Inheritance",
-            "content": "### \ud83c\udf1f 1. Definition (What is Inheritance?)\nInheritance stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating children tables to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 16: Inheritance\nfunction runTopicDemo() {\n  console.log('Executing: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Inheritance?)\nInheritance manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating children tables to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 16: Inheritance\nfunction runDemo() {\n  console.log('Running: Inheritance');\n  return { success: true, topic: 'Inheritance' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Inheritance is essential for professional engineering."
           }
         },
@@ -818,8 +818,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Export PostgreSQL database table header and data to CSV \ufb01le Working Implementation",
               "description": "Complete working demonstration of Export PostgreSQL database table header and data to CSV \ufb01le",
-              "starterCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runDemo() {\n  console.log('Running: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runDemo() {\n  console.log('Running: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Export PostgreSQL database table header and data to CSV \ufb01le"
             }
           ],
@@ -827,9 +827,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Export PostgreSQL database table header and data to CSV \ufb01le",
               "description": "Write a clean solution for Export PostgreSQL database table header and data to CSV \ufb01le that returns expected status.",
-              "starterCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runDemo() {\n  console.log('Running: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runDemo() {\n  console.log('Running: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -841,7 +841,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le",
-            "content": "### \ud83c\udf1f 1. Definition (What is Export PostgreSQL database table header and data to CSV \ufb01le?)\nExport PostgreSQL database table header and data to CSV \ufb01le stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides copy from query to simplify development and prevent common bugs.**\n- **Provides Export PostgreSQL table to csv with header for some column(s) to simplify development and prevent common bugs.**\n- **Provides Full table backup to csv with header to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Export PostgreSQL database table header and data to CSV \ufb01le?)\nExport PostgreSQL database table header and data to CSV \ufb01le manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides copy from query to write clean, predictable code.**\n- **Provides Export PostgreSQL table to csv with header for some column(s) to write clean, predictable code.**\n- **Provides Full table backup to csv with header to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 17: Export PostgreSQL database table header and data to CSV \ufb01le\nfunction runDemo() {\n  console.log('Running: Export PostgreSQL database table header and data to CSV \ufb01le');\n  return { success: true, topic: 'Export PostgreSQL database table header and data to CSV \ufb01le' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Export PostgreSQL database table header and data to CSV \ufb01le is essential for professional engineering."
           }
         },
@@ -865,8 +865,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Triggers and Trigger Functions Working Implementation",
               "description": "Complete working demonstration of Triggers and Trigger Functions",
-              "starterCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runTopicDemo() {\n  console.log('Executing: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runTopicDemo() {\n  console.log('Executing: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runDemo() {\n  console.log('Running: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runDemo() {\n  console.log('Running: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Triggers and Trigger Functions"
             }
           ],
@@ -874,9 +874,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Triggers and Trigger Functions",
               "description": "Write a clean solution for Triggers and Trigger Functions that returns expected status.",
-              "starterCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runTopicDemo() {\n  console.log('Executing: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runTopicDemo() {\n  console.log('Executing: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runDemo() {\n  console.log('Running: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Triggers and Trigger Functions\nfunction runDemo() {\n  console.log('Running: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -888,7 +888,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 18: Triggers and Trigger Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Triggers and Trigger Functions?)\nTriggers and Trigger Functions stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type of triggers to simplify development and prevent common bugs.**\n- **Provides Basic PL/pgSQL Trigger Function to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 18: Triggers and Trigger Functions\nfunction runTopicDemo() {\n  console.log('Executing: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Triggers and Trigger Functions?)\nTriggers and Trigger Functions manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type of triggers to write clean, predictable code.**\n- **Provides Basic PL/pgSQL Trigger Function to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 18: Triggers and Trigger Functions\nfunction runDemo() {\n  console.log('Running: Triggers and Trigger Functions');\n  return { success: true, topic: 'Triggers and Trigger Functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Triggers and Trigger Functions is essential for professional engineering."
           }
         },
@@ -908,8 +908,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Event Triggers Working Implementation",
               "description": "Complete working demonstration of Event Triggers",
-              "starterCode": "// Chapter 19: Event Triggers\nfunction runTopicDemo() {\n  console.log('Executing: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Event Triggers\nfunction runTopicDemo() {\n  console.log('Executing: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 19: Event Triggers\nfunction runDemo() {\n  console.log('Running: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Event Triggers\nfunction runDemo() {\n  console.log('Running: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Event Triggers"
             }
           ],
@@ -917,9 +917,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Event Triggers",
               "description": "Write a clean solution for Event Triggers that returns expected status.",
-              "starterCode": "// Chapter 19: Event Triggers\nfunction runTopicDemo() {\n  console.log('Executing: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Event Triggers\nfunction runTopicDemo() {\n  console.log('Executing: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 19: Event Triggers\nfunction runDemo() {\n  console.log('Running: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Event Triggers\nfunction runDemo() {\n  console.log('Running: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -931,7 +931,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 19: Event Triggers",
-            "content": "### \ud83c\udf1f 1. Definition (What is Event Triggers?)\nEvent Triggers stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Logging DDL Command Start Events to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 19: Event Triggers\nfunction runTopicDemo() {\n  console.log('Executing: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Event Triggers?)\nEvent Triggers manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Logging DDL Command Start Events to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 19: Event Triggers\nfunction runDemo() {\n  console.log('Running: Event Triggers');\n  return { success: true, topic: 'Event Triggers' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Event Triggers is essential for professional engineering."
           }
         },
@@ -959,8 +959,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Role Management Working Implementation",
               "description": "Complete working demonstration of Role Management",
-              "starterCode": "// Chapter 20: Role Management\nfunction runTopicDemo() {\n  console.log('Executing: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Role Management\nfunction runTopicDemo() {\n  console.log('Executing: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 20: Role Management\nfunction runDemo() {\n  console.log('Running: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Role Management\nfunction runDemo() {\n  console.log('Running: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Role Management"
             }
           ],
@@ -968,9 +968,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Role Management",
               "description": "Write a clean solution for Role Management that returns expected status.",
-              "starterCode": "// Chapter 20: Role Management\nfunction runTopicDemo() {\n  console.log('Executing: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Role Management\nfunction runTopicDemo() {\n  console.log('Executing: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 20: Role Management\nfunction runDemo() {\n  console.log('Running: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Role Management\nfunction runDemo() {\n  console.log('Running: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -982,7 +982,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 20: Role Management",
-            "content": "### \ud83c\udf1f 1. Definition (What is Role Management?)\nRole Management stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create a user with a password to simplify development and prevent common bugs.**\n- **Provides Grant and Revoke Privileges to simplify development and prevent common bugs.**\n- **Provides Create Role and matching database to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 20: Role Management\nfunction runTopicDemo() {\n  console.log('Executing: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Role Management?)\nRole Management manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create a user with a password to write clean, predictable code.**\n- **Provides Grant and Revoke Privileges to write clean, predictable code.**\n- **Provides Create Role and matching database to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 20: Role Management\nfunction runDemo() {\n  console.log('Running: Role Management');\n  return { success: true, topic: 'Role Management' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Role Management is essential for professional engineering."
           }
         }
@@ -1009,8 +1009,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Postgres cryptographic functions Working Implementation",
               "description": "Complete working demonstration of Postgres cryptographic functions",
-              "starterCode": "// Chapter 21: Postgres cryptographic functions\nfunction runTopicDemo() {\n  console.log('Executing: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Postgres cryptographic functions\nfunction runTopicDemo() {\n  console.log('Executing: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 21: Postgres cryptographic functions\nfunction runDemo() {\n  console.log('Running: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Postgres cryptographic functions\nfunction runDemo() {\n  console.log('Running: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Postgres cryptographic functions"
             }
           ],
@@ -1018,9 +1018,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Postgres cryptographic functions",
               "description": "Write a clean solution for Postgres cryptographic functions that returns expected status.",
-              "starterCode": "// Chapter 21: Postgres cryptographic functions\nfunction runTopicDemo() {\n  console.log('Executing: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Postgres cryptographic functions\nfunction runTopicDemo() {\n  console.log('Executing: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 21: Postgres cryptographic functions\nfunction runDemo() {\n  console.log('Running: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Postgres cryptographic functions\nfunction runDemo() {\n  console.log('Running: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1032,7 +1032,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 21: Postgres cryptographic functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Postgres cryptographic functions?)\nPostgres cryptographic functions stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides digest to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 21: Postgres cryptographic functions\nfunction runTopicDemo() {\n  console.log('Executing: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Postgres cryptographic functions?)\nPostgres cryptographic functions manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides digest to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 21: Postgres cryptographic functions\nfunction runDemo() {\n  console.log('Running: Postgres cryptographic functions');\n  return { success: true, topic: 'Postgres cryptographic functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Postgres cryptographic functions is essential for professional engineering."
           }
         },
@@ -1056,8 +1056,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Comments in PostgreSQL Working Implementation",
               "description": "Complete working demonstration of Comments in PostgreSQL",
-              "starterCode": "// Chapter 22: Comments in PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Comments in PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 22: Comments in PostgreSQL\nfunction runDemo() {\n  console.log('Running: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Comments in PostgreSQL\nfunction runDemo() {\n  console.log('Running: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Comments in PostgreSQL"
             }
           ],
@@ -1065,9 +1065,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Comments in PostgreSQL",
               "description": "Write a clean solution for Comments in PostgreSQL that returns expected status.",
-              "starterCode": "// Chapter 22: Comments in PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Comments in PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 22: Comments in PostgreSQL\nfunction runDemo() {\n  console.log('Running: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Comments in PostgreSQL\nfunction runDemo() {\n  console.log('Running: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1079,7 +1079,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 22: Comments in PostgreSQL",
-            "content": "### \ud83c\udf1f 1. Definition (What is Comments in PostgreSQL?)\nComments in PostgreSQL stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides COMMENT on Table to simplify development and prevent common bugs.**\n- **Provides Remove Comment to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 22: Comments in PostgreSQL\nfunction runTopicDemo() {\n  console.log('Executing: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Comments in PostgreSQL?)\nComments in PostgreSQL manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides COMMENT on Table to write clean, predictable code.**\n- **Provides Remove Comment to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 22: Comments in PostgreSQL\nfunction runDemo() {\n  console.log('Running: Comments in PostgreSQL');\n  return { success: true, topic: 'Comments in PostgreSQL' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Comments in PostgreSQL is essential for professional engineering."
           }
         },
@@ -1107,8 +1107,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Backup and Restore Working Implementation",
               "description": "Complete working demonstration of Backup and Restore",
-              "starterCode": "// Chapter 23: Backup and Restore\nfunction runTopicDemo() {\n  console.log('Executing: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Backup and Restore\nfunction runTopicDemo() {\n  console.log('Executing: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 23: Backup and Restore\nfunction runDemo() {\n  console.log('Running: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Backup and Restore\nfunction runDemo() {\n  console.log('Running: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Backup and Restore"
             }
           ],
@@ -1116,9 +1116,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Backup and Restore",
               "description": "Write a clean solution for Backup and Restore that returns expected status.",
-              "starterCode": "// Chapter 23: Backup and Restore\nfunction runTopicDemo() {\n  console.log('Executing: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Backup and Restore\nfunction runTopicDemo() {\n  console.log('Executing: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 23: Backup and Restore\nfunction runDemo() {\n  console.log('Running: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Backup and Restore\nfunction runDemo() {\n  console.log('Running: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1130,7 +1130,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 23: Backup and Restore",
-            "content": "### \ud83c\udf1f 1. Definition (What is Backup and Restore?)\nBackup and Restore stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Backing up one database to simplify development and prevent common bugs.**\n- **Provides Restoring backups to simplify development and prevent common bugs.**\n- **Provides Backing up the whole cluster to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 23: Backup and Restore\nfunction runTopicDemo() {\n  console.log('Executing: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Backup and Restore?)\nBackup and Restore manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Backing up one database to write clean, predictable code.**\n- **Provides Restoring backups to write clean, predictable code.**\n- **Provides Backing up the whole cluster to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 23: Backup and Restore\nfunction runDemo() {\n  console.log('Running: Backup and Restore');\n  return { success: true, topic: 'Backup and Restore' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Backup and Restore is essential for professional engineering."
           }
         },
@@ -1150,8 +1150,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Backup script for a production DB Working Implementation",
               "description": "Complete working demonstration of Backup script for a production DB",
-              "starterCode": "// Chapter 24: Backup script for a production DB\nfunction runTopicDemo() {\n  console.log('Executing: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Backup script for a production DB\nfunction runTopicDemo() {\n  console.log('Executing: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 24: Backup script for a production DB\nfunction runDemo() {\n  console.log('Running: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Backup script for a production DB\nfunction runDemo() {\n  console.log('Running: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Backup script for a production DB"
             }
           ],
@@ -1159,9 +1159,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Backup script for a production DB",
               "description": "Write a clean solution for Backup script for a production DB that returns expected status.",
-              "starterCode": "// Chapter 24: Backup script for a production DB\nfunction runTopicDemo() {\n  console.log('Executing: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Backup script for a production DB\nfunction runTopicDemo() {\n  console.log('Executing: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 24: Backup script for a production DB\nfunction runDemo() {\n  console.log('Running: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Backup script for a production DB\nfunction runDemo() {\n  console.log('Running: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1173,7 +1173,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 24: Backup script for a production DB",
-            "content": "### \ud83c\udf1f 1. Definition (What is Backup script for a production DB?)\nBackup script for a production DB stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides saveProdDb.sh to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 24: Backup script for a production DB\nfunction runTopicDemo() {\n  console.log('Executing: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Backup script for a production DB?)\nBackup script for a production DB manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides saveProdDb.sh to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 24: Backup script for a production DB\nfunction runDemo() {\n  console.log('Running: Backup script for a production DB');\n  return { success: true, topic: 'Backup script for a production DB' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Backup script for a production DB is essential for professional engineering."
           }
         },
@@ -1201,8 +1201,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Accessing Data Programmatically Working Implementation",
               "description": "Complete working demonstration of Accessing Data Programmatically",
-              "starterCode": "// Chapter 25: Accessing Data Programmatically\nfunction runTopicDemo() {\n  console.log('Executing: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Accessing Data Programmatically\nfunction runTopicDemo() {\n  console.log('Executing: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 25: Accessing Data Programmatically\nfunction runDemo() {\n  console.log('Running: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Accessing Data Programmatically\nfunction runDemo() {\n  console.log('Running: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Accessing Data Programmatically"
             }
           ],
@@ -1210,9 +1210,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Accessing Data Programmatically",
               "description": "Write a clean solution for Accessing Data Programmatically that returns expected status.",
-              "starterCode": "// Chapter 25: Accessing Data Programmatically\nfunction runTopicDemo() {\n  console.log('Executing: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Accessing Data Programmatically\nfunction runTopicDemo() {\n  console.log('Executing: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 25: Accessing Data Programmatically\nfunction runDemo() {\n  console.log('Running: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Accessing Data Programmatically\nfunction runDemo() {\n  console.log('Running: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1224,7 +1224,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 25: Accessing Data Programmatically",
-            "content": "### \ud83c\udf1f 1. Definition (What is Accessing Data Programmatically?)\nAccessing Data Programmatically stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Accessing PostgreSQL with the C: API to simplify development and prevent common bugs.**\n- **Provides Accessing PostgreSQL from python using psycopg2 to simplify development and prevent common bugs.**\n- **Provides Accessing PostgreSQL from .NET using the Npgsql provider to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 25: Accessing Data Programmatically\nfunction runTopicDemo() {\n  console.log('Executing: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Accessing Data Programmatically?)\nAccessing Data Programmatically manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Accessing PostgreSQL with the C: API to write clean, predictable code.**\n- **Provides Accessing PostgreSQL from python using psycopg2 to write clean, predictable code.**\n- **Provides Accessing PostgreSQL from .NET using the Npgsql provider to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 25: Accessing Data Programmatically\nfunction runDemo() {\n  console.log('Running: Accessing Data Programmatically');\n  return { success: true, topic: 'Accessing Data Programmatically' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Accessing Data Programmatically is essential for professional engineering."
           }
         },
@@ -1252,8 +1252,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Connect to PostgreSQL from Java Working Implementation",
               "description": "Complete working demonstration of Connect to PostgreSQL from Java",
-              "starterCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runTopicDemo() {\n  console.log('Executing: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runTopicDemo() {\n  console.log('Executing: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runDemo() {\n  console.log('Running: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runDemo() {\n  console.log('Running: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Connect to PostgreSQL from Java"
             }
           ],
@@ -1261,9 +1261,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Connect to PostgreSQL from Java",
               "description": "Write a clean solution for Connect to PostgreSQL from Java that returns expected status.",
-              "starterCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runTopicDemo() {\n  console.log('Executing: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runTopicDemo() {\n  console.log('Executing: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runDemo() {\n  console.log('Running: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Connect to PostgreSQL from Java\nfunction runDemo() {\n  console.log('Running: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1275,7 +1275,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 26: Connect to PostgreSQL from Java",
-            "content": "### \ud83c\udf1f 1. Definition (What is Connect to PostgreSQL from Java?)\nConnect to PostgreSQL from Java stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connecting with java.sql.DriverManager to simplify development and prevent common bugs.**\n- **Provides Connecting with java.sql.DriverManager and Properties to simplify development and prevent common bugs.**\n- **Provides Connecting with javax.sql.DataSource using a connection pool to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 26: Connect to PostgreSQL from Java\nfunction runTopicDemo() {\n  console.log('Executing: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Connect to PostgreSQL from Java?)\nConnect to PostgreSQL from Java manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connecting with java.sql.DriverManager to write clean, predictable code.**\n- **Provides Connecting with java.sql.DriverManager and Properties to write clean, predictable code.**\n- **Provides Connecting with javax.sql.DataSource using a connection pool to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 26: Connect to PostgreSQL from Java\nfunction runDemo() {\n  console.log('Running: Connect to PostgreSQL from Java');\n  return { success: true, topic: 'Connect to PostgreSQL from Java' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Connect to PostgreSQL from Java is essential for professional engineering."
           }
         },
@@ -1295,8 +1295,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "PostgreSQL High Availability Working Implementation",
               "description": "Complete working demonstration of PostgreSQL High Availability",
-              "starterCode": "// Chapter 27: PostgreSQL High Availability\nfunction runTopicDemo() {\n  console.log('Executing: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: PostgreSQL High Availability\nfunction runTopicDemo() {\n  console.log('Executing: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 27: PostgreSQL High Availability\nfunction runDemo() {\n  console.log('Running: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: PostgreSQL High Availability\nfunction runDemo() {\n  console.log('Running: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: PostgreSQL High Availability"
             }
           ],
@@ -1304,9 +1304,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement PostgreSQL High Availability",
               "description": "Write a clean solution for PostgreSQL High Availability that returns expected status.",
-              "starterCode": "// Chapter 27: PostgreSQL High Availability\nfunction runTopicDemo() {\n  console.log('Executing: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: PostgreSQL High Availability\nfunction runTopicDemo() {\n  console.log('Executing: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 27: PostgreSQL High Availability\nfunction runDemo() {\n  console.log('Running: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: PostgreSQL High Availability\nfunction runDemo() {\n  console.log('Running: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1318,7 +1318,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 27: PostgreSQL High Availability",
-            "content": "### \ud83c\udf1f 1. Definition (What is PostgreSQL High Availability?)\nPostgreSQL High Availability stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Replication in PostgreSQL to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 27: PostgreSQL High Availability\nfunction runTopicDemo() {\n  console.log('Executing: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is PostgreSQL High Availability?)\nPostgreSQL High Availability manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Replication in PostgreSQL to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 27: PostgreSQL High Availability\nfunction runDemo() {\n  console.log('Running: PostgreSQL High Availability');\n  return { success: true, topic: 'PostgreSQL High Availability' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering PostgreSQL High Availability is essential for professional engineering."
           }
         },
@@ -1346,8 +1346,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "EXTENSION dblink and postgres_fdw Working Implementation",
               "description": "Complete working demonstration of EXTENSION dblink and postgres_fdw",
-              "starterCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runTopicDemo() {\n  console.log('Executing: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runTopicDemo() {\n  console.log('Executing: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runDemo() {\n  console.log('Running: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runDemo() {\n  console.log('Running: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: EXTENSION dblink and postgres_fdw"
             }
           ],
@@ -1355,9 +1355,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement EXTENSION dblink and postgres_fdw",
               "description": "Write a clean solution for EXTENSION dblink and postgres_fdw that returns expected status.",
-              "starterCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runTopicDemo() {\n  console.log('Executing: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runTopicDemo() {\n  console.log('Executing: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runDemo() {\n  console.log('Running: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runDemo() {\n  console.log('Running: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1369,7 +1369,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 28: EXTENSION dblink and postgres_fdw",
-            "content": "### \ud83c\udf1f 1. Definition (What is EXTENSION dblink and postgres_fdw?)\nEXTENSION dblink and postgres_fdw stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Extention FDW to simplify development and prevent common bugs.**\n- **Provides Foreign Data Wrapper to simplify development and prevent common bugs.**\n- **Provides Extention dblink to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runTopicDemo() {\n  console.log('Executing: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is EXTENSION dblink and postgres_fdw?)\nEXTENSION dblink and postgres_fdw manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Extention FDW to write clean, predictable code.**\n- **Provides Foreign Data Wrapper to write clean, predictable code.**\n- **Provides Extention dblink to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 28: EXTENSION dblink and postgres_fdw\nfunction runDemo() {\n  console.log('Running: EXTENSION dblink and postgres_fdw');\n  return { success: true, topic: 'EXTENSION dblink and postgres_fdw' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering EXTENSION dblink and postgres_fdw is essential for professional engineering."
           }
         },
@@ -1397,8 +1397,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Postgres Tip and Tricks Working Implementation",
               "description": "Complete working demonstration of Postgres Tip and Tricks",
-              "starterCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runTopicDemo() {\n  console.log('Executing: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runTopicDemo() {\n  console.log('Executing: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runDemo() {\n  console.log('Running: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runDemo() {\n  console.log('Running: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Postgres Tip and Tricks"
             }
           ],
@@ -1406,9 +1406,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Postgres Tip and Tricks",
               "description": "Write a clean solution for Postgres Tip and Tricks that returns expected status.",
-              "starterCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runTopicDemo() {\n  console.log('Executing: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runTopicDemo() {\n  console.log('Executing: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runDemo() {\n  console.log('Running: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Postgres Tip and Tricks\nfunction runDemo() {\n  console.log('Running: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1420,7 +1420,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 29: Postgres Tip and Tricks",
-            "content": "### \ud83c\udf1f 1. Definition (What is Postgres Tip and Tricks?)\nPostgres Tip and Tricks stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides DATEADD alternative in Postgres to simplify development and prevent common bugs.**\n- **Provides Comma separated values of a column to simplify development and prevent common bugs.**\n- **Provides Delete duplicate records from postgres table to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 29: Postgres Tip and Tricks\nfunction runTopicDemo() {\n  console.log('Executing: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Postgres Tip and Tricks?)\nPostgres Tip and Tricks manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides DATEADD alternative in Postgres to write clean, predictable code.**\n- **Provides Comma separated values of a column to write clean, predictable code.**\n- **Provides Delete duplicate records from postgres table to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 29: Postgres Tip and Tricks\nfunction runDemo() {\n  console.log('Running: Postgres Tip and Tricks');\n  return { success: true, topic: 'Postgres Tip and Tricks' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Postgres Tip and Tricks is essential for professional engineering."
           }
         },
@@ -1440,8 +1440,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Credits Working Implementation",
               "description": "Complete working demonstration of Credits",
-              "starterCode": "// Chapter 30: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 30: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Credits"
             }
           ],
@@ -1449,9 +1449,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement Credits",
               "description": "Write a clean solution for Credits that returns expected status.",
-              "starterCode": "// Chapter 30: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 30: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1463,7 +1463,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 30: Credits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 30: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 30: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Credits is essential for professional engineering."
           }
         }
@@ -1490,8 +1490,8 @@ export const postgresqlCompleteCourse = {
             {
               "title": "You may also like Working Implementation",
               "description": "Complete working demonstration of You may also like",
-              "starterCode": "// Chapter 31: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 31: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: You may also like"
             }
           ],
@@ -1499,9 +1499,9 @@ export const postgresqlCompleteCourse = {
             {
               "title": "Implement You may also like",
               "description": "Write a clean solution for You may also like that returns expected status.",
-              "starterCode": "// Chapter 31: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 31: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1513,7 +1513,7 @@ export const postgresqlCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 31: You may also like",
-            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like stores, queries, and protects relational or document data with ACID transactional integrity.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 31: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like manages relational databases with structured queries and ACID compliance.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 31: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering You may also like is essential for professional engineering."
           }
         }

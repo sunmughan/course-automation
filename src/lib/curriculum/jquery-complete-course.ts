@@ -1,10 +1,10 @@
 export const jqueryCompleteCourse = {
   "title": "jQuery & Legacy DOM Architecture",
-  "description": "Practical guide to jQuery selectors, AJAX, animations, plugins, and modern DOM migration strategies.",
+  "description": "jQuery selectors, AJAX, animations, plugins, and modern DOM migration.",
   "slug": "jquery-complete-guide",
   "stream": "frontend",
   "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-  "order": 3,
+  "order": 5,
   "modules": [
     {
       "title": "Phase 1: Chapters 1 to 10",
@@ -35,8 +35,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Getting started with jQuery Working Implementation",
               "description": "Complete working demonstration of Getting started with jQuery",
-              "starterCode": "// Chapter 1: Getting started with jQuery\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with jQuery');\n  return { success: true, topic: 'Getting started with jQuery' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with jQuery\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with jQuery');\n  return { success: true, topic: 'Getting started with jQuery' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 1: Getting started with jQuery\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with jQuery\");\n    }\n}",
+              "solutionCode": "// Chapter 1: Getting started with jQuery\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with jQuery\");\n    }\n}",
               "expectedOutput": "Executing: Getting started with jQuery"
             }
           ],
@@ -44,9 +44,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Getting started with jQuery",
               "description": "Write a clean solution for Getting started with jQuery that returns expected status.",
-              "starterCode": "// Chapter 1: Getting started with jQuery\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with jQuery');\n  return { success: true, topic: 'Getting started with jQuery' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with jQuery\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with jQuery');\n  return { success: true, topic: 'Getting started with jQuery' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 1: Getting started with jQuery\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with jQuery\");\n    }\n}",
+              "solutionCode": "// Chapter 1: Getting started with jQuery\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with jQuery\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -58,7 +58,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 1: Getting started with jQuery",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with jQuery?)\nGetting started with jQuery in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting Started to simplify development and prevent common bugs.**\n- **Provides Avoiding namespace collisions to simplify development and prevent common bugs.**\n- **Provides jQuery Namespace (\"jQuery\" and \"$\") to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 1: Getting started with jQuery\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with jQuery');\n  return { success: true, topic: 'Getting started with jQuery' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with jQuery?)\nGetting started with jQuery in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting Started to write clean, predictable code.**\n- **Provides Avoiding namespace collisions to write clean, predictable code.**\n- **Provides jQuery Namespace (\"jQuery\" and \"$\") to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 1: Getting started with jQuery\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting started with jQuery\");\n    }\n}\n```\n",
             "explanation": "Mastering Getting started with jQuery is essential for professional engineering."
           }
         },
@@ -86,8 +86,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Selectors Working Implementation",
               "description": "Complete working demonstration of Selectors",
-              "starterCode": "// Chapter 2: Selectors\nfunction runTopicDemo() {\n  console.log('Executing: Selectors');\n  return { success: true, topic: 'Selectors' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Selectors\nfunction runTopicDemo() {\n  console.log('Executing: Selectors');\n  return { success: true, topic: 'Selectors' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 2: Selectors\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Selectors\");\n    }\n}",
+              "solutionCode": "// Chapter 2: Selectors\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Selectors\");\n    }\n}",
               "expectedOutput": "Executing: Selectors"
             }
           ],
@@ -95,9 +95,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Selectors",
               "description": "Write a clean solution for Selectors that returns expected status.",
-              "starterCode": "// Chapter 2: Selectors\nfunction runTopicDemo() {\n  console.log('Executing: Selectors');\n  return { success: true, topic: 'Selectors' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Selectors\nfunction runTopicDemo() {\n  console.log('Executing: Selectors');\n  return { success: true, topic: 'Selectors' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 2: Selectors\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Selectors\");\n    }\n}",
+              "solutionCode": "// Chapter 2: Selectors\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Selectors\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -109,7 +109,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 2: Selectors",
-            "content": "### \ud83c\udf1f 1. Definition (What is Selectors?)\nSelectors in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Overview to simplify development and prevent common bugs.**\n- **Provides Types of Selectors to simplify development and prevent common bugs.**\n- **Provides Caching Selectors to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 2: Selectors\nfunction runTopicDemo() {\n  console.log('Executing: Selectors');\n  return { success: true, topic: 'Selectors' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Selectors?)\nSelectors in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Overview to write clean, predictable code.**\n- **Provides Types of Selectors to write clean, predictable code.**\n- **Provides Caching Selectors to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 2: Selectors\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Selectors\");\n    }\n}\n```\n",
             "explanation": "Mastering Selectors is essential for professional engineering."
           }
         },
@@ -129,8 +129,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Each function Working Implementation",
               "description": "Complete working demonstration of Each function",
-              "starterCode": "// Chapter 3: Each function\nfunction runTopicDemo() {\n  console.log('Executing: Each function');\n  return { success: true, topic: 'Each function' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Each function\nfunction runTopicDemo() {\n  console.log('Executing: Each function');\n  return { success: true, topic: 'Each function' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 3: Each function\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Each function\");\n    }\n}",
+              "solutionCode": "// Chapter 3: Each function\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Each function\");\n    }\n}",
               "expectedOutput": "Executing: Each function"
             }
           ],
@@ -138,9 +138,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Each function",
               "description": "Write a clean solution for Each function that returns expected status.",
-              "starterCode": "// Chapter 3: Each function\nfunction runTopicDemo() {\n  console.log('Executing: Each function');\n  return { success: true, topic: 'Each function' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Each function\nfunction runTopicDemo() {\n  console.log('Executing: Each function');\n  return { success: true, topic: 'Each function' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 3: Each function\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Each function\");\n    }\n}",
+              "solutionCode": "// Chapter 3: Each function\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Each function\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -152,7 +152,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 3: Each function",
-            "content": "### \ud83c\udf1f 1. Definition (What is Each function?)\nEach function in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides jQuery each function to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 3: Each function\nfunction runTopicDemo() {\n  console.log('Executing: Each function');\n  return { success: true, topic: 'Each function' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Each function?)\nEach function in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides jQuery each function to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 3: Each function\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Each function\");\n    }\n}\n```\n",
             "explanation": "Mastering Each function is essential for professional engineering."
           }
         },
@@ -180,8 +180,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Attributes Working Implementation",
               "description": "Complete working demonstration of Attributes",
-              "starterCode": "// Chapter 4: Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Attributes');\n  return { success: true, topic: 'Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Attributes');\n  return { success: true, topic: 'Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 4: Attributes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Attributes\");\n    }\n}",
+              "solutionCode": "// Chapter 4: Attributes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Attributes\");\n    }\n}",
               "expectedOutput": "Executing: Attributes"
             }
           ],
@@ -189,9 +189,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Attributes",
               "description": "Write a clean solution for Attributes that returns expected status.",
-              "starterCode": "// Chapter 4: Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Attributes');\n  return { success: true, topic: 'Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Attributes');\n  return { success: true, topic: 'Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 4: Attributes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Attributes\");\n    }\n}",
+              "solutionCode": "// Chapter 4: Attributes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Attributes\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -203,7 +203,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 4: Attributes",
-            "content": "### \ud83c\udf1f 1. Definition (What is Attributes?)\nAttributes in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Di\ue023erece between attr() and prop() to simplify development and prevent common bugs.**\n- **Provides Get the attribute value of a HTML element to simplify development and prevent common bugs.**\n- **Provides Setting value of HTML attribute to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 4: Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Attributes');\n  return { success: true, topic: 'Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Attributes?)\nAttributes in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Di\ue023erece between attr() and prop() to write clean, predictable code.**\n- **Provides Get the attribute value of a HTML element to write clean, predictable code.**\n- **Provides Setting value of HTML attribute to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 4: Attributes\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Attributes\");\n    }\n}\n```\n",
             "explanation": "Mastering Attributes is essential for professional engineering."
           }
         },
@@ -231,8 +231,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "document: ready event Working Implementation",
               "description": "Complete working demonstration of document: ready event",
-              "starterCode": "// Chapter 5: document: ready event\nfunction runTopicDemo() {\n  console.log('Executing: document: ready event');\n  return { success: true, topic: 'document: ready event' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: document: ready event\nfunction runTopicDemo() {\n  console.log('Executing: document: ready event');\n  return { success: true, topic: 'document: ready event' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 5: document: ready event\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: document: ready event\");\n    }\n}",
+              "solutionCode": "// Chapter 5: document: ready event\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: document: ready event\");\n    }\n}",
               "expectedOutput": "Executing: document: ready event"
             }
           ],
@@ -240,9 +240,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement document: ready event",
               "description": "Write a clean solution for document: ready event that returns expected status.",
-              "starterCode": "// Chapter 5: document: ready event\nfunction runTopicDemo() {\n  console.log('Executing: document: ready event');\n  return { success: true, topic: 'document: ready event' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: document: ready event\nfunction runTopicDemo() {\n  console.log('Executing: document: ready event');\n  return { success: true, topic: 'document: ready event' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 5: document: ready event\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: document: ready event\");\n    }\n}",
+              "solutionCode": "// Chapter 5: document: ready event\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: document: ready event\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -254,7 +254,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 5: document: ready event",
-            "content": "### \ud83c\udf1f 1. Definition (What is document: ready event?)\ndocument: ready event in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is document: ready and how should I use it? to simplify development and prevent common bugs.**\n- **Provides jQuery 2.2.3 and earlier to simplify development and prevent common bugs.**\n- **Provides jQuery 3.0 to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 5: document: ready event\nfunction runTopicDemo() {\n  console.log('Executing: document: ready event');\n  return { success: true, topic: 'document: ready event' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is document: ready event?)\ndocument: ready event in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is document: ready and how should I use it? to write clean, predictable code.**\n- **Provides jQuery 2.2.3 and earlier to write clean, predictable code.**\n- **Provides jQuery 3.0 to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 5: document: ready event\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: document: ready event\");\n    }\n}\n```\n",
             "explanation": "Mastering document: ready event is essential for professional engineering."
           }
         },
@@ -282,8 +282,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Events Working Implementation",
               "description": "Complete working demonstration of Events",
-              "starterCode": "// Chapter 6: Events\nfunction runTopicDemo() {\n  console.log('Executing: Events');\n  return { success: true, topic: 'Events' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Events\nfunction runTopicDemo() {\n  console.log('Executing: Events');\n  return { success: true, topic: 'Events' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 6: Events\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Events\");\n    }\n}",
+              "solutionCode": "// Chapter 6: Events\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Events\");\n    }\n}",
               "expectedOutput": "Executing: Events"
             }
           ],
@@ -291,9 +291,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Events",
               "description": "Write a clean solution for Events that returns expected status.",
-              "starterCode": "// Chapter 6: Events\nfunction runTopicDemo() {\n  console.log('Executing: Events');\n  return { success: true, topic: 'Events' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Events\nfunction runTopicDemo() {\n  console.log('Executing: Events');\n  return { success: true, topic: 'Events' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 6: Events\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Events\");\n    }\n}",
+              "solutionCode": "// Chapter 6: Events\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Events\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -305,7 +305,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 6: Events",
-            "content": "### \ud83c\udf1f 1. Definition (What is Events?)\nEvents in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Delegated Events to simplify development and prevent common bugs.**\n- **Provides Attach and Detach Event Handlers to simplify development and prevent common bugs.**\n- **Provides Switching speci\ufb01c events on and o\ue023 via jQuery. (Named Listeners) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 6: Events\nfunction runTopicDemo() {\n  console.log('Executing: Events');\n  return { success: true, topic: 'Events' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Events?)\nEvents in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Delegated Events to write clean, predictable code.**\n- **Provides Attach and Detach Event Handlers to write clean, predictable code.**\n- **Provides Switching speci\ufb01c events on and o\ue023 via jQuery. (Named Listeners) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 6: Events\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Events\");\n    }\n}\n```\n",
             "explanation": "Mastering Events is essential for professional engineering."
           }
         },
@@ -333,8 +333,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "DOM Manipulation Working Implementation",
               "description": "Complete working demonstration of DOM Manipulation",
-              "starterCode": "// Chapter 7: DOM Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: DOM Manipulation');\n  return { success: true, topic: 'DOM Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: DOM Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: DOM Manipulation');\n  return { success: true, topic: 'DOM Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 7: DOM Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Manipulation\");\n    }\n}",
+              "solutionCode": "// Chapter 7: DOM Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Manipulation\");\n    }\n}",
               "expectedOutput": "Executing: DOM Manipulation"
             }
           ],
@@ -342,9 +342,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement DOM Manipulation",
               "description": "Write a clean solution for DOM Manipulation that returns expected status.",
-              "starterCode": "// Chapter 7: DOM Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: DOM Manipulation');\n  return { success: true, topic: 'DOM Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: DOM Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: DOM Manipulation');\n  return { success: true, topic: 'DOM Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 7: DOM Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Manipulation\");\n    }\n}",
+              "solutionCode": "// Chapter 7: DOM Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Manipulation\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -356,7 +356,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 7: DOM Manipulation",
-            "content": "### \ud83c\udf1f 1. Definition (What is DOM Manipulation?)\nDOM Manipulation in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating DOM elements to simplify development and prevent common bugs.**\n- **Provides Manipulating element classes to simplify development and prevent common bugs.**\n- **Provides Other API Methods to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 7: DOM Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: DOM Manipulation');\n  return { success: true, topic: 'DOM Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is DOM Manipulation?)\nDOM Manipulation in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating DOM elements to write clean, predictable code.**\n- **Provides Manipulating element classes to write clean, predictable code.**\n- **Provides Other API Methods to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 7: DOM Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Manipulation\");\n    }\n}\n```\n",
             "explanation": "Mastering DOM Manipulation is essential for professional engineering."
           }
         },
@@ -384,8 +384,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "DOM Traversing Working Implementation",
               "description": "Complete working demonstration of DOM Traversing",
-              "starterCode": "// Chapter 8: DOM Traversing\nfunction runTopicDemo() {\n  console.log('Executing: DOM Traversing');\n  return { success: true, topic: 'DOM Traversing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: DOM Traversing\nfunction runTopicDemo() {\n  console.log('Executing: DOM Traversing');\n  return { success: true, topic: 'DOM Traversing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 8: DOM Traversing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Traversing\");\n    }\n}",
+              "solutionCode": "// Chapter 8: DOM Traversing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Traversing\");\n    }\n}",
               "expectedOutput": "Executing: DOM Traversing"
             }
           ],
@@ -393,9 +393,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement DOM Traversing",
               "description": "Write a clean solution for DOM Traversing that returns expected status.",
-              "starterCode": "// Chapter 8: DOM Traversing\nfunction runTopicDemo() {\n  console.log('Executing: DOM Traversing');\n  return { success: true, topic: 'DOM Traversing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: DOM Traversing\nfunction runTopicDemo() {\n  console.log('Executing: DOM Traversing');\n  return { success: true, topic: 'DOM Traversing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 8: DOM Traversing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Traversing\");\n    }\n}",
+              "solutionCode": "// Chapter 8: DOM Traversing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Traversing\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -407,7 +407,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 8: DOM Traversing",
-            "content": "### \ud83c\udf1f 1. Definition (What is DOM Traversing?)\nDOM Traversing in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Select children of element to simplify development and prevent common bugs.**\n- **Provides Get next element to simplify development and prevent common bugs.**\n- **Provides Get previous element to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 8: DOM Traversing\nfunction runTopicDemo() {\n  console.log('Executing: DOM Traversing');\n  return { success: true, topic: 'DOM Traversing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is DOM Traversing?)\nDOM Traversing in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Select children of element to write clean, predictable code.**\n- **Provides Get next element to write clean, predictable code.**\n- **Provides Get previous element to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 8: DOM Traversing\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: DOM Traversing\");\n    }\n}\n```\n",
             "explanation": "Mastering DOM Traversing is essential for professional engineering."
           }
         },
@@ -435,8 +435,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "CSS Manipulation Working Implementation",
               "description": "Complete working demonstration of CSS Manipulation",
-              "starterCode": "// Chapter 9: CSS Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: CSS Manipulation');\n  return { success: true, topic: 'CSS Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: CSS Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: CSS Manipulation');\n  return { success: true, topic: 'CSS Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 9: CSS Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: CSS Manipulation\");\n    }\n}",
+              "solutionCode": "// Chapter 9: CSS Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: CSS Manipulation\");\n    }\n}",
               "expectedOutput": "Executing: CSS Manipulation"
             }
           ],
@@ -444,9 +444,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement CSS Manipulation",
               "description": "Write a clean solution for CSS Manipulation that returns expected status.",
-              "starterCode": "// Chapter 9: CSS Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: CSS Manipulation');\n  return { success: true, topic: 'CSS Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: CSS Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: CSS Manipulation');\n  return { success: true, topic: 'CSS Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 9: CSS Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: CSS Manipulation\");\n    }\n}",
+              "solutionCode": "// Chapter 9: CSS Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: CSS Manipulation\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -458,7 +458,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 9: CSS Manipulation",
-            "content": "### \ud83c\udf1f 1. Definition (What is CSS Manipulation?)\nCSS Manipulation in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides CSS: Getters and Setters to simplify development and prevent common bugs.**\n- **Provides Increment/Decrement Numeric Properties to simplify development and prevent common bugs.**\n- **Provides Set CSS property to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 9: CSS Manipulation\nfunction runTopicDemo() {\n  console.log('Executing: CSS Manipulation');\n  return { success: true, topic: 'CSS Manipulation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is CSS Manipulation?)\nCSS Manipulation in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides CSS: Getters and Setters to write clean, predictable code.**\n- **Provides Increment/Decrement Numeric Properties to write clean, predictable code.**\n- **Provides Set CSS property to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 9: CSS Manipulation\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: CSS Manipulation\");\n    }\n}\n```\n",
             "explanation": "Mastering CSS Manipulation is essential for professional engineering."
           }
         },
@@ -482,8 +482,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Element Visibility Working Implementation",
               "description": "Complete working demonstration of Element Visibility",
-              "starterCode": "// Chapter 10: Element Visibility\nfunction runTopicDemo() {\n  console.log('Executing: Element Visibility');\n  return { success: true, topic: 'Element Visibility' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Element Visibility\nfunction runTopicDemo() {\n  console.log('Executing: Element Visibility');\n  return { success: true, topic: 'Element Visibility' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 10: Element Visibility\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Element Visibility\");\n    }\n}",
+              "solutionCode": "// Chapter 10: Element Visibility\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Element Visibility\");\n    }\n}",
               "expectedOutput": "Executing: Element Visibility"
             }
           ],
@@ -491,9 +491,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Element Visibility",
               "description": "Write a clean solution for Element Visibility that returns expected status.",
-              "starterCode": "// Chapter 10: Element Visibility\nfunction runTopicDemo() {\n  console.log('Executing: Element Visibility');\n  return { success: true, topic: 'Element Visibility' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Element Visibility\nfunction runTopicDemo() {\n  console.log('Executing: Element Visibility');\n  return { success: true, topic: 'Element Visibility' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 10: Element Visibility\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Element Visibility\");\n    }\n}",
+              "solutionCode": "// Chapter 10: Element Visibility\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Element Visibility\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -505,7 +505,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 10: Element Visibility",
-            "content": "### \ud83c\udf1f 1. Definition (What is Element Visibility?)\nElement Visibility in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Overview to simplify development and prevent common bugs.**\n- **Provides Toggle possibilities to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 10: Element Visibility\nfunction runTopicDemo() {\n  console.log('Executing: Element Visibility');\n  return { success: true, topic: 'Element Visibility' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Element Visibility?)\nElement Visibility in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Overview to write clean, predictable code.**\n- **Provides Toggle possibilities to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 10: Element Visibility\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Element Visibility\");\n    }\n}\n```\n",
             "explanation": "Mastering Element Visibility is essential for professional engineering."
           }
         }
@@ -540,8 +540,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Append Working Implementation",
               "description": "Complete working demonstration of Append",
-              "starterCode": "// Chapter 11: Append\nfunction runTopicDemo() {\n  console.log('Executing: Append');\n  return { success: true, topic: 'Append' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Append\nfunction runTopicDemo() {\n  console.log('Executing: Append');\n  return { success: true, topic: 'Append' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 11: Append\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Append\");\n    }\n}",
+              "solutionCode": "// Chapter 11: Append\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Append\");\n    }\n}",
               "expectedOutput": "Executing: Append"
             }
           ],
@@ -549,9 +549,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Append",
               "description": "Write a clean solution for Append that returns expected status.",
-              "starterCode": "// Chapter 11: Append\nfunction runTopicDemo() {\n  console.log('Executing: Append');\n  return { success: true, topic: 'Append' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Append\nfunction runTopicDemo() {\n  console.log('Executing: Append');\n  return { success: true, topic: 'Append' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 11: Append\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Append\");\n    }\n}",
+              "solutionCode": "// Chapter 11: Append\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Append\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -563,7 +563,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 11: Append",
-            "content": "### \ud83c\udf1f 1. Definition (What is Append?)\nAppend in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides E\ue024cient consecutive .append() usage to simplify development and prevent common bugs.**\n- **Provides jQuery append to simplify development and prevent common bugs.**\n- **Provides Appending an element to a container to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 11: Append\nfunction runTopicDemo() {\n  console.log('Executing: Append');\n  return { success: true, topic: 'Append' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Append?)\nAppend in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides E\ue024cient consecutive .append() usage to write clean, predictable code.**\n- **Provides jQuery append to write clean, predictable code.**\n- **Provides Appending an element to a container to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 11: Append\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Append\");\n    }\n}\n```\n",
             "explanation": "Mastering Append is essential for professional engineering."
           }
         },
@@ -587,8 +587,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Prepend Working Implementation",
               "description": "Complete working demonstration of Prepend",
-              "starterCode": "// Chapter 12: Prepend\nfunction runTopicDemo() {\n  console.log('Executing: Prepend');\n  return { success: true, topic: 'Prepend' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Prepend\nfunction runTopicDemo() {\n  console.log('Executing: Prepend');\n  return { success: true, topic: 'Prepend' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 12: Prepend\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Prepend\");\n    }\n}",
+              "solutionCode": "// Chapter 12: Prepend\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Prepend\");\n    }\n}",
               "expectedOutput": "Executing: Prepend"
             }
           ],
@@ -596,9 +596,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Prepend",
               "description": "Write a clean solution for Prepend that returns expected status.",
-              "starterCode": "// Chapter 12: Prepend\nfunction runTopicDemo() {\n  console.log('Executing: Prepend');\n  return { success: true, topic: 'Prepend' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Prepend\nfunction runTopicDemo() {\n  console.log('Executing: Prepend');\n  return { success: true, topic: 'Prepend' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 12: Prepend\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Prepend\");\n    }\n}",
+              "solutionCode": "// Chapter 12: Prepend\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Prepend\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -610,7 +610,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 12: Prepend",
-            "content": "### \ud83c\udf1f 1. Definition (What is Prepend?)\nPrepend in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Prepending an element to a container to simplify development and prevent common bugs.**\n- **Provides Prepend method to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 12: Prepend\nfunction runTopicDemo() {\n  console.log('Executing: Prepend');\n  return { success: true, topic: 'Prepend' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Prepend?)\nPrepend in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Prepending an element to a container to write clean, predictable code.**\n- **Provides Prepend method to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 12: Prepend\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Prepend\");\n    }\n}\n```\n",
             "explanation": "Mastering Prepend is essential for professional engineering."
           }
         },
@@ -638,8 +638,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Getting and setting width and height of an element Working Implementation",
               "description": "Complete working demonstration of Getting and setting width and height of an element",
-              "starterCode": "// Chapter 13: Getting and setting width and height of an element\nfunction runTopicDemo() {\n  console.log('Executing: Getting and setting width and height of an element');\n  return { success: true, topic: 'Getting and setting width and height of an element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Getting and setting width and height of an element\nfunction runTopicDemo() {\n  console.log('Executing: Getting and setting width and height of an element');\n  return { success: true, topic: 'Getting and setting width and height of an element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 13: Getting and setting width and height of an element\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting and setting width and height of an element\");\n    }\n}",
+              "solutionCode": "// Chapter 13: Getting and setting width and height of an element\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting and setting width and height of an element\");\n    }\n}",
               "expectedOutput": "Executing: Getting and setting width and height of an element"
             }
           ],
@@ -647,9 +647,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Getting and setting width and height of an element",
               "description": "Write a clean solution for Getting and setting width and height of an element that returns expected status.",
-              "starterCode": "// Chapter 13: Getting and setting width and height of an element\nfunction runTopicDemo() {\n  console.log('Executing: Getting and setting width and height of an element');\n  return { success: true, topic: 'Getting and setting width and height of an element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Getting and setting width and height of an element\nfunction runTopicDemo() {\n  console.log('Executing: Getting and setting width and height of an element');\n  return { success: true, topic: 'Getting and setting width and height of an element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 13: Getting and setting width and height of an element\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting and setting width and height of an element\");\n    }\n}",
+              "solutionCode": "// Chapter 13: Getting and setting width and height of an element\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting and setting width and height of an element\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -661,7 +661,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 13: Getting and setting width and height of an element",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting and setting width and height of an element?)\nGetting and setting width and height of an element in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting and setting width and height (ignoring border) to simplify development and prevent common bugs.**\n- **Provides Getting and setting innerWidth and innerHeight (ignoring padding and border) to simplify development and prevent common bugs.**\n- **Provides Getting and setting outerWidth and outerHeight (including padding and border) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 13: Getting and setting width and height of an element\nfunction runTopicDemo() {\n  console.log('Executing: Getting and setting width and height of an element');\n  return { success: true, topic: 'Getting and setting width and height of an element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting and setting width and height of an element?)\nGetting and setting width and height of an element in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting and setting width and height (ignoring border) to write clean, predictable code.**\n- **Provides Getting and setting innerWidth and innerHeight (ignoring padding and border) to write clean, predictable code.**\n- **Provides Getting and setting outerWidth and outerHeight (including padding and border) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 13: Getting and setting width and height of an element\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Getting and setting width and height of an element\");\n    }\n}\n```\n",
             "explanation": "Mastering Getting and setting width and height of an element is essential for professional engineering."
           }
         },
@@ -681,8 +681,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "jQuery .animate() Method Working Implementation",
               "description": "Complete working demonstration of jQuery .animate() Method",
-              "starterCode": "// Chapter 14: jQuery .animate() Method\nfunction runTopicDemo() {\n  console.log('Executing: jQuery .animate() Method');\n  return { success: true, topic: 'jQuery .animate() Method' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: jQuery .animate() Method\nfunction runTopicDemo() {\n  console.log('Executing: jQuery .animate() Method');\n  return { success: true, topic: 'jQuery .animate() Method' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 14: jQuery .animate() Method\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery .animate() Method\");\n    }\n}",
+              "solutionCode": "// Chapter 14: jQuery .animate() Method\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery .animate() Method\");\n    }\n}",
               "expectedOutput": "Executing: jQuery .animate() Method"
             }
           ],
@@ -690,9 +690,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement jQuery .animate() Method",
               "description": "Write a clean solution for jQuery .animate() Method that returns expected status.",
-              "starterCode": "// Chapter 14: jQuery .animate() Method\nfunction runTopicDemo() {\n  console.log('Executing: jQuery .animate() Method');\n  return { success: true, topic: 'jQuery .animate() Method' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: jQuery .animate() Method\nfunction runTopicDemo() {\n  console.log('Executing: jQuery .animate() Method');\n  return { success: true, topic: 'jQuery .animate() Method' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 14: jQuery .animate() Method\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery .animate() Method\");\n    }\n}",
+              "solutionCode": "// Chapter 14: jQuery .animate() Method\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery .animate() Method\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -704,7 +704,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 14: jQuery .animate() Method",
-            "content": "### \ud83c\udf1f 1. Definition (What is jQuery .animate() Method?)\njQuery .animate() Method in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Animation with callback to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 14: jQuery .animate() Method\nfunction runTopicDemo() {\n  console.log('Executing: jQuery .animate() Method');\n  return { success: true, topic: 'jQuery .animate() Method' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is jQuery .animate() Method?)\njQuery .animate() Method in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Animation with callback to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 14: jQuery .animate() Method\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery .animate() Method\");\n    }\n}\n```\n",
             "explanation": "Mastering jQuery .animate() Method is essential for professional engineering."
           }
         },
@@ -728,8 +728,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "jQuery Deferred objects and Promises Working Implementation",
               "description": "Complete working demonstration of jQuery Deferred objects and Promises",
-              "starterCode": "// Chapter 15: jQuery Deferred objects and Promises\nfunction runTopicDemo() {\n  console.log('Executing: jQuery Deferred objects and Promises');\n  return { success: true, topic: 'jQuery Deferred objects and Promises' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: jQuery Deferred objects and Promises\nfunction runTopicDemo() {\n  console.log('Executing: jQuery Deferred objects and Promises');\n  return { success: true, topic: 'jQuery Deferred objects and Promises' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 15: jQuery Deferred objects and Promises\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery Deferred objects and Promises\");\n    }\n}",
+              "solutionCode": "// Chapter 15: jQuery Deferred objects and Promises\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery Deferred objects and Promises\");\n    }\n}",
               "expectedOutput": "Executing: jQuery Deferred objects and Promises"
             }
           ],
@@ -737,9 +737,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement jQuery Deferred objects and Promises",
               "description": "Write a clean solution for jQuery Deferred objects and Promises that returns expected status.",
-              "starterCode": "// Chapter 15: jQuery Deferred objects and Promises\nfunction runTopicDemo() {\n  console.log('Executing: jQuery Deferred objects and Promises');\n  return { success: true, topic: 'jQuery Deferred objects and Promises' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: jQuery Deferred objects and Promises\nfunction runTopicDemo() {\n  console.log('Executing: jQuery Deferred objects and Promises');\n  return { success: true, topic: 'jQuery Deferred objects and Promises' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 15: jQuery Deferred objects and Promises\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery Deferred objects and Promises\");\n    }\n}",
+              "solutionCode": "// Chapter 15: jQuery Deferred objects and Promises\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery Deferred objects and Promises\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -751,7 +751,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 15: jQuery Deferred objects and Promises",
-            "content": "### \ud83c\udf1f 1. Definition (What is jQuery Deferred objects and Promises?)\njQuery Deferred objects and Promises in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides jQuery ajax() success, error VS .done(), .fail() to simplify development and prevent common bugs.**\n- **Provides Basic promise creation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 15: jQuery Deferred objects and Promises\nfunction runTopicDemo() {\n  console.log('Executing: jQuery Deferred objects and Promises');\n  return { success: true, topic: 'jQuery Deferred objects and Promises' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is jQuery Deferred objects and Promises?)\njQuery Deferred objects and Promises in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides jQuery ajax() success, error VS .done(), .fail() to write clean, predictable code.**\n- **Provides Basic promise creation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 15: jQuery Deferred objects and Promises\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: jQuery Deferred objects and Promises\");\n    }\n}\n```\n",
             "explanation": "Mastering jQuery Deferred objects and Promises is essential for professional engineering."
           }
         },
@@ -779,8 +779,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Ajax Working Implementation",
               "description": "Complete working demonstration of Ajax",
-              "starterCode": "// Chapter 16: Ajax\nfunction runTopicDemo() {\n  console.log('Executing: Ajax');\n  return { success: true, topic: 'Ajax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Ajax\nfunction runTopicDemo() {\n  console.log('Executing: Ajax');\n  return { success: true, topic: 'Ajax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 16: Ajax\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Ajax\");\n    }\n}",
+              "solutionCode": "// Chapter 16: Ajax\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Ajax\");\n    }\n}",
               "expectedOutput": "Executing: Ajax"
             }
           ],
@@ -788,9 +788,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Ajax",
               "description": "Write a clean solution for Ajax that returns expected status.",
-              "starterCode": "// Chapter 16: Ajax\nfunction runTopicDemo() {\n  console.log('Executing: Ajax');\n  return { success: true, topic: 'Ajax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Ajax\nfunction runTopicDemo() {\n  console.log('Executing: Ajax');\n  return { success: true, topic: 'Ajax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 16: Ajax\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Ajax\");\n    }\n}",
+              "solutionCode": "// Chapter 16: Ajax\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Ajax\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -802,7 +802,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 16: Ajax",
-            "content": "### \ud83c\udf1f 1. Definition (What is Ajax?)\nAjax in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Handling HTTP Response Codes with $.ajax() to simplify development and prevent common bugs.**\n- **Provides Using Ajax to Submit a Form to simplify development and prevent common bugs.**\n- **Provides All in one examples to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 16: Ajax\nfunction runTopicDemo() {\n  console.log('Executing: Ajax');\n  return { success: true, topic: 'Ajax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Ajax?)\nAjax in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Handling HTTP Response Codes with $.ajax() to write clean, predictable code.**\n- **Provides Using Ajax to Submit a Form to write clean, predictable code.**\n- **Provides All in one examples to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 16: Ajax\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Ajax\");\n    }\n}\n```\n",
             "explanation": "Mastering Ajax is essential for professional engineering."
           }
         },
@@ -822,8 +822,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Checkbox Select all with automatic check/uncheck on other checkbox change Working Implementation",
               "description": "Complete working demonstration of Checkbox Select all with automatic check/uncheck on other checkbox change",
-              "starterCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\nfunction runTopicDemo() {\n  console.log('Executing: Checkbox Select all with automatic check/uncheck on other checkbox change');\n  return { success: true, topic: 'Checkbox Select all with automatic check/uncheck on other checkbox change' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\nfunction runTopicDemo() {\n  console.log('Executing: Checkbox Select all with automatic check/uncheck on other checkbox change');\n  return { success: true, topic: 'Checkbox Select all with automatic check/uncheck on other checkbox change' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Checkbox Select all with automatic check/uncheck on other checkbox change\");\n    }\n}",
+              "solutionCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Checkbox Select all with automatic check/uncheck on other checkbox change\");\n    }\n}",
               "expectedOutput": "Executing: Checkbox Select all with automatic check/uncheck on other checkbox change"
             }
           ],
@@ -831,9 +831,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Checkbox Select all with automatic check/uncheck on other checkbox change",
               "description": "Write a clean solution for Checkbox Select all with automatic check/uncheck on other checkbox change that returns expected status.",
-              "starterCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\nfunction runTopicDemo() {\n  console.log('Executing: Checkbox Select all with automatic check/uncheck on other checkbox change');\n  return { success: true, topic: 'Checkbox Select all with automatic check/uncheck on other checkbox change' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\nfunction runTopicDemo() {\n  console.log('Executing: Checkbox Select all with automatic check/uncheck on other checkbox change');\n  return { success: true, topic: 'Checkbox Select all with automatic check/uncheck on other checkbox change' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Checkbox Select all with automatic check/uncheck on other checkbox change\");\n    }\n}",
+              "solutionCode": "// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Checkbox Select all with automatic check/uncheck on other checkbox change\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -845,7 +845,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change",
-            "content": "### \ud83c\udf1f 1. Definition (What is Checkbox Select all with automatic check/uncheck on other checkbox change?)\nCheckbox Select all with automatic check/uncheck on other checkbox change in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides 2 select all checkboxes with corresponding group checkboxes to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\nfunction runTopicDemo() {\n  console.log('Executing: Checkbox Select all with automatic check/uncheck on other checkbox change');\n  return { success: true, topic: 'Checkbox Select all with automatic check/uncheck on other checkbox change' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Checkbox Select all with automatic check/uncheck on other checkbox change?)\nCheckbox Select all with automatic check/uncheck on other checkbox change in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides 2 select all checkboxes with corresponding group checkboxes to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 17: Checkbox Select all with automatic check/uncheck on other checkbox change\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Checkbox Select all with automatic check/uncheck on other checkbox change\");\n    }\n}\n```\n",
             "explanation": "Mastering Checkbox Select all with automatic check/uncheck on other checkbox change is essential for professional engineering."
           }
         },
@@ -865,8 +865,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Plugins Working Implementation",
               "description": "Complete working demonstration of Plugins",
-              "starterCode": "// Chapter 18: Plugins\nfunction runTopicDemo() {\n  console.log('Executing: Plugins');\n  return { success: true, topic: 'Plugins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Plugins\nfunction runTopicDemo() {\n  console.log('Executing: Plugins');\n  return { success: true, topic: 'Plugins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 18: Plugins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Plugins\");\n    }\n}",
+              "solutionCode": "// Chapter 18: Plugins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Plugins\");\n    }\n}",
               "expectedOutput": "Executing: Plugins"
             }
           ],
@@ -874,9 +874,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Plugins",
               "description": "Write a clean solution for Plugins that returns expected status.",
-              "starterCode": "// Chapter 18: Plugins\nfunction runTopicDemo() {\n  console.log('Executing: Plugins');\n  return { success: true, topic: 'Plugins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Plugins\nfunction runTopicDemo() {\n  console.log('Executing: Plugins');\n  return { success: true, topic: 'Plugins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 18: Plugins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Plugins\");\n    }\n}",
+              "solutionCode": "// Chapter 18: Plugins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Plugins\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -888,7 +888,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 18: Plugins",
-            "content": "### \ud83c\udf1f 1. Definition (What is Plugins?)\nPlugins in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Plugins: Getting Started to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 18: Plugins\nfunction runTopicDemo() {\n  console.log('Executing: Plugins');\n  return { success: true, topic: 'Plugins' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Plugins?)\nPlugins in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Plugins: Getting Started to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 18: Plugins\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Plugins\");\n    }\n}\n```\n",
             "explanation": "Mastering Plugins is essential for professional engineering."
           }
         },
@@ -908,8 +908,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "Credits Working Implementation",
               "description": "Complete working demonstration of Credits",
-              "starterCode": "// Chapter 19: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 19: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
+              "solutionCode": "// Chapter 19: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
               "expectedOutput": "Executing: Credits"
             }
           ],
@@ -917,9 +917,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement Credits",
               "description": "Write a clean solution for Credits that returns expected status.",
-              "starterCode": "// Chapter 19: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 19: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
+              "solutionCode": "// Chapter 19: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -931,7 +931,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 19: Credits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 19: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 19: Credits\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: Credits\");\n    }\n}\n```\n",
             "explanation": "Mastering Credits is essential for professional engineering."
           }
         },
@@ -951,8 +951,8 @@ export const jqueryCompleteCourse = {
             {
               "title": "You may also like Working Implementation",
               "description": "Complete working demonstration of You may also like",
-              "starterCode": "// Chapter 20: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 20: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
+              "solutionCode": "// Chapter 20: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
               "expectedOutput": "Executing: You may also like"
             }
           ],
@@ -960,9 +960,9 @@ export const jqueryCompleteCourse = {
             {
               "title": "Implement You may also like",
               "description": "Write a clean solution for You may also like that returns expected status.",
-              "starterCode": "// Chapter 20: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 20: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
+              "solutionCode": "// Chapter 20: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -974,7 +974,7 @@ export const jqueryCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 20: You may also like",
-            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like in JavaScript provides dynamic scripting logic to manipulate data and control application flow.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 20: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like in Java builds robust, type-safe enterprise architectures with high stability.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 20: You may also like\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing: You may also like\");\n    }\n}\n```\n",
             "explanation": "Mastering You may also like is essential for professional engineering."
           }
         }

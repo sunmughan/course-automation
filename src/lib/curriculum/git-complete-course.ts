@@ -1,10 +1,10 @@
 export const gitCompleteCourse = {
   "title": "Git & GitHub DevOps Mastery (63 Chapters)",
-  "description": "Complete guide to Git branching, rebase, interactive cherry-pick, submodules, merge conflicts, and GitHub Actions CI/CD.",
+  "description": "Branching, rebase, cherry-pick, submodules, merge conflicts, and GitHub Actions.",
   "slug": "git-devops-mastery",
   "stream": "devops",
   "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-  "order": 3,
+  "order": 5,
   "modules": [
     {
       "title": "Phase 1: Chapters 1 to 10",
@@ -35,8 +35,8 @@ export const gitCompleteCourse = {
             {
               "title": "Getting started with Git Working Implementation",
               "description": "Complete working demonstration of Getting started with Git",
-              "starterCode": "// Chapter 1: Getting started with Git\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with Git\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 1: Getting started with Git\nfunction runDemo() {\n  console.log('Running: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with Git\nfunction runDemo() {\n  console.log('Running: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Getting started with Git"
             }
           ],
@@ -44,9 +44,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Getting started with Git",
               "description": "Write a clean solution for Getting started with Git that returns expected status.",
-              "starterCode": "// Chapter 1: Getting started with Git\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with Git\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 1: Getting started with Git\nfunction runDemo() {\n  console.log('Running: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with Git\nfunction runDemo() {\n  console.log('Running: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -58,7 +58,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 1: Getting started with Git",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with Git?)\nGetting started with Git tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create your \ufb01rst repository, then add and commit \ufb01les to simplify development and prevent common bugs.**\n- **Provides Clone a repository to simplify development and prevent common bugs.**\n- **Provides Sharing code to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 1: Getting started with Git\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with Git?)\nGetting started with Git provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create your \ufb01rst repository, then add and commit \ufb01les to write clean, predictable code.**\n- **Provides Clone a repository to write clean, predictable code.**\n- **Provides Sharing code to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 1: Getting started with Git\nfunction runDemo() {\n  console.log('Running: Getting started with Git');\n  return { success: true, topic: 'Getting started with Git' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Getting started with Git is essential for professional engineering."
           }
         },
@@ -86,8 +86,8 @@ export const gitCompleteCourse = {
             {
               "title": "Browsing the history Working Implementation",
               "description": "Complete working demonstration of Browsing the history",
-              "starterCode": "// Chapter 2: Browsing the history\nfunction runTopicDemo() {\n  console.log('Executing: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Browsing the history\nfunction runTopicDemo() {\n  console.log('Executing: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 2: Browsing the history\nfunction runDemo() {\n  console.log('Running: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Browsing the history\nfunction runDemo() {\n  console.log('Running: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Browsing the history"
             }
           ],
@@ -95,9 +95,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Browsing the history",
               "description": "Write a clean solution for Browsing the history that returns expected status.",
-              "starterCode": "// Chapter 2: Browsing the history\nfunction runTopicDemo() {\n  console.log('Executing: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Browsing the history\nfunction runTopicDemo() {\n  console.log('Executing: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 2: Browsing the history\nfunction runDemo() {\n  console.log('Running: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Browsing the history\nfunction runDemo() {\n  console.log('Running: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -109,7 +109,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 2: Browsing the history",
-            "content": "### \ud83c\udf1f 1. Definition (What is Browsing the history?)\nBrowsing the history tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides \"Regular\" Git Log to simplify development and prevent common bugs.**\n- **Provides Prettier log to simplify development and prevent common bugs.**\n- **Provides Colorize Logs to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 2: Browsing the history\nfunction runTopicDemo() {\n  console.log('Executing: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Browsing the history?)\nBrowsing the history provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides \"Regular\" Git Log to write clean, predictable code.**\n- **Provides Prettier log to write clean, predictable code.**\n- **Provides Colorize Logs to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 2: Browsing the history\nfunction runDemo() {\n  console.log('Running: Browsing the history');\n  return { success: true, topic: 'Browsing the history' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Browsing the history is essential for professional engineering."
           }
         },
@@ -137,8 +137,8 @@ export const gitCompleteCourse = {
             {
               "title": "Working with Remotes Working Implementation",
               "description": "Complete working demonstration of Working with Remotes",
-              "starterCode": "// Chapter 3: Working with Remotes\nfunction runTopicDemo() {\n  console.log('Executing: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Working with Remotes\nfunction runTopicDemo() {\n  console.log('Executing: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 3: Working with Remotes\nfunction runDemo() {\n  console.log('Running: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Working with Remotes\nfunction runDemo() {\n  console.log('Running: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Working with Remotes"
             }
           ],
@@ -146,9 +146,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Working with Remotes",
               "description": "Write a clean solution for Working with Remotes that returns expected status.",
-              "starterCode": "// Chapter 3: Working with Remotes\nfunction runTopicDemo() {\n  console.log('Executing: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Working with Remotes\nfunction runTopicDemo() {\n  console.log('Executing: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 3: Working with Remotes\nfunction runDemo() {\n  console.log('Running: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Working with Remotes\nfunction runDemo() {\n  console.log('Running: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -160,7 +160,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 3: Working with Remotes",
-            "content": "### \ud83c\udf1f 1. Definition (What is Working with Remotes?)\nWorking with Remotes tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Deleting a Remote Branch to simplify development and prevent common bugs.**\n- **Provides Changing Git Remote URL to simplify development and prevent common bugs.**\n- **Provides List Existing Remotes to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 3: Working with Remotes\nfunction runTopicDemo() {\n  console.log('Executing: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Working with Remotes?)\nWorking with Remotes provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Deleting a Remote Branch to write clean, predictable code.**\n- **Provides Changing Git Remote URL to write clean, predictable code.**\n- **Provides List Existing Remotes to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 3: Working with Remotes\nfunction runDemo() {\n  console.log('Running: Working with Remotes');\n  return { success: true, topic: 'Working with Remotes' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Working with Remotes is essential for professional engineering."
           }
         },
@@ -188,8 +188,8 @@ export const gitCompleteCourse = {
             {
               "title": "Staging Working Implementation",
               "description": "Complete working demonstration of Staging",
-              "starterCode": "// Chapter 4: Staging\nfunction runTopicDemo() {\n  console.log('Executing: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Staging\nfunction runTopicDemo() {\n  console.log('Executing: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 4: Staging\nfunction runDemo() {\n  console.log('Running: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Staging\nfunction runDemo() {\n  console.log('Running: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Staging"
             }
           ],
@@ -197,9 +197,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Staging",
               "description": "Write a clean solution for Staging that returns expected status.",
-              "starterCode": "// Chapter 4: Staging\nfunction runTopicDemo() {\n  console.log('Executing: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Staging\nfunction runTopicDemo() {\n  console.log('Executing: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 4: Staging\nfunction runDemo() {\n  console.log('Running: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Staging\nfunction runDemo() {\n  console.log('Running: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -211,7 +211,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 4: Staging",
-            "content": "### \ud83c\udf1f 1. Definition (What is Staging?)\nStaging tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Staging All Changes to Files to simplify development and prevent common bugs.**\n- **Provides Unstage a \ufb01le that contains changes to simplify development and prevent common bugs.**\n- **Provides Add changes by hunk to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 4: Staging\nfunction runTopicDemo() {\n  console.log('Executing: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Staging?)\nStaging provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Staging All Changes to Files to write clean, predictable code.**\n- **Provides Unstage a \ufb01le that contains changes to write clean, predictable code.**\n- **Provides Add changes by hunk to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 4: Staging\nfunction runDemo() {\n  console.log('Running: Staging');\n  return { success: true, topic: 'Staging' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Staging is essential for professional engineering."
           }
         },
@@ -239,8 +239,8 @@ export const gitCompleteCourse = {
             {
               "title": "Ignoring Files and Folders Working Implementation",
               "description": "Complete working demonstration of Ignoring Files and Folders",
-              "starterCode": "// Chapter 5: Ignoring Files and Folders\nfunction runTopicDemo() {\n  console.log('Executing: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Ignoring Files and Folders\nfunction runTopicDemo() {\n  console.log('Executing: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 5: Ignoring Files and Folders\nfunction runDemo() {\n  console.log('Running: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Ignoring Files and Folders\nfunction runDemo() {\n  console.log('Running: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Ignoring Files and Folders"
             }
           ],
@@ -248,9 +248,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Ignoring Files and Folders",
               "description": "Write a clean solution for Ignoring Files and Folders that returns expected status.",
-              "starterCode": "// Chapter 5: Ignoring Files and Folders\nfunction runTopicDemo() {\n  console.log('Executing: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Ignoring Files and Folders\nfunction runTopicDemo() {\n  console.log('Executing: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 5: Ignoring Files and Folders\nfunction runDemo() {\n  console.log('Running: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Ignoring Files and Folders\nfunction runDemo() {\n  console.log('Running: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -262,7 +262,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 5: Ignoring Files and Folders",
-            "content": "### \ud83c\udf1f 1. Definition (What is Ignoring Files and Folders?)\nIgnoring Files and Folders tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Ignoring \ufb01les and directories with a .gitignore \ufb01le to simplify development and prevent common bugs.**\n- **Provides Checking if a \ufb01le is ignored to simplify development and prevent common bugs.**\n- **Provides Exceptions in a .gitignore \ufb01le to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 5: Ignoring Files and Folders\nfunction runTopicDemo() {\n  console.log('Executing: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Ignoring Files and Folders?)\nIgnoring Files and Folders provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Ignoring \ufb01les and directories with a .gitignore \ufb01le to write clean, predictable code.**\n- **Provides Checking if a \ufb01le is ignored to write clean, predictable code.**\n- **Provides Exceptions in a .gitignore \ufb01le to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 5: Ignoring Files and Folders\nfunction runDemo() {\n  console.log('Running: Ignoring Files and Folders');\n  return { success: true, topic: 'Ignoring Files and Folders' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Ignoring Files and Folders is essential for professional engineering."
           }
         },
@@ -290,8 +290,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Di\ue023 Working Implementation",
               "description": "Complete working demonstration of Git Di\ue023",
-              "starterCode": "// Chapter 6: Git Di\ue023\nfunction runTopicDemo() {\n  console.log('Executing: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Git Di\ue023\nfunction runTopicDemo() {\n  console.log('Executing: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 6: Git Di\ue023\nfunction runDemo() {\n  console.log('Running: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Git Di\ue023\nfunction runDemo() {\n  console.log('Running: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Di\ue023"
             }
           ],
@@ -299,9 +299,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Di\ue023",
               "description": "Write a clean solution for Git Di\ue023 that returns expected status.",
-              "starterCode": "// Chapter 6: Git Di\ue023\nfunction runTopicDemo() {\n  console.log('Executing: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Git Di\ue023\nfunction runTopicDemo() {\n  console.log('Executing: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 6: Git Di\ue023\nfunction runDemo() {\n  console.log('Running: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Git Di\ue023\nfunction runDemo() {\n  console.log('Running: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -313,7 +313,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 6: Git Di\ue023",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Di\ue023?)\nGit Di\ue023 tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Show di\ue023erences in working branch to simplify development and prevent common bugs.**\n- **Provides Show changes between two commits to simplify development and prevent common bugs.**\n- **Provides Show di\ue023erences for staged \ufb01les to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 6: Git Di\ue023\nfunction runTopicDemo() {\n  console.log('Executing: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Di\ue023?)\nGit Di\ue023 provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Show di\ue023erences in working branch to write clean, predictable code.**\n- **Provides Show changes between two commits to write clean, predictable code.**\n- **Provides Show di\ue023erences for staged \ufb01les to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 6: Git Di\ue023\nfunction runDemo() {\n  console.log('Running: Git Di\ue023');\n  return { success: true, topic: 'Git Di\ue023' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Di\ue023 is essential for professional engineering."
           }
         },
@@ -341,8 +341,8 @@ export const gitCompleteCourse = {
             {
               "title": "Undoing Working Implementation",
               "description": "Complete working demonstration of Undoing",
-              "starterCode": "// Chapter 7: Undoing\nfunction runTopicDemo() {\n  console.log('Executing: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Undoing\nfunction runTopicDemo() {\n  console.log('Executing: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 7: Undoing\nfunction runDemo() {\n  console.log('Running: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Undoing\nfunction runDemo() {\n  console.log('Running: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Undoing"
             }
           ],
@@ -350,9 +350,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Undoing",
               "description": "Write a clean solution for Undoing that returns expected status.",
-              "starterCode": "// Chapter 7: Undoing\nfunction runTopicDemo() {\n  console.log('Executing: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Undoing\nfunction runTopicDemo() {\n  console.log('Executing: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 7: Undoing\nfunction runDemo() {\n  console.log('Running: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Undoing\nfunction runDemo() {\n  console.log('Running: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -364,7 +364,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 7: Undoing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Undoing?)\nUndoing tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Return to a previous commit to simplify development and prevent common bugs.**\n- **Provides Undoing changes to simplify development and prevent common bugs.**\n- **Provides Using re\ufb02og to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 7: Undoing\nfunction runTopicDemo() {\n  console.log('Executing: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Undoing?)\nUndoing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Return to a previous commit to write clean, predictable code.**\n- **Provides Undoing changes to write clean, predictable code.**\n- **Provides Using re\ufb02og to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 7: Undoing\nfunction runDemo() {\n  console.log('Running: Undoing');\n  return { success: true, topic: 'Undoing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Undoing is essential for professional engineering."
           }
         },
@@ -392,8 +392,8 @@ export const gitCompleteCourse = {
             {
               "title": "Merging Working Implementation",
               "description": "Complete working demonstration of Merging",
-              "starterCode": "// Chapter 8: Merging\nfunction runTopicDemo() {\n  console.log('Executing: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Merging\nfunction runTopicDemo() {\n  console.log('Executing: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 8: Merging\nfunction runDemo() {\n  console.log('Running: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Merging\nfunction runDemo() {\n  console.log('Running: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Merging"
             }
           ],
@@ -401,9 +401,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Merging",
               "description": "Write a clean solution for Merging that returns expected status.",
-              "starterCode": "// Chapter 8: Merging\nfunction runTopicDemo() {\n  console.log('Executing: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Merging\nfunction runTopicDemo() {\n  console.log('Executing: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 8: Merging\nfunction runDemo() {\n  console.log('Running: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Merging\nfunction runDemo() {\n  console.log('Running: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -415,7 +415,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 8: Merging",
-            "content": "### \ud83c\udf1f 1. Definition (What is Merging?)\nMerging tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Automatic Merging to simplify development and prevent common bugs.**\n- **Provides Finding all branches with no merged changes to simplify development and prevent common bugs.**\n- **Provides Aborting a merge to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 8: Merging\nfunction runTopicDemo() {\n  console.log('Executing: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Merging?)\nMerging provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Automatic Merging to write clean, predictable code.**\n- **Provides Finding all branches with no merged changes to write clean, predictable code.**\n- **Provides Aborting a merge to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 8: Merging\nfunction runDemo() {\n  console.log('Running: Merging');\n  return { success: true, topic: 'Merging' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Merging is essential for professional engineering."
           }
         },
@@ -443,8 +443,8 @@ export const gitCompleteCourse = {
             {
               "title": "Submodules Working Implementation",
               "description": "Complete working demonstration of Submodules",
-              "starterCode": "// Chapter 9: Submodules\nfunction runTopicDemo() {\n  console.log('Executing: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Submodules\nfunction runTopicDemo() {\n  console.log('Executing: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 9: Submodules\nfunction runDemo() {\n  console.log('Running: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Submodules\nfunction runDemo() {\n  console.log('Running: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Submodules"
             }
           ],
@@ -452,9 +452,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Submodules",
               "description": "Write a clean solution for Submodules that returns expected status.",
-              "starterCode": "// Chapter 9: Submodules\nfunction runTopicDemo() {\n  console.log('Executing: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Submodules\nfunction runTopicDemo() {\n  console.log('Executing: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 9: Submodules\nfunction runDemo() {\n  console.log('Running: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Submodules\nfunction runDemo() {\n  console.log('Running: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -466,7 +466,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 9: Submodules",
-            "content": "### \ud83c\udf1f 1. Definition (What is Submodules?)\nSubmodules tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Cloning a Git repository having submodules to simplify development and prevent common bugs.**\n- **Provides Updating a Submodule to simplify development and prevent common bugs.**\n- **Provides Adding a submodule to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 9: Submodules\nfunction runTopicDemo() {\n  console.log('Executing: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Submodules?)\nSubmodules provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Cloning a Git repository having submodules to write clean, predictable code.**\n- **Provides Updating a Submodule to write clean, predictable code.**\n- **Provides Adding a submodule to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 9: Submodules\nfunction runDemo() {\n  console.log('Running: Submodules');\n  return { success: true, topic: 'Submodules' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Submodules is essential for professional engineering."
           }
         },
@@ -494,8 +494,8 @@ export const gitCompleteCourse = {
             {
               "title": "Committing Working Implementation",
               "description": "Complete working demonstration of Committing",
-              "starterCode": "// Chapter 10: Committing\nfunction runTopicDemo() {\n  console.log('Executing: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Committing\nfunction runTopicDemo() {\n  console.log('Executing: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 10: Committing\nfunction runDemo() {\n  console.log('Running: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Committing\nfunction runDemo() {\n  console.log('Running: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Committing"
             }
           ],
@@ -503,9 +503,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Committing",
               "description": "Write a clean solution for Committing that returns expected status.",
-              "starterCode": "// Chapter 10: Committing\nfunction runTopicDemo() {\n  console.log('Executing: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Committing\nfunction runTopicDemo() {\n  console.log('Executing: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 10: Committing\nfunction runDemo() {\n  console.log('Running: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Committing\nfunction runDemo() {\n  console.log('Running: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -517,7 +517,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 10: Committing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Committing?)\nCommitting tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Stage and commit changes to simplify development and prevent common bugs.**\n- **Provides Good commit messages to simplify development and prevent common bugs.**\n- **Provides Amending a commit to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 10: Committing\nfunction runTopicDemo() {\n  console.log('Executing: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Committing?)\nCommitting provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Stage and commit changes to write clean, predictable code.**\n- **Provides Good commit messages to write clean, predictable code.**\n- **Provides Amending a commit to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 10: Committing\nfunction runDemo() {\n  console.log('Running: Committing');\n  return { success: true, topic: 'Committing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Committing is essential for professional engineering."
           }
         }
@@ -552,8 +552,8 @@ export const gitCompleteCourse = {
             {
               "title": "Aliases Working Implementation",
               "description": "Complete working demonstration of Aliases",
-              "starterCode": "// Chapter 11: Aliases\nfunction runTopicDemo() {\n  console.log('Executing: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Aliases\nfunction runTopicDemo() {\n  console.log('Executing: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 11: Aliases\nfunction runDemo() {\n  console.log('Running: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Aliases\nfunction runDemo() {\n  console.log('Running: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Aliases"
             }
           ],
@@ -561,9 +561,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Aliases",
               "description": "Write a clean solution for Aliases that returns expected status.",
-              "starterCode": "// Chapter 11: Aliases\nfunction runTopicDemo() {\n  console.log('Executing: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Aliases\nfunction runTopicDemo() {\n  console.log('Executing: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 11: Aliases\nfunction runDemo() {\n  console.log('Running: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Aliases\nfunction runDemo() {\n  console.log('Running: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -575,7 +575,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 11: Aliases",
-            "content": "### \ud83c\udf1f 1. Definition (What is Aliases?)\nAliases tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple aliases to simplify development and prevent common bugs.**\n- **Provides List / search existing aliases to simplify development and prevent common bugs.**\n- **Provides Advanced Aliases to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 11: Aliases\nfunction runTopicDemo() {\n  console.log('Executing: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Aliases?)\nAliases provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple aliases to write clean, predictable code.**\n- **Provides List / search existing aliases to write clean, predictable code.**\n- **Provides Advanced Aliases to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 11: Aliases\nfunction runDemo() {\n  console.log('Running: Aliases');\n  return { success: true, topic: 'Aliases' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Aliases is essential for professional engineering."
           }
         },
@@ -603,8 +603,8 @@ export const gitCompleteCourse = {
             {
               "title": "Rebasing Working Implementation",
               "description": "Complete working demonstration of Rebasing",
-              "starterCode": "// Chapter 12: Rebasing\nfunction runTopicDemo() {\n  console.log('Executing: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Rebasing\nfunction runTopicDemo() {\n  console.log('Executing: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 12: Rebasing\nfunction runDemo() {\n  console.log('Running: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Rebasing\nfunction runDemo() {\n  console.log('Running: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Rebasing"
             }
           ],
@@ -612,9 +612,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Rebasing",
               "description": "Write a clean solution for Rebasing that returns expected status.",
-              "starterCode": "// Chapter 12: Rebasing\nfunction runTopicDemo() {\n  console.log('Executing: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Rebasing\nfunction runTopicDemo() {\n  console.log('Executing: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 12: Rebasing\nfunction runDemo() {\n  console.log('Running: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Rebasing\nfunction runDemo() {\n  console.log('Running: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -626,7 +626,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 12: Rebasing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Rebasing?)\nRebasing tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Local Branch Rebasing to simplify development and prevent common bugs.**\n- **Provides Rebase: ours and theirs, local and remote to simplify development and prevent common bugs.**\n- **Provides Interactive Rebase to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 12: Rebasing\nfunction runTopicDemo() {\n  console.log('Executing: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Rebasing?)\nRebasing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Local Branch Rebasing to write clean, predictable code.**\n- **Provides Rebase: ours and theirs, local and remote to write clean, predictable code.**\n- **Provides Interactive Rebase to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 12: Rebasing\nfunction runDemo() {\n  console.log('Running: Rebasing');\n  return { success: true, topic: 'Rebasing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Rebasing is essential for professional engineering."
           }
         },
@@ -654,8 +654,8 @@ export const gitCompleteCourse = {
             {
               "title": "Con\ufb01guration Working Implementation",
               "description": "Complete working demonstration of Con\ufb01guration",
-              "starterCode": "// Chapter 13: Con\ufb01guration\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Con\ufb01guration\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 13: Con\ufb01guration\nfunction runDemo() {\n  console.log('Running: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Con\ufb01guration\nfunction runDemo() {\n  console.log('Running: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Con\ufb01guration"
             }
           ],
@@ -663,9 +663,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Con\ufb01guration",
               "description": "Write a clean solution for Con\ufb01guration that returns expected status.",
-              "starterCode": "// Chapter 13: Con\ufb01guration\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Con\ufb01guration\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 13: Con\ufb01guration\nfunction runDemo() {\n  console.log('Running: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Con\ufb01guration\nfunction runDemo() {\n  console.log('Running: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -677,7 +677,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 13: Con\ufb01guration",
-            "content": "### \ud83c\udf1f 1. Definition (What is Con\ufb01guration?)\nCon\ufb01guration tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting which editor to use to simplify development and prevent common bugs.**\n- **Provides Auto correct typos to simplify development and prevent common bugs.**\n- **Provides List and edit the current con\ufb01guration to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 13: Con\ufb01guration\nfunction runTopicDemo() {\n  console.log('Executing: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Con\ufb01guration?)\nCon\ufb01guration provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting which editor to use to write clean, predictable code.**\n- **Provides Auto correct typos to write clean, predictable code.**\n- **Provides List and edit the current con\ufb01guration to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 13: Con\ufb01guration\nfunction runDemo() {\n  console.log('Running: Con\ufb01guration');\n  return { success: true, topic: 'Con\ufb01guration' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Con\ufb01guration is essential for professional engineering."
           }
         },
@@ -705,8 +705,8 @@ export const gitCompleteCourse = {
             {
               "title": "Branching Working Implementation",
               "description": "Complete working demonstration of Branching",
-              "starterCode": "// Chapter 14: Branching\nfunction runTopicDemo() {\n  console.log('Executing: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Branching\nfunction runTopicDemo() {\n  console.log('Executing: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 14: Branching\nfunction runDemo() {\n  console.log('Running: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Branching\nfunction runDemo() {\n  console.log('Running: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Branching"
             }
           ],
@@ -714,9 +714,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Branching",
               "description": "Write a clean solution for Branching that returns expected status.",
-              "starterCode": "// Chapter 14: Branching\nfunction runTopicDemo() {\n  console.log('Executing: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Branching\nfunction runTopicDemo() {\n  console.log('Executing: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 14: Branching\nfunction runDemo() {\n  console.log('Running: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Branching\nfunction runDemo() {\n  console.log('Running: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -728,7 +728,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 14: Branching",
-            "content": "### \ud83c\udf1f 1. Definition (What is Branching?)\nBranching tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating and checking out new branches to simplify development and prevent common bugs.**\n- **Provides Listing branches to simplify development and prevent common bugs.**\n- **Provides Delete a remote branch to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 14: Branching\nfunction runTopicDemo() {\n  console.log('Executing: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Branching?)\nBranching provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating and checking out new branches to write clean, predictable code.**\n- **Provides Listing branches to write clean, predictable code.**\n- **Provides Delete a remote branch to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 14: Branching\nfunction runDemo() {\n  console.log('Running: Branching');\n  return { success: true, topic: 'Branching' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Branching is essential for professional engineering."
           }
         },
@@ -748,8 +748,8 @@ export const gitCompleteCourse = {
             {
               "title": "Rev: List Working Implementation",
               "description": "Complete working demonstration of Rev: List",
-              "starterCode": "// Chapter 15: Rev: List\nfunction runTopicDemo() {\n  console.log('Executing: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Rev: List\nfunction runTopicDemo() {\n  console.log('Executing: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 15: Rev: List\nfunction runDemo() {\n  console.log('Running: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Rev: List\nfunction runDemo() {\n  console.log('Running: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Rev: List"
             }
           ],
@@ -757,9 +757,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Rev: List",
               "description": "Write a clean solution for Rev: List that returns expected status.",
-              "starterCode": "// Chapter 15: Rev: List\nfunction runTopicDemo() {\n  console.log('Executing: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Rev: List\nfunction runTopicDemo() {\n  console.log('Executing: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 15: Rev: List\nfunction runDemo() {\n  console.log('Running: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Rev: List\nfunction runDemo() {\n  console.log('Running: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -771,7 +771,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 15: Rev: List",
-            "content": "### \ud83c\udf1f 1. Definition (What is Rev: List?)\nRev: List tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides List Commits in master but not in origin/master to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 15: Rev: List\nfunction runTopicDemo() {\n  console.log('Executing: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Rev: List?)\nRev: List provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides List Commits in master but not in origin/master to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 15: Rev: List\nfunction runDemo() {\n  console.log('Running: Rev: List');\n  return { success: true, topic: 'Rev: List' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Rev: List is essential for professional engineering."
           }
         },
@@ -799,8 +799,8 @@ export const gitCompleteCourse = {
             {
               "title": "Squashing Working Implementation",
               "description": "Complete working demonstration of Squashing",
-              "starterCode": "// Chapter 16: Squashing\nfunction runTopicDemo() {\n  console.log('Executing: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Squashing\nfunction runTopicDemo() {\n  console.log('Executing: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 16: Squashing\nfunction runDemo() {\n  console.log('Running: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Squashing\nfunction runDemo() {\n  console.log('Running: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Squashing"
             }
           ],
@@ -808,9 +808,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Squashing",
               "description": "Write a clean solution for Squashing that returns expected status.",
-              "starterCode": "// Chapter 16: Squashing\nfunction runTopicDemo() {\n  console.log('Executing: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Squashing\nfunction runTopicDemo() {\n  console.log('Executing: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 16: Squashing\nfunction runDemo() {\n  console.log('Running: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Squashing\nfunction runDemo() {\n  console.log('Running: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -822,7 +822,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 16: Squashing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Squashing?)\nSquashing tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Squash Recent Commits Without Rebasing to simplify development and prevent common bugs.**\n- **Provides Squashing Commit During Merge to simplify development and prevent common bugs.**\n- **Provides Squashing Commits During a Rebase to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 16: Squashing\nfunction runTopicDemo() {\n  console.log('Executing: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Squashing?)\nSquashing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Squash Recent Commits Without Rebasing to write clean, predictable code.**\n- **Provides Squashing Commit During Merge to write clean, predictable code.**\n- **Provides Squashing Commits During a Rebase to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 16: Squashing\nfunction runDemo() {\n  console.log('Running: Squashing');\n  return { success: true, topic: 'Squashing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Squashing is essential for professional engineering."
           }
         },
@@ -850,8 +850,8 @@ export const gitCompleteCourse = {
             {
               "title": "Cherry Picking Working Implementation",
               "description": "Complete working demonstration of Cherry Picking",
-              "starterCode": "// Chapter 17: Cherry Picking\nfunction runTopicDemo() {\n  console.log('Executing: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Cherry Picking\nfunction runTopicDemo() {\n  console.log('Executing: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 17: Cherry Picking\nfunction runDemo() {\n  console.log('Running: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Cherry Picking\nfunction runDemo() {\n  console.log('Running: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Cherry Picking"
             }
           ],
@@ -859,9 +859,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Cherry Picking",
               "description": "Write a clean solution for Cherry Picking that returns expected status.",
-              "starterCode": "// Chapter 17: Cherry Picking\nfunction runTopicDemo() {\n  console.log('Executing: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Cherry Picking\nfunction runTopicDemo() {\n  console.log('Executing: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 17: Cherry Picking\nfunction runDemo() {\n  console.log('Running: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Cherry Picking\nfunction runDemo() {\n  console.log('Running: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -873,7 +873,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 17: Cherry Picking",
-            "content": "### \ud83c\udf1f 1. Definition (What is Cherry Picking?)\nCherry Picking tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Copying a commit from one branch to another to simplify development and prevent common bugs.**\n- **Provides Copying a range of commits from one branch to another to simplify development and prevent common bugs.**\n- **Provides Checking if a cherry: pick is required to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 17: Cherry Picking\nfunction runTopicDemo() {\n  console.log('Executing: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Cherry Picking?)\nCherry Picking provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Copying a commit from one branch to another to write clean, predictable code.**\n- **Provides Copying a range of commits from one branch to another to write clean, predictable code.**\n- **Provides Checking if a cherry: pick is required to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 17: Cherry Picking\nfunction runDemo() {\n  console.log('Running: Cherry Picking');\n  return { success: true, topic: 'Cherry Picking' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Cherry Picking is essential for professional engineering."
           }
         },
@@ -901,8 +901,8 @@ export const gitCompleteCourse = {
             {
               "title": "Recovering Working Implementation",
               "description": "Complete working demonstration of Recovering",
-              "starterCode": "// Chapter 18: Recovering\nfunction runTopicDemo() {\n  console.log('Executing: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Recovering\nfunction runTopicDemo() {\n  console.log('Executing: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 18: Recovering\nfunction runDemo() {\n  console.log('Running: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Recovering\nfunction runDemo() {\n  console.log('Running: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Recovering"
             }
           ],
@@ -910,9 +910,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Recovering",
               "description": "Write a clean solution for Recovering that returns expected status.",
-              "starterCode": "// Chapter 18: Recovering\nfunction runTopicDemo() {\n  console.log('Executing: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Recovering\nfunction runTopicDemo() {\n  console.log('Executing: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 18: Recovering\nfunction runDemo() {\n  console.log('Running: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Recovering\nfunction runDemo() {\n  console.log('Running: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -924,7 +924,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 18: Recovering",
-            "content": "### \ud83c\udf1f 1. Definition (What is Recovering?)\nRecovering tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Recovering from a reset to simplify development and prevent common bugs.**\n- **Provides Recover from git stash to simplify development and prevent common bugs.**\n- **Provides Recovering from a lost commit to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 18: Recovering\nfunction runTopicDemo() {\n  console.log('Executing: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Recovering?)\nRecovering provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Recovering from a reset to write clean, predictable code.**\n- **Provides Recover from git stash to write clean, predictable code.**\n- **Provides Recovering from a lost commit to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 18: Recovering\nfunction runDemo() {\n  console.log('Running: Recovering');\n  return { success: true, topic: 'Recovering' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Recovering is essential for professional engineering."
           }
         },
@@ -952,8 +952,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Clean Working Implementation",
               "description": "Complete working demonstration of Git Clean",
-              "starterCode": "// Chapter 19: Git Clean\nfunction runTopicDemo() {\n  console.log('Executing: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Git Clean\nfunction runTopicDemo() {\n  console.log('Executing: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 19: Git Clean\nfunction runDemo() {\n  console.log('Running: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Git Clean\nfunction runDemo() {\n  console.log('Running: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Clean"
             }
           ],
@@ -961,9 +961,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Clean",
               "description": "Write a clean solution for Git Clean that returns expected status.",
-              "starterCode": "// Chapter 19: Git Clean\nfunction runTopicDemo() {\n  console.log('Executing: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Git Clean\nfunction runTopicDemo() {\n  console.log('Executing: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 19: Git Clean\nfunction runDemo() {\n  console.log('Running: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Git Clean\nfunction runDemo() {\n  console.log('Running: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -975,7 +975,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 19: Git Clean",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Clean?)\nGit Clean tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Clean Interactively to simplify development and prevent common bugs.**\n- **Provides Forcefully remove untracked \ufb01les to simplify development and prevent common bugs.**\n- **Provides Clean Ignored Files to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 19: Git Clean\nfunction runTopicDemo() {\n  console.log('Executing: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Clean?)\nGit Clean provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Clean Interactively to write clean, predictable code.**\n- **Provides Forcefully remove untracked \ufb01les to write clean, predictable code.**\n- **Provides Clean Ignored Files to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 19: Git Clean\nfunction runDemo() {\n  console.log('Running: Git Clean');\n  return { success: true, topic: 'Git Clean' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Clean is essential for professional engineering."
           }
         },
@@ -1003,8 +1003,8 @@ export const gitCompleteCourse = {
             {
               "title": "Using a .gitattributes \ufb01le Working Implementation",
               "description": "Complete working demonstration of Using a .gitattributes \ufb01le",
-              "starterCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runDemo() {\n  console.log('Running: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runDemo() {\n  console.log('Running: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Using a .gitattributes \ufb01le"
             }
           ],
@@ -1012,9 +1012,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Using a .gitattributes \ufb01le",
               "description": "Write a clean solution for Using a .gitattributes \ufb01le that returns expected status.",
-              "starterCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runDemo() {\n  console.log('Running: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Using a .gitattributes \ufb01le\nfunction runDemo() {\n  console.log('Running: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1026,7 +1026,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 20: Using a .gitattributes \ufb01le",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using a .gitattributes \ufb01le?)\nUsing a .gitattributes \ufb01le tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Automatic Line Ending Normalization to simplify development and prevent common bugs.**\n- **Provides Identify Binary Files to simplify development and prevent common bugs.**\n- **Provides Pre\ufb01lled .gitattribute Templates to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 20: Using a .gitattributes \ufb01le\nfunction runTopicDemo() {\n  console.log('Executing: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using a .gitattributes \ufb01le?)\nUsing a .gitattributes \ufb01le provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Automatic Line Ending Normalization to write clean, predictable code.**\n- **Provides Identify Binary Files to write clean, predictable code.**\n- **Provides Pre\ufb01lled .gitattribute Templates to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 20: Using a .gitattributes \ufb01le\nfunction runDemo() {\n  console.log('Running: Using a .gitattributes \ufb01le');\n  return { success: true, topic: 'Using a .gitattributes \ufb01le' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Using a .gitattributes \ufb01le is essential for professional engineering."
           }
         }
@@ -1053,8 +1053,8 @@ export const gitCompleteCourse = {
             {
               "title": ".mailmap \ufb01le: Associating contributor and email aliases Working Implementation",
               "description": "Complete working demonstration of .mailmap \ufb01le: Associating contributor and email aliases",
-              "starterCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runTopicDemo() {\n  console.log('Executing: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runTopicDemo() {\n  console.log('Executing: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runDemo() {\n  console.log('Running: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runDemo() {\n  console.log('Running: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: .mailmap \ufb01le: Associating contributor and email aliases"
             }
           ],
@@ -1062,9 +1062,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement .mailmap \ufb01le: Associating contributor and email aliases",
               "description": "Write a clean solution for .mailmap \ufb01le: Associating contributor and email aliases that returns expected status.",
-              "starterCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runTopicDemo() {\n  console.log('Executing: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runTopicDemo() {\n  console.log('Executing: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runDemo() {\n  console.log('Running: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runDemo() {\n  console.log('Running: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1076,7 +1076,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases",
-            "content": "### \ud83c\udf1f 1. Definition (What is .mailmap \ufb01le: Associating contributor and email aliases?)\n.mailmap \ufb01le: Associating contributor and email aliases tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Merge contributers by aliases to show commit count in shortlog to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runTopicDemo() {\n  console.log('Executing: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is .mailmap \ufb01le: Associating contributor and email aliases?)\n.mailmap \ufb01le: Associating contributor and email aliases provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Merge contributers by aliases to show commit count in shortlog to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 21: .mailmap \ufb01le: Associating contributor and email aliases\nfunction runDemo() {\n  console.log('Running: .mailmap \ufb01le: Associating contributor and email aliases');\n  return { success: true, topic: '.mailmap \ufb01le: Associating contributor and email aliases' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering .mailmap \ufb01le: Associating contributor and email aliases is essential for professional engineering."
           }
         },
@@ -1104,8 +1104,8 @@ export const gitCompleteCourse = {
             {
               "title": "Analyzing types of work\ufb02ows Working Implementation",
               "description": "Complete working demonstration of Analyzing types of work\ufb02ows",
-              "starterCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runTopicDemo() {\n  console.log('Executing: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runTopicDemo() {\n  console.log('Executing: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runDemo() {\n  console.log('Running: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runDemo() {\n  console.log('Running: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Analyzing types of work\ufb02ows"
             }
           ],
@@ -1113,9 +1113,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Analyzing types of work\ufb02ows",
               "description": "Write a clean solution for Analyzing types of work\ufb02ows that returns expected status.",
-              "starterCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runTopicDemo() {\n  console.log('Executing: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runTopicDemo() {\n  console.log('Executing: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runDemo() {\n  console.log('Running: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Analyzing types of work\ufb02ows\nfunction runDemo() {\n  console.log('Running: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1127,7 +1127,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 22: Analyzing types of work\ufb02ows",
-            "content": "### \ud83c\udf1f 1. Definition (What is Analyzing types of work\ufb02ows?)\nAnalyzing types of work\ufb02ows tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Centralized Work\ufb02ow to simplify development and prevent common bugs.**\n- **Provides Git\ufb02ow Work\ufb02ow to simplify development and prevent common bugs.**\n- **Provides Feature Branch Work\ufb02ow to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 22: Analyzing types of work\ufb02ows\nfunction runTopicDemo() {\n  console.log('Executing: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Analyzing types of work\ufb02ows?)\nAnalyzing types of work\ufb02ows provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Centralized Work\ufb02ow to write clean, predictable code.**\n- **Provides Git\ufb02ow Work\ufb02ow to write clean, predictable code.**\n- **Provides Feature Branch Work\ufb02ow to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 22: Analyzing types of work\ufb02ows\nfunction runDemo() {\n  console.log('Running: Analyzing types of work\ufb02ows');\n  return { success: true, topic: 'Analyzing types of work\ufb02ows' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Analyzing types of work\ufb02ows is essential for professional engineering."
           }
         },
@@ -1155,8 +1155,8 @@ export const gitCompleteCourse = {
             {
               "title": "Pulling Working Implementation",
               "description": "Complete working demonstration of Pulling",
-              "starterCode": "// Chapter 23: Pulling\nfunction runTopicDemo() {\n  console.log('Executing: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Pulling\nfunction runTopicDemo() {\n  console.log('Executing: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 23: Pulling\nfunction runDemo() {\n  console.log('Running: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Pulling\nfunction runDemo() {\n  console.log('Running: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Pulling"
             }
           ],
@@ -1164,9 +1164,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Pulling",
               "description": "Write a clean solution for Pulling that returns expected status.",
-              "starterCode": "// Chapter 23: Pulling\nfunction runTopicDemo() {\n  console.log('Executing: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Pulling\nfunction runTopicDemo() {\n  console.log('Executing: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 23: Pulling\nfunction runDemo() {\n  console.log('Running: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Pulling\nfunction runDemo() {\n  console.log('Running: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1178,7 +1178,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 23: Pulling",
-            "content": "### \ud83c\udf1f 1. Definition (What is Pulling?)\nPulling tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pulling changes to a local repository to simplify development and prevent common bugs.**\n- **Provides Updating with local changes to simplify development and prevent common bugs.**\n- **Provides Pull, overwrite local to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 23: Pulling\nfunction runTopicDemo() {\n  console.log('Executing: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Pulling?)\nPulling provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pulling changes to a local repository to write clean, predictable code.**\n- **Provides Updating with local changes to write clean, predictable code.**\n- **Provides Pull, overwrite local to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 23: Pulling\nfunction runDemo() {\n  console.log('Running: Pulling');\n  return { success: true, topic: 'Pulling' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Pulling is essential for professional engineering."
           }
         },
@@ -1206,8 +1206,8 @@ export const gitCompleteCourse = {
             {
               "title": "Hooks Working Implementation",
               "description": "Complete working demonstration of Hooks",
-              "starterCode": "// Chapter 24: Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 24: Hooks\nfunction runDemo() {\n  console.log('Running: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Hooks\nfunction runDemo() {\n  console.log('Running: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Hooks"
             }
           ],
@@ -1215,9 +1215,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Hooks",
               "description": "Write a clean solution for Hooks that returns expected status.",
-              "starterCode": "// Chapter 24: Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 24: Hooks\nfunction runDemo() {\n  console.log('Running: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Hooks\nfunction runDemo() {\n  console.log('Running: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1229,7 +1229,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 24: Hooks",
-            "content": "### \ud83c\udf1f 1. Definition (What is Hooks?)\nHooks tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pre: push to simplify development and prevent common bugs.**\n- **Provides Verify Maven build (or other build system) before committing to simplify development and prevent common bugs.**\n- **Provides Automatically forward certain pushes to other repositories to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 24: Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Hooks?)\nHooks provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pre: push to write clean, predictable code.**\n- **Provides Verify Maven build (or other build system) before committing to write clean, predictable code.**\n- **Provides Automatically forward certain pushes to other repositories to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 24: Hooks\nfunction runDemo() {\n  console.log('Running: Hooks');\n  return { success: true, topic: 'Hooks' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Hooks is essential for professional engineering."
           }
         },
@@ -1257,8 +1257,8 @@ export const gitCompleteCourse = {
             {
               "title": "Cloning Repositories Working Implementation",
               "description": "Complete working demonstration of Cloning Repositories",
-              "starterCode": "// Chapter 25: Cloning Repositories\nfunction runTopicDemo() {\n  console.log('Executing: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Cloning Repositories\nfunction runTopicDemo() {\n  console.log('Executing: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 25: Cloning Repositories\nfunction runDemo() {\n  console.log('Running: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Cloning Repositories\nfunction runDemo() {\n  console.log('Running: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Cloning Repositories"
             }
           ],
@@ -1266,9 +1266,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Cloning Repositories",
               "description": "Write a clean solution for Cloning Repositories that returns expected status.",
-              "starterCode": "// Chapter 25: Cloning Repositories\nfunction runTopicDemo() {\n  console.log('Executing: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Cloning Repositories\nfunction runTopicDemo() {\n  console.log('Executing: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 25: Cloning Repositories\nfunction runDemo() {\n  console.log('Running: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Cloning Repositories\nfunction runDemo() {\n  console.log('Running: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1280,7 +1280,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 25: Cloning Repositories",
-            "content": "### \ud83c\udf1f 1. Definition (What is Cloning Repositories?)\nCloning Repositories tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Shallow Clone to simplify development and prevent common bugs.**\n- **Provides Regular Clone to simplify development and prevent common bugs.**\n- **Provides Clone a speci\ufb01c branch to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 25: Cloning Repositories\nfunction runTopicDemo() {\n  console.log('Executing: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Cloning Repositories?)\nCloning Repositories provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Shallow Clone to write clean, predictable code.**\n- **Provides Regular Clone to write clean, predictable code.**\n- **Provides Clone a speci\ufb01c branch to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 25: Cloning Repositories\nfunction runDemo() {\n  console.log('Running: Cloning Repositories');\n  return { success: true, topic: 'Cloning Repositories' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Cloning Repositories is essential for professional engineering."
           }
         },
@@ -1308,8 +1308,8 @@ export const gitCompleteCourse = {
             {
               "title": "Stashing Working Implementation",
               "description": "Complete working demonstration of Stashing",
-              "starterCode": "// Chapter 26: Stashing\nfunction runTopicDemo() {\n  console.log('Executing: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Stashing\nfunction runTopicDemo() {\n  console.log('Executing: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 26: Stashing\nfunction runDemo() {\n  console.log('Running: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Stashing\nfunction runDemo() {\n  console.log('Running: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Stashing"
             }
           ],
@@ -1317,9 +1317,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Stashing",
               "description": "Write a clean solution for Stashing that returns expected status.",
-              "starterCode": "// Chapter 26: Stashing\nfunction runTopicDemo() {\n  console.log('Executing: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Stashing\nfunction runTopicDemo() {\n  console.log('Executing: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 26: Stashing\nfunction runDemo() {\n  console.log('Running: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Stashing\nfunction runDemo() {\n  console.log('Running: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1331,7 +1331,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 26: Stashing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Stashing?)\nStashing tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is Stashing? to simplify development and prevent common bugs.**\n- **Provides Create stash to simplify development and prevent common bugs.**\n- **Provides Apply and remove stash to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 26: Stashing\nfunction runTopicDemo() {\n  console.log('Executing: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Stashing?)\nStashing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is Stashing? to write clean, predictable code.**\n- **Provides Create stash to write clean, predictable code.**\n- **Provides Apply and remove stash to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 26: Stashing\nfunction runDemo() {\n  console.log('Running: Stashing');\n  return { success: true, topic: 'Stashing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Stashing is essential for professional engineering."
           }
         },
@@ -1351,8 +1351,8 @@ export const gitCompleteCourse = {
             {
               "title": "Subtrees Working Implementation",
               "description": "Complete working demonstration of Subtrees",
-              "starterCode": "// Chapter 27: Subtrees\nfunction runTopicDemo() {\n  console.log('Executing: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: Subtrees\nfunction runTopicDemo() {\n  console.log('Executing: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 27: Subtrees\nfunction runDemo() {\n  console.log('Running: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Subtrees\nfunction runDemo() {\n  console.log('Running: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Subtrees"
             }
           ],
@@ -1360,9 +1360,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Subtrees",
               "description": "Write a clean solution for Subtrees that returns expected status.",
-              "starterCode": "// Chapter 27: Subtrees\nfunction runTopicDemo() {\n  console.log('Executing: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: Subtrees\nfunction runTopicDemo() {\n  console.log('Executing: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 27: Subtrees\nfunction runDemo() {\n  console.log('Running: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Subtrees\nfunction runDemo() {\n  console.log('Running: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1374,7 +1374,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 27: Subtrees",
-            "content": "### \ud83c\udf1f 1. Definition (What is Subtrees?)\nSubtrees tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create, Pull, and Backport Subtree to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 27: Subtrees\nfunction runTopicDemo() {\n  console.log('Executing: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Subtrees?)\nSubtrees provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create, Pull, and Backport Subtree to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 27: Subtrees\nfunction runDemo() {\n  console.log('Running: Subtrees');\n  return { success: true, topic: 'Subtrees' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Subtrees is essential for professional engineering."
           }
         },
@@ -1402,8 +1402,8 @@ export const gitCompleteCourse = {
             {
               "title": "Renaming Working Implementation",
               "description": "Complete working demonstration of Renaming",
-              "starterCode": "// Chapter 28: Renaming\nfunction runTopicDemo() {\n  console.log('Executing: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: Renaming\nfunction runTopicDemo() {\n  console.log('Executing: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 28: Renaming\nfunction runDemo() {\n  console.log('Running: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Renaming\nfunction runDemo() {\n  console.log('Running: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Renaming"
             }
           ],
@@ -1411,9 +1411,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Renaming",
               "description": "Write a clean solution for Renaming that returns expected status.",
-              "starterCode": "// Chapter 28: Renaming\nfunction runTopicDemo() {\n  console.log('Executing: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: Renaming\nfunction runTopicDemo() {\n  console.log('Executing: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 28: Renaming\nfunction runDemo() {\n  console.log('Running: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Renaming\nfunction runDemo() {\n  console.log('Running: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1425,7 +1425,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 28: Renaming",
-            "content": "### \ud83c\udf1f 1. Definition (What is Renaming?)\nRenaming tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Rename Folders to simplify development and prevent common bugs.**\n- **Provides rename a local and the remote branch to simplify development and prevent common bugs.**\n- **Provides Renaming a local branch to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 28: Renaming\nfunction runTopicDemo() {\n  console.log('Executing: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Renaming?)\nRenaming provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Rename Folders to write clean, predictable code.**\n- **Provides rename a local and the remote branch to write clean, predictable code.**\n- **Provides Renaming a local branch to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 28: Renaming\nfunction runDemo() {\n  console.log('Running: Renaming');\n  return { success: true, topic: 'Renaming' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Renaming is essential for professional engineering."
           }
         },
@@ -1453,8 +1453,8 @@ export const gitCompleteCourse = {
             {
               "title": "Pushing Working Implementation",
               "description": "Complete working demonstration of Pushing",
-              "starterCode": "// Chapter 29: Pushing\nfunction runTopicDemo() {\n  console.log('Executing: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Pushing\nfunction runTopicDemo() {\n  console.log('Executing: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 29: Pushing\nfunction runDemo() {\n  console.log('Running: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Pushing\nfunction runDemo() {\n  console.log('Running: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Pushing"
             }
           ],
@@ -1462,9 +1462,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Pushing",
               "description": "Write a clean solution for Pushing that returns expected status.",
-              "starterCode": "// Chapter 29: Pushing\nfunction runTopicDemo() {\n  console.log('Executing: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Pushing\nfunction runTopicDemo() {\n  console.log('Executing: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 29: Pushing\nfunction runDemo() {\n  console.log('Running: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Pushing\nfunction runDemo() {\n  console.log('Running: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1476,7 +1476,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 29: Pushing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Pushing?)\nPushing tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Push a speci\ufb01c object to a remote branch to simplify development and prevent common bugs.**\n- **Provides Push to simplify development and prevent common bugs.**\n- **Provides Force Pushing to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 29: Pushing\nfunction runTopicDemo() {\n  console.log('Executing: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Pushing?)\nPushing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Push a speci\ufb01c object to a remote branch to write clean, predictable code.**\n- **Provides Push to write clean, predictable code.**\n- **Provides Force Pushing to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 29: Pushing\nfunction runDemo() {\n  console.log('Running: Pushing');\n  return { success: true, topic: 'Pushing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Pushing is essential for professional engineering."
           }
         },
@@ -1504,8 +1504,8 @@ export const gitCompleteCourse = {
             {
               "title": "Internals Working Implementation",
               "description": "Complete working demonstration of Internals",
-              "starterCode": "// Chapter 30: Internals\nfunction runTopicDemo() {\n  console.log('Executing: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Internals\nfunction runTopicDemo() {\n  console.log('Executing: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 30: Internals\nfunction runDemo() {\n  console.log('Running: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Internals\nfunction runDemo() {\n  console.log('Running: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Internals"
             }
           ],
@@ -1513,9 +1513,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Internals",
               "description": "Write a clean solution for Internals that returns expected status.",
-              "starterCode": "// Chapter 30: Internals\nfunction runTopicDemo() {\n  console.log('Executing: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Internals\nfunction runTopicDemo() {\n  console.log('Executing: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 30: Internals\nfunction runDemo() {\n  console.log('Running: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Internals\nfunction runDemo() {\n  console.log('Running: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1527,7 +1527,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 30: Internals",
-            "content": "### \ud83c\udf1f 1. Definition (What is Internals?)\nInternals tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Repo to simplify development and prevent common bugs.**\n- **Provides Objects to simplify development and prevent common bugs.**\n- **Provides HEAD ref to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 30: Internals\nfunction runTopicDemo() {\n  console.log('Executing: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Internals?)\nInternals provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Repo to write clean, predictable code.**\n- **Provides Objects to write clean, predictable code.**\n- **Provides HEAD ref to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 30: Internals\nfunction runDemo() {\n  console.log('Running: Internals');\n  return { success: true, topic: 'Internals' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Internals is essential for professional engineering."
           }
         }
@@ -1562,8 +1562,8 @@ export const gitCompleteCourse = {
             {
               "title": "git: tfs Working Implementation",
               "description": "Complete working demonstration of git: tfs",
-              "starterCode": "// Chapter 31: git: tfs\nfunction runTopicDemo() {\n  console.log('Executing: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: git: tfs\nfunction runTopicDemo() {\n  console.log('Executing: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 31: git: tfs\nfunction runDemo() {\n  console.log('Running: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: git: tfs\nfunction runDemo() {\n  console.log('Running: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: git: tfs"
             }
           ],
@@ -1571,9 +1571,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement git: tfs",
               "description": "Write a clean solution for git: tfs that returns expected status.",
-              "starterCode": "// Chapter 31: git: tfs\nfunction runTopicDemo() {\n  console.log('Executing: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: git: tfs\nfunction runTopicDemo() {\n  console.log('Executing: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 31: git: tfs\nfunction runDemo() {\n  console.log('Running: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: git: tfs\nfunction runDemo() {\n  console.log('Running: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1585,7 +1585,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 31: git: tfs",
-            "content": "### \ud83c\udf1f 1. Definition (What is git: tfs?)\ngit: tfs tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides git: tfs clone to simplify development and prevent common bugs.**\n- **Provides git: tfs clone from bare git repository to simplify development and prevent common bugs.**\n- **Provides git: tfs install via Chocolatey to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 31: git: tfs\nfunction runTopicDemo() {\n  console.log('Executing: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is git: tfs?)\ngit: tfs provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides git: tfs clone to write clean, predictable code.**\n- **Provides git: tfs clone from bare git repository to write clean, predictable code.**\n- **Provides git: tfs install via Chocolatey to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 31: git: tfs\nfunction runDemo() {\n  console.log('Running: git: tfs');\n  return { success: true, topic: 'git: tfs' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering git: tfs is essential for professional engineering."
           }
         },
@@ -1605,8 +1605,8 @@ export const gitCompleteCourse = {
             {
               "title": "Empty directories in Git Working Implementation",
               "description": "Complete working demonstration of Empty directories in Git",
-              "starterCode": "// Chapter 32: Empty directories in Git\nfunction runTopicDemo() {\n  console.log('Executing: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: Empty directories in Git\nfunction runTopicDemo() {\n  console.log('Executing: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 32: Empty directories in Git\nfunction runDemo() {\n  console.log('Running: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: Empty directories in Git\nfunction runDemo() {\n  console.log('Running: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Empty directories in Git"
             }
           ],
@@ -1614,9 +1614,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Empty directories in Git",
               "description": "Write a clean solution for Empty directories in Git that returns expected status.",
-              "starterCode": "// Chapter 32: Empty directories in Git\nfunction runTopicDemo() {\n  console.log('Executing: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: Empty directories in Git\nfunction runTopicDemo() {\n  console.log('Executing: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 32: Empty directories in Git\nfunction runDemo() {\n  console.log('Running: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: Empty directories in Git\nfunction runDemo() {\n  console.log('Running: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1628,7 +1628,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 32: Empty directories in Git",
-            "content": "### \ud83c\udf1f 1. Definition (What is Empty directories in Git?)\nEmpty directories in Git tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Git doesn't track directories to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 32: Empty directories in Git\nfunction runTopicDemo() {\n  console.log('Executing: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Empty directories in Git?)\nEmpty directories in Git provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Git doesn't track directories to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 32: Empty directories in Git\nfunction runDemo() {\n  console.log('Running: Empty directories in Git');\n  return { success: true, topic: 'Empty directories in Git' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Empty directories in Git is essential for professional engineering."
           }
         },
@@ -1656,8 +1656,8 @@ export const gitCompleteCourse = {
             {
               "title": "git: svn Working Implementation",
               "description": "Complete working demonstration of git: svn",
-              "starterCode": "// Chapter 33: git: svn\nfunction runTopicDemo() {\n  console.log('Executing: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 33: git: svn\nfunction runTopicDemo() {\n  console.log('Executing: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 33: git: svn\nfunction runDemo() {\n  console.log('Running: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: git: svn\nfunction runDemo() {\n  console.log('Running: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: git: svn"
             }
           ],
@@ -1665,9 +1665,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement git: svn",
               "description": "Write a clean solution for git: svn that returns expected status.",
-              "starterCode": "// Chapter 33: git: svn\nfunction runTopicDemo() {\n  console.log('Executing: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 33: git: svn\nfunction runTopicDemo() {\n  console.log('Executing: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 33: git: svn\nfunction runDemo() {\n  console.log('Running: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: git: svn\nfunction runDemo() {\n  console.log('Running: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1679,7 +1679,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 33: git: svn",
-            "content": "### \ud83c\udf1f 1. Definition (What is git: svn?)\ngit: svn tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Cloning the SVN repository to simplify development and prevent common bugs.**\n- **Provides Pushing local changes to SVN to simplify development and prevent common bugs.**\n- **Provides Working locally to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 33: git: svn\nfunction runTopicDemo() {\n  console.log('Executing: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is git: svn?)\ngit: svn provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Cloning the SVN repository to write clean, predictable code.**\n- **Provides Pushing local changes to SVN to write clean, predictable code.**\n- **Provides Working locally to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 33: git: svn\nfunction runDemo() {\n  console.log('Running: git: svn');\n  return { success: true, topic: 'git: svn' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering git: svn is essential for professional engineering."
           }
         },
@@ -1707,8 +1707,8 @@ export const gitCompleteCourse = {
             {
               "title": "Archive Working Implementation",
               "description": "Complete working demonstration of Archive",
-              "starterCode": "// Chapter 34: Archive\nfunction runTopicDemo() {\n  console.log('Executing: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 34: Archive\nfunction runTopicDemo() {\n  console.log('Executing: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 34: Archive\nfunction runDemo() {\n  console.log('Running: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Archive\nfunction runDemo() {\n  console.log('Running: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Archive"
             }
           ],
@@ -1716,9 +1716,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Archive",
               "description": "Write a clean solution for Archive that returns expected status.",
-              "starterCode": "// Chapter 34: Archive\nfunction runTopicDemo() {\n  console.log('Executing: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 34: Archive\nfunction runTopicDemo() {\n  console.log('Executing: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 34: Archive\nfunction runDemo() {\n  console.log('Running: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Archive\nfunction runDemo() {\n  console.log('Running: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1730,7 +1730,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 34: Archive",
-            "content": "### \ud83c\udf1f 1. Definition (What is Archive?)\nArchive tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create an archive of git repository to simplify development and prevent common bugs.**\n- **Provides Create an archive of git repository with directory pre\ufb01x to simplify development and prevent common bugs.**\n- **Provides Create archive of git repository based on speci\ufb01c branch, revision, tag or directory to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 34: Archive\nfunction runTopicDemo() {\n  console.log('Executing: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Archive?)\nArchive provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create an archive of git repository to write clean, predictable code.**\n- **Provides Create an archive of git repository with directory pre\ufb01x to write clean, predictable code.**\n- **Provides Create archive of git repository based on speci\ufb01c branch, revision, tag or directory to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 34: Archive\nfunction runDemo() {\n  console.log('Running: Archive');\n  return { success: true, topic: 'Archive' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Archive is essential for professional engineering."
           }
         },
@@ -1754,8 +1754,8 @@ export const gitCompleteCourse = {
             {
               "title": "Rewriting history with \ufb01lter: branch Working Implementation",
               "description": "Complete working demonstration of Rewriting history with \ufb01lter: branch",
-              "starterCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runTopicDemo() {\n  console.log('Executing: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runTopicDemo() {\n  console.log('Executing: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runDemo() {\n  console.log('Running: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runDemo() {\n  console.log('Running: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Rewriting history with \ufb01lter: branch"
             }
           ],
@@ -1763,9 +1763,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Rewriting history with \ufb01lter: branch",
               "description": "Write a clean solution for Rewriting history with \ufb01lter: branch that returns expected status.",
-              "starterCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runTopicDemo() {\n  console.log('Executing: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runTopicDemo() {\n  console.log('Executing: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runDemo() {\n  console.log('Running: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runDemo() {\n  console.log('Running: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1777,7 +1777,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 35: Rewriting history with \ufb01lter: branch",
-            "content": "### \ud83c\udf1f 1. Definition (What is Rewriting history with \ufb01lter: branch?)\nRewriting history with \ufb01lter: branch tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Changing the author of commits to simplify development and prevent common bugs.**\n- **Provides Setting git committer equal to commit author to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runTopicDemo() {\n  console.log('Executing: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Rewriting history with \ufb01lter: branch?)\nRewriting history with \ufb01lter: branch provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Changing the author of commits to write clean, predictable code.**\n- **Provides Setting git committer equal to commit author to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 35: Rewriting history with \ufb01lter: branch\nfunction runDemo() {\n  console.log('Running: Rewriting history with \ufb01lter: branch');\n  return { success: true, topic: 'Rewriting history with \ufb01lter: branch' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Rewriting history with \ufb01lter: branch is essential for professional engineering."
           }
         },
@@ -1805,8 +1805,8 @@ export const gitCompleteCourse = {
             {
               "title": "Migrating to Git Working Implementation",
               "description": "Complete working demonstration of Migrating to Git",
-              "starterCode": "// Chapter 36: Migrating to Git\nfunction runTopicDemo() {\n  console.log('Executing: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 36: Migrating to Git\nfunction runTopicDemo() {\n  console.log('Executing: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 36: Migrating to Git\nfunction runDemo() {\n  console.log('Running: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: Migrating to Git\nfunction runDemo() {\n  console.log('Running: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Migrating to Git"
             }
           ],
@@ -1814,9 +1814,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Migrating to Git",
               "description": "Write a clean solution for Migrating to Git that returns expected status.",
-              "starterCode": "// Chapter 36: Migrating to Git\nfunction runTopicDemo() {\n  console.log('Executing: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 36: Migrating to Git\nfunction runTopicDemo() {\n  console.log('Executing: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 36: Migrating to Git\nfunction runDemo() {\n  console.log('Running: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: Migrating to Git\nfunction runDemo() {\n  console.log('Running: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1828,7 +1828,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 36: Migrating to Git",
-            "content": "### \ud83c\udf1f 1. Definition (What is Migrating to Git?)\nMigrating to Git tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SubGit to simplify development and prevent common bugs.**\n- **Provides Migrate from SVN to Git using Atlassian conversion utility to simplify development and prevent common bugs.**\n- **Provides Migrating Mercurial to Git to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 36: Migrating to Git\nfunction runTopicDemo() {\n  console.log('Executing: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Migrating to Git?)\nMigrating to Git provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SubGit to write clean, predictable code.**\n- **Provides Migrate from SVN to Git using Atlassian conversion utility to write clean, predictable code.**\n- **Provides Migrating Mercurial to Git to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 36: Migrating to Git\nfunction runDemo() {\n  console.log('Running: Migrating to Git');\n  return { success: true, topic: 'Migrating to Git' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Migrating to Git is essential for professional engineering."
           }
         },
@@ -1848,8 +1848,8 @@ export const gitCompleteCourse = {
             {
               "title": "Show Working Implementation",
               "description": "Complete working demonstration of Show",
-              "starterCode": "// Chapter 37: Show\nfunction runTopicDemo() {\n  console.log('Executing: Show');\n  return { success: true, topic: 'Show' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 37: Show\nfunction runTopicDemo() {\n  console.log('Executing: Show');\n  return { success: true, topic: 'Show' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 37: Show\nfunction runDemo() {\n  console.log('Running: Show');\n  return { success: true, topic: 'Show' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: Show\nfunction runDemo() {\n  console.log('Running: Show');\n  return { success: true, topic: 'Show' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Show"
             }
           ],
@@ -1857,9 +1857,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Show",
               "description": "Write a clean solution for Show that returns expected status.",
-              "starterCode": "// Chapter 37: Show\nfunction runTopicDemo() {\n  console.log('Executing: Show');\n  return { success: true, topic: 'Show' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 37: Show\nfunction runTopicDemo() {\n  console.log('Executing: Show');\n  return { success: true, topic: 'Show' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 37: Show\nfunction runDemo() {\n  console.log('Running: Show');\n  return { success: true, topic: 'Show' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: Show\nfunction runDemo() {\n  console.log('Running: Show');\n  return { success: true, topic: 'Show' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1871,7 +1871,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 37: Show",
-            "content": "### \ud83c\udf1f 1. Definition (What is Show?)\nShow tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Overview to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 37: Show\nfunction runTopicDemo() {\n  console.log('Executing: Show');\n  return { success: true, topic: 'Show' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Show?)\nShow provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Overview to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 37: Show\nfunction runDemo() {\n  console.log('Running: Show');\n  return { success: true, topic: 'Show' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Show is essential for professional engineering."
           }
         },
@@ -1891,8 +1891,8 @@ export const gitCompleteCourse = {
             {
               "title": "Resolving merge con\ufb02icts Working Implementation",
               "description": "Complete working demonstration of Resolving merge con\ufb02icts",
-              "starterCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runTopicDemo() {\n  console.log('Executing: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runTopicDemo() {\n  console.log('Executing: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runDemo() {\n  console.log('Running: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runDemo() {\n  console.log('Running: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Resolving merge con\ufb02icts"
             }
           ],
@@ -1900,9 +1900,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Resolving merge con\ufb02icts",
               "description": "Write a clean solution for Resolving merge con\ufb02icts that returns expected status.",
-              "starterCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runTopicDemo() {\n  console.log('Executing: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runTopicDemo() {\n  console.log('Executing: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runDemo() {\n  console.log('Running: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: Resolving merge con\ufb02icts\nfunction runDemo() {\n  console.log('Running: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1914,7 +1914,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 38: Resolving merge con\ufb02icts",
-            "content": "### \ud83c\udf1f 1. Definition (What is Resolving merge con\ufb02icts?)\nResolving merge con\ufb02icts tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Manual Resolution to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 38: Resolving merge con\ufb02icts\nfunction runTopicDemo() {\n  console.log('Executing: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Resolving merge con\ufb02icts?)\nResolving merge con\ufb02icts provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Manual Resolution to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 38: Resolving merge con\ufb02icts\nfunction runDemo() {\n  console.log('Running: Resolving merge con\ufb02icts');\n  return { success: true, topic: 'Resolving merge con\ufb02icts' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Resolving merge con\ufb02icts is essential for professional engineering."
           }
         },
@@ -1934,8 +1934,8 @@ export const gitCompleteCourse = {
             {
               "title": "Bundles Working Implementation",
               "description": "Complete working demonstration of Bundles",
-              "starterCode": "// Chapter 39: Bundles\nfunction runTopicDemo() {\n  console.log('Executing: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 39: Bundles\nfunction runTopicDemo() {\n  console.log('Executing: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 39: Bundles\nfunction runDemo() {\n  console.log('Running: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: Bundles\nfunction runDemo() {\n  console.log('Running: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Bundles"
             }
           ],
@@ -1943,9 +1943,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Bundles",
               "description": "Write a clean solution for Bundles that returns expected status.",
-              "starterCode": "// Chapter 39: Bundles\nfunction runTopicDemo() {\n  console.log('Executing: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 39: Bundles\nfunction runTopicDemo() {\n  console.log('Executing: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 39: Bundles\nfunction runDemo() {\n  console.log('Running: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: Bundles\nfunction runDemo() {\n  console.log('Running: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1957,7 +1957,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 39: Bundles",
-            "content": "### \ud83c\udf1f 1. Definition (What is Bundles?)\nBundles tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating a git bundle on the local machine and using it on another to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 39: Bundles\nfunction runTopicDemo() {\n  console.log('Executing: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Bundles?)\nBundles provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating a git bundle on the local machine and using it on another to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 39: Bundles\nfunction runDemo() {\n  console.log('Running: Bundles');\n  return { success: true, topic: 'Bundles' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Bundles is essential for professional engineering."
           }
         },
@@ -1985,8 +1985,8 @@ export const gitCompleteCourse = {
             {
               "title": "Display commit history graphically with Gitk Working Implementation",
               "description": "Complete working demonstration of Display commit history graphically with Gitk",
-              "starterCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runTopicDemo() {\n  console.log('Executing: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runTopicDemo() {\n  console.log('Executing: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runDemo() {\n  console.log('Running: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runDemo() {\n  console.log('Running: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Display commit history graphically with Gitk"
             }
           ],
@@ -1994,9 +1994,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Display commit history graphically with Gitk",
               "description": "Write a clean solution for Display commit history graphically with Gitk that returns expected status.",
-              "starterCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runTopicDemo() {\n  console.log('Executing: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runTopicDemo() {\n  console.log('Executing: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runDemo() {\n  console.log('Running: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Display commit history graphically with Gitk\nfunction runDemo() {\n  console.log('Running: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2008,7 +2008,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 40: Display commit history graphically with Gitk",
-            "content": "### \ud83c\udf1f 1. Definition (What is Display commit history graphically with Gitk?)\nDisplay commit history graphically with Gitk tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Display commit history for one \ufb01le to simplify development and prevent common bugs.**\n- **Provides Display all commits between two commits to simplify development and prevent common bugs.**\n- **Provides Display commits since version tag to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 40: Display commit history graphically with Gitk\nfunction runTopicDemo() {\n  console.log('Executing: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Display commit history graphically with Gitk?)\nDisplay commit history graphically with Gitk provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Display commit history for one \ufb01le to write clean, predictable code.**\n- **Provides Display all commits between two commits to write clean, predictable code.**\n- **Provides Display commits since version tag to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 40: Display commit history graphically with Gitk\nfunction runDemo() {\n  console.log('Running: Display commit history graphically with Gitk');\n  return { success: true, topic: 'Display commit history graphically with Gitk' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Display commit history graphically with Gitk is essential for professional engineering."
           }
         }
@@ -2039,8 +2039,8 @@ export const gitCompleteCourse = {
             {
               "title": "Bisecting/Finding faulty commits Working Implementation",
               "description": "Complete working demonstration of Bisecting/Finding faulty commits",
-              "starterCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runTopicDemo() {\n  console.log('Executing: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runTopicDemo() {\n  console.log('Executing: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runDemo() {\n  console.log('Running: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runDemo() {\n  console.log('Running: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Bisecting/Finding faulty commits"
             }
           ],
@@ -2048,9 +2048,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Bisecting/Finding faulty commits",
               "description": "Write a clean solution for Bisecting/Finding faulty commits that returns expected status.",
-              "starterCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runTopicDemo() {\n  console.log('Executing: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runTopicDemo() {\n  console.log('Executing: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runDemo() {\n  console.log('Running: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: Bisecting/Finding faulty commits\nfunction runDemo() {\n  console.log('Running: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2062,7 +2062,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 41: Bisecting/Finding faulty commits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Bisecting/Finding faulty commits?)\nBisecting/Finding faulty commits tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Binary search (git bisect) to simplify development and prevent common bugs.**\n- **Provides Semi: automatically \ufb01nd a faulty commit to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 41: Bisecting/Finding faulty commits\nfunction runTopicDemo() {\n  console.log('Executing: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Bisecting/Finding faulty commits?)\nBisecting/Finding faulty commits provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Binary search (git bisect) to write clean, predictable code.**\n- **Provides Semi: automatically \ufb01nd a faulty commit to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 41: Bisecting/Finding faulty commits\nfunction runDemo() {\n  console.log('Running: Bisecting/Finding faulty commits');\n  return { success: true, topic: 'Bisecting/Finding faulty commits' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Bisecting/Finding faulty commits is essential for professional engineering."
           }
         },
@@ -2090,8 +2090,8 @@ export const gitCompleteCourse = {
             {
               "title": "Blaming Working Implementation",
               "description": "Complete working demonstration of Blaming",
-              "starterCode": "// Chapter 42: Blaming\nfunction runTopicDemo() {\n  console.log('Executing: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 42: Blaming\nfunction runTopicDemo() {\n  console.log('Executing: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 42: Blaming\nfunction runDemo() {\n  console.log('Running: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Blaming\nfunction runDemo() {\n  console.log('Running: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Blaming"
             }
           ],
@@ -2099,9 +2099,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Blaming",
               "description": "Write a clean solution for Blaming that returns expected status.",
-              "starterCode": "// Chapter 42: Blaming\nfunction runTopicDemo() {\n  console.log('Executing: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 42: Blaming\nfunction runTopicDemo() {\n  console.log('Executing: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 42: Blaming\nfunction runDemo() {\n  console.log('Running: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Blaming\nfunction runDemo() {\n  console.log('Running: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2113,7 +2113,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 42: Blaming",
-            "content": "### \ud83c\udf1f 1. Definition (What is Blaming?)\nBlaming tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Only show certain lines to simplify development and prevent common bugs.**\n- **Provides To \ufb01nd out who changed a \ufb01le to simplify development and prevent common bugs.**\n- **Provides Show the commit that last modi\ufb01ed a line to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 42: Blaming\nfunction runTopicDemo() {\n  console.log('Executing: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Blaming?)\nBlaming provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Only show certain lines to write clean, predictable code.**\n- **Provides To \ufb01nd out who changed a \ufb01le to write clean, predictable code.**\n- **Provides Show the commit that last modi\ufb01ed a line to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 42: Blaming\nfunction runDemo() {\n  console.log('Running: Blaming');\n  return { success: true, topic: 'Blaming' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Blaming is essential for professional engineering."
           }
         },
@@ -2141,8 +2141,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git revisions syntax Working Implementation",
               "description": "Complete working demonstration of Git revisions syntax",
-              "starterCode": "// Chapter 43: Git revisions syntax\nfunction runTopicDemo() {\n  console.log('Executing: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 43: Git revisions syntax\nfunction runTopicDemo() {\n  console.log('Executing: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 43: Git revisions syntax\nfunction runDemo() {\n  console.log('Running: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: Git revisions syntax\nfunction runDemo() {\n  console.log('Running: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git revisions syntax"
             }
           ],
@@ -2150,9 +2150,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git revisions syntax",
               "description": "Write a clean solution for Git revisions syntax that returns expected status.",
-              "starterCode": "// Chapter 43: Git revisions syntax\nfunction runTopicDemo() {\n  console.log('Executing: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 43: Git revisions syntax\nfunction runTopicDemo() {\n  console.log('Executing: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 43: Git revisions syntax\nfunction runDemo() {\n  console.log('Running: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: Git revisions syntax\nfunction runDemo() {\n  console.log('Running: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2164,7 +2164,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 43: Git revisions syntax",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git revisions syntax?)\nGit revisions syntax tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Specifying revision by object name to simplify development and prevent common bugs.**\n- **Provides Symbolic ref names: branches, tags, remote: tracking branches to simplify development and prevent common bugs.**\n- **Provides The default revision: HEAD to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 43: Git revisions syntax\nfunction runTopicDemo() {\n  console.log('Executing: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git revisions syntax?)\nGit revisions syntax provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Specifying revision by object name to write clean, predictable code.**\n- **Provides Symbolic ref names: branches, tags, remote: tracking branches to write clean, predictable code.**\n- **Provides The default revision: HEAD to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 43: Git revisions syntax\nfunction runDemo() {\n  console.log('Running: Git revisions syntax');\n  return { success: true, topic: 'Git revisions syntax' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git revisions syntax is essential for professional engineering."
           }
         },
@@ -2188,8 +2188,8 @@ export const gitCompleteCourse = {
             {
               "title": "Worktrees Working Implementation",
               "description": "Complete working demonstration of Worktrees",
-              "starterCode": "// Chapter 44: Worktrees\nfunction runTopicDemo() {\n  console.log('Executing: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 44: Worktrees\nfunction runTopicDemo() {\n  console.log('Executing: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 44: Worktrees\nfunction runDemo() {\n  console.log('Running: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 44: Worktrees\nfunction runDemo() {\n  console.log('Running: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Worktrees"
             }
           ],
@@ -2197,9 +2197,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Worktrees",
               "description": "Write a clean solution for Worktrees that returns expected status.",
-              "starterCode": "// Chapter 44: Worktrees\nfunction runTopicDemo() {\n  console.log('Executing: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 44: Worktrees\nfunction runTopicDemo() {\n  console.log('Executing: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 44: Worktrees\nfunction runDemo() {\n  console.log('Running: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 44: Worktrees\nfunction runDemo() {\n  console.log('Running: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2211,7 +2211,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 44: Worktrees",
-            "content": "### \ud83c\udf1f 1. Definition (What is Worktrees?)\nWorktrees tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using a worktree to simplify development and prevent common bugs.**\n- **Provides Moving a worktree to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 44: Worktrees\nfunction runTopicDemo() {\n  console.log('Executing: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Worktrees?)\nWorktrees provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using a worktree to write clean, predictable code.**\n- **Provides Moving a worktree to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 44: Worktrees\nfunction runDemo() {\n  console.log('Running: Worktrees');\n  return { success: true, topic: 'Worktrees' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Worktrees is essential for professional engineering."
           }
         },
@@ -2239,8 +2239,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Remote Working Implementation",
               "description": "Complete working demonstration of Git Remote",
-              "starterCode": "// Chapter 45: Git Remote\nfunction runTopicDemo() {\n  console.log('Executing: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 45: Git Remote\nfunction runTopicDemo() {\n  console.log('Executing: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 45: Git Remote\nfunction runDemo() {\n  console.log('Running: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 45: Git Remote\nfunction runDemo() {\n  console.log('Running: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Remote"
             }
           ],
@@ -2248,9 +2248,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Remote",
               "description": "Write a clean solution for Git Remote that returns expected status.",
-              "starterCode": "// Chapter 45: Git Remote\nfunction runTopicDemo() {\n  console.log('Executing: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 45: Git Remote\nfunction runTopicDemo() {\n  console.log('Executing: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 45: Git Remote\nfunction runDemo() {\n  console.log('Running: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 45: Git Remote\nfunction runDemo() {\n  console.log('Running: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2262,7 +2262,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 45: Git Remote",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Remote?)\nGit Remote tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Display Remote Repositories to simplify development and prevent common bugs.**\n- **Provides Change remote url of your Git repository to simplify development and prevent common bugs.**\n- **Provides Remove a Remote Repository to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 45: Git Remote\nfunction runTopicDemo() {\n  console.log('Executing: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Remote?)\nGit Remote provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Display Remote Repositories to write clean, predictable code.**\n- **Provides Change remote url of your Git repository to write clean, predictable code.**\n- **Provides Remove a Remote Repository to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 45: Git Remote\nfunction runDemo() {\n  console.log('Running: Git Remote');\n  return { success: true, topic: 'Git Remote' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Remote is essential for professional engineering."
           }
         },
@@ -2290,8 +2290,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Large File Storage (LFS) Working Implementation",
               "description": "Complete working demonstration of Git Large File Storage (LFS)",
-              "starterCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runTopicDemo() {\n  console.log('Executing: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runTopicDemo() {\n  console.log('Executing: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runDemo() {\n  console.log('Running: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runDemo() {\n  console.log('Running: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Large File Storage (LFS)"
             }
           ],
@@ -2299,9 +2299,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Large File Storage (LFS)",
               "description": "Write a clean solution for Git Large File Storage (LFS) that returns expected status.",
-              "starterCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runTopicDemo() {\n  console.log('Executing: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runTopicDemo() {\n  console.log('Executing: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runDemo() {\n  console.log('Running: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 46: Git Large File Storage (LFS)\nfunction runDemo() {\n  console.log('Running: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2313,7 +2313,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 46: Git Large File Storage (LFS)",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Large File Storage (LFS)?)\nGit Large File Storage (LFS) tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Declare certain \ufb01le types to store externally to simplify development and prevent common bugs.**\n- **Provides Set LFS con\ufb01g for all clones to simplify development and prevent common bugs.**\n- **Provides Install LFS to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 46: Git Large File Storage (LFS)\nfunction runTopicDemo() {\n  console.log('Executing: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Large File Storage (LFS)?)\nGit Large File Storage (LFS) provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Declare certain \ufb01le types to store externally to write clean, predictable code.**\n- **Provides Set LFS con\ufb01g for all clones to write clean, predictable code.**\n- **Provides Install LFS to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 46: Git Large File Storage (LFS)\nfunction runDemo() {\n  console.log('Running: Git Large File Storage (LFS)');\n  return { success: true, topic: 'Git Large File Storage (LFS)' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Large File Storage (LFS) is essential for professional engineering."
           }
         },
@@ -2337,8 +2337,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Patch Working Implementation",
               "description": "Complete working demonstration of Git Patch",
-              "starterCode": "// Chapter 47: Git Patch\nfunction runTopicDemo() {\n  console.log('Executing: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 47: Git Patch\nfunction runTopicDemo() {\n  console.log('Executing: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 47: Git Patch\nfunction runDemo() {\n  console.log('Running: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 47: Git Patch\nfunction runDemo() {\n  console.log('Running: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Patch"
             }
           ],
@@ -2346,9 +2346,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Patch",
               "description": "Write a clean solution for Git Patch that returns expected status.",
-              "starterCode": "// Chapter 47: Git Patch\nfunction runTopicDemo() {\n  console.log('Executing: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 47: Git Patch\nfunction runTopicDemo() {\n  console.log('Executing: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 47: Git Patch\nfunction runDemo() {\n  console.log('Running: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 47: Git Patch\nfunction runDemo() {\n  console.log('Running: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2360,7 +2360,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 47: Git Patch",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Patch?)\nGit Patch tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating a patch to simplify development and prevent common bugs.**\n- **Provides Applying patches to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 47: Git Patch\nfunction runTopicDemo() {\n  console.log('Executing: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Patch?)\nGit Patch provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating a patch to write clean, predictable code.**\n- **Provides Applying patches to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 47: Git Patch\nfunction runDemo() {\n  console.log('Running: Git Patch');\n  return { success: true, topic: 'Git Patch' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Patch is essential for professional engineering."
           }
         },
@@ -2388,8 +2388,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git statistics Working Implementation",
               "description": "Complete working demonstration of Git statistics",
-              "starterCode": "// Chapter 48: Git statistics\nfunction runTopicDemo() {\n  console.log('Executing: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 48: Git statistics\nfunction runTopicDemo() {\n  console.log('Executing: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 48: Git statistics\nfunction runDemo() {\n  console.log('Running: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 48: Git statistics\nfunction runDemo() {\n  console.log('Running: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git statistics"
             }
           ],
@@ -2397,9 +2397,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git statistics",
               "description": "Write a clean solution for Git statistics that returns expected status.",
-              "starterCode": "// Chapter 48: Git statistics\nfunction runTopicDemo() {\n  console.log('Executing: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 48: Git statistics\nfunction runTopicDemo() {\n  console.log('Executing: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 48: Git statistics\nfunction runDemo() {\n  console.log('Running: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 48: Git statistics\nfunction runDemo() {\n  console.log('Running: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2411,7 +2411,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 48: Git statistics",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git statistics?)\nGit statistics tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Lines of code per developer to simplify development and prevent common bugs.**\n- **Provides Listing each branch and its last revision's date to simplify development and prevent common bugs.**\n- **Provides Commits per developer to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 48: Git statistics\nfunction runTopicDemo() {\n  console.log('Executing: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git statistics?)\nGit statistics provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Lines of code per developer to write clean, predictable code.**\n- **Provides Listing each branch and its last revision's date to write clean, predictable code.**\n- **Provides Commits per developer to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 48: Git statistics\nfunction runDemo() {\n  console.log('Running: Git statistics');\n  return { success: true, topic: 'Git statistics' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git statistics is essential for professional engineering."
           }
         },
@@ -2439,8 +2439,8 @@ export const gitCompleteCourse = {
             {
               "title": "git send: email Working Implementation",
               "description": "Complete working demonstration of git send: email",
-              "starterCode": "// Chapter 49: git send: email\nfunction runTopicDemo() {\n  console.log('Executing: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 49: git send: email\nfunction runTopicDemo() {\n  console.log('Executing: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 49: git send: email\nfunction runDemo() {\n  console.log('Running: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 49: git send: email\nfunction runDemo() {\n  console.log('Running: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: git send: email"
             }
           ],
@@ -2448,9 +2448,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement git send: email",
               "description": "Write a clean solution for git send: email that returns expected status.",
-              "starterCode": "// Chapter 49: git send: email\nfunction runTopicDemo() {\n  console.log('Executing: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 49: git send: email\nfunction runTopicDemo() {\n  console.log('Executing: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 49: git send: email\nfunction runDemo() {\n  console.log('Running: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 49: git send: email\nfunction runDemo() {\n  console.log('Running: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2462,7 +2462,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 49: git send: email",
-            "content": "### \ud83c\udf1f 1. Definition (What is git send: email?)\ngit send: email tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Use git send: email with Gmail to simplify development and prevent common bugs.**\n- **Provides Composing to simplify development and prevent common bugs.**\n- **Provides Sending patches by mail to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 49: git send: email\nfunction runTopicDemo() {\n  console.log('Executing: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is git send: email?)\ngit send: email provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Use git send: email with Gmail to write clean, predictable code.**\n- **Provides Composing to write clean, predictable code.**\n- **Provides Sending patches by mail to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 49: git send: email\nfunction runDemo() {\n  console.log('Running: git send: email');\n  return { success: true, topic: 'git send: email' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering git send: email is essential for professional engineering."
           }
         },
@@ -2490,8 +2490,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git GUI Clients Working Implementation",
               "description": "Complete working demonstration of Git GUI Clients",
-              "starterCode": "// Chapter 50: Git GUI Clients\nfunction runTopicDemo() {\n  console.log('Executing: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 50: Git GUI Clients\nfunction runTopicDemo() {\n  console.log('Executing: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 50: Git GUI Clients\nfunction runDemo() {\n  console.log('Running: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 50: Git GUI Clients\nfunction runDemo() {\n  console.log('Running: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git GUI Clients"
             }
           ],
@@ -2499,9 +2499,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git GUI Clients",
               "description": "Write a clean solution for Git GUI Clients that returns expected status.",
-              "starterCode": "// Chapter 50: Git GUI Clients\nfunction runTopicDemo() {\n  console.log('Executing: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 50: Git GUI Clients\nfunction runTopicDemo() {\n  console.log('Executing: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 50: Git GUI Clients\nfunction runDemo() {\n  console.log('Running: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 50: Git GUI Clients\nfunction runDemo() {\n  console.log('Running: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2513,7 +2513,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 50: Git GUI Clients",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git GUI Clients?)\nGit GUI Clients tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides gitk and git: gui to simplify development and prevent common bugs.**\n- **Provides GitHub Desktop to simplify development and prevent common bugs.**\n- **Provides Git Kraken to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 50: Git GUI Clients\nfunction runTopicDemo() {\n  console.log('Executing: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git GUI Clients?)\nGit GUI Clients provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides gitk and git: gui to write clean, predictable code.**\n- **Provides GitHub Desktop to write clean, predictable code.**\n- **Provides Git Kraken to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 50: Git GUI Clients\nfunction runDemo() {\n  console.log('Running: Git GUI Clients');\n  return { success: true, topic: 'Git GUI Clients' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git GUI Clients is essential for professional engineering."
           }
         }
@@ -2540,8 +2540,8 @@ export const gitCompleteCourse = {
             {
               "title": "Re\ufb02og: Restoring commits not shown in git log Working Implementation",
               "description": "Complete working demonstration of Re\ufb02og: Restoring commits not shown in git log",
-              "starterCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runTopicDemo() {\n  console.log('Executing: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runTopicDemo() {\n  console.log('Executing: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runDemo() {\n  console.log('Running: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runDemo() {\n  console.log('Running: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Re\ufb02og: Restoring commits not shown in git log"
             }
           ],
@@ -2549,9 +2549,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Re\ufb02og: Restoring commits not shown in git log",
               "description": "Write a clean solution for Re\ufb02og: Restoring commits not shown in git log that returns expected status.",
-              "starterCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runTopicDemo() {\n  console.log('Executing: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runTopicDemo() {\n  console.log('Executing: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runDemo() {\n  console.log('Running: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runDemo() {\n  console.log('Running: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2563,7 +2563,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 51: Re\ufb02og: Restoring commits not shown in git log",
-            "content": "### \ud83c\udf1f 1. Definition (What is Re\ufb02og: Restoring commits not shown in git log?)\nRe\ufb02og: Restoring commits not shown in git log tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Recovering from a bad rebase to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runTopicDemo() {\n  console.log('Executing: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Re\ufb02og: Restoring commits not shown in git log?)\nRe\ufb02og: Restoring commits not shown in git log provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Recovering from a bad rebase to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 51: Re\ufb02og: Restoring commits not shown in git log\nfunction runDemo() {\n  console.log('Running: Re\ufb02og: Restoring commits not shown in git log');\n  return { success: true, topic: 'Re\ufb02og: Restoring commits not shown in git log' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Re\ufb02og: Restoring commits not shown in git log is essential for professional engineering."
           }
         },
@@ -2591,8 +2591,8 @@ export const gitCompleteCourse = {
             {
               "title": "TortoiseGit Working Implementation",
               "description": "Complete working demonstration of TortoiseGit",
-              "starterCode": "// Chapter 52: TortoiseGit\nfunction runTopicDemo() {\n  console.log('Executing: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 52: TortoiseGit\nfunction runTopicDemo() {\n  console.log('Executing: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 52: TortoiseGit\nfunction runDemo() {\n  console.log('Running: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 52: TortoiseGit\nfunction runDemo() {\n  console.log('Running: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: TortoiseGit"
             }
           ],
@@ -2600,9 +2600,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement TortoiseGit",
               "description": "Write a clean solution for TortoiseGit that returns expected status.",
-              "starterCode": "// Chapter 52: TortoiseGit\nfunction runTopicDemo() {\n  console.log('Executing: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 52: TortoiseGit\nfunction runTopicDemo() {\n  console.log('Executing: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 52: TortoiseGit\nfunction runDemo() {\n  console.log('Running: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 52: TortoiseGit\nfunction runDemo() {\n  console.log('Running: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2614,7 +2614,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 52: TortoiseGit",
-            "content": "### \ud83c\udf1f 1. Definition (What is TortoiseGit?)\nTortoiseGit tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Squash commits to simplify development and prevent common bugs.**\n- **Provides Assume unchanged to simplify development and prevent common bugs.**\n- **Provides Ignoring Files and Folders to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 52: TortoiseGit\nfunction runTopicDemo() {\n  console.log('Executing: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is TortoiseGit?)\nTortoiseGit provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Squash commits to write clean, predictable code.**\n- **Provides Assume unchanged to write clean, predictable code.**\n- **Provides Ignoring Files and Folders to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 52: TortoiseGit\nfunction runDemo() {\n  console.log('Running: TortoiseGit');\n  return { success: true, topic: 'TortoiseGit' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering TortoiseGit is essential for professional engineering."
           }
         },
@@ -2642,8 +2642,8 @@ export const gitCompleteCourse = {
             {
               "title": "External merge and di\ue023tools Working Implementation",
               "description": "Complete working demonstration of External merge and di\ue023tools",
-              "starterCode": "// Chapter 53: External merge and di\ue023tools\nfunction runTopicDemo() {\n  console.log('Executing: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 53: External merge and di\ue023tools\nfunction runTopicDemo() {\n  console.log('Executing: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 53: External merge and di\ue023tools\nfunction runDemo() {\n  console.log('Running: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 53: External merge and di\ue023tools\nfunction runDemo() {\n  console.log('Running: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: External merge and di\ue023tools"
             }
           ],
@@ -2651,9 +2651,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement External merge and di\ue023tools",
               "description": "Write a clean solution for External merge and di\ue023tools that returns expected status.",
-              "starterCode": "// Chapter 53: External merge and di\ue023tools\nfunction runTopicDemo() {\n  console.log('Executing: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 53: External merge and di\ue023tools\nfunction runTopicDemo() {\n  console.log('Executing: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 53: External merge and di\ue023tools\nfunction runDemo() {\n  console.log('Running: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 53: External merge and di\ue023tools\nfunction runDemo() {\n  console.log('Running: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2665,7 +2665,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 53: External merge and di\ue023tools",
-            "content": "### \ud83c\udf1f 1. Definition (What is External merge and di\ue023tools?)\nExternal merge and di\ue023tools tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting up KDi\ue0233 as merge tool to simplify development and prevent common bugs.**\n- **Provides Setting up KDi\ue0233 as di\ue023 tool to simplify development and prevent common bugs.**\n- **Provides Setting up an IntelliJ IDE as merge tool (Windows) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 53: External merge and di\ue023tools\nfunction runTopicDemo() {\n  console.log('Executing: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is External merge and di\ue023tools?)\nExternal merge and di\ue023tools provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting up KDi\ue0233 as merge tool to write clean, predictable code.**\n- **Provides Setting up KDi\ue0233 as di\ue023 tool to write clean, predictable code.**\n- **Provides Setting up an IntelliJ IDE as merge tool (Windows) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 53: External merge and di\ue023tools\nfunction runDemo() {\n  console.log('Running: External merge and di\ue023tools');\n  return { success: true, topic: 'External merge and di\ue023tools' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering External merge and di\ue023tools is essential for professional engineering."
           }
         },
@@ -2685,8 +2685,8 @@ export const gitCompleteCourse = {
             {
               "title": "Update Object Name in Reference Working Implementation",
               "description": "Complete working demonstration of Update Object Name in Reference",
-              "starterCode": "// Chapter 54: Update Object Name in Reference\nfunction runTopicDemo() {\n  console.log('Executing: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 54: Update Object Name in Reference\nfunction runTopicDemo() {\n  console.log('Executing: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 54: Update Object Name in Reference\nfunction runDemo() {\n  console.log('Running: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 54: Update Object Name in Reference\nfunction runDemo() {\n  console.log('Running: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Update Object Name in Reference"
             }
           ],
@@ -2694,9 +2694,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Update Object Name in Reference",
               "description": "Write a clean solution for Update Object Name in Reference that returns expected status.",
-              "starterCode": "// Chapter 54: Update Object Name in Reference\nfunction runTopicDemo() {\n  console.log('Executing: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 54: Update Object Name in Reference\nfunction runTopicDemo() {\n  console.log('Executing: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 54: Update Object Name in Reference\nfunction runDemo() {\n  console.log('Running: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 54: Update Object Name in Reference\nfunction runDemo() {\n  console.log('Running: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2708,7 +2708,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 54: Update Object Name in Reference",
-            "content": "### \ud83c\udf1f 1. Definition (What is Update Object Name in Reference?)\nUpdate Object Name in Reference tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 54: Update Object Name in Reference\nfunction runTopicDemo() {\n  console.log('Executing: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Update Object Name in Reference?)\nUpdate Object Name in Reference provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 54: Update Object Name in Reference\nfunction runDemo() {\n  console.log('Running: Update Object Name in Reference');\n  return { success: true, topic: 'Update Object Name in Reference' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Update Object Name in Reference is essential for professional engineering."
           }
         },
@@ -2728,8 +2728,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Branch Name on Bash Ubuntu Working Implementation",
               "description": "Complete working demonstration of Git Branch Name on Bash Ubuntu",
-              "starterCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runTopicDemo() {\n  console.log('Executing: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runTopicDemo() {\n  console.log('Executing: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runDemo() {\n  console.log('Running: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runDemo() {\n  console.log('Running: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Branch Name on Bash Ubuntu"
             }
           ],
@@ -2737,9 +2737,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Branch Name on Bash Ubuntu",
               "description": "Write a clean solution for Git Branch Name on Bash Ubuntu that returns expected status.",
-              "starterCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runTopicDemo() {\n  console.log('Executing: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runTopicDemo() {\n  console.log('Executing: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runDemo() {\n  console.log('Running: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runDemo() {\n  console.log('Running: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2751,7 +2751,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 55: Git Branch Name on Bash Ubuntu",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Branch Name on Bash Ubuntu?)\nGit Branch Name on Bash Ubuntu tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Branch Name in terminal to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runTopicDemo() {\n  console.log('Executing: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Branch Name on Bash Ubuntu?)\nGit Branch Name on Bash Ubuntu provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Branch Name in terminal to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 55: Git Branch Name on Bash Ubuntu\nfunction runDemo() {\n  console.log('Running: Git Branch Name on Bash Ubuntu');\n  return { success: true, topic: 'Git Branch Name on Bash Ubuntu' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Branch Name on Bash Ubuntu is essential for professional engineering."
           }
         },
@@ -2775,8 +2775,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Client: Side Hooks Working Implementation",
               "description": "Complete working demonstration of Git Client: Side Hooks",
-              "starterCode": "// Chapter 56: Git Client: Side Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 56: Git Client: Side Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 56: Git Client: Side Hooks\nfunction runDemo() {\n  console.log('Running: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 56: Git Client: Side Hooks\nfunction runDemo() {\n  console.log('Running: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Client: Side Hooks"
             }
           ],
@@ -2784,9 +2784,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Client: Side Hooks",
               "description": "Write a clean solution for Git Client: Side Hooks that returns expected status.",
-              "starterCode": "// Chapter 56: Git Client: Side Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 56: Git Client: Side Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 56: Git Client: Side Hooks\nfunction runDemo() {\n  console.log('Running: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 56: Git Client: Side Hooks\nfunction runDemo() {\n  console.log('Running: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2798,7 +2798,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 56: Git Client: Side Hooks",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Client: Side Hooks?)\nGit Client: Side Hooks tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Git pre: push hook to simplify development and prevent common bugs.**\n- **Provides Installing a Hook to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 56: Git Client: Side Hooks\nfunction runTopicDemo() {\n  console.log('Executing: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Client: Side Hooks?)\nGit Client: Side Hooks provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Git pre: push hook to write clean, predictable code.**\n- **Provides Installing a Hook to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 56: Git Client: Side Hooks\nfunction runDemo() {\n  console.log('Running: Git Client: Side Hooks');\n  return { success: true, topic: 'Git Client: Side Hooks' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Client: Side Hooks is essential for professional engineering."
           }
         },
@@ -2818,8 +2818,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git rerere Working Implementation",
               "description": "Complete working demonstration of Git rerere",
-              "starterCode": "// Chapter 57: Git rerere\nfunction runTopicDemo() {\n  console.log('Executing: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 57: Git rerere\nfunction runTopicDemo() {\n  console.log('Executing: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 57: Git rerere\nfunction runDemo() {\n  console.log('Running: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 57: Git rerere\nfunction runDemo() {\n  console.log('Running: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git rerere"
             }
           ],
@@ -2827,9 +2827,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git rerere",
               "description": "Write a clean solution for Git rerere that returns expected status.",
-              "starterCode": "// Chapter 57: Git rerere\nfunction runTopicDemo() {\n  console.log('Executing: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 57: Git rerere\nfunction runTopicDemo() {\n  console.log('Executing: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 57: Git rerere\nfunction runDemo() {\n  console.log('Running: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 57: Git rerere\nfunction runDemo() {\n  console.log('Running: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2841,7 +2841,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 57: Git rerere",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git rerere?)\nGit rerere tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Enabling rerere to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 57: Git rerere\nfunction runTopicDemo() {\n  console.log('Executing: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git rerere?)\nGit rerere provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Enabling rerere to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 57: Git rerere\nfunction runDemo() {\n  console.log('Running: Git rerere');\n  return { success: true, topic: 'Git rerere' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git rerere is essential for professional engineering."
           }
         },
@@ -2861,8 +2861,8 @@ export const gitCompleteCourse = {
             {
               "title": "Change git repository name Working Implementation",
               "description": "Complete working demonstration of Change git repository name",
-              "starterCode": "// Chapter 58: Change git repository name\nfunction runTopicDemo() {\n  console.log('Executing: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 58: Change git repository name\nfunction runTopicDemo() {\n  console.log('Executing: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 58: Change git repository name\nfunction runDemo() {\n  console.log('Running: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 58: Change git repository name\nfunction runDemo() {\n  console.log('Running: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Change git repository name"
             }
           ],
@@ -2870,9 +2870,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Change git repository name",
               "description": "Write a clean solution for Change git repository name that returns expected status.",
-              "starterCode": "// Chapter 58: Change git repository name\nfunction runTopicDemo() {\n  console.log('Executing: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 58: Change git repository name\nfunction runTopicDemo() {\n  console.log('Executing: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 58: Change git repository name\nfunction runDemo() {\n  console.log('Running: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 58: Change git repository name\nfunction runDemo() {\n  console.log('Running: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2884,7 +2884,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 58: Change git repository name",
-            "content": "### \ud83c\udf1f 1. Definition (What is Change git repository name?)\nChange git repository name tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Change local setting to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 58: Change git repository name\nfunction runTopicDemo() {\n  console.log('Executing: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Change git repository name?)\nChange git repository name provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Change local setting to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 58: Change git repository name\nfunction runDemo() {\n  console.log('Running: Change git repository name');\n  return { success: true, topic: 'Change git repository name' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Change git repository name is essential for professional engineering."
           }
         },
@@ -2908,8 +2908,8 @@ export const gitCompleteCourse = {
             {
               "title": "Git Tagging Working Implementation",
               "description": "Complete working demonstration of Git Tagging",
-              "starterCode": "// Chapter 59: Git Tagging\nfunction runTopicDemo() {\n  console.log('Executing: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 59: Git Tagging\nfunction runTopicDemo() {\n  console.log('Executing: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 59: Git Tagging\nfunction runDemo() {\n  console.log('Running: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 59: Git Tagging\nfunction runDemo() {\n  console.log('Running: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Git Tagging"
             }
           ],
@@ -2917,9 +2917,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Git Tagging",
               "description": "Write a clean solution for Git Tagging that returns expected status.",
-              "starterCode": "// Chapter 59: Git Tagging\nfunction runTopicDemo() {\n  console.log('Executing: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 59: Git Tagging\nfunction runTopicDemo() {\n  console.log('Executing: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 59: Git Tagging\nfunction runDemo() {\n  console.log('Running: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 59: Git Tagging\nfunction runDemo() {\n  console.log('Running: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2931,7 +2931,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 59: Git Tagging",
-            "content": "### \ud83c\udf1f 1. Definition (What is Git Tagging?)\nGit Tagging tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Listing all available tags to simplify development and prevent common bugs.**\n- **Provides Create and push tag(s) in GIT to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 59: Git Tagging\nfunction runTopicDemo() {\n  console.log('Executing: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Git Tagging?)\nGit Tagging provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Listing all available tags to write clean, predictable code.**\n- **Provides Create and push tag(s) in GIT to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 59: Git Tagging\nfunction runDemo() {\n  console.log('Running: Git Tagging');\n  return { success: true, topic: 'Git Tagging' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Git Tagging is essential for professional engineering."
           }
         },
@@ -2951,8 +2951,8 @@ export const gitCompleteCourse = {
             {
               "title": "Tidying up your local and remote repository Working Implementation",
               "description": "Complete working demonstration of Tidying up your local and remote repository",
-              "starterCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runTopicDemo() {\n  console.log('Executing: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runTopicDemo() {\n  console.log('Executing: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runDemo() {\n  console.log('Running: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runDemo() {\n  console.log('Running: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Tidying up your local and remote repository"
             }
           ],
@@ -2960,9 +2960,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Tidying up your local and remote repository",
               "description": "Write a clean solution for Tidying up your local and remote repository that returns expected status.",
-              "starterCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runTopicDemo() {\n  console.log('Executing: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runTopicDemo() {\n  console.log('Executing: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runDemo() {\n  console.log('Running: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 60: Tidying up your local and remote repository\nfunction runDemo() {\n  console.log('Running: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2974,7 +2974,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 60: Tidying up your local and remote repository",
-            "content": "### \ud83c\udf1f 1. Definition (What is Tidying up your local and remote repository?)\nTidying up your local and remote repository tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Delete local branches that have been deleted on the remote to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 60: Tidying up your local and remote repository\nfunction runTopicDemo() {\n  console.log('Executing: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Tidying up your local and remote repository?)\nTidying up your local and remote repository provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Delete local branches that have been deleted on the remote to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 60: Tidying up your local and remote repository\nfunction runDemo() {\n  console.log('Running: Tidying up your local and remote repository');\n  return { success: true, topic: 'Tidying up your local and remote repository' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Tidying up your local and remote repository is essential for professional engineering."
           }
         }
@@ -3009,8 +3009,8 @@ export const gitCompleteCourse = {
             {
               "title": "di\ue023: tree Working Implementation",
               "description": "Complete working demonstration of di\ue023: tree",
-              "starterCode": "// Chapter 61: di\ue023: tree\nfunction runTopicDemo() {\n  console.log('Executing: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 61: di\ue023: tree\nfunction runTopicDemo() {\n  console.log('Executing: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 61: di\ue023: tree\nfunction runDemo() {\n  console.log('Running: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 61: di\ue023: tree\nfunction runDemo() {\n  console.log('Running: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: di\ue023: tree"
             }
           ],
@@ -3018,9 +3018,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement di\ue023: tree",
               "description": "Write a clean solution for di\ue023: tree that returns expected status.",
-              "starterCode": "// Chapter 61: di\ue023: tree\nfunction runTopicDemo() {\n  console.log('Executing: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 61: di\ue023: tree\nfunction runTopicDemo() {\n  console.log('Executing: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 61: di\ue023: tree\nfunction runDemo() {\n  console.log('Running: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 61: di\ue023: tree\nfunction runDemo() {\n  console.log('Running: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3032,7 +3032,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 61: di\ue023: tree",
-            "content": "### \ud83c\udf1f 1. Definition (What is di\ue023: tree?)\ndi\ue023: tree tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides See the \ufb01les changed in a speci\ufb01c commit to simplify development and prevent common bugs.**\n- **Provides Usage to simplify development and prevent common bugs.**\n- **Provides Common di\ue023 options to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 61: di\ue023: tree\nfunction runTopicDemo() {\n  console.log('Executing: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is di\ue023: tree?)\ndi\ue023: tree provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides See the \ufb01les changed in a speci\ufb01c commit to write clean, predictable code.**\n- **Provides Usage to write clean, predictable code.**\n- **Provides Common di\ue023 options to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 61: di\ue023: tree\nfunction runDemo() {\n  console.log('Running: di\ue023: tree');\n  return { success: true, topic: 'di\ue023: tree' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering di\ue023: tree is essential for professional engineering."
           }
         },
@@ -3052,8 +3052,8 @@ export const gitCompleteCourse = {
             {
               "title": "Credits Working Implementation",
               "description": "Complete working demonstration of Credits",
-              "starterCode": "// Chapter 62: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 62: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 62: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 62: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Credits"
             }
           ],
@@ -3061,9 +3061,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement Credits",
               "description": "Write a clean solution for Credits that returns expected status.",
-              "starterCode": "// Chapter 62: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 62: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 62: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 62: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3075,7 +3075,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 62: Credits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 62: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 62: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Credits is essential for professional engineering."
           }
         },
@@ -3095,8 +3095,8 @@ export const gitCompleteCourse = {
             {
               "title": "You may also like Working Implementation",
               "description": "Complete working demonstration of You may also like",
-              "starterCode": "// Chapter 63: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 63: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 63: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 63: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: You may also like"
             }
           ],
@@ -3104,9 +3104,9 @@ export const gitCompleteCourse = {
             {
               "title": "Implement You may also like",
               "description": "Write a clean solution for You may also like that returns expected status.",
-              "starterCode": "// Chapter 63: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 63: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 63: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 63: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3118,7 +3118,7 @@ export const gitCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 63: You may also like",
-            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like tracks code history, manages branches, and enables seamless team collaboration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 63: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 63: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering You may also like is essential for professional engineering."
           }
         }

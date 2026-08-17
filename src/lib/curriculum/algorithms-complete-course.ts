@@ -1,10 +1,10 @@
 export const algorithmsCompleteCourse = {
   "title": "Data Structures & Algorithms (58 Chapters)",
-  "description": "Exhaustive DSA course covering Arrays, Linked Lists, Trees, Graphs, Sorting, Dynamic Programming, and Big O Complexity.",
+  "description": "Arrays, Linked Lists, Trees, Graphs, Sorting, Dynamic Programming, and Big O.",
   "slug": "algorithms-dsa-mastery",
   "stream": "computerscience",
   "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-  "order": 3,
+  "order": 5,
   "modules": [
     {
       "title": "Phase 1: Chapters 1 to 10",
@@ -31,8 +31,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Getting started with algorithms Working Implementation",
               "description": "Complete working demonstration of Getting started with algorithms",
-              "starterCode": "// Chapter 1: Getting started with algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 1: Getting started with algorithms\nfunction runDemo() {\n  console.log('Running: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with algorithms\nfunction runDemo() {\n  console.log('Running: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Getting started with algorithms"
             }
           ],
@@ -40,9 +40,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Getting started with algorithms",
               "description": "Write a clean solution for Getting started with algorithms that returns expected status.",
-              "starterCode": "// Chapter 1: Getting started with algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 1: Getting started with algorithms\nfunction runDemo() {\n  console.log('Running: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with algorithms\nfunction runDemo() {\n  console.log('Running: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -54,7 +54,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 1: Getting started with algorithms",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with algorithms?)\nGetting started with algorithms optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides A sample algorithmic problem to simplify development and prevent common bugs.**\n- **Provides Getting Started with Simple Fizz Buzz Algorithm in Swift to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 1: Getting started with algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with algorithms?)\nGetting started with algorithms provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides A sample algorithmic problem to write clean, predictable code.**\n- **Provides Getting Started with Simple Fizz Buzz Algorithm in Swift to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 1: Getting started with algorithms\nfunction runDemo() {\n  console.log('Running: Getting started with algorithms');\n  return { success: true, topic: 'Getting started with algorithms' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Getting started with algorithms is essential for professional engineering."
           }
         },
@@ -82,8 +82,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Algorithm Complexity Working Implementation",
               "description": "Complete working demonstration of Algorithm Complexity",
-              "starterCode": "// Chapter 2: Algorithm Complexity\nfunction runTopicDemo() {\n  console.log('Executing: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Algorithm Complexity\nfunction runTopicDemo() {\n  console.log('Executing: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 2: Algorithm Complexity\nfunction runDemo() {\n  console.log('Running: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Algorithm Complexity\nfunction runDemo() {\n  console.log('Running: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Algorithm Complexity"
             }
           ],
@@ -91,9 +91,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Algorithm Complexity",
               "description": "Write a clean solution for Algorithm Complexity that returns expected status.",
-              "starterCode": "// Chapter 2: Algorithm Complexity\nfunction runTopicDemo() {\n  console.log('Executing: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Algorithm Complexity\nfunction runTopicDemo() {\n  console.log('Executing: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 2: Algorithm Complexity\nfunction runDemo() {\n  console.log('Running: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Algorithm Complexity\nfunction runDemo() {\n  console.log('Running: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -105,7 +105,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 2: Algorithm Complexity",
-            "content": "### \ud83c\udf1f 1. Definition (What is Algorithm Complexity?)\nAlgorithm Complexity optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Big: Theta notation to simplify development and prevent common bugs.**\n- **Provides Comparison of the asymptotic notations to simplify development and prevent common bugs.**\n- **Provides Big: Omega Notation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 2: Algorithm Complexity\nfunction runTopicDemo() {\n  console.log('Executing: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Algorithm Complexity?)\nAlgorithm Complexity provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Big: Theta notation to write clean, predictable code.**\n- **Provides Comparison of the asymptotic notations to write clean, predictable code.**\n- **Provides Big: Omega Notation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 2: Algorithm Complexity\nfunction runDemo() {\n  console.log('Running: Algorithm Complexity');\n  return { success: true, topic: 'Algorithm Complexity' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Algorithm Complexity is essential for professional engineering."
           }
         },
@@ -133,8 +133,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Big: O Notation Working Implementation",
               "description": "Complete working demonstration of Big: O Notation",
-              "starterCode": "// Chapter 3: Big: O Notation\nfunction runTopicDemo() {\n  console.log('Executing: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Big: O Notation\nfunction runTopicDemo() {\n  console.log('Executing: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 3: Big: O Notation\nfunction runDemo() {\n  console.log('Running: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Big: O Notation\nfunction runDemo() {\n  console.log('Running: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Big: O Notation"
             }
           ],
@@ -142,9 +142,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Big: O Notation",
               "description": "Write a clean solution for Big: O Notation that returns expected status.",
-              "starterCode": "// Chapter 3: Big: O Notation\nfunction runTopicDemo() {\n  console.log('Executing: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Big: O Notation\nfunction runTopicDemo() {\n  console.log('Executing: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 3: Big: O Notation\nfunction runDemo() {\n  console.log('Running: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Big: O Notation\nfunction runDemo() {\n  console.log('Running: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -156,7 +156,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 3: Big: O Notation",
-            "content": "### \ud83c\udf1f 1. Definition (What is Big: O Notation?)\nBig: O Notation optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides A Simple Loop to simplify development and prevent common bugs.**\n- **Provides A Nested Loop to simplify development and prevent common bugs.**\n- **Provides O(log n) types of Algorithms to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 3: Big: O Notation\nfunction runTopicDemo() {\n  console.log('Executing: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Big: O Notation?)\nBig: O Notation provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides A Simple Loop to write clean, predictable code.**\n- **Provides A Nested Loop to write clean, predictable code.**\n- **Provides O(log n) types of Algorithms to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 3: Big: O Notation\nfunction runDemo() {\n  console.log('Running: Big: O Notation');\n  return { success: true, topic: 'Big: O Notation' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Big: O Notation is essential for professional engineering."
           }
         },
@@ -184,8 +184,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Trees Working Implementation",
               "description": "Complete working demonstration of Trees",
-              "starterCode": "// Chapter 4: Trees\nfunction runTopicDemo() {\n  console.log('Executing: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Trees\nfunction runTopicDemo() {\n  console.log('Executing: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 4: Trees\nfunction runDemo() {\n  console.log('Running: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Trees\nfunction runDemo() {\n  console.log('Running: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Trees"
             }
           ],
@@ -193,9 +193,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Trees",
               "description": "Write a clean solution for Trees that returns expected status.",
-              "starterCode": "// Chapter 4: Trees\nfunction runTopicDemo() {\n  console.log('Executing: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Trees\nfunction runTopicDemo() {\n  console.log('Executing: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 4: Trees\nfunction runDemo() {\n  console.log('Running: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Trees\nfunction runDemo() {\n  console.log('Running: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -207,7 +207,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 4: Trees",
-            "content": "### \ud83c\udf1f 1. Definition (What is Trees?)\nTrees optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Typical anary tree representation to simplify development and prevent common bugs.**\n- **Provides Introduction to simplify development and prevent common bugs.**\n- **Provides To check if two Binary trees are same or not to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 4: Trees\nfunction runTopicDemo() {\n  console.log('Executing: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Trees?)\nTrees provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Typical anary tree representation to write clean, predictable code.**\n- **Provides Introduction to write clean, predictable code.**\n- **Provides To check if two Binary trees are same or not to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 4: Trees\nfunction runDemo() {\n  console.log('Running: Trees');\n  return { success: true, topic: 'Trees' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Trees is essential for professional engineering."
           }
         },
@@ -235,8 +235,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Binary Search Trees Working Implementation",
               "description": "Complete working demonstration of Binary Search Trees",
-              "starterCode": "// Chapter 5: Binary Search Trees\nfunction runTopicDemo() {\n  console.log('Executing: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Binary Search Trees\nfunction runTopicDemo() {\n  console.log('Executing: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 5: Binary Search Trees\nfunction runDemo() {\n  console.log('Running: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Binary Search Trees\nfunction runDemo() {\n  console.log('Running: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Binary Search Trees"
             }
           ],
@@ -244,9 +244,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Binary Search Trees",
               "description": "Write a clean solution for Binary Search Trees that returns expected status.",
-              "starterCode": "// Chapter 5: Binary Search Trees\nfunction runTopicDemo() {\n  console.log('Executing: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Binary Search Trees\nfunction runTopicDemo() {\n  console.log('Executing: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 5: Binary Search Trees\nfunction runDemo() {\n  console.log('Running: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Binary Search Trees\nfunction runDemo() {\n  console.log('Running: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -258,7 +258,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 5: Binary Search Trees",
-            "content": "### \ud83c\udf1f 1. Definition (What is Binary Search Trees?)\nBinary Search Trees optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Binary Search Tree: Insertion (Python) to simplify development and prevent common bugs.**\n- **Provides Binary Search Tree: Deletion(C++) to simplify development and prevent common bugs.**\n- **Provides Lowest common ancestor in a BST to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 5: Binary Search Trees\nfunction runTopicDemo() {\n  console.log('Executing: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Binary Search Trees?)\nBinary Search Trees provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Binary Search Tree: Insertion (Python) to write clean, predictable code.**\n- **Provides Binary Search Tree: Deletion(C++) to write clean, predictable code.**\n- **Provides Lowest common ancestor in a BST to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 5: Binary Search Trees\nfunction runDemo() {\n  console.log('Running: Binary Search Trees');\n  return { success: true, topic: 'Binary Search Trees' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Binary Search Trees is essential for professional engineering."
           }
         },
@@ -282,8 +282,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Check if a tree is BST or not Working Implementation",
               "description": "Complete working demonstration of Check if a tree is BST or not",
-              "starterCode": "// Chapter 6: Check if a tree is BST or not\nfunction runTopicDemo() {\n  console.log('Executing: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Check if a tree is BST or not\nfunction runTopicDemo() {\n  console.log('Executing: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 6: Check if a tree is BST or not\nfunction runDemo() {\n  console.log('Running: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Check if a tree is BST or not\nfunction runDemo() {\n  console.log('Running: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Check if a tree is BST or not"
             }
           ],
@@ -291,9 +291,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Check if a tree is BST or not",
               "description": "Write a clean solution for Check if a tree is BST or not that returns expected status.",
-              "starterCode": "// Chapter 6: Check if a tree is BST or not\nfunction runTopicDemo() {\n  console.log('Executing: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Check if a tree is BST or not\nfunction runTopicDemo() {\n  console.log('Executing: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 6: Check if a tree is BST or not\nfunction runDemo() {\n  console.log('Running: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Check if a tree is BST or not\nfunction runDemo() {\n  console.log('Running: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -305,7 +305,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 6: Check if a tree is BST or not",
-            "content": "### \ud83c\udf1f 1. Definition (What is Check if a tree is BST or not?)\nCheck if a tree is BST or not optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Algorithm to check if a given binary tree is BST to simplify development and prevent common bugs.**\n- **Provides If a given input tree follows Binary search tree property or not to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 6: Check if a tree is BST or not\nfunction runTopicDemo() {\n  console.log('Executing: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Check if a tree is BST or not?)\nCheck if a tree is BST or not provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Algorithm to check if a given binary tree is BST to write clean, predictable code.**\n- **Provides If a given input tree follows Binary search tree property or not to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 6: Check if a tree is BST or not\nfunction runDemo() {\n  console.log('Running: Check if a tree is BST or not');\n  return { success: true, topic: 'Check if a tree is BST or not' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Check if a tree is BST or not is essential for professional engineering."
           }
         },
@@ -329,8 +329,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Binary Tree traversals Working Implementation",
               "description": "Complete working demonstration of Binary Tree traversals",
-              "starterCode": "// Chapter 7: Binary Tree traversals\nfunction runTopicDemo() {\n  console.log('Executing: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Binary Tree traversals\nfunction runTopicDemo() {\n  console.log('Executing: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 7: Binary Tree traversals\nfunction runDemo() {\n  console.log('Running: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Binary Tree traversals\nfunction runDemo() {\n  console.log('Running: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Binary Tree traversals"
             }
           ],
@@ -338,9 +338,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Binary Tree traversals",
               "description": "Write a clean solution for Binary Tree traversals that returns expected status.",
-              "starterCode": "// Chapter 7: Binary Tree traversals\nfunction runTopicDemo() {\n  console.log('Executing: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Binary Tree traversals\nfunction runTopicDemo() {\n  console.log('Executing: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 7: Binary Tree traversals\nfunction runDemo() {\n  console.log('Running: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Binary Tree traversals\nfunction runDemo() {\n  console.log('Running: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -352,7 +352,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 7: Binary Tree traversals",
-            "content": "### \ud83c\udf1f 1. Definition (What is Binary Tree traversals?)\nBinary Tree traversals optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Level Order traversal: Implementation to simplify development and prevent common bugs.**\n- **Provides Pre: order, Inorder and Post Order traversal of a Binary Tree to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 7: Binary Tree traversals\nfunction runTopicDemo() {\n  console.log('Executing: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Binary Tree traversals?)\nBinary Tree traversals provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Level Order traversal: Implementation to write clean, predictable code.**\n- **Provides Pre: order, Inorder and Post Order traversal of a Binary Tree to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 7: Binary Tree traversals\nfunction runDemo() {\n  console.log('Running: Binary Tree traversals');\n  return { success: true, topic: 'Binary Tree traversals' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Binary Tree traversals is essential for professional engineering."
           }
         },
@@ -372,8 +372,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Lowest common ancestor of a Binary Tree Working Implementation",
               "description": "Complete working demonstration of Lowest common ancestor of a Binary Tree",
-              "starterCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runTopicDemo() {\n  console.log('Executing: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runTopicDemo() {\n  console.log('Executing: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runDemo() {\n  console.log('Running: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runDemo() {\n  console.log('Running: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Lowest common ancestor of a Binary Tree"
             }
           ],
@@ -381,9 +381,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Lowest common ancestor of a Binary Tree",
               "description": "Write a clean solution for Lowest common ancestor of a Binary Tree that returns expected status.",
-              "starterCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runTopicDemo() {\n  console.log('Executing: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runTopicDemo() {\n  console.log('Executing: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runDemo() {\n  console.log('Running: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runDemo() {\n  console.log('Running: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -395,7 +395,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 8: Lowest common ancestor of a Binary Tree",
-            "content": "### \ud83c\udf1f 1. Definition (What is Lowest common ancestor of a Binary Tree?)\nLowest common ancestor of a Binary Tree optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding lowest common ancestor to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runTopicDemo() {\n  console.log('Executing: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Lowest common ancestor of a Binary Tree?)\nLowest common ancestor of a Binary Tree provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding lowest common ancestor to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 8: Lowest common ancestor of a Binary Tree\nfunction runDemo() {\n  console.log('Running: Lowest common ancestor of a Binary Tree');\n  return { success: true, topic: 'Lowest common ancestor of a Binary Tree' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Lowest common ancestor of a Binary Tree is essential for professional engineering."
           }
         },
@@ -423,8 +423,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Graph Working Implementation",
               "description": "Complete working demonstration of Graph",
-              "starterCode": "// Chapter 9: Graph\nfunction runTopicDemo() {\n  console.log('Executing: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Graph\nfunction runTopicDemo() {\n  console.log('Executing: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 9: Graph\nfunction runDemo() {\n  console.log('Running: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Graph\nfunction runDemo() {\n  console.log('Running: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Graph"
             }
           ],
@@ -432,9 +432,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Graph",
               "description": "Write a clean solution for Graph that returns expected status.",
-              "starterCode": "// Chapter 9: Graph\nfunction runTopicDemo() {\n  console.log('Executing: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Graph\nfunction runTopicDemo() {\n  console.log('Executing: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 9: Graph\nfunction runDemo() {\n  console.log('Running: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Graph\nfunction runDemo() {\n  console.log('Running: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -446,7 +446,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 9: Graph",
-            "content": "### \ud83c\udf1f 1. Definition (What is Graph?)\nGraph optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Storing Graphs (Adjacency Matrix) to simplify development and prevent common bugs.**\n- **Provides Introduction To Graph Theory to simplify development and prevent common bugs.**\n- **Provides Storing Graphs (Adjacency List) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 9: Graph\nfunction runTopicDemo() {\n  console.log('Executing: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Graph?)\nGraph provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Storing Graphs (Adjacency Matrix) to write clean, predictable code.**\n- **Provides Introduction To Graph Theory to write clean, predictable code.**\n- **Provides Storing Graphs (Adjacency List) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 9: Graph\nfunction runDemo() {\n  console.log('Running: Graph');\n  return { success: true, topic: 'Graph' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Graph is essential for professional engineering."
           }
         },
@@ -466,8 +466,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Graph Traversals Working Implementation",
               "description": "Complete working demonstration of Graph Traversals",
-              "starterCode": "// Chapter 10: Graph Traversals\nfunction runTopicDemo() {\n  console.log('Executing: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Graph Traversals\nfunction runTopicDemo() {\n  console.log('Executing: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 10: Graph Traversals\nfunction runDemo() {\n  console.log('Running: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Graph Traversals\nfunction runDemo() {\n  console.log('Running: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Graph Traversals"
             }
           ],
@@ -475,9 +475,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Graph Traversals",
               "description": "Write a clean solution for Graph Traversals that returns expected status.",
-              "starterCode": "// Chapter 10: Graph Traversals\nfunction runTopicDemo() {\n  console.log('Executing: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Graph Traversals\nfunction runTopicDemo() {\n  console.log('Executing: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 10: Graph Traversals\nfunction runDemo() {\n  console.log('Running: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Graph Traversals\nfunction runDemo() {\n  console.log('Running: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -489,7 +489,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 10: Graph Traversals",
-            "content": "### \ud83c\udf1f 1. Definition (What is Graph Traversals?)\nGraph Traversals optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Depth First Search traversal function to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 10: Graph Traversals\nfunction runTopicDemo() {\n  console.log('Executing: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Graph Traversals?)\nGraph Traversals provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Depth First Search traversal function to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 10: Graph Traversals\nfunction runDemo() {\n  console.log('Running: Graph Traversals');\n  return { success: true, topic: 'Graph Traversals' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Graph Traversals is essential for professional engineering."
           }
         }
@@ -516,8 +516,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Dijkstra\u2019s Algorithm Working Implementation",
               "description": "Complete working demonstration of Dijkstra\u2019s Algorithm",
-              "starterCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runDemo() {\n  console.log('Running: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runDemo() {\n  console.log('Running: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Dijkstra\u2019s Algorithm"
             }
           ],
@@ -525,9 +525,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Dijkstra\u2019s Algorithm",
               "description": "Write a clean solution for Dijkstra\u2019s Algorithm that returns expected status.",
-              "starterCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runDemo() {\n  console.log('Running: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runDemo() {\n  console.log('Running: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -539,7 +539,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 11: Dijkstra\u2019s Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Dijkstra\u2019s Algorithm?)\nDijkstra\u2019s Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Dijkstra's Shortest Path Algorithm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Dijkstra\u2019s Algorithm?)\nDijkstra\u2019s Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Dijkstra's Shortest Path Algorithm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 11: Dijkstra\u2019s Algorithm\nfunction runDemo() {\n  console.log('Running: Dijkstra\u2019s Algorithm');\n  return { success: true, topic: 'Dijkstra\u2019s Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Dijkstra\u2019s Algorithm is essential for professional engineering."
           }
         },
@@ -567,8 +567,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "A* Path\ufb01nding Working Implementation",
               "description": "Complete working demonstration of A* Path\ufb01nding",
-              "starterCode": "// Chapter 12: A* Path\ufb01nding\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: A* Path\ufb01nding\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 12: A* Path\ufb01nding\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: A* Path\ufb01nding\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: A* Path\ufb01nding"
             }
           ],
@@ -576,9 +576,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement A* Path\ufb01nding",
               "description": "Write a clean solution for A* Path\ufb01nding that returns expected status.",
-              "starterCode": "// Chapter 12: A* Path\ufb01nding\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: A* Path\ufb01nding\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 12: A* Path\ufb01nding\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: A* Path\ufb01nding\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -590,7 +590,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 12: A* Path\ufb01nding",
-            "content": "### \ud83c\udf1f 1. Definition (What is A* Path\ufb01nding?)\nA* Path\ufb01nding optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction to A* to simplify development and prevent common bugs.**\n- **Provides A* Path\ufb01nding through a maze with no obstacles to simplify development and prevent common bugs.**\n- **Provides Solving 8: puzzle problem using A* algorithm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 12: A* Path\ufb01nding\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is A* Path\ufb01nding?)\nA* Path\ufb01nding provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction to A* to write clean, predictable code.**\n- **Provides A* Path\ufb01nding through a maze with no obstacles to write clean, predictable code.**\n- **Provides Solving 8: puzzle problem using A* algorithm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 12: A* Path\ufb01nding\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding');\n  return { success: true, topic: 'A* Path\ufb01nding' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering A* Path\ufb01nding is essential for professional engineering."
           }
         },
@@ -610,8 +610,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "A* Path\ufb01nding Algorithm Working Implementation",
               "description": "Complete working demonstration of A* Path\ufb01nding Algorithm",
-              "starterCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: A* Path\ufb01nding Algorithm"
             }
           ],
@@ -619,9 +619,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement A* Path\ufb01nding Algorithm",
               "description": "Write a clean solution for A* Path\ufb01nding Algorithm that returns expected status.",
-              "starterCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -633,7 +633,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 13: A* Path\ufb01nding Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is A* Path\ufb01nding Algorithm?)\nA* Path\ufb01nding Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple Example of A* Path\ufb01nding: A maze with no obstacles to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is A* Path\ufb01nding Algorithm?)\nA* Path\ufb01nding Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple Example of A* Path\ufb01nding: A maze with no obstacles to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 13: A* Path\ufb01nding Algorithm\nfunction runDemo() {\n  console.log('Running: A* Path\ufb01nding Algorithm');\n  return { success: true, topic: 'A* Path\ufb01nding Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering A* Path\ufb01nding Algorithm is essential for professional engineering."
           }
         },
@@ -661,8 +661,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Dynamic Programming Working Implementation",
               "description": "Complete working demonstration of Dynamic Programming",
-              "starterCode": "// Chapter 14: Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 14: Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Dynamic Programming"
             }
           ],
@@ -670,9 +670,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Dynamic Programming",
               "description": "Write a clean solution for Dynamic Programming that returns expected status.",
-              "starterCode": "// Chapter 14: Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 14: Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -684,7 +684,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 14: Dynamic Programming",
-            "content": "### \ud83c\udf1f 1. Definition (What is Dynamic Programming?)\nDynamic Programming optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Edit Distance to simplify development and prevent common bugs.**\n- **Provides Weighted Job Scheduling Algorithm to simplify development and prevent common bugs.**\n- **Provides Longest Common Subsequence to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 14: Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Dynamic Programming?)\nDynamic Programming provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Edit Distance to write clean, predictable code.**\n- **Provides Weighted Job Scheduling Algorithm to write clean, predictable code.**\n- **Provides Longest Common Subsequence to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 14: Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Dynamic Programming');\n  return { success: true, topic: 'Dynamic Programming' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Dynamic Programming is essential for professional engineering."
           }
         },
@@ -704,8 +704,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Applications of Dynamic Programming Working Implementation",
               "description": "Complete working demonstration of Applications of Dynamic Programming",
-              "starterCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Applications of Dynamic Programming"
             }
           ],
@@ -713,9 +713,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Applications of Dynamic Programming",
               "description": "Write a clean solution for Applications of Dynamic Programming that returns expected status.",
-              "starterCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Applications of Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -727,7 +727,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 15: Applications of Dynamic Programming",
-            "content": "### \ud83c\udf1f 1. Definition (What is Applications of Dynamic Programming?)\nApplications of Dynamic Programming optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Fibonacci Numbers to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 15: Applications of Dynamic Programming\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Applications of Dynamic Programming?)\nApplications of Dynamic Programming provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Fibonacci Numbers to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 15: Applications of Dynamic Programming\nfunction runDemo() {\n  console.log('Running: Applications of Dynamic Programming');\n  return { success: true, topic: 'Applications of Dynamic Programming' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Applications of Dynamic Programming is essential for professional engineering."
           }
         },
@@ -755,8 +755,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Kruskal's Algorithm Working Implementation",
               "description": "Complete working demonstration of Kruskal's Algorithm",
-              "starterCode": "// Chapter 16: Kruskal's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Kruskal's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 16: Kruskal's Algorithm\nfunction runDemo() {\n  console.log('Running: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Kruskal's Algorithm\nfunction runDemo() {\n  console.log('Running: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Kruskal's Algorithm"
             }
           ],
@@ -764,9 +764,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Kruskal's Algorithm",
               "description": "Write a clean solution for Kruskal's Algorithm that returns expected status.",
-              "starterCode": "// Chapter 16: Kruskal's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Kruskal's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 16: Kruskal's Algorithm\nfunction runDemo() {\n  console.log('Running: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Kruskal's Algorithm\nfunction runDemo() {\n  console.log('Running: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -778,7 +778,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 16: Kruskal's Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Kruskal's Algorithm?)\nKruskal's Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Optimal, disjoint: set based implementation to simplify development and prevent common bugs.**\n- **Provides Simple, more detailed implementation to simplify development and prevent common bugs.**\n- **Provides Simple, disjoint: set based implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 16: Kruskal's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Kruskal's Algorithm?)\nKruskal's Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Optimal, disjoint: set based implementation to write clean, predictable code.**\n- **Provides Simple, more detailed implementation to write clean, predictable code.**\n- **Provides Simple, disjoint: set based implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 16: Kruskal's Algorithm\nfunction runDemo() {\n  console.log('Running: Kruskal's Algorithm');\n  return { success: true, topic: 'Kruskal's Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Kruskal's Algorithm is essential for professional engineering."
           }
         },
@@ -806,8 +806,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Greedy Algorithms Working Implementation",
               "description": "Complete working demonstration of Greedy Algorithms",
-              "starterCode": "// Chapter 17: Greedy Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Greedy Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 17: Greedy Algorithms\nfunction runDemo() {\n  console.log('Running: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Greedy Algorithms\nfunction runDemo() {\n  console.log('Running: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Greedy Algorithms"
             }
           ],
@@ -815,9 +815,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Greedy Algorithms",
               "description": "Write a clean solution for Greedy Algorithms that returns expected status.",
-              "starterCode": "// Chapter 17: Greedy Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Greedy Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 17: Greedy Algorithms\nfunction runDemo() {\n  console.log('Running: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Greedy Algorithms\nfunction runDemo() {\n  console.log('Running: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -829,7 +829,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 17: Greedy Algorithms",
-            "content": "### \ud83c\udf1f 1. Definition (What is Greedy Algorithms?)\nGreedy Algorithms optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hu\ue023man Coding to simplify development and prevent common bugs.**\n- **Provides Activity Selection Problem to simplify development and prevent common bugs.**\n- **Provides Change: making problem to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 17: Greedy Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Greedy Algorithms?)\nGreedy Algorithms provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hu\ue023man Coding to write clean, predictable code.**\n- **Provides Activity Selection Problem to write clean, predictable code.**\n- **Provides Change: making problem to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 17: Greedy Algorithms\nfunction runDemo() {\n  console.log('Running: Greedy Algorithms');\n  return { success: true, topic: 'Greedy Algorithms' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Greedy Algorithms is essential for professional engineering."
           }
         },
@@ -857,8 +857,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Applications of Greedy technique Working Implementation",
               "description": "Complete working demonstration of Applications of Greedy technique",
-              "starterCode": "// Chapter 18: Applications of Greedy technique\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Applications of Greedy technique\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 18: Applications of Greedy technique\nfunction runDemo() {\n  console.log('Running: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Applications of Greedy technique\nfunction runDemo() {\n  console.log('Running: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Applications of Greedy technique"
             }
           ],
@@ -866,9 +866,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Applications of Greedy technique",
               "description": "Write a clean solution for Applications of Greedy technique that returns expected status.",
-              "starterCode": "// Chapter 18: Applications of Greedy technique\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Applications of Greedy technique\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 18: Applications of Greedy technique\nfunction runDemo() {\n  console.log('Running: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Applications of Greedy technique\nfunction runDemo() {\n  console.log('Running: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -880,7 +880,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 18: Applications of Greedy technique",
-            "content": "### \ud83c\udf1f 1. Definition (What is Applications of Greedy technique?)\nApplications of Greedy technique optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides O\ue026ine Caching to simplify development and prevent common bugs.**\n- **Provides Ticket automat to simplify development and prevent common bugs.**\n- **Provides Interval Scheduling to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 18: Applications of Greedy technique\nfunction runTopicDemo() {\n  console.log('Executing: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Applications of Greedy technique?)\nApplications of Greedy technique provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides O\ue026ine Caching to write clean, predictable code.**\n- **Provides Ticket automat to write clean, predictable code.**\n- **Provides Interval Scheduling to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 18: Applications of Greedy technique\nfunction runDemo() {\n  console.log('Running: Applications of Greedy technique');\n  return { success: true, topic: 'Applications of Greedy technique' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Applications of Greedy technique is essential for professional engineering."
           }
         },
@@ -900,8 +900,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Prim's Algorithm Working Implementation",
               "description": "Complete working demonstration of Prim's Algorithm",
-              "starterCode": "// Chapter 19: Prim's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Prim's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 19: Prim's Algorithm\nfunction runDemo() {\n  console.log('Running: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Prim's Algorithm\nfunction runDemo() {\n  console.log('Running: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Prim's Algorithm"
             }
           ],
@@ -909,9 +909,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Prim's Algorithm",
               "description": "Write a clean solution for Prim's Algorithm that returns expected status.",
-              "starterCode": "// Chapter 19: Prim's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Prim's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 19: Prim's Algorithm\nfunction runDemo() {\n  console.log('Running: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Prim's Algorithm\nfunction runDemo() {\n  console.log('Running: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -923,7 +923,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 19: Prim's Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Prim's Algorithm?)\nPrim's Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Prim's Algorithm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 19: Prim's Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Prim's Algorithm?)\nPrim's Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Prim's Algorithm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 19: Prim's Algorithm\nfunction runDemo() {\n  console.log('Running: Prim's Algorithm');\n  return { success: true, topic: 'Prim's Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Prim's Algorithm is essential for professional engineering."
           }
         },
@@ -951,8 +951,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Bellman: Ford Algorithm Working Implementation",
               "description": "Complete working demonstration of Bellman: Ford Algorithm",
-              "starterCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runDemo() {\n  console.log('Running: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runDemo() {\n  console.log('Running: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Bellman: Ford Algorithm"
             }
           ],
@@ -960,9 +960,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Bellman: Ford Algorithm",
               "description": "Write a clean solution for Bellman: Ford Algorithm that returns expected status.",
-              "starterCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runDemo() {\n  console.log('Running: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Bellman: Ford Algorithm\nfunction runDemo() {\n  console.log('Running: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -974,7 +974,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 20: Bellman: Ford Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Bellman: Ford Algorithm?)\nBellman: Ford Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Single Source Shortest Path Algorithm (Given there is a negative cycle in a graph) to simplify development and prevent common bugs.**\n- **Provides Detecting Negative Cycle in a Graph to simplify development and prevent common bugs.**\n- **Provides Why do we need to relax all the edges at most (V: 1) times to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 20: Bellman: Ford Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Bellman: Ford Algorithm?)\nBellman: Ford Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Single Source Shortest Path Algorithm (Given there is a negative cycle in a graph) to write clean, predictable code.**\n- **Provides Detecting Negative Cycle in a Graph to write clean, predictable code.**\n- **Provides Why do we need to relax all the edges at most (V: 1) times to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 20: Bellman: Ford Algorithm\nfunction runDemo() {\n  console.log('Running: Bellman: Ford Algorithm');\n  return { success: true, topic: 'Bellman: Ford Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Bellman: Ford Algorithm is essential for professional engineering."
           }
         }
@@ -1001,8 +1001,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Line Algorithm Working Implementation",
               "description": "Complete working demonstration of Line Algorithm",
-              "starterCode": "// Chapter 21: Line Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Line Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 21: Line Algorithm\nfunction runDemo() {\n  console.log('Running: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Line Algorithm\nfunction runDemo() {\n  console.log('Running: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Line Algorithm"
             }
           ],
@@ -1010,9 +1010,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Line Algorithm",
               "description": "Write a clean solution for Line Algorithm that returns expected status.",
-              "starterCode": "// Chapter 21: Line Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Line Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 21: Line Algorithm\nfunction runDemo() {\n  console.log('Running: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Line Algorithm\nfunction runDemo() {\n  console.log('Running: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1024,7 +1024,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 21: Line Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Line Algorithm?)\nLine Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Bresenham Line Drawing Algorithm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 21: Line Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Line Algorithm?)\nLine Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Bresenham Line Drawing Algorithm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 21: Line Algorithm\nfunction runDemo() {\n  console.log('Running: Line Algorithm');\n  return { success: true, topic: 'Line Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Line Algorithm is essential for professional engineering."
           }
         },
@@ -1044,8 +1044,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Floyd: Warshall Algorithm Working Implementation",
               "description": "Complete working demonstration of Floyd: Warshall Algorithm",
-              "starterCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runDemo() {\n  console.log('Running: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runDemo() {\n  console.log('Running: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Floyd: Warshall Algorithm"
             }
           ],
@@ -1053,9 +1053,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Floyd: Warshall Algorithm",
               "description": "Write a clean solution for Floyd: Warshall Algorithm that returns expected status.",
-              "starterCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runDemo() {\n  console.log('Running: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Floyd: Warshall Algorithm\nfunction runDemo() {\n  console.log('Running: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1067,7 +1067,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 22: Floyd: Warshall Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Floyd: Warshall Algorithm?)\nFloyd: Warshall Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides All Pair Shortest Path Algorithm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 22: Floyd: Warshall Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Floyd: Warshall Algorithm?)\nFloyd: Warshall Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides All Pair Shortest Path Algorithm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 22: Floyd: Warshall Algorithm\nfunction runDemo() {\n  console.log('Running: Floyd: Warshall Algorithm');\n  return { success: true, topic: 'Floyd: Warshall Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Floyd: Warshall Algorithm is essential for professional engineering."
           }
         },
@@ -1087,8 +1087,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Catalan Number Algorithm Working Implementation",
               "description": "Complete working demonstration of Catalan Number Algorithm",
-              "starterCode": "// Chapter 23: Catalan Number Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Catalan Number Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 23: Catalan Number Algorithm\nfunction runDemo() {\n  console.log('Running: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Catalan Number Algorithm\nfunction runDemo() {\n  console.log('Running: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Catalan Number Algorithm"
             }
           ],
@@ -1096,9 +1096,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Catalan Number Algorithm",
               "description": "Write a clean solution for Catalan Number Algorithm that returns expected status.",
-              "starterCode": "// Chapter 23: Catalan Number Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Catalan Number Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 23: Catalan Number Algorithm\nfunction runDemo() {\n  console.log('Running: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Catalan Number Algorithm\nfunction runDemo() {\n  console.log('Running: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1110,7 +1110,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 23: Catalan Number Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Catalan Number Algorithm?)\nCatalan Number Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Catalan Number Algorithm Basic Information to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 23: Catalan Number Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Catalan Number Algorithm?)\nCatalan Number Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Catalan Number Algorithm Basic Information to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 23: Catalan Number Algorithm\nfunction runDemo() {\n  console.log('Running: Catalan Number Algorithm');\n  return { success: true, topic: 'Catalan Number Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Catalan Number Algorithm is essential for professional engineering."
           }
         },
@@ -1138,8 +1138,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Multithreaded Algorithms Working Implementation",
               "description": "Complete working demonstration of Multithreaded Algorithms",
-              "starterCode": "// Chapter 24: Multithreaded Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Multithreaded Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 24: Multithreaded Algorithms\nfunction runDemo() {\n  console.log('Running: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Multithreaded Algorithms\nfunction runDemo() {\n  console.log('Running: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Multithreaded Algorithms"
             }
           ],
@@ -1147,9 +1147,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Multithreaded Algorithms",
               "description": "Write a clean solution for Multithreaded Algorithms that returns expected status.",
-              "starterCode": "// Chapter 24: Multithreaded Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Multithreaded Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 24: Multithreaded Algorithms\nfunction runDemo() {\n  console.log('Running: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Multithreaded Algorithms\nfunction runDemo() {\n  console.log('Running: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1161,7 +1161,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 24: Multithreaded Algorithms",
-            "content": "### \ud83c\udf1f 1. Definition (What is Multithreaded Algorithms?)\nMultithreaded Algorithms optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Square matrix multiplication multithread to simplify development and prevent common bugs.**\n- **Provides Multiplication matrix vector multithread to simplify development and prevent common bugs.**\n- **Provides merge: sort multithread to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 24: Multithreaded Algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Multithreaded Algorithms?)\nMultithreaded Algorithms provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Square matrix multiplication multithread to write clean, predictable code.**\n- **Provides Multiplication matrix vector multithread to write clean, predictable code.**\n- **Provides merge: sort multithread to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 24: Multithreaded Algorithms\nfunction runDemo() {\n  console.log('Running: Multithreaded Algorithms');\n  return { success: true, topic: 'Multithreaded Algorithms' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Multithreaded Algorithms is essential for professional engineering."
           }
         },
@@ -1181,8 +1181,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Knuth Morris Pratt (KMP) Algorithm Working Implementation",
               "description": "Complete working demonstration of Knuth Morris Pratt (KMP) Algorithm",
-              "starterCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runDemo() {\n  console.log('Running: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runDemo() {\n  console.log('Running: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Knuth Morris Pratt (KMP) Algorithm"
             }
           ],
@@ -1190,9 +1190,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Knuth Morris Pratt (KMP) Algorithm",
               "description": "Write a clean solution for Knuth Morris Pratt (KMP) Algorithm that returns expected status.",
-              "starterCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runDemo() {\n  console.log('Running: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runDemo() {\n  console.log('Running: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1204,7 +1204,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 25: Knuth Morris Pratt (KMP) Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Knuth Morris Pratt (KMP) Algorithm?)\nKnuth Morris Pratt (KMP) Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides KMP: Example to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Knuth Morris Pratt (KMP) Algorithm?)\nKnuth Morris Pratt (KMP) Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides KMP: Example to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 25: Knuth Morris Pratt (KMP) Algorithm\nfunction runDemo() {\n  console.log('Running: Knuth Morris Pratt (KMP) Algorithm');\n  return { success: true, topic: 'Knuth Morris Pratt (KMP) Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Knuth Morris Pratt (KMP) Algorithm is essential for professional engineering."
           }
         },
@@ -1224,8 +1224,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Edit Distance Dynamic Algorithm Working Implementation",
               "description": "Complete working demonstration of Edit Distance Dynamic Algorithm",
-              "starterCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runDemo() {\n  console.log('Running: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runDemo() {\n  console.log('Running: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Edit Distance Dynamic Algorithm"
             }
           ],
@@ -1233,9 +1233,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Edit Distance Dynamic Algorithm",
               "description": "Write a clean solution for Edit Distance Dynamic Algorithm that returns expected status.",
-              "starterCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runDemo() {\n  console.log('Running: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runDemo() {\n  console.log('Running: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1247,7 +1247,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 26: Edit Distance Dynamic Algorithm",
-            "content": "### \ud83c\udf1f 1. Definition (What is Edit Distance Dynamic Algorithm?)\nEdit Distance Dynamic Algorithm optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Minimum Edits required to convert string 1 to string 2 to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runTopicDemo() {\n  console.log('Executing: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Edit Distance Dynamic Algorithm?)\nEdit Distance Dynamic Algorithm provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Minimum Edits required to convert string 1 to string 2 to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 26: Edit Distance Dynamic Algorithm\nfunction runDemo() {\n  console.log('Running: Edit Distance Dynamic Algorithm');\n  return { success: true, topic: 'Edit Distance Dynamic Algorithm' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Edit Distance Dynamic Algorithm is essential for professional engineering."
           }
         },
@@ -1267,8 +1267,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Online algorithms Working Implementation",
               "description": "Complete working demonstration of Online algorithms",
-              "starterCode": "// Chapter 27: Online algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: Online algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 27: Online algorithms\nfunction runDemo() {\n  console.log('Running: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Online algorithms\nfunction runDemo() {\n  console.log('Running: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Online algorithms"
             }
           ],
@@ -1276,9 +1276,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Online algorithms",
               "description": "Write a clean solution for Online algorithms that returns expected status.",
-              "starterCode": "// Chapter 27: Online algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: Online algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 27: Online algorithms\nfunction runDemo() {\n  console.log('Running: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Online algorithms\nfunction runDemo() {\n  console.log('Running: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1290,7 +1290,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 27: Online algorithms",
-            "content": "### \ud83c\udf1f 1. Definition (What is Online algorithms?)\nOnline algorithms optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Paging (Online Caching) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 27: Online algorithms\nfunction runTopicDemo() {\n  console.log('Executing: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Online algorithms?)\nOnline algorithms provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Paging (Online Caching) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 27: Online algorithms\nfunction runDemo() {\n  console.log('Running: Online algorithms');\n  return { success: true, topic: 'Online algorithms' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Online algorithms is essential for professional engineering."
           }
         },
@@ -1310,8 +1310,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Sorting Working Implementation",
               "description": "Complete working demonstration of Sorting",
-              "starterCode": "// Chapter 28: Sorting\nfunction runTopicDemo() {\n  console.log('Executing: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: Sorting\nfunction runTopicDemo() {\n  console.log('Executing: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 28: Sorting\nfunction runDemo() {\n  console.log('Running: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Sorting\nfunction runDemo() {\n  console.log('Running: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Sorting"
             }
           ],
@@ -1319,9 +1319,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Sorting",
               "description": "Write a clean solution for Sorting that returns expected status.",
-              "starterCode": "// Chapter 28: Sorting\nfunction runTopicDemo() {\n  console.log('Executing: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: Sorting\nfunction runTopicDemo() {\n  console.log('Executing: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 28: Sorting\nfunction runDemo() {\n  console.log('Running: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Sorting\nfunction runDemo() {\n  console.log('Running: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1333,7 +1333,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 28: Sorting",
-            "content": "### \ud83c\udf1f 1. Definition (What is Sorting?)\nSorting optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Stability in Sorting to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 28: Sorting\nfunction runTopicDemo() {\n  console.log('Executing: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Sorting?)\nSorting provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Stability in Sorting to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 28: Sorting\nfunction runDemo() {\n  console.log('Running: Sorting');\n  return { success: true, topic: 'Sorting' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Sorting is essential for professional engineering."
           }
         },
@@ -1361,8 +1361,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Bubble Sort Working Implementation",
               "description": "Complete working demonstration of Bubble Sort",
-              "starterCode": "// Chapter 29: Bubble Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Bubble Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 29: Bubble Sort\nfunction runDemo() {\n  console.log('Running: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Bubble Sort\nfunction runDemo() {\n  console.log('Running: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Bubble Sort"
             }
           ],
@@ -1370,9 +1370,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Bubble Sort",
               "description": "Write a clean solution for Bubble Sort that returns expected status.",
-              "starterCode": "// Chapter 29: Bubble Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: Bubble Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 29: Bubble Sort\nfunction runDemo() {\n  console.log('Running: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Bubble Sort\nfunction runDemo() {\n  console.log('Running: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1384,7 +1384,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 29: Bubble Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Bubble Sort?)\nBubble Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Implementation in C & C++ to simplify development and prevent common bugs.**\n- **Provides Implementation in C# to simplify development and prevent common bugs.**\n- **Provides Python Implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 29: Bubble Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Bubble Sort?)\nBubble Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Implementation in C & C++ to write clean, predictable code.**\n- **Provides Implementation in C# to write clean, predictable code.**\n- **Provides Python Implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 29: Bubble Sort\nfunction runDemo() {\n  console.log('Running: Bubble Sort');\n  return { success: true, topic: 'Bubble Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Bubble Sort is essential for professional engineering."
           }
         },
@@ -1412,8 +1412,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Merge Sort Working Implementation",
               "description": "Complete working demonstration of Merge Sort",
-              "starterCode": "// Chapter 30: Merge Sort\nfunction runTopicDemo() {\n  console.log('Executing: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Merge Sort\nfunction runTopicDemo() {\n  console.log('Executing: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 30: Merge Sort\nfunction runDemo() {\n  console.log('Running: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Merge Sort\nfunction runDemo() {\n  console.log('Running: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Merge Sort"
             }
           ],
@@ -1421,9 +1421,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Merge Sort",
               "description": "Write a clean solution for Merge Sort that returns expected status.",
-              "starterCode": "// Chapter 30: Merge Sort\nfunction runTopicDemo() {\n  console.log('Executing: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Merge Sort\nfunction runTopicDemo() {\n  console.log('Executing: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 30: Merge Sort\nfunction runDemo() {\n  console.log('Running: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Merge Sort\nfunction runDemo() {\n  console.log('Running: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1435,7 +1435,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 30: Merge Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Merge Sort?)\nMerge Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Merge Sort Basics to simplify development and prevent common bugs.**\n- **Provides Merge Sort Implementation in Go to simplify development and prevent common bugs.**\n- **Provides Merge Sort Implementation in C & C# to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 30: Merge Sort\nfunction runTopicDemo() {\n  console.log('Executing: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Merge Sort?)\nMerge Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Merge Sort Basics to write clean, predictable code.**\n- **Provides Merge Sort Implementation in Go to write clean, predictable code.**\n- **Provides Merge Sort Implementation in C & C# to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 30: Merge Sort\nfunction runDemo() {\n  console.log('Running: Merge Sort');\n  return { success: true, topic: 'Merge Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Merge Sort is essential for professional engineering."
           }
         }
@@ -1462,8 +1462,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Insertion Sort Working Implementation",
               "description": "Complete working demonstration of Insertion Sort",
-              "starterCode": "// Chapter 31: Insertion Sort\nfunction runTopicDemo() {\n  console.log('Executing: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: Insertion Sort\nfunction runTopicDemo() {\n  console.log('Executing: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 31: Insertion Sort\nfunction runDemo() {\n  console.log('Running: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: Insertion Sort\nfunction runDemo() {\n  console.log('Running: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Insertion Sort"
             }
           ],
@@ -1471,9 +1471,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Insertion Sort",
               "description": "Write a clean solution for Insertion Sort that returns expected status.",
-              "starterCode": "// Chapter 31: Insertion Sort\nfunction runTopicDemo() {\n  console.log('Executing: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: Insertion Sort\nfunction runTopicDemo() {\n  console.log('Executing: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 31: Insertion Sort\nfunction runDemo() {\n  console.log('Running: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: Insertion Sort\nfunction runDemo() {\n  console.log('Running: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1485,7 +1485,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 31: Insertion Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Insertion Sort?)\nInsertion Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Haskell Implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 31: Insertion Sort\nfunction runTopicDemo() {\n  console.log('Executing: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Insertion Sort?)\nInsertion Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Haskell Implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 31: Insertion Sort\nfunction runDemo() {\n  console.log('Running: Insertion Sort');\n  return { success: true, topic: 'Insertion Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Insertion Sort is essential for professional engineering."
           }
         },
@@ -1505,8 +1505,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Bucket Sort Working Implementation",
               "description": "Complete working demonstration of Bucket Sort",
-              "starterCode": "// Chapter 32: Bucket Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: Bucket Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 32: Bucket Sort\nfunction runDemo() {\n  console.log('Running: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: Bucket Sort\nfunction runDemo() {\n  console.log('Running: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Bucket Sort"
             }
           ],
@@ -1514,9 +1514,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Bucket Sort",
               "description": "Write a clean solution for Bucket Sort that returns expected status.",
-              "starterCode": "// Chapter 32: Bucket Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: Bucket Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 32: Bucket Sort\nfunction runDemo() {\n  console.log('Running: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: Bucket Sort\nfunction runDemo() {\n  console.log('Running: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1528,7 +1528,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 32: Bucket Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Bucket Sort?)\nBucket Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides C# Implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 32: Bucket Sort\nfunction runTopicDemo() {\n  console.log('Executing: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Bucket Sort?)\nBucket Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides C# Implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 32: Bucket Sort\nfunction runDemo() {\n  console.log('Running: Bucket Sort');\n  return { success: true, topic: 'Bucket Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Bucket Sort is essential for professional engineering."
           }
         },
@@ -1556,8 +1556,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Quicksort Working Implementation",
               "description": "Complete working demonstration of Quicksort",
-              "starterCode": "// Chapter 33: Quicksort\nfunction runTopicDemo() {\n  console.log('Executing: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 33: Quicksort\nfunction runTopicDemo() {\n  console.log('Executing: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 33: Quicksort\nfunction runDemo() {\n  console.log('Running: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: Quicksort\nfunction runDemo() {\n  console.log('Running: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Quicksort"
             }
           ],
@@ -1565,9 +1565,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Quicksort",
               "description": "Write a clean solution for Quicksort that returns expected status.",
-              "starterCode": "// Chapter 33: Quicksort\nfunction runTopicDemo() {\n  console.log('Executing: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 33: Quicksort\nfunction runTopicDemo() {\n  console.log('Executing: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 33: Quicksort\nfunction runDemo() {\n  console.log('Running: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: Quicksort\nfunction runDemo() {\n  console.log('Running: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1579,7 +1579,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 33: Quicksort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Quicksort?)\nQuicksort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Quicksort Basics to simplify development and prevent common bugs.**\n- **Provides Quicksort in Python to simplify development and prevent common bugs.**\n- **Provides Lomuto partition java implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 33: Quicksort\nfunction runTopicDemo() {\n  console.log('Executing: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Quicksort?)\nQuicksort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Quicksort Basics to write clean, predictable code.**\n- **Provides Quicksort in Python to write clean, predictable code.**\n- **Provides Lomuto partition java implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 33: Quicksort\nfunction runDemo() {\n  console.log('Running: Quicksort');\n  return { success: true, topic: 'Quicksort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Quicksort is essential for professional engineering."
           }
         },
@@ -1603,8 +1603,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Counting Sort Working Implementation",
               "description": "Complete working demonstration of Counting Sort",
-              "starterCode": "// Chapter 34: Counting Sort\nfunction runTopicDemo() {\n  console.log('Executing: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 34: Counting Sort\nfunction runTopicDemo() {\n  console.log('Executing: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 34: Counting Sort\nfunction runDemo() {\n  console.log('Running: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Counting Sort\nfunction runDemo() {\n  console.log('Running: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Counting Sort"
             }
           ],
@@ -1612,9 +1612,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Counting Sort",
               "description": "Write a clean solution for Counting Sort that returns expected status.",
-              "starterCode": "// Chapter 34: Counting Sort\nfunction runTopicDemo() {\n  console.log('Executing: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 34: Counting Sort\nfunction runTopicDemo() {\n  console.log('Executing: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 34: Counting Sort\nfunction runDemo() {\n  console.log('Running: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Counting Sort\nfunction runDemo() {\n  console.log('Running: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1626,7 +1626,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 34: Counting Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Counting Sort?)\nCounting Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Counting Sort Basic Information to simplify development and prevent common bugs.**\n- **Provides Psuedocode Implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 34: Counting Sort\nfunction runTopicDemo() {\n  console.log('Executing: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Counting Sort?)\nCounting Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Counting Sort Basic Information to write clean, predictable code.**\n- **Provides Psuedocode Implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 34: Counting Sort\nfunction runDemo() {\n  console.log('Running: Counting Sort');\n  return { success: true, topic: 'Counting Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Counting Sort is essential for professional engineering."
           }
         },
@@ -1650,8 +1650,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Heap Sort Working Implementation",
               "description": "Complete working demonstration of Heap Sort",
-              "starterCode": "// Chapter 35: Heap Sort\nfunction runTopicDemo() {\n  console.log('Executing: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 35: Heap Sort\nfunction runTopicDemo() {\n  console.log('Executing: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 35: Heap Sort\nfunction runDemo() {\n  console.log('Running: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Heap Sort\nfunction runDemo() {\n  console.log('Running: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Heap Sort"
             }
           ],
@@ -1659,9 +1659,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Heap Sort",
               "description": "Write a clean solution for Heap Sort that returns expected status.",
-              "starterCode": "// Chapter 35: Heap Sort\nfunction runTopicDemo() {\n  console.log('Executing: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 35: Heap Sort\nfunction runTopicDemo() {\n  console.log('Executing: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 35: Heap Sort\nfunction runDemo() {\n  console.log('Running: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Heap Sort\nfunction runDemo() {\n  console.log('Running: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1673,7 +1673,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 35: Heap Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Heap Sort?)\nHeap Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides C# Implementation to simplify development and prevent common bugs.**\n- **Provides Heap Sort Basic Information to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 35: Heap Sort\nfunction runTopicDemo() {\n  console.log('Executing: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Heap Sort?)\nHeap Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides C# Implementation to write clean, predictable code.**\n- **Provides Heap Sort Basic Information to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 35: Heap Sort\nfunction runDemo() {\n  console.log('Running: Heap Sort');\n  return { success: true, topic: 'Heap Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Heap Sort is essential for professional engineering."
           }
         },
@@ -1693,8 +1693,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Cycle Sort Working Implementation",
               "description": "Complete working demonstration of Cycle Sort",
-              "starterCode": "// Chapter 36: Cycle Sort\nfunction runTopicDemo() {\n  console.log('Executing: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 36: Cycle Sort\nfunction runTopicDemo() {\n  console.log('Executing: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 36: Cycle Sort\nfunction runDemo() {\n  console.log('Running: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: Cycle Sort\nfunction runDemo() {\n  console.log('Running: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Cycle Sort"
             }
           ],
@@ -1702,9 +1702,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Cycle Sort",
               "description": "Write a clean solution for Cycle Sort that returns expected status.",
-              "starterCode": "// Chapter 36: Cycle Sort\nfunction runTopicDemo() {\n  console.log('Executing: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 36: Cycle Sort\nfunction runTopicDemo() {\n  console.log('Executing: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 36: Cycle Sort\nfunction runDemo() {\n  console.log('Running: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: Cycle Sort\nfunction runDemo() {\n  console.log('Running: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1716,7 +1716,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 36: Cycle Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Cycle Sort?)\nCycle Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pseudocode Implementation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 36: Cycle Sort\nfunction runTopicDemo() {\n  console.log('Executing: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Cycle Sort?)\nCycle Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pseudocode Implementation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 36: Cycle Sort\nfunction runDemo() {\n  console.log('Running: Cycle Sort');\n  return { success: true, topic: 'Cycle Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Cycle Sort is essential for professional engineering."
           }
         },
@@ -1736,8 +1736,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Odd: Even Sort Working Implementation",
               "description": "Complete working demonstration of Odd: Even Sort",
-              "starterCode": "// Chapter 37: Odd: Even Sort\nfunction runTopicDemo() {\n  console.log('Executing: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 37: Odd: Even Sort\nfunction runTopicDemo() {\n  console.log('Executing: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 37: Odd: Even Sort\nfunction runDemo() {\n  console.log('Running: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: Odd: Even Sort\nfunction runDemo() {\n  console.log('Running: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Odd: Even Sort"
             }
           ],
@@ -1745,9 +1745,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Odd: Even Sort",
               "description": "Write a clean solution for Odd: Even Sort that returns expected status.",
-              "starterCode": "// Chapter 37: Odd: Even Sort\nfunction runTopicDemo() {\n  console.log('Executing: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 37: Odd: Even Sort\nfunction runTopicDemo() {\n  console.log('Executing: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 37: Odd: Even Sort\nfunction runDemo() {\n  console.log('Running: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: Odd: Even Sort\nfunction runDemo() {\n  console.log('Running: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1759,7 +1759,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 37: Odd: Even Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Odd: Even Sort?)\nOdd: Even Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Odd: Even Sort Basic Information to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 37: Odd: Even Sort\nfunction runTopicDemo() {\n  console.log('Executing: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Odd: Even Sort?)\nOdd: Even Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Odd: Even Sort Basic Information to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 37: Odd: Even Sort\nfunction runDemo() {\n  console.log('Running: Odd: Even Sort');\n  return { success: true, topic: 'Odd: Even Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Odd: Even Sort is essential for professional engineering."
           }
         },
@@ -1787,8 +1787,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Selection Sort Working Implementation",
               "description": "Complete working demonstration of Selection Sort",
-              "starterCode": "// Chapter 38: Selection Sort\nfunction runTopicDemo() {\n  console.log('Executing: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 38: Selection Sort\nfunction runTopicDemo() {\n  console.log('Executing: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 38: Selection Sort\nfunction runDemo() {\n  console.log('Running: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: Selection Sort\nfunction runDemo() {\n  console.log('Running: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Selection Sort"
             }
           ],
@@ -1796,9 +1796,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Selection Sort",
               "description": "Write a clean solution for Selection Sort that returns expected status.",
-              "starterCode": "// Chapter 38: Selection Sort\nfunction runTopicDemo() {\n  console.log('Executing: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 38: Selection Sort\nfunction runTopicDemo() {\n  console.log('Executing: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 38: Selection Sort\nfunction runDemo() {\n  console.log('Running: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: Selection Sort\nfunction runDemo() {\n  console.log('Running: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1810,7 +1810,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 38: Selection Sort",
-            "content": "### \ud83c\udf1f 1. Definition (What is Selection Sort?)\nSelection Sort optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Elixir Implementation to simplify development and prevent common bugs.**\n- **Provides Selection Sort Basic Information to simplify development and prevent common bugs.**\n- **Provides Implementation of Selection sort in C# to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 38: Selection Sort\nfunction runTopicDemo() {\n  console.log('Executing: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Selection Sort?)\nSelection Sort provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Elixir Implementation to write clean, predictable code.**\n- **Provides Selection Sort Basic Information to write clean, predictable code.**\n- **Provides Implementation of Selection sort in C# to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 38: Selection Sort\nfunction runDemo() {\n  console.log('Running: Selection Sort');\n  return { success: true, topic: 'Selection Sort' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Selection Sort is essential for professional engineering."
           }
         },
@@ -1838,8 +1838,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Searching Working Implementation",
               "description": "Complete working demonstration of Searching",
-              "starterCode": "// Chapter 39: Searching\nfunction runTopicDemo() {\n  console.log('Executing: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 39: Searching\nfunction runTopicDemo() {\n  console.log('Executing: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 39: Searching\nfunction runDemo() {\n  console.log('Running: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: Searching\nfunction runDemo() {\n  console.log('Running: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Searching"
             }
           ],
@@ -1847,9 +1847,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Searching",
               "description": "Write a clean solution for Searching that returns expected status.",
-              "starterCode": "// Chapter 39: Searching\nfunction runTopicDemo() {\n  console.log('Executing: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 39: Searching\nfunction runTopicDemo() {\n  console.log('Executing: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 39: Searching\nfunction runDemo() {\n  console.log('Running: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: Searching\nfunction runDemo() {\n  console.log('Running: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1861,7 +1861,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 39: Searching",
-            "content": "### \ud83c\udf1f 1. Definition (What is Searching?)\nSearching optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Binary Search to simplify development and prevent common bugs.**\n- **Provides Rabin Karp to simplify development and prevent common bugs.**\n- **Provides Analysis of Linear search (Worst, Average and Best Cases) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 39: Searching\nfunction runTopicDemo() {\n  console.log('Executing: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Searching?)\nSearching provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Binary Search to write clean, predictable code.**\n- **Provides Rabin Karp to write clean, predictable code.**\n- **Provides Analysis of Linear search (Worst, Average and Best Cases) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 39: Searching\nfunction runDemo() {\n  console.log('Running: Searching');\n  return { success: true, topic: 'Searching' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Searching is essential for professional engineering."
           }
         },
@@ -1889,8 +1889,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Substring Search Working Implementation",
               "description": "Complete working demonstration of Substring Search",
-              "starterCode": "// Chapter 40: Substring Search\nfunction runTopicDemo() {\n  console.log('Executing: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 40: Substring Search\nfunction runTopicDemo() {\n  console.log('Executing: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 40: Substring Search\nfunction runDemo() {\n  console.log('Running: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Substring Search\nfunction runDemo() {\n  console.log('Running: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Substring Search"
             }
           ],
@@ -1898,9 +1898,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Substring Search",
               "description": "Write a clean solution for Substring Search that returns expected status.",
-              "starterCode": "// Chapter 40: Substring Search\nfunction runTopicDemo() {\n  console.log('Executing: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 40: Substring Search\nfunction runTopicDemo() {\n  console.log('Executing: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 40: Substring Search\nfunction runDemo() {\n  console.log('Running: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Substring Search\nfunction runDemo() {\n  console.log('Running: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1912,7 +1912,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 40: Substring Search",
-            "content": "### \ud83c\udf1f 1. Definition (What is Substring Search?)\nSubstring Search optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Knuth: Morris: Pratt (KMP) Algorithm to simplify development and prevent common bugs.**\n- **Provides Introduction to Rabin: Karp Algorithm to simplify development and prevent common bugs.**\n- **Provides Python Implementation of KMP algorithm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 40: Substring Search\nfunction runTopicDemo() {\n  console.log('Executing: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Substring Search?)\nSubstring Search provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Knuth: Morris: Pratt (KMP) Algorithm to write clean, predictable code.**\n- **Provides Introduction to Rabin: Karp Algorithm to write clean, predictable code.**\n- **Provides Python Implementation of KMP algorithm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 40: Substring Search\nfunction runDemo() {\n  console.log('Running: Substring Search');\n  return { success: true, topic: 'Substring Search' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Substring Search is essential for professional engineering."
           }
         }
@@ -1947,8 +1947,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Breadth: First Search Working Implementation",
               "description": "Complete working demonstration of Breadth: First Search",
-              "starterCode": "// Chapter 41: Breadth: First Search\nfunction runTopicDemo() {\n  console.log('Executing: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 41: Breadth: First Search\nfunction runTopicDemo() {\n  console.log('Executing: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 41: Breadth: First Search\nfunction runDemo() {\n  console.log('Running: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: Breadth: First Search\nfunction runDemo() {\n  console.log('Running: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Breadth: First Search"
             }
           ],
@@ -1956,9 +1956,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Breadth: First Search",
               "description": "Write a clean solution for Breadth: First Search that returns expected status.",
-              "starterCode": "// Chapter 41: Breadth: First Search\nfunction runTopicDemo() {\n  console.log('Executing: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 41: Breadth: First Search\nfunction runTopicDemo() {\n  console.log('Executing: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 41: Breadth: First Search\nfunction runDemo() {\n  console.log('Running: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: Breadth: First Search\nfunction runDemo() {\n  console.log('Running: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1970,7 +1970,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 41: Breadth: First Search",
-            "content": "### \ud83c\udf1f 1. Definition (What is Breadth: First Search?)\nBreadth: First Search optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding the Shortest Path from Source to other Nodes to simplify development and prevent common bugs.**\n- **Provides Finding Shortest Path from Source in a 2D graph to simplify development and prevent common bugs.**\n- **Provides Connected Components Of Undirected Graph Using BFS to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 41: Breadth: First Search\nfunction runTopicDemo() {\n  console.log('Executing: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Breadth: First Search?)\nBreadth: First Search provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Finding the Shortest Path from Source to other Nodes to write clean, predictable code.**\n- **Provides Finding Shortest Path from Source in a 2D graph to write clean, predictable code.**\n- **Provides Connected Components Of Undirected Graph Using BFS to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 41: Breadth: First Search\nfunction runDemo() {\n  console.log('Running: Breadth: First Search');\n  return { success: true, topic: 'Breadth: First Search' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Breadth: First Search is essential for professional engineering."
           }
         },
@@ -1990,8 +1990,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Depth First Search Working Implementation",
               "description": "Complete working demonstration of Depth First Search",
-              "starterCode": "// Chapter 42: Depth First Search\nfunction runTopicDemo() {\n  console.log('Executing: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 42: Depth First Search\nfunction runTopicDemo() {\n  console.log('Executing: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 42: Depth First Search\nfunction runDemo() {\n  console.log('Running: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Depth First Search\nfunction runDemo() {\n  console.log('Running: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Depth First Search"
             }
           ],
@@ -1999,9 +1999,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Depth First Search",
               "description": "Write a clean solution for Depth First Search that returns expected status.",
-              "starterCode": "// Chapter 42: Depth First Search\nfunction runTopicDemo() {\n  console.log('Executing: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 42: Depth First Search\nfunction runTopicDemo() {\n  console.log('Executing: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 42: Depth First Search\nfunction runDemo() {\n  console.log('Running: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Depth First Search\nfunction runDemo() {\n  console.log('Running: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2013,7 +2013,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 42: Depth First Search",
-            "content": "### \ud83c\udf1f 1. Definition (What is Depth First Search?)\nDepth First Search optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Depth: First Search to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 42: Depth First Search\nfunction runTopicDemo() {\n  console.log('Executing: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Depth First Search?)\nDepth First Search provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Depth: First Search to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 42: Depth First Search\nfunction runDemo() {\n  console.log('Running: Depth First Search');\n  return { success: true, topic: 'Depth First Search' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Depth First Search is essential for professional engineering."
           }
         },
@@ -2037,8 +2037,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Hash Functions Working Implementation",
               "description": "Complete working demonstration of Hash Functions",
-              "starterCode": "// Chapter 43: Hash Functions\nfunction runTopicDemo() {\n  console.log('Executing: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 43: Hash Functions\nfunction runTopicDemo() {\n  console.log('Executing: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 43: Hash Functions\nfunction runDemo() {\n  console.log('Running: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: Hash Functions\nfunction runDemo() {\n  console.log('Running: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Hash Functions"
             }
           ],
@@ -2046,9 +2046,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Hash Functions",
               "description": "Write a clean solution for Hash Functions that returns expected status.",
-              "starterCode": "// Chapter 43: Hash Functions\nfunction runTopicDemo() {\n  console.log('Executing: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 43: Hash Functions\nfunction runTopicDemo() {\n  console.log('Executing: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 43: Hash Functions\nfunction runDemo() {\n  console.log('Running: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: Hash Functions\nfunction runDemo() {\n  console.log('Running: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2060,7 +2060,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 43: Hash Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Hash Functions?)\nHash Functions optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hash codes for common types in C# to simplify development and prevent common bugs.**\n- **Provides Introduction to hash functions to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 43: Hash Functions\nfunction runTopicDemo() {\n  console.log('Executing: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Hash Functions?)\nHash Functions provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hash codes for common types in C# to write clean, predictable code.**\n- **Provides Introduction to hash functions to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 43: Hash Functions\nfunction runDemo() {\n  console.log('Running: Hash Functions');\n  return { success: true, topic: 'Hash Functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Hash Functions is essential for professional engineering."
           }
         },
@@ -2084,8 +2084,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Travelling Salesman Working Implementation",
               "description": "Complete working demonstration of Travelling Salesman",
-              "starterCode": "// Chapter 44: Travelling Salesman\nfunction runTopicDemo() {\n  console.log('Executing: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 44: Travelling Salesman\nfunction runTopicDemo() {\n  console.log('Executing: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 44: Travelling Salesman\nfunction runDemo() {\n  console.log('Running: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 44: Travelling Salesman\nfunction runDemo() {\n  console.log('Running: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Travelling Salesman"
             }
           ],
@@ -2093,9 +2093,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Travelling Salesman",
               "description": "Write a clean solution for Travelling Salesman that returns expected status.",
-              "starterCode": "// Chapter 44: Travelling Salesman\nfunction runTopicDemo() {\n  console.log('Executing: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 44: Travelling Salesman\nfunction runTopicDemo() {\n  console.log('Executing: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 44: Travelling Salesman\nfunction runDemo() {\n  console.log('Running: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 44: Travelling Salesman\nfunction runDemo() {\n  console.log('Running: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2107,7 +2107,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 44: Travelling Salesman",
-            "content": "### \ud83c\udf1f 1. Definition (What is Travelling Salesman?)\nTravelling Salesman optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Brute Force Algorithm to simplify development and prevent common bugs.**\n- **Provides Dynamic Programming Algorithm to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 44: Travelling Salesman\nfunction runTopicDemo() {\n  console.log('Executing: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Travelling Salesman?)\nTravelling Salesman provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Brute Force Algorithm to write clean, predictable code.**\n- **Provides Dynamic Programming Algorithm to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 44: Travelling Salesman\nfunction runDemo() {\n  console.log('Running: Travelling Salesman');\n  return { success: true, topic: 'Travelling Salesman' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Travelling Salesman is essential for professional engineering."
           }
         },
@@ -2131,8 +2131,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Knapsack Problem Working Implementation",
               "description": "Complete working demonstration of Knapsack Problem",
-              "starterCode": "// Chapter 45: Knapsack Problem\nfunction runTopicDemo() {\n  console.log('Executing: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 45: Knapsack Problem\nfunction runTopicDemo() {\n  console.log('Executing: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 45: Knapsack Problem\nfunction runDemo() {\n  console.log('Running: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 45: Knapsack Problem\nfunction runDemo() {\n  console.log('Running: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Knapsack Problem"
             }
           ],
@@ -2140,9 +2140,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Knapsack Problem",
               "description": "Write a clean solution for Knapsack Problem that returns expected status.",
-              "starterCode": "// Chapter 45: Knapsack Problem\nfunction runTopicDemo() {\n  console.log('Executing: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 45: Knapsack Problem\nfunction runTopicDemo() {\n  console.log('Executing: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 45: Knapsack Problem\nfunction runDemo() {\n  console.log('Running: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 45: Knapsack Problem\nfunction runDemo() {\n  console.log('Running: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2154,7 +2154,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 45: Knapsack Problem",
-            "content": "### \ud83c\udf1f 1. Definition (What is Knapsack Problem?)\nKnapsack Problem optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Knapsack Problem Basics to simplify development and prevent common bugs.**\n- **Provides Solution Implemented in C# to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 45: Knapsack Problem\nfunction runTopicDemo() {\n  console.log('Executing: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Knapsack Problem?)\nKnapsack Problem provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Knapsack Problem Basics to write clean, predictable code.**\n- **Provides Solution Implemented in C# to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 45: Knapsack Problem\nfunction runDemo() {\n  console.log('Running: Knapsack Problem');\n  return { success: true, topic: 'Knapsack Problem' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Knapsack Problem is essential for professional engineering."
           }
         },
@@ -2178,8 +2178,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Equation Solving Working Implementation",
               "description": "Complete working demonstration of Equation Solving",
-              "starterCode": "// Chapter 46: Equation Solving\nfunction runTopicDemo() {\n  console.log('Executing: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 46: Equation Solving\nfunction runTopicDemo() {\n  console.log('Executing: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 46: Equation Solving\nfunction runDemo() {\n  console.log('Running: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 46: Equation Solving\nfunction runDemo() {\n  console.log('Running: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Equation Solving"
             }
           ],
@@ -2187,9 +2187,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Equation Solving",
               "description": "Write a clean solution for Equation Solving that returns expected status.",
-              "starterCode": "// Chapter 46: Equation Solving\nfunction runTopicDemo() {\n  console.log('Executing: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 46: Equation Solving\nfunction runTopicDemo() {\n  console.log('Executing: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 46: Equation Solving\nfunction runDemo() {\n  console.log('Running: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 46: Equation Solving\nfunction runDemo() {\n  console.log('Running: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2201,7 +2201,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 46: Equation Solving",
-            "content": "### \ud83c\udf1f 1. Definition (What is Equation Solving?)\nEquation Solving optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Linear Equation to simplify development and prevent common bugs.**\n- **Provides Non: Linear Equation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 46: Equation Solving\nfunction runTopicDemo() {\n  console.log('Executing: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Equation Solving?)\nEquation Solving provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Linear Equation to write clean, predictable code.**\n- **Provides Non: Linear Equation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 46: Equation Solving\nfunction runDemo() {\n  console.log('Running: Equation Solving');\n  return { success: true, topic: 'Equation Solving' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Equation Solving is essential for professional engineering."
           }
         },
@@ -2221,8 +2221,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Longest Common Subsequence Working Implementation",
               "description": "Complete working demonstration of Longest Common Subsequence",
-              "starterCode": "// Chapter 47: Longest Common Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 47: Longest Common Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 47: Longest Common Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 47: Longest Common Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Longest Common Subsequence"
             }
           ],
@@ -2230,9 +2230,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Longest Common Subsequence",
               "description": "Write a clean solution for Longest Common Subsequence that returns expected status.",
-              "starterCode": "// Chapter 47: Longest Common Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 47: Longest Common Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 47: Longest Common Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 47: Longest Common Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2244,7 +2244,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 47: Longest Common Subsequence",
-            "content": "### \ud83c\udf1f 1. Definition (What is Longest Common Subsequence?)\nLongest Common Subsequence optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Longest Common Subsequence Explanation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 47: Longest Common Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Longest Common Subsequence?)\nLongest Common Subsequence provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Longest Common Subsequence Explanation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 47: Longest Common Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Common Subsequence');\n  return { success: true, topic: 'Longest Common Subsequence' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Longest Common Subsequence is essential for professional engineering."
           }
         },
@@ -2264,8 +2264,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Longest Increasing Subsequence Working Implementation",
               "description": "Complete working demonstration of Longest Increasing Subsequence",
-              "starterCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Longest Increasing Subsequence"
             }
           ],
@@ -2273,9 +2273,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Longest Increasing Subsequence",
               "description": "Write a clean solution for Longest Increasing Subsequence that returns expected status.",
-              "starterCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 48: Longest Increasing Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2287,7 +2287,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 48: Longest Increasing Subsequence",
-            "content": "### \ud83c\udf1f 1. Definition (What is Longest Increasing Subsequence?)\nLongest Increasing Subsequence optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Longest Increasing Subsequence Basic Information to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 48: Longest Increasing Subsequence\nfunction runTopicDemo() {\n  console.log('Executing: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Longest Increasing Subsequence?)\nLongest Increasing Subsequence provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Longest Increasing Subsequence Basic Information to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 48: Longest Increasing Subsequence\nfunction runDemo() {\n  console.log('Running: Longest Increasing Subsequence');\n  return { success: true, topic: 'Longest Increasing Subsequence' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Longest Increasing Subsequence is essential for professional engineering."
           }
         },
@@ -2311,8 +2311,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Check two strings are anagrams Working Implementation",
               "description": "Complete working demonstration of Check two strings are anagrams",
-              "starterCode": "// Chapter 49: Check two strings are anagrams\nfunction runTopicDemo() {\n  console.log('Executing: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 49: Check two strings are anagrams\nfunction runTopicDemo() {\n  console.log('Executing: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 49: Check two strings are anagrams\nfunction runDemo() {\n  console.log('Running: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 49: Check two strings are anagrams\nfunction runDemo() {\n  console.log('Running: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Check two strings are anagrams"
             }
           ],
@@ -2320,9 +2320,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Check two strings are anagrams",
               "description": "Write a clean solution for Check two strings are anagrams that returns expected status.",
-              "starterCode": "// Chapter 49: Check two strings are anagrams\nfunction runTopicDemo() {\n  console.log('Executing: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 49: Check two strings are anagrams\nfunction runTopicDemo() {\n  console.log('Executing: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 49: Check two strings are anagrams\nfunction runDemo() {\n  console.log('Running: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 49: Check two strings are anagrams\nfunction runDemo() {\n  console.log('Running: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2334,7 +2334,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 49: Check two strings are anagrams",
-            "content": "### \ud83c\udf1f 1. Definition (What is Check two strings are anagrams?)\nCheck two strings are anagrams optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sample input and output to simplify development and prevent common bugs.**\n- **Provides Generic Code for Anagrams to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 49: Check two strings are anagrams\nfunction runTopicDemo() {\n  console.log('Executing: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Check two strings are anagrams?)\nCheck two strings are anagrams provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sample input and output to write clean, predictable code.**\n- **Provides Generic Code for Anagrams to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 49: Check two strings are anagrams\nfunction runDemo() {\n  console.log('Running: Check two strings are anagrams');\n  return { success: true, topic: 'Check two strings are anagrams' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Check two strings are anagrams is essential for professional engineering."
           }
         },
@@ -2354,8 +2354,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Pascal's Triangle Working Implementation",
               "description": "Complete working demonstration of Pascal's Triangle",
-              "starterCode": "// Chapter 50: Pascal's Triangle\nfunction runTopicDemo() {\n  console.log('Executing: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 50: Pascal's Triangle\nfunction runTopicDemo() {\n  console.log('Executing: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 50: Pascal's Triangle\nfunction runDemo() {\n  console.log('Running: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 50: Pascal's Triangle\nfunction runDemo() {\n  console.log('Running: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Pascal's Triangle"
             }
           ],
@@ -2363,9 +2363,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Pascal's Triangle",
               "description": "Write a clean solution for Pascal's Triangle that returns expected status.",
-              "starterCode": "// Chapter 50: Pascal's Triangle\nfunction runTopicDemo() {\n  console.log('Executing: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 50: Pascal's Triangle\nfunction runTopicDemo() {\n  console.log('Executing: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 50: Pascal's Triangle\nfunction runDemo() {\n  console.log('Running: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 50: Pascal's Triangle\nfunction runDemo() {\n  console.log('Running: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2377,7 +2377,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 50: Pascal's Triangle",
-            "content": "### \ud83c\udf1f 1. Definition (What is Pascal's Triangle?)\nPascal's Triangle optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pascal triangle in C to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 50: Pascal's Triangle\nfunction runTopicDemo() {\n  console.log('Executing: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Pascal's Triangle?)\nPascal's Triangle provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pascal triangle in C to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 50: Pascal's Triangle\nfunction runDemo() {\n  console.log('Running: Pascal's Triangle');\n  return { success: true, topic: 'Pascal's Triangle' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Pascal's Triangle is essential for professional engineering."
           }
         }
@@ -2408,8 +2408,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Algo:: Print a m*n matrix in square wise Working Implementation",
               "description": "Complete working demonstration of Algo:: Print a m*n matrix in square wise",
-              "starterCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runTopicDemo() {\n  console.log('Executing: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runTopicDemo() {\n  console.log('Executing: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runDemo() {\n  console.log('Running: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runDemo() {\n  console.log('Running: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Algo:: Print a m*n matrix in square wise"
             }
           ],
@@ -2417,9 +2417,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Algo:: Print a m*n matrix in square wise",
               "description": "Write a clean solution for Algo:: Print a m*n matrix in square wise that returns expected status.",
-              "starterCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runTopicDemo() {\n  console.log('Executing: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runTopicDemo() {\n  console.log('Executing: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runDemo() {\n  console.log('Running: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runDemo() {\n  console.log('Running: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2431,7 +2431,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 51: Algo:: Print a m*n matrix in square wise",
-            "content": "### \ud83c\udf1f 1. Definition (What is Algo:: Print a m*n matrix in square wise?)\nAlgo:: Print a m*n matrix in square wise optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sample Example to simplify development and prevent common bugs.**\n- **Provides Write the generic code to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runTopicDemo() {\n  console.log('Executing: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Algo:: Print a m*n matrix in square wise?)\nAlgo:: Print a m*n matrix in square wise provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sample Example to write clean, predictable code.**\n- **Provides Write the generic code to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 51: Algo:: Print a m*n matrix in square wise\nfunction runDemo() {\n  console.log('Running: Algo:: Print a m*n matrix in square wise');\n  return { success: true, topic: 'Algo:: Print a m*n matrix in square wise' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Algo:: Print a m*n matrix in square wise is essential for professional engineering."
           }
         },
@@ -2451,8 +2451,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Matrix Exponentiation Working Implementation",
               "description": "Complete working demonstration of Matrix Exponentiation",
-              "starterCode": "// Chapter 52: Matrix Exponentiation\nfunction runTopicDemo() {\n  console.log('Executing: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 52: Matrix Exponentiation\nfunction runTopicDemo() {\n  console.log('Executing: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 52: Matrix Exponentiation\nfunction runDemo() {\n  console.log('Running: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 52: Matrix Exponentiation\nfunction runDemo() {\n  console.log('Running: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Matrix Exponentiation"
             }
           ],
@@ -2460,9 +2460,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Matrix Exponentiation",
               "description": "Write a clean solution for Matrix Exponentiation that returns expected status.",
-              "starterCode": "// Chapter 52: Matrix Exponentiation\nfunction runTopicDemo() {\n  console.log('Executing: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 52: Matrix Exponentiation\nfunction runTopicDemo() {\n  console.log('Executing: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 52: Matrix Exponentiation\nfunction runDemo() {\n  console.log('Running: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 52: Matrix Exponentiation\nfunction runDemo() {\n  console.log('Running: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2474,7 +2474,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 52: Matrix Exponentiation",
-            "content": "### \ud83c\udf1f 1. Definition (What is Matrix Exponentiation?)\nMatrix Exponentiation optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Matrix Exponentiation to Solve Example Problems to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 52: Matrix Exponentiation\nfunction runTopicDemo() {\n  console.log('Executing: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Matrix Exponentiation?)\nMatrix Exponentiation provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Matrix Exponentiation to Solve Example Problems to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 52: Matrix Exponentiation\nfunction runDemo() {\n  console.log('Running: Matrix Exponentiation');\n  return { success: true, topic: 'Matrix Exponentiation' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Matrix Exponentiation is essential for professional engineering."
           }
         },
@@ -2494,8 +2494,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "polynomial: time bounded algorithm for Minimum Vertex Cover Working Implementation",
               "description": "Complete working demonstration of polynomial: time bounded algorithm for Minimum Vertex Cover",
-              "starterCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runTopicDemo() {\n  console.log('Executing: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runTopicDemo() {\n  console.log('Executing: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runDemo() {\n  console.log('Running: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runDemo() {\n  console.log('Running: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: polynomial: time bounded algorithm for Minimum Vertex Cover"
             }
           ],
@@ -2503,9 +2503,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement polynomial: time bounded algorithm for Minimum Vertex Cover",
               "description": "Write a clean solution for polynomial: time bounded algorithm for Minimum Vertex Cover that returns expected status.",
-              "starterCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runTopicDemo() {\n  console.log('Executing: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runTopicDemo() {\n  console.log('Executing: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runDemo() {\n  console.log('Running: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runDemo() {\n  console.log('Running: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2517,7 +2517,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover",
-            "content": "### \ud83c\udf1f 1. Definition (What is polynomial: time bounded algorithm for Minimum Vertex Cover?)\npolynomial: time bounded algorithm for Minimum Vertex Cover optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Algorithm Pseudo Code to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runTopicDemo() {\n  console.log('Executing: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is polynomial: time bounded algorithm for Minimum Vertex Cover?)\npolynomial: time bounded algorithm for Minimum Vertex Cover provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Algorithm Pseudo Code to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 53: polynomial: time bounded algorithm for Minimum Vertex Cover\nfunction runDemo() {\n  console.log('Running: polynomial: time bounded algorithm for Minimum Vertex Cover');\n  return { success: true, topic: 'polynomial: time bounded algorithm for Minimum Vertex Cover' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering polynomial: time bounded algorithm for Minimum Vertex Cover is essential for professional engineering."
           }
         },
@@ -2537,8 +2537,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Dynamic Time Warping Working Implementation",
               "description": "Complete working demonstration of Dynamic Time Warping",
-              "starterCode": "// Chapter 54: Dynamic Time Warping\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 54: Dynamic Time Warping\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 54: Dynamic Time Warping\nfunction runDemo() {\n  console.log('Running: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 54: Dynamic Time Warping\nfunction runDemo() {\n  console.log('Running: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Dynamic Time Warping"
             }
           ],
@@ -2546,9 +2546,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Dynamic Time Warping",
               "description": "Write a clean solution for Dynamic Time Warping that returns expected status.",
-              "starterCode": "// Chapter 54: Dynamic Time Warping\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 54: Dynamic Time Warping\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 54: Dynamic Time Warping\nfunction runDemo() {\n  console.log('Running: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 54: Dynamic Time Warping\nfunction runDemo() {\n  console.log('Running: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2560,7 +2560,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 54: Dynamic Time Warping",
-            "content": "### \ud83c\udf1f 1. Definition (What is Dynamic Time Warping?)\nDynamic Time Warping optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Dynamic Time Warping to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 54: Dynamic Time Warping\nfunction runTopicDemo() {\n  console.log('Executing: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Dynamic Time Warping?)\nDynamic Time Warping provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction To Dynamic Time Warping to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 54: Dynamic Time Warping\nfunction runDemo() {\n  console.log('Running: Dynamic Time Warping');\n  return { success: true, topic: 'Dynamic Time Warping' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Dynamic Time Warping is essential for professional engineering."
           }
         },
@@ -2584,8 +2584,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Fast Fourier Transform Working Implementation",
               "description": "Complete working demonstration of Fast Fourier Transform",
-              "starterCode": "// Chapter 55: Fast Fourier Transform\nfunction runTopicDemo() {\n  console.log('Executing: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 55: Fast Fourier Transform\nfunction runTopicDemo() {\n  console.log('Executing: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 55: Fast Fourier Transform\nfunction runDemo() {\n  console.log('Running: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 55: Fast Fourier Transform\nfunction runDemo() {\n  console.log('Running: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Fast Fourier Transform"
             }
           ],
@@ -2593,9 +2593,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Fast Fourier Transform",
               "description": "Write a clean solution for Fast Fourier Transform that returns expected status.",
-              "starterCode": "// Chapter 55: Fast Fourier Transform\nfunction runTopicDemo() {\n  console.log('Executing: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 55: Fast Fourier Transform\nfunction runTopicDemo() {\n  console.log('Executing: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 55: Fast Fourier Transform\nfunction runDemo() {\n  console.log('Running: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 55: Fast Fourier Transform\nfunction runDemo() {\n  console.log('Running: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2607,7 +2607,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 55: Fast Fourier Transform",
-            "content": "### \ud83c\udf1f 1. Definition (What is Fast Fourier Transform?)\nFast Fourier Transform optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Radix 2 FFT to simplify development and prevent common bugs.**\n- **Provides Radix 2 Inverse FFT to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 55: Fast Fourier Transform\nfunction runTopicDemo() {\n  console.log('Executing: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Fast Fourier Transform?)\nFast Fourier Transform provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Radix 2 FFT to write clean, predictable code.**\n- **Provides Radix 2 Inverse FFT to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 55: Fast Fourier Transform\nfunction runDemo() {\n  console.log('Running: Fast Fourier Transform');\n  return { success: true, topic: 'Fast Fourier Transform' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Fast Fourier Transform is essential for professional engineering."
           }
         },
@@ -2631,8 +2631,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Appendix A: Pseudocode Working Implementation",
               "description": "Complete working demonstration of Appendix A: Pseudocode",
-              "starterCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runTopicDemo() {\n  console.log('Executing: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runTopicDemo() {\n  console.log('Executing: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runDemo() {\n  console.log('Running: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runDemo() {\n  console.log('Running: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Appendix A: Pseudocode"
             }
           ],
@@ -2640,9 +2640,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Appendix A: Pseudocode",
               "description": "Write a clean solution for Appendix A: Pseudocode that returns expected status.",
-              "starterCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runTopicDemo() {\n  console.log('Executing: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runTopicDemo() {\n  console.log('Executing: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runDemo() {\n  console.log('Running: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 56: Appendix A: Pseudocode\nfunction runDemo() {\n  console.log('Running: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2654,7 +2654,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 56: Appendix A: Pseudocode",
-            "content": "### \ud83c\udf1f 1. Definition (What is Appendix A: Pseudocode?)\nAppendix A: Pseudocode optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Section A.1: Variable a\ue023ectations to simplify development and prevent common bugs.**\n- **Provides Section A.2: Functions to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 56: Appendix A: Pseudocode\nfunction runTopicDemo() {\n  console.log('Executing: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Appendix A: Pseudocode?)\nAppendix A: Pseudocode provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Section A.1: Variable a\ue023ectations to write clean, predictable code.**\n- **Provides Section A.2: Functions to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 56: Appendix A: Pseudocode\nfunction runDemo() {\n  console.log('Running: Appendix A: Pseudocode');\n  return { success: true, topic: 'Appendix A: Pseudocode' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Appendix A: Pseudocode is essential for professional engineering."
           }
         },
@@ -2674,8 +2674,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Credits Working Implementation",
               "description": "Complete working demonstration of Credits",
-              "starterCode": "// Chapter 57: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 57: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 57: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 57: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Credits"
             }
           ],
@@ -2683,9 +2683,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement Credits",
               "description": "Write a clean solution for Credits that returns expected status.",
-              "starterCode": "// Chapter 57: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 57: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 57: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 57: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2697,7 +2697,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 57: Credits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 57: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 57: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Credits is essential for professional engineering."
           }
         },
@@ -2717,8 +2717,8 @@ export const algorithmsCompleteCourse = {
             {
               "title": "You may also like Working Implementation",
               "description": "Complete working demonstration of You may also like",
-              "starterCode": "// Chapter 58: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 58: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 58: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 58: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: You may also like"
             }
           ],
@@ -2726,9 +2726,9 @@ export const algorithmsCompleteCourse = {
             {
               "title": "Implement You may also like",
               "description": "Write a clean solution for You may also like that returns expected status.",
-              "starterCode": "// Chapter 58: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 58: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 58: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 58: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2740,7 +2740,7 @@ export const algorithmsCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 58: You may also like",
-            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like optimizes computational time and space complexity to solve complex algorithmic problems efficiently.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 58: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 58: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering You may also like is essential for professional engineering."
           }
         }

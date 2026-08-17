@@ -1,10 +1,10 @@
 export const phpCompleteCourse = {
   "title": "PHP 8 & Enterprise Backend (109 Chapters)",
-  "description": "Complete 109-chapter PHP course covering OOP, Composer, PDO, REST APIs, Security, MVC Frameworks, and Performance.",
+  "description": "OOP, Composer, PDO, REST APIs, Security, MVC Frameworks, and Performance.",
   "slug": "php-enterprise-backend",
   "stream": "backend",
   "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-  "order": 3,
+  "order": 5,
   "modules": [
     {
       "title": "Phase 1: Chapters 1 to 10",
@@ -35,8 +35,8 @@ export const phpCompleteCourse = {
             {
               "title": "Getting started with PHP Working Implementation",
               "description": "Complete working demonstration of Getting started with PHP",
-              "starterCode": "<?php\n// Getting started with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Getting started with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Getting started with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Getting started with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 1: Getting started with PHP\nfunction runDemo() {\n  console.log('Running: Getting started with PHP');\n  return { success: true, topic: 'Getting started with PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with PHP\nfunction runDemo() {\n  console.log('Running: Getting started with PHP');\n  return { success: true, topic: 'Getting started with PHP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Getting started with PHP"
             }
           ],
@@ -44,9 +44,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Getting started with PHP",
               "description": "Write a clean solution for Getting started with PHP that returns expected status.",
-              "starterCode": "<?php\n// Getting started with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Getting started with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Getting started with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Getting started with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 1: Getting started with PHP\nfunction runDemo() {\n  console.log('Running: Getting started with PHP');\n  return { success: true, topic: 'Getting started with PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with PHP\nfunction runDemo() {\n  console.log('Running: Getting started with PHP');\n  return { success: true, topic: 'Getting started with PHP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -58,7 +58,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 1: Getting started with PHP",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with PHP?)\nGetting started with PHP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML output from web server to simplify development and prevent common bugs.**\n- **Provides Hello, World! to simplify development and prevent common bugs.**\n- **Provides Non: HTML output from web server to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Getting started with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Getting started with PHP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with PHP?)\nGetting started with PHP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML output from web server to write clean, predictable code.**\n- **Provides Hello, World! to write clean, predictable code.**\n- **Provides Non: HTML output from web server to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 1: Getting started with PHP\nfunction runDemo() {\n  console.log('Running: Getting started with PHP');\n  return { success: true, topic: 'Getting started with PHP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Getting started with PHP is essential for professional engineering."
           }
         },
@@ -86,8 +86,8 @@ export const phpCompleteCourse = {
             {
               "title": "Variables Working Implementation",
               "description": "Complete working demonstration of Variables",
-              "starterCode": "<?php\n// Variables\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variables'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Variables\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variables'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 2: Variables\nfunction runDemo() {\n  console.log('Running: Variables');\n  return { success: true, topic: 'Variables' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Variables\nfunction runDemo() {\n  console.log('Running: Variables');\n  return { success: true, topic: 'Variables' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Variables"
             }
           ],
@@ -95,9 +95,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Variables",
               "description": "Write a clean solution for Variables that returns expected status.",
-              "starterCode": "<?php\n// Variables\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variables'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Variables\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variables'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 2: Variables\nfunction runDemo() {\n  console.log('Running: Variables');\n  return { success: true, topic: 'Variables' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Variables\nfunction runDemo() {\n  console.log('Running: Variables');\n  return { success: true, topic: 'Variables' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -109,7 +109,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 2: Variables",
-            "content": "### \ud83c\udf1f 1. Definition (What is Variables?)\nVariables in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Accessing A Variable Dynamically By Name (Variable variables) to simplify development and prevent common bugs.**\n- **Provides Data Types to simplify development and prevent common bugs.**\n- **Provides Global variable best practices to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Variables\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variables'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Variables?)\nVariables provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Accessing A Variable Dynamically By Name (Variable variables) to write clean, predictable code.**\n- **Provides Data Types to write clean, predictable code.**\n- **Provides Global variable best practices to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 2: Variables\nfunction runDemo() {\n  console.log('Running: Variables');\n  return { success: true, topic: 'Variables' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Variables is essential for professional engineering."
           }
         },
@@ -137,8 +137,8 @@ export const phpCompleteCourse = {
             {
               "title": "Variable Scope Working Implementation",
               "description": "Complete working demonstration of Variable Scope",
-              "starterCode": "<?php\n// Variable Scope\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variable Scope'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Variable Scope\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variable Scope'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 3: Variable Scope\nfunction runDemo() {\n  console.log('Running: Variable Scope');\n  return { success: true, topic: 'Variable Scope' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Variable Scope\nfunction runDemo() {\n  console.log('Running: Variable Scope');\n  return { success: true, topic: 'Variable Scope' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Variable Scope"
             }
           ],
@@ -146,9 +146,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Variable Scope",
               "description": "Write a clean solution for Variable Scope that returns expected status.",
-              "starterCode": "<?php\n// Variable Scope\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variable Scope'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Variable Scope\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variable Scope'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 3: Variable Scope\nfunction runDemo() {\n  console.log('Running: Variable Scope');\n  return { success: true, topic: 'Variable Scope' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Variable Scope\nfunction runDemo() {\n  console.log('Running: Variable Scope');\n  return { success: true, topic: 'Variable Scope' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -160,7 +160,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 3: Variable Scope",
-            "content": "### \ud83c\udf1f 1. Definition (What is Variable Scope?)\nVariable Scope in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Superglobal variables to simplify development and prevent common bugs.**\n- **Provides Static properties and variables to simplify development and prevent common bugs.**\n- **Provides User: de\ufb01ned global variables to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Variable Scope\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Variable Scope'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Variable Scope?)\nVariable Scope provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Superglobal variables to write clean, predictable code.**\n- **Provides Static properties and variables to write clean, predictable code.**\n- **Provides User: de\ufb01ned global variables to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 3: Variable Scope\nfunction runDemo() {\n  console.log('Running: Variable Scope');\n  return { success: true, topic: 'Variable Scope' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Variable Scope is essential for professional engineering."
           }
         },
@@ -184,8 +184,8 @@ export const phpCompleteCourse = {
             {
               "title": "Superglobal Variables PHP Working Implementation",
               "description": "Complete working demonstration of Superglobal Variables PHP",
-              "starterCode": "<?php\n// Superglobal Variables PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Superglobal Variables PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Superglobal Variables PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Superglobal Variables PHP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 4: Superglobal Variables PHP\nfunction runDemo() {\n  console.log('Running: Superglobal Variables PHP');\n  return { success: true, topic: 'Superglobal Variables PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Superglobal Variables PHP\nfunction runDemo() {\n  console.log('Running: Superglobal Variables PHP');\n  return { success: true, topic: 'Superglobal Variables PHP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Superglobal Variables PHP"
             }
           ],
@@ -193,9 +193,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Superglobal Variables PHP",
               "description": "Write a clean solution for Superglobal Variables PHP that returns expected status.",
-              "starterCode": "<?php\n// Superglobal Variables PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Superglobal Variables PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Superglobal Variables PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Superglobal Variables PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 4: Superglobal Variables PHP\nfunction runDemo() {\n  console.log('Running: Superglobal Variables PHP');\n  return { success: true, topic: 'Superglobal Variables PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Superglobal Variables PHP\nfunction runDemo() {\n  console.log('Running: Superglobal Variables PHP');\n  return { success: true, topic: 'Superglobal Variables PHP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -207,7 +207,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 4: Superglobal Variables PHP",
-            "content": "### \ud83c\udf1f 1. Definition (What is Superglobal Variables PHP?)\nSuperglobal Variables PHP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Suberglobals explained to simplify development and prevent common bugs.**\n- **Provides PHP5 SuperGlobals to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Superglobal Variables PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Superglobal Variables PHP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Superglobal Variables PHP?)\nSuperglobal Variables PHP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Suberglobals explained to write clean, predictable code.**\n- **Provides PHP5 SuperGlobals to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 4: Superglobal Variables PHP\nfunction runDemo() {\n  console.log('Running: Superglobal Variables PHP');\n  return { success: true, topic: 'Superglobal Variables PHP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Superglobal Variables PHP is essential for professional engineering."
           }
         },
@@ -235,8 +235,8 @@ export const phpCompleteCourse = {
             {
               "title": "Outputting the Value of a Variable Working Implementation",
               "description": "Complete working demonstration of Outputting the Value of a Variable",
-              "starterCode": "<?php\n// Outputting the Value of a Variable\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Outputting the Value of a Variable'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Outputting the Value of a Variable\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Outputting the Value of a Variable'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 5: Outputting the Value of a Variable\nfunction runDemo() {\n  console.log('Running: Outputting the Value of a Variable');\n  return { success: true, topic: 'Outputting the Value of a Variable' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Outputting the Value of a Variable\nfunction runDemo() {\n  console.log('Running: Outputting the Value of a Variable');\n  return { success: true, topic: 'Outputting the Value of a Variable' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Outputting the Value of a Variable"
             }
           ],
@@ -244,9 +244,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Outputting the Value of a Variable",
               "description": "Write a clean solution for Outputting the Value of a Variable that returns expected status.",
-              "starterCode": "<?php\n// Outputting the Value of a Variable\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Outputting the Value of a Variable'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Outputting the Value of a Variable\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Outputting the Value of a Variable'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 5: Outputting the Value of a Variable\nfunction runDemo() {\n  console.log('Running: Outputting the Value of a Variable');\n  return { success: true, topic: 'Outputting the Value of a Variable' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Outputting the Value of a Variable\nfunction runDemo() {\n  console.log('Running: Outputting the Value of a Variable');\n  return { success: true, topic: 'Outputting the Value of a Variable' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -258,7 +258,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 5: Outputting the Value of a Variable",
-            "content": "### \ud83c\udf1f 1. Definition (What is Outputting the Value of a Variable?)\nOutputting the Value of a Variable in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides echo and print to simplify development and prevent common bugs.**\n- **Provides Outputting a structured view of arrays and objects to simplify development and prevent common bugs.**\n- **Provides String concatenation with echo to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Outputting the Value of a Variable\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Outputting the Value of a Variable'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Outputting the Value of a Variable?)\nOutputting the Value of a Variable provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides echo and print to write clean, predictable code.**\n- **Provides Outputting a structured view of arrays and objects to write clean, predictable code.**\n- **Provides String concatenation with echo to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 5: Outputting the Value of a Variable\nfunction runDemo() {\n  console.log('Running: Outputting the Value of a Variable');\n  return { success: true, topic: 'Outputting the Value of a Variable' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Outputting the Value of a Variable is essential for professional engineering."
           }
         },
@@ -286,8 +286,8 @@ export const phpCompleteCourse = {
             {
               "title": "Constants Working Implementation",
               "description": "Complete working demonstration of Constants",
-              "starterCode": "<?php\n// Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Constants'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Constants'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 6: Constants\nfunction runDemo() {\n  console.log('Running: Constants');\n  return { success: true, topic: 'Constants' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Constants\nfunction runDemo() {\n  console.log('Running: Constants');\n  return { success: true, topic: 'Constants' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Constants"
             }
           ],
@@ -295,9 +295,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Constants",
               "description": "Write a clean solution for Constants that returns expected status.",
-              "starterCode": "<?php\n// Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Constants'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Constants'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 6: Constants\nfunction runDemo() {\n  console.log('Running: Constants');\n  return { success: true, topic: 'Constants' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Constants\nfunction runDemo() {\n  console.log('Running: Constants');\n  return { success: true, topic: 'Constants' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -309,7 +309,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 6: Constants",
-            "content": "### \ud83c\udf1f 1. Definition (What is Constants?)\nConstants in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides De\ufb01ning constants to simplify development and prevent common bugs.**\n- **Provides Class Constants to simplify development and prevent common bugs.**\n- **Provides Checking if constant is de\ufb01ned to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Constants'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Constants?)\nConstants provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides De\ufb01ning constants to write clean, predictable code.**\n- **Provides Class Constants to write clean, predictable code.**\n- **Provides Checking if constant is de\ufb01ned to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 6: Constants\nfunction runDemo() {\n  console.log('Running: Constants');\n  return { success: true, topic: 'Constants' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Constants is essential for professional engineering."
           }
         },
@@ -337,8 +337,8 @@ export const phpCompleteCourse = {
             {
               "title": "Magic Constants Working Implementation",
               "description": "Complete working demonstration of Magic Constants",
-              "starterCode": "<?php\n// Magic Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Constants'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Magic Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Constants'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 7: Magic Constants\nfunction runDemo() {\n  console.log('Running: Magic Constants');\n  return { success: true, topic: 'Magic Constants' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Magic Constants\nfunction runDemo() {\n  console.log('Running: Magic Constants');\n  return { success: true, topic: 'Magic Constants' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Magic Constants"
             }
           ],
@@ -346,9 +346,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Magic Constants",
               "description": "Write a clean solution for Magic Constants that returns expected status.",
-              "starterCode": "<?php\n// Magic Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Constants'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Magic Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Constants'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 7: Magic Constants\nfunction runDemo() {\n  console.log('Running: Magic Constants');\n  return { success: true, topic: 'Magic Constants' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Magic Constants\nfunction runDemo() {\n  console.log('Running: Magic Constants');\n  return { success: true, topic: 'Magic Constants' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -360,7 +360,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 7: Magic Constants",
-            "content": "### \ud83c\udf1f 1. Definition (What is Magic Constants?)\nMagic Constants in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Di\ue023erence between __FUNCTION__ and __METHOD__ to simplify development and prevent common bugs.**\n- **Provides Di\ue023erence between __CLASS__, get_class() and get_called_class() to simplify development and prevent common bugs.**\n- **Provides File & Directory Constants to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Magic Constants\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Constants'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Magic Constants?)\nMagic Constants provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Di\ue023erence between __FUNCTION__ and __METHOD__ to write clean, predictable code.**\n- **Provides Di\ue023erence between __CLASS__, get_class() and get_called_class() to write clean, predictable code.**\n- **Provides File & Directory Constants to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 7: Magic Constants\nfunction runDemo() {\n  console.log('Running: Magic Constants');\n  return { success: true, topic: 'Magic Constants' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Magic Constants is essential for professional engineering."
           }
         },
@@ -384,8 +384,8 @@ export const phpCompleteCourse = {
             {
               "title": "Comments Working Implementation",
               "description": "Complete working demonstration of Comments",
-              "starterCode": "<?php\n// Comments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Comments'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Comments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Comments'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 8: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Comments"
             }
           ],
@@ -393,9 +393,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Comments",
               "description": "Write a clean solution for Comments that returns expected status.",
-              "starterCode": "<?php\n// Comments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Comments'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Comments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Comments'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 8: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -407,7 +407,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 8: Comments",
-            "content": "### \ud83c\udf1f 1. Definition (What is Comments?)\nComments in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Single Line Comments to simplify development and prevent common bugs.**\n- **Provides Multi Line Comments to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Comments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Comments'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Comments?)\nComments provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Single Line Comments to write clean, predictable code.**\n- **Provides Multi Line Comments to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 8: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Comments is essential for professional engineering."
           }
         },
@@ -435,8 +435,8 @@ export const phpCompleteCourse = {
             {
               "title": "Types Working Implementation",
               "description": "Complete working demonstration of Types",
-              "starterCode": "<?php\n// Types\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Types'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Types\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Types'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 9: Types\nfunction runDemo() {\n  console.log('Running: Types');\n  return { success: true, topic: 'Types' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Types\nfunction runDemo() {\n  console.log('Running: Types');\n  return { success: true, topic: 'Types' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Types"
             }
           ],
@@ -444,9 +444,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Types",
               "description": "Write a clean solution for Types that returns expected status.",
-              "starterCode": "<?php\n// Types\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Types'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Types\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Types'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 9: Types\nfunction runDemo() {\n  console.log('Running: Types');\n  return { success: true, topic: 'Types' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Types\nfunction runDemo() {\n  console.log('Running: Types');\n  return { success: true, topic: 'Types' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -458,7 +458,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 9: Types",
-            "content": "### \ud83c\udf1f 1. Definition (What is Types?)\nTypes in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type Comparison to simplify development and prevent common bugs.**\n- **Provides Boolean to simplify development and prevent common bugs.**\n- **Provides Float to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Types\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Types'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Types?)\nTypes provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type Comparison to write clean, predictable code.**\n- **Provides Boolean to write clean, predictable code.**\n- **Provides Float to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 9: Types\nfunction runDemo() {\n  console.log('Running: Types');\n  return { success: true, topic: 'Types' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Types is essential for professional engineering."
           }
         },
@@ -486,8 +486,8 @@ export const phpCompleteCourse = {
             {
               "title": "Operators Working Implementation",
               "description": "Complete working demonstration of Operators",
-              "starterCode": "<?php\n// Operators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Operators'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Operators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Operators'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 10: Operators\nfunction runDemo() {\n  console.log('Running: Operators');\n  return { success: true, topic: 'Operators' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Operators\nfunction runDemo() {\n  console.log('Running: Operators');\n  return { success: true, topic: 'Operators' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Operators"
             }
           ],
@@ -495,9 +495,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Operators",
               "description": "Write a clean solution for Operators that returns expected status.",
-              "starterCode": "<?php\n// Operators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Operators'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Operators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Operators'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 10: Operators\nfunction runDemo() {\n  console.log('Running: Operators');\n  return { success: true, topic: 'Operators' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Operators\nfunction runDemo() {\n  console.log('Running: Operators');\n  return { success: true, topic: 'Operators' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -509,7 +509,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 10: Operators",
-            "content": "### \ud83c\udf1f 1. Definition (What is Operators?)\nOperators in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Null Coalescing Operator (??) to simplify development and prevent common bugs.**\n- **Provides Spaceship Operator (<=>) to simplify development and prevent common bugs.**\n- **Provides Execution Operator (``) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Operators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Operators'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Operators?)\nOperators provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Null Coalescing Operator (??) to write clean, predictable code.**\n- **Provides Spaceship Operator (<=>) to write clean, predictable code.**\n- **Provides Execution Operator (``) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 10: Operators\nfunction runDemo() {\n  console.log('Running: Operators');\n  return { success: true, topic: 'Operators' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Operators is essential for professional engineering."
           }
         }
@@ -544,8 +544,8 @@ export const phpCompleteCourse = {
             {
               "title": "References Working Implementation",
               "description": "Complete working demonstration of References",
-              "starterCode": "<?php\n// References\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'References'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// References\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'References'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 11: References\nfunction runDemo() {\n  console.log('Running: References');\n  return { success: true, topic: 'References' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: References\nfunction runDemo() {\n  console.log('Running: References');\n  return { success: true, topic: 'References' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: References"
             }
           ],
@@ -553,9 +553,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement References",
               "description": "Write a clean solution for References that returns expected status.",
-              "starterCode": "<?php\n// References\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'References'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// References\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'References'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 11: References\nfunction runDemo() {\n  console.log('Running: References');\n  return { success: true, topic: 'References' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: References\nfunction runDemo() {\n  console.log('Running: References');\n  return { success: true, topic: 'References' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -567,7 +567,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 11: References",
-            "content": "### \ud83c\udf1f 1. Definition (What is References?)\nReferences in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Assign by Reference to simplify development and prevent common bugs.**\n- **Provides Return by Reference to simplify development and prevent common bugs.**\n- **Provides Pass by Reference to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// References\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'References'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is References?)\nReferences provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Assign by Reference to write clean, predictable code.**\n- **Provides Return by Reference to write clean, predictable code.**\n- **Provides Pass by Reference to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 11: References\nfunction runDemo() {\n  console.log('Running: References');\n  return { success: true, topic: 'References' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering References is essential for professional engineering."
           }
         },
@@ -595,8 +595,8 @@ export const phpCompleteCourse = {
             {
               "title": "Arrays Working Implementation",
               "description": "Complete working demonstration of Arrays",
-              "starterCode": "<?php\n// Arrays\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Arrays'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Arrays\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Arrays'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 12: Arrays\nfunction runDemo() {\n  console.log('Running: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Arrays\nfunction runDemo() {\n  console.log('Running: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Arrays"
             }
           ],
@@ -604,9 +604,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Arrays",
               "description": "Write a clean solution for Arrays that returns expected status.",
-              "starterCode": "<?php\n// Arrays\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Arrays'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Arrays\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Arrays'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 12: Arrays\nfunction runDemo() {\n  console.log('Running: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Arrays\nfunction runDemo() {\n  console.log('Running: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -618,7 +618,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 12: Arrays",
-            "content": "### \ud83c\udf1f 1. Definition (What is Arrays?)\nArrays in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Initializing an Array to simplify development and prevent common bugs.**\n- **Provides Check if key exists to simplify development and prevent common bugs.**\n- **Provides Validating the array type to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Arrays\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Arrays'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Arrays?)\nArrays provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Initializing an Array to write clean, predictable code.**\n- **Provides Check if key exists to write clean, predictable code.**\n- **Provides Validating the array type to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 12: Arrays\nfunction runDemo() {\n  console.log('Running: Arrays');\n  return { success: true, topic: 'Arrays' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Arrays is essential for professional engineering."
           }
         },
@@ -646,8 +646,8 @@ export const phpCompleteCourse = {
             {
               "title": "Array iteration Working Implementation",
               "description": "Complete working demonstration of Array iteration",
-              "starterCode": "<?php\n// Array iteration\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Array iteration'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Array iteration\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Array iteration'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 13: Array iteration\nfunction runDemo() {\n  console.log('Running: Array iteration');\n  return { success: true, topic: 'Array iteration' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Array iteration\nfunction runDemo() {\n  console.log('Running: Array iteration');\n  return { success: true, topic: 'Array iteration' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Array iteration"
             }
           ],
@@ -655,9 +655,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Array iteration",
               "description": "Write a clean solution for Array iteration that returns expected status.",
-              "starterCode": "<?php\n// Array iteration\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Array iteration'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Array iteration\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Array iteration'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 13: Array iteration\nfunction runDemo() {\n  console.log('Running: Array iteration');\n  return { success: true, topic: 'Array iteration' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Array iteration\nfunction runDemo() {\n  console.log('Running: Array iteration');\n  return { success: true, topic: 'Array iteration' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -669,7 +669,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 13: Array iteration",
-            "content": "### \ud83c\udf1f 1. Definition (What is Array iteration?)\nArray iteration in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Iterating multiple arrays together to simplify development and prevent common bugs.**\n- **Provides Using an incremental index to simplify development and prevent common bugs.**\n- **Provides Using internal array pointers to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Array iteration\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Array iteration'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Array iteration?)\nArray iteration provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Iterating multiple arrays together to write clean, predictable code.**\n- **Provides Using an incremental index to write clean, predictable code.**\n- **Provides Using internal array pointers to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 13: Array iteration\nfunction runDemo() {\n  console.log('Running: Array iteration');\n  return { success: true, topic: 'Array iteration' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Array iteration is essential for professional engineering."
           }
         },
@@ -697,8 +697,8 @@ export const phpCompleteCourse = {
             {
               "title": "Executing Upon an Array Working Implementation",
               "description": "Complete working demonstration of Executing Upon an Array",
-              "starterCode": "<?php\n// Executing Upon an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Executing Upon an Array'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Executing Upon an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Executing Upon an Array'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 14: Executing Upon an Array\nfunction runDemo() {\n  console.log('Running: Executing Upon an Array');\n  return { success: true, topic: 'Executing Upon an Array' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Executing Upon an Array\nfunction runDemo() {\n  console.log('Running: Executing Upon an Array');\n  return { success: true, topic: 'Executing Upon an Array' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Executing Upon an Array"
             }
           ],
@@ -706,9 +706,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Executing Upon an Array",
               "description": "Write a clean solution for Executing Upon an Array that returns expected status.",
-              "starterCode": "<?php\n// Executing Upon an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Executing Upon an Array'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Executing Upon an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Executing Upon an Array'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 14: Executing Upon an Array\nfunction runDemo() {\n  console.log('Running: Executing Upon an Array');\n  return { success: true, topic: 'Executing Upon an Array' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Executing Upon an Array\nfunction runDemo() {\n  console.log('Running: Executing Upon an Array');\n  return { success: true, topic: 'Executing Upon an Array' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -720,7 +720,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 14: Executing Upon an Array",
-            "content": "### \ud83c\udf1f 1. Definition (What is Executing Upon an Array?)\nExecuting Upon an Array in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Applying a function to each element of an array to simplify development and prevent common bugs.**\n- **Provides Split array into chunks to simplify development and prevent common bugs.**\n- **Provides Imploding an array into string to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Executing Upon an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Executing Upon an Array'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Executing Upon an Array?)\nExecuting Upon an Array provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Applying a function to each element of an array to write clean, predictable code.**\n- **Provides Split array into chunks to write clean, predictable code.**\n- **Provides Imploding an array into string to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 14: Executing Upon an Array\nfunction runDemo() {\n  console.log('Running: Executing Upon an Array');\n  return { success: true, topic: 'Executing Upon an Array' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Executing Upon an Array is essential for professional engineering."
           }
         },
@@ -748,8 +748,8 @@ export const phpCompleteCourse = {
             {
               "title": "Manipulating an Array Working Implementation",
               "description": "Complete working demonstration of Manipulating an Array",
-              "starterCode": "<?php\n// Manipulating an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Manipulating an Array'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Manipulating an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Manipulating an Array'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 15: Manipulating an Array\nfunction runDemo() {\n  console.log('Running: Manipulating an Array');\n  return { success: true, topic: 'Manipulating an Array' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Manipulating an Array\nfunction runDemo() {\n  console.log('Running: Manipulating an Array');\n  return { success: true, topic: 'Manipulating an Array' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Manipulating an Array"
             }
           ],
@@ -757,9 +757,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Manipulating an Array",
               "description": "Write a clean solution for Manipulating an Array that returns expected status.",
-              "starterCode": "<?php\n// Manipulating an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Manipulating an Array'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Manipulating an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Manipulating an Array'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 15: Manipulating an Array\nfunction runDemo() {\n  console.log('Running: Manipulating an Array');\n  return { success: true, topic: 'Manipulating an Array' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Manipulating an Array\nfunction runDemo() {\n  console.log('Running: Manipulating an Array');\n  return { success: true, topic: 'Manipulating an Array' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -771,7 +771,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 15: Manipulating an Array",
-            "content": "### \ud83c\udf1f 1. Definition (What is Manipulating an Array?)\nManipulating an Array in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Filtering an array to simplify development and prevent common bugs.**\n- **Provides Removing elements from an array to simplify development and prevent common bugs.**\n- **Provides Sorting an Array to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Manipulating an Array\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Manipulating an Array'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Manipulating an Array?)\nManipulating an Array provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Filtering an array to write clean, predictable code.**\n- **Provides Removing elements from an array to write clean, predictable code.**\n- **Provides Sorting an Array to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 15: Manipulating an Array\nfunction runDemo() {\n  console.log('Running: Manipulating an Array');\n  return { success: true, topic: 'Manipulating an Array' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Manipulating an Array is essential for professional engineering."
           }
         },
@@ -799,8 +799,8 @@ export const phpCompleteCourse = {
             {
               "title": "Processing Multiple Arrays Together Working Implementation",
               "description": "Complete working demonstration of Processing Multiple Arrays Together",
-              "starterCode": "<?php\n// Processing Multiple Arrays Together\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Processing Multiple Arrays Together'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Processing Multiple Arrays Together\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Processing Multiple Arrays Together'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 16: Processing Multiple Arrays Together\nfunction runDemo() {\n  console.log('Running: Processing Multiple Arrays Together');\n  return { success: true, topic: 'Processing Multiple Arrays Together' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Processing Multiple Arrays Together\nfunction runDemo() {\n  console.log('Running: Processing Multiple Arrays Together');\n  return { success: true, topic: 'Processing Multiple Arrays Together' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Processing Multiple Arrays Together"
             }
           ],
@@ -808,9 +808,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Processing Multiple Arrays Together",
               "description": "Write a clean solution for Processing Multiple Arrays Together that returns expected status.",
-              "starterCode": "<?php\n// Processing Multiple Arrays Together\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Processing Multiple Arrays Together'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Processing Multiple Arrays Together\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Processing Multiple Arrays Together'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 16: Processing Multiple Arrays Together\nfunction runDemo() {\n  console.log('Running: Processing Multiple Arrays Together');\n  return { success: true, topic: 'Processing Multiple Arrays Together' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Processing Multiple Arrays Together\nfunction runDemo() {\n  console.log('Running: Processing Multiple Arrays Together');\n  return { success: true, topic: 'Processing Multiple Arrays Together' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -822,7 +822,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 16: Processing Multiple Arrays Together",
-            "content": "### \ud83c\udf1f 1. Definition (What is Processing Multiple Arrays Together?)\nProcessing Multiple Arrays Together in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Array intersection to simplify development and prevent common bugs.**\n- **Provides Merge or concatenate arrays to simplify development and prevent common bugs.**\n- **Provides Changing a multidimensional array to associative array to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Processing Multiple Arrays Together\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Processing Multiple Arrays Together'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Processing Multiple Arrays Together?)\nProcessing Multiple Arrays Together provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Array intersection to write clean, predictable code.**\n- **Provides Merge or concatenate arrays to write clean, predictable code.**\n- **Provides Changing a multidimensional array to associative array to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 16: Processing Multiple Arrays Together\nfunction runDemo() {\n  console.log('Running: Processing Multiple Arrays Together');\n  return { success: true, topic: 'Processing Multiple Arrays Together' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Processing Multiple Arrays Together is essential for professional engineering."
           }
         },
@@ -850,8 +850,8 @@ export const phpCompleteCourse = {
             {
               "title": "Datetime Class Working Implementation",
               "description": "Complete working demonstration of Datetime Class",
-              "starterCode": "<?php\n// Datetime Class\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Datetime Class'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Datetime Class\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Datetime Class'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 17: Datetime Class\nfunction runDemo() {\n  console.log('Running: Datetime Class');\n  return { success: true, topic: 'Datetime Class' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Datetime Class\nfunction runDemo() {\n  console.log('Running: Datetime Class');\n  return { success: true, topic: 'Datetime Class' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Datetime Class"
             }
           ],
@@ -859,9 +859,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Datetime Class",
               "description": "Write a clean solution for Datetime Class that returns expected status.",
-              "starterCode": "<?php\n// Datetime Class\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Datetime Class'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Datetime Class\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Datetime Class'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 17: Datetime Class\nfunction runDemo() {\n  console.log('Running: Datetime Class');\n  return { success: true, topic: 'Datetime Class' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Datetime Class\nfunction runDemo() {\n  console.log('Running: Datetime Class');\n  return { success: true, topic: 'Datetime Class' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -873,7 +873,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 17: Datetime Class",
-            "content": "### \ud83c\udf1f 1. Definition (What is Datetime Class?)\nDatetime Class in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create Immutable version of DateTime from Mutable prior PHP 5.6 to simplify development and prevent common bugs.**\n- **Provides Add or Subtract Date Intervals to simplify development and prevent common bugs.**\n- **Provides getTimestamp to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Datetime Class\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Datetime Class'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Datetime Class?)\nDatetime Class provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create Immutable version of DateTime from Mutable prior PHP 5.6 to write clean, predictable code.**\n- **Provides Add or Subtract Date Intervals to write clean, predictable code.**\n- **Provides getTimestamp to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 17: Datetime Class\nfunction runDemo() {\n  console.log('Running: Datetime Class');\n  return { success: true, topic: 'Datetime Class' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Datetime Class is essential for professional engineering."
           }
         },
@@ -901,8 +901,8 @@ export const phpCompleteCourse = {
             {
               "title": "Working with Dates and Time Working Implementation",
               "description": "Complete working demonstration of Working with Dates and Time",
-              "starterCode": "<?php\n// Working with Dates and Time\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Working with Dates and Time'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Working with Dates and Time\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Working with Dates and Time'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 18: Working with Dates and Time\nfunction runDemo() {\n  console.log('Running: Working with Dates and Time');\n  return { success: true, topic: 'Working with Dates and Time' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Working with Dates and Time\nfunction runDemo() {\n  console.log('Running: Working with Dates and Time');\n  return { success: true, topic: 'Working with Dates and Time' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Working with Dates and Time"
             }
           ],
@@ -910,9 +910,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Working with Dates and Time",
               "description": "Write a clean solution for Working with Dates and Time that returns expected status.",
-              "starterCode": "<?php\n// Working with Dates and Time\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Working with Dates and Time'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Working with Dates and Time\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Working with Dates and Time'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 18: Working with Dates and Time\nfunction runDemo() {\n  console.log('Running: Working with Dates and Time');\n  return { success: true, topic: 'Working with Dates and Time' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Working with Dates and Time\nfunction runDemo() {\n  console.log('Running: Working with Dates and Time');\n  return { success: true, topic: 'Working with Dates and Time' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -924,7 +924,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 18: Working with Dates and Time",
-            "content": "### \ud83c\udf1f 1. Definition (What is Working with Dates and Time?)\nWorking with Dates and Time in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting the di\ue023erence between two dates / times to simplify development and prevent common bugs.**\n- **Provides Convert a date into another format to simplify development and prevent common bugs.**\n- **Provides Parse English date descriptions into a Date format to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Working with Dates and Time\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Working with Dates and Time'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Working with Dates and Time?)\nWorking with Dates and Time provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting the di\ue023erence between two dates / times to write clean, predictable code.**\n- **Provides Convert a date into another format to write clean, predictable code.**\n- **Provides Parse English date descriptions into a Date format to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 18: Working with Dates and Time\nfunction runDemo() {\n  console.log('Running: Working with Dates and Time');\n  return { success: true, topic: 'Working with Dates and Time' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Working with Dates and Time is essential for professional engineering."
           }
         },
@@ -952,8 +952,8 @@ export const phpCompleteCourse = {
             {
               "title": "Control Structures Working Implementation",
               "description": "Complete working demonstration of Control Structures",
-              "starterCode": "<?php\n// Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 19: Control Structures\nfunction runDemo() {\n  console.log('Running: Control Structures');\n  return { success: true, topic: 'Control Structures' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Control Structures\nfunction runDemo() {\n  console.log('Running: Control Structures');\n  return { success: true, topic: 'Control Structures' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Control Structures"
             }
           ],
@@ -961,9 +961,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Control Structures",
               "description": "Write a clean solution for Control Structures that returns expected status.",
-              "starterCode": "<?php\n// Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 19: Control Structures\nfunction runDemo() {\n  console.log('Running: Control Structures');\n  return { success: true, topic: 'Control Structures' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Control Structures\nfunction runDemo() {\n  console.log('Running: Control Structures');\n  return { success: true, topic: 'Control Structures' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -975,7 +975,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 19: Control Structures",
-            "content": "### \ud83c\udf1f 1. Definition (What is Control Structures?)\nControl Structures in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides if else to simplify development and prevent common bugs.**\n- **Provides Alternative syntax for control structures to simplify development and prevent common bugs.**\n- **Provides while to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Control Structures'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Control Structures?)\nControl Structures provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides if else to write clean, predictable code.**\n- **Provides Alternative syntax for control structures to write clean, predictable code.**\n- **Provides while to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 19: Control Structures\nfunction runDemo() {\n  console.log('Running: Control Structures');\n  return { success: true, topic: 'Control Structures' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Control Structures is essential for professional engineering."
           }
         },
@@ -1003,8 +1003,8 @@ export const phpCompleteCourse = {
             {
               "title": "Loops Working Implementation",
               "description": "Complete working demonstration of Loops",
-              "starterCode": "<?php\n// Loops\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Loops'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Loops\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Loops'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 20: Loops\nfunction runDemo() {\n  console.log('Running: Loops');\n  return { success: true, topic: 'Loops' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Loops\nfunction runDemo() {\n  console.log('Running: Loops');\n  return { success: true, topic: 'Loops' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Loops"
             }
           ],
@@ -1012,9 +1012,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Loops",
               "description": "Write a clean solution for Loops that returns expected status.",
-              "starterCode": "<?php\n// Loops\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Loops'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Loops\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Loops'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 20: Loops\nfunction runDemo() {\n  console.log('Running: Loops');\n  return { success: true, topic: 'Loops' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Loops\nfunction runDemo() {\n  console.log('Running: Loops');\n  return { success: true, topic: 'Loops' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1026,7 +1026,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 20: Loops",
-            "content": "### \ud83c\udf1f 1. Definition (What is Loops?)\nLoops in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides continue to simplify development and prevent common bugs.**\n- **Provides break to simplify development and prevent common bugs.**\n- **Provides foreach to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Loops\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Loops'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Loops?)\nLoops provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides continue to write clean, predictable code.**\n- **Provides break to write clean, predictable code.**\n- **Provides foreach to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 20: Loops\nfunction runDemo() {\n  console.log('Running: Loops');\n  return { success: true, topic: 'Loops' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Loops is essential for professional engineering."
           }
         }
@@ -1061,8 +1061,8 @@ export const phpCompleteCourse = {
             {
               "title": "Functions Working Implementation",
               "description": "Complete working demonstration of Functions",
-              "starterCode": "<?php\n// Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functions'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 21: Functions\nfunction runDemo() {\n  console.log('Running: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Functions\nfunction runDemo() {\n  console.log('Running: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Functions"
             }
           ],
@@ -1070,9 +1070,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Functions",
               "description": "Write a clean solution for Functions that returns expected status.",
-              "starterCode": "<?php\n// Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 21: Functions\nfunction runDemo() {\n  console.log('Running: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Functions\nfunction runDemo() {\n  console.log('Running: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1084,7 +1084,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 21: Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Functions?)\nFunctions in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Variable: length argument lists to simplify development and prevent common bugs.**\n- **Provides Optional Parameters to simplify development and prevent common bugs.**\n- **Provides Passing Arguments by Reference to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functions'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Functions?)\nFunctions provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Variable: length argument lists to write clean, predictable code.**\n- **Provides Optional Parameters to write clean, predictable code.**\n- **Provides Passing Arguments by Reference to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 21: Functions\nfunction runDemo() {\n  console.log('Running: Functions');\n  return { success: true, topic: 'Functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Functions is essential for professional engineering."
           }
         },
@@ -1112,8 +1112,8 @@ export const phpCompleteCourse = {
             {
               "title": "Functional Programming Working Implementation",
               "description": "Complete working demonstration of Functional Programming",
-              "starterCode": "<?php\n// Functional Programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functional Programming'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Functional Programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functional Programming'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 22: Functional Programming\nfunction runDemo() {\n  console.log('Running: Functional Programming');\n  return { success: true, topic: 'Functional Programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Functional Programming\nfunction runDemo() {\n  console.log('Running: Functional Programming');\n  return { success: true, topic: 'Functional Programming' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Functional Programming"
             }
           ],
@@ -1121,9 +1121,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Functional Programming",
               "description": "Write a clean solution for Functional Programming that returns expected status.",
-              "starterCode": "<?php\n// Functional Programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functional Programming'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Functional Programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functional Programming'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 22: Functional Programming\nfunction runDemo() {\n  console.log('Running: Functional Programming');\n  return { success: true, topic: 'Functional Programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Functional Programming\nfunction runDemo() {\n  console.log('Running: Functional Programming');\n  return { success: true, topic: 'Functional Programming' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1135,7 +1135,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 22: Functional Programming",
-            "content": "### \ud83c\udf1f 1. Definition (What is Functional Programming?)\nFunctional Programming in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Closures to simplify development and prevent common bugs.**\n- **Provides Assignment to variables to simplify development and prevent common bugs.**\n- **Provides Objects as a function to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Functional Programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Functional Programming'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Functional Programming?)\nFunctional Programming provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Closures to write clean, predictable code.**\n- **Provides Assignment to variables to write clean, predictable code.**\n- **Provides Objects as a function to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 22: Functional Programming\nfunction runDemo() {\n  console.log('Running: Functional Programming');\n  return { success: true, topic: 'Functional Programming' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Functional Programming is essential for professional engineering."
           }
         },
@@ -1163,8 +1163,8 @@ export const phpCompleteCourse = {
             {
               "title": "Alternative Syntax for Control Structures Working Implementation",
               "description": "Complete working demonstration of Alternative Syntax for Control Structures",
-              "starterCode": "<?php\n// Alternative Syntax for Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Alternative Syntax for Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Alternative Syntax for Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Alternative Syntax for Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 23: Alternative Syntax for Control Structures\nfunction runDemo() {\n  console.log('Running: Alternative Syntax for Control Structures');\n  return { success: true, topic: 'Alternative Syntax for Control Structures' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Alternative Syntax for Control Structures\nfunction runDemo() {\n  console.log('Running: Alternative Syntax for Control Structures');\n  return { success: true, topic: 'Alternative Syntax for Control Structures' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Alternative Syntax for Control Structures"
             }
           ],
@@ -1172,9 +1172,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Alternative Syntax for Control Structures",
               "description": "Write a clean solution for Alternative Syntax for Control Structures that returns expected status.",
-              "starterCode": "<?php\n// Alternative Syntax for Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Alternative Syntax for Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Alternative Syntax for Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Alternative Syntax for Control Structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 23: Alternative Syntax for Control Structures\nfunction runDemo() {\n  console.log('Running: Alternative Syntax for Control Structures');\n  return { success: true, topic: 'Alternative Syntax for Control Structures' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Alternative Syntax for Control Structures\nfunction runDemo() {\n  console.log('Running: Alternative Syntax for Control Structures');\n  return { success: true, topic: 'Alternative Syntax for Control Structures' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1186,7 +1186,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 23: Alternative Syntax for Control Structures",
-            "content": "### \ud83c\udf1f 1. Definition (What is Alternative Syntax for Control Structures?)\nAlternative Syntax for Control Structures in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Alternative if/else statement to simplify development and prevent common bugs.**\n- **Provides Alternative for statement to simplify development and prevent common bugs.**\n- **Provides Alternative while statement to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Alternative Syntax for Control Structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Alternative Syntax for Control Structures'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Alternative Syntax for Control Structures?)\nAlternative Syntax for Control Structures provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Alternative if/else statement to write clean, predictable code.**\n- **Provides Alternative for statement to write clean, predictable code.**\n- **Provides Alternative while statement to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 23: Alternative Syntax for Control Structures\nfunction runDemo() {\n  console.log('Running: Alternative Syntax for Control Structures');\n  return { success: true, topic: 'Alternative Syntax for Control Structures' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Alternative Syntax for Control Structures is essential for professional engineering."
           }
         },
@@ -1210,8 +1210,8 @@ export const phpCompleteCourse = {
             {
               "title": "String formatting Working Implementation",
               "description": "Complete working demonstration of String formatting",
-              "starterCode": "<?php\n// String formatting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String formatting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// String formatting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String formatting'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 24: String formatting\nfunction runDemo() {\n  console.log('Running: String formatting');\n  return { success: true, topic: 'String formatting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: String formatting\nfunction runDemo() {\n  console.log('Running: String formatting');\n  return { success: true, topic: 'String formatting' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: String formatting"
             }
           ],
@@ -1219,9 +1219,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement String formatting",
               "description": "Write a clean solution for String formatting that returns expected status.",
-              "starterCode": "<?php\n// String formatting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String formatting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// String formatting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String formatting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 24: String formatting\nfunction runDemo() {\n  console.log('Running: String formatting');\n  return { success: true, topic: 'String formatting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: String formatting\nfunction runDemo() {\n  console.log('Running: String formatting');\n  return { success: true, topic: 'String formatting' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1233,7 +1233,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 24: String formatting",
-            "content": "### \ud83c\udf1f 1. Definition (What is String formatting?)\nString formatting in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides String interpolation to simplify development and prevent common bugs.**\n- **Provides Extracting/replacing substrings to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// String formatting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String formatting'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is String formatting?)\nString formatting provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides String interpolation to write clean, predictable code.**\n- **Provides Extracting/replacing substrings to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 24: String formatting\nfunction runDemo() {\n  console.log('Running: String formatting');\n  return { success: true, topic: 'String formatting' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering String formatting is essential for professional engineering."
           }
         },
@@ -1261,8 +1261,8 @@ export const phpCompleteCourse = {
             {
               "title": "String Parsing Working Implementation",
               "description": "Complete working demonstration of String Parsing",
-              "starterCode": "<?php\n// String Parsing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String Parsing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// String Parsing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String Parsing'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 25: String Parsing\nfunction runDemo() {\n  console.log('Running: String Parsing');\n  return { success: true, topic: 'String Parsing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: String Parsing\nfunction runDemo() {\n  console.log('Running: String Parsing');\n  return { success: true, topic: 'String Parsing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: String Parsing"
             }
           ],
@@ -1270,9 +1270,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement String Parsing",
               "description": "Write a clean solution for String Parsing that returns expected status.",
-              "starterCode": "<?php\n// String Parsing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String Parsing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// String Parsing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String Parsing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 25: String Parsing\nfunction runDemo() {\n  console.log('Running: String Parsing');\n  return { success: true, topic: 'String Parsing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: String Parsing\nfunction runDemo() {\n  console.log('Running: String Parsing');\n  return { success: true, topic: 'String Parsing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1284,7 +1284,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 25: String Parsing",
-            "content": "### \ud83c\udf1f 1. Definition (What is String Parsing?)\nString Parsing in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Splitting a string by separators to simplify development and prevent common bugs.**\n- **Provides Substring to simplify development and prevent common bugs.**\n- **Provides Searching a substring with strpos to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// String Parsing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'String Parsing'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is String Parsing?)\nString Parsing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Splitting a string by separators to write clean, predictable code.**\n- **Provides Substring to write clean, predictable code.**\n- **Provides Searching a substring with strpos to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 25: String Parsing\nfunction runDemo() {\n  console.log('Running: String Parsing');\n  return { success: true, topic: 'String Parsing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering String Parsing is essential for professional engineering."
           }
         },
@@ -1312,8 +1312,8 @@ export const phpCompleteCourse = {
             {
               "title": "Classes and Objects Working Implementation",
               "description": "Complete working demonstration of Classes and Objects",
-              "starterCode": "<?php\n// Classes and Objects\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Classes and Objects'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Classes and Objects\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Classes and Objects'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 26: Classes and Objects\nfunction runDemo() {\n  console.log('Running: Classes and Objects');\n  return { success: true, topic: 'Classes and Objects' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Classes and Objects\nfunction runDemo() {\n  console.log('Running: Classes and Objects');\n  return { success: true, topic: 'Classes and Objects' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Classes and Objects"
             }
           ],
@@ -1321,9 +1321,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Classes and Objects",
               "description": "Write a clean solution for Classes and Objects that returns expected status.",
-              "starterCode": "<?php\n// Classes and Objects\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Classes and Objects'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Classes and Objects\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Classes and Objects'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 26: Classes and Objects\nfunction runDemo() {\n  console.log('Running: Classes and Objects');\n  return { success: true, topic: 'Classes and Objects' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Classes and Objects\nfunction runDemo() {\n  console.log('Running: Classes and Objects');\n  return { success: true, topic: 'Classes and Objects' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1335,7 +1335,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 26: Classes and Objects",
-            "content": "### \ud83c\udf1f 1. Definition (What is Classes and Objects?)\nClasses and Objects in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Class Constants to simplify development and prevent common bugs.**\n- **Provides Abstract Classes to simplify development and prevent common bugs.**\n- **Provides Late static binding to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Classes and Objects\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Classes and Objects'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Classes and Objects?)\nClasses and Objects provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Class Constants to write clean, predictable code.**\n- **Provides Abstract Classes to write clean, predictable code.**\n- **Provides Late static binding to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 26: Classes and Objects\nfunction runDemo() {\n  console.log('Running: Classes and Objects');\n  return { success: true, topic: 'Classes and Objects' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Classes and Objects is essential for professional engineering."
           }
         },
@@ -1363,8 +1363,8 @@ export const phpCompleteCourse = {
             {
               "title": "Namespaces Working Implementation",
               "description": "Complete working demonstration of Namespaces",
-              "starterCode": "<?php\n// Namespaces\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Namespaces'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Namespaces\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Namespaces'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 27: Namespaces\nfunction runDemo() {\n  console.log('Running: Namespaces');\n  return { success: true, topic: 'Namespaces' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Namespaces\nfunction runDemo() {\n  console.log('Running: Namespaces');\n  return { success: true, topic: 'Namespaces' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Namespaces"
             }
           ],
@@ -1372,9 +1372,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Namespaces",
               "description": "Write a clean solution for Namespaces that returns expected status.",
-              "starterCode": "<?php\n// Namespaces\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Namespaces'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Namespaces\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Namespaces'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 27: Namespaces\nfunction runDemo() {\n  console.log('Running: Namespaces');\n  return { success: true, topic: 'Namespaces' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Namespaces\nfunction runDemo() {\n  console.log('Running: Namespaces');\n  return { success: true, topic: 'Namespaces' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1386,7 +1386,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 27: Namespaces",
-            "content": "### \ud83c\udf1f 1. Definition (What is Namespaces?)\nNamespaces in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Declaring namespaces to simplify development and prevent common bugs.**\n- **Provides Referencing a class or function in a namespace to simplify development and prevent common bugs.**\n- **Provides Declaring sub: namespaces to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Namespaces\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Namespaces'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Namespaces?)\nNamespaces provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Declaring namespaces to write clean, predictable code.**\n- **Provides Referencing a class or function in a namespace to write clean, predictable code.**\n- **Provides Declaring sub: namespaces to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 27: Namespaces\nfunction runDemo() {\n  console.log('Running: Namespaces');\n  return { success: true, topic: 'Namespaces' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Namespaces is essential for professional engineering."
           }
         },
@@ -1414,8 +1414,8 @@ export const phpCompleteCourse = {
             {
               "title": "Sessions Working Implementation",
               "description": "Complete working demonstration of Sessions",
-              "starterCode": "<?php\n// Sessions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sessions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Sessions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sessions'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 28: Sessions\nfunction runDemo() {\n  console.log('Running: Sessions');\n  return { success: true, topic: 'Sessions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Sessions\nfunction runDemo() {\n  console.log('Running: Sessions');\n  return { success: true, topic: 'Sessions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Sessions"
             }
           ],
@@ -1423,9 +1423,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Sessions",
               "description": "Write a clean solution for Sessions that returns expected status.",
-              "starterCode": "<?php\n// Sessions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sessions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Sessions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sessions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 28: Sessions\nfunction runDemo() {\n  console.log('Running: Sessions');\n  return { success: true, topic: 'Sessions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Sessions\nfunction runDemo() {\n  console.log('Running: Sessions');\n  return { success: true, topic: 'Sessions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1437,7 +1437,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 28: Sessions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Sessions?)\nSessions in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides session_start() Options to simplify development and prevent common bugs.**\n- **Provides Session Locking to simplify development and prevent common bugs.**\n- **Provides Manipulating session data to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Sessions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sessions'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Sessions?)\nSessions provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides session_start() Options to write clean, predictable code.**\n- **Provides Session Locking to write clean, predictable code.**\n- **Provides Manipulating session data to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 28: Sessions\nfunction runDemo() {\n  console.log('Running: Sessions');\n  return { success: true, topic: 'Sessions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Sessions is essential for professional engineering."
           }
         },
@@ -1465,8 +1465,8 @@ export const phpCompleteCourse = {
             {
               "title": "Cookies Working Implementation",
               "description": "Complete working demonstration of Cookies",
-              "starterCode": "<?php\n// Cookies\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cookies'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Cookies\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cookies'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 29: Cookies\nfunction runDemo() {\n  console.log('Running: Cookies');\n  return { success: true, topic: 'Cookies' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Cookies\nfunction runDemo() {\n  console.log('Running: Cookies');\n  return { success: true, topic: 'Cookies' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Cookies"
             }
           ],
@@ -1474,9 +1474,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Cookies",
               "description": "Write a clean solution for Cookies that returns expected status.",
-              "starterCode": "<?php\n// Cookies\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cookies'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Cookies\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cookies'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 29: Cookies\nfunction runDemo() {\n  console.log('Running: Cookies');\n  return { success: true, topic: 'Cookies' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: Cookies\nfunction runDemo() {\n  console.log('Running: Cookies');\n  return { success: true, topic: 'Cookies' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1488,7 +1488,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 29: Cookies",
-            "content": "### \ud83c\udf1f 1. Definition (What is Cookies?)\nCookies in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Modifying a Cookie to simplify development and prevent common bugs.**\n- **Provides Setting a Cookie to simplify development and prevent common bugs.**\n- **Provides Checking if a Cookie is Set to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Cookies\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cookies'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Cookies?)\nCookies provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Modifying a Cookie to write clean, predictable code.**\n- **Provides Setting a Cookie to write clean, predictable code.**\n- **Provides Checking if a Cookie is Set to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 29: Cookies\nfunction runDemo() {\n  console.log('Running: Cookies');\n  return { success: true, topic: 'Cookies' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Cookies is essential for professional engineering."
           }
         },
@@ -1516,8 +1516,8 @@ export const phpCompleteCourse = {
             {
               "title": "Output Bu\ue023ering Working Implementation",
               "description": "Complete working demonstration of Output Bu\ue023ering",
-              "starterCode": "<?php\n// Output Bu\ue023ering\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Output Bu\ue023ering'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Output Bu\ue023ering\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Output Bu\ue023ering'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 30: Output Bu\ue023ering\nfunction runDemo() {\n  console.log('Running: Output Bu\ue023ering');\n  return { success: true, topic: 'Output Bu\ue023ering' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Output Bu\ue023ering\nfunction runDemo() {\n  console.log('Running: Output Bu\ue023ering');\n  return { success: true, topic: 'Output Bu\ue023ering' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Output Bu\ue023ering"
             }
           ],
@@ -1525,9 +1525,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Output Bu\ue023ering",
               "description": "Write a clean solution for Output Bu\ue023ering that returns expected status.",
-              "starterCode": "<?php\n// Output Bu\ue023ering\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Output Bu\ue023ering'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Output Bu\ue023ering\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Output Bu\ue023ering'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 30: Output Bu\ue023ering\nfunction runDemo() {\n  console.log('Running: Output Bu\ue023ering');\n  return { success: true, topic: 'Output Bu\ue023ering' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Output Bu\ue023ering\nfunction runDemo() {\n  console.log('Running: Output Bu\ue023ering');\n  return { success: true, topic: 'Output Bu\ue023ering' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1539,7 +1539,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 30: Output Bu\ue023ering",
-            "content": "### \ud83c\udf1f 1. Definition (What is Output Bu\ue023ering?)\nOutput Bu\ue023ering in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage getting content between bu\ue023ers and clearing to simplify development and prevent common bugs.**\n- **Provides Processing the bu\ue023er via a callback to simplify development and prevent common bugs.**\n- **Provides Nested output bu\ue023ers to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Output Bu\ue023ering\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Output Bu\ue023ering'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Output Bu\ue023ering?)\nOutput Bu\ue023ering provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage getting content between bu\ue023ers and clearing to write clean, predictable code.**\n- **Provides Processing the bu\ue023er via a callback to write clean, predictable code.**\n- **Provides Nested output bu\ue023ers to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 30: Output Bu\ue023ering\nfunction runDemo() {\n  console.log('Running: Output Bu\ue023ering');\n  return { success: true, topic: 'Output Bu\ue023ering' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Output Bu\ue023ering is essential for professional engineering."
           }
         }
@@ -1574,8 +1574,8 @@ export const phpCompleteCourse = {
             {
               "title": "JSON Working Implementation",
               "description": "Complete working demonstration of JSON",
-              "starterCode": "<?php\n// JSON\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'JSON'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// JSON\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'JSON'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 31: JSON\nfunction runDemo() {\n  console.log('Running: JSON');\n  return { success: true, topic: 'JSON' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: JSON\nfunction runDemo() {\n  console.log('Running: JSON');\n  return { success: true, topic: 'JSON' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: JSON"
             }
           ],
@@ -1583,9 +1583,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement JSON",
               "description": "Write a clean solution for JSON that returns expected status.",
-              "starterCode": "<?php\n// JSON\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'JSON'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// JSON\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'JSON'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 31: JSON\nfunction runDemo() {\n  console.log('Running: JSON');\n  return { success: true, topic: 'JSON' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: JSON\nfunction runDemo() {\n  console.log('Running: JSON');\n  return { success: true, topic: 'JSON' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1597,7 +1597,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 31: JSON",
-            "content": "### \ud83c\udf1f 1. Definition (What is JSON?)\nJSON in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Decoding a JSON string to simplify development and prevent common bugs.**\n- **Provides Encoding a JSON string to simplify development and prevent common bugs.**\n- **Provides Debugging JSON errors to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// JSON\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'JSON'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is JSON?)\nJSON provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Decoding a JSON string to write clean, predictable code.**\n- **Provides Encoding a JSON string to write clean, predictable code.**\n- **Provides Debugging JSON errors to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 31: JSON\nfunction runDemo() {\n  console.log('Running: JSON');\n  return { success: true, topic: 'JSON' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering JSON is essential for professional engineering."
           }
         },
@@ -1625,8 +1625,8 @@ export const phpCompleteCourse = {
             {
               "title": "SOAP Client Working Implementation",
               "description": "Complete working demonstration of SOAP Client",
-              "starterCode": "<?php\n// SOAP Client\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Client'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SOAP Client\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Client'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 32: SOAP Client\nfunction runDemo() {\n  console.log('Running: SOAP Client');\n  return { success: true, topic: 'SOAP Client' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: SOAP Client\nfunction runDemo() {\n  console.log('Running: SOAP Client');\n  return { success: true, topic: 'SOAP Client' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: SOAP Client"
             }
           ],
@@ -1634,9 +1634,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement SOAP Client",
               "description": "Write a clean solution for SOAP Client that returns expected status.",
-              "starterCode": "<?php\n// SOAP Client\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Client'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SOAP Client\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Client'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 32: SOAP Client\nfunction runDemo() {\n  console.log('Running: SOAP Client');\n  return { success: true, topic: 'SOAP Client' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: SOAP Client\nfunction runDemo() {\n  console.log('Running: SOAP Client');\n  return { success: true, topic: 'SOAP Client' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1648,7 +1648,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 32: SOAP Client",
-            "content": "### \ud83c\udf1f 1. Definition (What is SOAP Client?)\nSOAP Client in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides WSDL Mode to simplify development and prevent common bugs.**\n- **Provides Non: WSDL Mode to simplify development and prevent common bugs.**\n- **Provides Classmaps to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// SOAP Client\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Client'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is SOAP Client?)\nSOAP Client provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides WSDL Mode to write clean, predictable code.**\n- **Provides Non: WSDL Mode to write clean, predictable code.**\n- **Provides Classmaps to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 32: SOAP Client\nfunction runDemo() {\n  console.log('Running: SOAP Client');\n  return { success: true, topic: 'SOAP Client' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering SOAP Client is essential for professional engineering."
           }
         },
@@ -1676,8 +1676,8 @@ export const phpCompleteCourse = {
             {
               "title": "Using cURL in PHP Working Implementation",
               "description": "Complete working demonstration of Using cURL in PHP",
-              "starterCode": "<?php\n// Using cURL in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using cURL in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using cURL in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using cURL in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 33: Using cURL in PHP\nfunction runDemo() {\n  console.log('Running: Using cURL in PHP');\n  return { success: true, topic: 'Using cURL in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: Using cURL in PHP\nfunction runDemo() {\n  console.log('Running: Using cURL in PHP');\n  return { success: true, topic: 'Using cURL in PHP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Using cURL in PHP"
             }
           ],
@@ -1685,9 +1685,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Using cURL in PHP",
               "description": "Write a clean solution for Using cURL in PHP that returns expected status.",
-              "starterCode": "<?php\n// Using cURL in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using cURL in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using cURL in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using cURL in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 33: Using cURL in PHP\nfunction runDemo() {\n  console.log('Running: Using cURL in PHP');\n  return { success: true, topic: 'Using cURL in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: Using cURL in PHP\nfunction runDemo() {\n  console.log('Running: Using cURL in PHP');\n  return { success: true, topic: 'Using cURL in PHP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1699,7 +1699,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 33: Using cURL in PHP",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using cURL in PHP?)\nUsing cURL in PHP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Usage (GET Requests) to simplify development and prevent common bugs.**\n- **Provides POST Requests to simplify development and prevent common bugs.**\n- **Provides Using Cookies to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Using cURL in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using cURL in PHP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using cURL in PHP?)\nUsing cURL in PHP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Usage (GET Requests) to write clean, predictable code.**\n- **Provides POST Requests to write clean, predictable code.**\n- **Provides Using Cookies to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 33: Using cURL in PHP\nfunction runDemo() {\n  console.log('Running: Using cURL in PHP');\n  return { success: true, topic: 'Using cURL in PHP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Using cURL in PHP is essential for professional engineering."
           }
         },
@@ -1727,8 +1727,8 @@ export const phpCompleteCourse = {
             {
               "title": "Re\ufb02ection Working Implementation",
               "description": "Complete working demonstration of Re\ufb02ection",
-              "starterCode": "<?php\n// Re\ufb02ection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Re\ufb02ection'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Re\ufb02ection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Re\ufb02ection'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 34: Re\ufb02ection\nfunction runDemo() {\n  console.log('Running: Re\ufb02ection');\n  return { success: true, topic: 'Re\ufb02ection' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Re\ufb02ection\nfunction runDemo() {\n  console.log('Running: Re\ufb02ection');\n  return { success: true, topic: 'Re\ufb02ection' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Re\ufb02ection"
             }
           ],
@@ -1736,9 +1736,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Re\ufb02ection",
               "description": "Write a clean solution for Re\ufb02ection that returns expected status.",
-              "starterCode": "<?php\n// Re\ufb02ection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Re\ufb02ection'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Re\ufb02ection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Re\ufb02ection'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 34: Re\ufb02ection\nfunction runDemo() {\n  console.log('Running: Re\ufb02ection');\n  return { success: true, topic: 'Re\ufb02ection' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Re\ufb02ection\nfunction runDemo() {\n  console.log('Running: Re\ufb02ection');\n  return { success: true, topic: 'Re\ufb02ection' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1750,7 +1750,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 34: Re\ufb02ection",
-            "content": "### \ud83c\udf1f 1. Definition (What is Re\ufb02ection?)\nRe\ufb02ection in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Feature detection of classes or objects to simplify development and prevent common bugs.**\n- **Provides Testing private/protected methods to simplify development and prevent common bugs.**\n- **Provides Accessing private and protected member variables to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Re\ufb02ection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Re\ufb02ection'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Re\ufb02ection?)\nRe\ufb02ection provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Feature detection of classes or objects to write clean, predictable code.**\n- **Provides Testing private/protected methods to write clean, predictable code.**\n- **Provides Accessing private and protected member variables to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 34: Re\ufb02ection\nfunction runDemo() {\n  console.log('Running: Re\ufb02ection');\n  return { success: true, topic: 'Re\ufb02ection' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Re\ufb02ection is essential for professional engineering."
           }
         },
@@ -1778,8 +1778,8 @@ export const phpCompleteCourse = {
             {
               "title": "Dependency Injection Working Implementation",
               "description": "Complete working demonstration of Dependency Injection",
-              "starterCode": "<?php\n// Dependency Injection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Dependency Injection'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Dependency Injection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Dependency Injection'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 35: Dependency Injection\nfunction runDemo() {\n  console.log('Running: Dependency Injection');\n  return { success: true, topic: 'Dependency Injection' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Dependency Injection\nfunction runDemo() {\n  console.log('Running: Dependency Injection');\n  return { success: true, topic: 'Dependency Injection' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Dependency Injection"
             }
           ],
@@ -1787,9 +1787,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Dependency Injection",
               "description": "Write a clean solution for Dependency Injection that returns expected status.",
-              "starterCode": "<?php\n// Dependency Injection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Dependency Injection'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Dependency Injection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Dependency Injection'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 35: Dependency Injection\nfunction runDemo() {\n  console.log('Running: Dependency Injection');\n  return { success: true, topic: 'Dependency Injection' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Dependency Injection\nfunction runDemo() {\n  console.log('Running: Dependency Injection');\n  return { success: true, topic: 'Dependency Injection' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1801,7 +1801,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 35: Dependency Injection",
-            "content": "### \ud83c\udf1f 1. Definition (What is Dependency Injection?)\nDependency Injection in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Constructor Injection to simplify development and prevent common bugs.**\n- **Provides Setter Injection to simplify development and prevent common bugs.**\n- **Provides Container Injection to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Dependency Injection\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Dependency Injection'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Dependency Injection?)\nDependency Injection provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Constructor Injection to write clean, predictable code.**\n- **Provides Setter Injection to write clean, predictable code.**\n- **Provides Container Injection to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 35: Dependency Injection\nfunction runDemo() {\n  console.log('Running: Dependency Injection');\n  return { success: true, topic: 'Dependency Injection' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Dependency Injection is essential for professional engineering."
           }
         },
@@ -1829,8 +1829,8 @@ export const phpCompleteCourse = {
             {
               "title": "XML Working Implementation",
               "description": "Complete working demonstration of XML",
-              "starterCode": "<?php\n// XML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'XML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// XML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'XML'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 36: XML\nfunction runDemo() {\n  console.log('Running: XML');\n  return { success: true, topic: 'XML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: XML\nfunction runDemo() {\n  console.log('Running: XML');\n  return { success: true, topic: 'XML' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: XML"
             }
           ],
@@ -1838,9 +1838,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement XML",
               "description": "Write a clean solution for XML that returns expected status.",
-              "starterCode": "<?php\n// XML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'XML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// XML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'XML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 36: XML\nfunction runDemo() {\n  console.log('Running: XML');\n  return { success: true, topic: 'XML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: XML\nfunction runDemo() {\n  console.log('Running: XML');\n  return { success: true, topic: 'XML' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1852,7 +1852,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 36: XML",
-            "content": "### \ud83c\udf1f 1. Definition (What is XML?)\nXML in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create a XML using DomDocument to simplify development and prevent common bugs.**\n- **Provides Read a XML document with DOMDocument to simplify development and prevent common bugs.**\n- **Provides Leveraging XML with PHP's SimpleXML Library to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// XML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'XML'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is XML?)\nXML provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Create a XML using DomDocument to write clean, predictable code.**\n- **Provides Read a XML document with DOMDocument to write clean, predictable code.**\n- **Provides Leveraging XML with PHP's SimpleXML Library to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 36: XML\nfunction runDemo() {\n  console.log('Running: XML');\n  return { success: true, topic: 'XML' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering XML is essential for professional engineering."
           }
         },
@@ -1872,8 +1872,8 @@ export const phpCompleteCourse = {
             {
               "title": "SimpleXML Working Implementation",
               "description": "Complete working demonstration of SimpleXML",
-              "starterCode": "<?php\n// SimpleXML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SimpleXML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SimpleXML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SimpleXML'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 37: SimpleXML\nfunction runDemo() {\n  console.log('Running: SimpleXML');\n  return { success: true, topic: 'SimpleXML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: SimpleXML\nfunction runDemo() {\n  console.log('Running: SimpleXML');\n  return { success: true, topic: 'SimpleXML' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: SimpleXML"
             }
           ],
@@ -1881,9 +1881,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement SimpleXML",
               "description": "Write a clean solution for SimpleXML that returns expected status.",
-              "starterCode": "<?php\n// SimpleXML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SimpleXML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SimpleXML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SimpleXML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 37: SimpleXML\nfunction runDemo() {\n  console.log('Running: SimpleXML');\n  return { success: true, topic: 'SimpleXML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: SimpleXML\nfunction runDemo() {\n  console.log('Running: SimpleXML');\n  return { success: true, topic: 'SimpleXML' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1895,7 +1895,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 37: SimpleXML",
-            "content": "### \ud83c\udf1f 1. Definition (What is SimpleXML?)\nSimpleXML in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Loading XML data into simplexml to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// SimpleXML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SimpleXML'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is SimpleXML?)\nSimpleXML provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Loading XML data into simplexml to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 37: SimpleXML\nfunction runDemo() {\n  console.log('Running: SimpleXML');\n  return { success: true, topic: 'SimpleXML' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering SimpleXML is essential for professional engineering."
           }
         },
@@ -1923,8 +1923,8 @@ export const phpCompleteCourse = {
             {
               "title": "Parsing HTML Working Implementation",
               "description": "Complete working demonstration of Parsing HTML",
-              "starterCode": "<?php\n// Parsing HTML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Parsing HTML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Parsing HTML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Parsing HTML'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 38: Parsing HTML\nfunction runDemo() {\n  console.log('Running: Parsing HTML');\n  return { success: true, topic: 'Parsing HTML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: Parsing HTML\nfunction runDemo() {\n  console.log('Running: Parsing HTML');\n  return { success: true, topic: 'Parsing HTML' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Parsing HTML"
             }
           ],
@@ -1932,9 +1932,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Parsing HTML",
               "description": "Write a clean solution for Parsing HTML that returns expected status.",
-              "starterCode": "<?php\n// Parsing HTML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Parsing HTML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Parsing HTML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Parsing HTML'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 38: Parsing HTML\nfunction runDemo() {\n  console.log('Running: Parsing HTML');\n  return { success: true, topic: 'Parsing HTML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: Parsing HTML\nfunction runDemo() {\n  console.log('Running: Parsing HTML');\n  return { success: true, topic: 'Parsing HTML' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1946,7 +1946,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 38: Parsing HTML",
-            "content": "### \ud83c\udf1f 1. Definition (What is Parsing HTML?)\nParsing HTML in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Parsing HTML from a string to simplify development and prevent common bugs.**\n- **Provides Using XPath to simplify development and prevent common bugs.**\n- **Provides SimpleXML to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Parsing HTML\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Parsing HTML'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Parsing HTML?)\nParsing HTML provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Parsing HTML from a string to write clean, predictable code.**\n- **Provides Using XPath to write clean, predictable code.**\n- **Provides SimpleXML to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 38: Parsing HTML\nfunction runDemo() {\n  console.log('Running: Parsing HTML');\n  return { success: true, topic: 'Parsing HTML' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Parsing HTML is essential for professional engineering."
           }
         },
@@ -1974,8 +1974,8 @@ export const phpCompleteCourse = {
             {
               "title": "Regular Expressions (regexp/PCRE) Working Implementation",
               "description": "Complete working demonstration of Regular Expressions (regexp/PCRE)",
-              "starterCode": "<?php\n// Regular Expressions (regexp/PCRE)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Regular Expressions (regexp/PCRE)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Regular Expressions (regexp/PCRE)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Regular Expressions (regexp/PCRE)'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 39: Regular Expressions (regexp/PCRE)\nfunction runDemo() {\n  console.log('Running: Regular Expressions (regexp/PCRE)');\n  return { success: true, topic: 'Regular Expressions (regexp/PCRE)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: Regular Expressions (regexp/PCRE)\nfunction runDemo() {\n  console.log('Running: Regular Expressions (regexp/PCRE)');\n  return { success: true, topic: 'Regular Expressions (regexp/PCRE)' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Regular Expressions (regexp/PCRE)"
             }
           ],
@@ -1983,9 +1983,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Regular Expressions (regexp/PCRE)",
               "description": "Write a clean solution for Regular Expressions (regexp/PCRE) that returns expected status.",
-              "starterCode": "<?php\n// Regular Expressions (regexp/PCRE)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Regular Expressions (regexp/PCRE)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Regular Expressions (regexp/PCRE)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Regular Expressions (regexp/PCRE)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 39: Regular Expressions (regexp/PCRE)\nfunction runDemo() {\n  console.log('Running: Regular Expressions (regexp/PCRE)');\n  return { success: true, topic: 'Regular Expressions (regexp/PCRE)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: Regular Expressions (regexp/PCRE)\nfunction runDemo() {\n  console.log('Running: Regular Expressions (regexp/PCRE)');\n  return { success: true, topic: 'Regular Expressions (regexp/PCRE)' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1997,7 +1997,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 39: Regular Expressions (regexp/PCRE)",
-            "content": "### \ud83c\udf1f 1. Definition (What is Regular Expressions (regexp/PCRE)?)\nRegular Expressions (regexp/PCRE) in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Global RegExp match to simplify development and prevent common bugs.**\n- **Provides String matching with regular expressions to simplify development and prevent common bugs.**\n- **Provides Split string into array by a regular expression to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Regular Expressions (regexp/PCRE)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Regular Expressions (regexp/PCRE)'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Regular Expressions (regexp/PCRE)?)\nRegular Expressions (regexp/PCRE) provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Global RegExp match to write clean, predictable code.**\n- **Provides String matching with regular expressions to write clean, predictable code.**\n- **Provides Split string into array by a regular expression to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 39: Regular Expressions (regexp/PCRE)\nfunction runDemo() {\n  console.log('Running: Regular Expressions (regexp/PCRE)');\n  return { success: true, topic: 'Regular Expressions (regexp/PCRE)' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Regular Expressions (regexp/PCRE) is essential for professional engineering."
           }
         },
@@ -2025,8 +2025,8 @@ export const phpCompleteCourse = {
             {
               "title": "Traits Working Implementation",
               "description": "Complete working demonstration of Traits",
-              "starterCode": "<?php\n// Traits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Traits'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Traits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Traits'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 40: Traits\nfunction runDemo() {\n  console.log('Running: Traits');\n  return { success: true, topic: 'Traits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Traits\nfunction runDemo() {\n  console.log('Running: Traits');\n  return { success: true, topic: 'Traits' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Traits"
             }
           ],
@@ -2034,9 +2034,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Traits",
               "description": "Write a clean solution for Traits that returns expected status.",
-              "starterCode": "<?php\n// Traits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Traits'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Traits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Traits'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 40: Traits\nfunction runDemo() {\n  console.log('Running: Traits');\n  return { success: true, topic: 'Traits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Traits\nfunction runDemo() {\n  console.log('Running: Traits');\n  return { success: true, topic: 'Traits' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2048,7 +2048,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 40: Traits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Traits?)\nTraits in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is a Trait? to simplify development and prevent common bugs.**\n- **Provides Traits to facilitate horizontal code reuse to simplify development and prevent common bugs.**\n- **Provides Con\ufb02ict Resolution to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Traits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Traits'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Traits?)\nTraits provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is a Trait? to write clean, predictable code.**\n- **Provides Traits to facilitate horizontal code reuse to write clean, predictable code.**\n- **Provides Con\ufb02ict Resolution to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 40: Traits\nfunction runDemo() {\n  console.log('Running: Traits');\n  return { success: true, topic: 'Traits' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Traits is essential for professional engineering."
           }
         }
@@ -2083,8 +2083,8 @@ export const phpCompleteCourse = {
             {
               "title": "Composer Dependency Manager Working Implementation",
               "description": "Complete working demonstration of Composer Dependency Manager",
-              "starterCode": "<?php\n// Composer Dependency Manager\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Composer Dependency Manager'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Composer Dependency Manager\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Composer Dependency Manager'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 41: Composer Dependency Manager\nfunction runDemo() {\n  console.log('Running: Composer Dependency Manager');\n  return { success: true, topic: 'Composer Dependency Manager' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: Composer Dependency Manager\nfunction runDemo() {\n  console.log('Running: Composer Dependency Manager');\n  return { success: true, topic: 'Composer Dependency Manager' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Composer Dependency Manager"
             }
           ],
@@ -2092,9 +2092,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Composer Dependency Manager",
               "description": "Write a clean solution for Composer Dependency Manager that returns expected status.",
-              "starterCode": "<?php\n// Composer Dependency Manager\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Composer Dependency Manager'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Composer Dependency Manager\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Composer Dependency Manager'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 41: Composer Dependency Manager\nfunction runDemo() {\n  console.log('Running: Composer Dependency Manager');\n  return { success: true, topic: 'Composer Dependency Manager' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: Composer Dependency Manager\nfunction runDemo() {\n  console.log('Running: Composer Dependency Manager');\n  return { success: true, topic: 'Composer Dependency Manager' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2106,7 +2106,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 41: Composer Dependency Manager",
-            "content": "### \ud83c\udf1f 1. Definition (What is Composer Dependency Manager?)\nComposer Dependency Manager in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is Composer? to simplify development and prevent common bugs.**\n- **Provides Autoloading with Composer to simplify development and prevent common bugs.**\n- **Provides Di\ue023erence between 'composer install' and 'composer update' to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Composer Dependency Manager\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Composer Dependency Manager'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Composer Dependency Manager?)\nComposer Dependency Manager provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is Composer? to write clean, predictable code.**\n- **Provides Autoloading with Composer to write clean, predictable code.**\n- **Provides Di\ue023erence between 'composer install' and 'composer update' to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 41: Composer Dependency Manager\nfunction runDemo() {\n  console.log('Running: Composer Dependency Manager');\n  return { success: true, topic: 'Composer Dependency Manager' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Composer Dependency Manager is essential for professional engineering."
           }
         },
@@ -2134,8 +2134,8 @@ export const phpCompleteCourse = {
             {
               "title": "Magic Methods Working Implementation",
               "description": "Complete working demonstration of Magic Methods",
-              "starterCode": "<?php\n// Magic Methods\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Methods'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Magic Methods\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Methods'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 42: Magic Methods\nfunction runDemo() {\n  console.log('Running: Magic Methods');\n  return { success: true, topic: 'Magic Methods' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Magic Methods\nfunction runDemo() {\n  console.log('Running: Magic Methods');\n  return { success: true, topic: 'Magic Methods' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Magic Methods"
             }
           ],
@@ -2143,9 +2143,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Magic Methods",
               "description": "Write a clean solution for Magic Methods that returns expected status.",
-              "starterCode": "<?php\n// Magic Methods\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Methods'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Magic Methods\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Methods'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 42: Magic Methods\nfunction runDemo() {\n  console.log('Running: Magic Methods');\n  return { success: true, topic: 'Magic Methods' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Magic Methods\nfunction runDemo() {\n  console.log('Running: Magic Methods');\n  return { success: true, topic: 'Magic Methods' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2157,7 +2157,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 42: Magic Methods",
-            "content": "### \ud83c\udf1f 1. Definition (What is Magic Methods?)\nMagic Methods in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides __call() and __callStatic() to simplify development and prevent common bugs.**\n- **Provides __get(), __set(), __isset() and __unset() to simplify development and prevent common bugs.**\n- **Provides __construct() and __destruct() to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Magic Methods\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Magic Methods'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Magic Methods?)\nMagic Methods provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides __call() and __callStatic() to write clean, predictable code.**\n- **Provides __get(), __set(), __isset() and __unset() to write clean, predictable code.**\n- **Provides __construct() and __destruct() to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 42: Magic Methods\nfunction runDemo() {\n  console.log('Running: Magic Methods');\n  return { success: true, topic: 'Magic Methods' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Magic Methods is essential for professional engineering."
           }
         },
@@ -2185,8 +2185,8 @@ export const phpCompleteCourse = {
             {
               "title": "File handling Working Implementation",
               "description": "Complete working demonstration of File handling",
-              "starterCode": "<?php\n// File handling\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'File handling'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// File handling\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'File handling'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 43: File handling\nfunction runDemo() {\n  console.log('Running: File handling');\n  return { success: true, topic: 'File handling' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: File handling\nfunction runDemo() {\n  console.log('Running: File handling');\n  return { success: true, topic: 'File handling' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: File handling"
             }
           ],
@@ -2194,9 +2194,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement File handling",
               "description": "Write a clean solution for File handling that returns expected status.",
-              "starterCode": "<?php\n// File handling\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'File handling'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// File handling\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'File handling'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 43: File handling\nfunction runDemo() {\n  console.log('Running: File handling');\n  return { success: true, topic: 'File handling' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: File handling\nfunction runDemo() {\n  console.log('Running: File handling');\n  return { success: true, topic: 'File handling' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2208,7 +2208,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 43: File handling",
-            "content": "### \ud83c\udf1f 1. Definition (What is File handling?)\nFile handling in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Convenience functions to simplify development and prevent common bugs.**\n- **Provides Deleting \ufb01les and directories to simplify development and prevent common bugs.**\n- **Provides Getting \ufb01le information to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// File handling\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'File handling'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is File handling?)\nFile handling provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Convenience functions to write clean, predictable code.**\n- **Provides Deleting \ufb01les and directories to write clean, predictable code.**\n- **Provides Getting \ufb01le information to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 43: File handling\nfunction runDemo() {\n  console.log('Running: File handling');\n  return { success: true, topic: 'File handling' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering File handling is essential for professional engineering."
           }
         },
@@ -2228,8 +2228,8 @@ export const phpCompleteCourse = {
             {
               "title": "Streams Working Implementation",
               "description": "Complete working demonstration of Streams",
-              "starterCode": "<?php\n// Streams\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Streams'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Streams\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Streams'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 44: Streams\nfunction runDemo() {\n  console.log('Running: Streams');\n  return { success: true, topic: 'Streams' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 44: Streams\nfunction runDemo() {\n  console.log('Running: Streams');\n  return { success: true, topic: 'Streams' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Streams"
             }
           ],
@@ -2237,9 +2237,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Streams",
               "description": "Write a clean solution for Streams that returns expected status.",
-              "starterCode": "<?php\n// Streams\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Streams'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Streams\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Streams'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 44: Streams\nfunction runDemo() {\n  console.log('Running: Streams');\n  return { success: true, topic: 'Streams' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 44: Streams\nfunction runDemo() {\n  console.log('Running: Streams');\n  return { success: true, topic: 'Streams' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2251,7 +2251,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 44: Streams",
-            "content": "### \ud83c\udf1f 1. Definition (What is Streams?)\nStreams in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Registering a stream wrapper to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Streams\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Streams'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Streams?)\nStreams provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Registering a stream wrapper to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 44: Streams\nfunction runDemo() {\n  console.log('Running: Streams');\n  return { success: true, topic: 'Streams' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Streams is essential for professional engineering."
           }
         },
@@ -2279,8 +2279,8 @@ export const phpCompleteCourse = {
             {
               "title": "Type hinting Working Implementation",
               "description": "Complete working demonstration of Type hinting",
-              "starterCode": "<?php\n// Type hinting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type hinting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Type hinting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type hinting'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 45: Type hinting\nfunction runDemo() {\n  console.log('Running: Type hinting');\n  return { success: true, topic: 'Type hinting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 45: Type hinting\nfunction runDemo() {\n  console.log('Running: Type hinting');\n  return { success: true, topic: 'Type hinting' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Type hinting"
             }
           ],
@@ -2288,9 +2288,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Type hinting",
               "description": "Write a clean solution for Type hinting that returns expected status.",
-              "starterCode": "<?php\n// Type hinting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type hinting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Type hinting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type hinting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 45: Type hinting\nfunction runDemo() {\n  console.log('Running: Type hinting');\n  return { success: true, topic: 'Type hinting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 45: Type hinting\nfunction runDemo() {\n  console.log('Running: Type hinting');\n  return { success: true, topic: 'Type hinting' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2302,7 +2302,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 45: Type hinting",
-            "content": "### \ud83c\udf1f 1. Definition (What is Type hinting?)\nType hinting in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type hinting classes and interfaces to simplify development and prevent common bugs.**\n- **Provides Type hinting scalar types, arrays and callables to simplify development and prevent common bugs.**\n- **Provides Nullable type hints to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Type hinting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type hinting'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Type hinting?)\nType hinting provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Type hinting classes and interfaces to write clean, predictable code.**\n- **Provides Type hinting scalar types, arrays and callables to write clean, predictable code.**\n- **Provides Nullable type hints to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 45: Type hinting\nfunction runDemo() {\n  console.log('Running: Type hinting');\n  return { success: true, topic: 'Type hinting' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Type hinting is essential for professional engineering."
           }
         },
@@ -2330,8 +2330,8 @@ export const phpCompleteCourse = {
             {
               "title": "Filters & Filter Functions Working Implementation",
               "description": "Complete working demonstration of Filters & Filter Functions",
-              "starterCode": "<?php\n// Filters & Filter Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Filters & Filter Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Filters & Filter Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Filters & Filter Functions'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 46: Filters & Filter Functions\nfunction runDemo() {\n  console.log('Running: Filters & Filter Functions');\n  return { success: true, topic: 'Filters & Filter Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 46: Filters & Filter Functions\nfunction runDemo() {\n  console.log('Running: Filters & Filter Functions');\n  return { success: true, topic: 'Filters & Filter Functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Filters & Filter Functions"
             }
           ],
@@ -2339,9 +2339,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Filters & Filter Functions",
               "description": "Write a clean solution for Filters & Filter Functions that returns expected status.",
-              "starterCode": "<?php\n// Filters & Filter Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Filters & Filter Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Filters & Filter Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Filters & Filter Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 46: Filters & Filter Functions\nfunction runDemo() {\n  console.log('Running: Filters & Filter Functions');\n  return { success: true, topic: 'Filters & Filter Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 46: Filters & Filter Functions\nfunction runDemo() {\n  console.log('Running: Filters & Filter Functions');\n  return { success: true, topic: 'Filters & Filter Functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2353,7 +2353,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 46: Filters & Filter Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Filters & Filter Functions?)\nFilters & Filter Functions in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Validating Boolean Values to simplify development and prevent common bugs.**\n- **Provides Validating A Number Is A Float to simplify development and prevent common bugs.**\n- **Provides Validate A MAC Address to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Filters & Filter Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Filters & Filter Functions'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Filters & Filter Functions?)\nFilters & Filter Functions provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Validating Boolean Values to write clean, predictable code.**\n- **Provides Validating A Number Is A Float to write clean, predictable code.**\n- **Provides Validate A MAC Address to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 46: Filters & Filter Functions\nfunction runDemo() {\n  console.log('Running: Filters & Filter Functions');\n  return { success: true, topic: 'Filters & Filter Functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Filters & Filter Functions is essential for professional engineering."
           }
         },
@@ -2381,8 +2381,8 @@ export const phpCompleteCourse = {
             {
               "title": "Generators Working Implementation",
               "description": "Complete working demonstration of Generators",
-              "starterCode": "<?php\n// Generators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Generators'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Generators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Generators'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 47: Generators\nfunction runDemo() {\n  console.log('Running: Generators');\n  return { success: true, topic: 'Generators' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 47: Generators\nfunction runDemo() {\n  console.log('Running: Generators');\n  return { success: true, topic: 'Generators' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Generators"
             }
           ],
@@ -2390,9 +2390,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Generators",
               "description": "Write a clean solution for Generators that returns expected status.",
-              "starterCode": "<?php\n// Generators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Generators'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Generators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Generators'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 47: Generators\nfunction runDemo() {\n  console.log('Running: Generators');\n  return { success: true, topic: 'Generators' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 47: Generators\nfunction runDemo() {\n  console.log('Running: Generators');\n  return { success: true, topic: 'Generators' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2404,7 +2404,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 47: Generators",
-            "content": "### \ud83c\udf1f 1. Definition (What is Generators?)\nGenerators in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides The Yield Keyword to simplify development and prevent common bugs.**\n- **Provides Reading a large \ufb01le with a generator to simplify development and prevent common bugs.**\n- **Provides Why use a generator? to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Generators\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Generators'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Generators?)\nGenerators provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides The Yield Keyword to write clean, predictable code.**\n- **Provides Reading a large \ufb01le with a generator to write clean, predictable code.**\n- **Provides Why use a generator? to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 47: Generators\nfunction runDemo() {\n  console.log('Running: Generators');\n  return { success: true, topic: 'Generators' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Generators is essential for professional engineering."
           }
         },
@@ -2432,8 +2432,8 @@ export const phpCompleteCourse = {
             {
               "title": "UTF: 8 Working Implementation",
               "description": "Complete working demonstration of UTF: 8",
-              "starterCode": "<?php\n// UTF: 8\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'UTF: 8'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// UTF: 8\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'UTF: 8'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 48: UTF: 8\nfunction runDemo() {\n  console.log('Running: UTF: 8');\n  return { success: true, topic: 'UTF: 8' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 48: UTF: 8\nfunction runDemo() {\n  console.log('Running: UTF: 8');\n  return { success: true, topic: 'UTF: 8' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: UTF: 8"
             }
           ],
@@ -2441,9 +2441,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement UTF: 8",
               "description": "Write a clean solution for UTF: 8 that returns expected status.",
-              "starterCode": "<?php\n// UTF: 8\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'UTF: 8'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// UTF: 8\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'UTF: 8'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 48: UTF: 8\nfunction runDemo() {\n  console.log('Running: UTF: 8');\n  return { success: true, topic: 'UTF: 8' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 48: UTF: 8\nfunction runDemo() {\n  console.log('Running: UTF: 8');\n  return { success: true, topic: 'UTF: 8' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2455,7 +2455,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 48: UTF: 8",
-            "content": "### \ud83c\udf1f 1. Definition (What is UTF: 8?)\nUTF: 8 in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Input to simplify development and prevent common bugs.**\n- **Provides Output to simplify development and prevent common bugs.**\n- **Provides Data Storage and Access to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// UTF: 8\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'UTF: 8'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is UTF: 8?)\nUTF: 8 provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Input to write clean, predictable code.**\n- **Provides Output to write clean, predictable code.**\n- **Provides Data Storage and Access to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 48: UTF: 8\nfunction runDemo() {\n  console.log('Running: UTF: 8');\n  return { success: true, topic: 'UTF: 8' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering UTF: 8 is essential for professional engineering."
           }
         },
@@ -2483,8 +2483,8 @@ export const phpCompleteCourse = {
             {
               "title": "Unicode Support in PHP Working Implementation",
               "description": "Complete working demonstration of Unicode Support in PHP",
-              "starterCode": "<?php\n// Unicode Support in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unicode Support in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Unicode Support in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unicode Support in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 49: Unicode Support in PHP\nfunction runDemo() {\n  console.log('Running: Unicode Support in PHP');\n  return { success: true, topic: 'Unicode Support in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 49: Unicode Support in PHP\nfunction runDemo() {\n  console.log('Running: Unicode Support in PHP');\n  return { success: true, topic: 'Unicode Support in PHP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Unicode Support in PHP"
             }
           ],
@@ -2492,9 +2492,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Unicode Support in PHP",
               "description": "Write a clean solution for Unicode Support in PHP that returns expected status.",
-              "starterCode": "<?php\n// Unicode Support in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unicode Support in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Unicode Support in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unicode Support in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 49: Unicode Support in PHP\nfunction runDemo() {\n  console.log('Running: Unicode Support in PHP');\n  return { success: true, topic: 'Unicode Support in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 49: Unicode Support in PHP\nfunction runDemo() {\n  console.log('Running: Unicode Support in PHP');\n  return { success: true, topic: 'Unicode Support in PHP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2506,7 +2506,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 49: Unicode Support in PHP",
-            "content": "### \ud83c\udf1f 1. Definition (What is Unicode Support in PHP?)\nUnicode Support in PHP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Converting Unicode characters to \u201c\\uxxxx\u201d format using PHP to simplify development and prevent common bugs.**\n- **Provides Converting Unicode characters to their numeric value and/or HTML entities using PHP to simplify development and prevent common bugs.**\n- **Provides Intl extention for Unicode support to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Unicode Support in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unicode Support in PHP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Unicode Support in PHP?)\nUnicode Support in PHP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Converting Unicode characters to \u201c\\uxxxx\u201d format using PHP to write clean, predictable code.**\n- **Provides Converting Unicode characters to their numeric value and/or HTML entities using PHP to write clean, predictable code.**\n- **Provides Intl extention for Unicode support to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 49: Unicode Support in PHP\nfunction runDemo() {\n  console.log('Running: Unicode Support in PHP');\n  return { success: true, topic: 'Unicode Support in PHP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Unicode Support in PHP is essential for professional engineering."
           }
         },
@@ -2534,8 +2534,8 @@ export const phpCompleteCourse = {
             {
               "title": "URLs Working Implementation",
               "description": "Complete working demonstration of URLs",
-              "starterCode": "<?php\n// URLs\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'URLs'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// URLs\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'URLs'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 50: URLs\nfunction runDemo() {\n  console.log('Running: URLs');\n  return { success: true, topic: 'URLs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 50: URLs\nfunction runDemo() {\n  console.log('Running: URLs');\n  return { success: true, topic: 'URLs' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: URLs"
             }
           ],
@@ -2543,9 +2543,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement URLs",
               "description": "Write a clean solution for URLs that returns expected status.",
-              "starterCode": "<?php\n// URLs\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'URLs'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// URLs\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'URLs'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 50: URLs\nfunction runDemo() {\n  console.log('Running: URLs');\n  return { success: true, topic: 'URLs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 50: URLs\nfunction runDemo() {\n  console.log('Running: URLs');\n  return { success: true, topic: 'URLs' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2557,7 +2557,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 50: URLs",
-            "content": "### \ud83c\udf1f 1. Definition (What is URLs?)\nURLs in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Parsing a URL to simplify development and prevent common bugs.**\n- **Provides Build an URL: encoded query string from an array to simplify development and prevent common bugs.**\n- **Provides Redirecting to another URL to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// URLs\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'URLs'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is URLs?)\nURLs provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Parsing a URL to write clean, predictable code.**\n- **Provides Build an URL: encoded query string from an array to write clean, predictable code.**\n- **Provides Redirecting to another URL to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 50: URLs\nfunction runDemo() {\n  console.log('Running: URLs');\n  return { success: true, topic: 'URLs' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering URLs is essential for professional engineering."
           }
         }
@@ -2592,8 +2592,8 @@ export const phpCompleteCourse = {
             {
               "title": "How to break down an URL Working Implementation",
               "description": "Complete working demonstration of How to break down an URL",
-              "starterCode": "<?php\n// How to break down an URL\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to break down an URL'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// How to break down an URL\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to break down an URL'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 51: How to break down an URL\nfunction runDemo() {\n  console.log('Running: How to break down an URL');\n  return { success: true, topic: 'How to break down an URL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 51: How to break down an URL\nfunction runDemo() {\n  console.log('Running: How to break down an URL');\n  return { success: true, topic: 'How to break down an URL' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: How to break down an URL"
             }
           ],
@@ -2601,9 +2601,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement How to break down an URL",
               "description": "Write a clean solution for How to break down an URL that returns expected status.",
-              "starterCode": "<?php\n// How to break down an URL\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to break down an URL'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// How to break down an URL\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to break down an URL'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 51: How to break down an URL\nfunction runDemo() {\n  console.log('Running: How to break down an URL');\n  return { success: true, topic: 'How to break down an URL' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 51: How to break down an URL\nfunction runDemo() {\n  console.log('Running: How to break down an URL');\n  return { success: true, topic: 'How to break down an URL' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2615,7 +2615,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 51: How to break down an URL",
-            "content": "### \ud83c\udf1f 1. Definition (What is How to break down an URL?)\nHow to break down an URL in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using parse_url() to simplify development and prevent common bugs.**\n- **Provides Using explode() to simplify development and prevent common bugs.**\n- **Provides Using basename() to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// How to break down an URL\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to break down an URL'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is How to break down an URL?)\nHow to break down an URL provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using parse_url() to write clean, predictable code.**\n- **Provides Using explode() to write clean, predictable code.**\n- **Provides Using basename() to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 51: How to break down an URL\nfunction runDemo() {\n  console.log('Running: How to break down an URL');\n  return { success: true, topic: 'How to break down an URL' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering How to break down an URL is essential for professional engineering."
           }
         },
@@ -2639,8 +2639,8 @@ export const phpCompleteCourse = {
             {
               "title": "Object Serialization Working Implementation",
               "description": "Complete working demonstration of Object Serialization",
-              "starterCode": "<?php\n// Object Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Object Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Object Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Object Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 52: Object Serialization\nfunction runDemo() {\n  console.log('Running: Object Serialization');\n  return { success: true, topic: 'Object Serialization' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 52: Object Serialization\nfunction runDemo() {\n  console.log('Running: Object Serialization');\n  return { success: true, topic: 'Object Serialization' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Object Serialization"
             }
           ],
@@ -2648,9 +2648,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Object Serialization",
               "description": "Write a clean solution for Object Serialization that returns expected status.",
-              "starterCode": "<?php\n// Object Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Object Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Object Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Object Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 52: Object Serialization\nfunction runDemo() {\n  console.log('Running: Object Serialization');\n  return { success: true, topic: 'Object Serialization' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 52: Object Serialization\nfunction runDemo() {\n  console.log('Running: Object Serialization');\n  return { success: true, topic: 'Object Serialization' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2662,7 +2662,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 52: Object Serialization",
-            "content": "### \ud83c\udf1f 1. Definition (What is Object Serialization?)\nObject Serialization in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Serialize / Unserialize to simplify development and prevent common bugs.**\n- **Provides The Serializable interface to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Object Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Object Serialization'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Object Serialization?)\nObject Serialization provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Serialize / Unserialize to write clean, predictable code.**\n- **Provides The Serializable interface to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 52: Object Serialization\nfunction runDemo() {\n  console.log('Running: Object Serialization');\n  return { success: true, topic: 'Object Serialization' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Object Serialization is essential for professional engineering."
           }
         },
@@ -2686,8 +2686,8 @@ export const phpCompleteCourse = {
             {
               "title": "Serialization Working Implementation",
               "description": "Complete working demonstration of Serialization",
-              "starterCode": "<?php\n// Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 53: Serialization\nfunction runDemo() {\n  console.log('Running: Serialization');\n  return { success: true, topic: 'Serialization' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 53: Serialization\nfunction runDemo() {\n  console.log('Running: Serialization');\n  return { success: true, topic: 'Serialization' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Serialization"
             }
           ],
@@ -2695,9 +2695,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Serialization",
               "description": "Write a clean solution for Serialization that returns expected status.",
-              "starterCode": "<?php\n// Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Serialization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 53: Serialization\nfunction runDemo() {\n  console.log('Running: Serialization');\n  return { success: true, topic: 'Serialization' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 53: Serialization\nfunction runDemo() {\n  console.log('Running: Serialization');\n  return { success: true, topic: 'Serialization' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2709,7 +2709,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 53: Serialization",
-            "content": "### \ud83c\udf1f 1. Definition (What is Serialization?)\nSerialization in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Serialization of di\ue023erent types to simplify development and prevent common bugs.**\n- **Provides Security Issues with unserialize to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Serialization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Serialization'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Serialization?)\nSerialization provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Serialization of di\ue023erent types to write clean, predictable code.**\n- **Provides Security Issues with unserialize to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 53: Serialization\nfunction runDemo() {\n  console.log('Running: Serialization');\n  return { success: true, topic: 'Serialization' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Serialization is essential for professional engineering."
           }
         },
@@ -2737,8 +2737,8 @@ export const phpCompleteCourse = {
             {
               "title": "Closure Working Implementation",
               "description": "Complete working demonstration of Closure",
-              "starterCode": "<?php\n// Closure\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Closure'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Closure\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Closure'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 54: Closure\nfunction runDemo() {\n  console.log('Running: Closure');\n  return { success: true, topic: 'Closure' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 54: Closure\nfunction runDemo() {\n  console.log('Running: Closure');\n  return { success: true, topic: 'Closure' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Closure"
             }
           ],
@@ -2746,9 +2746,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Closure",
               "description": "Write a clean solution for Closure that returns expected status.",
-              "starterCode": "<?php\n// Closure\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Closure'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Closure\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Closure'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 54: Closure\nfunction runDemo() {\n  console.log('Running: Closure');\n  return { success: true, topic: 'Closure' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 54: Closure\nfunction runDemo() {\n  console.log('Running: Closure');\n  return { success: true, topic: 'Closure' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2760,7 +2760,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 54: Closure",
-            "content": "### \ud83c\udf1f 1. Definition (What is Closure?)\nClosure in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage of a closure to simplify development and prevent common bugs.**\n- **Provides Using external variables to simplify development and prevent common bugs.**\n- **Provides Basic closure binding to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Closure\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Closure'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Closure?)\nClosure provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage of a closure to write clean, predictable code.**\n- **Provides Using external variables to write clean, predictable code.**\n- **Provides Basic closure binding to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 54: Closure\nfunction runDemo() {\n  console.log('Running: Closure');\n  return { success: true, topic: 'Closure' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Closure is essential for professional engineering."
           }
         },
@@ -2788,8 +2788,8 @@ export const phpCompleteCourse = {
             {
               "title": "Reading Request Data Working Implementation",
               "description": "Complete working demonstration of Reading Request Data",
-              "starterCode": "<?php\n// Reading Request Data\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Reading Request Data'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Reading Request Data\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Reading Request Data'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 55: Reading Request Data\nfunction runDemo() {\n  console.log('Running: Reading Request Data');\n  return { success: true, topic: 'Reading Request Data' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 55: Reading Request Data\nfunction runDemo() {\n  console.log('Running: Reading Request Data');\n  return { success: true, topic: 'Reading Request Data' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Reading Request Data"
             }
           ],
@@ -2797,9 +2797,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Reading Request Data",
               "description": "Write a clean solution for Reading Request Data that returns expected status.",
-              "starterCode": "<?php\n// Reading Request Data\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Reading Request Data'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Reading Request Data\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Reading Request Data'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 55: Reading Request Data\nfunction runDemo() {\n  console.log('Running: Reading Request Data');\n  return { success: true, topic: 'Reading Request Data' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 55: Reading Request Data\nfunction runDemo() {\n  console.log('Running: Reading Request Data');\n  return { success: true, topic: 'Reading Request Data' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2811,7 +2811,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 55: Reading Request Data",
-            "content": "### \ud83c\udf1f 1. Definition (What is Reading Request Data?)\nReading Request Data in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Reading raw POST data to simplify development and prevent common bugs.**\n- **Provides Reading POST data to simplify development and prevent common bugs.**\n- **Provides Reading GET data to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Reading Request Data\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Reading Request Data'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Reading Request Data?)\nReading Request Data provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Reading raw POST data to write clean, predictable code.**\n- **Provides Reading POST data to write clean, predictable code.**\n- **Provides Reading GET data to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 55: Reading Request Data\nfunction runDemo() {\n  console.log('Running: Reading Request Data');\n  return { success: true, topic: 'Reading Request Data' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Reading Request Data is essential for professional engineering."
           }
         },
@@ -2839,8 +2839,8 @@ export const phpCompleteCourse = {
             {
               "title": "Type juggling and Non: Strict Comparison Issues Working Implementation",
               "description": "Complete working demonstration of Type juggling and Non: Strict Comparison Issues",
-              "starterCode": "<?php\n// Type juggling and Non: Strict Comparison Issues\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type juggling and Non: Strict Comparison Issues'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Type juggling and Non: Strict Comparison Issues\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type juggling and Non: Strict Comparison Issues'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 56: Type juggling and Non: Strict Comparison Issues\nfunction runDemo() {\n  console.log('Running: Type juggling and Non: Strict Comparison Issues');\n  return { success: true, topic: 'Type juggling and Non: Strict Comparison Issues' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 56: Type juggling and Non: Strict Comparison Issues\nfunction runDemo() {\n  console.log('Running: Type juggling and Non: Strict Comparison Issues');\n  return { success: true, topic: 'Type juggling and Non: Strict Comparison Issues' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Type juggling and Non: Strict Comparison Issues"
             }
           ],
@@ -2848,9 +2848,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Type juggling and Non: Strict Comparison Issues",
               "description": "Write a clean solution for Type juggling and Non: Strict Comparison Issues that returns expected status.",
-              "starterCode": "<?php\n// Type juggling and Non: Strict Comparison Issues\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type juggling and Non: Strict Comparison Issues'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Type juggling and Non: Strict Comparison Issues\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type juggling and Non: Strict Comparison Issues'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 56: Type juggling and Non: Strict Comparison Issues\nfunction runDemo() {\n  console.log('Running: Type juggling and Non: Strict Comparison Issues');\n  return { success: true, topic: 'Type juggling and Non: Strict Comparison Issues' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 56: Type juggling and Non: Strict Comparison Issues\nfunction runDemo() {\n  console.log('Running: Type juggling and Non: Strict Comparison Issues');\n  return { success: true, topic: 'Type juggling and Non: Strict Comparison Issues' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2862,7 +2862,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 56: Type juggling and Non: Strict Comparison Issues",
-            "content": "### \ud83c\udf1f 1. Definition (What is Type juggling and Non: Strict Comparison Issues?)\nType juggling and Non: Strict Comparison Issues in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is Type Juggling? to simplify development and prevent common bugs.**\n- **Provides Reading from a \ufb01le to simplify development and prevent common bugs.**\n- **Provides Switch surprises to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Type juggling and Non: Strict Comparison Issues\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Type juggling and Non: Strict Comparison Issues'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Type juggling and Non: Strict Comparison Issues?)\nType juggling and Non: Strict Comparison Issues provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides What is Type Juggling? to write clean, predictable code.**\n- **Provides Reading from a \ufb01le to write clean, predictable code.**\n- **Provides Switch surprises to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 56: Type juggling and Non: Strict Comparison Issues\nfunction runDemo() {\n  console.log('Running: Type juggling and Non: Strict Comparison Issues');\n  return { success: true, topic: 'Type juggling and Non: Strict Comparison Issues' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Type juggling and Non: Strict Comparison Issues is essential for professional engineering."
           }
         },
@@ -2890,8 +2890,8 @@ export const phpCompleteCourse = {
             {
               "title": "Sockets Working Implementation",
               "description": "Complete working demonstration of Sockets",
-              "starterCode": "<?php\n// Sockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sockets'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Sockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sockets'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 57: Sockets\nfunction runDemo() {\n  console.log('Running: Sockets');\n  return { success: true, topic: 'Sockets' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 57: Sockets\nfunction runDemo() {\n  console.log('Running: Sockets');\n  return { success: true, topic: 'Sockets' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Sockets"
             }
           ],
@@ -2899,9 +2899,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Sockets",
               "description": "Write a clean solution for Sockets that returns expected status.",
-              "starterCode": "<?php\n// Sockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sockets'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Sockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sockets'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 57: Sockets\nfunction runDemo() {\n  console.log('Running: Sockets');\n  return { success: true, topic: 'Sockets' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 57: Sockets\nfunction runDemo() {\n  console.log('Running: Sockets');\n  return { success: true, topic: 'Sockets' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2913,7 +2913,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 57: Sockets",
-            "content": "### \ud83c\udf1f 1. Definition (What is Sockets?)\nSockets in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides TCP client socket to simplify development and prevent common bugs.**\n- **Provides TCP server socket to simplify development and prevent common bugs.**\n- **Provides UDP server socket to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Sockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sockets'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Sockets?)\nSockets provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides TCP client socket to write clean, predictable code.**\n- **Provides TCP server socket to write clean, predictable code.**\n- **Provides UDP server socket to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 57: Sockets\nfunction runDemo() {\n  console.log('Running: Sockets');\n  return { success: true, topic: 'Sockets' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Sockets is essential for professional engineering."
           }
         },
@@ -2941,8 +2941,8 @@ export const phpCompleteCourse = {
             {
               "title": "PDO Working Implementation",
               "description": "Complete working demonstration of PDO",
-              "starterCode": "<?php\n// PDO\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PDO'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PDO\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PDO'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 58: PDO\nfunction runDemo() {\n  console.log('Running: PDO');\n  return { success: true, topic: 'PDO' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 58: PDO\nfunction runDemo() {\n  console.log('Running: PDO');\n  return { success: true, topic: 'PDO' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: PDO"
             }
           ],
@@ -2950,9 +2950,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement PDO",
               "description": "Write a clean solution for PDO that returns expected status.",
-              "starterCode": "<?php\n// PDO\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PDO'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PDO\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PDO'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 58: PDO\nfunction runDemo() {\n  console.log('Running: PDO');\n  return { success: true, topic: 'PDO' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 58: PDO\nfunction runDemo() {\n  console.log('Running: PDO');\n  return { success: true, topic: 'PDO' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2964,7 +2964,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 58: PDO",
-            "content": "### \ud83c\udf1f 1. Definition (What is PDO?)\nPDO in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Preventing SQL injection with Parameterized Queries to simplify development and prevent common bugs.**\n- **Provides Basic PDO Connection and Retrieval to simplify development and prevent common bugs.**\n- **Provides Database Transactions with PDO to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// PDO\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PDO'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is PDO?)\nPDO provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Preventing SQL injection with Parameterized Queries to write clean, predictable code.**\n- **Provides Basic PDO Connection and Retrieval to write clean, predictable code.**\n- **Provides Database Transactions with PDO to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 58: PDO\nfunction runDemo() {\n  console.log('Running: PDO');\n  return { success: true, topic: 'PDO' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering PDO is essential for professional engineering."
           }
         },
@@ -2992,8 +2992,8 @@ export const phpCompleteCourse = {
             {
               "title": "PHP MySQLi Working Implementation",
               "description": "Complete working demonstration of PHP MySQLi",
-              "starterCode": "<?php\n// PHP MySQLi\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP MySQLi'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PHP MySQLi\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP MySQLi'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 59: PHP MySQLi\nfunction runDemo() {\n  console.log('Running: PHP MySQLi');\n  return { success: true, topic: 'PHP MySQLi' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 59: PHP MySQLi\nfunction runDemo() {\n  console.log('Running: PHP MySQLi');\n  return { success: true, topic: 'PHP MySQLi' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: PHP MySQLi"
             }
           ],
@@ -3001,9 +3001,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement PHP MySQLi",
               "description": "Write a clean solution for PHP MySQLi that returns expected status.",
-              "starterCode": "<?php\n// PHP MySQLi\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP MySQLi'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PHP MySQLi\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP MySQLi'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 59: PHP MySQLi\nfunction runDemo() {\n  console.log('Running: PHP MySQLi');\n  return { success: true, topic: 'PHP MySQLi' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 59: PHP MySQLi\nfunction runDemo() {\n  console.log('Running: PHP MySQLi');\n  return { success: true, topic: 'PHP MySQLi' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3015,7 +3015,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 59: PHP MySQLi",
-            "content": "### \ud83c\udf1f 1. Definition (What is PHP MySQLi?)\nPHP MySQLi in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Close connection to simplify development and prevent common bugs.**\n- **Provides MySQLi connect to simplify development and prevent common bugs.**\n- **Provides Loop through MySQLi results to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// PHP MySQLi\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP MySQLi'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is PHP MySQLi?)\nPHP MySQLi provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Close connection to write clean, predictable code.**\n- **Provides MySQLi connect to write clean, predictable code.**\n- **Provides Loop through MySQLi results to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 59: PHP MySQLi\nfunction runDemo() {\n  console.log('Running: PHP MySQLi');\n  return { success: true, topic: 'PHP MySQLi' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering PHP MySQLi is essential for professional engineering."
           }
         },
@@ -3043,8 +3043,8 @@ export const phpCompleteCourse = {
             {
               "title": "SQLite3 Working Implementation",
               "description": "Complete working demonstration of SQLite3",
-              "starterCode": "<?php\n// SQLite3\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SQLite3'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SQLite3\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SQLite3'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 60: SQLite3\nfunction runDemo() {\n  console.log('Running: SQLite3');\n  return { success: true, topic: 'SQLite3' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 60: SQLite3\nfunction runDemo() {\n  console.log('Running: SQLite3');\n  return { success: true, topic: 'SQLite3' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: SQLite3"
             }
           ],
@@ -3052,9 +3052,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement SQLite3",
               "description": "Write a clean solution for SQLite3 that returns expected status.",
-              "starterCode": "<?php\n// SQLite3\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SQLite3'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SQLite3\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SQLite3'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 60: SQLite3\nfunction runDemo() {\n  console.log('Running: SQLite3');\n  return { success: true, topic: 'SQLite3' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 60: SQLite3\nfunction runDemo() {\n  console.log('Running: SQLite3');\n  return { success: true, topic: 'SQLite3' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3066,7 +3066,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 60: SQLite3",
-            "content": "### \ud83c\udf1f 1. Definition (What is SQLite3?)\nSQLite3 in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SQLite3 Quickstart Tutorial to simplify development and prevent common bugs.**\n- **Provides Querying a database to simplify development and prevent common bugs.**\n- **Provides Retrieving only one result to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// SQLite3\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SQLite3'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is SQLite3?)\nSQLite3 provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SQLite3 Quickstart Tutorial to write clean, predictable code.**\n- **Provides Querying a database to write clean, predictable code.**\n- **Provides Retrieving only one result to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 60: SQLite3\nfunction runDemo() {\n  console.log('Running: SQLite3');\n  return { success: true, topic: 'SQLite3' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering SQLite3 is essential for professional engineering."
           }
         }
@@ -3101,8 +3101,8 @@ export const phpCompleteCourse = {
             {
               "title": "Using MongoDB Working Implementation",
               "description": "Complete working demonstration of Using MongoDB",
-              "starterCode": "<?php\n// Using MongoDB\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using MongoDB'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using MongoDB\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using MongoDB'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 61: Using MongoDB\nfunction runDemo() {\n  console.log('Running: Using MongoDB');\n  return { success: true, topic: 'Using MongoDB' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 61: Using MongoDB\nfunction runDemo() {\n  console.log('Running: Using MongoDB');\n  return { success: true, topic: 'Using MongoDB' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Using MongoDB"
             }
           ],
@@ -3110,9 +3110,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Using MongoDB",
               "description": "Write a clean solution for Using MongoDB that returns expected status.",
-              "starterCode": "<?php\n// Using MongoDB\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using MongoDB'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using MongoDB\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using MongoDB'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 61: Using MongoDB\nfunction runDemo() {\n  console.log('Running: Using MongoDB');\n  return { success: true, topic: 'Using MongoDB' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 61: Using MongoDB\nfunction runDemo() {\n  console.log('Running: Using MongoDB');\n  return { success: true, topic: 'Using MongoDB' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3124,7 +3124,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 61: Using MongoDB",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using MongoDB?)\nUsing MongoDB in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connect to MongoDB to simplify development and prevent common bugs.**\n- **Provides Get multiple documents: \ufb01nd() to simplify development and prevent common bugs.**\n- **Provides Get one document: \ufb01ndOne() to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Using MongoDB\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using MongoDB'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using MongoDB?)\nUsing MongoDB provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connect to MongoDB to write clean, predictable code.**\n- **Provides Get multiple documents: \ufb01nd() to write clean, predictable code.**\n- **Provides Get one document: \ufb01ndOne() to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 61: Using MongoDB\nfunction runDemo() {\n  console.log('Running: Using MongoDB');\n  return { success: true, topic: 'Using MongoDB' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Using MongoDB is essential for professional engineering."
           }
         },
@@ -3144,8 +3144,8 @@ export const phpCompleteCourse = {
             {
               "title": "mongo: php Working Implementation",
               "description": "Complete working demonstration of mongo: php",
-              "starterCode": "<?php\n// mongo: php\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'mongo: php'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// mongo: php\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'mongo: php'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 62: mongo: php\nfunction runDemo() {\n  console.log('Running: mongo: php');\n  return { success: true, topic: 'mongo: php' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 62: mongo: php\nfunction runDemo() {\n  console.log('Running: mongo: php');\n  return { success: true, topic: 'mongo: php' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: mongo: php"
             }
           ],
@@ -3153,9 +3153,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement mongo: php",
               "description": "Write a clean solution for mongo: php that returns expected status.",
-              "starterCode": "<?php\n// mongo: php\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'mongo: php'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// mongo: php\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'mongo: php'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 62: mongo: php\nfunction runDemo() {\n  console.log('Running: mongo: php');\n  return { success: true, topic: 'mongo: php' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 62: mongo: php\nfunction runDemo() {\n  console.log('Running: mongo: php');\n  return { success: true, topic: 'mongo: php' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3167,7 +3167,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 62: mongo: php",
-            "content": "### \ud83c\udf1f 1. Definition (What is mongo: php?)\nmongo: php in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Everything in between MongoDB and Php to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// mongo: php\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'mongo: php'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is mongo: php?)\nmongo: php provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Everything in between MongoDB and Php to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 62: mongo: php\nfunction runDemo() {\n  console.log('Running: mongo: php');\n  return { success: true, topic: 'mongo: php' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering mongo: php is essential for professional engineering."
           }
         },
@@ -3195,8 +3195,8 @@ export const phpCompleteCourse = {
             {
               "title": "Using Redis with PHP Working Implementation",
               "description": "Complete working demonstration of Using Redis with PHP",
-              "starterCode": "<?php\n// Using Redis with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using Redis with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using Redis with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using Redis with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 63: Using Redis with PHP\nfunction runDemo() {\n  console.log('Running: Using Redis with PHP');\n  return { success: true, topic: 'Using Redis with PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 63: Using Redis with PHP\nfunction runDemo() {\n  console.log('Running: Using Redis with PHP');\n  return { success: true, topic: 'Using Redis with PHP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Using Redis with PHP"
             }
           ],
@@ -3204,9 +3204,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Using Redis with PHP",
               "description": "Write a clean solution for Using Redis with PHP that returns expected status.",
-              "starterCode": "<?php\n// Using Redis with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using Redis with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using Redis with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using Redis with PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 63: Using Redis with PHP\nfunction runDemo() {\n  console.log('Running: Using Redis with PHP');\n  return { success: true, topic: 'Using Redis with PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 63: Using Redis with PHP\nfunction runDemo() {\n  console.log('Running: Using Redis with PHP');\n  return { success: true, topic: 'Using Redis with PHP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3218,7 +3218,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 63: Using Redis with PHP",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using Redis with PHP?)\nUsing Redis with PHP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connecting to a Redis instance to simplify development and prevent common bugs.**\n- **Provides Installing PHP Redis on Ubuntu to simplify development and prevent common bugs.**\n- **Provides Executing Redis commands in PHP to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Using Redis with PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using Redis with PHP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using Redis with PHP?)\nUsing Redis with PHP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connecting to a Redis instance to write clean, predictable code.**\n- **Provides Installing PHP Redis on Ubuntu to write clean, predictable code.**\n- **Provides Executing Redis commands in PHP to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 63: Using Redis with PHP\nfunction runDemo() {\n  console.log('Running: Using Redis with PHP');\n  return { success: true, topic: 'Using Redis with PHP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Using Redis with PHP is essential for professional engineering."
           }
         },
@@ -3246,8 +3246,8 @@ export const phpCompleteCourse = {
             {
               "title": "Sending Email Working Implementation",
               "description": "Complete working demonstration of Sending Email",
-              "starterCode": "<?php\n// Sending Email\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sending Email'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Sending Email\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sending Email'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 64: Sending Email\nfunction runDemo() {\n  console.log('Running: Sending Email');\n  return { success: true, topic: 'Sending Email' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 64: Sending Email\nfunction runDemo() {\n  console.log('Running: Sending Email');\n  return { success: true, topic: 'Sending Email' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Sending Email"
             }
           ],
@@ -3255,9 +3255,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Sending Email",
               "description": "Write a clean solution for Sending Email that returns expected status.",
-              "starterCode": "<?php\n// Sending Email\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sending Email'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Sending Email\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sending Email'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 64: Sending Email\nfunction runDemo() {\n  console.log('Running: Sending Email');\n  return { success: true, topic: 'Sending Email' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 64: Sending Email\nfunction runDemo() {\n  console.log('Running: Sending Email');\n  return { success: true, topic: 'Sending Email' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3269,7 +3269,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 64: Sending Email",
-            "content": "### \ud83c\udf1f 1. Definition (What is Sending Email?)\nSending Email in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sending Email: The basics, more details, and a full example to simplify development and prevent common bugs.**\n- **Provides Sending HTML Email Using mail() to simplify development and prevent common bugs.**\n- **Provides Sending Email With An Attachment Using mail() to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Sending Email\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Sending Email'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Sending Email?)\nSending Email provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Sending Email: The basics, more details, and a full example to write clean, predictable code.**\n- **Provides Sending HTML Email Using mail() to write clean, predictable code.**\n- **Provides Sending Email With An Attachment Using mail() to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 64: Sending Email\nfunction runDemo() {\n  console.log('Running: Sending Email');\n  return { success: true, topic: 'Sending Email' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Sending Email is essential for professional engineering."
           }
         },
@@ -3297,8 +3297,8 @@ export const phpCompleteCourse = {
             {
               "title": "Using SQLSRV Working Implementation",
               "description": "Complete working demonstration of Using SQLSRV",
-              "starterCode": "<?php\n// Using SQLSRV\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using SQLSRV'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using SQLSRV\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using SQLSRV'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 65: Using SQLSRV\nfunction runDemo() {\n  console.log('Running: Using SQLSRV');\n  return { success: true, topic: 'Using SQLSRV' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 65: Using SQLSRV\nfunction runDemo() {\n  console.log('Running: Using SQLSRV');\n  return { success: true, topic: 'Using SQLSRV' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Using SQLSRV"
             }
           ],
@@ -3306,9 +3306,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Using SQLSRV",
               "description": "Write a clean solution for Using SQLSRV that returns expected status.",
-              "starterCode": "<?php\n// Using SQLSRV\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using SQLSRV'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Using SQLSRV\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using SQLSRV'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 65: Using SQLSRV\nfunction runDemo() {\n  console.log('Running: Using SQLSRV');\n  return { success: true, topic: 'Using SQLSRV' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 65: Using SQLSRV\nfunction runDemo() {\n  console.log('Running: Using SQLSRV');\n  return { success: true, topic: 'Using SQLSRV' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3320,7 +3320,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 65: Using SQLSRV",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using SQLSRV?)\nUsing SQLSRV in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Retrieving Error Messages to simplify development and prevent common bugs.**\n- **Provides Fetching Query Results to simplify development and prevent common bugs.**\n- **Provides Creating a Connection to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Using SQLSRV\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Using SQLSRV'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using SQLSRV?)\nUsing SQLSRV provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Retrieving Error Messages to write clean, predictable code.**\n- **Provides Fetching Query Results to write clean, predictable code.**\n- **Provides Creating a Connection to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 65: Using SQLSRV\nfunction runDemo() {\n  console.log('Running: Using SQLSRV');\n  return { success: true, topic: 'Using SQLSRV' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Using SQLSRV is essential for professional engineering."
           }
         },
@@ -3348,8 +3348,8 @@ export const phpCompleteCourse = {
             {
               "title": "Command Line Interface (CLI) Working Implementation",
               "description": "Complete working demonstration of Command Line Interface (CLI)",
-              "starterCode": "<?php\n// Command Line Interface (CLI)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Command Line Interface (CLI)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Command Line Interface (CLI)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Command Line Interface (CLI)'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 66: Command Line Interface (CLI)\nfunction runDemo() {\n  console.log('Running: Command Line Interface (CLI)');\n  return { success: true, topic: 'Command Line Interface (CLI)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 66: Command Line Interface (CLI)\nfunction runDemo() {\n  console.log('Running: Command Line Interface (CLI)');\n  return { success: true, topic: 'Command Line Interface (CLI)' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Command Line Interface (CLI)"
             }
           ],
@@ -3357,9 +3357,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Command Line Interface (CLI)",
               "description": "Write a clean solution for Command Line Interface (CLI) that returns expected status.",
-              "starterCode": "<?php\n// Command Line Interface (CLI)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Command Line Interface (CLI)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Command Line Interface (CLI)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Command Line Interface (CLI)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 66: Command Line Interface (CLI)\nfunction runDemo() {\n  console.log('Running: Command Line Interface (CLI)');\n  return { success: true, topic: 'Command Line Interface (CLI)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 66: Command Line Interface (CLI)\nfunction runDemo() {\n  console.log('Running: Command Line Interface (CLI)');\n  return { success: true, topic: 'Command Line Interface (CLI)' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3371,7 +3371,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 66: Command Line Interface (CLI)",
-            "content": "### \ud83c\udf1f 1. Definition (What is Command Line Interface (CLI)?)\nCommand Line Interface (CLI) in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Handling Program Options to simplify development and prevent common bugs.**\n- **Provides Argument Handling to simplify development and prevent common bugs.**\n- **Provides Input and Output Handling to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Command Line Interface (CLI)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Command Line Interface (CLI)'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Command Line Interface (CLI)?)\nCommand Line Interface (CLI) provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Handling Program Options to write clean, predictable code.**\n- **Provides Argument Handling to write clean, predictable code.**\n- **Provides Input and Output Handling to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 66: Command Line Interface (CLI)\nfunction runDemo() {\n  console.log('Running: Command Line Interface (CLI)');\n  return { success: true, topic: 'Command Line Interface (CLI)' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Command Line Interface (CLI) is essential for professional engineering."
           }
         },
@@ -3391,8 +3391,8 @@ export const phpCompleteCourse = {
             {
               "title": "Localization Working Implementation",
               "description": "Complete working demonstration of Localization",
-              "starterCode": "<?php\n// Localization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Localization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Localization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Localization'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 67: Localization\nfunction runDemo() {\n  console.log('Running: Localization');\n  return { success: true, topic: 'Localization' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 67: Localization\nfunction runDemo() {\n  console.log('Running: Localization');\n  return { success: true, topic: 'Localization' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Localization"
             }
           ],
@@ -3400,9 +3400,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Localization",
               "description": "Write a clean solution for Localization that returns expected status.",
-              "starterCode": "<?php\n// Localization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Localization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Localization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Localization'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 67: Localization\nfunction runDemo() {\n  console.log('Running: Localization');\n  return { success: true, topic: 'Localization' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 67: Localization\nfunction runDemo() {\n  console.log('Running: Localization');\n  return { success: true, topic: 'Localization' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3414,7 +3414,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 67: Localization",
-            "content": "### \ud83c\udf1f 1. Definition (What is Localization?)\nLocalization in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Localizing strings with gettext() to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Localization\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Localization'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Localization?)\nLocalization provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Localizing strings with gettext() to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 67: Localization\nfunction runDemo() {\n  console.log('Running: Localization');\n  return { success: true, topic: 'Localization' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Localization is essential for professional engineering."
           }
         },
@@ -3434,8 +3434,8 @@ export const phpCompleteCourse = {
             {
               "title": "Headers Manipulation Working Implementation",
               "description": "Complete working demonstration of Headers Manipulation",
-              "starterCode": "<?php\n// Headers Manipulation\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Headers Manipulation'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Headers Manipulation\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Headers Manipulation'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 68: Headers Manipulation\nfunction runDemo() {\n  console.log('Running: Headers Manipulation');\n  return { success: true, topic: 'Headers Manipulation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 68: Headers Manipulation\nfunction runDemo() {\n  console.log('Running: Headers Manipulation');\n  return { success: true, topic: 'Headers Manipulation' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Headers Manipulation"
             }
           ],
@@ -3443,9 +3443,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Headers Manipulation",
               "description": "Write a clean solution for Headers Manipulation that returns expected status.",
-              "starterCode": "<?php\n// Headers Manipulation\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Headers Manipulation'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Headers Manipulation\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Headers Manipulation'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 68: Headers Manipulation\nfunction runDemo() {\n  console.log('Running: Headers Manipulation');\n  return { success: true, topic: 'Headers Manipulation' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 68: Headers Manipulation\nfunction runDemo() {\n  console.log('Running: Headers Manipulation');\n  return { success: true, topic: 'Headers Manipulation' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3457,7 +3457,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 68: Headers Manipulation",
-            "content": "### \ud83c\udf1f 1. Definition (What is Headers Manipulation?)\nHeaders Manipulation in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Setting of a Header to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Headers Manipulation\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Headers Manipulation'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Headers Manipulation?)\nHeaders Manipulation provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Setting of a Header to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 68: Headers Manipulation\nfunction runDemo() {\n  console.log('Running: Headers Manipulation');\n  return { success: true, topic: 'Headers Manipulation' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Headers Manipulation is essential for professional engineering."
           }
         },
@@ -3477,8 +3477,8 @@ export const phpCompleteCourse = {
             {
               "title": "Coding Conventions Working Implementation",
               "description": "Complete working demonstration of Coding Conventions",
-              "starterCode": "<?php\n// Coding Conventions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Coding Conventions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Coding Conventions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Coding Conventions'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 69: Coding Conventions\nfunction runDemo() {\n  console.log('Running: Coding Conventions');\n  return { success: true, topic: 'Coding Conventions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 69: Coding Conventions\nfunction runDemo() {\n  console.log('Running: Coding Conventions');\n  return { success: true, topic: 'Coding Conventions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Coding Conventions"
             }
           ],
@@ -3486,9 +3486,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Coding Conventions",
               "description": "Write a clean solution for Coding Conventions that returns expected status.",
-              "starterCode": "<?php\n// Coding Conventions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Coding Conventions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Coding Conventions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Coding Conventions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 69: Coding Conventions\nfunction runDemo() {\n  console.log('Running: Coding Conventions');\n  return { success: true, topic: 'Coding Conventions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 69: Coding Conventions\nfunction runDemo() {\n  console.log('Running: Coding Conventions');\n  return { success: true, topic: 'Coding Conventions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3500,7 +3500,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 69: Coding Conventions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Coding Conventions?)\nCoding Conventions in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides PHP Tags to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Coding Conventions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Coding Conventions'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Coding Conventions?)\nCoding Conventions provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides PHP Tags to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 69: Coding Conventions\nfunction runDemo() {\n  console.log('Running: Coding Conventions');\n  return { success: true, topic: 'Coding Conventions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Coding Conventions is essential for professional engineering."
           }
         },
@@ -3528,8 +3528,8 @@ export const phpCompleteCourse = {
             {
               "title": "Asynchronous programming Working Implementation",
               "description": "Complete working demonstration of Asynchronous programming",
-              "starterCode": "<?php\n// Asynchronous programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Asynchronous programming'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Asynchronous programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Asynchronous programming'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 70: Asynchronous programming\nfunction runDemo() {\n  console.log('Running: Asynchronous programming');\n  return { success: true, topic: 'Asynchronous programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 70: Asynchronous programming\nfunction runDemo() {\n  console.log('Running: Asynchronous programming');\n  return { success: true, topic: 'Asynchronous programming' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Asynchronous programming"
             }
           ],
@@ -3537,9 +3537,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Asynchronous programming",
               "description": "Write a clean solution for Asynchronous programming that returns expected status.",
-              "starterCode": "<?php\n// Asynchronous programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Asynchronous programming'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Asynchronous programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Asynchronous programming'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 70: Asynchronous programming\nfunction runDemo() {\n  console.log('Running: Asynchronous programming');\n  return { success: true, topic: 'Asynchronous programming' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 70: Asynchronous programming\nfunction runDemo() {\n  console.log('Running: Asynchronous programming');\n  return { success: true, topic: 'Asynchronous programming' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3551,7 +3551,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 70: Asynchronous programming",
-            "content": "### \ud83c\udf1f 1. Definition (What is Asynchronous programming?)\nAsynchronous programming in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Advantages of Generators to simplify development and prevent common bugs.**\n- **Provides Using Icicle event loop to simplify development and prevent common bugs.**\n- **Provides Spawning non: blocking processes with proc_open() to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Asynchronous programming\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Asynchronous programming'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Asynchronous programming?)\nAsynchronous programming provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Advantages of Generators to write clean, predictable code.**\n- **Provides Using Icicle event loop to write clean, predictable code.**\n- **Provides Spawning non: blocking processes with proc_open() to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 70: Asynchronous programming\nfunction runDemo() {\n  console.log('Running: Asynchronous programming');\n  return { success: true, topic: 'Asynchronous programming' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Asynchronous programming is essential for professional engineering."
           }
         }
@@ -3578,8 +3578,8 @@ export const phpCompleteCourse = {
             {
               "title": "How to Detect Client IP Address Working Implementation",
               "description": "Complete working demonstration of How to Detect Client IP Address",
-              "starterCode": "<?php\n// How to Detect Client IP Address\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to Detect Client IP Address'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// How to Detect Client IP Address\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to Detect Client IP Address'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 71: How to Detect Client IP Address\nfunction runDemo() {\n  console.log('Running: How to Detect Client IP Address');\n  return { success: true, topic: 'How to Detect Client IP Address' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 71: How to Detect Client IP Address\nfunction runDemo() {\n  console.log('Running: How to Detect Client IP Address');\n  return { success: true, topic: 'How to Detect Client IP Address' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: How to Detect Client IP Address"
             }
           ],
@@ -3587,9 +3587,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement How to Detect Client IP Address",
               "description": "Write a clean solution for How to Detect Client IP Address that returns expected status.",
-              "starterCode": "<?php\n// How to Detect Client IP Address\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to Detect Client IP Address'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// How to Detect Client IP Address\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to Detect Client IP Address'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 71: How to Detect Client IP Address\nfunction runDemo() {\n  console.log('Running: How to Detect Client IP Address');\n  return { success: true, topic: 'How to Detect Client IP Address' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 71: How to Detect Client IP Address\nfunction runDemo() {\n  console.log('Running: How to Detect Client IP Address');\n  return { success: true, topic: 'How to Detect Client IP Address' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3601,7 +3601,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 71: How to Detect Client IP Address",
-            "content": "### \ud83c\udf1f 1. Definition (What is How to Detect Client IP Address?)\nHow to Detect Client IP Address in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Proper use of HTTP_X_FORWARDED_FOR to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// How to Detect Client IP Address\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'How to Detect Client IP Address'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is How to Detect Client IP Address?)\nHow to Detect Client IP Address provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Proper use of HTTP_X_FORWARDED_FOR to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 71: How to Detect Client IP Address\nfunction runDemo() {\n  console.log('Running: How to Detect Client IP Address');\n  return { success: true, topic: 'How to Detect Client IP Address' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering How to Detect Client IP Address is essential for professional engineering."
           }
         },
@@ -3621,8 +3621,8 @@ export const phpCompleteCourse = {
             {
               "title": "Create PDF \ufb01les in PHP Working Implementation",
               "description": "Complete working demonstration of Create PDF \ufb01les in PHP",
-              "starterCode": "<?php\n// Create PDF \ufb01les in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Create PDF \ufb01les in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Create PDF \ufb01les in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Create PDF \ufb01les in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 72: Create PDF \ufb01les in PHP\nfunction runDemo() {\n  console.log('Running: Create PDF \ufb01les in PHP');\n  return { success: true, topic: 'Create PDF \ufb01les in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 72: Create PDF \ufb01les in PHP\nfunction runDemo() {\n  console.log('Running: Create PDF \ufb01les in PHP');\n  return { success: true, topic: 'Create PDF \ufb01les in PHP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Create PDF \ufb01les in PHP"
             }
           ],
@@ -3630,9 +3630,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Create PDF \ufb01les in PHP",
               "description": "Write a clean solution for Create PDF \ufb01les in PHP that returns expected status.",
-              "starterCode": "<?php\n// Create PDF \ufb01les in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Create PDF \ufb01les in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Create PDF \ufb01les in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Create PDF \ufb01les in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 72: Create PDF \ufb01les in PHP\nfunction runDemo() {\n  console.log('Running: Create PDF \ufb01les in PHP');\n  return { success: true, topic: 'Create PDF \ufb01les in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 72: Create PDF \ufb01les in PHP\nfunction runDemo() {\n  console.log('Running: Create PDF \ufb01les in PHP');\n  return { success: true, topic: 'Create PDF \ufb01les in PHP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3644,7 +3644,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 72: Create PDF \ufb01les in PHP",
-            "content": "### \ud83c\udf1f 1. Definition (What is Create PDF \ufb01les in PHP?)\nCreate PDF \ufb01les in PHP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting Started with PDFlib to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Create PDF \ufb01les in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Create PDF \ufb01les in PHP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Create PDF \ufb01les in PHP?)\nCreate PDF \ufb01les in PHP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting Started with PDFlib to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 72: Create PDF \ufb01les in PHP\nfunction runDemo() {\n  console.log('Running: Create PDF \ufb01les in PHP');\n  return { success: true, topic: 'Create PDF \ufb01les in PHP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Create PDF \ufb01les in PHP is essential for professional engineering."
           }
         },
@@ -3668,8 +3668,8 @@ export const phpCompleteCourse = {
             {
               "title": "YAML in PHP Working Implementation",
               "description": "Complete working demonstration of YAML in PHP",
-              "starterCode": "<?php\n// YAML in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'YAML in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// YAML in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'YAML in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 73: YAML in PHP\nfunction runDemo() {\n  console.log('Running: YAML in PHP');\n  return { success: true, topic: 'YAML in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 73: YAML in PHP\nfunction runDemo() {\n  console.log('Running: YAML in PHP');\n  return { success: true, topic: 'YAML in PHP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: YAML in PHP"
             }
           ],
@@ -3677,9 +3677,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement YAML in PHP",
               "description": "Write a clean solution for YAML in PHP that returns expected status.",
-              "starterCode": "<?php\n// YAML in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'YAML in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// YAML in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'YAML in PHP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 73: YAML in PHP\nfunction runDemo() {\n  console.log('Running: YAML in PHP');\n  return { success: true, topic: 'YAML in PHP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 73: YAML in PHP\nfunction runDemo() {\n  console.log('Running: YAML in PHP');\n  return { success: true, topic: 'YAML in PHP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3691,7 +3691,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 73: YAML in PHP",
-            "content": "### \ud83c\udf1f 1. Definition (What is YAML in PHP?)\nYAML in PHP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Installing YAML extension to simplify development and prevent common bugs.**\n- **Provides Using YAML to store application con\ufb01guration to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// YAML in PHP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'YAML in PHP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is YAML in PHP?)\nYAML in PHP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Installing YAML extension to write clean, predictable code.**\n- **Provides Using YAML to store application con\ufb01guration to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 73: YAML in PHP\nfunction runDemo() {\n  console.log('Running: YAML in PHP');\n  return { success: true, topic: 'YAML in PHP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering YAML in PHP is essential for professional engineering."
           }
         },
@@ -3719,8 +3719,8 @@ export const phpCompleteCourse = {
             {
               "title": "Image Processing with GD Working Implementation",
               "description": "Complete working demonstration of Image Processing with GD",
-              "starterCode": "<?php\n// Image Processing with GD\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Image Processing with GD'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Image Processing with GD\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Image Processing with GD'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 74: Image Processing with GD\nfunction runDemo() {\n  console.log('Running: Image Processing with GD');\n  return { success: true, topic: 'Image Processing with GD' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 74: Image Processing with GD\nfunction runDemo() {\n  console.log('Running: Image Processing with GD');\n  return { success: true, topic: 'Image Processing with GD' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Image Processing with GD"
             }
           ],
@@ -3728,9 +3728,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Image Processing with GD",
               "description": "Write a clean solution for Image Processing with GD that returns expected status.",
-              "starterCode": "<?php\n// Image Processing with GD\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Image Processing with GD'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Image Processing with GD\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Image Processing with GD'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 74: Image Processing with GD\nfunction runDemo() {\n  console.log('Running: Image Processing with GD');\n  return { success: true, topic: 'Image Processing with GD' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 74: Image Processing with GD\nfunction runDemo() {\n  console.log('Running: Image Processing with GD');\n  return { success: true, topic: 'Image Processing with GD' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3742,7 +3742,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 74: Image Processing with GD",
-            "content": "### \ud83c\udf1f 1. Definition (What is Image Processing with GD?)\nImage Processing with GD in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Image output to simplify development and prevent common bugs.**\n- **Provides Creating an image to simplify development and prevent common bugs.**\n- **Provides Image Cropping and Resizing to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Image Processing with GD\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Image Processing with GD'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Image Processing with GD?)\nImage Processing with GD provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Image output to write clean, predictable code.**\n- **Provides Creating an image to write clean, predictable code.**\n- **Provides Image Cropping and Resizing to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 74: Image Processing with GD\nfunction runDemo() {\n  console.log('Running: Image Processing with GD');\n  return { success: true, topic: 'Image Processing with GD' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Image Processing with GD is essential for professional engineering."
           }
         },
@@ -3766,8 +3766,8 @@ export const phpCompleteCourse = {
             {
               "title": "Imagick Working Implementation",
               "description": "Complete working demonstration of Imagick",
-              "starterCode": "<?php\n// Imagick\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Imagick'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Imagick\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Imagick'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 75: Imagick\nfunction runDemo() {\n  console.log('Running: Imagick');\n  return { success: true, topic: 'Imagick' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 75: Imagick\nfunction runDemo() {\n  console.log('Running: Imagick');\n  return { success: true, topic: 'Imagick' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Imagick"
             }
           ],
@@ -3775,9 +3775,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Imagick",
               "description": "Write a clean solution for Imagick that returns expected status.",
-              "starterCode": "<?php\n// Imagick\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Imagick'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Imagick\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Imagick'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 75: Imagick\nfunction runDemo() {\n  console.log('Running: Imagick');\n  return { success: true, topic: 'Imagick' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 75: Imagick\nfunction runDemo() {\n  console.log('Running: Imagick');\n  return { success: true, topic: 'Imagick' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3789,7 +3789,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 75: Imagick",
-            "content": "### \ud83c\udf1f 1. Definition (What is Imagick?)\nImagick in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides First Steps to simplify development and prevent common bugs.**\n- **Provides Convert Image into base64 String to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Imagick\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Imagick'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Imagick?)\nImagick provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides First Steps to write clean, predictable code.**\n- **Provides Convert Image into base64 String to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 75: Imagick\nfunction runDemo() {\n  console.log('Running: Imagick');\n  return { success: true, topic: 'Imagick' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Imagick is essential for professional engineering."
           }
         },
@@ -3809,8 +3809,8 @@ export const phpCompleteCourse = {
             {
               "title": "SOAP Server Working Implementation",
               "description": "Complete working demonstration of SOAP Server",
-              "starterCode": "<?php\n// SOAP Server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Server'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SOAP Server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Server'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 76: SOAP Server\nfunction runDemo() {\n  console.log('Running: SOAP Server');\n  return { success: true, topic: 'SOAP Server' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 76: SOAP Server\nfunction runDemo() {\n  console.log('Running: SOAP Server');\n  return { success: true, topic: 'SOAP Server' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: SOAP Server"
             }
           ],
@@ -3818,9 +3818,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement SOAP Server",
               "description": "Write a clean solution for SOAP Server that returns expected status.",
-              "starterCode": "<?php\n// SOAP Server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Server'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SOAP Server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Server'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 76: SOAP Server\nfunction runDemo() {\n  console.log('Running: SOAP Server');\n  return { success: true, topic: 'SOAP Server' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 76: SOAP Server\nfunction runDemo() {\n  console.log('Running: SOAP Server');\n  return { success: true, topic: 'SOAP Server' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3832,7 +3832,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 76: SOAP Server",
-            "content": "### \ud83c\udf1f 1. Definition (What is SOAP Server?)\nSOAP Server in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic SOAP Server to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// SOAP Server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SOAP Server'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is SOAP Server?)\nSOAP Server provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic SOAP Server to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 76: SOAP Server\nfunction runDemo() {\n  console.log('Running: SOAP Server');\n  return { success: true, topic: 'SOAP Server' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering SOAP Server is essential for professional engineering."
           }
         },
@@ -3860,8 +3860,8 @@ export const phpCompleteCourse = {
             {
               "title": "Machine learning Working Implementation",
               "description": "Complete working demonstration of Machine learning",
-              "starterCode": "<?php\n// Machine learning\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Machine learning'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Machine learning\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Machine learning'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 77: Machine learning\nfunction runDemo() {\n  console.log('Running: Machine learning');\n  return { success: true, topic: 'Machine learning' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 77: Machine learning\nfunction runDemo() {\n  console.log('Running: Machine learning');\n  return { success: true, topic: 'Machine learning' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Machine learning"
             }
           ],
@@ -3869,9 +3869,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Machine learning",
               "description": "Write a clean solution for Machine learning that returns expected status.",
-              "starterCode": "<?php\n// Machine learning\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Machine learning'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Machine learning\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Machine learning'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 77: Machine learning\nfunction runDemo() {\n  console.log('Running: Machine learning');\n  return { success: true, topic: 'Machine learning' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 77: Machine learning\nfunction runDemo() {\n  console.log('Running: Machine learning');\n  return { success: true, topic: 'Machine learning' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3883,7 +3883,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 77: Machine learning",
-            "content": "### \ud83c\udf1f 1. Definition (What is Machine learning?)\nMachine learning in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Classi\ufb01cation using PHP: ML to simplify development and prevent common bugs.**\n- **Provides Regression to simplify development and prevent common bugs.**\n- **Provides Clustering to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Machine learning\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Machine learning'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Machine learning?)\nMachine learning provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Classi\ufb01cation using PHP: ML to write clean, predictable code.**\n- **Provides Regression to write clean, predictable code.**\n- **Provides Clustering to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 77: Machine learning\nfunction runDemo() {\n  console.log('Running: Machine learning');\n  return { success: true, topic: 'Machine learning' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Machine learning is essential for professional engineering."
           }
         },
@@ -3907,8 +3907,8 @@ export const phpCompleteCourse = {
             {
               "title": "Cache Working Implementation",
               "description": "Complete working demonstration of Cache",
-              "starterCode": "<?php\n// Cache\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cache'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Cache\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cache'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 78: Cache\nfunction runDemo() {\n  console.log('Running: Cache');\n  return { success: true, topic: 'Cache' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 78: Cache\nfunction runDemo() {\n  console.log('Running: Cache');\n  return { success: true, topic: 'Cache' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Cache"
             }
           ],
@@ -3916,9 +3916,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Cache",
               "description": "Write a clean solution for Cache that returns expected status.",
-              "starterCode": "<?php\n// Cache\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cache'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Cache\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cache'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 78: Cache\nfunction runDemo() {\n  console.log('Running: Cache');\n  return { success: true, topic: 'Cache' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 78: Cache\nfunction runDemo() {\n  console.log('Running: Cache');\n  return { success: true, topic: 'Cache' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3930,7 +3930,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 78: Cache",
-            "content": "### \ud83c\udf1f 1. Definition (What is Cache?)\nCache in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Caching using memcache to simplify development and prevent common bugs.**\n- **Provides Cache Using APC Cache to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Cache\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cache'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Cache?)\nCache provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Caching using memcache to write clean, predictable code.**\n- **Provides Cache Using APC Cache to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 78: Cache\nfunction runDemo() {\n  console.log('Running: Cache');\n  return { success: true, topic: 'Cache' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Cache is essential for professional engineering."
           }
         },
@@ -3958,8 +3958,8 @@ export const phpCompleteCourse = {
             {
               "title": "Autoloading Primer Working Implementation",
               "description": "Complete working demonstration of Autoloading Primer",
-              "starterCode": "<?php\n// Autoloading Primer\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Autoloading Primer'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Autoloading Primer\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Autoloading Primer'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 79: Autoloading Primer\nfunction runDemo() {\n  console.log('Running: Autoloading Primer');\n  return { success: true, topic: 'Autoloading Primer' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 79: Autoloading Primer\nfunction runDemo() {\n  console.log('Running: Autoloading Primer');\n  return { success: true, topic: 'Autoloading Primer' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Autoloading Primer"
             }
           ],
@@ -3967,9 +3967,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Autoloading Primer",
               "description": "Write a clean solution for Autoloading Primer that returns expected status.",
-              "starterCode": "<?php\n// Autoloading Primer\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Autoloading Primer'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Autoloading Primer\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Autoloading Primer'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 79: Autoloading Primer\nfunction runDemo() {\n  console.log('Running: Autoloading Primer');\n  return { success: true, topic: 'Autoloading Primer' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 79: Autoloading Primer\nfunction runDemo() {\n  console.log('Running: Autoloading Primer');\n  return { success: true, topic: 'Autoloading Primer' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -3981,7 +3981,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 79: Autoloading Primer",
-            "content": "### \ud83c\udf1f 1. Definition (What is Autoloading Primer?)\nAutoloading Primer in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Autoloading as part of a framework solution to simplify development and prevent common bugs.**\n- **Provides Inline class de\ufb01nition, no loading required to simplify development and prevent common bugs.**\n- **Provides Manual class loading with require to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Autoloading Primer\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Autoloading Primer'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Autoloading Primer?)\nAutoloading Primer provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Autoloading as part of a framework solution to write clean, predictable code.**\n- **Provides Inline class de\ufb01nition, no loading required to write clean, predictable code.**\n- **Provides Manual class loading with require to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 79: Autoloading Primer\nfunction runDemo() {\n  console.log('Running: Autoloading Primer');\n  return { success: true, topic: 'Autoloading Primer' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Autoloading Primer is essential for professional engineering."
           }
         },
@@ -4001,8 +4001,8 @@ export const phpCompleteCourse = {
             {
               "title": "SPL data structures Working Implementation",
               "description": "Complete working demonstration of SPL data structures",
-              "starterCode": "<?php\n// SPL data structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SPL data structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SPL data structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SPL data structures'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 80: SPL data structures\nfunction runDemo() {\n  console.log('Running: SPL data structures');\n  return { success: true, topic: 'SPL data structures' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 80: SPL data structures\nfunction runDemo() {\n  console.log('Running: SPL data structures');\n  return { success: true, topic: 'SPL data structures' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: SPL data structures"
             }
           ],
@@ -4010,9 +4010,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement SPL data structures",
               "description": "Write a clean solution for SPL data structures that returns expected status.",
-              "starterCode": "<?php\n// SPL data structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SPL data structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// SPL data structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SPL data structures'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 80: SPL data structures\nfunction runDemo() {\n  console.log('Running: SPL data structures');\n  return { success: true, topic: 'SPL data structures' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 80: SPL data structures\nfunction runDemo() {\n  console.log('Running: SPL data structures');\n  return { success: true, topic: 'SPL data structures' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4024,7 +4024,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 80: SPL data structures",
-            "content": "### \ud83c\udf1f 1. Definition (What is SPL data structures?)\nSPL data structures in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SplFixedArray to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// SPL data structures\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'SPL data structures'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is SPL data structures?)\nSPL data structures provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides SplFixedArray to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 80: SPL data structures\nfunction runDemo() {\n  console.log('Running: SPL data structures');\n  return { success: true, topic: 'SPL data structures' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering SPL data structures is essential for professional engineering."
           }
         }
@@ -4059,8 +4059,8 @@ export const phpCompleteCourse = {
             {
               "title": "IMAP Working Implementation",
               "description": "Complete working demonstration of IMAP",
-              "starterCode": "<?php\n// IMAP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'IMAP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// IMAP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'IMAP'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 81: IMAP\nfunction runDemo() {\n  console.log('Running: IMAP');\n  return { success: true, topic: 'IMAP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 81: IMAP\nfunction runDemo() {\n  console.log('Running: IMAP');\n  return { success: true, topic: 'IMAP' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: IMAP"
             }
           ],
@@ -4068,9 +4068,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement IMAP",
               "description": "Write a clean solution for IMAP that returns expected status.",
-              "starterCode": "<?php\n// IMAP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'IMAP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// IMAP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'IMAP'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 81: IMAP\nfunction runDemo() {\n  console.log('Running: IMAP');\n  return { success: true, topic: 'IMAP' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 81: IMAP\nfunction runDemo() {\n  console.log('Running: IMAP');\n  return { success: true, topic: 'IMAP' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4082,7 +4082,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 81: IMAP",
-            "content": "### \ud83c\udf1f 1. Definition (What is IMAP?)\nIMAP in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connecting to a mailbox to simplify development and prevent common bugs.**\n- **Provides Install IMAP extension to simplify development and prevent common bugs.**\n- **Provides List all folders in the mailbox to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// IMAP\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'IMAP'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is IMAP?)\nIMAP provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Connecting to a mailbox to write clean, predictable code.**\n- **Provides Install IMAP extension to write clean, predictable code.**\n- **Provides List all folders in the mailbox to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 81: IMAP\nfunction runDemo() {\n  console.log('Running: IMAP');\n  return { success: true, topic: 'IMAP' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering IMAP is essential for professional engineering."
           }
         },
@@ -4102,8 +4102,8 @@ export const phpCompleteCourse = {
             {
               "title": "HTTP Authentication Working Implementation",
               "description": "Complete working demonstration of HTTP Authentication",
-              "starterCode": "<?php\n// HTTP Authentication\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'HTTP Authentication'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// HTTP Authentication\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'HTTP Authentication'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 82: HTTP Authentication\nfunction runDemo() {\n  console.log('Running: HTTP Authentication');\n  return { success: true, topic: 'HTTP Authentication' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 82: HTTP Authentication\nfunction runDemo() {\n  console.log('Running: HTTP Authentication');\n  return { success: true, topic: 'HTTP Authentication' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: HTTP Authentication"
             }
           ],
@@ -4111,9 +4111,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement HTTP Authentication",
               "description": "Write a clean solution for HTTP Authentication that returns expected status.",
-              "starterCode": "<?php\n// HTTP Authentication\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'HTTP Authentication'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// HTTP Authentication\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'HTTP Authentication'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 82: HTTP Authentication\nfunction runDemo() {\n  console.log('Running: HTTP Authentication');\n  return { success: true, topic: 'HTTP Authentication' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 82: HTTP Authentication\nfunction runDemo() {\n  console.log('Running: HTTP Authentication');\n  return { success: true, topic: 'HTTP Authentication' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4125,7 +4125,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 82: HTTP Authentication",
-            "content": "### \ud83c\udf1f 1. Definition (What is HTTP Authentication?)\nHTTP Authentication in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple authenticate to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// HTTP Authentication\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'HTTP Authentication'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is HTTP Authentication?)\nHTTP Authentication provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple authenticate to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 82: HTTP Authentication\nfunction runDemo() {\n  console.log('Running: HTTP Authentication');\n  return { success: true, topic: 'HTTP Authentication' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering HTTP Authentication is essential for professional engineering."
           }
         },
@@ -4145,8 +4145,8 @@ export const phpCompleteCourse = {
             {
               "title": "WebSockets Working Implementation",
               "description": "Complete working demonstration of WebSockets",
-              "starterCode": "<?php\n// WebSockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'WebSockets'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// WebSockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'WebSockets'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 83: WebSockets\nfunction runDemo() {\n  console.log('Running: WebSockets');\n  return { success: true, topic: 'WebSockets' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 83: WebSockets\nfunction runDemo() {\n  console.log('Running: WebSockets');\n  return { success: true, topic: 'WebSockets' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: WebSockets"
             }
           ],
@@ -4154,9 +4154,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement WebSockets",
               "description": "Write a clean solution for WebSockets that returns expected status.",
-              "starterCode": "<?php\n// WebSockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'WebSockets'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// WebSockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'WebSockets'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 83: WebSockets\nfunction runDemo() {\n  console.log('Running: WebSockets');\n  return { success: true, topic: 'WebSockets' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 83: WebSockets\nfunction runDemo() {\n  console.log('Running: WebSockets');\n  return { success: true, topic: 'WebSockets' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4168,7 +4168,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 83: WebSockets",
-            "content": "### \ud83c\udf1f 1. Definition (What is WebSockets?)\nWebSockets in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple TCP/IP server to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// WebSockets\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'WebSockets'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is WebSockets?)\nWebSockets provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple TCP/IP server to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 83: WebSockets\nfunction runDemo() {\n  console.log('Running: WebSockets');\n  return { success: true, topic: 'WebSockets' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering WebSockets is essential for professional engineering."
           }
         },
@@ -4192,8 +4192,8 @@ export const phpCompleteCourse = {
             {
               "title": "BC Math (Binary Calculator) Working Implementation",
               "description": "Complete working demonstration of BC Math (Binary Calculator)",
-              "starterCode": "<?php\n// BC Math (Binary Calculator)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'BC Math (Binary Calculator)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// BC Math (Binary Calculator)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'BC Math (Binary Calculator)'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 84: BC Math (Binary Calculator)\nfunction runDemo() {\n  console.log('Running: BC Math (Binary Calculator)');\n  return { success: true, topic: 'BC Math (Binary Calculator)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 84: BC Math (Binary Calculator)\nfunction runDemo() {\n  console.log('Running: BC Math (Binary Calculator)');\n  return { success: true, topic: 'BC Math (Binary Calculator)' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: BC Math (Binary Calculator)"
             }
           ],
@@ -4201,9 +4201,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement BC Math (Binary Calculator)",
               "description": "Write a clean solution for BC Math (Binary Calculator) that returns expected status.",
-              "starterCode": "<?php\n// BC Math (Binary Calculator)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'BC Math (Binary Calculator)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// BC Math (Binary Calculator)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'BC Math (Binary Calculator)'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 84: BC Math (Binary Calculator)\nfunction runDemo() {\n  console.log('Running: BC Math (Binary Calculator)');\n  return { success: true, topic: 'BC Math (Binary Calculator)' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 84: BC Math (Binary Calculator)\nfunction runDemo() {\n  console.log('Running: BC Math (Binary Calculator)');\n  return { success: true, topic: 'BC Math (Binary Calculator)' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4215,7 +4215,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 84: BC Math (Binary Calculator)",
-            "content": "### \ud83c\udf1f 1. Definition (What is BC Math (Binary Calculator)?)\nBC Math (Binary Calculator) in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using bcmath to read/write a binary long on 32: bit system to simplify development and prevent common bugs.**\n- **Provides Comparison between BCMath and \ufb02oat arithmetic operations to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// BC Math (Binary Calculator)\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'BC Math (Binary Calculator)'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is BC Math (Binary Calculator)?)\nBC Math (Binary Calculator) provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using bcmath to read/write a binary long on 32: bit system to write clean, predictable code.**\n- **Provides Comparison between BCMath and \ufb02oat arithmetic operations to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 84: BC Math (Binary Calculator)\nfunction runDemo() {\n  console.log('Running: BC Math (Binary Calculator)');\n  return { success: true, topic: 'BC Math (Binary Calculator)' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering BC Math (Binary Calculator) is essential for professional engineering."
           }
         },
@@ -4243,8 +4243,8 @@ export const phpCompleteCourse = {
             {
               "title": "Docker deployment Working Implementation",
               "description": "Complete working demonstration of Docker deployment",
-              "starterCode": "<?php\n// Docker deployment\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Docker deployment'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Docker deployment\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Docker deployment'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 85: Docker deployment\nfunction runDemo() {\n  console.log('Running: Docker deployment');\n  return { success: true, topic: 'Docker deployment' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 85: Docker deployment\nfunction runDemo() {\n  console.log('Running: Docker deployment');\n  return { success: true, topic: 'Docker deployment' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Docker deployment"
             }
           ],
@@ -4252,9 +4252,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Docker deployment",
               "description": "Write a clean solution for Docker deployment that returns expected status.",
-              "starterCode": "<?php\n// Docker deployment\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Docker deployment'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Docker deployment\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Docker deployment'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 85: Docker deployment\nfunction runDemo() {\n  console.log('Running: Docker deployment');\n  return { success: true, topic: 'Docker deployment' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 85: Docker deployment\nfunction runDemo() {\n  console.log('Running: Docker deployment');\n  return { success: true, topic: 'Docker deployment' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4266,7 +4266,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 85: Docker deployment",
-            "content": "### \ud83c\udf1f 1. Definition (What is Docker deployment?)\nDocker deployment in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Get docker image for php to simplify development and prevent common bugs.**\n- **Provides Writing docker\ufb01le to simplify development and prevent common bugs.**\n- **Provides Building image to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Docker deployment\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Docker deployment'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Docker deployment?)\nDocker deployment provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Get docker image for php to write clean, predictable code.**\n- **Provides Writing docker\ufb01le to write clean, predictable code.**\n- **Provides Building image to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 85: Docker deployment\nfunction runDemo() {\n  console.log('Running: Docker deployment');\n  return { success: true, topic: 'Docker deployment' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Docker deployment is essential for professional engineering."
           }
         },
@@ -4294,8 +4294,8 @@ export const phpCompleteCourse = {
             {
               "title": "APCu Working Implementation",
               "description": "Complete working demonstration of APCu",
-              "starterCode": "<?php\n// APCu\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'APCu'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// APCu\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'APCu'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 86: APCu\nfunction runDemo() {\n  console.log('Running: APCu');\n  return { success: true, topic: 'APCu' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 86: APCu\nfunction runDemo() {\n  console.log('Running: APCu');\n  return { success: true, topic: 'APCu' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: APCu"
             }
           ],
@@ -4303,9 +4303,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement APCu",
               "description": "Write a clean solution for APCu that returns expected status.",
-              "starterCode": "<?php\n// APCu\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'APCu'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// APCu\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'APCu'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 86: APCu\nfunction runDemo() {\n  console.log('Running: APCu');\n  return { success: true, topic: 'APCu' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 86: APCu\nfunction runDemo() {\n  console.log('Running: APCu');\n  return { success: true, topic: 'APCu' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4317,7 +4317,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 86: APCu",
-            "content": "### \ud83c\udf1f 1. Definition (What is APCu?)\nAPCu in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Iterating over Entries to simplify development and prevent common bugs.**\n- **Provides Simple storage and retrieval to simplify development and prevent common bugs.**\n- **Provides Store information to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// APCu\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'APCu'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is APCu?)\nAPCu provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Iterating over Entries to write clean, predictable code.**\n- **Provides Simple storage and retrieval to write clean, predictable code.**\n- **Provides Store information to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 86: APCu\nfunction runDemo() {\n  console.log('Running: APCu');\n  return { success: true, topic: 'APCu' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering APCu is essential for professional engineering."
           }
         },
@@ -4341,8 +4341,8 @@ export const phpCompleteCourse = {
             {
               "title": "PHP Built in server Working Implementation",
               "description": "Complete working demonstration of PHP Built in server",
-              "starterCode": "<?php\n// PHP Built in server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP Built in server'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PHP Built in server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP Built in server'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 87: PHP Built in server\nfunction runDemo() {\n  console.log('Running: PHP Built in server');\n  return { success: true, topic: 'PHP Built in server' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 87: PHP Built in server\nfunction runDemo() {\n  console.log('Running: PHP Built in server');\n  return { success: true, topic: 'PHP Built in server' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: PHP Built in server"
             }
           ],
@@ -4350,9 +4350,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement PHP Built in server",
               "description": "Write a clean solution for PHP Built in server that returns expected status.",
-              "starterCode": "<?php\n// PHP Built in server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP Built in server'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PHP Built in server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP Built in server'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 87: PHP Built in server\nfunction runDemo() {\n  console.log('Running: PHP Built in server');\n  return { success: true, topic: 'PHP Built in server' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 87: PHP Built in server\nfunction runDemo() {\n  console.log('Running: PHP Built in server');\n  return { success: true, topic: 'PHP Built in server' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4364,7 +4364,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 87: PHP Built in server",
-            "content": "### \ud83c\udf1f 1. Definition (What is PHP Built in server?)\nPHP Built in server in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Running the built in server to simplify development and prevent common bugs.**\n- **Provides built in server with speci\ufb01c directory and router script to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// PHP Built in server\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHP Built in server'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is PHP Built in server?)\nPHP Built in server provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Running the built in server to write clean, predictable code.**\n- **Provides built in server with speci\ufb01c directory and router script to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 87: PHP Built in server\nfunction runDemo() {\n  console.log('Running: PHP Built in server');\n  return { success: true, topic: 'PHP Built in server' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering PHP Built in server is essential for professional engineering."
           }
         },
@@ -4388,8 +4388,8 @@ export const phpCompleteCourse = {
             {
               "title": "PSR Working Implementation",
               "description": "Complete working demonstration of PSR",
-              "starterCode": "<?php\n// PSR\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PSR'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PSR\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PSR'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 88: PSR\nfunction runDemo() {\n  console.log('Running: PSR');\n  return { success: true, topic: 'PSR' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 88: PSR\nfunction runDemo() {\n  console.log('Running: PSR');\n  return { success: true, topic: 'PSR' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: PSR"
             }
           ],
@@ -4397,9 +4397,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement PSR",
               "description": "Write a clean solution for PSR that returns expected status.",
-              "starterCode": "<?php\n// PSR\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PSR'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PSR\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PSR'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 88: PSR\nfunction runDemo() {\n  console.log('Running: PSR');\n  return { success: true, topic: 'PSR' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 88: PSR\nfunction runDemo() {\n  console.log('Running: PSR');\n  return { success: true, topic: 'PSR' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4411,7 +4411,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 88: PSR",
-            "content": "### \ud83c\udf1f 1. Definition (What is PSR?)\nPSR in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides PSR: 4: Autoloader to simplify development and prevent common bugs.**\n- **Provides PSR: 1: Basic Coding Standard to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// PSR\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PSR'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is PSR?)\nPSR provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides PSR: 4: Autoloader to write clean, predictable code.**\n- **Provides PSR: 1: Basic Coding Standard to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 88: PSR\nfunction runDemo() {\n  console.log('Running: PSR');\n  return { success: true, topic: 'PSR' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering PSR is essential for professional engineering."
           }
         },
@@ -4439,8 +4439,8 @@ export const phpCompleteCourse = {
             {
               "title": "PHPDoc Working Implementation",
               "description": "Complete working demonstration of PHPDoc",
-              "starterCode": "<?php\n// PHPDoc\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHPDoc'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PHPDoc\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHPDoc'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 89: PHPDoc\nfunction runDemo() {\n  console.log('Running: PHPDoc');\n  return { success: true, topic: 'PHPDoc' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 89: PHPDoc\nfunction runDemo() {\n  console.log('Running: PHPDoc');\n  return { success: true, topic: 'PHPDoc' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: PHPDoc"
             }
           ],
@@ -4448,9 +4448,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement PHPDoc",
               "description": "Write a clean solution for PHPDoc that returns expected status.",
-              "starterCode": "<?php\n// PHPDoc\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHPDoc'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// PHPDoc\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHPDoc'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 89: PHPDoc\nfunction runDemo() {\n  console.log('Running: PHPDoc');\n  return { success: true, topic: 'PHPDoc' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 89: PHPDoc\nfunction runDemo() {\n  console.log('Running: PHPDoc');\n  return { success: true, topic: 'PHPDoc' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4462,7 +4462,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 89: PHPDoc",
-            "content": "### \ud83c\udf1f 1. Definition (What is PHPDoc?)\nPHPDoc in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Describing a variable to simplify development and prevent common bugs.**\n- **Provides Adding metadata to functions to simplify development and prevent common bugs.**\n- **Provides Describing parameters to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// PHPDoc\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'PHPDoc'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is PHPDoc?)\nPHPDoc provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Describing a variable to write clean, predictable code.**\n- **Provides Adding metadata to functions to write clean, predictable code.**\n- **Provides Describing parameters to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 89: PHPDoc\nfunction runDemo() {\n  console.log('Running: PHPDoc');\n  return { success: true, topic: 'PHPDoc' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering PHPDoc is essential for professional engineering."
           }
         },
@@ -4482,8 +4482,8 @@ export const phpCompleteCourse = {
             {
               "title": "Design Patterns Working Implementation",
               "description": "Complete working demonstration of Design Patterns",
-              "starterCode": "<?php\n// Design Patterns\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Design Patterns'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Design Patterns\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Design Patterns'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 90: Design Patterns\nfunction runDemo() {\n  console.log('Running: Design Patterns');\n  return { success: true, topic: 'Design Patterns' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 90: Design Patterns\nfunction runDemo() {\n  console.log('Running: Design Patterns');\n  return { success: true, topic: 'Design Patterns' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Design Patterns"
             }
           ],
@@ -4491,9 +4491,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Design Patterns",
               "description": "Write a clean solution for Design Patterns that returns expected status.",
-              "starterCode": "<?php\n// Design Patterns\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Design Patterns'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Design Patterns\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Design Patterns'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 90: Design Patterns\nfunction runDemo() {\n  console.log('Running: Design Patterns');\n  return { success: true, topic: 'Design Patterns' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 90: Design Patterns\nfunction runDemo() {\n  console.log('Running: Design Patterns');\n  return { success: true, topic: 'Design Patterns' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4505,7 +4505,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 90: Design Patterns",
-            "content": "### \ud83c\udf1f 1. Definition (What is Design Patterns?)\nDesign Patterns in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Method Chaining in PHP to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Design Patterns\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Design Patterns'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Design Patterns?)\nDesign Patterns provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Method Chaining in PHP to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 90: Design Patterns\nfunction runDemo() {\n  console.log('Running: Design Patterns');\n  return { success: true, topic: 'Design Patterns' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Design Patterns is essential for professional engineering."
           }
         }
@@ -4532,8 +4532,8 @@ export const phpCompleteCourse = {
             {
               "title": "Compile PHP Extensions Working Implementation",
               "description": "Complete working demonstration of Compile PHP Extensions",
-              "starterCode": "<?php\n// Compile PHP Extensions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compile PHP Extensions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Compile PHP Extensions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compile PHP Extensions'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 91: Compile PHP Extensions\nfunction runDemo() {\n  console.log('Running: Compile PHP Extensions');\n  return { success: true, topic: 'Compile PHP Extensions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 91: Compile PHP Extensions\nfunction runDemo() {\n  console.log('Running: Compile PHP Extensions');\n  return { success: true, topic: 'Compile PHP Extensions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Compile PHP Extensions"
             }
           ],
@@ -4541,9 +4541,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Compile PHP Extensions",
               "description": "Write a clean solution for Compile PHP Extensions that returns expected status.",
-              "starterCode": "<?php\n// Compile PHP Extensions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compile PHP Extensions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Compile PHP Extensions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compile PHP Extensions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 91: Compile PHP Extensions\nfunction runDemo() {\n  console.log('Running: Compile PHP Extensions');\n  return { success: true, topic: 'Compile PHP Extensions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 91: Compile PHP Extensions\nfunction runDemo() {\n  console.log('Running: Compile PHP Extensions');\n  return { success: true, topic: 'Compile PHP Extensions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4555,7 +4555,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 91: Compile PHP Extensions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Compile PHP Extensions?)\nCompile PHP Extensions in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Compiling on Linux to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Compile PHP Extensions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compile PHP Extensions'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Compile PHP Extensions?)\nCompile PHP Extensions provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Compiling on Linux to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 91: Compile PHP Extensions\nfunction runDemo() {\n  console.log('Running: Compile PHP Extensions');\n  return { success: true, topic: 'Compile PHP Extensions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Compile PHP Extensions is essential for professional engineering."
           }
         },
@@ -4579,8 +4579,8 @@ export const phpCompleteCourse = {
             {
               "title": "Common Errors Working Implementation",
               "description": "Complete working demonstration of Common Errors",
-              "starterCode": "<?php\n// Common Errors\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Common Errors'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Common Errors\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Common Errors'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 92: Common Errors\nfunction runDemo() {\n  console.log('Running: Common Errors');\n  return { success: true, topic: 'Common Errors' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 92: Common Errors\nfunction runDemo() {\n  console.log('Running: Common Errors');\n  return { success: true, topic: 'Common Errors' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Common Errors"
             }
           ],
@@ -4588,9 +4588,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Common Errors",
               "description": "Write a clean solution for Common Errors that returns expected status.",
-              "starterCode": "<?php\n// Common Errors\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Common Errors'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Common Errors\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Common Errors'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 92: Common Errors\nfunction runDemo() {\n  console.log('Running: Common Errors');\n  return { success: true, topic: 'Common Errors' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 92: Common Errors\nfunction runDemo() {\n  console.log('Running: Common Errors');\n  return { success: true, topic: 'Common Errors' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4602,7 +4602,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 92: Common Errors",
-            "content": "### \ud83c\udf1f 1. Definition (What is Common Errors?)\nCommon Errors in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Call fetch_assoc on boolean to simplify development and prevent common bugs.**\n- **Provides Unexpected $end to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Common Errors\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Common Errors'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Common Errors?)\nCommon Errors provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Call fetch_assoc on boolean to write clean, predictable code.**\n- **Provides Unexpected $end to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 92: Common Errors\nfunction runDemo() {\n  console.log('Running: Common Errors');\n  return { success: true, topic: 'Common Errors' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Common Errors is essential for professional engineering."
           }
         },
@@ -4630,8 +4630,8 @@ export const phpCompleteCourse = {
             {
               "title": "Compilation of Errors and Warnings Working Implementation",
               "description": "Complete working demonstration of Compilation of Errors and Warnings",
-              "starterCode": "<?php\n// Compilation of Errors and Warnings\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compilation of Errors and Warnings'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Compilation of Errors and Warnings\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compilation of Errors and Warnings'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 93: Compilation of Errors and Warnings\nfunction runDemo() {\n  console.log('Running: Compilation of Errors and Warnings');\n  return { success: true, topic: 'Compilation of Errors and Warnings' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 93: Compilation of Errors and Warnings\nfunction runDemo() {\n  console.log('Running: Compilation of Errors and Warnings');\n  return { success: true, topic: 'Compilation of Errors and Warnings' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Compilation of Errors and Warnings"
             }
           ],
@@ -4639,9 +4639,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Compilation of Errors and Warnings",
               "description": "Write a clean solution for Compilation of Errors and Warnings that returns expected status.",
-              "starterCode": "<?php\n// Compilation of Errors and Warnings\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compilation of Errors and Warnings'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Compilation of Errors and Warnings\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compilation of Errors and Warnings'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 93: Compilation of Errors and Warnings\nfunction runDemo() {\n  console.log('Running: Compilation of Errors and Warnings');\n  return { success: true, topic: 'Compilation of Errors and Warnings' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 93: Compilation of Errors and Warnings\nfunction runDemo() {\n  console.log('Running: Compilation of Errors and Warnings');\n  return { success: true, topic: 'Compilation of Errors and Warnings' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4653,7 +4653,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 93: Compilation of Errors and Warnings",
-            "content": "### \ud83c\udf1f 1. Definition (What is Compilation of Errors and Warnings?)\nCompilation of Errors and Warnings in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Parse error: syntax error, unexpected T_PAAMAYIM_NEKUDOTAYIM to simplify development and prevent common bugs.**\n- **Provides Notice: Unde\ufb01ned index to simplify development and prevent common bugs.**\n- **Provides Warning: Cannot modify header information: headers already sent to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Compilation of Errors and Warnings\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Compilation of Errors and Warnings'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Compilation of Errors and Warnings?)\nCompilation of Errors and Warnings provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Parse error: syntax error, unexpected T_PAAMAYIM_NEKUDOTAYIM to write clean, predictable code.**\n- **Provides Notice: Unde\ufb01ned index to write clean, predictable code.**\n- **Provides Warning: Cannot modify header information: headers already sent to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 93: Compilation of Errors and Warnings\nfunction runDemo() {\n  console.log('Running: Compilation of Errors and Warnings');\n  return { success: true, topic: 'Compilation of Errors and Warnings' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Compilation of Errors and Warnings is essential for professional engineering."
           }
         },
@@ -4677,8 +4677,8 @@ export const phpCompleteCourse = {
             {
               "title": "Exception Handling and Error Reporting Working Implementation",
               "description": "Complete working demonstration of Exception Handling and Error Reporting",
-              "starterCode": "<?php\n// Exception Handling and Error Reporting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Exception Handling and Error Reporting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Exception Handling and Error Reporting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Exception Handling and Error Reporting'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 94: Exception Handling and Error Reporting\nfunction runDemo() {\n  console.log('Running: Exception Handling and Error Reporting');\n  return { success: true, topic: 'Exception Handling and Error Reporting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 94: Exception Handling and Error Reporting\nfunction runDemo() {\n  console.log('Running: Exception Handling and Error Reporting');\n  return { success: true, topic: 'Exception Handling and Error Reporting' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Exception Handling and Error Reporting"
             }
           ],
@@ -4686,9 +4686,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Exception Handling and Error Reporting",
               "description": "Write a clean solution for Exception Handling and Error Reporting that returns expected status.",
-              "starterCode": "<?php\n// Exception Handling and Error Reporting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Exception Handling and Error Reporting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Exception Handling and Error Reporting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Exception Handling and Error Reporting'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 94: Exception Handling and Error Reporting\nfunction runDemo() {\n  console.log('Running: Exception Handling and Error Reporting');\n  return { success: true, topic: 'Exception Handling and Error Reporting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 94: Exception Handling and Error Reporting\nfunction runDemo() {\n  console.log('Running: Exception Handling and Error Reporting');\n  return { success: true, topic: 'Exception Handling and Error Reporting' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4700,7 +4700,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 94: Exception Handling and Error Reporting",
-            "content": "### \ud83c\udf1f 1. Definition (What is Exception Handling and Error Reporting?)\nException Handling and Error Reporting in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting error reporting and where to display them to simplify development and prevent common bugs.**\n- **Provides Logging fatal errors to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Exception Handling and Error Reporting\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Exception Handling and Error Reporting'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Exception Handling and Error Reporting?)\nException Handling and Error Reporting provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting error reporting and where to display them to write clean, predictable code.**\n- **Provides Logging fatal errors to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 94: Exception Handling and Error Reporting\nfunction runDemo() {\n  console.log('Running: Exception Handling and Error Reporting');\n  return { success: true, topic: 'Exception Handling and Error Reporting' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Exception Handling and Error Reporting is essential for professional engineering."
           }
         },
@@ -4728,8 +4728,8 @@ export const phpCompleteCourse = {
             {
               "title": "Debugging Working Implementation",
               "description": "Complete working demonstration of Debugging",
-              "starterCode": "<?php\n// Debugging\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Debugging'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Debugging\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Debugging'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 95: Debugging\nfunction runDemo() {\n  console.log('Running: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 95: Debugging\nfunction runDemo() {\n  console.log('Running: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Debugging"
             }
           ],
@@ -4737,9 +4737,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Debugging",
               "description": "Write a clean solution for Debugging that returns expected status.",
-              "starterCode": "<?php\n// Debugging\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Debugging'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Debugging\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Debugging'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 95: Debugging\nfunction runDemo() {\n  console.log('Running: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 95: Debugging\nfunction runDemo() {\n  console.log('Running: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4751,7 +4751,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 95: Debugging",
-            "content": "### \ud83c\udf1f 1. Definition (What is Debugging?)\nDebugging in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Dumping variables to simplify development and prevent common bugs.**\n- **Provides Displaying errors to simplify development and prevent common bugs.**\n- **Provides phpinfo() to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Debugging\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Debugging'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Debugging?)\nDebugging provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Dumping variables to write clean, predictable code.**\n- **Provides Displaying errors to write clean, predictable code.**\n- **Provides phpinfo() to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 95: Debugging\nfunction runDemo() {\n  console.log('Running: Debugging');\n  return { success: true, topic: 'Debugging' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Debugging is essential for professional engineering."
           }
         },
@@ -4779,8 +4779,8 @@ export const phpCompleteCourse = {
             {
               "title": "Unit Testing Working Implementation",
               "description": "Complete working demonstration of Unit Testing",
-              "starterCode": "<?php\n// Unit Testing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unit Testing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Unit Testing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unit Testing'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 96: Unit Testing\nfunction runDemo() {\n  console.log('Running: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 96: Unit Testing\nfunction runDemo() {\n  console.log('Running: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Unit Testing"
             }
           ],
@@ -4788,9 +4788,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Unit Testing",
               "description": "Write a clean solution for Unit Testing that returns expected status.",
-              "starterCode": "<?php\n// Unit Testing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unit Testing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Unit Testing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unit Testing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 96: Unit Testing\nfunction runDemo() {\n  console.log('Running: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 96: Unit Testing\nfunction runDemo() {\n  console.log('Running: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4802,7 +4802,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 96: Unit Testing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Unit Testing?)\nUnit Testing in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Testing class rules to simplify development and prevent common bugs.**\n- **Provides PHPUnit Data Providers to simplify development and prevent common bugs.**\n- **Provides Test exceptions to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Unit Testing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Unit Testing'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Unit Testing?)\nUnit Testing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Testing class rules to write clean, predictable code.**\n- **Provides PHPUnit Data Providers to write clean, predictable code.**\n- **Provides Test exceptions to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 96: Unit Testing\nfunction runDemo() {\n  console.log('Running: Unit Testing');\n  return { success: true, topic: 'Unit Testing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Unit Testing is essential for professional engineering."
           }
         },
@@ -4830,8 +4830,8 @@ export const phpCompleteCourse = {
             {
               "title": "Performance Working Implementation",
               "description": "Complete working demonstration of Performance",
-              "starterCode": "<?php\n// Performance\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Performance'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Performance\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Performance'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 97: Performance\nfunction runDemo() {\n  console.log('Running: Performance');\n  return { success: true, topic: 'Performance' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 97: Performance\nfunction runDemo() {\n  console.log('Running: Performance');\n  return { success: true, topic: 'Performance' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Performance"
             }
           ],
@@ -4839,9 +4839,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Performance",
               "description": "Write a clean solution for Performance that returns expected status.",
-              "starterCode": "<?php\n// Performance\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Performance'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Performance\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Performance'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 97: Performance\nfunction runDemo() {\n  console.log('Running: Performance');\n  return { success: true, topic: 'Performance' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 97: Performance\nfunction runDemo() {\n  console.log('Running: Performance');\n  return { success: true, topic: 'Performance' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4853,7 +4853,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 97: Performance",
-            "content": "### \ud83c\udf1f 1. Definition (What is Performance?)\nPerformance in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pro\ufb01ling with Xdebug to simplify development and prevent common bugs.**\n- **Provides Memory Usage to simplify development and prevent common bugs.**\n- **Provides Pro\ufb01ling with XHProf to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Performance\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Performance'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Performance?)\nPerformance provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Pro\ufb01ling with Xdebug to write clean, predictable code.**\n- **Provides Memory Usage to write clean, predictable code.**\n- **Provides Pro\ufb01ling with XHProf to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 97: Performance\nfunction runDemo() {\n  console.log('Running: Performance');\n  return { success: true, topic: 'Performance' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Performance is essential for professional engineering."
           }
         },
@@ -4881,8 +4881,8 @@ export const phpCompleteCourse = {
             {
               "title": "Multiprocessing Working Implementation",
               "description": "Complete working demonstration of Multiprocessing",
-              "starterCode": "<?php\n// Multiprocessing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multiprocessing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Multiprocessing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multiprocessing'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 98: Multiprocessing\nfunction runDemo() {\n  console.log('Running: Multiprocessing');\n  return { success: true, topic: 'Multiprocessing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 98: Multiprocessing\nfunction runDemo() {\n  console.log('Running: Multiprocessing');\n  return { success: true, topic: 'Multiprocessing' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Multiprocessing"
             }
           ],
@@ -4890,9 +4890,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Multiprocessing",
               "description": "Write a clean solution for Multiprocessing that returns expected status.",
-              "starterCode": "<?php\n// Multiprocessing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multiprocessing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Multiprocessing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multiprocessing'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 98: Multiprocessing\nfunction runDemo() {\n  console.log('Running: Multiprocessing');\n  return { success: true, topic: 'Multiprocessing' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 98: Multiprocessing\nfunction runDemo() {\n  console.log('Running: Multiprocessing');\n  return { success: true, topic: 'Multiprocessing' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4904,7 +4904,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 98: Multiprocessing",
-            "content": "### \ud83c\udf1f 1. Definition (What is Multiprocessing?)\nMultiprocessing in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Multiprocessing using built: in fork functions to simplify development and prevent common bugs.**\n- **Provides Creating child process using fork to simplify development and prevent common bugs.**\n- **Provides Inter: Process Communication to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Multiprocessing\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multiprocessing'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Multiprocessing?)\nMultiprocessing provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Multiprocessing using built: in fork functions to write clean, predictable code.**\n- **Provides Creating child process using fork to write clean, predictable code.**\n- **Provides Inter: Process Communication to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 98: Multiprocessing\nfunction runDemo() {\n  console.log('Running: Multiprocessing');\n  return { success: true, topic: 'Multiprocessing' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Multiprocessing is essential for professional engineering."
           }
         },
@@ -4928,8 +4928,8 @@ export const phpCompleteCourse = {
             {
               "title": "Multi Threading Extension Working Implementation",
               "description": "Complete working demonstration of Multi Threading Extension",
-              "starterCode": "<?php\n// Multi Threading Extension\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multi Threading Extension'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Multi Threading Extension\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multi Threading Extension'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 99: Multi Threading Extension\nfunction runDemo() {\n  console.log('Running: Multi Threading Extension');\n  return { success: true, topic: 'Multi Threading Extension' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 99: Multi Threading Extension\nfunction runDemo() {\n  console.log('Running: Multi Threading Extension');\n  return { success: true, topic: 'Multi Threading Extension' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Multi Threading Extension"
             }
           ],
@@ -4937,9 +4937,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Multi Threading Extension",
               "description": "Write a clean solution for Multi Threading Extension that returns expected status.",
-              "starterCode": "<?php\n// Multi Threading Extension\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multi Threading Extension'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Multi Threading Extension\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multi Threading Extension'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 99: Multi Threading Extension\nfunction runDemo() {\n  console.log('Running: Multi Threading Extension');\n  return { success: true, topic: 'Multi Threading Extension' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 99: Multi Threading Extension\nfunction runDemo() {\n  console.log('Running: Multi Threading Extension');\n  return { success: true, topic: 'Multi Threading Extension' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4951,7 +4951,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 99: Multi Threading Extension",
-            "content": "### \ud83c\udf1f 1. Definition (What is Multi Threading Extension?)\nMulti Threading Extension in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting Started to simplify development and prevent common bugs.**\n- **Provides Using Pools and Workers to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Multi Threading Extension\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Multi Threading Extension'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Multi Threading Extension?)\nMulti Threading Extension provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Getting Started to write clean, predictable code.**\n- **Provides Using Pools and Workers to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 99: Multi Threading Extension\nfunction runDemo() {\n  console.log('Running: Multi Threading Extension');\n  return { success: true, topic: 'Multi Threading Extension' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Multi Threading Extension is essential for professional engineering."
           }
         },
@@ -4971,8 +4971,8 @@ export const phpCompleteCourse = {
             {
               "title": "Secure Remeber Me Working Implementation",
               "description": "Complete working demonstration of Secure Remeber Me",
-              "starterCode": "<?php\n// Secure Remeber Me\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Secure Remeber Me'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Secure Remeber Me\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Secure Remeber Me'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 100: Secure Remeber Me\nfunction runDemo() {\n  console.log('Running: Secure Remeber Me');\n  return { success: true, topic: 'Secure Remeber Me' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 100: Secure Remeber Me\nfunction runDemo() {\n  console.log('Running: Secure Remeber Me');\n  return { success: true, topic: 'Secure Remeber Me' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Secure Remeber Me"
             }
           ],
@@ -4980,9 +4980,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Secure Remeber Me",
               "description": "Write a clean solution for Secure Remeber Me that returns expected status.",
-              "starterCode": "<?php\n// Secure Remeber Me\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Secure Remeber Me'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Secure Remeber Me\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Secure Remeber Me'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 100: Secure Remeber Me\nfunction runDemo() {\n  console.log('Running: Secure Remeber Me');\n  return { success: true, topic: 'Secure Remeber Me' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 100: Secure Remeber Me\nfunction runDemo() {\n  console.log('Running: Secure Remeber Me');\n  return { success: true, topic: 'Secure Remeber Me' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -4994,7 +4994,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 100: Secure Remeber Me",
-            "content": "### \ud83c\udf1f 1. Definition (What is Secure Remeber Me?)\nSecure Remeber Me in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides \u201cKeep Me Logged In\u201d: the best approach to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Secure Remeber Me\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Secure Remeber Me'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Secure Remeber Me?)\nSecure Remeber Me provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides \u201cKeep Me Logged In\u201d: the best approach to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 100: Secure Remeber Me\nfunction runDemo() {\n  console.log('Running: Secure Remeber Me');\n  return { success: true, topic: 'Secure Remeber Me' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Secure Remeber Me is essential for professional engineering."
           }
         }
@@ -5029,8 +5029,8 @@ export const phpCompleteCourse = {
             {
               "title": "Security Working Implementation",
               "description": "Complete working demonstration of Security",
-              "starterCode": "<?php\n// Security\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Security'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Security\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Security'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 101: Security\nfunction runDemo() {\n  console.log('Running: Security');\n  return { success: true, topic: 'Security' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 101: Security\nfunction runDemo() {\n  console.log('Running: Security');\n  return { success: true, topic: 'Security' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Security"
             }
           ],
@@ -5038,9 +5038,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Security",
               "description": "Write a clean solution for Security that returns expected status.",
-              "starterCode": "<?php\n// Security\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Security'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Security\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Security'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 101: Security\nfunction runDemo() {\n  console.log('Running: Security');\n  return { success: true, topic: 'Security' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 101: Security\nfunction runDemo() {\n  console.log('Running: Security');\n  return { success: true, topic: 'Security' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5052,7 +5052,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 101: Security",
-            "content": "### \ud83c\udf1f 1. Definition (What is Security?)\nSecurity in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides PHP Version Leakage to simplify development and prevent common bugs.**\n- **Provides Cross: Site Scripting (XSS) to simplify development and prevent common bugs.**\n- **Provides Cross: Site Request Forgery to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Security\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Security'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Security?)\nSecurity provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides PHP Version Leakage to write clean, predictable code.**\n- **Provides Cross: Site Scripting (XSS) to write clean, predictable code.**\n- **Provides Cross: Site Request Forgery to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 101: Security\nfunction runDemo() {\n  console.log('Running: Security');\n  return { success: true, topic: 'Security' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Security is essential for professional engineering."
           }
         },
@@ -5076,8 +5076,8 @@ export const phpCompleteCourse = {
             {
               "title": "Cryptography Working Implementation",
               "description": "Complete working demonstration of Cryptography",
-              "starterCode": "<?php\n// Cryptography\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cryptography'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Cryptography\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cryptography'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 102: Cryptography\nfunction runDemo() {\n  console.log('Running: Cryptography');\n  return { success: true, topic: 'Cryptography' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 102: Cryptography\nfunction runDemo() {\n  console.log('Running: Cryptography');\n  return { success: true, topic: 'Cryptography' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Cryptography"
             }
           ],
@@ -5085,9 +5085,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Cryptography",
               "description": "Write a clean solution for Cryptography that returns expected status.",
-              "starterCode": "<?php\n// Cryptography\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cryptography'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Cryptography\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cryptography'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 102: Cryptography\nfunction runDemo() {\n  console.log('Running: Cryptography');\n  return { success: true, topic: 'Cryptography' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 102: Cryptography\nfunction runDemo() {\n  console.log('Running: Cryptography');\n  return { success: true, topic: 'Cryptography' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5099,7 +5099,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 102: Cryptography",
-            "content": "### \ud83c\udf1f 1. Definition (What is Cryptography?)\nCryptography in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Symmetric Encryption and Decryption of large Files with OpenSSL to simplify development and prevent common bugs.**\n- **Provides Symmetric Cipher to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Cryptography\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Cryptography'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Cryptography?)\nCryptography provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Symmetric Encryption and Decryption of large Files with OpenSSL to write clean, predictable code.**\n- **Provides Symmetric Cipher to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 102: Cryptography\nfunction runDemo() {\n  console.log('Running: Cryptography');\n  return { success: true, topic: 'Cryptography' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Cryptography is essential for professional engineering."
           }
         },
@@ -5127,8 +5127,8 @@ export const phpCompleteCourse = {
             {
               "title": "Password Hashing Functions Working Implementation",
               "description": "Complete working demonstration of Password Hashing Functions",
-              "starterCode": "<?php\n// Password Hashing Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Password Hashing Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Password Hashing Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Password Hashing Functions'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 103: Password Hashing Functions\nfunction runDemo() {\n  console.log('Running: Password Hashing Functions');\n  return { success: true, topic: 'Password Hashing Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 103: Password Hashing Functions\nfunction runDemo() {\n  console.log('Running: Password Hashing Functions');\n  return { success: true, topic: 'Password Hashing Functions' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Password Hashing Functions"
             }
           ],
@@ -5136,9 +5136,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Password Hashing Functions",
               "description": "Write a clean solution for Password Hashing Functions that returns expected status.",
-              "starterCode": "<?php\n// Password Hashing Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Password Hashing Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Password Hashing Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Password Hashing Functions'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 103: Password Hashing Functions\nfunction runDemo() {\n  console.log('Running: Password Hashing Functions');\n  return { success: true, topic: 'Password Hashing Functions' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 103: Password Hashing Functions\nfunction runDemo() {\n  console.log('Running: Password Hashing Functions');\n  return { success: true, topic: 'Password Hashing Functions' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5150,7 +5150,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 103: Password Hashing Functions",
-            "content": "### \ud83c\udf1f 1. Definition (What is Password Hashing Functions?)\nPassword Hashing Functions in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating a password hash to simplify development and prevent common bugs.**\n- **Provides Determine if an existing password hash can be upgraded to a stronger algorithm to simplify development and prevent common bugs.**\n- **Provides Verifying a password against a hash to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Password Hashing Functions\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Password Hashing Functions'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Password Hashing Functions?)\nPassword Hashing Functions provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating a password hash to write clean, predictable code.**\n- **Provides Determine if an existing password hash can be upgraded to a stronger algorithm to write clean, predictable code.**\n- **Provides Verifying a password against a hash to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 103: Password Hashing Functions\nfunction runDemo() {\n  console.log('Running: Password Hashing Functions');\n  return { success: true, topic: 'Password Hashing Functions' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Password Hashing Functions is essential for professional engineering."
           }
         },
@@ -5174,8 +5174,8 @@ export const phpCompleteCourse = {
             {
               "title": "Contributing to the PHP Manual Working Implementation",
               "description": "Complete working demonstration of Contributing to the PHP Manual",
-              "starterCode": "<?php\n// Contributing to the PHP Manual\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Manual'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Contributing to the PHP Manual\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Manual'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 104: Contributing to the PHP Manual\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Manual');\n  return { success: true, topic: 'Contributing to the PHP Manual' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 104: Contributing to the PHP Manual\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Manual');\n  return { success: true, topic: 'Contributing to the PHP Manual' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Contributing to the PHP Manual"
             }
           ],
@@ -5183,9 +5183,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Contributing to the PHP Manual",
               "description": "Write a clean solution for Contributing to the PHP Manual that returns expected status.",
-              "starterCode": "<?php\n// Contributing to the PHP Manual\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Manual'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Contributing to the PHP Manual\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Manual'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 104: Contributing to the PHP Manual\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Manual');\n  return { success: true, topic: 'Contributing to the PHP Manual' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 104: Contributing to the PHP Manual\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Manual');\n  return { success: true, topic: 'Contributing to the PHP Manual' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5197,7 +5197,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 104: Contributing to the PHP Manual",
-            "content": "### \ud83c\udf1f 1. Definition (What is Contributing to the PHP Manual?)\nContributing to the PHP Manual in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Improve the o\ue024cial documentation to simplify development and prevent common bugs.**\n- **Provides Tips for contributing to the manual to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Contributing to the PHP Manual\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Manual'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Contributing to the PHP Manual?)\nContributing to the PHP Manual provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Improve the o\ue024cial documentation to write clean, predictable code.**\n- **Provides Tips for contributing to the manual to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 104: Contributing to the PHP Manual\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Manual');\n  return { success: true, topic: 'Contributing to the PHP Manual' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Contributing to the PHP Manual is essential for professional engineering."
           }
         },
@@ -5217,8 +5217,8 @@ export const phpCompleteCourse = {
             {
               "title": "Contributing to the PHP Core Working Implementation",
               "description": "Complete working demonstration of Contributing to the PHP Core",
-              "starterCode": "<?php\n// Contributing to the PHP Core\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Core'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Contributing to the PHP Core\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Core'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 105: Contributing to the PHP Core\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Core');\n  return { success: true, topic: 'Contributing to the PHP Core' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 105: Contributing to the PHP Core\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Core');\n  return { success: true, topic: 'Contributing to the PHP Core' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Contributing to the PHP Core"
             }
           ],
@@ -5226,9 +5226,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Contributing to the PHP Core",
               "description": "Write a clean solution for Contributing to the PHP Core that returns expected status.",
-              "starterCode": "<?php\n// Contributing to the PHP Core\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Core'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Contributing to the PHP Core\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Core'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 105: Contributing to the PHP Core\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Core');\n  return { success: true, topic: 'Contributing to the PHP Core' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 105: Contributing to the PHP Core\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Core');\n  return { success: true, topic: 'Contributing to the PHP Core' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5240,7 +5240,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 105: Contributing to the PHP Core",
-            "content": "### \ud83c\udf1f 1. Definition (What is Contributing to the PHP Core?)\nContributing to the PHP Core in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting up a basic development environment to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Contributing to the PHP Core\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Contributing to the PHP Core'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Contributing to the PHP Core?)\nContributing to the PHP Core provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Setting up a basic development environment to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 105: Contributing to the PHP Core\nfunction runDemo() {\n  console.log('Running: Contributing to the PHP Core');\n  return { success: true, topic: 'Contributing to the PHP Core' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Contributing to the PHP Core is essential for professional engineering."
           }
         },
@@ -5268,8 +5268,8 @@ export const phpCompleteCourse = {
             {
               "title": "Appendix A: Installing a PHP environment on Windows Working Implementation",
               "description": "Complete working demonstration of Appendix A: Installing a PHP environment on Windows",
-              "starterCode": "<?php\n// Appendix A: Installing a PHP environment on Windows\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix A: Installing a PHP environment on Windows'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Appendix A: Installing a PHP environment on Windows\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix A: Installing a PHP environment on Windows'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 106: Appendix A: Installing a PHP environment on Windows\nfunction runDemo() {\n  console.log('Running: Appendix A: Installing a PHP environment on Windows');\n  return { success: true, topic: 'Appendix A: Installing a PHP environment on Windows' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 106: Appendix A: Installing a PHP environment on Windows\nfunction runDemo() {\n  console.log('Running: Appendix A: Installing a PHP environment on Windows');\n  return { success: true, topic: 'Appendix A: Installing a PHP environment on Windows' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Appendix A: Installing a PHP environment on Windows"
             }
           ],
@@ -5277,9 +5277,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Appendix A: Installing a PHP environment on Windows",
               "description": "Write a clean solution for Appendix A: Installing a PHP environment on Windows that returns expected status.",
-              "starterCode": "<?php\n// Appendix A: Installing a PHP environment on Windows\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix A: Installing a PHP environment on Windows'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Appendix A: Installing a PHP environment on Windows\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix A: Installing a PHP environment on Windows'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 106: Appendix A: Installing a PHP environment on Windows\nfunction runDemo() {\n  console.log('Running: Appendix A: Installing a PHP environment on Windows');\n  return { success: true, topic: 'Appendix A: Installing a PHP environment on Windows' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 106: Appendix A: Installing a PHP environment on Windows\nfunction runDemo() {\n  console.log('Running: Appendix A: Installing a PHP environment on Windows');\n  return { success: true, topic: 'Appendix A: Installing a PHP environment on Windows' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5291,7 +5291,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 106: Appendix A: Installing a PHP environment on Windows",
-            "content": "### \ud83c\udf1f 1. Definition (What is Appendix A: Installing a PHP environment on Windows?)\nAppendix A: Installing a PHP environment on Windows in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Section A.1: Download, Install and use WAMP to simplify development and prevent common bugs.**\n- **Provides Section A.2: Install PHP and use it with IIS to simplify development and prevent common bugs.**\n- **Provides Section A.3: Download and Install XAMPP to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Appendix A: Installing a PHP environment on Windows\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix A: Installing a PHP environment on Windows'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Appendix A: Installing a PHP environment on Windows?)\nAppendix A: Installing a PHP environment on Windows provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Section A.1: Download, Install and use WAMP to write clean, predictable code.**\n- **Provides Section A.2: Install PHP and use it with IIS to write clean, predictable code.**\n- **Provides Section A.3: Download and Install XAMPP to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 106: Appendix A: Installing a PHP environment on Windows\nfunction runDemo() {\n  console.log('Running: Appendix A: Installing a PHP environment on Windows');\n  return { success: true, topic: 'Appendix A: Installing a PHP environment on Windows' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Appendix A: Installing a PHP environment on Windows is essential for professional engineering."
           }
         },
@@ -5315,8 +5315,8 @@ export const phpCompleteCourse = {
             {
               "title": "Appendix B: Installing on Linux/Unix Environments Working Implementation",
               "description": "Complete working demonstration of Appendix B: Installing on Linux/Unix Environments",
-              "starterCode": "<?php\n// Appendix B: Installing on Linux/Unix Environments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix B: Installing on Linux/Unix Environments'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Appendix B: Installing on Linux/Unix Environments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix B: Installing on Linux/Unix Environments'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 107: Appendix B: Installing on Linux/Unix Environments\nfunction runDemo() {\n  console.log('Running: Appendix B: Installing on Linux/Unix Environments');\n  return { success: true, topic: 'Appendix B: Installing on Linux/Unix Environments' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 107: Appendix B: Installing on Linux/Unix Environments\nfunction runDemo() {\n  console.log('Running: Appendix B: Installing on Linux/Unix Environments');\n  return { success: true, topic: 'Appendix B: Installing on Linux/Unix Environments' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Appendix B: Installing on Linux/Unix Environments"
             }
           ],
@@ -5324,9 +5324,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Appendix B: Installing on Linux/Unix Environments",
               "description": "Write a clean solution for Appendix B: Installing on Linux/Unix Environments that returns expected status.",
-              "starterCode": "<?php\n// Appendix B: Installing on Linux/Unix Environments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix B: Installing on Linux/Unix Environments'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Appendix B: Installing on Linux/Unix Environments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix B: Installing on Linux/Unix Environments'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 107: Appendix B: Installing on Linux/Unix Environments\nfunction runDemo() {\n  console.log('Running: Appendix B: Installing on Linux/Unix Environments');\n  return { success: true, topic: 'Appendix B: Installing on Linux/Unix Environments' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 107: Appendix B: Installing on Linux/Unix Environments\nfunction runDemo() {\n  console.log('Running: Appendix B: Installing on Linux/Unix Environments');\n  return { success: true, topic: 'Appendix B: Installing on Linux/Unix Environments' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5338,7 +5338,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 107: Appendix B: Installing on Linux/Unix Environments",
-            "content": "### \ud83c\udf1f 1. Definition (What is Appendix B: Installing on Linux/Unix Environments?)\nAppendix B: Installing on Linux/Unix Environments in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Section B.1: Command Line Install Using APT for PHP 7 to simplify development and prevent common bugs.**\n- **Provides Section B.2: Installing in Enterprise Linux distributions (CentOS, Scienti\ufb01c Linux, etc) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Appendix B: Installing on Linux/Unix Environments\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Appendix B: Installing on Linux/Unix Environments'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Appendix B: Installing on Linux/Unix Environments?)\nAppendix B: Installing on Linux/Unix Environments provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Section B.1: Command Line Install Using APT for PHP 7 to write clean, predictable code.**\n- **Provides Section B.2: Installing in Enterprise Linux distributions (CentOS, Scienti\ufb01c Linux, etc) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 107: Appendix B: Installing on Linux/Unix Environments\nfunction runDemo() {\n  console.log('Running: Appendix B: Installing on Linux/Unix Environments');\n  return { success: true, topic: 'Appendix B: Installing on Linux/Unix Environments' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Appendix B: Installing on Linux/Unix Environments is essential for professional engineering."
           }
         },
@@ -5358,8 +5358,8 @@ export const phpCompleteCourse = {
             {
               "title": "Credits Working Implementation",
               "description": "Complete working demonstration of Credits",
-              "starterCode": "<?php\n// Credits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Credits'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Credits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Credits'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 108: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 108: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Credits"
             }
           ],
@@ -5367,9 +5367,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement Credits",
               "description": "Write a clean solution for Credits that returns expected status.",
-              "starterCode": "<?php\n// Credits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Credits'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// Credits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Credits'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 108: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 108: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5381,7 +5381,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 108: Credits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// Credits\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'Credits'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 108: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Credits is essential for professional engineering."
           }
         },
@@ -5401,8 +5401,8 @@ export const phpCompleteCourse = {
             {
               "title": "You may also like Working Implementation",
               "description": "Complete working demonstration of You may also like",
-              "starterCode": "<?php\n// You may also like\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'You may also like'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// You may also like\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'You may also like'\n    ]);\n}\n\necho runTopic();\n?>",
+              "starterCode": "// Chapter 109: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 109: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: You may also like"
             }
           ],
@@ -5410,9 +5410,9 @@ export const phpCompleteCourse = {
             {
               "title": "Implement You may also like",
               "description": "Write a clean solution for You may also like that returns expected status.",
-              "starterCode": "<?php\n// You may also like\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'You may also like'\n    ]);\n}\n\necho runTopic();\n?>",
-              "solutionCode": "<?php\n// You may also like\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'You may also like'\n    ]);\n}\n\necho runTopic();\n?>",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 109: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 109: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -5424,7 +5424,7 @@ export const phpCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 109: You may also like",
-            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like in PHP powers scalable server-side web backends with rapid database integration.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n<?php\n// You may also like\nfunction runTopic() {\n    return json_encode([\n        'status' => 'success',\n        'topic' => 'You may also like'\n    ]);\n}\n\necho runTopic();\n?>\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 109: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering You may also like is essential for professional engineering."
           }
         }

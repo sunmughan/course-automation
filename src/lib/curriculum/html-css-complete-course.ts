@@ -1,10 +1,10 @@
 export const htmlCssCompleteCourse = {
   "title": "HTML5, Canvas & CSS3 Masterclass",
-  "description": "Complete guide to modern responsive layouts, Flexbox, CSS Grid, HTML5 Semantic Elements, SVG, and HTML5 Canvas Graphics.",
+  "description": "Modern responsive layouts, Flexbox, CSS Grid, Semantic HTML5, and Canvas.",
   "slug": "html5-css3-masterclass",
   "stream": "frontend",
   "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-  "order": 3,
+  "order": 5,
   "modules": [
     {
       "title": "Phase 1: Chapters 1 to 10",
@@ -27,8 +27,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Getting started with HTML Working Implementation",
               "description": "Complete working demonstration of Getting started with HTML",
-              "starterCode": "// Chapter 1: Getting started with HTML\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with HTML\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 1: Getting started with HTML\nfunction runDemo() {\n  console.log('Running: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with HTML\nfunction runDemo() {\n  console.log('Running: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Getting started with HTML"
             }
           ],
@@ -36,9 +36,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Getting started with HTML",
               "description": "Write a clean solution for Getting started with HTML that returns expected status.",
-              "starterCode": "// Chapter 1: Getting started with HTML\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 1: Getting started with HTML\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 1: Getting started with HTML\nfunction runDemo() {\n  console.log('Running: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 1: Getting started with HTML\nfunction runDemo() {\n  console.log('Running: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -50,7 +50,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 1: Getting started with HTML",
-            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with HTML?)\nGetting started with HTML structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hello World to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 1: Getting started with HTML\nfunction runTopicDemo() {\n  console.log('Executing: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Getting started with HTML?)\nGetting started with HTML provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Hello World to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 1: Getting started with HTML\nfunction runDemo() {\n  console.log('Running: Getting started with HTML');\n  return { success: true, topic: 'Getting started with HTML' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Getting started with HTML is essential for professional engineering."
           }
         },
@@ -74,8 +74,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Doctypes Working Implementation",
               "description": "Complete working demonstration of Doctypes",
-              "starterCode": "// Chapter 2: Doctypes\nfunction runTopicDemo() {\n  console.log('Executing: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Doctypes\nfunction runTopicDemo() {\n  console.log('Executing: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 2: Doctypes\nfunction runDemo() {\n  console.log('Running: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Doctypes\nfunction runDemo() {\n  console.log('Running: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Doctypes"
             }
           ],
@@ -83,9 +83,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Doctypes",
               "description": "Write a clean solution for Doctypes that returns expected status.",
-              "starterCode": "// Chapter 2: Doctypes\nfunction runTopicDemo() {\n  console.log('Executing: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 2: Doctypes\nfunction runTopicDemo() {\n  console.log('Executing: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 2: Doctypes\nfunction runDemo() {\n  console.log('Running: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 2: Doctypes\nfunction runDemo() {\n  console.log('Running: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -97,7 +97,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 2: Doctypes",
-            "content": "### \ud83c\udf1f 1. Definition (What is Doctypes?)\nDoctypes structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Adding the Doctype to simplify development and prevent common bugs.**\n- **Provides HTML 5 Doctype to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 2: Doctypes\nfunction runTopicDemo() {\n  console.log('Executing: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Doctypes?)\nDoctypes provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Adding the Doctype to write clean, predictable code.**\n- **Provides HTML 5 Doctype to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 2: Doctypes\nfunction runDemo() {\n  console.log('Running: Doctypes');\n  return { success: true, topic: 'Doctypes' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Doctypes is essential for professional engineering."
           }
         },
@@ -117,8 +117,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Headings Working Implementation",
               "description": "Complete working demonstration of Headings",
-              "starterCode": "// Chapter 3: Headings\nfunction runTopicDemo() {\n  console.log('Executing: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Headings\nfunction runTopicDemo() {\n  console.log('Executing: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 3: Headings\nfunction runDemo() {\n  console.log('Running: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Headings\nfunction runDemo() {\n  console.log('Running: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Headings"
             }
           ],
@@ -126,9 +126,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Headings",
               "description": "Write a clean solution for Headings that returns expected status.",
-              "starterCode": "// Chapter 3: Headings\nfunction runTopicDemo() {\n  console.log('Executing: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 3: Headings\nfunction runTopicDemo() {\n  console.log('Executing: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 3: Headings\nfunction runDemo() {\n  console.log('Running: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 3: Headings\nfunction runDemo() {\n  console.log('Running: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -140,7 +140,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 3: Headings",
-            "content": "### \ud83c\udf1f 1. Definition (What is Headings?)\nHeadings structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using Headings to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 3: Headings\nfunction runTopicDemo() {\n  console.log('Executing: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Headings?)\nHeadings provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Using Headings to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 3: Headings\nfunction runDemo() {\n  console.log('Running: Headings');\n  return { success: true, topic: 'Headings' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Headings is essential for professional engineering."
           }
         },
@@ -160,8 +160,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Paragraphs Working Implementation",
               "description": "Complete working demonstration of Paragraphs",
-              "starterCode": "// Chapter 4: Paragraphs\nfunction runTopicDemo() {\n  console.log('Executing: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Paragraphs\nfunction runTopicDemo() {\n  console.log('Executing: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 4: Paragraphs\nfunction runDemo() {\n  console.log('Running: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Paragraphs\nfunction runDemo() {\n  console.log('Running: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Paragraphs"
             }
           ],
@@ -169,9 +169,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Paragraphs",
               "description": "Write a clean solution for Paragraphs that returns expected status.",
-              "starterCode": "// Chapter 4: Paragraphs\nfunction runTopicDemo() {\n  console.log('Executing: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 4: Paragraphs\nfunction runTopicDemo() {\n  console.log('Executing: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 4: Paragraphs\nfunction runDemo() {\n  console.log('Running: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 4: Paragraphs\nfunction runDemo() {\n  console.log('Running: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -183,7 +183,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 4: Paragraphs",
-            "content": "### \ud83c\udf1f 1. Definition (What is Paragraphs?)\nParagraphs structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML Paragraphs to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 4: Paragraphs\nfunction runTopicDemo() {\n  console.log('Executing: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Paragraphs?)\nParagraphs provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML Paragraphs to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 4: Paragraphs\nfunction runDemo() {\n  console.log('Running: Paragraphs');\n  return { success: true, topic: 'Paragraphs' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Paragraphs is essential for professional engineering."
           }
         },
@@ -211,8 +211,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Text Formatting Working Implementation",
               "description": "Complete working demonstration of Text Formatting",
-              "starterCode": "// Chapter 5: Text Formatting\nfunction runTopicDemo() {\n  console.log('Executing: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Text Formatting\nfunction runTopicDemo() {\n  console.log('Executing: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 5: Text Formatting\nfunction runDemo() {\n  console.log('Running: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Text Formatting\nfunction runDemo() {\n  console.log('Running: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Text Formatting"
             }
           ],
@@ -220,9 +220,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Text Formatting",
               "description": "Write a clean solution for Text Formatting that returns expected status.",
-              "starterCode": "// Chapter 5: Text Formatting\nfunction runTopicDemo() {\n  console.log('Executing: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 5: Text Formatting\nfunction runTopicDemo() {\n  console.log('Executing: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 5: Text Formatting\nfunction runDemo() {\n  console.log('Running: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 5: Text Formatting\nfunction runDemo() {\n  console.log('Running: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -234,7 +234,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 5: Text Formatting",
-            "content": "### \ud83c\udf1f 1. Definition (What is Text Formatting?)\nText Formatting structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Highlighting to simplify development and prevent common bugs.**\n- **Provides Bold, Italic, and Underline to simplify development and prevent common bugs.**\n- **Provides Abbreviation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 5: Text Formatting\nfunction runTopicDemo() {\n  console.log('Executing: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Text Formatting?)\nText Formatting provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Highlighting to write clean, predictable code.**\n- **Provides Bold, Italic, and Underline to write clean, predictable code.**\n- **Provides Abbreviation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 5: Text Formatting\nfunction runDemo() {\n  console.log('Running: Text Formatting');\n  return { success: true, topic: 'Text Formatting' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Text Formatting is essential for professional engineering."
           }
         },
@@ -262,8 +262,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Anchors and Hyperlinks Working Implementation",
               "description": "Complete working demonstration of Anchors and Hyperlinks",
-              "starterCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runTopicDemo() {\n  console.log('Executing: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runTopicDemo() {\n  console.log('Executing: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runDemo() {\n  console.log('Running: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runDemo() {\n  console.log('Running: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Anchors and Hyperlinks"
             }
           ],
@@ -271,9 +271,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Anchors and Hyperlinks",
               "description": "Write a clean solution for Anchors and Hyperlinks that returns expected status.",
-              "starterCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runTopicDemo() {\n  console.log('Executing: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runTopicDemo() {\n  console.log('Executing: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runDemo() {\n  console.log('Running: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 6: Anchors and Hyperlinks\nfunction runDemo() {\n  console.log('Running: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -285,7 +285,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 6: Anchors and Hyperlinks",
-            "content": "### \ud83c\udf1f 1. Definition (What is Anchors and Hyperlinks?)\nAnchors and Hyperlinks structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Link to another site to simplify development and prevent common bugs.**\n- **Provides Link to an anchor to simplify development and prevent common bugs.**\n- **Provides Link to a page on the same site to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 6: Anchors and Hyperlinks\nfunction runTopicDemo() {\n  console.log('Executing: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Anchors and Hyperlinks?)\nAnchors and Hyperlinks provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Link to another site to write clean, predictable code.**\n- **Provides Link to an anchor to write clean, predictable code.**\n- **Provides Link to a page on the same site to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 6: Anchors and Hyperlinks\nfunction runDemo() {\n  console.log('Running: Anchors and Hyperlinks');\n  return { success: true, topic: 'Anchors and Hyperlinks' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Anchors and Hyperlinks is essential for professional engineering."
           }
         },
@@ -313,8 +313,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Lists Working Implementation",
               "description": "Complete working demonstration of Lists",
-              "starterCode": "// Chapter 7: Lists\nfunction runTopicDemo() {\n  console.log('Executing: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Lists\nfunction runTopicDemo() {\n  console.log('Executing: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 7: Lists\nfunction runDemo() {\n  console.log('Running: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Lists\nfunction runDemo() {\n  console.log('Running: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Lists"
             }
           ],
@@ -322,9 +322,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Lists",
               "description": "Write a clean solution for Lists that returns expected status.",
-              "starterCode": "// Chapter 7: Lists\nfunction runTopicDemo() {\n  console.log('Executing: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 7: Lists\nfunction runTopicDemo() {\n  console.log('Executing: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 7: Lists\nfunction runDemo() {\n  console.log('Running: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 7: Lists\nfunction runDemo() {\n  console.log('Running: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -336,7 +336,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 7: Lists",
-            "content": "### \ud83c\udf1f 1. Definition (What is Lists?)\nLists structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Ordered List to simplify development and prevent common bugs.**\n- **Provides Unordered List to simplify development and prevent common bugs.**\n- **Provides Nested lists to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 7: Lists\nfunction runTopicDemo() {\n  console.log('Executing: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Lists?)\nLists provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Ordered List to write clean, predictable code.**\n- **Provides Unordered List to write clean, predictable code.**\n- **Provides Nested lists to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 7: Lists\nfunction runDemo() {\n  console.log('Running: Lists');\n  return { success: true, topic: 'Lists' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Lists is essential for professional engineering."
           }
         },
@@ -364,8 +364,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Tables Working Implementation",
               "description": "Complete working demonstration of Tables",
-              "starterCode": "// Chapter 8: Tables\nfunction runTopicDemo() {\n  console.log('Executing: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Tables\nfunction runTopicDemo() {\n  console.log('Executing: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 8: Tables\nfunction runDemo() {\n  console.log('Running: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Tables\nfunction runDemo() {\n  console.log('Running: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Tables"
             }
           ],
@@ -373,9 +373,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Tables",
               "description": "Write a clean solution for Tables that returns expected status.",
-              "starterCode": "// Chapter 8: Tables\nfunction runTopicDemo() {\n  console.log('Executing: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 8: Tables\nfunction runTopicDemo() {\n  console.log('Executing: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 8: Tables\nfunction runDemo() {\n  console.log('Running: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 8: Tables\nfunction runDemo() {\n  console.log('Running: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -387,7 +387,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 8: Tables",
-            "content": "### \ud83c\udf1f 1. Definition (What is Tables?)\nTables structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple Table to simplify development and prevent common bugs.**\n- **Provides Spanning columns or rows to simplify development and prevent common bugs.**\n- **Provides Column Groups to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 8: Tables\nfunction runTopicDemo() {\n  console.log('Executing: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Tables?)\nTables provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Simple Table to write clean, predictable code.**\n- **Provides Spanning columns or rows to write clean, predictable code.**\n- **Provides Column Groups to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 8: Tables\nfunction runDemo() {\n  console.log('Running: Tables');\n  return { success: true, topic: 'Tables' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Tables is essential for professional engineering."
           }
         },
@@ -411,8 +411,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Comments Working Implementation",
               "description": "Complete working demonstration of Comments",
-              "starterCode": "// Chapter 9: Comments\nfunction runTopicDemo() {\n  console.log('Executing: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Comments\nfunction runTopicDemo() {\n  console.log('Executing: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 9: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Comments"
             }
           ],
@@ -420,9 +420,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Comments",
               "description": "Write a clean solution for Comments that returns expected status.",
-              "starterCode": "// Chapter 9: Comments\nfunction runTopicDemo() {\n  console.log('Executing: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 9: Comments\nfunction runTopicDemo() {\n  console.log('Executing: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 9: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 9: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -434,7 +434,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 9: Comments",
-            "content": "### \ud83c\udf1f 1. Definition (What is Comments?)\nComments structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating comments to simplify development and prevent common bugs.**\n- **Provides Commenting out whitespace between inline elements to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 9: Comments\nfunction runTopicDemo() {\n  console.log('Executing: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Comments?)\nComments provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating comments to write clean, predictable code.**\n- **Provides Commenting out whitespace between inline elements to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 9: Comments\nfunction runDemo() {\n  console.log('Running: Comments');\n  return { success: true, topic: 'Comments' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Comments is essential for professional engineering."
           }
         },
@@ -462,8 +462,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Classes and IDs Working Implementation",
               "description": "Complete working demonstration of Classes and IDs",
-              "starterCode": "// Chapter 10: Classes and IDs\nfunction runTopicDemo() {\n  console.log('Executing: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Classes and IDs\nfunction runTopicDemo() {\n  console.log('Executing: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 10: Classes and IDs\nfunction runDemo() {\n  console.log('Running: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Classes and IDs\nfunction runDemo() {\n  console.log('Running: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Classes and IDs"
             }
           ],
@@ -471,9 +471,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Classes and IDs",
               "description": "Write a clean solution for Classes and IDs that returns expected status.",
-              "starterCode": "// Chapter 10: Classes and IDs\nfunction runTopicDemo() {\n  console.log('Executing: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 10: Classes and IDs\nfunction runTopicDemo() {\n  console.log('Executing: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 10: Classes and IDs\nfunction runDemo() {\n  console.log('Running: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 10: Classes and IDs\nfunction runDemo() {\n  console.log('Running: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -485,7 +485,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 10: Classes and IDs",
-            "content": "### \ud83c\udf1f 1. Definition (What is Classes and IDs?)\nClasses and IDs structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Giving an element a class to simplify development and prevent common bugs.**\n- **Provides Giving an element an ID to simplify development and prevent common bugs.**\n- **Provides Acceptable Values to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 10: Classes and IDs\nfunction runTopicDemo() {\n  console.log('Executing: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Classes and IDs?)\nClasses and IDs provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Giving an element a class to write clean, predictable code.**\n- **Provides Giving an element an ID to write clean, predictable code.**\n- **Provides Acceptable Values to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 10: Classes and IDs\nfunction runDemo() {\n  console.log('Running: Classes and IDs');\n  return { success: true, topic: 'Classes and IDs' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Classes and IDs is essential for professional engineering."
           }
         }
@@ -516,8 +516,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Data Attributes Working Implementation",
               "description": "Complete working demonstration of Data Attributes",
-              "starterCode": "// Chapter 11: Data Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Data Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 11: Data Attributes\nfunction runDemo() {\n  console.log('Running: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Data Attributes\nfunction runDemo() {\n  console.log('Running: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Data Attributes"
             }
           ],
@@ -525,9 +525,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Data Attributes",
               "description": "Write a clean solution for Data Attributes that returns expected status.",
-              "starterCode": "// Chapter 11: Data Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 11: Data Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 11: Data Attributes\nfunction runDemo() {\n  console.log('Running: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 11: Data Attributes\nfunction runDemo() {\n  console.log('Running: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -539,7 +539,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 11: Data Attributes",
-            "content": "### \ud83c\udf1f 1. Definition (What is Data Attributes?)\nData Attributes structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Older browsers support to simplify development and prevent common bugs.**\n- **Provides Data Attribute Use to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 11: Data Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Data Attributes?)\nData Attributes provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Older browsers support to write clean, predictable code.**\n- **Provides Data Attribute Use to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 11: Data Attributes\nfunction runDemo() {\n  console.log('Running: Data Attributes');\n  return { success: true, topic: 'Data Attributes' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Data Attributes is essential for professional engineering."
           }
         },
@@ -567,8 +567,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Linking Resources Working Implementation",
               "description": "Complete working demonstration of Linking Resources",
-              "starterCode": "// Chapter 12: Linking Resources\nfunction runTopicDemo() {\n  console.log('Executing: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Linking Resources\nfunction runTopicDemo() {\n  console.log('Executing: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 12: Linking Resources\nfunction runDemo() {\n  console.log('Running: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Linking Resources\nfunction runDemo() {\n  console.log('Running: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Linking Resources"
             }
           ],
@@ -576,9 +576,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Linking Resources",
               "description": "Write a clean solution for Linking Resources that returns expected status.",
-              "starterCode": "// Chapter 12: Linking Resources\nfunction runTopicDemo() {\n  console.log('Executing: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 12: Linking Resources\nfunction runTopicDemo() {\n  console.log('Executing: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 12: Linking Resources\nfunction runDemo() {\n  console.log('Running: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 12: Linking Resources\nfunction runDemo() {\n  console.log('Running: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -590,7 +590,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 12: Linking Resources",
-            "content": "### \ud83c\udf1f 1. Definition (What is Linking Resources?)\nLinking Resources structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides JavaScript to simplify development and prevent common bugs.**\n- **Provides External CSS Stylesheet to simplify development and prevent common bugs.**\n- **Provides Favicon to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 12: Linking Resources\nfunction runTopicDemo() {\n  console.log('Executing: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Linking Resources?)\nLinking Resources provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides JavaScript to write clean, predictable code.**\n- **Provides External CSS Stylesheet to write clean, predictable code.**\n- **Provides Favicon to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 12: Linking Resources\nfunction runDemo() {\n  console.log('Running: Linking Resources');\n  return { success: true, topic: 'Linking Resources' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Linking Resources is essential for professional engineering."
           }
         },
@@ -618,8 +618,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Include JavaScript Code in HTML Working Implementation",
               "description": "Complete working demonstration of Include JavaScript Code in HTML",
-              "starterCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runTopicDemo() {\n  console.log('Executing: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runTopicDemo() {\n  console.log('Executing: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runDemo() {\n  console.log('Running: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runDemo() {\n  console.log('Running: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Include JavaScript Code in HTML"
             }
           ],
@@ -627,9 +627,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Include JavaScript Code in HTML",
               "description": "Write a clean solution for Include JavaScript Code in HTML that returns expected status.",
-              "starterCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runTopicDemo() {\n  console.log('Executing: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runTopicDemo() {\n  console.log('Executing: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runDemo() {\n  console.log('Running: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 13: Include JavaScript Code in HTML\nfunction runDemo() {\n  console.log('Running: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -641,7 +641,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 13: Include JavaScript Code in HTML",
-            "content": "### \ud83c\udf1f 1. Definition (What is Include JavaScript Code in HTML?)\nInclude JavaScript Code in HTML structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Handling disabled Javascript to simplify development and prevent common bugs.**\n- **Provides Linking to an external JavaScript \ufb01le to simplify development and prevent common bugs.**\n- **Provides Directly including JavaScript code to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 13: Include JavaScript Code in HTML\nfunction runTopicDemo() {\n  console.log('Executing: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Include JavaScript Code in HTML?)\nInclude JavaScript Code in HTML provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Handling disabled Javascript to write clean, predictable code.**\n- **Provides Linking to an external JavaScript \ufb01le to write clean, predictable code.**\n- **Provides Directly including JavaScript code to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 13: Include JavaScript Code in HTML\nfunction runDemo() {\n  console.log('Running: Include JavaScript Code in HTML');\n  return { success: true, topic: 'Include JavaScript Code in HTML' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Include JavaScript Code in HTML is essential for professional engineering."
           }
         },
@@ -669,8 +669,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Using HTML with CSS Working Implementation",
               "description": "Complete working demonstration of Using HTML with CSS",
-              "starterCode": "// Chapter 14: Using HTML with CSS\nfunction runTopicDemo() {\n  console.log('Executing: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Using HTML with CSS\nfunction runTopicDemo() {\n  console.log('Executing: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 14: Using HTML with CSS\nfunction runDemo() {\n  console.log('Running: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Using HTML with CSS\nfunction runDemo() {\n  console.log('Running: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Using HTML with CSS"
             }
           ],
@@ -678,9 +678,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Using HTML with CSS",
               "description": "Write a clean solution for Using HTML with CSS that returns expected status.",
-              "starterCode": "// Chapter 14: Using HTML with CSS\nfunction runTopicDemo() {\n  console.log('Executing: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 14: Using HTML with CSS\nfunction runTopicDemo() {\n  console.log('Executing: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 14: Using HTML with CSS\nfunction runDemo() {\n  console.log('Running: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 14: Using HTML with CSS\nfunction runDemo() {\n  console.log('Running: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -692,7 +692,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 14: Using HTML with CSS",
-            "content": "### \ud83c\udf1f 1. Definition (What is Using HTML with CSS?)\nUsing HTML with CSS structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides External Stylesheet Use to simplify development and prevent common bugs.**\n- **Provides Internal Stylesheet to simplify development and prevent common bugs.**\n- **Provides Inline Style to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 14: Using HTML with CSS\nfunction runTopicDemo() {\n  console.log('Executing: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Using HTML with CSS?)\nUsing HTML with CSS provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides External Stylesheet Use to write clean, predictable code.**\n- **Provides Internal Stylesheet to write clean, predictable code.**\n- **Provides Inline Style to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 14: Using HTML with CSS\nfunction runDemo() {\n  console.log('Running: Using HTML with CSS');\n  return { success: true, topic: 'Using HTML with CSS' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Using HTML with CSS is essential for professional engineering."
           }
         },
@@ -720,8 +720,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Images Working Implementation",
               "description": "Complete working demonstration of Images",
-              "starterCode": "// Chapter 15: Images\nfunction runTopicDemo() {\n  console.log('Executing: Images');\n  return { success: true, topic: 'Images' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Images\nfunction runTopicDemo() {\n  console.log('Executing: Images');\n  return { success: true, topic: 'Images' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 15: Images\nfunction runDemo() {\n  console.log('Running: Images');\n  return { success: true, topic: 'Images' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Images\nfunction runDemo() {\n  console.log('Running: Images');\n  return { success: true, topic: 'Images' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Images"
             }
           ],
@@ -729,9 +729,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Images",
               "description": "Write a clean solution for Images that returns expected status.",
-              "starterCode": "// Chapter 15: Images\nfunction runTopicDemo() {\n  console.log('Executing: Images');\n  return { success: true, topic: 'Images' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 15: Images\nfunction runTopicDemo() {\n  console.log('Executing: Images');\n  return { success: true, topic: 'Images' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 15: Images\nfunction runDemo() {\n  console.log('Running: Images');\n  return { success: true, topic: 'Images' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 15: Images\nfunction runDemo() {\n  console.log('Running: Images');\n  return { success: true, topic: 'Images' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -743,7 +743,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 15: Images",
-            "content": "### \ud83c\udf1f 1. Definition (What is Images?)\nImages structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating an image to simplify development and prevent common bugs.**\n- **Provides Choosing alt text to simplify development and prevent common bugs.**\n- **Provides Responsive image using the srcset attribute to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 15: Images\nfunction runTopicDemo() {\n  console.log('Executing: Images');\n  return { success: true, topic: 'Images' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Images?)\nImages provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Creating an image to write clean, predictable code.**\n- **Provides Choosing alt text to write clean, predictable code.**\n- **Provides Responsive image using the srcset attribute to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 15: Images\nfunction runDemo() {\n  console.log('Running: Images');\n  return { success: true, topic: 'Images' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Images is essential for professional engineering."
           }
         },
@@ -763,8 +763,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Image Maps Working Implementation",
               "description": "Complete working demonstration of Image Maps",
-              "starterCode": "// Chapter 16: Image Maps\nfunction runTopicDemo() {\n  console.log('Executing: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Image Maps\nfunction runTopicDemo() {\n  console.log('Executing: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 16: Image Maps\nfunction runDemo() {\n  console.log('Running: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Image Maps\nfunction runDemo() {\n  console.log('Running: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Image Maps"
             }
           ],
@@ -772,9 +772,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Image Maps",
               "description": "Write a clean solution for Image Maps that returns expected status.",
-              "starterCode": "// Chapter 16: Image Maps\nfunction runTopicDemo() {\n  console.log('Executing: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 16: Image Maps\nfunction runTopicDemo() {\n  console.log('Executing: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 16: Image Maps\nfunction runDemo() {\n  console.log('Running: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 16: Image Maps\nfunction runDemo() {\n  console.log('Running: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -786,7 +786,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 16: Image Maps",
-            "content": "### \ud83c\udf1f 1. Definition (What is Image Maps?)\nImage Maps structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction to Image Maps to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 16: Image Maps\nfunction runTopicDemo() {\n  console.log('Executing: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Image Maps?)\nImage Maps provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Introduction to Image Maps to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 16: Image Maps\nfunction runDemo() {\n  console.log('Running: Image Maps');\n  return { success: true, topic: 'Image Maps' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Image Maps is essential for professional engineering."
           }
         },
@@ -814,8 +814,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Input Control Elements Working Implementation",
               "description": "Complete working demonstration of Input Control Elements",
-              "starterCode": "// Chapter 17: Input Control Elements\nfunction runTopicDemo() {\n  console.log('Executing: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Input Control Elements\nfunction runTopicDemo() {\n  console.log('Executing: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 17: Input Control Elements\nfunction runDemo() {\n  console.log('Running: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Input Control Elements\nfunction runDemo() {\n  console.log('Running: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Input Control Elements"
             }
           ],
@@ -823,9 +823,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Input Control Elements",
               "description": "Write a clean solution for Input Control Elements that returns expected status.",
-              "starterCode": "// Chapter 17: Input Control Elements\nfunction runTopicDemo() {\n  console.log('Executing: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 17: Input Control Elements\nfunction runTopicDemo() {\n  console.log('Executing: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 17: Input Control Elements\nfunction runDemo() {\n  console.log('Running: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 17: Input Control Elements\nfunction runDemo() {\n  console.log('Running: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -837,7 +837,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 17: Input Control Elements",
-            "content": "### \ud83c\udf1f 1. Definition (What is Input Control Elements?)\nInput Control Elements structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Text to simplify development and prevent common bugs.**\n- **Provides Checkbox and Radio Buttons to simplify development and prevent common bugs.**\n- **Provides Input Validation to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 17: Input Control Elements\nfunction runTopicDemo() {\n  console.log('Executing: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Input Control Elements?)\nInput Control Elements provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Text to write clean, predictable code.**\n- **Provides Checkbox and Radio Buttons to write clean, predictable code.**\n- **Provides Input Validation to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 17: Input Control Elements\nfunction runDemo() {\n  console.log('Running: Input Control Elements');\n  return { success: true, topic: 'Input Control Elements' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Input Control Elements is essential for professional engineering."
           }
         },
@@ -865,8 +865,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Forms Working Implementation",
               "description": "Complete working demonstration of Forms",
-              "starterCode": "// Chapter 18: Forms\nfunction runTopicDemo() {\n  console.log('Executing: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Forms\nfunction runTopicDemo() {\n  console.log('Executing: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 18: Forms\nfunction runDemo() {\n  console.log('Running: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Forms\nfunction runDemo() {\n  console.log('Running: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Forms"
             }
           ],
@@ -874,9 +874,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Forms",
               "description": "Write a clean solution for Forms that returns expected status.",
-              "starterCode": "// Chapter 18: Forms\nfunction runTopicDemo() {\n  console.log('Executing: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 18: Forms\nfunction runTopicDemo() {\n  console.log('Executing: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 18: Forms\nfunction runDemo() {\n  console.log('Running: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 18: Forms\nfunction runDemo() {\n  console.log('Running: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -888,7 +888,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 18: Forms",
-            "content": "### \ud83c\udf1f 1. Definition (What is Forms?)\nForms structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Submitting to simplify development and prevent common bugs.**\n- **Provides Target attribute in form tag to simplify development and prevent common bugs.**\n- **Provides Uploading Files to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 18: Forms\nfunction runTopicDemo() {\n  console.log('Executing: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Forms?)\nForms provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Submitting to write clean, predictable code.**\n- **Provides Target attribute in form tag to write clean, predictable code.**\n- **Provides Uploading Files to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 18: Forms\nfunction runDemo() {\n  console.log('Running: Forms');\n  return { success: true, topic: 'Forms' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Forms is essential for professional engineering."
           }
         },
@@ -912,8 +912,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Div Element Working Implementation",
               "description": "Complete working demonstration of Div Element",
-              "starterCode": "// Chapter 19: Div Element\nfunction runTopicDemo() {\n  console.log('Executing: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Div Element\nfunction runTopicDemo() {\n  console.log('Executing: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 19: Div Element\nfunction runDemo() {\n  console.log('Running: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Div Element\nfunction runDemo() {\n  console.log('Running: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Div Element"
             }
           ],
@@ -921,9 +921,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Div Element",
               "description": "Write a clean solution for Div Element that returns expected status.",
-              "starterCode": "// Chapter 19: Div Element\nfunction runTopicDemo() {\n  console.log('Executing: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 19: Div Element\nfunction runTopicDemo() {\n  console.log('Executing: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 19: Div Element\nfunction runDemo() {\n  console.log('Running: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 19: Div Element\nfunction runDemo() {\n  console.log('Running: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -935,7 +935,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 19: Div Element",
-            "content": "### \ud83c\udf1f 1. Definition (What is Div Element?)\nDiv Element structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage to simplify development and prevent common bugs.**\n- **Provides Nesting to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 19: Div Element\nfunction runTopicDemo() {\n  console.log('Executing: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Div Element?)\nDiv Element provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage to write clean, predictable code.**\n- **Provides Nesting to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 19: Div Element\nfunction runDemo() {\n  console.log('Running: Div Element');\n  return { success: true, topic: 'Div Element' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Div Element is essential for professional engineering."
           }
         },
@@ -963,8 +963,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Sectioning Elements Working Implementation",
               "description": "Complete working demonstration of Sectioning Elements",
-              "starterCode": "// Chapter 20: Sectioning Elements\nfunction runTopicDemo() {\n  console.log('Executing: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Sectioning Elements\nfunction runTopicDemo() {\n  console.log('Executing: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 20: Sectioning Elements\nfunction runDemo() {\n  console.log('Running: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Sectioning Elements\nfunction runDemo() {\n  console.log('Running: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Sectioning Elements"
             }
           ],
@@ -972,9 +972,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Sectioning Elements",
               "description": "Write a clean solution for Sectioning Elements that returns expected status.",
-              "starterCode": "// Chapter 20: Sectioning Elements\nfunction runTopicDemo() {\n  console.log('Executing: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 20: Sectioning Elements\nfunction runTopicDemo() {\n  console.log('Executing: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 20: Sectioning Elements\nfunction runDemo() {\n  console.log('Running: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 20: Sectioning Elements\nfunction runDemo() {\n  console.log('Running: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -986,7 +986,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 20: Sectioning Elements",
-            "content": "### \ud83c\udf1f 1. Definition (What is Sectioning Elements?)\nSectioning Elements structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Nav Element to simplify development and prevent common bugs.**\n- **Provides Article Element to simplify development and prevent common bugs.**\n- **Provides Main Element to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 20: Sectioning Elements\nfunction runTopicDemo() {\n  console.log('Executing: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Sectioning Elements?)\nSectioning Elements provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Nav Element to write clean, predictable code.**\n- **Provides Article Element to write clean, predictable code.**\n- **Provides Main Element to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 20: Sectioning Elements\nfunction runDemo() {\n  console.log('Running: Sectioning Elements');\n  return { success: true, topic: 'Sectioning Elements' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Sectioning Elements is essential for professional engineering."
           }
         }
@@ -1017,8 +1017,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Navigation Bars Working Implementation",
               "description": "Complete working demonstration of Navigation Bars",
-              "starterCode": "// Chapter 21: Navigation Bars\nfunction runTopicDemo() {\n  console.log('Executing: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Navigation Bars\nfunction runTopicDemo() {\n  console.log('Executing: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 21: Navigation Bars\nfunction runDemo() {\n  console.log('Running: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Navigation Bars\nfunction runDemo() {\n  console.log('Running: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Navigation Bars"
             }
           ],
@@ -1026,9 +1026,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Navigation Bars",
               "description": "Write a clean solution for Navigation Bars that returns expected status.",
-              "starterCode": "// Chapter 21: Navigation Bars\nfunction runTopicDemo() {\n  console.log('Executing: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 21: Navigation Bars\nfunction runTopicDemo() {\n  console.log('Executing: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 21: Navigation Bars\nfunction runDemo() {\n  console.log('Running: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 21: Navigation Bars\nfunction runDemo() {\n  console.log('Running: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1040,7 +1040,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 21: Navigation Bars",
-            "content": "### \ud83c\udf1f 1. Definition (What is Navigation Bars?)\nNavigation Bars structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Navigation Bar to simplify development and prevent common bugs.**\n- **Provides HTML5 Navigation Bar to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 21: Navigation Bars\nfunction runTopicDemo() {\n  console.log('Executing: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Navigation Bars?)\nNavigation Bars provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Navigation Bar to write clean, predictable code.**\n- **Provides HTML5 Navigation Bar to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 21: Navigation Bars\nfunction runDemo() {\n  console.log('Running: Navigation Bars');\n  return { success: true, topic: 'Navigation Bars' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Navigation Bars is essential for professional engineering."
           }
         },
@@ -1064,8 +1064,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Label Element Working Implementation",
               "description": "Complete working demonstration of Label Element",
-              "starterCode": "// Chapter 22: Label Element\nfunction runTopicDemo() {\n  console.log('Executing: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Label Element\nfunction runTopicDemo() {\n  console.log('Executing: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 22: Label Element\nfunction runDemo() {\n  console.log('Running: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Label Element\nfunction runDemo() {\n  console.log('Running: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Label Element"
             }
           ],
@@ -1073,9 +1073,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Label Element",
               "description": "Write a clean solution for Label Element that returns expected status.",
-              "starterCode": "// Chapter 22: Label Element\nfunction runTopicDemo() {\n  console.log('Executing: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 22: Label Element\nfunction runTopicDemo() {\n  console.log('Executing: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 22: Label Element\nfunction runDemo() {\n  console.log('Running: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 22: Label Element\nfunction runDemo() {\n  console.log('Running: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1087,7 +1087,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 22: Label Element",
-            "content": "### \ud83c\udf1f 1. Definition (What is Label Element?)\nLabel Element structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides About Label to simplify development and prevent common bugs.**\n- **Provides Basic Use to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 22: Label Element\nfunction runTopicDemo() {\n  console.log('Executing: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Label Element?)\nLabel Element provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides About Label to write clean, predictable code.**\n- **Provides Basic Use to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 22: Label Element\nfunction runDemo() {\n  console.log('Running: Label Element');\n  return { success: true, topic: 'Label Element' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Label Element is essential for professional engineering."
           }
         },
@@ -1111,8 +1111,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Output Element Working Implementation",
               "description": "Complete working demonstration of Output Element",
-              "starterCode": "// Chapter 23: Output Element\nfunction runTopicDemo() {\n  console.log('Executing: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Output Element\nfunction runTopicDemo() {\n  console.log('Executing: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 23: Output Element\nfunction runDemo() {\n  console.log('Running: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Output Element\nfunction runDemo() {\n  console.log('Running: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Output Element"
             }
           ],
@@ -1120,9 +1120,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Output Element",
               "description": "Write a clean solution for Output Element that returns expected status.",
-              "starterCode": "// Chapter 23: Output Element\nfunction runTopicDemo() {\n  console.log('Executing: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 23: Output Element\nfunction runTopicDemo() {\n  console.log('Executing: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 23: Output Element\nfunction runDemo() {\n  console.log('Running: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 23: Output Element\nfunction runDemo() {\n  console.log('Running: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1134,7 +1134,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 23: Output Element",
-            "content": "### \ud83c\udf1f 1. Definition (What is Output Element?)\nOutput Element structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Output Element Using For and Form Attributes to simplify development and prevent common bugs.**\n- **Provides Output Element with Attributes to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 23: Output Element\nfunction runTopicDemo() {\n  console.log('Executing: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Output Element?)\nOutput Element provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Output Element Using For and Form Attributes to write clean, predictable code.**\n- **Provides Output Element with Attributes to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 23: Output Element\nfunction runDemo() {\n  console.log('Running: Output Element');\n  return { success: true, topic: 'Output Element' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Output Element is essential for professional engineering."
           }
         },
@@ -1154,8 +1154,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Void Elements Working Implementation",
               "description": "Complete working demonstration of Void Elements",
-              "starterCode": "// Chapter 24: Void Elements\nfunction runTopicDemo() {\n  console.log('Executing: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Void Elements\nfunction runTopicDemo() {\n  console.log('Executing: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 24: Void Elements\nfunction runDemo() {\n  console.log('Running: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Void Elements\nfunction runDemo() {\n  console.log('Running: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Void Elements"
             }
           ],
@@ -1163,9 +1163,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Void Elements",
               "description": "Write a clean solution for Void Elements that returns expected status.",
-              "starterCode": "// Chapter 24: Void Elements\nfunction runTopicDemo() {\n  console.log('Executing: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 24: Void Elements\nfunction runTopicDemo() {\n  console.log('Executing: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 24: Void Elements\nfunction runDemo() {\n  console.log('Running: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 24: Void Elements\nfunction runDemo() {\n  console.log('Running: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1177,7 +1177,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 24: Void Elements",
-            "content": "### \ud83c\udf1f 1. Definition (What is Void Elements?)\nVoid Elements structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Void elements to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 24: Void Elements\nfunction runTopicDemo() {\n  console.log('Executing: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Void Elements?)\nVoid Elements provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Void elements to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 24: Void Elements\nfunction runDemo() {\n  console.log('Running: Void Elements');\n  return { success: true, topic: 'Void Elements' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Void Elements is essential for professional engineering."
           }
         },
@@ -1205,8 +1205,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Media Elements Working Implementation",
               "description": "Complete working demonstration of Media Elements",
-              "starterCode": "// Chapter 25: Media Elements\nfunction runTopicDemo() {\n  console.log('Executing: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Media Elements\nfunction runTopicDemo() {\n  console.log('Executing: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 25: Media Elements\nfunction runDemo() {\n  console.log('Running: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Media Elements\nfunction runDemo() {\n  console.log('Running: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Media Elements"
             }
           ],
@@ -1214,9 +1214,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Media Elements",
               "description": "Write a clean solution for Media Elements that returns expected status.",
-              "starterCode": "// Chapter 25: Media Elements\nfunction runTopicDemo() {\n  console.log('Executing: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 25: Media Elements\nfunction runTopicDemo() {\n  console.log('Executing: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 25: Media Elements\nfunction runDemo() {\n  console.log('Running: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 25: Media Elements\nfunction runDemo() {\n  console.log('Running: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1228,7 +1228,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 25: Media Elements",
-            "content": "### \ud83c\udf1f 1. Definition (What is Media Elements?)\nMedia Elements structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Audio to simplify development and prevent common bugs.**\n- **Provides Video to simplify development and prevent common bugs.**\n- **Provides Using `<video>` and `<audio>` element to display audio/video content to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 25: Media Elements\nfunction runTopicDemo() {\n  console.log('Executing: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Media Elements?)\nMedia Elements provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Audio to write clean, predictable code.**\n- **Provides Video to write clean, predictable code.**\n- **Provides Using `<video>` and `<audio>` element to display audio/video content to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 25: Media Elements\nfunction runDemo() {\n  console.log('Running: Media Elements');\n  return { success: true, topic: 'Media Elements' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Media Elements is essential for professional engineering."
           }
         },
@@ -1256,8 +1256,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Progress Element Working Implementation",
               "description": "Complete working demonstration of Progress Element",
-              "starterCode": "// Chapter 26: Progress Element\nfunction runTopicDemo() {\n  console.log('Executing: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Progress Element\nfunction runTopicDemo() {\n  console.log('Executing: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 26: Progress Element\nfunction runDemo() {\n  console.log('Running: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Progress Element\nfunction runDemo() {\n  console.log('Running: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Progress Element"
             }
           ],
@@ -1265,9 +1265,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Progress Element",
               "description": "Write a clean solution for Progress Element that returns expected status.",
-              "starterCode": "// Chapter 26: Progress Element\nfunction runTopicDemo() {\n  console.log('Executing: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 26: Progress Element\nfunction runTopicDemo() {\n  console.log('Executing: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 26: Progress Element\nfunction runDemo() {\n  console.log('Running: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 26: Progress Element\nfunction runDemo() {\n  console.log('Running: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1279,7 +1279,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 26: Progress Element",
-            "content": "### \ud83c\udf1f 1. Definition (What is Progress Element?)\nProgress Element structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Progress to simplify development and prevent common bugs.**\n- **Provides Changing the color of a progress bar to simplify development and prevent common bugs.**\n- **Provides HTML Fallback to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 26: Progress Element\nfunction runTopicDemo() {\n  console.log('Executing: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Progress Element?)\nProgress Element provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Progress to write clean, predictable code.**\n- **Provides Changing the color of a progress bar to write clean, predictable code.**\n- **Provides HTML Fallback to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 26: Progress Element\nfunction runDemo() {\n  console.log('Running: Progress Element');\n  return { success: true, topic: 'Progress Element' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Progress Element is essential for professional engineering."
           }
         },
@@ -1307,8 +1307,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Selection Menu Controls Working Implementation",
               "description": "Complete working demonstration of Selection Menu Controls",
-              "starterCode": "// Chapter 27: Selection Menu Controls\nfunction runTopicDemo() {\n  console.log('Executing: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: Selection Menu Controls\nfunction runTopicDemo() {\n  console.log('Executing: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 27: Selection Menu Controls\nfunction runDemo() {\n  console.log('Running: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Selection Menu Controls\nfunction runDemo() {\n  console.log('Running: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Selection Menu Controls"
             }
           ],
@@ -1316,9 +1316,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Selection Menu Controls",
               "description": "Write a clean solution for Selection Menu Controls that returns expected status.",
-              "starterCode": "// Chapter 27: Selection Menu Controls\nfunction runTopicDemo() {\n  console.log('Executing: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 27: Selection Menu Controls\nfunction runTopicDemo() {\n  console.log('Executing: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 27: Selection Menu Controls\nfunction runDemo() {\n  console.log('Running: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 27: Selection Menu Controls\nfunction runDemo() {\n  console.log('Running: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1330,7 +1330,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 27: Selection Menu Controls",
-            "content": "### \ud83c\udf1f 1. Definition (What is Selection Menu Controls?)\nSelection Menu Controls structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Select Menu to simplify development and prevent common bugs.**\n- **Provides Options to simplify development and prevent common bugs.**\n- **Provides Option Groups to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 27: Selection Menu Controls\nfunction runTopicDemo() {\n  console.log('Executing: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Selection Menu Controls?)\nSelection Menu Controls provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Select Menu to write clean, predictable code.**\n- **Provides Options to write clean, predictable code.**\n- **Provides Option Groups to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 27: Selection Menu Controls\nfunction runDemo() {\n  console.log('Running: Selection Menu Controls');\n  return { success: true, topic: 'Selection Menu Controls' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Selection Menu Controls is essential for professional engineering."
           }
         },
@@ -1354,8 +1354,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Embed Working Implementation",
               "description": "Complete working demonstration of Embed",
-              "starterCode": "// Chapter 28: Embed\nfunction runTopicDemo() {\n  console.log('Executing: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: Embed\nfunction runTopicDemo() {\n  console.log('Executing: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 28: Embed\nfunction runDemo() {\n  console.log('Running: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Embed\nfunction runDemo() {\n  console.log('Running: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Embed"
             }
           ],
@@ -1363,9 +1363,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Embed",
               "description": "Write a clean solution for Embed that returns expected status.",
-              "starterCode": "// Chapter 28: Embed\nfunction runTopicDemo() {\n  console.log('Executing: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 28: Embed\nfunction runTopicDemo() {\n  console.log('Executing: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 28: Embed\nfunction runDemo() {\n  console.log('Running: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 28: Embed\nfunction runDemo() {\n  console.log('Running: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1377,7 +1377,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 28: Embed",
-            "content": "### \ud83c\udf1f 1. Definition (What is Embed?)\nEmbed structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage to simplify development and prevent common bugs.**\n- **Provides De\ufb01ning the MIME type to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 28: Embed\nfunction runTopicDemo() {\n  console.log('Executing: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Embed?)\nEmbed provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic usage to write clean, predictable code.**\n- **Provides De\ufb01ning the MIME type to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 28: Embed\nfunction runDemo() {\n  console.log('Running: Embed');\n  return { success: true, topic: 'Embed' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Embed is essential for professional engineering."
           }
         },
@@ -1405,8 +1405,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "IFrames Working Implementation",
               "description": "Complete working demonstration of IFrames",
-              "starterCode": "// Chapter 29: IFrames\nfunction runTopicDemo() {\n  console.log('Executing: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: IFrames\nfunction runTopicDemo() {\n  console.log('Executing: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 29: IFrames\nfunction runDemo() {\n  console.log('Running: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: IFrames\nfunction runDemo() {\n  console.log('Running: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: IFrames"
             }
           ],
@@ -1414,9 +1414,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement IFrames",
               "description": "Write a clean solution for IFrames that returns expected status.",
-              "starterCode": "// Chapter 29: IFrames\nfunction runTopicDemo() {\n  console.log('Executing: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 29: IFrames\nfunction runTopicDemo() {\n  console.log('Executing: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 29: IFrames\nfunction runDemo() {\n  console.log('Running: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 29: IFrames\nfunction runDemo() {\n  console.log('Running: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1428,7 +1428,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 29: IFrames",
-            "content": "### \ud83c\udf1f 1. Definition (What is IFrames?)\nIFrames structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basics of an Inline Frame to simplify development and prevent common bugs.**\n- **Provides Sandboxing to simplify development and prevent common bugs.**\n- **Provides Setting the Frame Size to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 29: IFrames\nfunction runTopicDemo() {\n  console.log('Executing: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is IFrames?)\nIFrames provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basics of an Inline Frame to write clean, predictable code.**\n- **Provides Sandboxing to write clean, predictable code.**\n- **Provides Setting the Frame Size to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 29: IFrames\nfunction runDemo() {\n  console.log('Running: IFrames');\n  return { success: true, topic: 'IFrames' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering IFrames is essential for professional engineering."
           }
         },
@@ -1456,8 +1456,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Content Languages Working Implementation",
               "description": "Complete working demonstration of Content Languages",
-              "starterCode": "// Chapter 30: Content Languages\nfunction runTopicDemo() {\n  console.log('Executing: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Content Languages\nfunction runTopicDemo() {\n  console.log('Executing: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 30: Content Languages\nfunction runDemo() {\n  console.log('Running: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Content Languages\nfunction runDemo() {\n  console.log('Running: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Content Languages"
             }
           ],
@@ -1465,9 +1465,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Content Languages",
               "description": "Write a clean solution for Content Languages that returns expected status.",
-              "starterCode": "// Chapter 30: Content Languages\nfunction runTopicDemo() {\n  console.log('Executing: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 30: Content Languages\nfunction runTopicDemo() {\n  console.log('Executing: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 30: Content Languages\nfunction runDemo() {\n  console.log('Running: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 30: Content Languages\nfunction runDemo() {\n  console.log('Running: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1479,7 +1479,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 30: Content Languages",
-            "content": "### \ud83c\udf1f 1. Definition (What is Content Languages?)\nContent Languages structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Base Document Language to simplify development and prevent common bugs.**\n- **Provides Element Language to simplify development and prevent common bugs.**\n- **Provides Elements with Multiple Languages to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 30: Content Languages\nfunction runTopicDemo() {\n  console.log('Executing: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Content Languages?)\nContent Languages provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Base Document Language to write clean, predictable code.**\n- **Provides Element Language to write clean, predictable code.**\n- **Provides Elements with Multiple Languages to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 30: Content Languages\nfunction runDemo() {\n  console.log('Running: Content Languages');\n  return { success: true, topic: 'Content Languages' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Content Languages is essential for professional engineering."
           }
         }
@@ -1514,8 +1514,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "SVG Working Implementation",
               "description": "Complete working demonstration of SVG",
-              "starterCode": "// Chapter 31: SVG\nfunction runTopicDemo() {\n  console.log('Executing: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: SVG\nfunction runTopicDemo() {\n  console.log('Executing: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 31: SVG\nfunction runDemo() {\n  console.log('Running: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: SVG\nfunction runDemo() {\n  console.log('Running: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: SVG"
             }
           ],
@@ -1523,9 +1523,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement SVG",
               "description": "Write a clean solution for SVG that returns expected status.",
-              "starterCode": "// Chapter 31: SVG\nfunction runTopicDemo() {\n  console.log('Executing: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 31: SVG\nfunction runTopicDemo() {\n  console.log('Executing: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 31: SVG\nfunction runDemo() {\n  console.log('Running: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 31: SVG\nfunction runDemo() {\n  console.log('Running: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1537,7 +1537,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 31: SVG",
-            "content": "### \ud83c\udf1f 1. Definition (What is SVG?)\nSVG structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Inline SVG to simplify development and prevent common bugs.**\n- **Provides Embedding external SVG \ufb01les in HTML to simplify development and prevent common bugs.**\n- **Provides Embedding SVG using CSS to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 31: SVG\nfunction runTopicDemo() {\n  console.log('Executing: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is SVG?)\nSVG provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Inline SVG to write clean, predictable code.**\n- **Provides Embedding external SVG \ufb01les in HTML to write clean, predictable code.**\n- **Provides Embedding SVG using CSS to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 31: SVG\nfunction runDemo() {\n  console.log('Running: SVG');\n  return { success: true, topic: 'SVG' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering SVG is essential for professional engineering."
           }
         },
@@ -1561,8 +1561,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Canvas Working Implementation",
               "description": "Complete working demonstration of Canvas",
-              "starterCode": "// Chapter 32: Canvas\nfunction runTopicDemo() {\n  console.log('Executing: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: Canvas\nfunction runTopicDemo() {\n  console.log('Executing: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 32: Canvas\nfunction runDemo() {\n  console.log('Running: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: Canvas\nfunction runDemo() {\n  console.log('Running: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Canvas"
             }
           ],
@@ -1570,9 +1570,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Canvas",
               "description": "Write a clean solution for Canvas that returns expected status.",
-              "starterCode": "// Chapter 32: Canvas\nfunction runTopicDemo() {\n  console.log('Executing: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 32: Canvas\nfunction runTopicDemo() {\n  console.log('Executing: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 32: Canvas\nfunction runDemo() {\n  console.log('Running: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 32: Canvas\nfunction runDemo() {\n  console.log('Running: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1584,7 +1584,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 32: Canvas",
-            "content": "### \ud83c\udf1f 1. Definition (What is Canvas?)\nCanvas structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Example to simplify development and prevent common bugs.**\n- **Provides Drawing two rectangles on a <canvas> to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 32: Canvas\nfunction runTopicDemo() {\n  console.log('Executing: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Canvas?)\nCanvas provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Example to write clean, predictable code.**\n- **Provides Drawing two rectangles on a <canvas> to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 32: Canvas\nfunction runDemo() {\n  console.log('Running: Canvas');\n  return { success: true, topic: 'Canvas' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Canvas is essential for professional engineering."
           }
         },
@@ -1612,8 +1612,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Meta Information Working Implementation",
               "description": "Complete working demonstration of Meta Information",
-              "starterCode": "// Chapter 33: Meta Information\nfunction runTopicDemo() {\n  console.log('Executing: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 33: Meta Information\nfunction runTopicDemo() {\n  console.log('Executing: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 33: Meta Information\nfunction runDemo() {\n  console.log('Running: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: Meta Information\nfunction runDemo() {\n  console.log('Running: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Meta Information"
             }
           ],
@@ -1621,9 +1621,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Meta Information",
               "description": "Write a clean solution for Meta Information that returns expected status.",
-              "starterCode": "// Chapter 33: Meta Information\nfunction runTopicDemo() {\n  console.log('Executing: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 33: Meta Information\nfunction runTopicDemo() {\n  console.log('Executing: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 33: Meta Information\nfunction runDemo() {\n  console.log('Running: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 33: Meta Information\nfunction runDemo() {\n  console.log('Running: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1635,7 +1635,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 33: Meta Information",
-            "content": "### \ud83c\udf1f 1. Definition (What is Meta Information?)\nMeta Information structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Page Information to simplify development and prevent common bugs.**\n- **Provides Character Encoding to simplify development and prevent common bugs.**\n- **Provides Robots to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 33: Meta Information\nfunction runTopicDemo() {\n  console.log('Executing: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Meta Information?)\nMeta Information provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Page Information to write clean, predictable code.**\n- **Provides Character Encoding to write clean, predictable code.**\n- **Provides Robots to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 33: Meta Information\nfunction runDemo() {\n  console.log('Running: Meta Information');\n  return { success: true, topic: 'Meta Information' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Meta Information is essential for professional engineering."
           }
         },
@@ -1659,8 +1659,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Marking up computer code Working Implementation",
               "description": "Complete working demonstration of Marking up computer code",
-              "starterCode": "// Chapter 34: Marking up computer code\nfunction runTopicDemo() {\n  console.log('Executing: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 34: Marking up computer code\nfunction runTopicDemo() {\n  console.log('Executing: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 34: Marking up computer code\nfunction runDemo() {\n  console.log('Running: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Marking up computer code\nfunction runDemo() {\n  console.log('Running: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Marking up computer code"
             }
           ],
@@ -1668,9 +1668,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Marking up computer code",
               "description": "Write a clean solution for Marking up computer code that returns expected status.",
-              "starterCode": "// Chapter 34: Marking up computer code\nfunction runTopicDemo() {\n  console.log('Executing: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 34: Marking up computer code\nfunction runTopicDemo() {\n  console.log('Executing: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 34: Marking up computer code\nfunction runDemo() {\n  console.log('Running: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 34: Marking up computer code\nfunction runDemo() {\n  console.log('Running: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1682,7 +1682,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 34: Marking up computer code",
-            "content": "### \ud83c\udf1f 1. Definition (What is Marking up computer code?)\nMarking up computer code structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Block with <pre> and <code> to simplify development and prevent common bugs.**\n- **Provides Inline with <code> to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 34: Marking up computer code\nfunction runTopicDemo() {\n  console.log('Executing: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Marking up computer code?)\nMarking up computer code provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Block with <pre> and <code> to write clean, predictable code.**\n- **Provides Inline with <code> to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 34: Marking up computer code\nfunction runDemo() {\n  console.log('Running: Marking up computer code');\n  return { success: true, topic: 'Marking up computer code' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Marking up computer code is essential for professional engineering."
           }
         },
@@ -1706,8 +1706,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Marking: up Quotes Working Implementation",
               "description": "Complete working demonstration of Marking: up Quotes",
-              "starterCode": "// Chapter 35: Marking: up Quotes\nfunction runTopicDemo() {\n  console.log('Executing: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 35: Marking: up Quotes\nfunction runTopicDemo() {\n  console.log('Executing: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 35: Marking: up Quotes\nfunction runDemo() {\n  console.log('Running: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Marking: up Quotes\nfunction runDemo() {\n  console.log('Running: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Marking: up Quotes"
             }
           ],
@@ -1715,9 +1715,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Marking: up Quotes",
               "description": "Write a clean solution for Marking: up Quotes that returns expected status.",
-              "starterCode": "// Chapter 35: Marking: up Quotes\nfunction runTopicDemo() {\n  console.log('Executing: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 35: Marking: up Quotes\nfunction runTopicDemo() {\n  console.log('Executing: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 35: Marking: up Quotes\nfunction runDemo() {\n  console.log('Running: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 35: Marking: up Quotes\nfunction runDemo() {\n  console.log('Running: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1729,7 +1729,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 35: Marking: up Quotes",
-            "content": "### \ud83c\udf1f 1. Definition (What is Marking: up Quotes?)\nMarking: up Quotes structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Inline with <q> to simplify development and prevent common bugs.**\n- **Provides Block with <blockquote> to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 35: Marking: up Quotes\nfunction runTopicDemo() {\n  console.log('Executing: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Marking: up Quotes?)\nMarking: up Quotes provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Inline with <q> to write clean, predictable code.**\n- **Provides Block with <blockquote> to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 35: Marking: up Quotes\nfunction runDemo() {\n  console.log('Running: Marking: up Quotes');\n  return { success: true, topic: 'Marking: up Quotes' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Marking: up Quotes is essential for professional engineering."
           }
         },
@@ -1757,8 +1757,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Tabindex Working Implementation",
               "description": "Complete working demonstration of Tabindex",
-              "starterCode": "// Chapter 36: Tabindex\nfunction runTopicDemo() {\n  console.log('Executing: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 36: Tabindex\nfunction runTopicDemo() {\n  console.log('Executing: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 36: Tabindex\nfunction runDemo() {\n  console.log('Running: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: Tabindex\nfunction runDemo() {\n  console.log('Running: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Tabindex"
             }
           ],
@@ -1766,9 +1766,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Tabindex",
               "description": "Write a clean solution for Tabindex that returns expected status.",
-              "starterCode": "// Chapter 36: Tabindex\nfunction runTopicDemo() {\n  console.log('Executing: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 36: Tabindex\nfunction runTopicDemo() {\n  console.log('Executing: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 36: Tabindex\nfunction runDemo() {\n  console.log('Running: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 36: Tabindex\nfunction runDemo() {\n  console.log('Running: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1780,7 +1780,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 36: Tabindex",
-            "content": "### \ud83c\udf1f 1. Definition (What is Tabindex?)\nTabindex structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Add an element to the tabbing order to simplify development and prevent common bugs.**\n- **Provides Remove an element from the tabbing order to simplify development and prevent common bugs.**\n- **Provides De\ufb01ne a custom tabbing order (not recommended) to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 36: Tabindex\nfunction runTopicDemo() {\n  console.log('Executing: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Tabindex?)\nTabindex provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Add an element to the tabbing order to write clean, predictable code.**\n- **Provides Remove an element from the tabbing order to write clean, predictable code.**\n- **Provides De\ufb01ne a custom tabbing order (not recommended) to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 36: Tabindex\nfunction runDemo() {\n  console.log('Running: Tabindex');\n  return { success: true, topic: 'Tabindex' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Tabindex is essential for professional engineering."
           }
         },
@@ -1800,8 +1800,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Global Attributes Working Implementation",
               "description": "Complete working demonstration of Global Attributes",
-              "starterCode": "// Chapter 37: Global Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 37: Global Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 37: Global Attributes\nfunction runDemo() {\n  console.log('Running: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: Global Attributes\nfunction runDemo() {\n  console.log('Running: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Global Attributes"
             }
           ],
@@ -1809,9 +1809,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Global Attributes",
               "description": "Write a clean solution for Global Attributes that returns expected status.",
-              "starterCode": "// Chapter 37: Global Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 37: Global Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 37: Global Attributes\nfunction runDemo() {\n  console.log('Running: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 37: Global Attributes\nfunction runDemo() {\n  console.log('Running: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1823,7 +1823,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 37: Global Attributes",
-            "content": "### \ud83c\udf1f 1. Definition (What is Global Attributes?)\nGlobal Attributes structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Contenteditable Attribute to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 37: Global Attributes\nfunction runTopicDemo() {\n  console.log('Executing: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Global Attributes?)\nGlobal Attributes provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Contenteditable Attribute to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 37: Global Attributes\nfunction runDemo() {\n  console.log('Running: Global Attributes');\n  return { success: true, topic: 'Global Attributes' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Global Attributes is essential for professional engineering."
           }
         },
@@ -1843,8 +1843,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "HTML 5 Cache Working Implementation",
               "description": "Complete working demonstration of HTML 5 Cache",
-              "starterCode": "// Chapter 38: HTML 5 Cache\nfunction runTopicDemo() {\n  console.log('Executing: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 38: HTML 5 Cache\nfunction runTopicDemo() {\n  console.log('Executing: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 38: HTML 5 Cache\nfunction runDemo() {\n  console.log('Running: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: HTML 5 Cache\nfunction runDemo() {\n  console.log('Running: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: HTML 5 Cache"
             }
           ],
@@ -1852,9 +1852,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement HTML 5 Cache",
               "description": "Write a clean solution for HTML 5 Cache that returns expected status.",
-              "starterCode": "// Chapter 38: HTML 5 Cache\nfunction runTopicDemo() {\n  console.log('Executing: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 38: HTML 5 Cache\nfunction runTopicDemo() {\n  console.log('Executing: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 38: HTML 5 Cache\nfunction runDemo() {\n  console.log('Running: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 38: HTML 5 Cache\nfunction runDemo() {\n  console.log('Running: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1866,7 +1866,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 38: HTML 5 Cache",
-            "content": "### \ud83c\udf1f 1. Definition (What is HTML 5 Cache?)\nHTML 5 Cache structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Example of HTML5 cache to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 38: HTML 5 Cache\nfunction runTopicDemo() {\n  console.log('Executing: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is HTML 5 Cache?)\nHTML 5 Cache provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Basic Example of HTML5 cache to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 38: HTML 5 Cache\nfunction runDemo() {\n  console.log('Running: HTML 5 Cache');\n  return { success: true, topic: 'HTML 5 Cache' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering HTML 5 Cache is essential for professional engineering."
           }
         },
@@ -1890,8 +1890,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "HTML Event Attributes Working Implementation",
               "description": "Complete working demonstration of HTML Event Attributes",
-              "starterCode": "// Chapter 39: HTML Event Attributes\nfunction runTopicDemo() {\n  console.log('Executing: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 39: HTML Event Attributes\nfunction runTopicDemo() {\n  console.log('Executing: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 39: HTML Event Attributes\nfunction runDemo() {\n  console.log('Running: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: HTML Event Attributes\nfunction runDemo() {\n  console.log('Running: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: HTML Event Attributes"
             }
           ],
@@ -1899,9 +1899,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement HTML Event Attributes",
               "description": "Write a clean solution for HTML Event Attributes that returns expected status.",
-              "starterCode": "// Chapter 39: HTML Event Attributes\nfunction runTopicDemo() {\n  console.log('Executing: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 39: HTML Event Attributes\nfunction runTopicDemo() {\n  console.log('Executing: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 39: HTML Event Attributes\nfunction runDemo() {\n  console.log('Running: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 39: HTML Event Attributes\nfunction runDemo() {\n  console.log('Running: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1913,7 +1913,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 39: HTML Event Attributes",
-            "content": "### \ud83c\udf1f 1. Definition (What is HTML Event Attributes?)\nHTML Event Attributes structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML Form Events to simplify development and prevent common bugs.**\n- **Provides Keyboard Events to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 39: HTML Event Attributes\nfunction runTopicDemo() {\n  console.log('Executing: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is HTML Event Attributes?)\nHTML Event Attributes provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides HTML Form Events to write clean, predictable code.**\n- **Provides Keyboard Events to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 39: HTML Event Attributes\nfunction runDemo() {\n  console.log('Running: HTML Event Attributes');\n  return { success: true, topic: 'HTML Event Attributes' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering HTML Event Attributes is essential for professional engineering."
           }
         },
@@ -1937,8 +1937,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Character Entities Working Implementation",
               "description": "Complete working demonstration of Character Entities",
-              "starterCode": "// Chapter 40: Character Entities\nfunction runTopicDemo() {\n  console.log('Executing: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 40: Character Entities\nfunction runTopicDemo() {\n  console.log('Executing: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 40: Character Entities\nfunction runDemo() {\n  console.log('Running: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Character Entities\nfunction runDemo() {\n  console.log('Running: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Character Entities"
             }
           ],
@@ -1946,9 +1946,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Character Entities",
               "description": "Write a clean solution for Character Entities that returns expected status.",
-              "starterCode": "// Chapter 40: Character Entities\nfunction runTopicDemo() {\n  console.log('Executing: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 40: Character Entities\nfunction runTopicDemo() {\n  console.log('Executing: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 40: Character Entities\nfunction runDemo() {\n  console.log('Running: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 40: Character Entities\nfunction runDemo() {\n  console.log('Running: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -1960,7 +1960,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 40: Character Entities",
-            "content": "### \ud83c\udf1f 1. Definition (What is Character Entities?)\nCharacter Entities structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Character Entities in HTML to simplify development and prevent common bugs.**\n- **Provides Common Special Characters to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 40: Character Entities\nfunction runTopicDemo() {\n  console.log('Executing: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Character Entities?)\nCharacter Entities provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides Character Entities in HTML to write clean, predictable code.**\n- **Provides Common Special Characters to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 40: Character Entities\nfunction runDemo() {\n  console.log('Running: Character Entities');\n  return { success: true, topic: 'Character Entities' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Character Entities is essential for professional engineering."
           }
         }
@@ -1995,8 +1995,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "ARIA Working Implementation",
               "description": "Complete working demonstration of ARIA",
-              "starterCode": "// Chapter 41: ARIA\nfunction runTopicDemo() {\n  console.log('Executing: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 41: ARIA\nfunction runTopicDemo() {\n  console.log('Executing: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 41: ARIA\nfunction runDemo() {\n  console.log('Running: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: ARIA\nfunction runDemo() {\n  console.log('Running: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: ARIA"
             }
           ],
@@ -2004,9 +2004,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement ARIA",
               "description": "Write a clean solution for ARIA that returns expected status.",
-              "starterCode": "// Chapter 41: ARIA\nfunction runTopicDemo() {\n  console.log('Executing: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 41: ARIA\nfunction runTopicDemo() {\n  console.log('Executing: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 41: ARIA\nfunction runDemo() {\n  console.log('Running: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 41: ARIA\nfunction runDemo() {\n  console.log('Running: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2018,7 +2018,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 41: ARIA",
-            "content": "### \ud83c\udf1f 1. Definition (What is ARIA?)\nARIA structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides role=\"presentation\" to simplify development and prevent common bugs.**\n- **Provides role=\"alert\" to simplify development and prevent common bugs.**\n- **Provides role=\"alertdialog\" to simplify development and prevent common bugs.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 41: ARIA\nfunction runTopicDemo() {\n  console.log('Executing: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is ARIA?)\nARIA provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Provides role=\"presentation\" to write clean, predictable code.**\n- **Provides role=\"alert\" to write clean, predictable code.**\n- **Provides role=\"alertdialog\" to write clean, predictable code.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 41: ARIA\nfunction runDemo() {\n  console.log('Running: ARIA');\n  return { success: true, topic: 'ARIA' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering ARIA is essential for professional engineering."
           }
         },
@@ -2038,8 +2038,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Credits Working Implementation",
               "description": "Complete working demonstration of Credits",
-              "starterCode": "// Chapter 42: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 42: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 42: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: Credits"
             }
           ],
@@ -2047,9 +2047,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement Credits",
               "description": "Write a clean solution for Credits that returns expected status.",
-              "starterCode": "// Chapter 42: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 42: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 42: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 42: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2061,7 +2061,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 42: Credits",
-            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 42: Credits\nfunction runTopicDemo() {\n  console.log('Executing: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is Credits?)\nCredits provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 42: Credits\nfunction runDemo() {\n  console.log('Running: Credits');\n  return { success: true, topic: 'Credits' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering Credits is essential for professional engineering."
           }
         },
@@ -2081,8 +2081,8 @@ export const htmlCssCompleteCourse = {
             {
               "title": "You may also like Working Implementation",
               "description": "Complete working demonstration of You may also like",
-              "starterCode": "// Chapter 43: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 43: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
+              "starterCode": "// Chapter 43: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
               "expectedOutput": "Executing: You may also like"
             }
           ],
@@ -2090,9 +2090,9 @@ export const htmlCssCompleteCourse = {
             {
               "title": "Implement You may also like",
               "description": "Write a clean solution for You may also like that returns expected status.",
-              "starterCode": "// Chapter 43: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "solutionCode": "// Chapter 43: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);",
-              "testCases": "runTopicDemo().success === true || true"
+              "starterCode": "// Chapter 43: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "solutionCode": "// Chapter 43: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();",
+              "testCases": "runDemo().success === true || true"
             }
           ],
           "visualizations": [
@@ -2104,7 +2104,7 @@ export const htmlCssCompleteCourse = {
           ],
           "lesson": {
             "title": "Chapter 43: You may also like",
-            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like structures and styles modern web layouts with responsive visual precision.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Maintainable Architecture**: Clean modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```javascript\n// Chapter 43: You may also like\nfunction runTopicDemo() {\n  console.log('Executing: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nconst output = runTopicDemo();\nconsole.log(output);\n```\n",
+            "content": "### \ud83c\udf1f 1. Definition (What is You may also like?)\nYou may also like provides essential patterns and methods to build reliable software applications.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Executes core logic predictably with minimal memory overhead.**\n- **Enforces clean architecture and modular separation of concerns.**\n- **Handles edge cases safely with standard error boundaries.**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Use Cases)\n- **Production Systems**: High scalability and predictable execution.\n- **Clean Architecture**: Modular structure that avoids tight coupling.\n- **Robust Error Handling**: Prevents runtime crashes and data corruption.\n\n---\n\n### \ud83d\udcbb 4. Syntax & Code Pattern\n```text\n// Chapter 43: You may also like\nfunction runDemo() {\n  console.log('Running: You may also like');\n  return { success: true, topic: 'You may also like' };\n}\n\nrunDemo();\n```\n",
             "explanation": "Mastering You may also like is essential for professional engineering."
           }
         }
