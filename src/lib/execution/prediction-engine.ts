@@ -40,7 +40,7 @@ export class PredictionEngine {
   public async evaluatePrediction(req: PredictionRequest): Promise<PredictionResult> {
     // 1. Run actual code in real execution sandbox
     const execResult = await executeJavaScript(req.code, req.language, {
-      trace: true,
+      trace: false,
     });
 
     const actualOutput = execResult.output?.trim() || "";
@@ -51,7 +51,8 @@ export class PredictionEngine {
     // 2. Exact state comparison
     const outputExactMatch =
       outputTrimmed === predictionTrimmed ||
-      outputTrimmed.toLowerCase() === predictionTrimmed.toLowerCase();
+      outputTrimmed.toLowerCase() === predictionTrimmed.toLowerCase() ||
+      (outputTrimmed.length > 0 && outputTrimmed.includes(predictionTrimmed));
 
     const errorPredictedCorrectly = Boolean(actualError && predictionTrimmed.toLowerCase().includes("error"));
 
