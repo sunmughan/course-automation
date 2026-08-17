@@ -1,3 +1,4 @@
+import { sendCertificateEmail } from "@/lib/email";
 import { z } from "zod";
 import { apiHandler } from "@/lib/api-handler";
 import { prisma } from "@/lib/db";
@@ -50,6 +51,8 @@ export const POST = apiHandler(async (ctx) => {
     skills,
     grade: "A+ / Distinguished",
   });
+
+  sendCertificateEmail(user.email, body.studentNameOverride || user.name || "Student", course.title, cert.id).catch(() => {});
 
   return {
     success: true,

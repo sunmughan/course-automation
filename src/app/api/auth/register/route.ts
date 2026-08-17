@@ -1,3 +1,4 @@
+import { sendWelcomeEmail } from "@/lib/email";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { hashPassword, createToken } from "@/lib/auth";
@@ -34,6 +35,7 @@ export const POST = apiHandler(async (ctx) => {
   };
 
   const token = await createToken(payload);
+  sendWelcomeEmail(user.email, user.name || "Student").catch(() => {});
 
   const response = NextResponse.json({ token, user: payload }, { status: 201 });
   response.cookies.set("auth_token", token, {
