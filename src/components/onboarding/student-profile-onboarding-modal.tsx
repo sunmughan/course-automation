@@ -88,13 +88,17 @@ export function StudentProfileOnboardingModal() {
   const [organizationOrCollege, setOrganizationOrCollege] = useState("");
 
   useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener("open_onboarding_modal", handleOpen);
+
     if (typeof window !== "undefined" && user) {
-      const hasOnboarded = localStorage.getItem(`onboarded_${user.id}`);
+      const hasOnboarded = localStorage.getItem(`onboarded_v2_${user.id}`);
       if (!hasOnboarded) {
         setLegalName(user.name || "");
         setIsOpen(true);
       }
     }
+    return () => window.removeEventListener("open_onboarding_modal", handleOpen);
   }, [user]);
 
   if (!isOpen || !user) return null;
@@ -105,7 +109,7 @@ export function StudentProfileOnboardingModal() {
       const chosenTrack = CAREER_TRACK_OPTIONS.find((t) => t.id === selectedTrack) || CAREER_TRACK_OPTIONS[0];
 
       // Save locally & store certificate name preference
-      localStorage.setItem(`onboarded_${user.id}`, "true");
+      localStorage.setItem(`onboarded_v2_${user.id}`, "true");
       localStorage.setItem(`certificate_name_${user.id}`, legalName.trim() || user.name || "Student");
       localStorage.setItem(`target_role_${user.id}`, chosenTrack.title);
 

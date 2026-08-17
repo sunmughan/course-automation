@@ -1,3 +1,16 @@
+
+// Helper to clean chapter prefix and capitalize title
+function formatCleanLessonTitle(rawTitle: string): string {
+  if (!rawTitle) return "";
+  // Strip "Chapter X: ", "Section X: ", etc.
+  let clean = rawTitle.replace(/^(Chapter|Section|Phase)\s+[\d\.]+\s*:\s*/i, "").trim();
+  // Capitalize first letter of each major word
+  return clean
+    .split(" ")
+    .map((w) => (w.length > 0 ? w[0].toUpperCase() + w.slice(1) : ""))
+    .join(" ");
+}
+
 "use client";
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
@@ -512,17 +525,14 @@ export function UnifiedInteractiveClassroom({
       <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0 gap-2 flex-wrap">
         {/* Left: Chapters Drawer Button + Breadcrumbs & Title */}
         <div className="flex items-center gap-2 min-w-0">
-          {/* 📚 All Chapters Sidebar Drawer Button */}
+          {/* 📚 Chapters & Curriculum Navigation Drawer Button */}
           <button
             onClick={() => setIsChaptersDrawerOpen(!isChaptersDrawerOpen)}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-sky-600/20 text-sky-300 border border-sky-500/40 hover:bg-sky-600 hover:text-white transition-all cursor-pointer shadow-xs"
-            title="Open 110 Chapters Navigation Drawer"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-bold bg-sky-600/20 text-sky-300 border border-sky-500/40 hover:bg-sky-600 hover:text-white transition-all cursor-pointer shadow-xs"
+            title="Open Curriculum & Learning Phases Drawer"
           >
-            <ListOrdered className="size-3.5" />
-            <span>110 Chapters</span>
-            <Badge className="bg-sky-500 text-slate-950 text-[9px] px-1 py-0 font-extrabold ml-0.5">
-              {chaptersList.length || "110"}
-            </Badge>
+            <ListOrdered className="size-3.5 text-sky-400" />
+            <span>Chapters</span>
           </button>
 
           <div className="flex items-center gap-1 text-xs text-slate-400 font-mono truncate hidden sm:flex">
@@ -715,7 +725,7 @@ export function UnifiedInteractiveClassroom({
               <div>
                 <h3 className="text-sm font-bold text-white font-mono flex items-center gap-2">
                   <ListOrdered className="size-4 text-sky-400" />
-                  110 Chapters Curriculum
+                  Curriculum &amp; Learning Phases
                 </h3>
                 <span className="text-[11px] text-slate-400 font-sans">
                   Select any chapter to jump directly
@@ -742,43 +752,77 @@ export function UnifiedInteractiveClassroom({
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-2 space-y-1">
-              {filteredChapters.map((ch, idx) => {
-                const isActive = ch.id === currentLessonId || ch.title.includes(lessonTitle) || ch.title.includes(topicTitle);
+            {/* Phase-Wise Grouped Accordion Drawer */}
+            <div className="flex-1 overflow-y-auto p-2.5 space-y-3">
+              {Object.entries(
+                filteredChapters.reduce((acc, ch) => {
+                  const mod = ch.moduleTitle || "Phase 1: Core Curriculum";
+                  if (!acc[mod]) acc[mod] = [];
+                  acc[mod].push(ch);
+                  return acc;
+                }, {} as Record<string, ChapterItem[]>)
+              ).map(([phaseTitle, phaseChapters], phaseIdx) => {
+                const hasActiveInPhase = phaseChapters.some(
+                  (c) => c.id === currentLessonId || c.title.includes(lessonTitle) || c.title.includes(topicTitle)
+                );
+
                 return (
-                  <button
-                    key={ch.id || idx}
-                    onClick={() => {
-                      setIsChaptersDrawerOpen(false);
-                      if (onSelectChapter && ch.id) {
-                        onSelectChapter(ch.id);
-                      }
-                    }}
-                    className={`w-full text-left p-2.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
-                      isActive
-                        ? "bg-sky-950/80 border-sky-500 text-sky-100 font-bold shadow-xs ring-1 ring-sky-500/40"
-                        : "bg-slate-950/50 border-slate-800/80 text-slate-300 hover:border-slate-700 hover:bg-slate-800"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span
-                        className={`flex size-5 items-center justify-center rounded text-[10px] font-mono font-bold shrink-0 ${
-                          isActive ? "bg-sky-500 text-slate-950" : "bg-slate-800 text-slate-400"
-                        }`}
-                      >
-                        {idx + 1}
+                  <div key={phaseTitle} className="space-y-1 rounded-2xl bg-slate-950/70 border border-slate-800/80 p-2.5">
+                    {/* Phase Header */}
+                    <div className="flex items-center justify-between px-2 py-1 border-b border-slate-800/60 pb-1.5 mb-1.5">
+                      <span className="text-xs font-bold text-sky-400 font-mono flex items-center gap-1.5">
+                        <FolderTree className="size-3.5 text-sky-400" />
+                        {phaseTitle}
                       </span>
-                      <div className="min-w-0">
-                        <span className="text-xs truncate block font-mono">{ch.title}</span>
-                        <span className="text-[10px] text-slate-500 truncate block">{ch.moduleTitle}</span>
-                      </div>
-                    </div>
-                    {isActive && (
-                      <Badge className="bg-sky-500 text-slate-950 text-[9px] px-1 py-0 shrink-0">
-                        Active
+                      <Badge className="bg-slate-800 text-slate-400 text-[9px] px-1.5 py-0">
+                        {phaseChapters.length} Lessons
                       </Badge>
-                    )}
-                  </button>
+                    </div>
+
+                    {/* Lessons inside Phase */}
+                    <div className="space-y-1">
+                      {phaseChapters.map((ch, chIdx) => {
+                        const isActive =
+                          ch.id === currentLessonId ||
+                          ch.title.includes(lessonTitle) ||
+                          ch.title.includes(topicTitle);
+                        const cleanTitle = formatCleanLessonTitle(ch.title);
+
+                        return (
+                          <button
+                            key={ch.id || chIdx}
+                            onClick={() => {
+                              setIsChaptersDrawerOpen(false);
+                              if (onSelectChapter && ch.id) {
+                                onSelectChapter(ch.id);
+                              }
+                            }}
+                            className={`w-full text-left p-2 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
+                              isActive
+                                ? "bg-sky-900/60 border-sky-400 text-white font-bold shadow-sm ring-1 ring-sky-400/40"
+                                : "bg-slate-900/50 border-slate-800/60 text-slate-300 hover:border-slate-700 hover:bg-slate-800/70 hover:text-white"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 min-w-0">
+                              <span
+                                className={`flex size-4 items-center justify-center rounded text-[9px] font-mono font-bold shrink-0 ${
+                                  isActive ? "bg-sky-400 text-slate-950" : "bg-slate-800 text-slate-500"
+                                }`}
+                              >
+                                {chIdx + 1}
+                              </span>
+                              <span className="text-xs truncate font-sans font-medium">{cleanTitle}</span>
+                            </div>
+                            {isActive && (
+                              <Badge className="bg-sky-400 text-slate-950 text-[9px] px-1.5 py-0 shrink-0 font-bold">
+                                Current
+                              </Badge>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 );
               })}
             </div>

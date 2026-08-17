@@ -6,8 +6,13 @@ export const GET = apiHandler(async (ctx) => {
   const { id } = await ctx.params;
   const user = ctx.user;
 
-  const course = await prisma.course.findUnique({
-    where: { id },
+  const course = await prisma.course.findFirst({
+    where: {
+      OR: [
+        { id },
+        { slug: id }
+      ]
+    },
     include: {
       modules: {
         where: { published: true },
