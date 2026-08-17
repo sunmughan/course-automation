@@ -1,10 +1,11 @@
 /**
  * Professor Teaching Engine & 22-Point Pedagogical Decision Framework
- * Orchestrates deep conceptual teaching, misconception detection, analogy construction,
- * syntax breakdown, and interactive understanding checks without hardcoded outputs.
+ * Grounded in authoritative DB curriculum records and configurable teaching policies.
+ * Eliminates all generic hardcoded runtime/memory assumptions.
  */
 
-import { buildTopicIntelligence, type TopicKnowledgeNode } from "@/lib/curriculum/intelligence";
+import { loadTopicIntelligenceFromDB, type TopicKnowledgeNode } from "@/lib/curriculum/intelligence";
+import { DEFAULT_PROFESSOR_POLICY, type TeachingPolicy } from "@/lib/ai/teaching-policy";
 import { aiRouter } from "@/lib/ai/router";
 import type { TutorMode } from "@/types";
 
@@ -21,6 +22,7 @@ export interface TeachingContext {
   studentQuery: string;
   mode?: TutorMode;
   codeContext?: string;
+  policy?: TeachingPolicy;
 }
 
 export interface TeachingPlan {
@@ -77,10 +79,6 @@ export interface PedagogicalResponse {
 }
 
 export class TeachingEngine {
-  /**
-   * Evaluates student's past interactions, skill scores, and misconceptions
-   * to construct an adaptive pedagogical teaching plan.
-   */
   public planPedagogy(ctx: TeachingContext, knowledge: TopicKnowledgeNode): TeachingPlan {
     const isNovice = ctx.studentSkillScore < 40 || ctx.studentAttempts <= 1;
     const hasRepeatedMistakes = ctx.previousMistakes.length >= 2;
@@ -101,21 +99,56 @@ export class TeachingEngine {
     };
   }
 
-  /**
-   * Synthesizes authoritative curriculum intelligence with real AI generation
-   * to produce a structured 22-point pedagogical teaching response.
-   */
   public async teach(ctx: TeachingContext): Promise<PedagogicalResponse> {
-    const knowledge = buildTopicIntelligence({
-      topicId: ctx.topicId,
-      topicSlug: ctx.topicSlug,
-      topicTitle: ctx.topicTitle,
-      courseTitle: ctx.courseTitle,
-    });
+    const policy = ctx.policy || DEFAULT_PROFESSOR_POLICY;
+
+    // 1. Authoritative curriculum intelligence lookup
+    let knowledge = await loadTopicIntelligenceFromDB(ctx.topicSlug || ctx.topicId);
+    if (!knowledge) {
+      knowledge = {
+        topicId: ctx.topicId,
+        topicSlug: ctx.topicSlug,
+        topicTitle: ctx.topicTitle,
+        courseTitle: ctx.courseTitle,
+        moduleTitle: "Core Curriculum",
+        difficultyLevel: 1,
+        prerequisites: [],
+        isComplete: false,
+        gapsDetected: ["Curriculum node dynamically assembled"],
+        learningObjectives: [`Understand core principles of ${ctx.topicTitle}`],
+        mentalModel: {
+          analogy: `Understanding the structural pattern and operational role of ${ctx.topicTitle}`,
+          coreMechanism: `Core principles of ${ctx.topicTitle}`,
+          keyMetaphor: ctx.topicTitle,
+        },
+        syntax: {
+          pattern: `// ${ctx.topicTitle} standard implementation\n`,
+          breakdown: [{ part: ctx.topicTitle, purpose: "Primary construct" }],
+        },
+        counterExamples: [],
+        useCases: [`Production implementation of ${ctx.topicTitle}`],
+        nonUseCases: [`When simpler alternative constructs suffice`],
+        advantages: [`Encapsulates ${ctx.topicTitle} logic cleanly`],
+        limitations: [`Requires understanding of ${ctx.topicTitle} semantics`],
+        alternatives: ["Standard library alternatives"],
+        commonMistakes: [],
+        misconceptions: [],
+        visualModel: {
+          type: "flowchart",
+          nodes: [{ id: "step1", label: ctx.topicTitle, role: "Process" }],
+          dataFlow: [],
+        },
+        masteryCriteria: {
+          minPracticeRuns: 2,
+          requiredScore: 80,
+          mustClearMisconceptions: [],
+        },
+      };
+    }
 
     const plan = this.planPedagogy(ctx, knowledge);
 
-    // Detect if student query signals an active misconception
+    // 2. Active misconception detection
     let activeMisconception = knowledge.misconceptions[0];
     const queryLower = ctx.studentQuery.toLowerCase();
     for (const misc of knowledge.misconceptions) {
@@ -130,23 +163,22 @@ export class TeachingEngine {
       }
     }
 
-    // Call AI router with strict professor prompt assembly
-    const prompt = `You are a world-class Professor of Computer Science at Codeair Academy.
-Teach the concept "${ctx.topicTitle}" in the course "${ctx.courseTitle}" to a student asking: "${ctx.studentQuery}".
+    // 3. Assemble strictly grounded professor prompt
+    const prompt = `You are a Professor at Codeair Academy teaching "${ctx.topicTitle}" in "${ctx.courseTitle}".
+Student query: "${ctx.studentQuery}".
 
-STUDENT CONTEXT:
-- Skill Mastery: ${ctx.studentSkillScore}/100
-- Explanation Depth: ${plan.explanationDepth}
-- Previous Mistakes: ${ctx.previousMistakes.map((m) => m.error).join("; ") || "None"}
-- Target Analogy: ${knowledge.mentalModel.analogy}
-- Key Counter-Example: ${knowledge.counterExamples[0]?.whyWrong || "None"}
+CURRICULUM GROUNDING:
+- Learning Objectives: ${knowledge.learningObjectives.join("; ") || ctx.topicTitle}
+- Mental Model: ${knowledge.mentalModel.analogy}
+- Core Mechanism: ${knowledge.mentalModel.coreMechanism}
+- Student Level: ${plan.explanationDepth} (Score: ${ctx.studentSkillScore}/100)
+- Teaching Policy: simpleFirst=${policy.principles.simpleFirst}, whyBeforeHow=${policy.principles.whyBeforeHow}
 
-Generate a comprehensive educational explanation adhering strictly to the pedagogical teaching framework.
-Explain with utmost clarity, patience, and production rigor.`;
+Explain with crystal clarity adhering to the pedagogical principles. Ground your answer strictly in ${ctx.topicTitle} semantics.`;
 
-    const systemPrompt = `You are an elite professor. Respond with strict pedagogical clarity. Never give raw answers without explaining the underlying mental model and memory mechanics.`;
+    const systemPrompt = `You are an elite professor. Respond with strict pedagogical clarity grounded in the topic domain. Never give generic boilerplate.`;
 
-    let generatedText = "";
+    let generatedExplanation = "";
     try {
       const aiRes = await aiRouter.executeWithFallback(
         [
@@ -160,24 +192,26 @@ Explain with utmost clarity, patience, and production rigor.`;
           mode: ctx.mode || "explain",
         }
       );
-      generatedText = aiRes.content;
+      generatedExplanation = aiRes.content;
     } catch {
-      generatedText = `In ${ctx.courseTitle}, **${ctx.topicTitle}** is essential for building deterministic, scalable software. ${knowledge.mentalModel.coreMechanism}`;
+      generatedExplanation = knowledge.mentalModel.coreMechanism;
     }
 
-    // Assemble structured pedagogical response
-    const response: PedagogicalResponse = {
-      simpleDefinition: `${ctx.topicTitle} provides structured runtime guarantees for managing execution flow and state transitions in ${ctx.courseTitle}.`,
-      whyItExists: `Modern production applications require predictable state and non-blocking throughput. Without ${ctx.topicTitle}, software suffers from race conditions, memory leaks, and tightly coupled abstractions.`,
+    // 4. Return structured pedagogical response grounded in actual topic data
+    return {
+      simpleDefinition: knowledge.mentalModel.coreMechanism,
+      whyItExists: `In ${ctx.courseTitle}, **${ctx.topicTitle}** was designed to solve concrete architectural and functional needs: ${knowledge.learningObjectives[0] || ctx.topicTitle}.`,
       mentalModelAnalogy: knowledge.mentalModel.analogy,
-      howItWorks: generatedText || knowledge.mentalModel.coreMechanism,
+      howItWorks: generatedExplanation,
       syntaxBreakdown: plan.includeSyntaxBreakdown ? knowledge.syntax.breakdown : undefined,
       codeExample: {
         language: "javascript",
         code: knowledge.syntax.pattern,
-        explanation: `Notice how ${ctx.topicTitle} encapsulates the transformation logic with strict boundary validation.`,
+        explanation: `Demonstration of ${ctx.topicTitle} pattern.`,
       },
-      counterExample: plan.includeCounterExample ? knowledge.counterExamples[0] : undefined,
+      counterExample: plan.includeCounterExample && knowledge.counterExamples.length > 0
+        ? knowledge.counterExamples[0]
+        : undefined,
       useCases: knowledge.useCases,
       whenNotToUse: knowledge.nonUseCases,
       advantages: knowledge.advantages,
@@ -191,30 +225,28 @@ Explain with utmost clarity, patience, and production rigor.`;
       visualModel: plan.includeVisualDiagram
         ? {
             type: knowledge.visualModel.type,
-            summary: `Execution flow: ${knowledge.visualModel.dataFlow.map((df) => `${df.from} → ${df.to}`).join(", ")}`,
+            summary: `${ctx.topicTitle} visual interaction model`,
           }
         : undefined,
       understandingCheckQuestion: {
-        question: `How does ${ctx.topicTitle} prevent unpredictable state transitions in production?`,
+        question: activeMisconception?.diagnosticQuestion || `What is the primary role of ${ctx.topicTitle}?`,
         options: [
-          "By enforcing strict boundary validations and deterministic execution control",
-          "By running all computations in an unvalidated global singleton",
-          "By suppressing runtime errors and ignoring async rejections",
-          "By duplicating memory allocations without garbage collection",
+          `To provide ${knowledge.learningObjectives[0] || "core functionality"} in ${ctx.courseTitle}`,
+          `To bypass structural validation`,
+          `To eliminate all asynchronous operations`,
+          `Purely cosmetic naming convention`,
         ],
         correctIndex: 0,
-        explanation: `Correct! ${ctx.topicTitle} guarantees deterministic state transitions and prevents side effects across execution boundaries.`,
+        explanation: `Correct! ${ctx.topicTitle} is essential for ${knowledge.learningObjectives[0] || "correct behavior"}.`,
       },
       interactivePracticeChallenge: plan.includePracticeExercise
         ? {
-            instructions: `Implement a defensive ${ctx.topicTitle} function that safely handles null and asynchronous error edge cases.`,
-            starterCode: `function handle${ctx.topicSlug.replace(/[^a-zA-Z]/g, "")}(input) {\n  // Implement defensive ${ctx.topicTitle} logic here\n}\n`,
+            instructions: `Implement a pattern using ${ctx.topicTitle}.`,
+            starterCode: knowledge.syntax.pattern,
           }
         : undefined,
-      teacherNote: `Professor Note: Keep practicing with edge cases. Focus on memory lifecycle and non-blocking state transitions.`,
+      teacherNote: `Professor Note: Master the fundamentals of ${ctx.topicTitle} by analyzing edge cases and practice problems.`,
     };
-
-    return response;
   }
 }
 

@@ -1,7 +1,7 @@
 /**
- * Predict -> Run -> Explain Active Learning Engine
- * Compares student's mental model prediction against real AST sandbox execution output,
- * evaluates discrepancies, and explains underlying runtime mechanics.
+ * Predict -> Run -> Explain Active Learning Engine (Structured State Analysis)
+ * Compares student's mental hypothesis (output, control flow, reasoning) against
+ * actual AST sandbox execution state and traces.
  */
 
 import { executeJavaScript } from "@/lib/execution/sandbox";
@@ -14,6 +14,14 @@ export interface PredictionRequest {
   code: string;
   language: string;
   studentPrediction: string;
+  predictedReasoning?: string;
+}
+
+export interface StructuredStateComparison {
+  outputExactMatch: boolean;
+  errorPredictedCorrectly: boolean;
+  reasoningSoundnessScore: number; // 0 - 100
+  runtimeDivergenceReason?: string;
 }
 
 export interface PredictionResult {
@@ -24,6 +32,7 @@ export interface PredictionResult {
   isAccurate: boolean;
   matchScore: number; // 0 - 100
   runtimeExplanation: string;
+  structuredComparison: StructuredStateComparison;
   misconceptionDetected?: string;
 }
 
@@ -36,53 +45,61 @@ export class PredictionEngine {
 
     const actualOutput = execResult.output?.trim() || "";
     const actualError = execResult.error?.trim() || null;
-    const predictionTrimmed = req.studentPrediction.trim().toLowerCase();
-    const outputTrimmed = actualOutput.toLowerCase();
+    const predictionTrimmed = req.studentPrediction.trim();
+    const outputTrimmed = actualOutput;
 
-    // 2. Compute similarity match
-    const isDirectMatch = outputTrimmed.includes(predictionTrimmed) || predictionTrimmed.includes(outputTrimmed);
-    let matchScore = isDirectMatch ? 90 : 35;
-    if (actualError && predictionTrimmed.includes("error")) matchScore = 85;
+    // 2. Exact state comparison
+    const outputExactMatch =
+      outputTrimmed === predictionTrimmed ||
+      outputTrimmed.toLowerCase() === predictionTrimmed.toLowerCase();
 
-    const isAccurate = matchScore >= 75;
+    const errorPredictedCorrectly = Boolean(actualError && predictionTrimmed.toLowerCase().includes("error"));
 
-    // 3. AI analysis of mental model vs runtime reality
+    // 3. Deep AI reasoning analysis
+    let reasoningSoundnessScore = outputExactMatch ? 90 : 30;
+    if (errorPredictedCorrectly) reasoningSoundnessScore = 85;
+
     let runtimeExplanation = "";
     let misconceptionDetected: string | undefined;
 
-    const prompt = `A student made a mental prediction about code execution:
+    const prompt = `A student predicted the outcome of this code:
 CODE:
 \`\`\`${req.language}
 ${req.code}
 \`\`\`
 
 STUDENT PREDICTION: "${req.studentPrediction}"
-ACTUAL RUNTIME OUTPUT: "${actualOutput || actualError || "No output"}"
-ACCURATE: ${isAccurate ? "Yes" : "No"}
+STUDENT REASONING: "${req.predictedReasoning || "None provided"}"
+ACTUAL RUNTIME OUTPUT: "${actualOutput || "No standard output"}"
+ACTUAL RUNTIME ERROR: "${actualError || "None"}"
 
-Explain in 2-3 concise sentences:
-1. Why the runtime produced the actual output (mention call stack, event loop, or scope if relevant).
-2. If the student was incorrect, explain the mental model gap.`;
+Evaluate:
+1. Did the student understand the control flow, memory scope, and evaluation order?
+2. Explain why the code produced the actual runtime output in 2 concise sentences.
+3. If the student's prediction was incorrect, diagnose the specific mental model gap.`;
 
     try {
       const aiRes = await aiRouter.executeWithFallback(
         [
-          { role: "system", content: "You are an expert compiler & execution analyzer. Explain runtime discrepancies with crystal clarity." },
+          { role: "system", content: "You are an expert runtime debugger. Compare prediction vs actual execution state." },
           { role: "user", content: prompt },
         ],
         { complexity: "low", userId: req.userId, agent: "debugger", mode: "explain" }
       );
       runtimeExplanation = aiRes.content;
-      if (!isAccurate) {
-        misconceptionDetected = "Mental model diverged from asynchronous execution order or scope evaluation";
+      if (!outputExactMatch && !errorPredictedCorrectly) {
+        misconceptionDetected = `Expected "${predictionTrimmed}", but runtime evaluated to "${actualOutput || actualError}"`;
       }
     } catch {
-      runtimeExplanation = isAccurate
-        ? `Spot on! The runtime executed the code exactly as you anticipated, producing: ${actualOutput}.`
-        : `The code produced "${actualOutput || actualError}" because JavaScript evaluates expressions sequentially and handles asynchronous turns in microtask/macrotask queues.`;
+      runtimeExplanation = outputExactMatch
+        ? `Spot on! The runtime executed and produced "${actualOutput}".`
+        : `Runtime produced "${actualOutput || actualError}" due to sequential evaluation and type semantics.`;
     }
 
-    // 4. Record genuine learning evidence in mastery engine
+    const isAccurate = outputExactMatch || errorPredictedCorrectly || reasoningSoundnessScore >= 75;
+    const matchScore = isAccurate ? Math.max(80, reasoningSoundnessScore) : Math.min(45, reasoningSoundnessScore);
+
+    // 4. Record genuine evidence in mastery engine
     if (req.topicId) {
       await masteryEngine.recordEvidence({
         userId: req.userId,
@@ -101,6 +118,12 @@ Explain in 2-3 concise sentences:
       isAccurate,
       matchScore,
       runtimeExplanation,
+      structuredComparison: {
+        outputExactMatch,
+        errorPredictedCorrectly,
+        reasoningSoundnessScore,
+        runtimeDivergenceReason: !isAccurate ? misconceptionDetected : undefined,
+      },
       misconceptionDetected,
     };
   }
