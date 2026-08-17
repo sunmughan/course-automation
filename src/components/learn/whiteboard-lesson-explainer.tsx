@@ -227,17 +227,19 @@ export function WhiteboardLessonExplainer({
     }
   };
 
-  // Generate multi-lingual scenes with stories & memory tricks
+  // Generate multi-lingual scenes with topic-specific tailored stories
   const scenes = useMemo(() => {
     return generateBilingualWhiteboardScenes({
       lessonTitle,
       topicTitle,
+      courseTitle,
+      moduleTitle,
       lessonContent,
       lessonExplanation,
       concepts,
       examples,
     });
-  }, [lessonTitle, topicTitle, lessonContent, lessonExplanation, concepts, examples]);
+  }, [lessonTitle, topicTitle, courseTitle, moduleTitle, lessonContent, lessonExplanation, concepts, examples]);
 
   const currentScene = scenes[currentSceneIndex] || scenes[0];
   const activeStory = dynamicStory || currentScene.storyEpisode;
@@ -1170,51 +1172,29 @@ export function WhiteboardLessonExplainer({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Dynamic Bilingual Scene Generator with Rich Character Stories & Memory Tricks
+// Dynamic Contextual Topic Story Generator for ALL Courses & Topics
 // ─────────────────────────────────────────────────────────────────────────────
-function generateBilingualWhiteboardScenes({
+function buildTopicStoryEpisode({
   lessonTitle,
   topicTitle,
-  lessonContent,
-  lessonExplanation,
-  concepts,
-  examples,
+  courseTitle = "",
+  moduleTitle = "",
+  conceptTitle = "",
 }: {
   lessonTitle: string;
   topicTitle: string;
-  lessonContent: string;
-  lessonExplanation?: string;
-  concepts: Array<{ id: string; title: string; description: string }>;
-  examples: Array<{ id: string; title: string; description: string; starterCode: string; solutionCode: string }>;
-}): WhiteboardScene[] {
-  const scenes: WhiteboardScene[] = [];
-  let sceneNum = 1;
+  courseTitle?: string;
+  moduleTitle?: string;
+  conceptTitle?: string;
+}): StoryEpisode {
+  const combined = `${lessonTitle} ${topicTitle} ${moduleTitle} ${courseTitle} ${conceptTitle}`.toLowerCase();
 
-  // Scene 1: Introduction Story Episode
-  scenes.push({
-    id: `scene_${sceneNum}`,
-    sceneNumber: sceneNum++,
-    titleEn: `The Epic Discovery of ${lessonTitle}`,
-    titleHi: `${lessonTitle} की रोमांचक कहानी`,
-    subtitleEn: `Episode 1: The Breakthrough Moment`,
-    subtitleHi: `एपिसोड 1: असली रहस्य का पर्दाफाश`,
-    type: "concept",
-    easySummaryEn: `${lessonTitle} transforms messy, fragile code into modular, reusable superpowers!`,
-    easySummaryHi: `${lessonTitle} का काम है उलझे हुए कोड को जादू की तरह आसान और एरर-फ्री बनाना!`,
-    memoryTrickEn: `💡 FORMULA: Input ➔ Pure Processing ➔ Instant UI/JSON Response`,
-    memoryTrickHi: `💡 याद रखने का फॉर्मूला: इनपुट आया ➔ लॉजिक प्रोसेस हुआ ➔ रिजल्ट स्क्रीन पर दिखा!`,
-    problemVsSolutionEn: {
-      without: "Haphazard code where changing one variable breaks 10 unrelated buttons.",
-      with: "Clean modular building blocks that work predictably every single time!",
-    },
-    problemVsSolutionHi: {
-      without: "एक जगह कोड बदलने पर 10 दूसरी चीज़ें अपने आप टूट जाती थीं!",
-      with: "साफ़-सुथरे ब्लॉक्स जो हमेशा सही रिजल्ट देते हैं!",
-    },
-    storyEpisode: {
-      title: `Episode 1: The Mystery of ${lessonTitle}`,
+  // 1. React State / useState
+  if (combined.includes("state") || combined.includes("usestate")) {
+    return {
+      title: `Episode: The Case of the Frozen Cricket Scoreboard (useState)`,
       theme: "cricket",
-      setting: "IPL Final match chal raha hai aur stadium me lakho fans score board dekh rahe hain!",
+      setting: "IPL Final match chal raha hai aur stadium me lakho fans live scoreboard dekh rahe hain!",
       characters: [
         { name: "रोहन (Junior Coder)", role: "Scoreboard Developer", emoji: "👨‍💻" },
         { name: "अंपायर React", role: "Decision Engine", emoji: "🧠" },
@@ -1254,7 +1234,446 @@ function generateBilingualWhiteboardScenes({
       },
       moral: "💡 नियम: React में कभी direct mutation मत करो, हमेशा setter function से React को इन्फॉर्म करो!",
       tinyCode: `const [runs, setRuns] = useState(0);\n// Correct State Update\nsetRuns(runs + 6);`,
+    };
+  }
+
+  // 2. React Components & JSX
+  if (combined.includes("jsx") || combined.includes("component") || combined.includes("element")) {
+    return {
+      title: `Episode: The LEGO Master Builder Championship (Components & JSX)`,
+      theme: "startup",
+      setting: "एक इंटरनेशनल आर्किटेक्चर कॉम्पिटिशन जहाँ 1 घंटे में पूरी वेबसाइट की बिल्डिंग खड़ी करनी है!",
+      characters: [
+        { name: "बॉब (Master Builder)", role: "Frontend Engineer", emoji: "👷‍♂️" },
+        { name: "जादुई ईंट (JSX Block)", role: "Reusable Component", emoji: "🧱" },
+        { name: "क्लाइंट (Investor)", role: "CEO", emoji: "💼" },
+      ],
+      dialogues: [
+        {
+          speaker: "क्लाइंट (Investor)",
+          emoji: "💼",
+          text: "मुझे 100 पेजों की वेबसाइट चाहिए, पर डेवलपर कह रहा है कि 6 महीने लगेंगे हर पेज का बटन दोबारा बनाने में!",
+        },
+        {
+          speaker: "बॉब (Master Builder)",
+          emoji: "👷‍♂️",
+          text: "सर! मैंने 1 बार <CustomButton /> और <Navbar /> का LEGO ब्लॉक बना लिया है, अब मैं 2 मिनट में 100 पेज असेंबल कर दूंगा!",
+        },
+        {
+          speaker: "जादुई ईंट (JSX Block)",
+          emoji: "🧱",
+          text: "JSX की शक्ति देखो: JS के अंदर HTML लिखो और Babel से सुपरफास्ट रेंडर करो! 🚀",
+        },
+      ],
+      choiceMoment: {
+        question: "बॉब को हर पेज पर नया बटन बनाने के लिए क्या करना चाहिए?",
+        options: [
+          {
+            text: "हर पेज में 50 लाइन का HTML कॉपी-पेस्ट करना",
+            outcome: "❌ कोड इतना बड़ा हो गया कि बग्स ठीक करने में पूरा हफ्ता बर्बाद हो गया!",
+            isCorrect: false,
+          },
+          {
+            text: "1 Reusable <Button title='Click' /> Component बनाकर कॉल करना",
+            outcome: "✅ इन्वेस्टर हैरान रह गया! वेबसाइट 5 मिनट में लाइव हो गई! 🎉",
+            isCorrect: true,
+          },
+        ],
+      },
+      moral: "💡 नियम: UI को हमेशा छोटे Reusable Components में तोड़ो — Don't Repeat Yourself (DRY)!",
+      tinyCode: `function Card({ title }) {\n  return <div className="card"><h3>{title}</h3></div>;\n}`,
+    };
+  }
+
+  // 3. React Props
+  if (combined.includes("prop")) {
+    return {
+      title: `Episode: Delhi University Smart ID Card Machine (React Props)`,
+      theme: "startup",
+      setting: "कॉलेज एडमिशन का पहला दिन और 5,000 नए स्टूडेंट्स का ID कार्ड 10 मिनट में प्रिंट करना है!",
+      characters: [
+        { name: "मशीन ऑपरेटर (Dev)", role: "Frontend Coder", emoji: "👨‍💻" },
+        { name: "मास्टर ID टेम्प्लेट", role: "Child Component", emoji: "🖨️" },
+        { name: "स्टूडेंट अमन", role: "Incoming Data (Props)", emoji: "👨‍🎓" },
+      ],
+      dialogues: [
+        {
+          speaker: "मशीन ऑपरेटर (Dev)",
+          emoji: "👨‍💻",
+          text: "5000 कार्ड बनाने हैं! क्या मुझे हर बच्चे के लिए अलग डिज़ाइन बनाना पड़ेगा?",
+        },
+        {
+          speaker: "मास्टर ID टेम्प्लेट",
+          emoji: "🖨️",
+          text: "अरे नहीं! डिज़ाइन सबका सेम रहेगा। बस तुम मुझे Props में { name: 'Aman', roll: 101 } पास करते जाओ!",
+        },
+        {
+          speaker: "स्टूडेंट अमन",
+          emoji: "👨‍🎓",
+          text: "अरे वाह! मेरा नाम और फोटो कार्ड पर प्रिंट होकर तुरंत बाहर आ गया!",
+        },
+      ],
+      choiceMoment: {
+        question: "Child component के अंदर props का डेटा कैसे इस्तेमाल करना चाहिए?",
+        options: [
+          {
+            text: "props.name = 'Rahul' (Props को अंदर से बदलने की कोशिश करना)",
+            outcome: "❌ Error! Props Read-Only (Immutable) होते हैं, उन्हें डायरेक्ट नहीं बदला जा सकता!",
+            isCorrect: false,
+          },
+          {
+            text: "<h1>{props.name}</h1> (Props को सिर्फ रीड करके डिस्प्ले करना)",
+            outcome: "✅ सभी 5,000 स्टूडेंट्स के ID कार्ड बिना किसी एरर के प्रिंट हो गए! 🎉",
+            isCorrect: true,
+          },
+        ],
+      },
+      moral: "💡 नियम: Props हमेशा Parent से Child में एक तरफा (Unidirectional) बहते हैं और Read-Only होते हैं!",
+      tinyCode: `function StudentCard({ name, role }) {\n  return <h2>{name} - {role}</h2>;\n}`,
+    };
+  }
+
+  // 4. React Events & Event Handlers
+  if (combined.includes("event") || combined.includes("click") || combined.includes("handle")) {
+    return {
+      title: `Episode: Smart Home Doorbell & Burglar Alarm (Event Handling)`,
+      theme: "detective",
+      setting: "एक हाई-सिक्योरिटी विला जहाँ स्मार्ट डोरबेल और अलार्म सिस्टम लगा है!",
+      characters: [
+        { name: "सिक्योरिटी गार्ड (Browser)", role: "Event Listener", emoji: "👮‍♂️" },
+        { name: "स्मार्ट डोरबेल", role: "SyntheticEvent Trigger", emoji: "🔔" },
+        { name: "मालिक (Handler)", role: "Action Function", emoji: "🎩" },
+      ],
+      dialogues: [
+        {
+          speaker: "सिक्योरिटी गार्ड (Browser)",
+          emoji: "👮‍♂️",
+          text: "साहब! किसी ने गेट पर बटन दबाया है! अलार्म बजाऊँ या दरवाज़ा खोलूं?",
+        },
+        {
+          speaker: "मालिक (Handler)",
+          emoji: "🎩",
+          text: "मैंने onClick={openDoor} का रिमोट लगा रखा है। जैसे ही क्लिक होगा, फंक्शन खुद चलेगा!",
+        },
+        {
+          speaker: "स्मार्ट डोरबेल",
+          emoji: "🔔",
+          text: "डिंग-डोंग! क्लिक हुआ, SyntheticEvent बना और 1 सेकंड में एक्शन पूरा हो गया!",
+        },
+      ],
+      choiceMoment: {
+        question: "बटन में onClick लगाते वक्त कौन सा तरीका सही है?",
+        options: [
+          {
+            text: "onClick={handleClick()} (ब्रैकेट लगाकर कॉल करना)",
+            outcome: "❌ पेज लोड होते ही बिना क्लिक किए अलार्म बज गया और पुलिस आ गई!",
+            isCorrect: false,
+          },
+          {
+            text: "onClick={handleClick} (सिर्फ फंक्शन का नाम/रेफरेंस पास करना)",
+            outcome: "✅ परफेक्ट! जब बटन दबाया गया तभी सही समय पर दरवाज़ा खुला! 🎉",
+            isCorrect: true,
+          },
+        ],
+      },
+      moral: "💡 नियम: Event handler में फंक्शन का reference पास करो `onClick={handleClick}`, ब्रैकेट मत लगाओ!",
+      tinyCode: `<button onClick={() => alert("Welcome!")}>Click Me</button>`,
+    };
+  }
+
+  // 5. Node.js & Event Loop
+  if (combined.includes("node") || combined.includes("event loop") || combined.includes("runtime")) {
+    return {
+      title: `Episode: The Non-Blocking Midnight Dhaba (Node.js & Event Loop)`,
+      theme: "restaurant",
+      setting: "मुंबई का सबसे बिजी मिडनाइट ढाबा जहाँ एक साथ 1000 ग्राहक आर्डर दे रहे हैं!",
+      characters: [
+        { name: "मास्टर शेफ (V8 Engine)", role: "Single Thread Master", emoji: "👨‍🍳" },
+        { name: "स्मार्ट वेटर (Event Loop)", role: "Non-Blocking Manager", emoji: "🤵" },
+        { name: "तंदूर हेल्पर (Libuv Pool)", role: "Background Worker", emoji: "🔥" },
+      ],
+      dialogues: [
+        {
+          speaker: "स्मार्ट वेटर (Event Loop)",
+          emoji: "🤵",
+          text: "शेफ साहब! टेबल 5 ने नान ऑर्डर की है जिसे पकने में 5 मिनट लगेंगे!",
+        },
+        {
+          speaker: "मास्टर शेफ (V8 Engine)",
+          emoji: "👨‍🍳",
+          text: "नान को तंदूर हेल्पर (Worker) के पास भेजो! मैं 5 मिनट खाली नहीं बैठूंगा, लाओ टेबल 6 का चाय आर्डर दो!",
+        },
+        {
+          speaker: "तंदूर हेल्पर (Libuv Pool)",
+          emoji: "🔥",
+          text: "नान तैयार होते ही मैंने कॉलबैक भेजा और वेटर ने तुरंत टेबल 5 पर पहुंचा दिया!",
+        },
+      ],
+      choiceMoment: {
+        question: "Node.js में भारी डेटाबेस या फाइल पढ़ने के काम को कैसे हैंडल करना चाहिए?",
+        options: [
+          {
+            text: "Main Thread को ब्लॉक करके इंतजार करना",
+            outcome: "❌ पूरा ढाबा जाम हो गया! बाकी 999 कस्टमर्स भूखे रह गए!",
+            isCorrect: false,
+          },
+          {
+            text: "Non-blocking Async/Await या Callback से बैकग्राउंड में भेजना",
+            outcome: "✅ सुपरफास्ट! ढाबे ने 1 सेकंड में 1000 ऑर्डर्स निपटा दिए! 🎉",
+            isCorrect: true,
+          },
+        ],
+      },
+      moral: "💡 नियम: Node.js Single Threaded है — कभी CPU को ब्लॉक मत करो, भारी काम को Non-Blocking Async रखो!",
+      tinyCode: `const fs = require('fs/promises');\n// Non-blocking async reading\nconst data = await fs.readFile('notes.txt', 'utf8');`,
+    };
+  }
+
+  // 6. Express Server & Routing
+  if (combined.includes("express") || combined.includes("route") || combined.includes("api")) {
+    return {
+      title: `Episode: The 5-Star Hotel Reception Desk (Express REST API)`,
+      theme: "restaurant",
+      setting: "एक लक्ज़री 5-स्टार होटल का रिसेप्शन जहाँ हर सेकंड सैकड़ों गेस्ट आ रहे हैं!",
+      characters: [
+        { name: "होटल मैनेजर (Express app)", role: "Main Server", emoji: "🏨" },
+        { name: "दरवाजे का गार्ड (Route /api)", role: "Endpoint Router", emoji: "🚪" },
+        { name: "गेस्ट (Client)", role: "Frontend Request", emoji: "🧳" },
+      ],
+      dialogues: [
+        {
+          speaker: "गेस्ट (Client)",
+          emoji: "🧳",
+          text: "मुझे रूम नंबर 201 की चाबी चाहिए, मैंने GET /api/rooms/201 रिक्वेस्ट की है!",
+        },
+        {
+          speaker: "होटल मैनेजर (Express app)",
+          emoji: "🏨",
+          text: "मैंने `app.get('/api/rooms/:id')` का काउंटर खोल रखा है। तुरंत ID चेक करके JSON रिस्पॉन्स दिया जाए!",
+        },
+        {
+          speaker: "दरवाजे का गार्ड (Route /api)",
+          emoji: "🚪",
+          text: "200 OK! रूम मिल गया और गेस्ट को JSON में चाबी सौंप दी गई!",
+        },
+      ],
+      choiceMoment: {
+        question: "Express में नया यूजर डाटा सेव करने के लिए कौन सा HTTP मेथड यूज़ करेंगे?",
+        options: [
+          {
+            text: "app.get('/api/users') से डाटा यूआरएल में भेजना",
+            outcome: "❌ पासवर्ड और पर्सनल डाटा यूआरएल में लीक हो गया! सिक्योरिटी फेल!",
+            isCorrect: false,
+          },
+          {
+            text: "app.post('/api/users') और req.body से सुरक्षित JSON रिसीव करना",
+            outcome: "✅ 201 Created! नया यूजर सुरक्षित तरीके से डेटाबेस में सेव हो गया! 🎉",
+            isCorrect: true,
+          },
+        ],
+      },
+      moral: "💡 नियम: डेटा मंगाने के लिए GET, नया डेटा सेव करने के लिए POST और JSON Body का इस्तेमाल करो!",
+      tinyCode: `app.get('/api/users', (req, res) => {\n  res.json([{ id: 1, name: 'Aman' }]);\n});`,
+    };
+  }
+
+  // 7. Route Params (:id) & Query Params (?search=)
+  if (combined.includes("param") || combined.includes("query") || combined.includes("search")) {
+    return {
+      title: `Episode: CID Crime Records Investigation (:id vs ?search)`,
+      theme: "detective",
+      setting: "CID हेडक्वार्टर में ACP प्रद्युमन और दया 10,000 अपराधियों की फाइलों में सर्च कर रहे हैं!",
+      characters: [
+        { name: "ACP प्रद्युमन", role: "Chief Detective", emoji: "🕵️‍♂️" },
+        { name: "दया (Route Params :id)", role: "Exact Target Matcher", emoji: "💪" },
+        { name: "अभिजीत (Query Params ?)", role: "Filter & Search Master", emoji: "🧠" },
+      ],
+      dialogues: [
+        {
+          speaker: "ACP प्रद्युमन",
+          emoji: "🕵️‍♂️",
+          text: "दया! मुझे क्रिमिनल नंबर 420 की फाइल लाओ, और अभिजीत तुम दिल्ली वाले सारे चोर फिल्टर करो!",
+        },
+        {
+          speaker: "दया (Route Params :id)",
+          emoji: "💪",
+          text: "सर! मैंने `/api/criminals/:id` लगाया और `req.params.id` से सीधे 420 की फाइल पकड़ ली!",
+        },
+        {
+          speaker: "अभिजीत (Query Params ?)",
+          emoji: "🧠",
+          text: "सर! मैंने `/api/criminals?city=delhi` लगाया और `req.query.city` से सारे दिल्ली वाले निकाल लिए!",
+        },
+      ],
+      choiceMoment: {
+        question: "किसी एक स्पेसिफिक यूजर को ID से निकालने के लिए क्या यूज़ करना चाहिए?",
+        options: [
+          {
+            text: "/users?id=5 (Query param se dhoondna)",
+            outcome: "❌ काम तो कर गया पर REST API स्टैंडर्ड टूट गया!",
+            isCorrect: false,
+          },
+          {
+            text: "/users/:id (Route parameter - /users/5)",
+            outcome: "✅ बिल्कुल सही! ACP साहब ने दया को शाबाशी दी! क्रिमिनल पकड़ा गया! 🎉",
+            isCorrect: true,
+          },
+        ],
+      },
+      moral: "💡 नियम: एक खास आइटम के लिए Route Param (`/users/:id`), और सर्च/फिल्टर के लिए Query Param (`/users?role=admin`)!",
+      tinyCode: `app.get('/users/:id', (req, res) => {\n  const id = Number(req.params.id);\n  res.json({ id, name: "Found" });\n});`,
+    };
+  }
+
+  // 8. Express Middleware & next()
+  if (combined.includes("middleware") || combined.includes("next") || combined.includes("cors")) {
+    return {
+      title: `Episode: International Airport Security & Visa Check (Middlewares & CORS)`,
+      theme: "space",
+      setting: "इंटरनेशनल एयरपोर्ट का बोर्डिंग गेट जहाँ फ्लाइट में बैठने से पहले कड़ी चेकिंग चल रही है!",
+      characters: [
+        { name: "यात्री (Client Request)", role: "Incoming Request", emoji: "👨‍🚀" },
+        { name: "सिक्योरिटी ऑफिसर (Middleware)", role: "Auth & CORS Scanner", emoji: "👮‍♂️" },
+        { name: "फ्लाइट कैप्टन (Route Handler)", role: "Final Response", emoji: "✈️" },
+      ],
+      dialogues: [
+        {
+          speaker: "यात्री (Client Request)",
+          emoji: "👨‍🚀",
+          text: "मुझे फ्लाइट में बैठना है, क्या मैं सीधे अंदर जा सकता हूँ?",
+        },
+        {
+          speaker: "सिक्योरिटी ऑफिसर (Middleware)",
+          emoji: "👮‍♂️",
+          text: "रुकिए! पहले टिकट चेक (Auth) और लगेज स्कैन (Body Parser) होगा! अगर सब सही है, तभी मैं `next()` बोलूंगा!",
+        },
+        {
+          speaker: "फ्लाइट कैप्टन (Route Handler)",
+          emoji: "✈️",
+          text: "जैसे ही ऑफिसर ने `next()` बोला, यात्री को सीट मिल गई और फ्लाइट 200 OK के साथ उड़ गई!",
+        },
+      ],
+      choiceMoment: {
+        question: "Middleware के अंदर अगर काम पूरा हो जाए तो अगला कदम क्या होना चाहिए?",
+        options: [
+          {
+            text: "कुछ मत करो, खाली छोड़ दो",
+            outcome: "❌ Request वहीं लटक गई! ब्राउज़र गोल-गोल घूमता रहा और टाइमआउट हो गया!",
+            isCorrect: false,
+          },
+          {
+            text: "next() फंक्शन को कॉल करो ताकि रिक्वेस्ट आगे बढ़े",
+            outcome: "✅ परफेक्ट! पैसेंजर बिना रुके अपनी फ्लाइट में पहुँच गया! 🎉",
+            isCorrect: true,
+          },
+        ],
+      },
+      moral: "💡 नियम: Middleware के अंत में `next()` कॉल करना अनिवार्य है, वरना रिक्वेस्ट बीच में ही अटक जाएगी!",
+      tinyCode: `app.use((req, res, next) => {\n  console.log("Logged:", req.path);\n  next(); // Pass to next route\n});`,
+    };
+  }
+
+  // 9. Generic Smart Story Fallback for any other custom topic
+  return {
+    title: `Episode: The Great Tech Adventure of ${lessonTitle}`,
+    theme: "startup",
+    setting: `एक हलचल भरी टेक कंपनी जहाँ ${lessonTitle} के ज़रिए एक बड़ा मिशन पूरा करना है!`,
+    characters: [
+      { name: "रोहन (Junior Engineer)", role: "Curious Builder", emoji: "👨‍💻" },
+      { name: "प्रिया (Senior Architect)", role: "Tech Mentor", emoji: "👩‍🏫" },
+      { name: "सिस्टम कोर", role: "Production Engine", emoji: "⚡" },
+    ],
+    dialogues: [
+      {
+        speaker: "रोहन (Junior Engineer)",
+        emoji: "👨‍💻",
+        text: `मैम, मुझे ${lessonTitle} को कोड में लागू करना है, पर समझ नहीं आ रहा कि सही तरीका क्या है?`,
+      },
+      {
+        speaker: "प्रिया (Senior Architect)",
+        emoji: "👩‍🏫",
+        text: `रोहन, ${lessonTitle} का बुनियादी सिद्धांत यह है कि इनपुट को साफ़ रखो, लॉजिक को मॉड्यूलर बनाओ और सही आउटपुट रिटर्न करो!`,
+      },
+      {
+        speaker: "सिस्टम कोर",
+        emoji: "⚡",
+        text: "जैसे ही सही आर्किटेक्चर फॉलो किया गया, पूरा सिस्टम 10x तेज और बिना किसी क्रैश के चलने लगा! 🚀",
+      },
+    ],
+    choiceMoment: {
+      question: `${lessonTitle} में सबसे बेहतरीन इंजीनियरिंग प्रैक्टिस क्या है?`,
+      options: [
+        {
+          text: "बिना सोचे समझे शॉर्टकट लेना और एरर हैंडलिंग छोड़ देना",
+          outcome: "❌ सिस्टम प्रोडक्शन में क्रैश हो गया!",
+          isCorrect: false,
+        },
+        {
+          text: "मॉड्यूलर, टाइप-सेफ और प्रेडिक्टेबल कोड लिखना",
+          outcome: "✅ 100% सक्सेस! सिस्टम बिना किसी बग के सुपरफास्ट चला! 🎉",
+          isCorrect: true,
+        },
+      ],
     },
+    moral: `💡 नियम: ${lessonTitle} को छोटे-छोटे टेस्टेबल टुकड़ों में लिखो ताकि कोड हमेशा मेंटेन करना आसान रहे!`,
+    tinyCode: `// ${lessonTitle} Core Pattern\nfunction runTask() {\n  return { success: true, topic: "${lessonTitle}" };\n}`,
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Dynamic Bilingual Scene Generator with Unique Stories per Concept
+// ─────────────────────────────────────────────────────────────────────────────
+function generateBilingualWhiteboardScenes({
+  lessonTitle,
+  topicTitle,
+  courseTitle = "",
+  moduleTitle = "",
+  lessonContent,
+  lessonExplanation,
+  concepts,
+  examples,
+}: {
+  lessonTitle: string;
+  topicTitle: string;
+  courseTitle?: string;
+  moduleTitle?: string;
+  lessonContent: string;
+  lessonExplanation?: string;
+  concepts: Array<{ id: string; title: string; description: string }>;
+  examples: Array<{ id: string; title: string; description: string; starterCode: string; solutionCode: string }>;
+}): WhiteboardScene[] {
+  const scenes: WhiteboardScene[] = [];
+  let sceneNum = 1;
+
+  // Scene 1: Introduction Story Episode (Topic Tailored)
+  const mainEpisode = buildTopicStoryEpisode({
+    lessonTitle,
+    topicTitle,
+    courseTitle,
+    moduleTitle,
+  });
+
+  scenes.push({
+    id: `scene_${sceneNum}`,
+    sceneNumber: sceneNum++,
+    titleEn: `Mastering ${lessonTitle}`,
+    titleHi: `${lessonTitle} की रोमांचक कहानी`,
+    subtitleEn: `Episode 1: The Core Breakthrough`,
+    subtitleHi: `एपिसोड 1: मुख्य रहस्य का पर्दाफाश`,
+    type: "concept",
+    easySummaryEn: `${lessonTitle} transforms complex engineering challenges into clean, predictable superpowers!`,
+    easySummaryHi: `${lessonTitle} का काम है उलझे हुए कोड को जादू की तरह आसान और एरर-फ्री बनाना!`,
+    memoryTrickEn: mainEpisode.moral,
+    memoryTrickHi: mainEpisode.moral,
+    problemVsSolutionEn: {
+      without: "Fragile code where changing one part unexpectedly crashes other features.",
+      with: "Clean modular building blocks that work predictably every single time!",
+    },
+    problemVsSolutionHi: {
+      without: "एक जगह कोड बदलने पर दूसरी चीजें अपने आप क्रैश हो जाती थीं!",
+      with: "साफ़-सुथरे ब्लॉक्स जो हमेशा सही और प्रेडिक्टेबल रिजल्ट देते हैं!",
+    },
+    storyEpisode: mainEpisode,
     handwrittenNotesEn: [
       `Why ${lessonTitle} is fundamental in modern engineering`,
       `Core mental model: Moving from theory to practical implementation`,
@@ -1268,8 +1687,8 @@ function generateBilingualWhiteboardScenes({
       `In this lesson, we break down **${lessonTitle}** step-by-step with interactive stories and practical patterns.`,
     explanationHi:
       `इस पाठ में हम **${lessonTitle}** को कहानी और किरदारों के ज़रिए बिल्कुल आसान भाषा में समझेंगे।`,
-    analogyEn: `Think of LEGO blocks: tiny reusable pieces snapped together to build an entire skyscraper.`,
-    analogyHi: `जैसे LEGO के छोटे-छोटे प्लास्टिक ब्लॉक्स को जोड़कर पूरा घर बनाया जाता है, वैसे ही कोडिंग में हम छोटे कंपोनेंट्स जोड़ते हैं।`,
+    analogyEn: mainEpisode.setting,
+    analogyHi: mainEpisode.setting,
     diagramNodes: [
       {
         id: "step_1_trigger",
@@ -1327,58 +1746,29 @@ function generateBilingualWhiteboardScenes({
     keyTakeawaysHi: ["कहानी मेंटल मॉडल", "आसान आर्किटेक्चर", "100% समझ"],
   });
 
-  // Scene 2..N: Concepts as Interactive Story Episodes
+  // Scene 2..N: Concepts with Specific Story Episodes
   if (concepts && concepts.length > 0) {
     concepts.forEach((concept, cIdx) => {
-      const titleLower = concept.title.toLowerCase();
-      let theme: StoryTheme = "restaurant";
-      let storyTitle = `Episode ${cIdx + 2}: The Pizza Delivery Mystery (${concept.title})`;
-      let setting = "एक सुपरफास्ट पिज़्ज़ा डिलीवरी किचन जहाँ हर सेकंड में 100 ऑर्डर्स आ रहे हैं!";
-      let char1 = { name: "कस्टमर (User)", role: "Hungry Client", emoji: "😋" };
-      let char2 = { name: "शेफ Express", role: "Master Backend", emoji: "👨‍🍳" };
-      let char3 = { name: "डिलीवरी बॉय Route", role: "Fast Courier", emoji: "🛵" };
-
-      let d1 = "भैया, मुझे 1 चीज पिज़्ज़ा चाहिए, मैंने आर्डर कर दिया!";
-      let d2 = `ऑर्डर received! मैंने ${concept.title} का नियम लगाकर बिना किचन बंद किए 1 सेकंड में पिज़्ज़ा तैयार कर दिया!`;
-      let d3 = "वाह! इतनी तेज सर्विस? बिना किसी जाम के मेरा पार्सल आ गया!";
-
-      let q = `${concept.title} में सबसे सही तरीका क्या है?`;
-      let optWrong = "गलत शॉर्टकट अपनाना बिना किसी रूल्स के";
-      let optWrongOut = "❌ किचन में हड़कंप मच गया और ऑर्डर जल गया!";
-      let optRight = "सही मेथड और स्ट्रक्चर्ड आर्किटेक्चर फॉलो करना";
-      let optRightOut = "✅ कस्टमर खुश! 5-स्टार रेटिंग मिली और सिस्टम सुपरफास्ट चला! 🎉";
-      let moral = `💡 नियम: ${concept.title} का इस्तेमाल करके सिस्टम को मॉड्यूलर और नॉन-ब्लॉकिंग रखो!`;
-
-      if (titleLower.includes("route") || titleLower.includes("param")) {
-        theme = "detective";
-        storyTitle = `Episode ${cIdx + 2}: CID और गायब फाइल का केस (:id Params)`;
-        setting = "CID हेडक्वार्टर में ACP प्रद्युमन एक सीक्रेट फाइल ढूंढ रहे हैं!";
-        char1 = { name: "ACP प्रद्युमन", role: "Senior Detective", emoji: "🕵️‍♂️" };
-        char2 = { name: "दया (Route Params)", role: "Target Locator", emoji: "💪" };
-        char3 = { name: "अभिजीत (Express Router)", role: "Mastermind", emoji: "🧠" };
-        d1 = "दया! हमें क्रिमिनल नंबर 420 की पूरी जन्मकुंडली चाहिए!";
-        d2 = "सर! मैंने URL में /api/criminals/:id लगा दिया, req.params.id से 420 तुरंत मिल गया!";
-        d3 = "शाबाश दया! अब हमें 1000 क्रिमिनल्स के लिए 1000 अलग फाइलें नहीं बनानी पड़ेंगी!";
-        q = "दया को क्रिमिनल की ID URL से कैसे निकालनी चाहिए?";
-        optWrong = "req.params.id को बिना Number() बदले 1 से compare करना";
-        optWrongOut = "❌ स्ट्रिंग और नंबर मिसमैच हो गया! क्रिमिनल फरार हो गया!";
-        optRight = "Number(req.params.id) से टाइप सेफ सर्च करना";
-        optRightOut = "✅ क्रिमिनल पकड़ा गया! ACP साहब ने दया की पीठ थपथपाई! 🎉";
-        moral = "💡 नियम: Route params (:id) हमेशा STRING होते हैं, उन्हें Number(req.params.id) में बदलो!";
-      }
+      const conceptEpisode = buildTopicStoryEpisode({
+        lessonTitle,
+        topicTitle,
+        courseTitle,
+        moduleTitle,
+        conceptTitle: concept.title,
+      });
 
       scenes.push({
         id: `scene_${sceneNum}`,
         sceneNumber: sceneNum++,
         titleEn: concept.title,
         titleHi: `${concept.title} (कहानी से समझें)`,
-        subtitleEn: `Interactive Episode 0${cIdx + 2}`,
+        subtitleEn: `Episode 0${cIdx + 2}: ${concept.title}`,
         subtitleHi: `रोमांचक एपिसोड 0${cIdx + 2}`,
         type: "deep_dive",
         easySummaryEn: `Simple summary: ${concept.title} guarantees predictable state and clean logic.`,
         easySummaryHi: `सरल शब्दों में: ${concept.title} आपके कोड को तेज, सुरक्षित और आसान बनाता है।`,
-        memoryTrickEn: `💡 FORMULA: Clear Action ➔ Structured Processing ➔ Clean Resolution`,
-        memoryTrickHi: `💡 याद रखने का फॉर्मूला: सही इनपुट दो ➔ नियम फॉलो करो ➔ सही आउटपुट पाओ!`,
+        memoryTrickEn: conceptEpisode.moral,
+        memoryTrickHi: conceptEpisode.moral,
         problemVsSolutionEn: {
           without: "Chaos and unmaintainable code that breaks in production.",
           with: "Clean, robust engineering patterns trusted by top tech companies.",
@@ -1387,26 +1777,7 @@ function generateBilingualWhiteboardScenes({
           without: "बिना सोचे-समझे लिखा गया कोड जो प्रोडक्शन में क्रैश हो जाता था।",
           with: "साफ़-सुथरा कोड जिसे कोई भी आसानी से समझ और चला सकता है!",
         },
-        storyEpisode: {
-          title: storyTitle,
-          theme,
-          setting,
-          characters: [char1, char2, char3],
-          dialogues: [
-            { speaker: char1.name, emoji: char1.emoji, text: d1 },
-            { speaker: char2.name, emoji: char2.emoji, text: d2 },
-            { speaker: char3.name, emoji: char3.emoji, text: d3 },
-          ],
-          choiceMoment: {
-            question: q,
-            options: [
-              { text: optWrong, outcome: optWrongOut, isCorrect: false },
-              { text: optRight, outcome: optRightOut, isCorrect: true },
-            ],
-          },
-          moral,
-          tinyCode: `// ${concept.title} Clean Pattern\nconst output = handleAction();\nconsole.log("Resolved:", output);`,
-        },
+        storyEpisode: conceptEpisode,
         handwrittenNotesEn: [
           `Key rule: ${concept.title} dictates how state flows through the system`,
           `Internal mechanics: Execution lifecycle and memory boundaries`,
@@ -1417,8 +1788,8 @@ function generateBilingualWhiteboardScenes({
         ],
         explanationEn: concept.description,
         explanationHi: `${concept.description}\n\n**टीचर टिप:** इस कॉन्सेप्ट को स्टोरी के किरदारों की तरह याद रखें!`,
-        analogyEn: `Like a well-oiled restaurant kitchen where orders flow from waiter to chef without collisions.`,
-        analogyHi: `जैसे एक सुपरफास्ट रेस्टोरेंट में वेटर से शेफ तक ऑर्डर बिना किसी रुकावट के पहुँचता है।`,
+        analogyEn: conceptEpisode.setting,
+        analogyHi: conceptEpisode.setting,
         diagramNodes: [
           {
             id: `c_${cIdx}_s1`,
