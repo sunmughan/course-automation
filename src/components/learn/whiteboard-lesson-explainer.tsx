@@ -106,7 +106,8 @@ export function WhiteboardLessonExplainer({
   onOpenPlayground,
   onOpenAITutor,
 }: WhiteboardLessonExplainerProps) {
-  const [language, setLanguage] = useState<ExplanationLanguage>("hi");
+  // English is default language; persisted across all courses until user changes it
+  const [language, setLanguage] = useState<ExplanationLanguage>("en");
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
@@ -123,6 +124,36 @@ export function WhiteboardLessonExplainer({
 
   const containerRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+
+  // Sync language with persistent localStorage across all courses
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedLang = localStorage.getItem("preferred_explanation_language") as ExplanationLanguage;
+      if (savedLang === "en" || savedLang === "hi") {
+        setLanguage(savedLang);
+      }
+    }
+
+    const handleLangChange = (e: any) => {
+      const newLang = e.detail || (typeof window !== "undefined" ? localStorage.getItem("preferred_explanation_language") : null);
+      if (newLang === "en" || newLang === "hi") {
+        setLanguage(newLang as ExplanationLanguage);
+      }
+    };
+
+    window.addEventListener("languagechange", handleLangChange);
+    return () => window.removeEventListener("languagechange", handleLangChange);
+  }, []);
+
+  const handleSetLanguage = (newLang: ExplanationLanguage) => {
+    setLanguage(newLang);
+    stopSpeaking();
+    setIsVoiceNarrationActive(false);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("preferred_explanation_language", newLang);
+      window.dispatchEvent(new CustomEvent("languagechange", { detail: newLang }));
+    }
+  };
 
   // Generate multi-lingual scenes
   const scenes = useMemo(() => {
@@ -356,11 +387,7 @@ export function WhiteboardLessonExplainer({
           {/* Language Toggle */}
           <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
             <button
-              onClick={() => {
-                setLanguage("hi");
-                stopSpeaking();
-                setIsVoiceNarrationActive(false);
-              }}
+              onClick={() => handleSetLanguage("hi")}
               className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 language === "hi"
                   ? "bg-sky-600 text-white shadow-xs font-bold"
@@ -370,11 +397,7 @@ export function WhiteboardLessonExplainer({
               हिन्दी / Hinglish
             </button>
             <button
-              onClick={() => {
-                setLanguage("en");
-                stopSpeaking();
-                setIsVoiceNarrationActive(false);
-              }}
+              onClick={() => handleSetLanguage("en")}
               className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 language === "en"
                   ? "bg-sky-600 text-white shadow-xs font-bold"
