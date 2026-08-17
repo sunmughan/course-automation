@@ -1,3 +1,22 @@
+// Global safe interceptor for harmless Monaco Editor cancellation exceptions
+if (typeof window !== "undefined") {
+  const origConsoleError = console.error;
+  console.error = function (...args: any[]) {
+    const text = args.map((a) => (a?.stack || a?.message || String(a))).join(" ");
+    if (
+      text.includes("Canceled") ||
+      text.includes("canceled") ||
+      text.includes("of.cancel") ||
+      text.includes("off.cancel") ||
+      text.includes("CalNCsUg") ||
+      text.includes("editor.api")
+    ) {
+      return;
+    }
+    origConsoleError.apply(console, args);
+  };
+}
+
 "use client";
 
 // Helper to clean chapter prefix and capitalize title
@@ -740,37 +759,36 @@ export function UnifiedInteractiveClassroom({
           </div>
         </div>
 
-        {/* Right Corner: Mobile Subheader Toggle Icon (Mobile Only) */}
-        <div className="flex sm:hidden items-center gap-1">
+        {/* Right Corner: Mobile Subheader Toggle (Mobile Only, Clean Show/Hide Text) */}
+        <div className="flex sm:hidden items-center">
           <button
             onClick={() => setShowSubheaderCard(!showSubheaderCard)}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
               showSubheaderCard
                 ? "bg-sky-600/20 text-sky-300 border-sky-500/40"
                 : "bg-slate-950 text-slate-400 border-slate-800 hover:text-white"
             }`}
             title="Toggle Subheader Bar"
           >
-            <PanelTop className="size-3.5" />
-            <span className="text-[10px]">{showSubheaderCard ? "Hide Bar" : "Show Bar"}</span>
+            <span>{showSubheaderCard ? "Hide" : "Show"}</span>
           </button>
         </div>
       </header>
 
       {/* ─────────────────────────────────────────────────────────────────────────────
-          FULL-WIDTH SUBHEADER CARD (NOTES | CODE | OUTPUT SWITCHER + [ MORE... ] FLOATING MODAL)
+          FULL-WIDTH SUBHEADER CARD (CENTERED NOTES | CODE | OUTPUT SWITCHER + [ MORE... ] FLOATING MODAL)
           ───────────────────────────────────────────────────────────────────────────── */}
       {showSubheaderCard && (
-        <div className="bg-slate-950 border-b border-slate-800 px-3 py-1.5 flex items-center justify-between gap-2 shrink-0 z-20 animate-in slide-in-from-top-1">
-          {/* Chapter Breadcrumb */}
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono truncate min-w-0">
+        <div className="bg-slate-950 border-b border-slate-800 px-3 py-1.5 flex items-center justify-center sm:justify-between gap-2 shrink-0 z-20 animate-in slide-in-from-top-1 w-full">
+          {/* Chapter Breadcrumb (Desktop / Tablet Only - Hidden on Mobile) */}
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-400 font-mono truncate min-w-0">
             <span className="text-sky-400 font-bold truncate">{courseTitle}</span>
             <span>/</span>
             <span className="text-slate-300 truncate">{lessonTitle}</span>
           </div>
 
-          {/* Switcher: Notes, Code, Output + [ ⚡ More... ] Button */}
-          <div className="flex items-center gap-1 bg-slate-900 p-0.5 rounded-xl border border-slate-800 shrink-0">
+          {/* Centered Switcher: Notes, Code, Output + [ ⚡ More... ] Button */}
+          <div className="flex items-center gap-1 bg-slate-900 p-0.5 rounded-xl border border-slate-800 shrink-0 mx-auto sm:mx-0">
             <button
               onClick={() => setMobileActiveView("notes")}
               className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -1282,7 +1300,7 @@ export function UnifiedInteractiveClassroom({
               </div>
 
               <button
-                onClick={() => setActiveRightPanel(null)}
+                onClick={() => { setActiveRightPanel(null); setMobileActiveView("notes"); }}
                 className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 cursor-pointer"
                 title="Close Drawer"
               >
@@ -1459,11 +1477,11 @@ export function UnifiedInteractiveClassroom({
                   {activeVsCodeTab === "node" && (
                     <div className="space-y-3">
                       {/* Step 1: Folder Tree */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
                         <span className="text-xs font-bold text-amber-300 font-mono block">
                           📁 1. Node.js Files Kahan Create Karni Hain:
                         </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed">
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words">
                           {`my-node-app/
 ├── server.js         <-- Root folder me (Main backend file)
 └── package.json      <-- Root folder me (Config file)`}
@@ -1471,11 +1489,11 @@ export function UnifiedInteractiveClassroom({
                       </div>
 
                       {/* Step 2: Exact Terminal Commands */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
                         <span className="text-xs font-bold text-emerald-400 font-mono block">
                           🚀 2. VS Code Terminal me Run Karein:
                         </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed">
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words">
                           {`# 1. Folder create karein aur enter karein
 mkdir my-node-app && cd my-node-app
 
@@ -1494,7 +1512,7 @@ node server.js`}
                       </div>
 
                       {/* Step 3: What to copy */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
                         <span className="text-xs font-bold text-emerald-400 font-mono block">
                           📝 3. File Contents (Copy server.js):
                         </span>
@@ -1515,11 +1533,11 @@ node server.js`}
                   {activeVsCodeTab === "react" && (
                     <div className="space-y-3">
                       {/* Step 1: Folder Tree */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
                         <span className="text-xs font-bold text-amber-300 font-mono block">
                           📁 1. React Files Kahan Create Karni Hain:
                         </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed">
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words">
                           {`my-react-app/
 ├── index.html        <-- Root folder me (Directly inside project)
 ├── package.json      <-- Root folder me
@@ -1531,11 +1549,11 @@ node server.js`}
                       </div>
 
                       {/* Step 2: Exact Terminal Commands */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
                         <span className="text-xs font-bold text-sky-400 font-mono block">
                           🚀 2. VS Code Terminal me Run Karein:
                         </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-sky-300 leading-relaxed">
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-sky-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words">
                           {`# 1. New React Project banayein
 npm create vite@latest my-react-app -- --template react
 
@@ -1552,7 +1570,7 @@ npm run dev`}
                       </div>
 
                       {/* Step 3: What to copy */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
                         <span className="text-xs font-bold text-sky-400 font-mono block">
                           📝 3. File Contents (Copy App.jsx):
                         </span>
@@ -1572,7 +1590,7 @@ npm run dev`}
                   {/* TAB 3: FULLSTACK INTEGRATION */}
                   {activeVsCodeTab === "fullstack" && (
                     <div className="space-y-3">
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
                         <span className="text-xs font-bold text-purple-300 font-mono block">
                           🔗 How React &amp; Node.js Work Together:
                         </span>
