@@ -4,10 +4,7 @@ import { hashPassword } from "../src/lib/auth";
 import { seedCurriculum } from "../src/lib/curriculum/seed";
 
 async function main() {
-  console.log("Seeding database...");
-  await seedCurriculum();
-
-  console.log("Seeding demo users...");
+  console.log("Seeding demo users first...");
   const passwordHash = await hashPassword("Password123!");
 
   const demoUsers = [
@@ -43,6 +40,9 @@ async function main() {
     });
     console.log(`  ✓ Seeded user: ${user.email} (${user.role})`);
   }
+
+  console.log("Seeding curriculum courses...");
+  await seedCurriculum();
 
   console.log("Database seeded successfully!");
   process.exit(0);
