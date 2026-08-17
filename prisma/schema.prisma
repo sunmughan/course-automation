@@ -201,7 +201,8 @@ model Example {
   starterCode   String
   solutionCode  String
   lessonId      String
-  testCases     String
+  testCases     String?
+  expectedOutput String?
   order         Int      @default(0)
   createdAt     DateTime @default(now())
 

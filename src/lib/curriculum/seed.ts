@@ -128,8 +128,8 @@ export async function seedCurriculum() {
               description: e.description,
               starterCode: e.starterCode,
               solutionCode: e.solutionCode,
-              testCases: e.testCases || null,
-              expectedOutput: e.expectedOutput || null,
+              testCases: e.testCases ?? null,
+              expectedOutput: e.expectedOutput ?? null,
               lessonId: createdLesson.id,
             })),
           });
