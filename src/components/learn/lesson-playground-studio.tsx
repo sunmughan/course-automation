@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useMemo } from "react";
 import { MonacoEditor } from "@/components/editor/monaco-editor";
 import { CodeToolbar } from "@/components/editor/code-toolbar";
 import { useExecution } from "@/hooks/use-execution";
@@ -32,6 +32,10 @@ import {
   HelpCircle,
   ChevronRight,
   Info,
+  Globe,
+  RefreshCw,
+  FileText,
+  Palette,
 } from "lucide-react";
 
 interface ExampleItem {
@@ -50,7 +54,8 @@ interface LessonPlaygroundStudioProps {
 }
 
 export type StudioViewLayout = "split" | "editor_max" | "output_max";
-export type GuideCategory = "frontend_vanilla" | "frontend_react" | "backend_node" | "backend_express" | "backend_prisma";
+export type GuideCategory = "frontend_vanilla" | "frontend_react" | "backend_node" | "backend_express" | "fullstack_integration";
+export type ActiveEditorFile = "app" | "html" | "css";
 
 export function LessonPlaygroundStudio({
   initialCode = "",
@@ -59,53 +64,113 @@ export function LessonPlaygroundStudio({
   lessonTitle,
 }: LessonPlaygroundStudioProps) {
   const [activeSubTab, setActiveSubTab] = useState<"editor" | "examples" | "instructions">("editor");
-  const [code, setCode] = useState(
-    initialCode || examples[0]?.solutionCode || examples[0]?.starterCode || "// Write your code here\n"
+  const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
+
+  // Multi-File State: JSX/JS, HTML, and CSS
+  const [appCode, setAppCode] = useState(
+    initialCode || examples[0]?.solutionCode || examples[0]?.starterCode || "// Write your React component or JavaScript logic here\n"
   );
+  const [htmlCode, setHtmlCode] = useState('<div id="root"></div>');
+  const [cssCode, setCssCode] = useState(
+    "body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 16px; background: #0f172a; color: #f8fafc; }\n.card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; max-width: 480px; }\nbutton { background: #0284c7; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; }\nbutton:hover { background: #0369a1; }"
+  );
+
   const [language, setLanguage] = useState(defaultLanguage);
   const [fontSize, setFontSize] = useState(14);
-  const [consoleTab, setConsoleTab] = useState<"terminal" | "memory" | "timeline">("terminal");
+  const [consoleTab, setConsoleTab] = useState<"terminal" | "preview" | "memory" | "timeline">("terminal");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [viewLayout, setViewLayout] = useState<StudioViewLayout>("split");
   const [isBrowserFullscreen, setIsBrowserFullscreen] = useState(false);
-  const [selectedGuide, setSelectedGuide] = useState<GuideCategory>("frontend_vanilla");
+  const [selectedGuide, setSelectedGuide] = useState<GuideCategory>("frontend_react");
   const [selectedExampleCode, setSelectedExampleCode] = useState<string | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const previewIframeRef = useRef<HTMLIFrameElement>(null);
 
   const { output, error, events, loading, executionTime, executeCode, clearOutput } = useExecution();
+
+  // Active code depending on selected tab
+  const currentEditorCode = activeFile === "app" ? appCode : activeFile === "html" ? htmlCode : cssCode;
+  const currentEditorLanguage = activeFile === "app" ? "javascript" : activeFile === "html" ? "html" : "css";
+
+  const handleEditorChange = (newVal: string) => {
+    if (activeFile === "app") setAppCode(newVal);
+    else if (activeFile === "html") setHtmlCode(newVal);
+    else setCssCode(newVal);
+  };
+
+  // Build live srcdoc for multi-file iframe preview (React 18 + Babel + CSS + HTML)
+  const liveSrcDoc = useMemo(() => {
+    return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <style>
+    ${cssCode}
+  </style>
+</head>
+<body>
+  ${htmlCode}
+  <script type="text/plain" id="__rawScript">${appCode}</script>
+  <script>
+    (function(){
+      try {
+        var raw = document.getElementById('__rawScript').textContent;
+        var transpiled = Babel.transform(raw, { presets: ['react', 'env'] }).code;
+        var s = document.createElement('script');
+        s.textContent = transpiled;
+        document.body.appendChild(s);
+      } catch(err) {
+        var box = document.createElement('div');
+        box.style = "background:#450a0a;color:#fca5a5;border:1px solid #ef4444;padding:12px;border-radius:8px;font-family:monospace;font-size:12px;margin:10px;";
+        box.innerHTML = "<strong>❌ Render Error:</strong> " + err.message;
+        document.body.appendChild(box);
+      }
+    })();
+  </script>
+</body>
+</html>`;
+  }, [appCode, htmlCode, cssCode]);
 
   const handleRun = useCallback(async () => {
     setActiveSubTab("editor");
     if (viewLayout === "editor_max") {
       setViewLayout("split");
     }
-    await executeCode(code, language, language === "javascript");
-  }, [code, language, executeCode, viewLayout]);
+    // Execute JS sandbox trace
+    await executeCode(appCode, "javascript", true);
+  }, [appCode, executeCode, viewLayout]);
 
   const handleReset = useCallback(() => {
-    setCode(initialCode || examples[0]?.starterCode || "// Reset code\n");
+    setAppCode(initialCode || examples[0]?.starterCode || "// Reset code\n");
+    setHtmlCode('<div id="root"></div>');
+    setCssCode("body { font-family: sans-serif; padding: 16px; background: #0f172a; color: #f8fafc; }");
     clearOutput();
   }, [initialCode, examples, clearOutput]);
 
   const handleFormat = useCallback(() => {
     try {
-      const formatted = JSON.stringify({ _: code }, null, 2);
+      const formatted = JSON.stringify({ _: currentEditorCode }, null, 2);
       const lines = formatted.split("\n");
       lines.shift();
       lines.pop();
       const trimmed = lines.map((l) => l.slice(2)).join("\n");
-      setCode(trimmed);
+      handleEditorChange(trimmed);
     } catch {
       // ignore
     }
-  }, [code]);
+  }, [currentEditorCode]);
 
   const handleLoadExample = (exampleCode: string) => {
-    setCode(exampleCode);
+    setAppCode(exampleCode);
+    setActiveFile("app");
     setActiveSubTab("editor");
     setViewLayout("split");
-    executeCode(exampleCode, language, language === "javascript");
+    executeCode(exampleCode, "javascript", true);
   };
 
   const handleOpenGuideForExample = (exampleCode: string) => {
@@ -166,18 +231,18 @@ export function LessonPlaygroundStudio({
               onClick={() => setActiveSubTab("editor")}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 activeSubTab === "editor"
-                  ? "bg-sky-600 text-white shadow-xs"
+                  ? "bg-sky-600 text-white shadow-xs font-bold"
                   : "text-slate-400 hover:text-white"
               }`}
             >
               <Code2 className="size-3.5" />
-              Live Playground
+              Multi-File Playground
             </button>
             <button
               onClick={() => setActiveSubTab("examples")}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 activeSubTab === "examples"
-                  ? "bg-sky-600 text-white shadow-xs"
+                  ? "bg-sky-600 text-white shadow-xs font-bold"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -193,9 +258,9 @@ export function LessonPlaygroundStudio({
               }`}
             >
               <Laptop className="size-3.5" />
-              VS Code Local Setup Guide
+              VS Code Multi-File Setup Guide
               <span className="bg-amber-400 text-slate-950 text-[9px] font-extrabold px-1.5 py-0.2 rounded-full uppercase tracking-wider">
-                Step-by-Step
+                JSX + HTML + CSS
               </span>
             </button>
           </div>
@@ -243,7 +308,7 @@ export function LessonPlaygroundStudio({
           )}
         </div>
 
-        {/* Right Action: Quick Guide Button, Run & Fullscreen */}
+        {/* Right Action: Run & Fullscreen */}
         <div className="flex items-center gap-2">
           {activeSubTab === "editor" && (
             <Button
@@ -265,7 +330,7 @@ export function LessonPlaygroundStudio({
               className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs h-8 gap-1.5 shadow-md"
             >
               <Play className="size-3.5 fill-current" />
-              {loading ? "Executing..." : "Run Code (Ctrl+Enter)"}
+              {loading ? "Executing..." : "Run & Preview (Ctrl+Enter)"}
             </Button>
           )}
 
@@ -284,19 +349,52 @@ export function LessonPlaygroundStudio({
       {/* Main Studio Body */}
       {activeSubTab === "editor" ? (
         <div className="flex flex-1 flex-col min-h-0">
-          {/* Quick Helper Banner for Local VS Code Execution */}
-          <div className="px-4 py-1.5 bg-slate-900/60 border-b border-slate-800/80 flex items-center justify-between text-xs text-slate-300 shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="font-mono text-[11px] text-slate-400">
-                In-browser sandbox runtime active.
+          {/* File Switcher Tabs Bar (App.jsx, index.html, style.css) */}
+          <div className="px-4 py-2 bg-slate-900 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] font-bold text-slate-400 uppercase font-mono mr-1">
+                Project Files:
               </span>
+              <button
+                onClick={() => setActiveFile("app")}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "app"
+                    ? "bg-sky-600 text-white font-bold shadow-xs"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <Sparkles className="size-3.5 text-sky-300" />
+                App.jsx (React)
+              </button>
+              <button
+                onClick={() => setActiveFile("html")}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "html"
+                    ? "bg-amber-600 text-white font-bold shadow-xs"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <FileText className="size-3.5 text-amber-300" />
+                index.html
+              </button>
+              <button
+                onClick={() => setActiveFile("css")}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "css"
+                    ? "bg-indigo-600 text-white font-bold shadow-xs"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <Palette className="size-3.5 text-indigo-300" />
+                style.css
+              </button>
             </div>
+
             <button
               onClick={() => setActiveSubTab("instructions")}
-              className="text-amber-400 hover:text-amber-300 underline font-medium flex items-center gap-1 cursor-pointer text-[11px]"
+              className="text-amber-400 hover:text-amber-300 underline font-medium flex items-center gap-1 cursor-pointer text-xs"
             >
-              <span>Click here for VS Code (Local Machine) Step-by-Step Run Instructions &rarr;</span>
+              <span>See VS Code Multi-File Tree &rarr;</span>
             </button>
           </div>
 
@@ -307,49 +405,55 @@ export function LessonPlaygroundStudio({
                 viewLayout === "editor_max" ? "flex-1 min-h-0" : "flex-1 min-h-[220px]"
               }`}
             >
-              <div className="flex items-center justify-between bg-slate-900 border-b border-slate-800 px-3">
-                <CodeToolbar
-                  onRun={handleRun}
-                  onReset={handleReset}
-                  onFormat={handleFormat}
-                  language={language}
-                  onLanguageChange={setLanguage}
-                  fontSize={fontSize}
-                  onFontSizeChange={setFontSize}
-                  running={loading}
-                />
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setViewLayout(viewLayout === "editor_max" ? "split" : "editor_max")}
-                  className="text-xs text-slate-400 hover:text-white h-7 px-2 gap-1"
-                  title={viewLayout === "editor_max" ? "Restore Split View" : "Maximize Editor"}
-                >
-                  {viewLayout === "editor_max" ? <Minimize2 className="size-3" /> : <Maximize2 className="size-3" />}
-                  <span className="hidden md:inline">{viewLayout === "editor_max" ? "Restore" : "Maximize"}</span>
-                </Button>
+              <div className="flex items-center justify-between bg-slate-900/90 border-b border-slate-800 px-3 py-1">
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span className="font-bold text-sky-400">
+                    Editing: {activeFile === "app" ? "App.jsx" : activeFile === "html" ? "index.html" : "style.css"}
+                  </span>
+                  <span className="text-slate-600">|</span>
+                  <span>{currentEditorLanguage.toUpperCase()}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleFormat}
+                    className="text-xs text-slate-400 hover:text-white h-7 px-2"
+                  >
+                    Format Code
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setViewLayout(viewLayout === "editor_max" ? "split" : "editor_max")}
+                    className="text-xs text-slate-400 hover:text-white h-7 px-2 gap-1"
+                    title={viewLayout === "editor_max" ? "Restore Split View" : "Maximize Editor"}
+                  >
+                    {viewLayout === "editor_max" ? <Minimize2 className="size-3" /> : <Maximize2 className="size-3" />}
+                  </Button>
+                </div>
               </div>
 
               <div className="flex-1 min-h-0">
                 <MonacoEditor
-                  value={code}
-                  onChange={(val) => setCode(val || "")}
-                  language={language}
+                  value={currentEditorCode}
+                  onChange={(val) => handleEditorChange(val || "")}
+                  language={currentEditorLanguage}
                 />
               </div>
             </div>
           )}
 
-          {/* Multi-Tab Execution & Memory Results Console */}
+          {/* Multi-Tab Execution, Live Browser Preview & Memory Results Console */}
           {viewLayout !== "editor_max" && (
             <div
               className={`flex flex-col bg-slate-950 transition-all ${
-                viewLayout === "output_max" ? "flex-1 min-h-0" : "h-[280px] shrink-0"
+                viewLayout === "output_max" ? "flex-1 min-h-0" : "h-[300px] shrink-0"
               }`}
             >
               {/* Output Console Toolbar Header */}
               <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900/95 text-xs shrink-0">
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 flex-wrap">
                   <button
                     onClick={() => setConsoleTab("terminal")}
                     className={`flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all cursor-pointer font-medium ${
@@ -362,6 +466,22 @@ export function LessonPlaygroundStudio({
                     Terminal Output
                     {output && <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />}
                   </button>
+
+                  <button
+                    onClick={() => setConsoleTab("preview")}
+                    className={`flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all cursor-pointer font-medium ${
+                      consoleTab === "preview"
+                        ? "bg-sky-600 text-white font-bold shadow-xs"
+                        : "text-slate-400 hover:text-white"
+                    }`}
+                  >
+                    <Globe className="size-3.5 text-sky-300" />
+                    Live Browser UI Preview
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-sky-400/30 text-sky-200 uppercase font-mono">
+                      Live
+                    </span>
+                  </button>
+
                   <button
                     onClick={() => setConsoleTab("memory")}
                     className={`flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all cursor-pointer font-medium ${
@@ -372,12 +492,8 @@ export function LessonPlaygroundStudio({
                   >
                     <Layers className="size-3.5 text-purple-400" />
                     Call Stack &amp; Memory
-                    {stackFrames.length > 0 && (
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-purple-500/30 text-purple-300 font-mono">
-                        {stackFrames.length} frames
-                      </span>
-                    )}
                   </button>
+
                   <button
                     onClick={() => setConsoleTab("timeline")}
                     className={`flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all cursor-pointer font-medium ${
@@ -388,11 +504,6 @@ export function LessonPlaygroundStudio({
                   >
                     <Activity className="size-3.5 text-amber-400" />
                     Execution Timeline
-                    {events.length > 0 && (
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/30 text-amber-300 font-mono">
-                        {events.length} steps
-                      </span>
-                    )}
                   </button>
                 </div>
 
@@ -423,9 +534,9 @@ export function LessonPlaygroundStudio({
               </div>
 
               {/* Console Output Body */}
-              <div className="flex-1 min-h-0 overflow-y-auto p-4 font-mono text-xs">
+              <div className="flex-1 min-h-0 overflow-y-auto">
                 {consoleTab === "terminal" && (
-                  <div>
+                  <div className="p-4 font-mono text-xs">
                     {error && (
                       <div className="mb-3 p-3 rounded-lg bg-rose-950/60 border border-rose-800/80 text-rose-300 whitespace-pre-wrap font-mono">
                         <span className="font-bold block mb-1">Execution Error:</span>
@@ -438,16 +549,36 @@ export function LessonPlaygroundStudio({
                       </pre>
                     ) : !error ? (
                       <div className="text-slate-500 italic py-4">
-                        Click "Run Code" above to execute and view stdout logs here.
+                        Click "Run &amp; Preview" above to execute and view stdout logs here.
                       </div>
                     ) : null}
                   </div>
                 )}
 
+                {consoleTab === "preview" && (
+                  <div className="h-full w-full bg-slate-900 relative">
+                    <div className="px-3 py-1.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                      <span className="font-mono text-[11px] text-sky-400">
+                        http://localhost:5173/ (Interactive Render)
+                      </span>
+                      <span className="text-[10px] text-slate-500">
+                        React 18 + Babel Sandbox
+                      </span>
+                    </div>
+                    <iframe
+                      ref={previewIframeRef}
+                      title="Live Multi-File Preview"
+                      srcDoc={liveSrcDoc}
+                      sandbox="allow-scripts allow-same-origin allow-modals allow-forms"
+                      className="w-full h-[calc(100%-29px)] border-0 bg-slate-950"
+                    />
+                  </div>
+                )}
+
                 {consoleTab === "memory" && (
-                  <div className="space-y-4">
+                  <div className="p-4 space-y-4 text-xs font-mono">
                     {stackFrames.length === 0 && memoryEvents.length === 0 ? (
-                      <div className="text-slate-500 italic py-6 text-center">
+                      <div className="text-slate-500 italic py-6 text-center font-sans">
                         No active stack frames or variables recorded. Run your code to visualize real-time call stack frames and heap memory.
                       </div>
                     ) : (
@@ -470,9 +601,9 @@ export function LessonPlaygroundStudio({
                 )}
 
                 {consoleTab === "timeline" && (
-                  <div>
+                  <div className="p-4 text-xs font-mono">
                     {events.length === 0 ? (
-                      <div className="text-slate-500 italic py-6 text-center">
+                      <div className="text-slate-500 italic py-6 text-center font-sans">
                         Run code to record step-by-step execution timeline events.
                       </div>
                     ) : (
@@ -493,7 +624,7 @@ export function LessonPlaygroundStudio({
               <div className="space-y-1">
                 <h2 className="text-sm font-bold text-amber-300 flex items-center gap-2">
                   <Laptop className="size-4 text-amber-400" />
-                  Want to run these examples locally in VS Code (5s Code)?
+                  Want to run these Multi-File (JSX + HTML + CSS) examples in VS Code?
                 </h2>
                 <p className="text-xs text-slate-300">
                   Follow our complete guide to create files, configure <code>package.json</code>, and run in your terminal.
@@ -504,7 +635,7 @@ export function LessonPlaygroundStudio({
                 onClick={() => setActiveSubTab("instructions")}
                 className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs h-8 gap-1.5"
               >
-                Open VS Code Instructions &rarr;
+                Open VS Code Multi-File Guide &rarr;
               </Button>
             </div>
 
@@ -575,40 +706,29 @@ export function LessonPlaygroundStudio({
           </div>
         </div>
       ) : (
-        /* Dedicated VS Code Step-by-Step Execution Guide */
+        /* Dedicated VS Code Step-by-Step Execution Guide (Multi-File Focused) */
         <div className="flex-1 min-h-0 overflow-y-auto">
           <div className="max-w-4xl mx-auto p-6 space-y-6 pb-24 text-slate-200">
             {/* Guide Header */}
             <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950 border border-slate-800 shadow-xl space-y-2">
               <div className="flex items-center gap-2">
                 <Badge className="bg-amber-500 text-slate-950 font-bold text-xs px-2 py-0.5">
-                  VS Code (5s Code) Local Setup
+                  Multi-File VS Code Guide (JSX + HTML + CSS)
                 </Badge>
                 <Badge variant="outline" className="border-sky-500/40 text-sky-300 text-xs">
                   {lessonTitle}
                 </Badge>
               </div>
               <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                How to Run Course Example Code on your Local Computer in VS Code
+                How to Run Multi-File React &amp; Node.js Code in VS Code
               </h1>
               <p className="text-xs sm:text-sm text-slate-300">
-                Follow these exact steps to create files, configure dependencies, and execute any Frontend or Backend code snippet on your laptop/PC.
+                Har topic ke andar 3 alag files (JSX, HTML aur CSS) hoti hain. Niche diye gaye structure se samjhein ki files kaise connect hoti hain aur unhe local machine par kaise execute karein.
               </p>
             </div>
 
             {/* Category Navigation Pills */}
             <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto">
-              <button
-                onClick={() => setSelectedGuide("frontend_vanilla")}
-                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
-                  selectedGuide === "frontend_vanilla"
-                    ? "bg-sky-600 text-white shadow-md font-bold"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                <FileCode className="size-3.5 text-sky-300" />
-                Frontend (HTML / CSS / JS)
-              </button>
               <button
                 onClick={() => setSelectedGuide("frontend_react")}
                 className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
@@ -618,18 +738,18 @@ export function LessonPlaygroundStudio({
                 }`}
               >
                 <Sparkles className="size-3.5 text-cyan-300" />
-                Frontend (React + Vite)
+                ⚛️ React 18 (App.jsx + HTML + CSS)
               </button>
               <button
-                onClick={() => setSelectedGuide("backend_node")}
+                onClick={() => setSelectedGuide("frontend_vanilla")}
                 className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
-                  selectedGuide === "backend_node"
+                  selectedGuide === "frontend_vanilla"
                     ? "bg-sky-600 text-white shadow-md font-bold"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
-                <Cpu className="size-3.5 text-emerald-300" />
-                Backend (Node.js Script)
+                <FileCode className="size-3.5 text-sky-300" />
+                ⚡ Vanilla JS (script.js + HTML + CSS)
               </button>
               <button
                 onClick={() => setSelectedGuide("backend_express")}
@@ -640,155 +760,95 @@ export function LessonPlaygroundStudio({
                 }`}
               >
                 <FolderTree className="size-3.5 text-amber-300" />
-                Backend (Express REST API)
+                🟢 Node.js &amp; Express API
               </button>
               <button
-                onClick={() => setSelectedGuide("backend_prisma")}
+                onClick={() => setSelectedGuide("fullstack_integration")}
                 className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
-                  selectedGuide === "backend_prisma"
+                  selectedGuide === "fullstack_integration"
                     ? "bg-sky-600 text-white shadow-md font-bold"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
                 <Layers className="size-3.5 text-purple-300" />
-                Database (Prisma ORM)
+                🚀 Full-Stack (React UI + Express API)
               </button>
             </div>
 
-            {/* Guide Body Content Based on Selection */}
-            {selectedGuide === "frontend_vanilla" && (
-              <div className="space-y-6">
-                <Card className="bg-slate-900 border-slate-800 text-white">
-                  <CardHeader>
-                    <CardTitle className="text-base text-sky-400 flex items-center gap-2">
-                      <FileCode className="size-4" />
-                      1. Folder Structure Setup
-                    </CardTitle>
-                    <CardDescription className="text-slate-400 text-xs">
-                      Create a project folder on your computer (e.g. <code>frontend-demo</code>) and create these 3 files inside it:
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <pre className="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-slate-300">
-                      {`frontend-demo/
-├── index.html     <-- Main UI page
-├── style.css      <-- Styling rules
-└── script.js      <-- Paste your JavaScript course example code here`}
-                    </pre>
-
-                    {/* index.html Code Block */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                        <span className="font-bold text-sky-300">📄 File 1: index.html</span>
-                        <button
-                          onClick={() =>
-                            handleCopyCode(
-                              "html_snippet",
-                              `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n  <title>Frontend Practice</title>\n  <link rel="stylesheet" href="style.css" />\n</head>\n<body>\n  <div id="app">\n    <h1>SkillForge Course Practice</h1>\n    <button id="demo-btn">Click Me</button>\n    <div id="output"></div>\n  </div>\n  <script src="script.js"></script>\n</body>\n</html>`
-                            )
-                          }
-                          className="text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
-                        >
-                          {copiedId === "html_snippet" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
-                          {copiedId === "html_snippet" ? "Copied" : "Copy index.html"}
-                        </button>
-                      </div>
-                      <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-slate-300 overflow-x-auto">
-                        {`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frontend Practice</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div id="app">
-    <h1>SkillForge Course Practice</h1>
-    <button id="demo-btn">Click Me</button>
-    <div id="output"></div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>`}
-                      </pre>
-                    </div>
-
-                    {/* script.js Code Block */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                        <span className="font-bold text-emerald-300">📄 File 2: script.js (Course Example Code)</span>
-                        <button
-                          onClick={() => handleCopyCode("js_snippet", selectedExampleCode || code)}
-                          className="text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
-                        >
-                          {copiedId === "js_snippet" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
-                          {copiedId === "js_snippet" ? "Copied Current Code" : "Copy Current Code"}
-                        </button>
-                      </div>
-                      <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300 overflow-x-auto max-h-48">
-                        <code>{selectedExampleCode || code}</code>
-                      </pre>
-                    </div>
-
-                    {/* Execution Instructions */}
-                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider">
-                        🚀 How to Run in VS Code:
-                      </h4>
-                      <ol className="list-decimal list-inside text-xs space-y-1 text-slate-300">
-                        <li>Install <strong>Live Server</strong> extension in VS Code.</li>
-                        <li>Right-click on <code>index.html</code> &rarr; select <strong>"Open with Live Server"</strong>.</li>
-                        <li>Press <kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700">F12</kbd> in your browser &rarr; open <strong>Console</strong> tab to view logs.</li>
-                      </ol>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            )}
-
+            {/* Guide Body Content */}
             {selectedGuide === "frontend_react" && (
               <div className="space-y-6">
                 <Card className="bg-slate-900 border-slate-800 text-white">
                   <CardHeader>
                     <CardTitle className="text-base text-cyan-400 flex items-center gap-2">
                       <Sparkles className="size-4" />
-                      React + Vite Modern Project Setup
+                      1. Multi-File React Project Folder Structure
                     </CardTitle>
                     <CardDescription className="text-slate-400 text-xs">
-                      Run React hooks, components, and interactive state examples locally.
+                      React me har topic ke liye 3 files kaise aapas me connect hoti hain:
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
+                    <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-cyan-300">
+                      {`my-react-app/
+├── index.html       <-- Root container (<div id="root"></div>)
+├── src/
+│   ├── main.jsx     <-- Entry point: ReactDOM.createRoot(root).render(<App />)
+│   ├── App.jsx      <-- Main component & JSX logic (Course example code)
+│   ├── App.css      <-- Component specific styling (Course CSS code)
+│   └── index.css    <-- Global base styles
+├── package.json     <-- Dependencies (React, ReactDOM, Vite)
+└── vite.config.js   <-- Fast Bundler configuration`}
+                    </pre>
+
+                    {/* Step-by-Step Code Snippets */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span className="font-bold text-sky-300">📄 File 1: src/App.jsx (Paste Course JSX Code)</span>
+                        <button
+                          onClick={() => handleCopyCode("app_jsx_snippet", selectedExampleCode || appCode)}
+                          className="text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
+                        >
+                          {copiedId === "app_jsx_snippet" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
+                          {copiedId === "app_jsx_snippet" ? "Copied JSX" : "Copy App.jsx"}
+                        </button>
+                      </div>
+                      <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300 overflow-x-auto max-h-56">
+                        <code>{selectedExampleCode || appCode}</code>
+                      </pre>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span className="font-bold text-indigo-300">📄 File 2: src/App.css (Paste Course CSS Code)</span>
+                        <button
+                          onClick={() => handleCopyCode("app_css_snippet", cssCode)}
+                          className="text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
+                        >
+                          {copiedId === "app_css_snippet" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
+                          {copiedId === "app_css_snippet" ? "Copied CSS" : "Copy App.css"}
+                        </button>
+                      </div>
+                      <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-indigo-300 overflow-x-auto max-h-40">
+                        <code>{cssCode}</code>
+                      </pre>
+                    </div>
+
                     <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-sky-300 font-mono">Step 1: Open VS Code Terminal &amp; Initialize Vite</span>
+                      <span className="text-xs font-bold text-amber-400 font-mono">🚀 Terminal Commands to Run in VS Code:</span>
                       <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-amber-300">
-                        {`# 1. Create a new React Vite project
-npm create vite@latest my-react-app -- --template react-ts
+                        {`# 1. Terminal open karein (Ctrl + ~) aur Vite project banayein:
+npm create vite@latest my-react-app -- --template react
 
-# 2. Navigate into project folder
+# 2. Folder me enter karein aur packages install karein:
 cd my-react-app
+npm install
 
-# 3. Install dependencies
-npm install`}
-                      </pre>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-emerald-300 font-mono">Step 2: Paste Example in <code>src/App.tsx</code></span>
-                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300 max-h-48 overflow-x-auto">
-                        <code>{selectedExampleCode || code}</code>
-                      </pre>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-amber-400 font-mono">Step 3: Run Dev Server</span>
-                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-white">
-                        npm run dev
+# 3. Dev server start karein:
+npm run dev`}
                       </pre>
                       <p className="text-xs text-slate-400">
-                        Open <code className="text-sky-400">http://localhost:5173</code> in your browser to view your live React app.
+                        Browser me <code className="text-sky-400">http://localhost:5173</code> open karein. JSX me jo bhi change karenge woh bina page reload hue instant update hoga (Hot Module Replacement)!
                       </p>
                     </div>
                   </CardContent>
@@ -796,43 +856,35 @@ npm install`}
               </div>
             )}
 
-            {selectedGuide === "backend_node" && (
+            {selectedGuide === "frontend_vanilla" && (
               <div className="space-y-6">
                 <Card className="bg-slate-900 border-slate-800 text-white">
                   <CardHeader>
-                    <CardTitle className="text-base text-emerald-400 flex items-center gap-2">
-                      <Cpu className="size-4" />
-                      Node.js Script Execution (Closures, Loops, Async/Await)
+                    <CardTitle className="text-base text-sky-400 flex items-center gap-2">
+                      <FileCode className="size-4" />
+                      Vanilla JavaScript (index.html + style.css + script.js)
                     </CardTitle>
                     <CardDescription className="text-slate-400 text-xs">
-                      Run standalone algorithms and backend logic scripts directly in VS Code terminal.
+                      Ek folder banayein aur usme ye 3 files save karein:
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                        <span className="font-bold text-emerald-300">📄 Create file: app.js</span>
-                        <button
-                          onClick={() => handleCopyCode("node_script", selectedExampleCode || code)}
-                          className="text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
-                        >
-                          {copiedId === "node_script" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
-                          {copiedId === "node_script" ? "Copied" : "Copy Code"}
-                        </button>
-                      </div>
-                      <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300 overflow-x-auto max-h-56">
-                        <code>{selectedExampleCode || code}</code>
-                      </pre>
-                    </div>
+                    <pre className="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-slate-300">
+                      {`my-project/
+├── index.html     <-- <link rel="stylesheet" href="style.css"> & <script src="script.js"></script>
+├── style.css      <-- Styling rules
+└── script.js      <-- JavaScript logic`}
+                    </pre>
 
                     <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-amber-400 font-mono">Terminal Execution Command:</span>
-                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-amber-300">
-                        node app.js
-                      </pre>
-                      <p className="text-xs text-slate-400">
-                        Your output and <code>console.log()</code> statements will print directly in your VS Code terminal window.
-                      </p>
+                      <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                        🚀 Run Karne Ka Tarika:
+                      </h4>
+                      <ol className="list-decimal list-inside text-xs space-y-1 text-slate-300">
+                        <li>VS Code me <strong>Live Server</strong> extension install karein.</li>
+                        <li><code>index.html</code> par Right Click karein &rarr; <strong>"Open with Live Server"</strong> select karein.</li>
+                        <li>Browser me <kbd className="px-1 py-0.5 bg-slate-800 rounded">F12</kbd> dabakar <strong>Console</strong> tab me execution logs dekhein.</li>
+                      </ol>
                     </div>
                   </CardContent>
                 </Card>
@@ -845,15 +897,15 @@ npm install`}
                   <CardHeader>
                     <CardTitle className="text-base text-amber-400 flex items-center gap-2">
                       <FolderTree className="size-4" />
-                      Express.js REST API Server Configuration
+                      Node.js &amp; Express REST API Server
                     </CardTitle>
                     <CardDescription className="text-slate-400 text-xs">
-                      Build full HTTP servers, routes, JSON APIs, and auth endpoints.
+                      Backend API routes, controllers, and JSON request/response pipelines.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-sky-300 font-mono">Step 1: Install Express &amp; Dependencies</span>
+                      <span className="text-xs font-bold text-sky-300 font-mono">Step 1: Express Server Initialize Karein</span>
                       <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-sky-300">
                         {`npm init -y
 npm install express dotenv cors
@@ -861,21 +913,20 @@ npm install -D nodemon`}
                       </pre>
                     </div>
 
-                    {/* server.js template */}
                     <div className="space-y-1.5">
                       <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                        <span className="font-bold text-amber-300">📄 File 1: server.js</span>
+                        <span className="font-bold text-amber-300">📄 File: server.js</span>
                         <button
                           onClick={() =>
                             handleCopyCode(
-                              "express_server",
-                              `const express = require("express");\nconst cors = require("cors");\nrequire("dotenv").config();\n\nconst app = express();\nconst PORT = process.env.PORT || 5000;\n\napp.use(cors());\napp.use(express.json());\n\n// Health Check\napp.get("/api/health", (req, res) => {\n  res.json({ status: "ok", time: new Date() });\n});\n\n// Course Example Endpoint\napp.post("/api/data", (req, res) => {\n  res.json({ success: true, received: req.body });\n});\n\napp.listen(PORT, () => {\n  console.log(\`🚀 Server running on http://localhost:\${PORT}\`);\n});`
+                              "server_js_code",
+                              `const express = require("express");\nconst cors = require("cors");\nrequire("dotenv").config();\n\nconst app = express();\nconst PORT = process.env.PORT || 5000;\n\napp.use(cors());\napp.use(express.json());\n\nlet notes = [\n  { id: 1, title: "Learn React & Node", done: false },\n  { id: 2, title: "Build Fullstack Project", done: true }\n];\n\napp.get("/api/notes", (req, res) => {\n  res.json(notes);\n});\n\napp.post("/api/notes", (req, res) => {\n  const newNote = { id: Date.now(), ...req.body };\n  notes.push(newNote);\n  res.status(201).json(newNote);\n});\n\napp.listen(PORT, () => {\n  console.log(\`🚀 Server active on http://localhost:\${PORT}\`);\n});`
                             )
                           }
                           className="text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
                         >
-                          {copiedId === "express_server" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
-                          {copiedId === "express_server" ? "Copied" : "Copy server.js"}
+                          {copiedId === "server_js_code" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
+                          {copiedId === "server_js_code" ? "Copied" : "Copy server.js"}
                         </button>
                       </div>
                       <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-slate-300 overflow-x-auto max-h-56">
@@ -889,34 +940,34 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Health Check
-app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", time: new Date() });
+let notes = [
+  { id: 1, title: "Learn React & Node", done: false },
+  { id: 2, title: "Build Fullstack Project", done: true }
+];
+
+app.get("/api/notes", (req, res) => {
+  res.json(notes);
 });
 
-// Example Endpoint
-app.post("/api/data", (req, res) => {
-  res.json({ success: true, received: req.body });
+app.post("/api/notes", (req, res) => {
+  const newNote = { id: Date.now(), ...req.body };
+  notes.push(newNote);
+  res.status(201).json(newNote);
 });
 
 app.listen(PORT, () => {
-  console.log(\`🚀 Server running on http://localhost:\${PORT}\`);
+  console.log(\`🚀 Server active on http://localhost:\${PORT}\`);
 });`}
                       </pre>
                     </div>
 
                     <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-emerald-400 font-mono">Step 2: Add Script to <code>package.json</code> &amp; Run</span>
-                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300">
-                        {`"scripts": {
-  "dev": "nodemon server.js"
-}`}
-                      </pre>
+                      <span className="text-xs font-bold text-emerald-400 font-mono">Step 2: Server Run Karein</span>
                       <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-white">
-                        npm run dev
+                        node server.js
                       </pre>
                       <p className="text-xs text-slate-400">
-                        Test in your browser or VS Code <strong>Thunder Client</strong> at <code className="text-sky-400">http://localhost:5000/api/health</code>.
+                        VS Code <strong>Thunder Client</strong> me <code>GET http://localhost:5000/api/notes</code> send karke response test karein!
                       </p>
                     </div>
                   </CardContent>
@@ -924,41 +975,67 @@ app.listen(PORT, () => {
               </div>
             )}
 
-            {selectedGuide === "backend_prisma" && (
+            {selectedGuide === "fullstack_integration" && (
               <div className="space-y-6">
                 <Card className="bg-slate-900 border-slate-800 text-white">
                   <CardHeader>
                     <CardTitle className="text-base text-purple-400 flex items-center gap-2">
                       <Layers className="size-4" />
-                      Prisma ORM &amp; Database Integration
+                      Full-Stack Architecture (React Frontend + Express Backend)
                     </CardTitle>
                     <CardDescription className="text-slate-400 text-xs">
-                      Connect to SQLite or PostgreSQL, write schemas, and run type-safe database queries.
+                      React Frontend se Express Backend API ko fetch() ke zariye connect karna:
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
+                    <pre className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-xs font-mono text-purple-300">
+                      {`my-fullstack-app/
+├── backend/          <-- Express Server (Port 5000)
+│   ├── server.js
+│   └── package.json
+└── frontend/         <-- Vite React Client (Port 5173)
+    ├── src/
+    │   ├── App.jsx   <-- fetch("http://localhost:5000/api/notes")
+    │   └── App.css
+    └── package.json`}
+                    </pre>
+
                     <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-purple-300 font-mono">Step 1: Install Prisma &amp; Initialize</span>
-                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-purple-300">
-                        {`npm install @prisma/client
-npm install -D prisma tsx typescript @types/node
-npx prisma init`}
+                      <span className="text-xs font-bold text-sky-300 font-mono">React Frontend Component (Connecting to Backend):</span>
+                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300 overflow-x-auto max-h-48">
+                        {`import { useState, useEffect } from "react";
+import "./App.css";
+
+export default function App() {
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    // Backend Express API se data fetch karna
+    fetch("http://localhost:5000/api/notes")
+      .then((res) => res.json())
+      .then((data) => setNotes(data))
+      .catch((err) => console.error("API Error:", err));
+  }, []);
+
+  return (
+    <div className="app-box">
+      <h1>🚀 Fullstack React + Node Notes</h1>
+      <ul>
+        {notes.map((n) => (
+          <li key={n.id}>{n.title} - {n.done ? "✅" : "⏳"}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}`}
                       </pre>
                     </div>
 
                     <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-sky-300 font-mono">Step 2: Synchronize Database &amp; Generate Client</span>
-                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-sky-300">
-                        {`npx prisma db push
-npx prisma generate`}
-                      </pre>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                      <span className="text-xs font-bold text-emerald-300 font-mono">Step 3: Run Database Queries Script</span>
-                      <pre className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs font-mono text-emerald-300">
-                        npx tsx src/db-test.ts
-                      </pre>
+                      <span className="text-xs font-bold text-amber-400 font-mono">Crucial Step: Enable CORS in Backend</span>
+                      <p className="text-xs text-slate-300">
+                        Kyunki React <code>http://localhost:5173</code> par chalta hai aur Express <code>http://localhost:5000</code> par, isliye Express me <code>app.use(cors())</code> lagana mandatory hai taaki browser cross-origin request block na kare.
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -968,7 +1045,7 @@ npx prisma generate`}
             {/* Back to Playground Action Bar */}
             <div className="flex items-center justify-between p-4 bg-slate-900 rounded-xl border border-slate-800">
               <span className="text-xs text-slate-300">
-                Ready to code? Jump right back into the live in-browser playground.
+                Ready to code? Jump right back into the multi-file live playground.
               </span>
               <Button
                 size="sm"
@@ -976,7 +1053,7 @@ npx prisma generate`}
                 className="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold gap-1.5"
               >
                 <Code2 className="size-3.5" />
-                Back to Live Playground &rarr;
+                Back to Multi-File Playground &rarr;
               </Button>
             </div>
           </div>
