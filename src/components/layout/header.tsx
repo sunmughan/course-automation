@@ -81,14 +81,24 @@ export function Header({ onMenuToggle, children }: HeaderProps) {
 
   return (
     <header className="flex h-14 items-center gap-3 border-b border-border bg-background px-4">
-      <Button
-        variant="ghost"
-        size="icon-sm"
-        className="lg:hidden"
-        onClick={onMenuToggle}
-      >
-        <MenuIcon className="size-4" />
-      </Button>
+      <div className="flex items-center gap-2.5 lg:hidden">
+        <Button
+          variant="ghost"
+          size="icon-sm"
+          onClick={onMenuToggle}
+          className="text-slate-300 hover:text-white cursor-pointer"
+        >
+          <MenuIcon className="size-5" />
+        </Button>
+        <Link href="/dashboard" className="flex items-center gap-1.5 font-bold">
+          <span className="flex size-6 items-center justify-center rounded-lg bg-sky-600 text-white font-bold text-xs shadow-sm">
+            ⚡
+          </span>
+          <span className="text-sm font-extrabold text-white font-mono tracking-tight">
+            CodeCraft<span className="text-sky-400">.ai</span>
+          </span>
+        </Link>
+      </div>
 
       <nav className="hidden items-center gap-1 text-sm text-muted-foreground sm:flex">
         <Link

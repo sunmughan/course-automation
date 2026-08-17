@@ -318,11 +318,13 @@ export default function CoursesPage() {
                 </CardHeader>
 
                 <CardContent className="p-4 pt-2 space-y-3">
-                  <Progress value={c.progress || 0} className="h-1.5 bg-slate-800">
-                    <ProgressTrack>
-                      <ProgressIndicator className="bg-emerald-500" />
-                    </ProgressTrack>
-                  </Progress>
+                  {/* Single Sleek Progress Bar */}
+                  <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div
+                      className="bg-emerald-500 h-full rounded-full transition-all duration-500"
+                      style={{ width: `${Math.max(4, Math.min(100, c.progress || 0))}%` }}
+                    />
+                  </div>
 
                   <div className="flex items-center justify-between pt-1">
                     <span className="text-[11px] text-slate-400 font-mono">

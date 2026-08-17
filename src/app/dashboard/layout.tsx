@@ -58,8 +58,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       </div>
 
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetContent side="left" className="w-60 p-0">
-          <Sidebar />
+        <SheetContent side="left" className="w-64 p-0 border-r border-slate-800 bg-slate-950 [&>button]:hidden">
+          <Sidebar isMobile onClose={() => setMobileOpen(false)} />
         </SheetContent>
       </Sheet>
 

@@ -41,6 +41,7 @@ export default function ProfilePage() {
   const [collegeOrOrg, setCollegeOrOrg] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [saved, setSaved] = useState(false);
+  const [switchRequested, setSwitchRequested] = useState(false);
   const [enrolledCourses, setEnrolledCourses] = useState<any[]>([]);
 
   useEffect(() => {
@@ -201,29 +202,46 @@ export default function ProfilePage() {
               {CAREER_TRACKS.map((t) => {
                 const isSelected = targetRole === t.title;
                 return (
-                  <button
+                  <div
                     key={t.id}
-                    onClick={() => setTargetRole(t.title)}
-                    className={`w-full p-3.5 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
+                    className={`w-full p-3.5 rounded-2xl border text-left transition-all space-y-1.5 ${
                       isSelected
                         ? "bg-sky-950/80 border-sky-400 text-white ring-1 ring-sky-400/40 shadow-md"
-                        : "bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200"
+                        : "bg-slate-950/60 border-slate-800 text-slate-400"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-white font-mono">{t.title}</span>
-                      {isSelected && (
+                      {isSelected ? (
                         <Badge className="bg-sky-500 text-slate-950 text-[9px] px-1.5 py-0 font-bold">
-                          Active Path
+                          Active Enrolled Path
                         </Badge>
+                      ) : (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => {
+                            setSwitchRequested(true);
+                            setTimeout(() => setSwitchRequested(false), 4000);
+                          }}
+                          className="h-6 px-2.5 text-[10px] border-slate-700 hover:bg-slate-800 text-slate-300 font-mono cursor-pointer"
+                        >
+                          Request Switch to Admin 🔒
+                        </Button>
                       )}
                     </div>
                     <span className="text-[10px] text-sky-300 font-mono block bg-slate-900/90 p-1 rounded">
                       {t.sequence}
                     </span>
-                  </button>
+                  </div>
                 );
               })}
+              {switchRequested && (
+                <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-sans leading-relaxed animate-in fade-in flex items-center gap-2">
+                  <Sparkles className="size-4 shrink-0 text-amber-400" />
+                  <span>Your Track Switch Request has been sent to the Admin &amp; Instructor for verification!</span>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

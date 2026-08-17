@@ -30,6 +30,7 @@ import {
   SlidersHorizontalIcon,
   BarChart3Icon,
   AwardIcon,
+  X,
   UserIcon,
 } from "lucide-react";
 import { useState } from "react";
@@ -60,7 +61,7 @@ const adminNavItems = [
   { href: "/dashboard/admin/audit", label: "Audit Logs", icon: ScrollTextIcon },
 ];
 
-export function Sidebar() {
+export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?: boolean }) {
   const pathname = usePathname();
   const { user, logout } = useAuthContext();
   const [collapsed, setCollapsed] = useState(false);
@@ -97,18 +98,30 @@ export function Sidebar() {
             <SparklesIcon className="size-5 text-blue-500" />
           </Link>
         )}
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={() => setCollapsed(!collapsed)}
-          className={cn("shrink-0", collapsed && "mx-auto")}
-        >
-          {collapsed ? (
-            <ChevronRightIcon className="size-4" />
-          ) : (
-            <ChevronLeftIcon className="size-4" />
-          )}
-        </Button>
+        {isMobile ? (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={onClose}
+            className="shrink-0 text-slate-400 hover:text-white"
+            title="Close Menu"
+          >
+            <X className="size-4" />
+          </Button>
+        ) : (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={() => setCollapsed(!collapsed)}
+            className={cn("shrink-0", collapsed && "mx-auto")}
+          >
+            {collapsed ? (
+              <ChevronRightIcon className="size-4" />
+            ) : (
+              <ChevronLeftIcon className="size-4" />
+            )}
+          </Button>
+        )}
       </div>
 
       <ScrollArea className="flex-1">
@@ -125,7 +138,7 @@ export function Sidebar() {
                   "justify-start",
                   collapsed && "justify-center px-0"
                 )}
-                render={<Link href={item.href} />}
+                render={<Link href={item.href} onClick={() => { if (isMobile && onClose) onClose(); }} />}
               >
                 <item.icon className="size-4 shrink-0" />
                 {!collapsed && <span className="ml-2">{item.label}</span>}
@@ -172,6 +185,16 @@ export function Sidebar() {
           <LogOutIcon className="size-4 shrink-0" />
           {!collapsed && <span className="ml-2">Logout</span>}
         </Button>
+        {isMobile && onClose && (
+          <Button
+            variant="outline"
+            className="w-full mt-2 justify-center border-slate-800 text-slate-400 hover:text-white text-xs h-8"
+            onClick={onClose}
+          >
+            <X className="size-3.5 mr-1.5" />
+            Close Menu
+          </Button>
+        )}
       </div>
     </aside>
   );

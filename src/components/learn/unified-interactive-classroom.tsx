@@ -167,6 +167,7 @@ export function UnifiedInteractiveClassroom({
 
   // Mobile View Switcher: "notes" | "code" | "output"
   const [mobileActiveView, setMobileActiveView] = useState<"notes" | "code" | "output">("notes");
+  const [isMobileToolsOpen, setIsMobileToolsOpen] = useState<boolean>(false);
 
   // Multi-File Code Editor State
   const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
