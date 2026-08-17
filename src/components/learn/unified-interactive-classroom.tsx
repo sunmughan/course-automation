@@ -41,6 +41,10 @@ import {
   Loader2,
   Volume2,
   VolumeX,
+  Mic,
+  MicOff,
+  Radio,
+  Sliders,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -52,7 +56,7 @@ import { CallStack } from "@/components/visualization/call-stack";
 import { MemoryView } from "@/components/visualization/memory-view";
 
 export type ExplanationLanguage = "en" | "hi";
-export type FloatingPanelType = "flow" | "vscode_guide" | "ai_tutor" | "memory" | null;
+export type FloatingPanelType = "flow" | "vscode_guide" | "ai_tutor" | "memory";
 export type ActiveEditorFile = "app" | "html" | "css" | "server";
 
 interface ConceptItem {
@@ -104,8 +108,8 @@ export function UnifiedInteractiveClassroom({
 }: UnifiedInteractiveClassroomProps) {
   // English is default language; persisted across all courses
   const [language, setLanguage] = useState<ExplanationLanguage>("en");
-  // Floating Right Column Tool (Default: "flow" to show live visual execution pipeline)
-  const [activeRightPanel, setActiveRightPanel] = useState<FloatingPanelType>("flow");
+  // Floating Right Column Tool (Default: "flow", always stable)
+  const [activeRightPanel, setActiveRightPanel] = useState<FloatingPanelType | null>("flow");
   const [activeFlowStep, setActiveFlowStep] = useState<number>(0);
   const [isFlowAutoPlaying, setIsFlowAutoPlaying] = useState<boolean>(false);
 
@@ -126,14 +130,19 @@ export function UnifiedInteractiveClassroom({
   const [outputTab, setOutputTab] = useState<"terminal" | "preview">("terminal");
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
+  // Microphone Speech Input State
+  const [isListeningMic, setIsListeningMic] = useState<boolean>(false);
+  const [spokenTranscript, setSpokenTranscript] = useState<string>("");
+  const recognitionRef = useRef<any>(null);
+
   // AI Tutor Chat State inside Right Drawer
   const [aiChatMessages, setAiChatMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([
     {
       role: "assistant",
       content:
         language === "hi"
-          ? `नमस्ते! मैं आपका AI ट्यूटर हूँ। ${topicTitle} को लेकर कोई भी डाउट हो तो बेझिझक पूछें!`
-          : `Hello! I am your AI Tutor. Ask me any doubt about ${topicTitle} in simple words!`,
+          ? `नमस्ते! मैं आपका AI ट्यूटर हूँ। ${topicTitle} को लेकर कोई भी सवाल या डाउट हो तो माइक से बोलें या लिखकर पूछें!`
+          : `Hello! I am your AI Tutor. Ask me any doubt about ${topicTitle} or speak via Mic!`,
     },
   ]);
   const [aiInputMessage, setAiInputMessage] = useState("");
@@ -277,6 +286,108 @@ export function UnifiedInteractiveClassroom({
     });
   };
 
+  // Voice Microphone Input Handler
+  const toggleListeningMic = useCallback(() => {
+    if (typeof window === "undefined") return;
+
+    const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRec) {
+      alert("Microphone recognition is not supported in this browser. Please use Chrome, Edge, or Brave.");
+      return;
+    }
+
+    if (isListeningMic) {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+      setIsListeningMic(false);
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRec();
+      recognition.lang = language === "hi" ? "hi-IN" : "en-US";
+      recognition.continuous = false;
+      recognition.interimResults = true;
+
+      recognition.onstart = () => {
+        setIsListeningMic(true);
+        setSpokenTranscript("");
+        setActiveRightPanel("ai_tutor"); // Open AI panel immediately
+      };
+
+      recognition.onresult = (event: any) => {
+        let transcript = "";
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          transcript += event.results[i][0].transcript;
+        }
+        setSpokenTranscript(transcript);
+      };
+
+      recognition.onerror = () => {
+        setIsListeningMic(false);
+      };
+
+      recognition.onend = async () => {
+        setIsListeningMic(false);
+        if (spokenTranscript.trim()) {
+          await processVoiceQuestion(spokenTranscript);
+        }
+      };
+
+      recognitionRef.current = recognition;
+      recognition.start();
+    } catch {
+      setIsListeningMic(false);
+    }
+  }, [isListeningMic, language, spokenTranscript]);
+
+  const processVoiceQuestion = async (queryText: string) => {
+    setActiveRightPanel("ai_tutor");
+    setAiChatMessages((prev) => [...prev, { role: "user", content: queryText }]);
+    setIsAiLoading(true);
+
+    try {
+      const res = await fetch("/api/ai/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...getAuthHeaders(),
+        },
+        body: JSON.stringify({
+          message: `Student asked via Mic: "${queryText}". Explain in simple words for lesson "${lessonTitle}" - "${topicTitle}". Also suggest any code tweak if asked.`,
+          mode: "explain",
+          lessonTitle,
+          topicTitle,
+          code: appCode,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        const reply = data.message?.content || data.response || "Concept explained clearly.";
+        setAiChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+        speakText({
+          text: reply,
+          lang: language,
+        });
+      }
+    } catch {
+      setAiChatMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content:
+            language === "hi"
+              ? "माफ़ कीजिए, अभी जवाब नहीं मिल पाया। कृपया दोबारा पूछें।"
+              : "Sorry, could not fetch answer right now. Please try again.",
+        },
+      ]);
+    } finally {
+      setIsAiLoading(false);
+    }
+  };
+
   // AI Chat send handler
   const handleSendAiMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -299,6 +410,7 @@ export function UnifiedInteractiveClassroom({
           mode: "explain",
           lessonTitle,
           topicTitle,
+          code: appCode,
         }),
       });
 
@@ -323,14 +435,16 @@ export function UnifiedInteractiveClassroom({
     }
   };
 
-  const currentFlowStep = topicData.flowSteps[activeFlowStep] || topicData.flowSteps[0];
+  const handleTogglePanel = (panel: FloatingPanelType) => {
+    setActiveRightPanel((prev) => (prev === panel ? null : panel));
+  };
 
   return (
     <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-slate-950 text-slate-100 overflow-hidden select-none">
       {/* ─────────────────────────────────────────────────────────────────────────────
           1. TOP COMPACT BAR: ZERO WASTED SPACE (Breadcrumb + Title + Floating Actions)
           ───────────────────────────────────────────────────────────────────────────── */}
-      <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0 gap-3">
+      <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0 gap-2 flex-wrap">
         {/* Left: Compact Breadcrumbs & Title */}
         <div className="flex items-center gap-2 min-w-0">
           <div className="flex items-center gap-1 text-xs text-slate-400 font-mono truncate">
@@ -345,17 +459,17 @@ export function UnifiedInteractiveClassroom({
           </h1>
         </div>
 
-        {/* Center/Right: Floating Tools Toggles (Flow, VS Code, AI, Memory) */}
+        {/* Center/Right: Floating Tools Toggles (Flow, VS Code, AI, Memory, Mic) */}
         <div className="flex items-center gap-1.5 flex-wrap">
           {/* ⚡ Live Visual Flow Toggle */}
           <button
-            onClick={() => setActiveRightPanel(activeRightPanel === "flow" ? null : "flow")}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            onClick={() => handleTogglePanel("flow")}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "flow"
-                ? "bg-indigo-600 text-white shadow-xs font-bold"
+                ? "bg-indigo-600 text-white shadow-md font-bold ring-1 ring-indigo-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
             }`}
-            title="Toggle Live Step-by-Step Execution Flow"
+            title="Open Live Step-by-Step Execution Flow"
           >
             <Workflow className="size-3.5 text-indigo-300" />
             <span>Live Flow</span>
@@ -363,25 +477,24 @@ export function UnifiedInteractiveClassroom({
 
           {/* 💻 How to Run in VS Code Guide */}
           <button
-            onClick={() => setActiveRightPanel(activeRightPanel === "vscode_guide" ? null : "vscode_guide")}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            onClick={() => handleTogglePanel("vscode_guide")}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "vscode_guide"
-                ? "bg-amber-500 text-slate-950 shadow-xs font-bold"
+                ? "bg-amber-500 text-slate-950 shadow-md font-bold ring-1 ring-amber-300"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
             }`}
-            title="How to run multi-file code in VS Code"
+            title="Open VS Code Multi-File Setup Guide"
           >
             <Laptop className="size-3.5 text-amber-400" />
-            <span className="hidden sm:inline">Run in VS Code</span>
-            <span className="sm:hidden">VS Code</span>
+            <span>Run in VS Code</span>
           </button>
 
           {/* 🤖 AI Tutor Assistant */}
           <button
-            onClick={() => setActiveRightPanel(activeRightPanel === "ai_tutor" ? null : "ai_tutor")}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            onClick={() => handleTogglePanel("ai_tutor")}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "ai_tutor"
-                ? "bg-pink-600 text-white shadow-xs font-bold"
+                ? "bg-pink-600 text-white shadow-md font-bold ring-1 ring-pink-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
             }`}
             title="Ask AI Tutor doubts in simple words"
@@ -392,16 +505,30 @@ export function UnifiedInteractiveClassroom({
 
           {/* 🥞 Call Stack / Memory */}
           <button
-            onClick={() => setActiveRightPanel(activeRightPanel === "memory" ? null : "memory")}
-            className={`hidden md:flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+            onClick={() => handleTogglePanel("memory")}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
               activeRightPanel === "memory"
-                ? "bg-purple-600 text-white shadow-xs font-bold"
+                ? "bg-purple-600 text-white shadow-md font-bold ring-1 ring-purple-400"
                 : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
             }`}
             title="Call Stack & Heap Memory Inspector"
           >
             <Layers className="size-3.5 text-purple-300" />
             <span>Memory</span>
+          </button>
+
+          {/* 🎙️ Voice Microphone Assistant */}
+          <button
+            onClick={toggleListeningMic}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono border transition-all cursor-pointer ${
+              isListeningMic
+                ? "bg-rose-500/20 text-rose-300 border-rose-500 animate-pulse font-bold"
+                : "bg-slate-950 border-slate-800 text-slate-400 hover:text-white"
+            }`}
+            title="Speak your doubt via microphone"
+          >
+            {isListeningMic ? <MicOff className="size-3.5" /> : <Mic className="size-3.5 text-rose-400" />}
+            <span className="hidden sm:inline">{isListeningMic ? "Listening..." : "Mic Doubt"}</span>
           </button>
 
           {/* Language Switcher: English (Default) / Hindi */}
@@ -474,6 +601,22 @@ export function UnifiedInteractiveClassroom({
         </div>
       </div>
 
+      {/* Mic Live Feedback Banner */}
+      {isListeningMic && (
+        <div className="px-4 py-2 bg-rose-950/80 border-b border-rose-800 text-rose-200 text-xs flex items-center justify-between animate-pulse">
+          <div className="flex items-center gap-2">
+            <Mic className="size-4 text-rose-400 animate-bounce" />
+            <span className="font-bold">
+              {language === "hi" ? "माइक सुन रहा है... अपना सवाल बोलें:" : "Listening to your voice... Speak your doubt:"}
+            </span>
+            <span className="font-mono text-white italic">"{spokenTranscript || "..."}"</span>
+          </div>
+          <button onClick={toggleListeningMic} className="text-rose-300 hover:text-white font-mono text-[11px]">
+            Stop ✕
+          </button>
+        </div>
+      )}
+
       {/* ─────────────────────────────────────────────────────────────────────────────
           2. MAIN UNIFIED 3-COLUMN WORKSPACE: FULL SCALE & SCROLLABLE
           ───────────────────────────────────────────────────────────────────────────── */}
@@ -481,7 +624,7 @@ export function UnifiedInteractiveClassroom({
         {/* ═══════════════════════════════════════════════════════════════════════
             COLUMN 1 (LEFT): CONCEPT, DEFINITION, WHAT IT DOES & USE CASES
             ═══════════════════════════════════════════════════════════════════════ */}
-        <div className="w-full md:w-[340px] lg:w-[380px] shrink-0 border-r border-slate-800 bg-slate-950 flex flex-col min-h-0 overflow-y-auto">
+        <div className="w-full md:w-[320px] lg:w-[360px] shrink-0 border-r border-slate-800 bg-slate-950 flex flex-col min-h-0 overflow-y-auto">
           <div className="p-4 space-y-4">
             {/* Section 1: Definition (What is it?) */}
             <div className="space-y-2 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow-sm">
@@ -580,7 +723,7 @@ export function UnifiedInteractiveClassroom({
             ═══════════════════════════════════════════════════════════════════════ */}
         <div className="flex-1 flex flex-col min-h-0 bg-slate-950 border-r border-slate-800">
           {/* File Switcher & Action Header */}
-          <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-xs shrink-0">
+          <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-xs shrink-0 flex-wrap gap-2">
             {/* Multi-File Tabs */}
             <div className="flex items-center gap-1 overflow-x-auto">
               <button
@@ -644,7 +787,7 @@ export function UnifiedInteractiveClassroom({
           </div>
 
           {/* Monaco Code Editor (Scrollable Center Area) */}
-          <div className="flex-1 min-h-[220px]">
+          <div className="flex-1 min-h-[200px]">
             <MonacoEditor
               value={currentEditorCode}
               onChange={(val) => handleEditorChange(val || "")}
@@ -653,7 +796,7 @@ export function UnifiedInteractiveClassroom({
           </div>
 
           {/* Bottom Terminal & Browser Preview Splitter */}
-          <div className="h-[240px] shrink-0 border-t border-slate-800 bg-slate-950 flex flex-col">
+          <div className="h-[230px] shrink-0 border-t border-slate-800 bg-slate-950 flex flex-col">
             <div className="flex items-center justify-between px-3 py-1 bg-slate-900 border-b border-slate-800 text-xs shrink-0">
               <div className="flex items-center gap-2">
                 <button
@@ -717,13 +860,7 @@ export function UnifiedInteractiveClassroom({
             COLUMN 3 (RIGHT): DYNAMIC FLOATING DRAWER (LIVE FLOW, VS CODE GUIDE, AI)
             ═══════════════════════════════════════════════════════════════════════ */}
         {activeRightPanel !== null && (
-          <motion.div
-            initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 380, opacity: 1 }}
-            exit={{ width: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="w-[340px] lg:w-[380px] shrink-0 bg-slate-900/95 border-l border-slate-800 flex flex-col min-h-0 overflow-hidden shadow-2xl"
-          >
+          <div className="w-[340px] lg:w-[380px] shrink-0 bg-slate-900 border-l border-slate-800 flex flex-col min-h-0 overflow-hidden shadow-2xl">
             {/* Header of Column 3 */}
             <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900 shrink-0">
               <div className="flex items-center gap-2">
@@ -763,8 +900,8 @@ export function UnifiedInteractiveClassroom({
 
               <button
                 onClick={() => setActiveRightPanel(null)}
-                className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800"
-                title="Hide Column"
+                className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 cursor-pointer"
+                title="Close Drawer"
               >
                 <X className="size-4" />
               </button>
@@ -950,7 +1087,7 @@ npm run dev`}
                 </div>
               )}
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
     </div>
