@@ -1,0 +1,1211 @@
+"use client";
+
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Play,
+  Terminal,
+  Layers,
+  Activity,
+  Code2,
+  Maximize2,
+  Minimize2,
+  Copy,
+  Check,
+  Columns,
+  SquareCode,
+  Laptop,
+  FolderTree,
+  FileCode,
+  Cpu,
+  Sparkles,
+  ExternalLink,
+  BookOpen,
+  HelpCircle,
+  ChevronRight,
+  ChevronLeft,
+  Info,
+  Globe,
+  RefreshCw,
+  FileText,
+  Palette,
+  Workflow,
+  MessageCircle,
+  Zap,
+  Lightbulb,
+  CheckCircle2,
+  AlertTriangle,
+  X,
+  Smile,
+  Send,
+  Loader2,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { MonacoEditor } from "@/components/editor/monaco-editor";
+import { useExecution } from "@/hooks/use-execution";
+import { speakText, stopSpeaking } from "@/lib/speech";
+import { getAuthHeaders } from "@/lib/fetch-helpers";
+import { CallStack } from "@/components/visualization/call-stack";
+import { MemoryView } from "@/components/visualization/memory-view";
+
+export type ExplanationLanguage = "en" | "hi";
+export type FloatingPanelType = "flow" | "vscode_guide" | "ai_tutor" | "memory" | null;
+export type ActiveEditorFile = "app" | "html" | "css" | "server";
+
+interface ConceptItem {
+  id: string;
+  title: string;
+  description: string;
+}
+
+interface ExampleItem {
+  id: string;
+  title: string;
+  description: string;
+  starterCode: string;
+  solutionCode: string;
+}
+
+interface UnifiedInteractiveClassroomProps {
+  lessonTitle: string;
+  topicTitle: string;
+  courseTitle: string;
+  moduleTitle: string;
+  lessonContent: string;
+  lessonExplanation?: string;
+  concepts: ConceptItem[];
+  examples: ExampleItem[];
+  onCompleteLesson?: () => void;
+  isCompleted?: boolean;
+  onNextLesson?: () => void;
+  onPrevLesson?: () => void;
+  hasNextLesson?: boolean;
+  hasPrevLesson?: boolean;
+}
+
+export function UnifiedInteractiveClassroom({
+  lessonTitle,
+  topicTitle,
+  courseTitle,
+  moduleTitle,
+  lessonContent,
+  lessonExplanation,
+  concepts,
+  examples,
+  onCompleteLesson,
+  isCompleted = false,
+  onNextLesson,
+  onPrevLesson,
+  hasNextLesson = false,
+  hasPrevLesson = false,
+}: UnifiedInteractiveClassroomProps) {
+  // English is default language; persisted across all courses
+  const [language, setLanguage] = useState<ExplanationLanguage>("en");
+  // Floating Right Column Tool (Default: "flow" to show live visual execution pipeline)
+  const [activeRightPanel, setActiveRightPanel] = useState<FloatingPanelType>("flow");
+  const [activeFlowStep, setActiveFlowStep] = useState<number>(0);
+  const [isFlowAutoPlaying, setIsFlowAutoPlaying] = useState<boolean>(false);
+
+  // Multi-File Code Editor State
+  const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
+  const [appCode, setAppCode] = useState<string>(
+    examples[0]?.solutionCode || examples[0]?.starterCode || "// Write code here\n"
+  );
+  const [htmlCode, setHtmlCode] = useState<string>('<div id="root"></div>');
+  const [cssCode, setCssCode] = useState<string>(
+    "body { font-family: sans-serif; padding: 16px; background: #0f172a; color: #f8fafc; }\n.card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; max-width: 440px; }\nbutton { background: #0284c7; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; }\nbutton:hover { background: #0369a1; }"
+  );
+  const [serverCode, setServerCode] = useState<string>(
+    "const express = require('express');\nconst cors = require('cors');\nrequire('dotenv').config();\n\nconst app = express();\nconst PORT = process.env.PORT || 5000;\n\napp.use(cors());\napp.use(express.json());\n\nlet items = [\n  { id: 1, name: 'Sample Item 1' },\n  { id: 2, name: 'Sample Item 2' }\n];\n\napp.get('/api/items', (req, res) => {\n  res.json(items);\n});\n\napp.listen(PORT, () => {\n  console.log(`🚀 Server active on http://localhost:${PORT}`);\n});"
+  );
+
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [outputTab, setOutputTab] = useState<"terminal" | "preview">("terminal");
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+
+  // AI Tutor Chat State inside Right Drawer
+  const [aiChatMessages, setAiChatMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([
+    {
+      role: "assistant",
+      content:
+        language === "hi"
+          ? `नमस्ते! मैं आपका AI ट्यूटर हूँ। ${topicTitle} को लेकर कोई भी डाउट हो तो बेझिझक पूछें!`
+          : `Hello! I am your AI Tutor. Ask me any doubt about ${topicTitle} in simple words!`,
+    },
+  ]);
+  const [aiInputMessage, setAiInputMessage] = useState("");
+  const [isAiLoading, setIsAiLoading] = useState(false);
+
+  const { output, error, events, loading, executionTime, executeCode, clearOutput } = useExecution();
+
+  // Sync language with persistent localStorage across all courses
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedLang = localStorage.getItem("preferred_explanation_language") as ExplanationLanguage;
+      if (savedLang === "en" || savedLang === "hi") {
+        setLanguage(savedLang);
+      }
+    }
+
+    const handleLangChange = (e: any) => {
+      const newLang = e.detail || (typeof window !== "undefined" ? localStorage.getItem("preferred_explanation_language") : null);
+      if (newLang === "en" || newLang === "hi") {
+        setLanguage(newLang as ExplanationLanguage);
+      }
+    };
+
+    window.addEventListener("languagechange", handleLangChange);
+    return () => window.removeEventListener("languagechange", handleLangChange);
+  }, []);
+
+  const handleSetLanguage = (newLang: ExplanationLanguage) => {
+    setLanguage(newLang);
+    stopSpeaking();
+    setIsSpeaking(false);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("preferred_explanation_language", newLang);
+      window.dispatchEvent(new CustomEvent("languagechange", { detail: newLang }));
+    }
+  };
+
+  // Switch examples when lesson changes
+  useEffect(() => {
+    if (examples[0]?.solutionCode || examples[0]?.starterCode) {
+      setAppCode(examples[0]?.solutionCode || examples[0]?.starterCode);
+    }
+    clearOutput();
+  }, [lessonTitle, examples, clearOutput]);
+
+  // Active code depending on selected file tab
+  const currentEditorCode =
+    activeFile === "app" ? appCode : activeFile === "html" ? htmlCode : activeFile === "css" ? cssCode : serverCode;
+  const currentEditorLanguage =
+    activeFile === "app" ? "javascript" : activeFile === "html" ? "html" : activeFile === "css" ? "css" : "javascript";
+
+  const handleEditorChange = (newVal: string) => {
+    if (activeFile === "app") setAppCode(newVal);
+    else if (activeFile === "html") setHtmlCode(newVal);
+    else if (activeFile === "css") setCssCode(newVal);
+    else setServerCode(newVal);
+  };
+
+  // Build live srcdoc for multi-file iframe preview (React 18 + Babel + CSS + HTML)
+  const liveSrcDoc = useMemo(() => {
+    return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <style>
+    ${cssCode}
+  </style>
+</head>
+<body>
+  ${htmlCode}
+  <script type="text/plain" id="__rawScript">${appCode}</script>
+  <script>
+    (function(){
+      try {
+        var raw = document.getElementById('__rawScript').textContent;
+        var transpiled = Babel.transform(raw, { presets: ['react', 'env'] }).code;
+        var s = document.createElement('script');
+        s.textContent = transpiled;
+        document.body.appendChild(s);
+      } catch(err) {
+        var box = document.createElement('div');
+        box.style = "background:#450a0a;color:#fca5a5;border:1px solid #ef4444;padding:12px;border-radius:8px;font-family:monospace;font-size:12px;margin:10px;";
+        box.innerHTML = "<strong>❌ Render Error:</strong> " + err.message;
+        document.body.appendChild(box);
+      }
+    })();
+  </script>
+</body>
+</html>`;
+  }, [appCode, htmlCode, cssCode]);
+
+  const handleRunCode = useCallback(async () => {
+    await executeCode(appCode, "javascript", true);
+  }, [appCode, executeCode]);
+
+  const handleCopyCode = (id: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  // Structured Pedagogical Breakdown (Definition, What Does It Do, Use Cases, Syntax)
+  const topicData = useMemo(() => {
+    return buildCleanTopicBreakdown({
+      lessonTitle,
+      topicTitle,
+      lessonExplanation,
+      concepts,
+      examples,
+      language,
+    });
+  }, [lessonTitle, topicTitle, lessonExplanation, concepts, examples, language]);
+
+  // Auto-advance flow steps
+  useEffect(() => {
+    if (!isFlowAutoPlaying || !topicData.flowSteps || topicData.flowSteps.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveFlowStep((prev) => (prev + 1) % topicData.flowSteps.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isFlowAutoPlaying, topicData.flowSteps]);
+
+  // Voice narration for definition and core
+  const handleToggleVoice = () => {
+    if (isSpeaking) {
+      stopSpeaking();
+      setIsSpeaking(false);
+      return;
+    }
+    const textToSpeak = `${topicData.title}. ${topicData.definition}. ${topicData.whatItDoes.join(". ")}. Key rule: ${topicData.seniorRule}`;
+    speakText({
+      text: textToSpeak,
+      lang: language,
+      onStart: () => setIsSpeaking(true),
+      onEnd: () => setIsSpeaking(false),
+      onError: () => setIsSpeaking(false),
+    });
+  };
+
+  // AI Chat send handler
+  const handleSendAiMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!aiInputMessage.trim() || isAiLoading) return;
+
+    const userText = aiInputMessage.trim();
+    setAiInputMessage("");
+    setAiChatMessages((prev) => [...prev, { role: "user", content: userText }]);
+    setIsAiLoading(true);
+
+    try {
+      const res = await fetch("/api/ai/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...getAuthHeaders(),
+        },
+        body: JSON.stringify({
+          message: userText,
+          mode: "explain",
+          lessonTitle,
+          topicTitle,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        const reply = data.message?.content || data.response || "Concept explained.";
+        setAiChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      }
+    } catch {
+      setAiChatMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content:
+            language === "hi"
+              ? "माफ़ कीजिए, अभी जवाब नहीं मिल पाया। कृपया दोबारा पूछें।"
+              : "Sorry, could not fetch answer right now. Please try again.",
+        },
+      ]);
+    } finally {
+      setIsAiLoading(false);
+    }
+  };
+
+  const currentFlowStep = topicData.flowSteps[activeFlowStep] || topicData.flowSteps[0];
+
+  return (
+    <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-slate-950 text-slate-100 overflow-hidden select-none">
+      {/* ─────────────────────────────────────────────────────────────────────────────
+          1. TOP COMPACT BAR: ZERO WASTED SPACE (Breadcrumb + Title + Floating Actions)
+          ───────────────────────────────────────────────────────────────────────────── */}
+      <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0 gap-3">
+        {/* Left: Compact Breadcrumbs & Title */}
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="flex items-center gap-1 text-xs text-slate-400 font-mono truncate">
+            <span className="text-sky-400 font-bold">{courseTitle}</span>
+            <span>/</span>
+            <span className="truncate">{moduleTitle}</span>
+          </div>
+          <span className="text-slate-600 hidden sm:inline">|</span>
+          <h1 className="text-sm font-bold text-white tracking-tight truncate flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+            {lessonTitle} · {topicTitle}
+          </h1>
+        </div>
+
+        {/* Center/Right: Floating Tools Toggles (Flow, VS Code, AI, Memory) */}
+        <div className="flex items-center gap-1.5 flex-wrap">
+          {/* ⚡ Live Visual Flow Toggle */}
+          <button
+            onClick={() => setActiveRightPanel(activeRightPanel === "flow" ? null : "flow")}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+              activeRightPanel === "flow"
+                ? "bg-indigo-600 text-white shadow-xs font-bold"
+                : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+            title="Toggle Live Step-by-Step Execution Flow"
+          >
+            <Workflow className="size-3.5 text-indigo-300" />
+            <span>Live Flow</span>
+          </button>
+
+          {/* 💻 How to Run in VS Code Guide */}
+          <button
+            onClick={() => setActiveRightPanel(activeRightPanel === "vscode_guide" ? null : "vscode_guide")}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+              activeRightPanel === "vscode_guide"
+                ? "bg-amber-500 text-slate-950 shadow-xs font-bold"
+                : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+            title="How to run multi-file code in VS Code"
+          >
+            <Laptop className="size-3.5 text-amber-400" />
+            <span className="hidden sm:inline">Run in VS Code</span>
+            <span className="sm:hidden">VS Code</span>
+          </button>
+
+          {/* 🤖 AI Tutor Assistant */}
+          <button
+            onClick={() => setActiveRightPanel(activeRightPanel === "ai_tutor" ? null : "ai_tutor")}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+              activeRightPanel === "ai_tutor"
+                ? "bg-pink-600 text-white shadow-xs font-bold"
+                : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+            title="Ask AI Tutor doubts in simple words"
+          >
+            <Sparkles className="size-3.5 text-pink-300" />
+            <span>AI Tutor</span>
+          </button>
+
+          {/* 🥞 Call Stack / Memory */}
+          <button
+            onClick={() => setActiveRightPanel(activeRightPanel === "memory" ? null : "memory")}
+            className={`hidden md:flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+              activeRightPanel === "memory"
+                ? "bg-purple-600 text-white shadow-xs font-bold"
+                : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+            title="Call Stack & Heap Memory Inspector"
+          >
+            <Layers className="size-3.5 text-purple-300" />
+            <span>Memory</span>
+          </button>
+
+          {/* Language Switcher: English (Default) / Hindi */}
+          <div className="flex items-center gap-0.5 bg-slate-950 p-0.5 rounded-lg border border-slate-800 ml-1">
+            <button
+              onClick={() => handleSetLanguage("en")}
+              className={`px-2 py-0.5 rounded text-[11px] font-bold font-mono transition-all cursor-pointer ${
+                language === "en" ? "bg-sky-600 text-white" : "text-slate-400 hover:text-white"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => handleSetLanguage("hi")}
+              className={`px-2 py-0.5 rounded text-[11px] font-bold font-mono transition-all cursor-pointer ${
+                language === "hi" ? "bg-sky-600 text-white" : "text-slate-400 hover:text-white"
+              }`}
+            >
+              HI
+            </button>
+          </div>
+
+          {/* Voice Narration Button */}
+          <button
+            onClick={handleToggleVoice}
+            className={`p-1.5 rounded-lg border border-slate-800 transition-all cursor-pointer ${
+              isSpeaking ? "bg-amber-500/20 text-amber-300 border-amber-500/40" : "text-slate-400 hover:text-white"
+            }`}
+            title="Listen Voice Explanation"
+          >
+            {isSpeaking ? <VolumeX className="size-3.5" /> : <Volume2 className="size-3.5" />}
+          </button>
+
+          {/* Mark Complete & Next */}
+          {onCompleteLesson && (
+            <Button
+              size="sm"
+              onClick={onCompleteLesson}
+              className={`h-7 px-2.5 text-xs font-bold ${
+                isCompleted ? "bg-emerald-700 text-white" : "bg-emerald-600 hover:bg-emerald-500 text-slate-950"
+              }`}
+            >
+              {isCompleted ? "Completed ✓" : "Mark Done"}
+            </Button>
+          )}
+
+          {hasPrevLesson && onPrevLesson && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onPrevLesson}
+              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white"
+              title="Previous Lesson"
+            >
+              <ChevronLeft className="size-3.5" />
+            </Button>
+          )}
+
+          {hasNextLesson && onNextLesson && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onNextLesson}
+              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white"
+              title="Next Lesson"
+            >
+              <ChevronRight className="size-3.5" />
+            </Button>
+          )}
+        </div>
+      </div>
+
+      {/* ─────────────────────────────────────────────────────────────────────────────
+          2. MAIN UNIFIED 3-COLUMN WORKSPACE: FULL SCALE & SCROLLABLE
+          ───────────────────────────────────────────────────────────────────────────── */}
+      <div className="flex flex-1 min-h-0 w-full overflow-hidden">
+        {/* ═══════════════════════════════════════════════════════════════════════
+            COLUMN 1 (LEFT): CONCEPT, DEFINITION, WHAT IT DOES & USE CASES
+            ═══════════════════════════════════════════════════════════════════════ */}
+        <div className="w-full md:w-[340px] lg:w-[380px] shrink-0 border-r border-slate-800 bg-slate-950 flex flex-col min-h-0 overflow-y-auto">
+          <div className="p-4 space-y-4">
+            {/* Section 1: Definition (What is it?) */}
+            <div className="space-y-2 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow-sm">
+              <div className="flex items-center gap-1.5">
+                <BookOpen className="size-4 text-sky-400" />
+                <h2 className="text-xs font-bold uppercase tracking-wider text-sky-400 font-mono">
+                  {language === "hi" ? "1. परिभाषा (What is it?)" : "1. Definition (What is it?)"}
+                </h2>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans font-medium">
+                {topicData.definition}
+              </p>
+            </div>
+
+            {/* Section 2: What Does It Do? (Point by point) */}
+            <div className="space-y-2 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow-sm">
+              <div className="flex items-center gap-1.5">
+                <Zap className="size-4 text-amber-400" />
+                <h2 className="text-xs font-bold uppercase tracking-wider text-amber-300 font-mono">
+                  {language === "hi" ? "2. यह क्या करता है? (What Does It Do?)" : "2. What Does It Do?"}
+                </h2>
+              </div>
+              <ul className="space-y-2 text-xs text-slate-300 font-sans">
+                {topicData.whatItDoes.map((pt, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="flex h-4 w-4 items-center justify-center rounded bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold shrink-0 mt-0.5">
+                      {i + 1}
+                    </span>
+                    <span className="leading-relaxed">{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Section 3: Why & When to Use? (Use Cases) */}
+            <div className="space-y-2 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow-sm">
+              <div className="flex items-center gap-1.5">
+                <Lightbulb className="size-4 text-emerald-400" />
+                <h2 className="text-xs font-bold uppercase tracking-wider text-emerald-400 font-mono">
+                  {language === "hi" ? "3. कब और क्यों यूज़ करें? (Use Cases)" : "3. When & Why to Use?"}
+                </h2>
+              </div>
+              <ul className="space-y-1.5 text-xs text-slate-300 font-sans">
+                {topicData.useCases.map((uc, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckCircle2 className="size-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">{uc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Section 4: Syntax & Highlighted Pattern */}
+            <div className="space-y-2 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow-sm">
+              <div className="flex items-center justify-between text-xs font-mono">
+                <span className="font-bold text-indigo-300 uppercase flex items-center gap-1.5">
+                  <Code2 className="size-3.5 text-indigo-400" />
+                  {language === "hi" ? "4. सिंटैक्स और नियम" : "4. Syntax & Rules"}
+                </span>
+                <button
+                  onClick={() => handleCopyCode("syntax_code", topicData.syntaxSnippet)}
+                  className="text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer text-[11px]"
+                >
+                  {copiedId === "syntax_code" ? <Check className="size-3 text-emerald-400" /> : <Copy className="size-3" />}
+                  {copiedId === "syntax_code" ? "Copied" : "Copy"}
+                </button>
+              </div>
+              <pre className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono text-indigo-200 overflow-x-auto whitespace-pre-wrap leading-relaxed">
+                <code>{topicData.syntaxSnippet}</code>
+              </pre>
+              <p className="text-[11px] text-slate-400 italic">
+                💡 <strong>Senior Rule:</strong> {topicData.seniorRule}
+              </p>
+            </div>
+
+            {/* Quick Contrast: Without vs With */}
+            <div className="grid grid-cols-1 gap-2 text-xs">
+              <div className="p-2.5 rounded-lg bg-rose-950/30 border border-rose-800/40 text-slate-300 space-y-1">
+                <span className="font-bold text-rose-400 block font-mono text-[10px]">
+                  ❌ {language === "hi" ? "इसके बिना क्या परेशानी थी?" : "Problem Without This:"}
+                </span>
+                <p className="text-[11px] leading-relaxed">{topicData.withoutThis}</p>
+              </div>
+              <div className="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-800/40 text-slate-300 space-y-1">
+                <span className="font-bold text-emerald-400 block font-mono text-[10px]">
+                  ✅ {language === "hi" ? "इससे क्या आसान हुआ?" : "Superpower With This:"}
+                </span>
+                <p className="text-[11px] leading-relaxed">{topicData.withThis}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            COLUMN 2 (CENTER): CODE WINDOW, MULTI-FILE TABS & RUNTIME PREVIEW
+            ═══════════════════════════════════════════════════════════════════════ */}
+        <div className="flex-1 flex flex-col min-h-0 bg-slate-950 border-r border-slate-800">
+          {/* File Switcher & Action Header */}
+          <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-xs shrink-0">
+            {/* Multi-File Tabs */}
+            <div className="flex items-center gap-1 overflow-x-auto">
+              <button
+                onClick={() => setActiveFile("app")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "app"
+                    ? "bg-sky-600 text-white font-bold"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <Sparkles className="size-3 text-sky-300" />
+                App.jsx
+              </button>
+              <button
+                onClick={() => setActiveFile("html")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "html"
+                    ? "bg-amber-600 text-white font-bold"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <FileText className="size-3 text-amber-300" />
+                index.html
+              </button>
+              <button
+                onClick={() => setActiveFile("css")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "css"
+                    ? "bg-indigo-600 text-white font-bold"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <Palette className="size-3 text-indigo-300" />
+                style.css
+              </button>
+              <button
+                onClick={() => setActiveFile("server")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "server"
+                    ? "bg-emerald-600 text-white font-bold"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <Cpu className="size-3 text-emerald-300" />
+                server.js
+              </button>
+            </div>
+
+            {/* Run & Execute Button */}
+            <div className="flex items-center gap-2">
+              <Button
+                size="sm"
+                onClick={handleRunCode}
+                disabled={loading}
+                className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs h-7 px-3 gap-1.5 shadow-sm"
+              >
+                <Play className="size-3 fill-current" />
+                {loading ? "Running..." : "Run & Preview (Ctrl+Enter)"}
+              </Button>
+            </div>
+          </div>
+
+          {/* Monaco Code Editor (Scrollable Center Area) */}
+          <div className="flex-1 min-h-[220px]">
+            <MonacoEditor
+              value={currentEditorCode}
+              onChange={(val) => handleEditorChange(val || "")}
+              language={currentEditorLanguage}
+            />
+          </div>
+
+          {/* Bottom Terminal & Browser Preview Splitter */}
+          <div className="h-[240px] shrink-0 border-t border-slate-800 bg-slate-950 flex flex-col">
+            <div className="flex items-center justify-between px-3 py-1 bg-slate-900 border-b border-slate-800 text-xs shrink-0">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setOutputTab("terminal")}
+                  className={`flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-mono font-semibold transition-all cursor-pointer ${
+                    outputTab === "terminal" ? "bg-slate-800 text-emerald-400" : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <Terminal className="size-3" />
+                  Terminal Logs
+                  {output && <span className="size-1.5 rounded-full bg-emerald-400" />}
+                </button>
+                <button
+                  onClick={() => setOutputTab("preview")}
+                  className={`flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-mono font-semibold transition-all cursor-pointer ${
+                    outputTab === "preview" ? "bg-slate-800 text-sky-400" : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <Globe className="size-3" />
+                  Live Browser Preview
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
+                {executionTime !== undefined && <span>{executionTime.toFixed(1)}ms</span>}
+                <button onClick={clearOutput} className="hover:text-slate-300">
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 min-h-0 overflow-y-auto">
+              {outputTab === "terminal" ? (
+                <div className="p-3 text-xs font-mono">
+                  {error && (
+                    <div className="p-2.5 mb-2 rounded bg-rose-950/60 border border-rose-800 text-rose-300 whitespace-pre-wrap">
+                      <strong>❌ Error:</strong> {error}
+                    </div>
+                  )}
+                  {output ? (
+                    <pre className="whitespace-pre-wrap text-emerald-300 leading-relaxed font-mono">
+                      {output}
+                    </pre>
+                  ) : !error ? (
+                    <span className="text-slate-500 italic">Click "Run &amp; Preview" to execute code and view logs.</span>
+                  ) : null}
+                </div>
+              ) : (
+                <iframe
+                  title="Live Sandbox Preview"
+                  srcDoc={liveSrcDoc}
+                  sandbox="allow-scripts allow-same-origin allow-modals allow-forms"
+                  className="w-full h-full border-0 bg-slate-950"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            COLUMN 3 (RIGHT): DYNAMIC FLOATING DRAWER (LIVE FLOW, VS CODE GUIDE, AI)
+            ═══════════════════════════════════════════════════════════════════════ */}
+        {activeRightPanel !== null && (
+          <motion.div
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: 380, opacity: 1 }}
+            exit={{ width: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="w-[340px] lg:w-[380px] shrink-0 bg-slate-900/95 border-l border-slate-800 flex flex-col min-h-0 overflow-hidden shadow-2xl"
+          >
+            {/* Header of Column 3 */}
+            <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900 shrink-0">
+              <div className="flex items-center gap-2">
+                {activeRightPanel === "flow" && (
+                  <>
+                    <Workflow className="size-4 text-indigo-400" />
+                    <span className="text-xs font-bold text-indigo-300 uppercase font-mono">
+                      ⚡ Step-by-Step Live Flow
+                    </span>
+                  </>
+                )}
+                {activeRightPanel === "vscode_guide" && (
+                  <>
+                    <Laptop className="size-4 text-amber-400" />
+                    <span className="text-xs font-bold text-amber-300 uppercase font-mono">
+                      💻 VS Code Setup Guide
+                    </span>
+                  </>
+                )}
+                {activeRightPanel === "ai_tutor" && (
+                  <>
+                    <Sparkles className="size-4 text-pink-400" />
+                    <span className="text-xs font-bold text-pink-300 uppercase font-mono">
+                      🤖 AI Tutor Assistant
+                    </span>
+                  </>
+                )}
+                {activeRightPanel === "memory" && (
+                  <>
+                    <Layers className="size-4 text-purple-400" />
+                    <span className="text-xs font-bold text-purple-300 uppercase font-mono">
+                      🥞 Call Stack &amp; Memory
+                    </span>
+                  </>
+                )}
+              </div>
+
+              <button
+                onClick={() => setActiveRightPanel(null)}
+                className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800"
+                title="Hide Column"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+
+            {/* Content Body of Column 3 */}
+            <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-4">
+              {/* TOOL A: ⚡ LIVE STEP-BY-STEP EXECUTION FLOW */}
+              {activeRightPanel === "flow" && (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-400 font-mono">
+                      Stage {activeFlowStep + 1} of {topicData.flowSteps.length}
+                    </span>
+                    <button
+                      onClick={() => setIsFlowAutoPlaying(!isFlowAutoPlaying)}
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded border transition-all cursor-pointer ${
+                        isFlowAutoPlaying
+                          ? "bg-amber-500/20 text-amber-300 border-amber-500/40 animate-pulse font-bold"
+                          : "border-slate-800 text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      {isFlowAutoPlaying ? "Pause" : "▶ Auto Play"}
+                    </button>
+                  </div>
+
+                  {/* Flow Stages List */}
+                  <div className="space-y-2">
+                    {topicData.flowSteps.map((step, idx) => {
+                      const isActive = activeFlowStep === idx;
+                      return (
+                        <div
+                          key={idx}
+                          onClick={() => {
+                            setActiveFlowStep(idx);
+                            setIsFlowAutoPlaying(false);
+                          }}
+                          className={`p-3 rounded-xl border transition-all cursor-pointer ${
+                            isActive
+                              ? "bg-slate-950 border-indigo-500 text-white shadow-md ring-1 ring-indigo-500/50"
+                              : "bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-[11px] font-bold font-mono text-indigo-300">
+                              0{idx + 1}. {step.phase}
+                            </span>
+                            {isActive && <span className="size-2 rounded-full bg-indigo-400 animate-ping" />}
+                          </div>
+                          <p className="text-xs text-slate-300 font-sans leading-relaxed">
+                            {step.whatHappens}
+                          </p>
+                          {isActive && (
+                            <div className="mt-2 pt-2 border-t border-slate-800 text-[11px] font-mono text-indigo-200 space-y-1">
+                              <span className="text-slate-500 uppercase text-[9px] block">Data &amp; Memory State:</span>
+                              <code>{step.dataState}</code>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* TOOL B: 💻 HOW TO RUN IN VS CODE GUIDE (MULTI-FILE) */}
+              {activeRightPanel === "vscode_guide" && (
+                <div className="space-y-4 text-xs">
+                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                    <span className="text-xs font-bold text-amber-300 font-mono block">
+                      📁 Project Folder Structure:
+                    </span>
+                    <pre className="p-2 bg-slate-900 rounded border border-slate-800 text-[11px] font-mono text-cyan-300">
+                      {`my-app/
+├── index.html       <-- (<div id="root"></div>)
+├── src/
+│   ├── main.jsx     <-- ReactDOM.createRoot()
+│   ├── App.jsx      <-- Main Code Component
+│   └── App.css      <-- Stylesheet
+└── package.json     <-- Dependencies`}
+                    </pre>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                    <span className="text-xs font-bold text-emerald-400 font-mono block">
+                      🚀 Terminal Commands:
+                    </span>
+                    <pre className="p-2 bg-slate-900 rounded border border-slate-800 text-[11px] font-mono text-emerald-300">
+                      {`# 1. Project Create Karein
+npm create vite@latest my-app -- --template react
+
+# 2. Folder me enter karein
+cd my-app && npm install
+
+# 3. Server start karein
+npm run dev`}
+                    </pre>
+                    <p className="text-[11px] text-slate-400">
+                      Browser me <code>http://localhost:5173</code> open karein.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* TOOL C: 🤖 AI TUTOR ASSISTANT */}
+              {activeRightPanel === "ai_tutor" && (
+                <div className="flex flex-col h-full space-y-3">
+                  <div className="flex-1 min-h-[260px] space-y-2 overflow-y-auto pr-1">
+                    {aiChatMessages.map((msg, i) => (
+                      <div
+                        key={i}
+                        className={`p-2.5 rounded-xl text-xs ${
+                          msg.role === "user"
+                            ? "bg-indigo-950/80 border border-indigo-800 text-indigo-100 ml-4"
+                            : "bg-slate-950 border border-slate-800 text-slate-200 mr-4"
+                        }`}
+                      >
+                        <span className="font-bold font-mono text-[10px] text-slate-400 block mb-1">
+                          {msg.role === "user" ? "You:" : "AI Tutor:"}
+                        </span>
+                        <p className="font-sans leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                      </div>
+                    ))}
+                    {isAiLoading && (
+                      <div className="flex items-center gap-1.5 text-xs text-pink-400 font-mono">
+                        <Loader2 className="size-3.5 animate-spin" />
+                        <span>Thinking...</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Input Form */}
+                  <form onSubmit={handleSendAiMessage} className="flex gap-1.5 pt-2 border-t border-slate-800">
+                    <input
+                      type="text"
+                      value={aiInputMessage}
+                      onChange={(e) => setAiInputMessage(e.target.value)}
+                      placeholder={language === "hi" ? "कोई सवाल पूछें..." : "Ask a doubt..."}
+                      className="flex-1 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-pink-500 font-sans"
+                    />
+                    <Button type="submit" size="sm" className="bg-pink-600 hover:bg-pink-500 text-white h-8 px-2.5">
+                      <Send className="size-3.5" />
+                    </Button>
+                  </form>
+                </div>
+              )}
+
+              {/* TOOL D: 🥞 CALL STACK & MEMORY */}
+              {activeRightPanel === "memory" && (
+                <div className="space-y-3 text-xs">
+                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+                    <span className="text-[11px] font-bold text-purple-300 font-mono uppercase block mb-2">
+                      Active Call Stack
+                    </span>
+                    <CallStack
+                      frames={events
+                        .filter((e) => e.type === "call" || e.type === "return")
+                        .map((e, i) => ({
+                          id: `f_${i}`,
+                          name: e.callStack?.[0] || "main",
+                          args: [],
+                          isExecuting: i === 0,
+                          depth: i,
+                        }))}
+                    />
+                  </div>
+                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+                    <span className="text-[11px] font-bold text-purple-300 font-mono uppercase block mb-2">
+                      Heap Memory
+                    </span>
+                    <MemoryView
+                      events={events
+                        .filter((e) => e.type === "variable" || Boolean(e.variable))
+                        .map((e, idx) => ({
+                          step: idx + 1,
+                          type: "variable" as const,
+                          variable: e.variable || "var",
+                          value: e.value !== undefined ? String(e.value) : "undefined",
+                        }))}
+                      currentStep={events.length}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Clean Pedagogical Topic Breakdown Generator (Ultra-Simple Words)
+// ─────────────────────────────────────────────────────────────────────────────
+function buildCleanTopicBreakdown({
+  lessonTitle,
+  topicTitle,
+  lessonExplanation,
+  concepts,
+  examples,
+  language,
+}: {
+  lessonTitle: string;
+  topicTitle: string;
+  lessonExplanation?: string;
+  concepts: ConceptItem[];
+  examples: ExampleItem[];
+  language: ExplanationLanguage;
+}) {
+  const combined = `${lessonTitle} ${topicTitle}`.toLowerCase();
+
+  // 1. React State & useState
+  if (combined.includes("state") || combined.includes("usestate")) {
+    return {
+      title: "State & useState",
+      definition:
+        language === "hi"
+          ? "State कंपोनेंट की डिजिटल मेमोरी होती है। जब भी State बदलती है, React स्क्रीन को अपने आप नया डेटा दिखाने के लिए रिफ्रेश (Re-render) कर देता है।"
+          : "State is a component's memory. Whenever state changes, React automatically re-renders the screen to show the fresh updated data.",
+      whatItDoes:
+        language === "hi"
+          ? [
+              "यह डेटा को याद रखता है (जैसे यूजर का इनपुट, स्कोर या लोडिंग स्टेटस).",
+              "जब आप setter फंक्शन (जैसे setCount) चलाते हैं, यह स्क्रीन को तुरंत अपडेट करता है.",
+              "यह डेटा को हमेशा सेफ और प्रेडिक्टेबल रखता है.",
+            ]
+          : [
+              "Holds dynamic data (like scores, form inputs, or modal open status).",
+              "Triggers an instant UI re-render whenever the setter function is called.",
+              "Keeps component state self-contained and predictable.",
+            ],
+      useCases:
+        language === "hi"
+          ? ["काउंटर और स्कोरबोर्ड", "फॉर्म इनपुट और चेकबॉक्स", "डार्क/लाइट थीम टॉगल", "लोडिंग स्पिनर ऑन/ऑफ"]
+          : ["Counters and live scoreboards", "Form typing and checkboxes", "Dark/Light theme toggles", "Loading spinners"],
+      syntaxSnippet: `const [count, setCount] = useState(0);\n// To update:\nsetCount(count + 1);`,
+      seniorRule:
+        language === "hi"
+          ? "State को कभी count = count + 1 करके डायरेक्ट मत बदलो, हमेशा setCount() का इस्तेमाल करो!"
+          : "Never mutate state directly (count = count + 1); always use the setter function (setCount).",
+      withoutThis:
+        language === "hi"
+          ? "नॉर्मल variable बदलने पर स्क्रीन पर पुराना डेटा ही दिखता रहता था!"
+          : "Normal JS variables don't tell React to re-paint, leaving the screen frozen.",
+      withThis:
+        language === "hi"
+          ? "State बदलते ही स्क्रीन पर नया डेटा 1 मिलीसेकंड में अपडेट हो जाता है!"
+          : "React instantly re-paints the screen with zero manual DOM manipulation!",
+      flowSteps: [
+        {
+          phase: "1. User Action",
+          whatHappens: language === "hi" ? "यूजर ने बटन क्लिक किया।" : "User clicks the interactive button.",
+          dataState: "Event: onClick trigger",
+        },
+        {
+          phase: "2. State Setter Executed",
+          whatHappens: language === "hi" ? "setCount(count + 1) चला।" : "setCount(prev => prev + 1) runs.",
+          dataState: "Memory: count updated in Heap",
+        },
+        {
+          phase: "3. React Re-render",
+          whatHappens: language === "hi" ? "React ने नया UI ट्री बनाया।" : "React executes component with new value.",
+          dataState: "Virtual DOM: Diff calculated",
+        },
+        {
+          phase: "4. Screen Paint",
+          whatHappens: language === "hi" ? "स्क्रीन पर नया नंबर दिख गया!" : "DOM node updated on screen.",
+          dataState: "Final Output: UI Synced",
+        },
+      ],
+    };
+  }
+
+  // 2. React Components & Props
+  if (combined.includes("component") || combined.includes("prop") || combined.includes("jsx")) {
+    return {
+      title: "Components & Props",
+      definition:
+        language === "hi"
+          ? "Component एक स्वतंत्र LEGO ब्लॉक की तरह होता है जो UI बनाता है। Props उसके अंदर भेजा जाने वाला डेटा (Input) होता है।"
+          : "A Component is a reusable building block that returns UI (JSX). Props are read-only inputs passed from parent to child.",
+      whatItDoes:
+        language === "hi"
+          ? [
+              "बड़ी वेबसाइट को छोटे-छोटे रियूजेबल ब्लॉक्स (Button, Card, Navbar) में तोड़ता है.",
+              "Props के ज़रिए एक ही डिज़ाइन में अलग-अलग डेटा दिखाया जा सकता है.",
+              "कोड को क्लीन और मेंटेन करने में आसान बनाता है.",
+            ]
+          : [
+              "Breaks complex UIs into clean, reusable functions (Button, Card, Navbar).",
+              "Allows passing custom data into the same visual template.",
+              "Ensures unidirectional data flow from top to bottom.",
+            ],
+      useCases:
+        language === "hi"
+          ? ["यूजर प्रोफाइल कार्ड", "कस्टम बटन और मोडल", "प्रोडक्ट लिस्टिंग ग्रिड"]
+          : ["User profile cards", "Custom reusable buttons", "E-commerce product cards"],
+      syntaxSnippet: `function Card({ name, role }) {\n  return <div className="card"><h3>{name}</h3><p>{role}</p></div>;\n}`,
+      seniorRule:
+        language === "hi"
+          ? "Props हमेशा Read-Only होते हैं — चाइल्ड कंपोनेंट उन्हें कभी डायरेक्ट नहीं बदल सकता!"
+          : "Props are read-only (immutable). Never modify props inside child components.",
+      withoutThis:
+        language === "hi"
+          ? "हर यूजर के लिए 100 बार अलग HTML कॉपी-पेस्ट करना पड़ता था!"
+          : "Duplicating 100s of lines of identical HTML for every single card.",
+      withThis:
+        language === "hi"
+          ? "1 मास्टर कंपोनेंट बनाकर लाखों कार्ड 1 सेकंड में बन जाते हैं!"
+          : "Create 1 master component and render thousands of unique cards instantly!",
+      flowSteps: [
+        {
+          phase: "1. Parent Renders",
+          whatHappens: language === "hi" ? "<Card name='Aman' /> पास हुआ।" : "Parent calls <Card name='Aman' />.",
+          dataState: "Props: { name: 'Aman' }",
+        },
+        {
+          phase: "2. Child Function Runs",
+          whatHappens: language === "hi" ? "Card(props) फंक्शन चला।" : "Child receives props object as argument.",
+          dataState: "Scope: Props bound to local scope",
+        },
+        {
+          phase: "3. JSX Returned",
+          whatHappens: language === "hi" ? "JSX में डेटा इंजेक्ट हुआ।" : "JSX replaces {name} with 'Aman'.",
+          dataState: "DOM: Node painted with 'Aman'",
+        },
+      ],
+    };
+  }
+
+  // 3. Express & Node.js REST API
+  if (combined.includes("node") || combined.includes("express") || combined.includes("route") || combined.includes("api")) {
+    return {
+      title: "Express REST API & Routing",
+      definition:
+        language === "hi"
+          ? "Express एक हल्का Node.js फ्रेमवर्क है जो HTTP रिक्वेस्ट (GET, POST) को सुनकर सही डेटा (JSON) रिटर्न करता है।"
+          : "Express is a fast, unopinionated Node.js framework for building HTTP servers and REST API endpoints.",
+      whatItDoes:
+        language === "hi"
+          ? [
+              "किसी खास URL (जैसे /api/users) पर आने वाली रिक्वेस्ट को सुनता है.",
+              "डेटाबेस से डेटा निकालकर JSON फॉर्मेट में रिस्पॉन्स भेजता है.",
+              "मिडिलवेयर से ऑथेंटिकेशन और सिक्योरिटी चेक करता है.",
+            ]
+          : [
+              "Listens for HTTP requests (GET, POST, PUT, DELETE) on specific URL paths.",
+              "Processes data and returns structured JSON responses with HTTP status codes.",
+              "Executes middleware pipelines for authentication, validation, and logging.",
+            ],
+      useCases:
+        language === "hi"
+          ? ["यूजर लॉगिन और रजिस्ट्रेशन API", "डेटाबेस से प्रोडक्ट्स लोड करना", "पेमेंट गेटवे इंटीग्रेशन"]
+          : ["User auth & registration APIs", "Fetching database items", "Webhook and payment processing"],
+      syntaxSnippet: `app.get('/api/users', (req, res) => {\n  res.json([{ id: 1, name: 'Aman' }]);\n});`,
+      seniorRule:
+        language === "hi"
+          ? "Middleware के अंत में next() कॉल करना कभी मत भूलो, वरना रिक्वेस्ट लटक जाएगी!"
+          : "Always call next() in custom middleware so the request doesn't hang indefinitely.",
+      withoutThis:
+        language === "hi"
+          ? "रॉ Node http मॉड्यूल में 1 रूट बनाने के लिए 50 लाइन का भारी कोड लिखना पड़ता था!"
+          : "Writing 50+ lines of low-level boilerplate just to parse URLs and bodies.",
+      withThis:
+        language === "hi"
+          ? "1 लाइन में नया API रूट बन जाता है!"
+          : "Define clean, readable REST endpoints in 3 lines of code!",
+      flowSteps: [
+        {
+          phase: "1. Client Request",
+          whatHappens: language === "hi" ? "ब्राउज़र ने GET /api/users भेजा।" : "Client sends HTTP GET /api/users.",
+          dataState: "HTTP: GET /api/users Header",
+        },
+        {
+          phase: "2. Route Matched",
+          whatHappens: language === "hi" ? "Express ने matching रूट खोजा।" : "Express matches path in route table.",
+          dataState: "Handler: (req, res) invoked",
+        },
+        {
+          phase: "3. JSON Sent",
+          whatHappens: language === "hi" ? "200 OK के साथ JSON रिटर्न हुआ।" : "res.json(data) returns 200 OK.",
+          dataState: "Response: 200 OK + JSON Payload",
+        },
+      ],
+    };
+  }
+
+  // 4. Default Clean Breakdown for any other topic
+  return {
+    title: topicTitle || lessonTitle,
+    definition:
+      lessonExplanation ||
+      (language === "hi"
+        ? `${topicTitle || lessonTitle} सॉफ्टवेयर इंजीनियरिंग का एक महत्वपूर्ण कॉन्सेप्ट है जो आपके कोड को तेज, सुरक्षित और मेंटेन करने में आसान बनाता है।`
+        : `${topicTitle || lessonTitle} is an essential software engineering concept designed to make applications faster, reliable, and maintainable.`),
+    whatItDoes:
+      language === "hi"
+        ? [
+            "इनपुट डेटा को प्रोसेस करके सही आउटपुट देता है.",
+            "कोड को छोटे-छोटे समझने लायक मॉड्यूल्स में बांटता है.",
+            "एरर्स और अनपेक्षित बग्स को आने से रोकता है.",
+          ]
+        : [
+            "Processes inputs predictably and outputs expected results.",
+            "Divides complex code into clean, modular building blocks.",
+            "Guards against runtime errors and state corruption.",
+          ],
+    useCases:
+      language === "hi"
+        ? ["रियल-वर्ल्ड प्रोडक्शन ऐप्स", "डेटा ट्रांसफॉर्मेशन और स्टोरेज", "यूजर इंटरफेस इंटरेक्शन"]
+        : ["Production web applications", "Data transformation & storage", "Interactive UI workflows"],
+    syntaxSnippet: `// ${topicTitle || lessonTitle} Pattern\nfunction handleAction() {\n  return { success: true };\n}`,
+    seniorRule:
+      language === "hi"
+        ? "हमेशा साफ़, प्रेडिक्टेबल और टेस्टेबल कोड लिखें!"
+        : "Always write clean, deterministic, and modular code with clear error handling.",
+    withoutThis:
+      language === "hi"
+        ? "कोड उलझ जाता था और बग्स ढूंढना मुश्किल होता था।"
+        : "Fragile monolithic code prone to runtime bugs.",
+    withThis:
+      language === "hi"
+        ? "साफ़-सुथरा कोड जिसे कोई भी आसानी से समझ और चला सकता है!"
+        : "Clean, testable code that scales smoothly!",
+    flowSteps: [
+      {
+        phase: "1. Input Trigger",
+        whatHappens: language === "hi" ? "इनपुट डेटा सिस्टम में आया।" : "Input data enters the system.",
+        dataState: "State: PENDING",
+      },
+      {
+        phase: "2. Processing Logic",
+        whatHappens: language === "hi" ? "कोर लॉजिक ने डेटा प्रोसेस किया।" : "Core algorithm processes logic.",
+        dataState: "State: COMPUTING",
+      },
+      {
+        phase: "3. Output Resolution",
+        whatHappens: language === "hi" ? "सफलतापूर्वक रिजल्ट मिला।" : "Clean result returned to caller.",
+        dataState: "State: 200 OK",
+      },
+    ],
+  };
+}
