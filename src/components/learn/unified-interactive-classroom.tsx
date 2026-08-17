@@ -788,7 +788,7 @@ export function UnifiedInteractiveClassroom({
               💻 Code
             </button>
             <button
-              onClick={() => setMobileActiveView("output")}
+              onClick={() => { setMobileActiveView("output"); if (!activeRightPanel) setActiveRightPanel("flow"); }}
               className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                 mobileActiveView === "output" ? "bg-sky-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
               }`}
@@ -841,7 +841,7 @@ export function UnifiedInteractiveClassroom({
             {/* Tools Grid */}
             <div className="grid grid-cols-2 gap-2.5">
               <button
-                onClick={() => { handleTogglePanel("flow"); setIsFloatingToolsModalOpen(false); }}
+                onClick={() => { setActiveRightPanel("flow"); setMobileActiveView("output"); setIsFloatingToolsModalOpen(false); }}
                 className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
                   activeRightPanel === "flow" ? "bg-indigo-950/80 border-indigo-400 text-indigo-200 font-bold ring-1 ring-indigo-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                 }`}
@@ -854,7 +854,7 @@ export function UnifiedInteractiveClassroom({
               </button>
 
               <button
-                onClick={() => { handleTogglePanel("vscode_guide"); setIsFloatingToolsModalOpen(false); }}
+                onClick={() => { setActiveRightPanel("vscode_guide"); setMobileActiveView("output"); setIsFloatingToolsModalOpen(false); }}
                 className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
                   activeRightPanel === "vscode_guide" ? "bg-amber-950/80 border-amber-400 text-amber-200 font-bold ring-1 ring-amber-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                 }`}
@@ -867,7 +867,7 @@ export function UnifiedInteractiveClassroom({
               </button>
 
               <button
-                onClick={() => { handleTogglePanel("ai_tutor"); setIsFloatingToolsModalOpen(false); }}
+                onClick={() => { setActiveRightPanel("ai_tutor"); setMobileActiveView("output"); setIsFloatingToolsModalOpen(false); }}
                 className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
                   activeRightPanel === "ai_tutor" ? "bg-pink-950/80 border-pink-400 text-pink-200 font-bold ring-1 ring-pink-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                 }`}
@@ -880,7 +880,7 @@ export function UnifiedInteractiveClassroom({
               </button>
 
               <button
-                onClick={() => { handleTogglePanel("memory"); setIsFloatingToolsModalOpen(false); }}
+                onClick={() => { setActiveRightPanel("memory"); setMobileActiveView("output"); setIsFloatingToolsModalOpen(false); }}
                 className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
                   activeRightPanel === "memory" ? "bg-purple-950/80 border-purple-400 text-purple-200 font-bold ring-1 ring-purple-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                 }`}
@@ -893,7 +893,7 @@ export function UnifiedInteractiveClassroom({
               </button>
 
               <button
-                onClick={() => { handleTogglePanel("quiz"); setIsFloatingToolsModalOpen(false); }}
+                onClick={() => { setActiveRightPanel("quiz"); setMobileActiveView("output"); setIsFloatingToolsModalOpen(false); }}
                 className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
                   activeRightPanel === "quiz" ? "bg-emerald-950/80 border-emerald-400 text-emerald-200 font-bold ring-1 ring-emerald-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                 }`}
@@ -906,7 +906,7 @@ export function UnifiedInteractiveClassroom({
               </button>
 
               <button
-                onClick={() => { handleTogglePanel("interview"); setIsFloatingToolsModalOpen(false); }}
+                onClick={() => { setActiveRightPanel("interview"); setMobileActiveView("output"); setIsFloatingToolsModalOpen(false); }}
                 className={`p-3 rounded-2xl border text-left transition-all cursor-pointer space-y-1 ${
                   activeRightPanel === "interview" ? "bg-cyan-950/80 border-cyan-400 text-cyan-200 font-bold ring-1 ring-cyan-400/40" : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                 }`}
@@ -991,7 +991,7 @@ export function UnifiedInteractiveClassroom({
         {/* ═══════════════════════════════════════════════════════════════════════
             COLUMN 1 (LEFT): CONCEPT, DEFINITION, WHAT IT DOES & USE CASES
             ═══════════════════════════════════════════════════════════════════════ */}
-        <div className="w-full md:w-[320px] lg:w-[360px] shrink-0 border-r border-slate-800 bg-slate-950 flex flex-col min-h-0 overflow-y-auto">
+        <div className={`w-full lg:w-[360px] shrink-0 border-r border-slate-800 bg-slate-950 flex-col min-h-0 overflow-y-auto ${mobileActiveView === "notes" ? "flex flex-1" : "hidden lg:flex"}`}>
           <div className="p-4 space-y-4">
             {/* Section 1: Definition (What is it?) */}
             <div className="space-y-2 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow-sm">
@@ -1088,7 +1088,7 @@ export function UnifiedInteractiveClassroom({
         {/* ═══════════════════════════════════════════════════════════════════════
             COLUMN 2 (CENTER): CODE WINDOW, MULTI-FILE TABS & RUNTIME PREVIEW
             ═══════════════════════════════════════════════════════════════════════ */}
-        <div className="flex-1 flex flex-col min-h-0 bg-slate-950 border-r border-slate-800">
+        <div className={`flex-1 flex-col min-h-0 bg-slate-950 border-r border-slate-800 ${mobileActiveView === "code" ? "flex w-full" : "hidden lg:flex"}`}>
           {/* File Switcher & Action Header */}
           <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-xs shrink-0 flex-wrap gap-2">
             {/* Multi-File Tabs with Clean Tech Icons */}
@@ -1227,7 +1227,7 @@ export function UnifiedInteractiveClassroom({
             COLUMN 3 (RIGHT): DYNAMIC FLOATING DRAWER (LIVE FLOW DIAGRAM, VS CODE GUIDE, AI)
             ═══════════════════════════════════════════════════════════════════════ */}
         {activeRightPanel !== null && (
-          <div className="w-[340px] lg:w-[400px] shrink-0 bg-slate-900 border-l border-slate-800 flex flex-col min-h-0 overflow-hidden shadow-2xl">
+          <div className={`w-full lg:w-[400px] shrink-0 bg-slate-900 border-l border-slate-800 flex-col min-h-0 overflow-hidden shadow-2xl ${mobileActiveView === "output" ? "flex flex-1" : "hidden lg:flex"}`}>
             {/* Header of Column 3 */}
             <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900 shrink-0">
               <div className="flex items-center gap-2">
