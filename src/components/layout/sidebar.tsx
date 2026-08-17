@@ -38,7 +38,6 @@ import { useState } from "react";
 const studentNavItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboardIcon },
   { href: "/dashboard/courses", label: "Courses", icon: BookOpenIcon },
-  { href: "/dashboard/profile", label: "My Profile & Career", icon: UserIcon },
   { href: "/dashboard/playground", label: "Playground", icon: PlayIcon },
   { href: "/dashboard/projects", label: "Projects", icon: FolderKanbanIcon },
   { href: "/dashboard/progress", label: "Progress", icon: TrendingUpIcon },
@@ -82,20 +81,20 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
   return (
     <aside
       className={cn(
-        "flex flex-col border-r border-border bg-sidebar transition-all duration-300",
+        "flex flex-col border-r border-slate-800 bg-slate-950 h-full min-h-screen transition-all duration-300",
         collapsed ? "w-16" : "w-60"
       )}
     >
-      <div className="flex h-14 items-center justify-between border-b border-border px-3">
+      {/* Sidebar Header */}
+      <div className="flex h-14 items-center justify-between border-b border-slate-800 px-3 bg-slate-950 shrink-0">
         {!collapsed && (
-          <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
-            <SparklesIcon className="size-5 text-blue-500 shrink-0" />
-            <span className="truncate text-sm">CodeCraft</span>
+          <Link href="/dashboard" className="flex items-center">
+            <span className="text-base font-extrabold text-white font-mono tracking-tight">CodeCraft</span>
           </Link>
         )}
         {collapsed && (
-          <Link href="/dashboard" className="mx-auto">
-            <SparklesIcon className="size-5 text-blue-500" />
+          <Link href="/dashboard" className="mx-auto text-sky-400 font-extrabold font-mono text-sm">
+            CC
           </Link>
         )}
         {isMobile ? (
@@ -103,7 +102,7 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
             variant="ghost"
             size="icon-sm"
             onClick={onClose}
-            className="shrink-0 text-slate-400 hover:text-white"
+            className="shrink-0 text-slate-400 hover:text-white cursor-pointer"
             title="Close Menu"
           >
             <X className="size-4" />
@@ -113,7 +112,7 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
             variant="ghost"
             size="icon-sm"
             onClick={() => setCollapsed(!collapsed)}
-            className={cn("shrink-0", collapsed && "mx-auto")}
+            className={cn("shrink-0 text-slate-400 hover:text-white cursor-pointer", collapsed && "mx-auto")}
           >
             {collapsed ? (
               <ChevronRightIcon className="size-4" />
@@ -124,7 +123,8 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
         )}
       </div>
 
-      <ScrollArea className="flex-1">
+      {/* Main Nav ScrollArea */}
+      <ScrollArea className="flex-1 bg-slate-950">
         <nav className="flex flex-col gap-1 p-2">
           {navItems.map((item) => {
             const isActive =
@@ -133,9 +133,10 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
             return (
               <Button
                 key={item.href}
-                variant={isActive ? "secondary" : "ghost"}
+                variant={isActive ? "secondary" : "ghost" }
                 className={cn(
-                  "justify-start",
+                  "justify-start text-xs font-medium cursor-pointer",
+                  isActive ? "bg-sky-600/20 text-sky-300 font-bold border border-sky-500/30" : "text-slate-400 hover:text-white hover:bg-slate-900",
                   collapsed && "justify-center px-0"
                 )}
                 render={<Link href={item.href} onClick={() => { if (isMobile && onClose) onClose(); }} />}
@@ -148,53 +149,56 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
         </nav>
       </ScrollArea>
 
-      <div className="border-t border-border p-2">
+      {/* Bottom Section: My Profile Button + User Avatar Card + Logout (Full Height, No Cutoff) */}
+      <div className="border-t border-slate-800 p-2.5 bg-slate-950 space-y-2 shrink-0">
+        {/* My Profile Button (Placed cleanly above Demo Student) */}
+        <Button
+          variant={pathname === "/dashboard/profile" ? "secondary" : "ghost"}
+          className={cn(
+            "w-full justify-start text-xs font-medium cursor-pointer",
+            pathname === "/dashboard/profile" ? "bg-sky-600 text-white font-bold" : "text-slate-300 hover:text-white hover:bg-slate-900 border border-slate-800/80",
+            collapsed && "justify-center px-0"
+          )}
+          render={<Link href="/dashboard/profile" onClick={() => { if (isMobile && onClose) onClose(); }} />}
+        >
+          <UserIcon className="size-4 shrink-0 text-sky-400" />
+          {!collapsed && <span className="ml-2 font-bold">My Profile</span>}
+        </Button>
+
+        {/* User Avatar Info Box */}
         <div
           className={cn(
-            "flex items-center gap-2 rounded-lg p-2",
-            collapsed && "justify-center"
+            "flex items-center gap-2 rounded-xl p-2 bg-slate-900/70 border border-slate-800/80",
+            collapsed && "justify-center p-1.5"
           )}
         >
-          <Avatar size="sm">
-            <AvatarFallback>{initials}</AvatarFallback>
+          <Avatar size="sm" className="border border-slate-700">
+            <AvatarFallback className="bg-sky-950 text-sky-300 font-bold text-xs">{initials}</AvatarFallback>
           </Avatar>
           {!collapsed && (
             <div className="flex-1 truncate">
-              <p className="truncate text-sm font-medium">
-                {user?.name || "User"}
+              <p className="truncate text-xs font-bold text-white">
+                {user?.name || "Demo Student"}
               </p>
-              <p className="truncate text-xs text-muted-foreground">
-                {user?.email || ""}
+              <p className="truncate text-[10px] text-slate-400 font-mono">
+                {user?.email || "student@example.com"}
               </p>
-              {isInstructor && (
-                <Badge variant="secondary" className="mt-1 text-xs">
-                  {user?.role === "admin" ? "Admin" : "Instructor"}
-                </Badge>
-              )}
             </div>
           )}
         </div>
+
+        {/* Logout Button */}
         <Button
           variant="ghost"
           className={cn(
-            "w-full justify-start text-muted-foreground hover:text-destructive",
+            "w-full justify-start text-xs text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 cursor-pointer h-8",
             collapsed && "justify-center px-0"
           )}
           onClick={logout}
         >
-          <LogOutIcon className="size-4 shrink-0" />
+          <LogOutIcon className="size-3.5 shrink-0" />
           {!collapsed && <span className="ml-2">Logout</span>}
         </Button>
-        {isMobile && onClose && (
-          <Button
-            variant="outline"
-            className="w-full mt-2 justify-center border-slate-800 text-slate-400 hover:text-white text-xs h-8"
-            onClick={onClose}
-          >
-            <X className="size-3.5 mr-1.5" />
-            Close Menu
-          </Button>
-        )}
       </div>
     </aside>
   );

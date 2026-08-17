@@ -90,12 +90,9 @@ export function Header({ onMenuToggle, children }: HeaderProps) {
         >
           <MenuIcon className="size-5" />
         </Button>
-        <Link href="/dashboard" className="flex items-center gap-1.5 font-bold">
-          <span className="flex size-6 items-center justify-center rounded-lg bg-sky-600 text-white font-bold text-xs shadow-sm">
-            ⚡
-          </span>
-          <span className="text-sm font-extrabold text-white font-mono tracking-tight">
-            CodeCraft<span className="text-sky-400">.ai</span>
+        <Link href="/dashboard" className="flex items-center">
+          <span className="text-base font-extrabold text-white font-mono tracking-tight">
+            CodeCraft
           </span>
         </Link>
       </div>

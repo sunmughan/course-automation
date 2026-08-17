@@ -36,7 +36,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center">
+      <div className="flex h-screen items-center justify-center bg-slate-950">
         <div className="space-y-4">
           <Skeleton className="mx-auto h-8 w-48" />
           <Skeleton className="h-4 w-64" />
@@ -50,22 +50,26 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-slate-950">
       <StudentProfileOnboardingModal />
 
-      <div className="hidden lg:block">
+      <div className="hidden lg:block h-full">
         <Sidebar />
       </div>
 
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetContent side="left" className="w-64 p-0 border-r border-slate-800 bg-slate-950 [&>button]:hidden">
+        <SheetContent
+          side="left"
+          showCloseButton={false}
+          className="w-60 p-0 border-0 bg-slate-950 shadow-2xl h-full min-h-screen overflow-hidden"
+        >
           <Sidebar isMobile onClose={() => setMobileOpen(false)} />
         </SheetContent>
       </Sheet>
 
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header onMenuToggle={() => setMobileOpen(true)} />
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-slate-950 text-slate-100">
           {children}
         </main>
       </div>

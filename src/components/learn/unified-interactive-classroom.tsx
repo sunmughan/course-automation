@@ -65,6 +65,7 @@ import {
   MicOff,
   Radio,
   Sliders,
+  PanelTop,
   Award,
   ArrowDown,
   CornerDownRight,
@@ -168,6 +169,9 @@ export function UnifiedInteractiveClassroom({
   // Mobile View Switcher: "notes" | "code" | "output"
   const [mobileActiveView, setMobileActiveView] = useState<"notes" | "code" | "output">("notes");
   const [isMobileToolsOpen, setIsMobileToolsOpen] = useState<boolean>(false);
+  const [showSubheaderCard, setShowSubheaderCard] = useState<boolean>(true);
+  const [isFloatingToolsModalOpen, setIsFloatingToolsModalOpen] = useState<boolean>(false);
+
 
   // Multi-File Code Editor State
   const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
