@@ -213,11 +213,11 @@ model Exercise {
   id            String   @id @default(cuid())
   title         String
   description   String
-  instructions  String
+  instructions  String?
   starterCode   String
   solutionCode  String
-  testCases     String
-  hints         String
+  testCases     String?
+  hints         String?
   lessonId      String
   difficulty    Int      @default(1)
   order         Int      @default(0)
