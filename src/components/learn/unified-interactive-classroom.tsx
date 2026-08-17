@@ -1738,16 +1738,16 @@ function buildCleanTopicBreakdown({
         : `${topicTitle || lessonTitle} is an essential chapter from the Node.js enterprise curriculum designed for high-performance backend engineering.`),
     whatItDoes:
       concepts && concepts.length > 0
-        ? concepts.map((c) => (language === "hi" ? `${c.title}: ${c.description}` : `${c.title} — ${c.description}`))
+        ? concepts.map((c) => (language === "hi" ? `${c.title}: ${c.description}` : `${c.title}: ${c.description}`))
         : [
             language === "hi"
               ? "इनपुट डेटा को प्रोसेस करके सही आउटपुट देता है."
               : "Processes inputs predictably and outputs expected results.",
             language === "hi"
-              ? "कोड को छोटे-छोटे समझने लायक मॉड्यूल्स में बांटता है."
+              ? "कोड को समझने लायक मॉड्यूल्स में बांटता है."
               : "Divides complex code into clean, modular building blocks.",
             language === "hi"
-              ? "एरर्स और अनपेक्षित बग्स को आने से रोकता है."
+              ? "एरर्स और अनपेक्षित बग्स को रोकता है."
               : "Guards against runtime errors and state corruption.",
           ],
     useCases:

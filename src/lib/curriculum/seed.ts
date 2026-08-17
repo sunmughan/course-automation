@@ -9,6 +9,21 @@ import { nextjsFullstackCourse } from './fullstack-nextjs-course';
 import { dataScienceCourse } from './data-science-course';
 import { devopsCourse } from './devops-course';
 import { mobileCourse } from './mobile-course';
+import { frontendCareerRoadmapCourse } from './frontend-career-roadmap';
+import { backendCareerRoadmapCourse } from './backend-career-roadmap';
+import { fullstackEnterpriseRoadmapCourse } from './fullstack-enterprise-roadmap';
+import { reactCompleteCourse } from './reactjs-complete-course';
+import { javascriptCompleteCourse } from './javascript-complete-course';
+import { htmlCssCompleteCourse } from './html-css-complete-course';
+import { typescriptCompleteCourse } from './typescript-complete-course';
+import { jqueryCompleteCourse } from './jquery-complete-course';
+import { algorithmsCompleteCourse } from './algorithms-complete-course';
+import { gitCompleteCourse } from './git-complete-course';
+import { pythonCompleteCourse } from './python-complete-course';
+import { phpCompleteCourse } from './php-complete-course';
+import { mysqlCompleteCourse } from './mysql-complete-course';
+import { postgresqlCompleteCourse } from './postgresql-complete-course';
+import { mongodbCompleteCourse } from './mongodb-complete-course';
 
 interface CourseSeed {
   title: string;
@@ -706,6 +721,21 @@ const courses: CourseSeed[] = [
     ],
   },
   nodejsBackendCourse as unknown as CourseSeed,
+  frontendCareerRoadmapCourse as unknown as CourseSeed,
+  backendCareerRoadmapCourse as unknown as CourseSeed,
+  fullstackEnterpriseRoadmapCourse as unknown as CourseSeed,
+  reactCompleteCourse as unknown as CourseSeed,
+  javascriptCompleteCourse as unknown as CourseSeed,
+  htmlCssCompleteCourse as unknown as CourseSeed,
+  typescriptCompleteCourse as unknown as CourseSeed,
+  jqueryCompleteCourse as unknown as CourseSeed,
+  algorithmsCompleteCourse as unknown as CourseSeed,
+  gitCompleteCourse as unknown as CourseSeed,
+  pythonCompleteCourse as unknown as CourseSeed,
+  phpCompleteCourse as unknown as CourseSeed,
+  mysqlCompleteCourse as unknown as CourseSeed,
+  postgresqlCompleteCourse as unknown as CourseSeed,
+  mongodbCompleteCourse as unknown as CourseSeed,
   phpBackendCourse as unknown as CourseSeed,
   laravelBackendCourse as unknown as CourseSeed,
   nextjsFullstackCourse as unknown as CourseSeed,
