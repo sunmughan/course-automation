@@ -1,3 +1,5 @@
+"use client";
+
 // Global safe interceptor for harmless Monaco Editor cancellation exceptions
 if (typeof window !== "undefined") {
   const origConsoleError = console.error;
@@ -17,7 +19,6 @@ if (typeof window !== "undefined") {
   };
 }
 
-"use client";
 
 // Helper to clean chapter prefix and capitalize title
 function getPhaseSortNumber(phaseTitle: string): number {
