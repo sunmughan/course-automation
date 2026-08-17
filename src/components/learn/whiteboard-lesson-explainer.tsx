@@ -34,6 +34,10 @@ import {
   Layers,
   ShieldCheck,
   FastForward,
+  Smile,
+  BrainCircuit,
+  AlertTriangle,
+  ArrowDownRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -43,6 +47,7 @@ import { speakText, stopSpeaking } from "@/lib/speech";
 import { getAuthHeaders } from "@/lib/fetch-helpers";
 
 export type ExplanationLanguage = "en" | "hi";
+export type ExplanationSimplicityMode = "easy" | "standard";
 
 export interface FlowStepNode {
   id: string;
@@ -76,6 +81,13 @@ export interface WhiteboardScene {
   explanationHi: string;
   analogyEn?: string;
   analogyHi?: string;
+  // Easy Learning & Memory Fields
+  easySummaryEn?: string;
+  easySummaryHi?: string;
+  memoryTrickEn?: string;
+  memoryTrickHi?: string;
+  problemVsSolutionEn?: { without: string; with: string };
+  problemVsSolutionHi?: { without: string; with: string };
   diagramNodes?: FlowStepNode[];
   codeSnippet?: {
     language: string;
@@ -124,6 +136,8 @@ export function WhiteboardLessonExplainer({
 }: WhiteboardLessonExplainerProps) {
   // English is default language; persisted across all courses until user changes it
   const [language, setLanguage] = useState<ExplanationLanguage>("en");
+  // Default to "easy" simplicity mode for effortless understanding
+  const [simplicityMode, setSimplicityMode] = useState<ExplanationSimplicityMode>("easy");
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
@@ -172,7 +186,7 @@ export function WhiteboardLessonExplainer({
     }
   };
 
-  // Generate multi-lingual scenes
+  // Generate multi-lingual scenes with easy memory tricks
   const scenes = useMemo(() => {
     return generateBilingualWhiteboardScenes({
       lessonTitle,
@@ -211,8 +225,8 @@ export function WhiteboardLessonExplainer({
 
     const textToSpeak =
       language === "hi"
-        ? `${currentScene.titleHi}. ${currentScene.handwrittenNotesHi.join(". ")}. ${currentScene.explanationHi}`
-        : `${currentScene.titleEn}. ${currentScene.handwrittenNotesEn.join(". ")}. ${currentScene.explanationEn}`;
+        ? `${currentScene.titleHi}. ${currentScene.easySummaryHi || ""}. ${currentScene.handwrittenNotesHi.join(". ")}. ${currentScene.explanationHi}`
+        : `${currentScene.titleEn}. ${currentScene.easySummaryEn || ""}. ${currentScene.handwrittenNotesEn.join(". ")}. ${currentScene.explanationEn}`;
 
     speakText({
       text: textToSpeak,
@@ -290,7 +304,7 @@ export function WhiteboardLessonExplainer({
           ...getAuthHeaders(),
         },
         body: JSON.stringify({
-          message: question,
+          message: `Explain in super simple words with an everyday real-life analogy: ${question}`,
           mode: "socratic",
           lessonTitle,
           topicTitle,
@@ -361,6 +375,9 @@ export function WhiteboardLessonExplainer({
   const activeAnalogy = language === "hi" ? currentScene.analogyHi : currentScene.analogyEn;
   const activeNotes = language === "hi" ? currentScene.handwrittenNotesHi : currentScene.handwrittenNotesEn;
   const activeKeyTakeaways = language === "hi" ? currentScene.keyTakeawaysHi : currentScene.keyTakeawaysEn;
+  const activeEasySummary = language === "hi" ? currentScene.easySummaryHi : currentScene.easySummaryEn;
+  const activeMemoryTrick = language === "hi" ? currentScene.memoryTrickHi : currentScene.memoryTrickEn;
+  const activeProblemVsSolution = language === "hi" ? currentScene.problemVsSolutionHi : currentScene.problemVsSolutionEn;
   const activeNodes = currentScene.diagramNodes || [];
   const currentActiveNode = activeNodes[activeFlowStep] || activeNodes[0];
 
@@ -392,8 +409,35 @@ export function WhiteboardLessonExplainer({
           </div>
         </div>
 
-        {/* Right: Language, Voice Narrator, Mic, Visualizer, Fullscreen */}
+        {/* Right: Simplicity Mode, Language, Voice Narrator, Mic, Visualizer, Fullscreen */}
         <div className="flex items-center gap-2 flex-wrap">
+          {/* Easy Learning Mode Switcher (ELI5) */}
+          <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+            <button
+              onClick={() => setSimplicityMode("easy")}
+              className={`flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                simplicityMode === "easy"
+                  ? "bg-amber-500 text-slate-950 shadow-xs font-extrabold"
+                  : "text-amber-400 hover:text-white"
+              }`}
+              title="Super Simple Everyday Explanation & Memory Tricks"
+            >
+              <Smile className="size-3.5 fill-current" />
+              <span>{language === "hi" ? "आसान भाषा (Easy)" : "Easy Mode (ELI5)"}</span>
+            </button>
+            <button
+              onClick={() => setSimplicityMode("standard")}
+              className={`flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                simplicityMode === "standard"
+                  ? "bg-slate-800 text-sky-400 shadow-xs font-bold"
+                  : "text-slate-400 hover:text-white"
+              }`}
+              title="Standard Architectural Details"
+            >
+              <span>{language === "hi" ? "स्टैंडर्ड" : "Standard"}</span>
+            </button>
+          </div>
+
           {/* Language Toggle */}
           <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
             <button
@@ -493,8 +537,8 @@ export function WhiteboardLessonExplainer({
                     ? "माइक सुन रहा है... अपना सवाल पूछें"
                     : "Listening to your voice... Speak your doubt"
                   : language === "hi"
-                  ? "AI टीचर का त्वरित उत्तर:"
-                  : "AI Tutor Instant Answer:"}
+                  ? "AI टीचर का सरल उत्तर:"
+                  : "AI Tutor Simple Answer:"}
               </span>
               <button
                 onClick={() => {
@@ -548,11 +592,87 @@ export function WhiteboardLessonExplainer({
                       // {activeSubtitle}
                     </span>
                   )}
+                  {simplicityMode === "easy" && (
+                    <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/40 text-[10px] gap-1">
+                      <Smile className="size-3" />
+                      {language === "hi" ? "आसान भाषा एक्टिव" : "Easy Mode Active"}
+                    </Badge>
+                  )}
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-2">
                   {activeTitle}
                 </h1>
               </div>
+
+              {/* 🌟 1. "सरल शब्दों में (1-Line Ultra Simple Summary)" Callout Banner */}
+              {activeEasySummary && (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 rounded-xl bg-gradient-to-r from-sky-950/80 via-slate-900 to-indigo-950/80 border border-sky-500/30 shadow-lg flex items-start gap-3"
+                >
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500/20 text-sky-300 shrink-0 mt-0.5">
+                    <Sparkles className="size-4" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-sky-400 font-mono block">
+                      {language === "hi" ? "🎯 1-लाइन में सरल सारांश (Crystal Clear Core)" : "🎯 1-Line Core Summary:"}
+                    </span>
+                    <p className="text-xs sm:text-sm font-semibold text-slate-100 leading-relaxed font-sans">
+                      {activeEasySummary}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* 🌟 2. "💡 दिमाग में बैठाने की ट्रिक & फॉर्मूला (5-Second Memory Card)" */}
+              {activeMemoryTrick && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="p-4 rounded-xl bg-gradient-to-r from-amber-950/70 via-slate-900 to-amber-950/50 border border-amber-500/40 shadow-xl space-y-2 relative overflow-hidden"
+                >
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <div className="flex items-center gap-2">
+                      <Lightbulb className="size-4 text-amber-400 animate-pulse" />
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-amber-300 font-mono">
+                        {language === "hi" ? "💡 दिमाग में बैठाने का फॉर्मूला (5-Second Memory Trick)" : "💡 5-Second Memory Formula (Never Forget):"}
+                      </span>
+                    </div>
+                    <Badge variant="outline" className="text-[10px] border-amber-500/40 text-amber-300 bg-amber-500/10">
+                      Exam &amp; Interview Trick
+                    </Badge>
+                  </div>
+                  <p className="text-xs sm:text-sm font-mono font-bold text-amber-200 bg-slate-950/80 p-3 rounded-lg border border-amber-500/30 overflow-x-auto whitespace-pre-wrap leading-relaxed">
+                    {activeMemoryTrick}
+                  </p>
+                </motion.div>
+              )}
+
+              {/* 🌟 3. "❌ इसके बिना क्या मुसीबत थी? ➔ ✅ इससे क्या आसान हुआ?" (Problem vs Solution) */}
+              {activeProblemVsSolution && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                  <div className="p-4 rounded-xl bg-rose-950/30 border border-rose-800/40 space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-rose-400 text-xs font-bold font-mono">
+                      <AlertTriangle className="size-3.5" />
+                      <span>{language === "hi" ? "❌ इसके बिना क्या दिक्कत थी?" : "❌ Problem Without This:"}</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                      {activeProblemVsSolution.without}
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-bold font-mono">
+                      <CheckCircle2 className="size-3.5" />
+                      <span>{language === "hi" ? "✅ इसको लगाने से क्या जादू हुआ?" : "✅ Magic Solution With This:"}</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                      {activeProblemVsSolution.with}
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Clean Structured Concept Cards */}
               {activeNotes.length > 0 && (
@@ -849,7 +969,7 @@ export function WhiteboardLessonExplainer({
                 </div>
               )}
 
-              {/* Master Explanation & Real-World Analogy */}
+              {/* Master Explanation & Real-World Desi Analogy */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
                   <div className="flex items-center gap-2">
@@ -868,7 +988,7 @@ export function WhiteboardLessonExplainer({
                     <div className="flex items-center gap-2">
                       <Lightbulb className="size-4 text-amber-400" />
                       <span className="text-xs font-bold uppercase tracking-wider text-amber-400 font-mono">
-                        {language === "hi" ? "रियल-वर्ल्ड उदाहरण (Mental Model)" : "Mental Model & Analogy"}
+                        {language === "hi" ? "🍰 देसी रियल-लाइफ उदाहरण (Mental Model)" : "🍰 Real-World Mental Model & Analogy"}
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans italic">
@@ -987,7 +1107,7 @@ export function WhiteboardLessonExplainer({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Dynamic Bilingual Scene Generator with Multi-Stage Deep Execution Flows
+// Dynamic Bilingual Scene Generator with Easy Memory Tricks & Desi Analogies
 // ─────────────────────────────────────────────────────────────────────────────
 function generateBilingualWhiteboardScenes({
   lessonTitle,
@@ -1007,15 +1127,27 @@ function generateBilingualWhiteboardScenes({
   const scenes: WhiteboardScene[] = [];
   let sceneNum = 1;
 
-  // Scene 1: Introduction & Mental Model
+  // Scene 1: Introduction & Mental Model (Ultra-Clear)
   scenes.push({
     id: `scene_${sceneNum}`,
     sceneNumber: sceneNum++,
-    titleEn: `Introduction to ${lessonTitle}`,
-    titleHi: `${lessonTitle} का परिचय और फंडामेंटल`,
-    subtitleEn: `Core Architecture & Pipeline`,
-    subtitleHi: `मुख्य आर्किटेक्चर और पाइपलाइन`,
+    titleEn: `Mastering ${lessonTitle}`,
+    titleHi: `${lessonTitle} को समझें बिल्कुल आसान भाषा में`,
+    subtitleEn: `Core Mental Model & 5-Second Memory Trick`,
+    subtitleHi: `मेंटल मॉडल और याद रखने की ट्रिक`,
     type: "concept",
+    easySummaryEn: `${lessonTitle} is simply a proven design pattern to turn raw inputs into predictable, fast, and bug-free software.`,
+    easySummaryHi: `${lessonTitle} का सीधा मतलब है: कम मेहनत में तेज, साफ़ और बिना एरर वाला कोड लिखना जो कभी क्रैश न हो!`,
+    memoryTrickEn: `💡 FORMULA: Input (User/Client) ➔ Pure Logic Transformation ➔ Output UI / JSON Response`,
+    memoryTrickHi: `💡 याद रखने का फॉर्मूला: इनपुट आया ➔ लॉजिक प्रोसेस हुआ ➔ रिजल्ट स्क्रीन पर दिखा! (Input ➔ Process ➔ Output)`,
+    problemVsSolutionEn: {
+      without: "Messy spaghetti code, unpredictable bugs, page freeze, and slow re-renders.",
+      with: "Modular, reusable components and clean API endpoints that are 10x easier to maintain.",
+    },
+    problemVsSolutionHi: {
+      without: "हजारों लाइनों का उलझा हुआ कोड, बार-बार पेज का हैंग होना और एरर ढूंढने में घंटों बर्बाद होना।",
+      with: "साफ़-सुथरे छोटे ब्लॉक्स (Components/APIs) जिन्हें एक बार बनाओ और कहीं भी बार-बार यूज़ करो!",
+    },
     handwrittenNotesEn: [
       `Why ${lessonTitle} is fundamental in modern engineering`,
       `Core mental model: Moving from theory to practical implementation`,
@@ -1031,8 +1163,8 @@ function generateBilingualWhiteboardScenes({
       `In this lesson, we break down **${lessonTitle}** step-by-step. Master the underlying mechanics, data flow, and industry best practices.`,
     explanationHi:
       `इस पाठ में हम **${lessonTitle}** को बिल्कुल बेसिक से लेकर एडवांस लेवल तक स्टेप-बाय-स्टेप समझेंगे। ध्यान से देखें कि कैसे क्लाइंट का रिक्वेस्ट सिस्टम के अंदर प्रोसेस होता है और सही डेटा रिटर्न करता है।`,
-    analogyEn: `Think of this concept like the blueprint of a skyscraper: before laying the foundation, we must understand the load-bearing beams and execution pipeline.`,
-    analogyHi: `इसे एक ऑटोमेटेड डिलीवरी सिस्टम की तरह समझें: जैसे ही पार्सल आता है, उसे सही काउंटर पर भेजा जाता है और बिना रुके तुरंत डिलीवर किया जाता है।`,
+    analogyEn: `Think of LEGO blocks: instead of carving an entire house from a single massive rock, you assemble tiny, reusable blocks (Button, Card, API). If one block needs repair, you replace only that block without tearing down the house!`,
+    analogyHi: `जैसे LEGO के छोटे-छोटे प्लास्टिक ब्लॉक्स को जोड़कर पूरा घर बनाया जाता है, वैसे ही कोडिंग में हम छोटे-छोटे फंक्शन्स और कंपोनेंट्स जोड़कर पूरी बड़ी वेबसाइट या ऐप बनाते हैं!`,
     diagramNodes: [
       {
         id: "step_1_trigger",
@@ -1107,17 +1239,63 @@ function generateBilingualWhiteboardScenes({
     keyTakeawaysHi: ["मूल मेंटल मॉडल", "फाउंडेशन सिद्धांत", "आर्किटेक्चर पाइपलाइन"],
   });
 
-  // Scene 2..N: Deep Dive into Each Concept
+  // Scene 2..N: Deep Dive into Each Concept with Custom Desi Analogies
   if (concepts && concepts.length > 0) {
     concepts.forEach((concept, cIdx) => {
+      // Generate custom analogies based on concept title
+      const titleLower = concept.title.toLowerCase();
+      let desiAnalogy = "जैसे एक रेस्टोरेंट में वेटर (Handler) कस्टमर से आर्डर लेता है और शेफ (Logic) को देता है!";
+      let memoryFormula = `const [state, setState] = useState(initialValue); // Rule: Never mutate direct!`;
+      let withoutText = "मैन्युअल DOM अपडेट करने में कोड बिखर जाता था और बग्स आते थे।";
+      let withText = "React/Node ऑटोमेटिक सब कुछ सिंक में रखता है!";
+
+      if (titleLower.includes("state") || titleLower.includes("usestate")) {
+        desiAnalogy = "🏏 क्रिकेट मैच का स्कोरबोर्ड: जैसे-जैसे रन बनते हैं, स्कोरबोर्ड पर नंबर बदलता है और सबको नया स्कोर दिखता है। State वही स्कोरबोर्ड है!";
+        memoryFormula = "💡 FORMULA: const [data, setData] = useState(शुरुआती_वैल्यू); // setData(नया_डेटा)";
+        withoutText = "नॉर्मल variable (let count = 0) बदलने पर स्क्रीन पर नंबर नहीं बदलता था!";
+        withText = "useState लगाते ही बटन दबाते ही स्क्रीन अपने आप नया नंबर दिखाती है!";
+      } else if (titleLower.includes("prop")) {
+        desiAnalogy = "🆔 स्कूल/कॉलेज का ID कार्ड: ID कार्ड का फॉर्मेट (Design) सबका सेम होता है, लेकिन नाम और फोटो (Props) सबका अलग होता है!";
+        memoryFormula = "💡 FORMULA: <Component name=\"Aman\" role=\"Dev\" /> ➔ function Card(props) { return props.name }";
+        withoutText = "हर स्टूडेंट के लिए अलग से 100 HTML कार्ड कॉपी-पेस्ट करने पड़ते थे।";
+        withText = "1 मास्टर कंपोनेंट बनाया और Props भेजकर लाखों कार्ड 1 सेकंड में बन गए!";
+      } else if (titleLower.includes("event") || titleLower.includes("click")) {
+        desiAnalogy = "🔔 घर की डोरबेल: जब कोई घंटी दबाता है (Event: Click), तो आवाज़ आती है और आप दरवाज़ा खोलते हैं (Handler function)!";
+        memoryFormula = "💡 FORMULA: onClick={handleClick} // DHYAN: onClick={handleClick()} ब्रैकेट मत लगाना!";
+        withoutText = "यूजर के बटन दबाने पर वेबसाइट कोई रिस्पॉन्स नहीं दे पाती थी।";
+        withText = "क्लिक, टाइपिंग और माउस मूवमेंट्स पर मनचाहा एक्शन तुरंत ट्रिगर होता है!";
+      } else if (titleLower.includes("route") || titleLower.includes("express")) {
+        desiAnalogy = "🗄️ अलमारी के अलग-अलग दराज: कपड़े के लिए अलग दराज (/clothes) और किताबों के लिए अलग (/books). Express routes वही दराज हैं!";
+        memoryFormula = "💡 FORMULA: app.get('/path', (req, res) => res.json(data));";
+        withoutText = "हर URL के लिए भारी-भरकम कोड लिखना पड़ता था।";
+        withText = "1 लाइन में नया API endpoint बन जाता है!";
+      } else if (titleLower.includes("middleware")) {
+        desiAnalogy = "✈️ एयरपोर्ट सिक्योरिटी चेक: फ्लाइट में बैठने से पहले लगेज स्कैन और टिकट चेक (Middleware) होता है, फिर वो बोलते हैं 'Next Gate Jao' (next())!";
+        memoryFormula = "💡 FORMULA: function auth(req, res, next) { if(ok) next(); else res.status(401); }";
+        withoutText = "हर एक API route में बार-बार वही 50 लाइनों का सिक्योरिटी कोड कॉपी-पेस्ट करना पड़ता था।";
+        withText = "1 Middleware लगाया और सारे routes अपने आप सुरक्षित हो गए!";
+      }
+
       scenes.push({
         id: `scene_${sceneNum}`,
         sceneNumber: sceneNum++,
         titleEn: concept.title,
-        titleHi: `${concept.title} (गहराई से समझें)`,
+        titleHi: `${concept.title} (सरल समझ)`,
         subtitleEn: `Concept 0${cIdx + 1} Breakdown`,
         subtitleHi: `कॉन्सेप्ट 0${cIdx + 1} का विश्लेषण`,
         type: "deep_dive",
+        easySummaryEn: `In simple terms: ${concept.title} solves a specific problem so you write less code with zero confusion.`,
+        easySummaryHi: `सरल शब्दों में: ${concept.title} का काम है आपके कोड को छोटा, आसान और एरर-फ्री बनाना।`,
+        memoryTrickEn: memoryFormula,
+        memoryTrickHi: memoryFormula,
+        problemVsSolutionEn: {
+          without: withoutText,
+          with: withText,
+        },
+        problemVsSolutionHi: {
+          without: withoutText,
+          with: withText,
+        },
         handwrittenNotesEn: [
           `Key rule: ${concept.title} dictates how state flows through the system`,
           `Internal mechanics: Execution lifecycle and memory boundaries`,
@@ -1129,9 +1307,9 @@ function generateBilingualWhiteboardScenes({
           `आम गलतियां: बिगिनर्स अक्सर एज केसेस और एरर हैंडलिंग मिस कर देते हैं।`,
         ],
         explanationEn: concept.description,
-        explanationHi: `${concept.description}\n\n**टीचर टिप:** इस कॉन्सेप्ट को कोड में इस्तेमाल करते वक्त हमेशा ध्यान रखें कि फंक्शनल प्योरिटी और डेटा सेफ्टी बनी रहे।`,
-        analogyEn: `Imagine a postal distribution center: every packet is verified, labeled with metadata, and routed through non-blocking queues.`,
-        analogyHi: `जैसे रेलवे सिग्नल सिस्टम में हर ट्रेन को ट्रैक पर बिना टकराए सही प्लेटफॉर्म पर भेजा जाता है, वैसे ही यह कॉन्सेप्ट काम करता है।`,
+        explanationHi: `${concept.description}\n\n**💡 टीचर टिप:** इस कॉन्सेप्ट को कोड में इस्तेमाल करते वक्त हमेशा ध्यान रखें कि फंक्शनल प्योरिटी और डेटा सेफ्टी बनी रहे।`,
+        analogyEn: desiAnalogy,
+        analogyHi: desiAnalogy,
         diagramNodes: [
           {
             id: `c_${cIdx}_s1`,
@@ -1219,6 +1397,10 @@ function generateBilingualWhiteboardScenes({
       subtitleEn: `Hands-On Implementation Walkthrough`,
       subtitleHi: `स्टेप-बाय-स्टेप कोडिंग विश्लेषण`,
       type: "code_breakdown",
+      easySummaryEn: `Look at this 3-step practical pattern: clean inputs, safe processing, clean return.`,
+      easySummaryHi: `इस कोड में बस 3 मुख्य बातें हैं: सही इनपुट लेना, सुरक्षित गणना करना, और साफ़ रिजल्ट दिखाना।`,
+      memoryTrickEn: `💡 BLUEPRINT: Guard Clause (if invalid return error) ➔ Execute Logic ➔ Return Result`,
+      memoryTrickHi: `💡 याद रखने का नियम: गलत इनपुट रोको ➔ लॉजिक चलाओ ➔ रिजल्ट स्क्रीन पर दो!`,
       handwrittenNotesEn: [
         `Observe the clean separation of concerns and type-safe variables`,
         `Notice the error boundary handling invalid inputs gracefully`,
@@ -1332,23 +1514,23 @@ function generateBilingualWhiteboardScenes({
     explanationEn: `Let's make sure you have solid clarity on **${lessonTitle}** before heading into the coding exercises.`,
     explanationHi: `कोडिंग एक्सरसाइज शुरू करने से पहले आइए सुनिश्चित करें कि आपका फंडामेंटल कॉन्सेप्ट बिल्कुल क्रिस्टल क्लियर है।`,
     quizQuestion: {
-      questionEn: `What is the primary architectural principle demonstrated in ${lessonTitle}?`,
-      questionHi: `${lessonTitle} में सबसे मुख्य आर्किटेक्चरल सिद्धांत क्या है?`,
+      questionEn: `What is the easiest way to remember ${lessonTitle}?`,
+      questionHi: `${lessonTitle} को सबसे आसानी से याद रखने का क्या नियम है?`,
       optionsEn: [
-        `Strict separation of concerns with predictable state transitions and error handling`,
-        `Writing all logic in a single monolithic function for faster execution`,
-        `Ignoring edge cases and relying solely on global mutable state`,
-        `Bypassing runtime validation to reduce lines of code`,
+        `Break big problems into small, reusable pieces that take inputs and produce predictable outputs`,
+        `Memorize 1000 lines of complex syntax without understanding the mental model`,
+        `Avoid using functions or components and write all logic in a single file`,
+        `Ignore error handling and assume data will never be empty`,
       ],
       optionsHi: [
-        `साफ-सुथरा सेपरेशन, प्रेडिक्टेबल स्टेट फ्लो और मजबूत एरर हैंडलिंग`,
-        `सारे कोड को एक ही विशाल फंक्शन में बिना किसी स्ट्रक्चर के लिखना`,
-        `एज केसेस को नजरअंदाज करके केवल ग्लोबल वेरिएबल्स पर निर्भर रहना`,
-        `कम कोड लिखने के चक्कर में इनपुट वैलिडेशन को पूरी तरह छोड़ देना`,
+        `बड़ी समस्या को छोटे-छोटे रियूजेबल टुकड़ों (Components/APIs) में तोड़ना जो सही इनपुट पर सही आउटपुट देते हैं`,
+        `बिना समझे 1000 लाइनों का कठिन सिंटैक्स रट्टा मारना`,
+        `फंक्शन्स को छोड़ कर सारा कोड एक ही फाइल में बिना स्ट्रक्चर के लिखना`,
+        `एरर हैंडलिंग को नजरअंदाज कर देना`,
       ],
       correctIndex: 0,
-      explanationEn: `Correct! Modern software engineering relies on strict separation of concerns, defensive programming against edge cases, and predictable data flow.`,
-      explanationHi: `बिल्कुल सही! आधुनिक सॉफ्टवेयर इंजीनियरिंग में मॉड्यूलरिटी, एरर सेफ्टी और प्रेडिक्टेबल डेटा फ्लो सबसे महत्वपूर्ण होता है।`,
+      explanationEn: `Correct! Breaking complexity into simple, modular pieces is the fundamental secret of senior software engineering.`,
+      explanationHi: `बिल्कुल सही! बड़ी और कठिन चीज़ों को छोटे-छोटे आसान ब्लॉक्स में तोड़ना ही अच्छे सॉफ्टवेयर इंजीनियर की पहचान है।`,
     },
     keyTakeawaysEn: ["Mastery Check Complete", "Ready for Code Playground", "100% Prepared"],
     keyTakeawaysHi: ["मास्टरी चेक पूरा", "प्लेग्राउंड के लिए तैयार", "100% रेडी"],
