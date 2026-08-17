@@ -1,3 +1,4 @@
+"use client";
 
 // Helper to clean chapter prefix and capitalize title
 function formatCleanLessonTitle(rawTitle: string): string {
@@ -11,7 +12,7 @@ function formatCleanLessonTitle(rawTitle: string): string {
     .join(" ");
 }
 
-"use client";
+
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -58,6 +59,7 @@ import {
   MicOff,
   Radio,
   Sliders,
+  Award,
   ArrowDown,
   CornerDownRight,
   Server,
@@ -75,7 +77,7 @@ import { CallStack } from "@/components/visualization/call-stack";
 import { MemoryView } from "@/components/visualization/memory-view";
 
 export type ExplanationLanguage = "en" | "hi";
-export type FloatingPanelType = "flow" | "vscode_guide" | "ai_tutor" | "memory";
+export type FloatingPanelType = "flow" | "vscode_guide" | "ai_tutor" | "memory" | "quiz" | "interview";
 export type ActiveEditorFile = "app" | "html" | "css" | "server";
 
 export interface ChapterItem {
@@ -150,6 +152,12 @@ export function UnifiedInteractiveClassroom({
   // Chapters Sidebar Drawer State
   const [isChaptersDrawerOpen, setIsChaptersDrawerOpen] = useState<boolean>(false);
   const [chapterSearchQuery, setChapterSearchQuery] = useState<string>("");
+
+  // Quiz & Interview State
+  const [selectedQuizOption, setSelectedQuizOption] = useState<number | null>(null);
+  const [isQuizSubmitted, setIsQuizSubmitted] = useState<boolean>(false);
+  const [quizScore, setQuizScore] = useState<number>(0);
+  const [revealedInterviewQuestions, setRevealedInterviewQuestions] = useState<Record<number, boolean>>({});
 
   // Multi-File Code Editor State
   const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
@@ -603,6 +611,34 @@ export function UnifiedInteractiveClassroom({
           >
             <Layers className="size-3.5 text-purple-300" />
             <span>Memory</span>
+          </button>
+
+          {/* 📝 Topic Quiz & Practice */}
+          <button
+            onClick={() => handleTogglePanel("quiz")}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+              activeRightPanel === "quiz"
+                ? "bg-emerald-600 text-white shadow-md font-bold ring-1 ring-emerald-400"
+                : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+            title="Interactive Quiz & Knowledge Check"
+          >
+            <HelpCircle className="size-3.5 text-emerald-300" />
+            <span>Quiz</span>
+          </button>
+
+          {/* 💼 Interview Questions & Answers */}
+          <button
+            onClick={() => handleTogglePanel("interview")}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+              activeRightPanel === "interview"
+                ? "bg-cyan-600 text-white shadow-md font-bold ring-1 ring-cyan-400"
+                : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+            title="Senior Interview Questions & Solutions"
+          >
+            <Award className="size-3.5 text-cyan-300" />
+            <span>Interview Q&amp;A</span>
           </button>
 
           {/* 🎙️ Voice Microphone Assistant */}
@@ -1109,6 +1145,22 @@ export function UnifiedInteractiveClassroom({
                     </span>
                   </>
                 )}
+                {activeRightPanel === "quiz" && (
+                  <>
+                    <HelpCircle className="size-4 text-emerald-400" />
+                    <span className="text-xs font-bold text-emerald-300 uppercase font-mono">
+                      📝 Topic Knowledge Quiz
+                    </span>
+                  </>
+                )}
+                {activeRightPanel === "interview" && (
+                  <>
+                    <Award className="size-4 text-cyan-400" />
+                    <span className="text-xs font-bold text-cyan-300 uppercase font-mono">
+                      💼 Senior Interview Q&amp;A
+                    </span>
+                  </>
+                )}
               </div>
 
               <button
@@ -1504,6 +1556,137 @@ npm run dev`}
                       currentStep={events.length}
                     />
                   </div>
+                </div>
+              )}
+
+              {/* TOOL E: 📝 INTERACTIVE TOPIC QUIZ & PRACTICE */}
+              {activeRightPanel === "quiz" && (
+                <div className="space-y-4 text-xs">
+                  <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-emerald-400 font-mono uppercase">
+                        Question 1 of 1 · Practice Quiz
+                      </span>
+                      <Badge className="bg-emerald-500/20 text-emerald-300 text-[10px]">
+                        Instant Feedback
+                      </Badge>
+                    </div>
+
+                    <p className="text-xs text-white font-sans font-medium leading-relaxed">
+                      {language === "hi"
+                        ? `इस टॉपिक (${topicData.title}) के संदर्भ में सबसे मुख्य और सही कथन कौन-सा है?`
+                        : `What is the primary architectural purpose and rule for ${topicData.title}?`}
+                    </p>
+
+                    <div className="space-y-2">
+                      {[
+                        topicData.seniorRule,
+                        "It blocks all concurrent user connections until memory is completely freed.",
+                        "It is only used in frontend browsers and cannot run on server environments.",
+                        "It replaces all database indexes and removes the need for error handling."
+                      ].map((opt, optIdx) => {
+                        const isSelected = selectedQuizOption === optIdx;
+                        const isCorrect = optIdx === 0;
+
+                        return (
+                          <button
+                            key={optIdx}
+                            onClick={() => {
+                              setSelectedQuizOption(optIdx);
+                              setIsQuizSubmitted(true);
+                            }}
+                            className={`w-full p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
+                              isQuizSubmitted
+                                ? isCorrect
+                                  ? "bg-emerald-950/80 border-emerald-500 text-emerald-200 font-bold ring-1 ring-emerald-400/40"
+                                  : isSelected
+                                  ? "bg-rose-950/80 border-rose-500 text-rose-200 ring-1 ring-rose-400/40"
+                                  : "bg-slate-900/40 border-slate-800 text-slate-500"
+                                : isSelected
+                                ? "bg-sky-950 border-sky-400 text-sky-200 font-bold"
+                                : "bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white"
+                            }`}
+                          >
+                            <div className="flex items-start gap-2">
+                              <span className="flex size-4 items-center justify-center rounded bg-slate-800 text-[10px] font-mono shrink-0 mt-0.5">
+                                {String.fromCharCode(65 + optIdx)}
+                              </span>
+                              <span className="leading-relaxed">{opt}</span>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {isQuizSubmitted && (
+                      <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5 animate-in fade-in">
+                        <span className={`font-bold font-mono text-xs block ${selectedQuizOption === 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                          {selectedQuizOption === 0 ? "🎉 Correct Answer!" : "❌ Incorrect Choice!"}
+                        </span>
+                        <p className="text-[11px] text-slate-300 font-sans leading-relaxed">
+                          <strong>Explanation:</strong> {topicData.seniorRule}. {topicData.definition}
+                        </p>
+                        <button
+                          onClick={() => {
+                            setIsQuizSubmitted(false);
+                            setSelectedQuizOption(null);
+                          }}
+                          className="mt-1 text-[10px] text-sky-400 hover:text-sky-300 font-mono font-bold cursor-pointer"
+                        >
+                          ↻ Try Quiz Again
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* TOOL F: 💼 TOP INTERVIEW QUESTIONS & MODEL ANSWERS */}
+              {activeRightPanel === "interview" && (
+                <div className="space-y-3 text-xs">
+                  {[
+                    {
+                      q: `How does ${topicData.title} work under the hood in production?`,
+                      a: `${topicData.definition} Under the hood, it executes predictably in the Call Stack and delegates async operations to non-blocking runtime workers, avoiding event loop deadlocks.`
+                    },
+                    {
+                      q: `What is the biggest pitfall or mistake developers make with ${topicData.title}?`,
+                      a: `Mistake: ${topicData.withoutThis} Senior developers follow this golden rule: "${topicData.seniorRule}".`
+                    },
+                    {
+                      q: `Why should an engineering team adopt ${topicData.title}?`,
+                      a: `Key Superpower: ${topicData.withThis} It provides high throughput, clean separation of concerns, and robust error resilience.`
+                    }
+                  ].map((qa, iIdx) => {
+                    const isRevealed = Boolean(revealedInterviewQuestions[iIdx]);
+
+                    return (
+                      <div key={iIdx} className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="font-bold text-white font-mono text-xs flex items-start gap-1.5">
+                            <span className="text-cyan-400 font-extrabold">Q{iIdx + 1}:</span>
+                            <span>{qa.q}</span>
+                          </span>
+                        </div>
+
+                        <button
+                          onClick={() => setRevealedInterviewQuestions(prev => ({ ...prev, [iIdx]: !prev[iIdx] }))}
+                          className="text-[10px] font-mono font-bold text-cyan-400 hover:text-cyan-300 cursor-pointer flex items-center gap-1"
+                        >
+                          {isRevealed ? "Hide Answer ▲" : "Reveal Senior Answer ▼"}
+                        </button>
+
+                        {isRevealed && (
+                          <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800/80 text-[11px] text-slate-300 font-sans leading-relaxed animate-in fade-in space-y-1">
+                            <span className="text-[10px] font-mono font-bold text-emerald-400 block">
+                              Model Answer (FAANG Standard):
+                            </span>
+                            <p>{qa.a}</p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>

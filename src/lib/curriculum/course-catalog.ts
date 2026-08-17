@@ -6,6 +6,10 @@ import { fullstackEnterpriseRoadmapCourse } from './fullstack-enterprise-roadmap
 import { nodejsBackendCourse } from './backend-nodejs-course';
 import { nextjsFullstackCourse } from './fullstack-nextjs-course';
 import { aiPromptEngineeringCourse } from './ai-course';
+import { enterpriseDevopsCicdCourse } from './devops-cloud-cicd-course';
+import { aiAutomationAgentsCourse } from './ai-automation-agents-course';
+import { modernUiLibrariesCourse } from './frontend-modern-ui-libraries-course';
+import { backendSystemDesignCourse } from './backend-system-design-course';
 import { reactCompleteCourse } from './reactjs-complete-course';
 import { javascriptCompleteCourse } from './javascript-complete-course';
 import { htmlCssCompleteCourse } from './html-css-complete-course';
@@ -58,6 +62,10 @@ export const ALL_COURSES = [
   nodejsBackendCourse,
   nextjsFullstackCourse,
   aiPromptEngineeringCourse,
+  enterpriseDevopsCicdCourse,
+  aiAutomationAgentsCourse,
+  modernUiLibrariesCourse,
+  backendSystemDesignCourse,
   reactCompleteCourse,
   javascriptCompleteCourse,
   htmlCssCompleteCourse,
@@ -106,6 +114,7 @@ export const ALL_COURSES = [
 
 export const FRONTEND_COURSES = [
   frontendCareerRoadmapCourse,
+  modernUiLibrariesCourse,
   reactCompleteCourse,
   javascriptCompleteCourse,
   htmlCssCompleteCourse,
@@ -118,6 +127,7 @@ export const FRONTEND_COURSES = [
 export const BACKEND_COURSES = [
   backendCareerRoadmapCourse,
   nodejsBackendCourse,
+  backendSystemDesignCourse,
   javaCompleteCourse,
   springCompleteCourse,
   hibernateCompleteCourse,
@@ -153,6 +163,7 @@ export const DATABASE_COURSES = [
 ];
 
 export const DEVOPS_COURSES = [
+  enterpriseDevopsCicdCourse,
   gitCompleteCourse,
   linuxCompleteCourse,
   bashCompleteCourse,
@@ -173,6 +184,7 @@ export const COMPUTERSCIENCE_COURSES = [
 
 export const DATASCIENCE_COURSES = [
   aiPromptEngineeringCourse,
+  aiAutomationAgentsCourse,
   pythonCompleteCourse,
   rCompleteCourse,
   matlabCompleteCourse,
