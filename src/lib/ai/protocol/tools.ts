@@ -275,8 +275,8 @@ Provide intuitive explanations, concrete code examples, and highlight practical 
         prisma.topic.findMany({
           where: {
             OR: [
-              { title: { contains: query, mode: "insensitive" } },
-              { description: { contains: query, mode: "insensitive" } },
+              { title: { contains: query } },
+              { description: { contains: query } },
             ],
           },
           take: limit,
@@ -285,8 +285,8 @@ Provide intuitive explanations, concrete code examples, and highlight practical 
         prisma.lesson.findMany({
           where: {
             OR: [
-              { title: { contains: query, mode: "insensitive" } },
-              { content: { contains: query, mode: "insensitive" } },
+              { title: { contains: query } },
+              { content: { contains: query } },
             ],
           },
           take: limit,
