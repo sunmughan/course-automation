@@ -30,12 +30,14 @@ import {
   SlidersHorizontalIcon,
   BarChart3Icon,
   AwardIcon,
+  UserIcon,
 } from "lucide-react";
 import { useState } from "react";
 
 const studentNavItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboardIcon },
   { href: "/dashboard/courses", label: "Courses", icon: BookOpenIcon },
+  { href: "/dashboard/profile", label: "My Profile & Career", icon: UserIcon },
   { href: "/dashboard/playground", label: "Playground", icon: PlayIcon },
   { href: "/dashboard/projects", label: "Projects", icon: FolderKanbanIcon },
   { href: "/dashboard/progress", label: "Progress", icon: TrendingUpIcon },

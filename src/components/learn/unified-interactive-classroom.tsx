@@ -165,6 +165,9 @@ export function UnifiedInteractiveClassroom({
   const [quizScore, setQuizScore] = useState<number>(0);
   const [revealedInterviewQuestions, setRevealedInterviewQuestions] = useState<Record<number, boolean>>({});
 
+  // Mobile View Switcher: "notes" | "code" | "output"
+  const [mobileActiveView, setMobileActiveView] = useState<"notes" | "code" | "output">("notes");
+
   // Multi-File Code Editor State
   const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
   const [appCode, setAppCode] = useState<string>(
@@ -561,8 +564,36 @@ export function UnifiedInteractiveClassroom({
           </h1>
         </div>
 
-        {/* Center/Right: Floating Tools Toggles (Flow, VS Code, AI, Memory, Mic) */}
-        <div className="flex items-center gap-1.5 flex-wrap">
+        {/* Mobile View Switcher (Visible on small screens) */}
+        <div className="flex sm:hidden items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+          <button
+            onClick={() => setMobileActiveView("notes")}
+            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              mobileActiveView === "notes" ? "bg-sky-600 text-white" : "text-slate-400"
+            }`}
+          >
+            📖 Notes
+          </button>
+          <button
+            onClick={() => setMobileActiveView("code")}
+            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              mobileActiveView === "code" ? "bg-sky-600 text-white" : "text-slate-400"
+            }`}
+          >
+            💻 Code
+          </button>
+          <button
+            onClick={() => setMobileActiveView("output")}
+            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              mobileActiveView === "output" ? "bg-sky-600 text-white" : "text-slate-400"
+            }`}
+          >
+            ⚡ Output
+          </button>
+        </div>
+
+        {/* Center/Right: Floating Tools Toggles (Hidden on very small mobile, visible on tablet+) */}
+        <div className="hidden sm:flex items-center gap-1.5 flex-wrap">
           {/* ⚡ Live Visual Flow Toggle */}
           <button
             onClick={() => handleTogglePanel("flow")}
@@ -979,51 +1010,51 @@ export function UnifiedInteractiveClassroom({
         <div className="flex-1 flex flex-col min-h-0 bg-slate-950 border-r border-slate-800">
           {/* File Switcher & Action Header */}
           <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-xs shrink-0 flex-wrap gap-2">
-            {/* Multi-File Tabs */}
-            <div className="flex items-center gap-1 overflow-x-auto">
+            {/* Multi-File Tabs with Clean Tech Icons */}
+            <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
               <button
                 onClick={() => setActiveFile("server")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                   activeFile === "server"
-                    ? "bg-emerald-600 text-white font-bold"
+                    ? "bg-emerald-600 text-white shadow-xs"
                     : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
                 }`}
               >
                 <Cpu className="size-3 text-emerald-300" />
-                server.js (Node.js)
+                <span>server.js</span>
               </button>
               <button
                 onClick={() => setActiveFile("app")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                   activeFile === "app"
-                    ? "bg-sky-600 text-white font-bold"
+                    ? "bg-sky-600 text-white shadow-xs"
                     : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
                 }`}
               >
                 <Sparkles className="size-3 text-sky-300" />
-                App.jsx (React)
+                <span>App.jsx</span>
               </button>
               <button
                 onClick={() => setActiveFile("html")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                   activeFile === "html"
-                    ? "bg-amber-600 text-white font-bold"
+                    ? "bg-amber-600 text-white shadow-xs"
                     : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
                 }`}
               >
                 <FileText className="size-3 text-amber-300" />
-                index.html
+                <span>index.html</span>
               </button>
               <button
                 onClick={() => setActiveFile("css")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                   activeFile === "css"
-                    ? "bg-indigo-600 text-white font-bold"
+                    ? "bg-indigo-600 text-white shadow-xs"
                     : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
                 }`}
               >
                 <Palette className="size-3 text-indigo-300" />
-                style.css
+                <span>style.css</span>
               </button>
             </div>
 
