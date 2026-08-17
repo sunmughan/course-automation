@@ -49,6 +49,8 @@ import {
   CornerDownRight,
   Server,
   Monitor,
+  Search,
+  ListOrdered,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -62,6 +64,14 @@ import { MemoryView } from "@/components/visualization/memory-view";
 export type ExplanationLanguage = "en" | "hi";
 export type FloatingPanelType = "flow" | "vscode_guide" | "ai_tutor" | "memory";
 export type ActiveEditorFile = "app" | "html" | "css" | "server";
+
+export interface ChapterItem {
+  id: string;
+  title: string;
+  order: number;
+  moduleTitle: string;
+  isCompleted?: boolean;
+}
 
 interface ConceptItem {
   id: string;
@@ -78,6 +88,7 @@ interface ExampleItem {
 }
 
 interface UnifiedInteractiveClassroomProps {
+  currentLessonId?: string;
   lessonTitle: string;
   topicTitle: string;
   courseTitle: string;
@@ -86,15 +97,18 @@ interface UnifiedInteractiveClassroomProps {
   lessonExplanation?: string;
   concepts: ConceptItem[];
   examples: ExampleItem[];
+  chaptersList?: ChapterItem[];
   onCompleteLesson?: () => void;
   isCompleted?: boolean;
   onNextLesson?: () => void;
   onPrevLesson?: () => void;
   hasNextLesson?: boolean;
   hasPrevLesson?: boolean;
+  onSelectChapter?: (id: string) => void;
 }
 
 export function UnifiedInteractiveClassroom({
+  currentLessonId,
   lessonTitle,
   topicTitle,
   courseTitle,
@@ -103,12 +117,14 @@ export function UnifiedInteractiveClassroom({
   lessonExplanation,
   concepts,
   examples,
+  chaptersList = [],
   onCompleteLesson,
   isCompleted = false,
   onNextLesson,
   onPrevLesson,
   hasNextLesson = false,
   hasPrevLesson = false,
+  onSelectChapter,
 }: UnifiedInteractiveClassroomProps) {
   // English is default language; persisted across all courses
   const [language, setLanguage] = useState<ExplanationLanguage>("en");
@@ -117,6 +133,10 @@ export function UnifiedInteractiveClassroom({
   const [activeFlowStep, setActiveFlowStep] = useState<number>(0);
   const [isFlowAutoPlaying, setIsFlowAutoPlaying] = useState<boolean>(false);
   const [isExecutionSyncing, setIsExecutionSyncing] = useState<boolean>(false);
+
+  // Chapters Sidebar Drawer State
+  const [isChaptersDrawerOpen, setIsChaptersDrawerOpen] = useState<boolean>(false);
+  const [chapterSearchQuery, setChapterSearchQuery] = useState<string>("");
 
   // Multi-File Code Editor State
   const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
@@ -134,7 +154,7 @@ export function UnifiedInteractiveClassroom({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [outputTab, setOutputTab] = useState<"terminal" | "preview">("terminal");
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
-  const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack">("react");
+  const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack">("node");
 
   // Microphone Speech Input State
   const [isListeningMic, setIsListeningMic] = useState<boolean>(false);
@@ -189,7 +209,15 @@ export function UnifiedInteractiveClassroom({
   // Switch examples when lesson changes
   useEffect(() => {
     if (examples[0]?.solutionCode || examples[0]?.starterCode) {
-      setAppCode(examples[0]?.solutionCode || examples[0]?.starterCode);
+      const initialCode = examples[0]?.solutionCode || examples[0]?.starterCode;
+      setAppCode(initialCode);
+      // If code starts with node/express, default serverCode to it as well
+      if (initialCode.includes("express") || initialCode.includes("http") || initialCode.includes("require(")) {
+        setServerCode(initialCode);
+        setActiveVsCodeTab("node");
+      } else {
+        setActiveVsCodeTab("react");
+      }
     }
     clearOutput();
   }, [lessonTitle, examples, clearOutput]);
@@ -464,15 +492,40 @@ export function UnifiedInteractiveClassroom({
     setActiveRightPanel((prev) => (prev === panel ? null : panel));
   };
 
+  // Filter chapters in sidebar drawer
+  const filteredChapters = useMemo(() => {
+    if (!chapterSearchQuery.trim()) return chaptersList;
+    const q = chapterSearchQuery.toLowerCase();
+    return chaptersList.filter(
+      (c) =>
+        c.title.toLowerCase().includes(q) ||
+        c.moduleTitle.toLowerCase().includes(q) ||
+        String(c.order).includes(q)
+    );
+  }, [chaptersList, chapterSearchQuery]);
+
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-slate-950 text-slate-100 overflow-hidden select-none">
+    <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-slate-950 text-slate-100 overflow-hidden select-none relative">
       {/* ─────────────────────────────────────────────────────────────────────────────
-          1. TOP COMPACT BAR: ZERO WASTED SPACE (Breadcrumb + Title + Floating Actions)
+          1. TOP COMPACT BAR: ZERO WASTED SPACE (Breadcrumb + Title + Chapters + Floating Actions)
           ───────────────────────────────────────────────────────────────────────────── */}
       <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0 gap-2 flex-wrap">
-        {/* Left: Compact Breadcrumbs & Title */}
+        {/* Left: Chapters Drawer Button + Breadcrumbs & Title */}
         <div className="flex items-center gap-2 min-w-0">
-          <div className="flex items-center gap-1 text-xs text-slate-400 font-mono truncate">
+          {/* 📚 All Chapters Sidebar Drawer Button */}
+          <button
+            onClick={() => setIsChaptersDrawerOpen(!isChaptersDrawerOpen)}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-sky-600/20 text-sky-300 border border-sky-500/40 hover:bg-sky-600 hover:text-white transition-all cursor-pointer shadow-xs"
+            title="Open 110 Chapters Navigation Drawer"
+          >
+            <ListOrdered className="size-3.5" />
+            <span>110 Chapters</span>
+            <Badge className="bg-sky-500 text-slate-950 text-[9px] px-1 py-0 font-extrabold ml-0.5">
+              {chaptersList.length || "110"}
+            </Badge>
+          </button>
+
+          <div className="flex items-center gap-1 text-xs text-slate-400 font-mono truncate hidden sm:flex">
             <span className="text-sky-400 font-bold">{courseTitle}</span>
             <span>/</span>
             <span className="truncate">{moduleTitle}</span>
@@ -593,7 +646,7 @@ export function UnifiedInteractiveClassroom({
               size="sm"
               onClick={onCompleteLesson}
               className={`h-7 px-2.5 text-xs font-bold ${
-                isCompleted ? "bg-emerald-700 text-white" : "bg-emerald-600 hover:bg-emerald-500 text-slate-950"
+                isCompleted ? "bg-emerald-700 text-white" : "bg-emerald-600 hover:bg-emerald-500 text-slate-950 cursor-pointer"
               }`}
             >
               {isCompleted ? "Completed ✓" : "Mark Done"}
@@ -605,7 +658,7 @@ export function UnifiedInteractiveClassroom({
               variant="outline"
               size="sm"
               onClick={onPrevLesson}
-              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white"
+              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white cursor-pointer"
               title="Previous Lesson"
             >
               <ChevronLeft className="size-3.5" />
@@ -617,7 +670,7 @@ export function UnifiedInteractiveClassroom({
               variant="outline"
               size="sm"
               onClick={onNextLesson}
-              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white"
+              className="h-7 px-2 border-slate-800 text-slate-300 hover:text-white cursor-pointer"
               title="Next Lesson"
             >
               <ChevronRight className="size-3.5" />
@@ -639,6 +692,97 @@ export function UnifiedInteractiveClassroom({
           <button onClick={toggleListeningMic} className="text-rose-300 hover:text-white font-mono text-[11px] cursor-pointer">
             Stop ✕
           </button>
+        </div>
+      )}
+
+      {/* ─────────────────────────────────────────────────────────────────────────────
+          SIDEBAR LESSONS DRAWER: ALL 110 CHAPTERS SEARCH & NAVIGATION
+          ───────────────────────────────────────────────────────────────────────────── */}
+      {isChaptersDrawerOpen && (
+        <div className="fixed inset-0 z-50 flex">
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+            onClick={() => setIsChaptersDrawerOpen(false)}
+          />
+          <motion.div
+            initial={{ x: -380, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -380, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="relative z-50 w-full max-w-sm h-full bg-slate-900 border-r border-slate-800 flex flex-col shadow-2xl"
+          >
+            <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-bold text-white font-mono flex items-center gap-2">
+                  <ListOrdered className="size-4 text-sky-400" />
+                  110 Chapters Curriculum
+                </h3>
+                <span className="text-[11px] text-slate-400 font-sans">
+                  Select any chapter to jump directly
+                </span>
+              </div>
+              <button
+                onClick={() => setIsChaptersDrawerOpen(false)}
+                className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+
+            <div className="p-3 border-b border-slate-800 bg-slate-950">
+              <div className="relative">
+                <Search className="size-3.5 absolute left-3 top-2.5 text-slate-500" />
+                <input
+                  type="text"
+                  value={chapterSearchQuery}
+                  onChange={(e) => setChapterSearchQuery(e.target.value)}
+                  placeholder="Search chapters (e.g. express, stream, socket)..."
+                  className="w-full pl-8 pr-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-sky-500 font-sans"
+                />
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-2 space-y-1">
+              {filteredChapters.map((ch, idx) => {
+                const isActive = ch.id === currentLessonId || ch.title.includes(lessonTitle) || ch.title.includes(topicTitle);
+                return (
+                  <button
+                    key={ch.id || idx}
+                    onClick={() => {
+                      setIsChaptersDrawerOpen(false);
+                      if (onSelectChapter && ch.id) {
+                        onSelectChapter(ch.id);
+                      }
+                    }}
+                    className={`w-full text-left p-2.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
+                      isActive
+                        ? "bg-sky-950/80 border-sky-500 text-sky-100 font-bold shadow-xs ring-1 ring-sky-500/40"
+                        : "bg-slate-950/50 border-slate-800/80 text-slate-300 hover:border-slate-700 hover:bg-slate-800"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span
+                        className={`flex size-5 items-center justify-center rounded text-[10px] font-mono font-bold shrink-0 ${
+                          isActive ? "bg-sky-500 text-slate-950" : "bg-slate-800 text-slate-400"
+                        }`}
+                      >
+                        {idx + 1}
+                      </span>
+                      <div className="min-w-0">
+                        <span className="text-xs truncate block font-mono">{ch.title}</span>
+                        <span className="text-[10px] text-slate-500 truncate block">{ch.moduleTitle}</span>
+                      </div>
+                    </div>
+                    {isActive && (
+                      <Badge className="bg-sky-500 text-slate-950 text-[9px] px-1 py-0 shrink-0">
+                        Active
+                      </Badge>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
       )}
 
@@ -752,6 +896,17 @@ export function UnifiedInteractiveClassroom({
             {/* Multi-File Tabs */}
             <div className="flex items-center gap-1 overflow-x-auto">
               <button
+                onClick={() => setActiveFile("server")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "server"
+                    ? "bg-emerald-600 text-white font-bold"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <Cpu className="size-3 text-emerald-300" />
+                server.js (Node.js)
+              </button>
+              <button
                 onClick={() => setActiveFile("app")}
                 className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
                   activeFile === "app"
@@ -760,7 +915,7 @@ export function UnifiedInteractiveClassroom({
                 }`}
               >
                 <Sparkles className="size-3 text-sky-300" />
-                App.jsx
+                App.jsx (React)
               </button>
               <button
                 onClick={() => setActiveFile("html")}
@@ -783,17 +938,6 @@ export function UnifiedInteractiveClassroom({
               >
                 <Palette className="size-3 text-indigo-300" />
                 style.css
-              </button>
-              <button
-                onClick={() => setActiveFile("server")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer ${
-                  activeFile === "server"
-                    ? "bg-emerald-600 text-white font-bold"
-                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
-                }`}
-              >
-                <Cpu className="size-3 text-emerald-300" />
-                server.js
               </button>
             </div>
 
@@ -1063,18 +1207,8 @@ export function UnifiedInteractiveClassroom({
               {/* TOOL B: 💻 HOW TO RUN IN VS CODE GUIDE (CLEAR LOCATION & RUN INSTRUCTIONS) */}
               {activeRightPanel === "vscode_guide" && (
                 <div className="space-y-4 text-xs">
-                  {/* Category Switcher: React / Node.js / Fullstack */}
+                  {/* Category Switcher: Node.js / React / Fullstack */}
                   <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-                    <button
-                      onClick={() => setActiveVsCodeTab("react")}
-                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
-                        activeVsCodeTab === "react"
-                          ? "bg-sky-600 text-white shadow-xs"
-                          : "text-slate-400 hover:text-white"
-                      }`}
-                    >
-                      ⚛️ React Frontend
-                    </button>
                     <button
                       onClick={() => setActiveVsCodeTab("node")}
                       className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
@@ -1084,6 +1218,16 @@ export function UnifiedInteractiveClassroom({
                       }`}
                     >
                       🟢 Node.js Server
+                    </button>
+                    <button
+                      onClick={() => setActiveVsCodeTab("react")}
+                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
+                        activeVsCodeTab === "react"
+                          ? "bg-sky-600 text-white shadow-xs"
+                          : "text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      ⚛️ React Frontend
                     </button>
                     <button
                       onClick={() => setActiveVsCodeTab("fullstack")}
@@ -1097,13 +1241,69 @@ export function UnifiedInteractiveClassroom({
                     </button>
                   </div>
 
-                  {/* TAB 1: REACT FRONTEND SETUP */}
+                  {/* TAB 1: NODE.JS BACKEND SETUP */}
+                  {activeVsCodeTab === "node" && (
+                    <div className="space-y-3">
+                      {/* Step 1: Folder Tree */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-amber-300 font-mono block">
+                          📁 1. Node.js Files Kahan Create Karni Hain:
+                        </span>
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed">
+                          {`my-node-app/
+├── server.js         <-- Root folder me (Main backend file)
+└── package.json      <-- Root folder me (Config file)`}
+                        </pre>
+                      </div>
+
+                      {/* Step 2: Exact Terminal Commands */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-emerald-400 font-mono block">
+                          🚀 2. VS Code Terminal me Run Karein:
+                        </span>
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed">
+                          {`# 1. Folder create karein aur enter karein
+mkdir my-node-app && cd my-node-app
+
+# 2. Package.json initialize karein
+npm init -y
+
+# 3. Dependencies install karein
+npm install express cors dotenv
+
+# 4. Run server file (server.js ko run karein)
+node server.js`}
+                        </pre>
+                        <p className="text-[11px] text-slate-300 font-sans">
+                          👉 Terminal me aayega: <code>Server active on http://localhost:5000</code>!
+                        </p>
+                      </div>
+
+                      {/* Step 3: What to copy */}
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                        <span className="text-xs font-bold text-emerald-400 font-mono block">
+                          📝 3. File Contents (Copy server.js):
+                        </span>
+                        <div className="flex items-center justify-between text-[11px] bg-slate-900 p-2 rounded border border-slate-800">
+                          <span className="font-mono text-slate-300">server.js</span>
+                          <button
+                            onClick={() => handleCopyCode("node_srv", serverCode)}
+                            className="text-emerald-400 hover:text-white flex items-center gap-1 cursor-pointer font-bold"
+                          >
+                            {copiedId === "node_srv" ? "Copied ✓" : "Copy server.js Code"}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 2: REACT FRONTEND SETUP */}
                   {activeVsCodeTab === "react" && (
                     <div className="space-y-3">
                       {/* Step 1: Folder Tree */}
                       <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
                         <span className="text-xs font-bold text-amber-300 font-mono block">
-                          📁 1. Files Kahan Create Karni Hain:
+                          📁 1. React Files Kahan Create Karni Hain:
                         </span>
                         <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed">
                           {`my-react-app/
@@ -1118,10 +1318,10 @@ export function UnifiedInteractiveClassroom({
 
                       {/* Step 2: Exact Terminal Commands */}
                       <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                        <span className="text-xs font-bold text-emerald-400 font-mono block">
+                        <span className="text-xs font-bold text-sky-400 font-mono block">
                           🚀 2. VS Code Terminal me Run Karein:
                         </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed">
+                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-sky-300 leading-relaxed">
                           {`# 1. New React Project banayein
 npm create vite@latest my-react-app -- --template react
 
@@ -1140,71 +1340,15 @@ npm run dev`}
                       {/* Step 3: What to copy */}
                       <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
                         <span className="text-xs font-bold text-sky-400 font-mono block">
-                          📝 3. File Contents:
+                          📝 3. File Contents (Copy App.jsx):
                         </span>
                         <div className="flex items-center justify-between text-[11px] bg-slate-900 p-2 rounded border border-slate-800">
                           <span className="font-mono text-slate-300">src/App.jsx</span>
                           <button
                             onClick={() => handleCopyCode("react_app", appCode)}
-                            className="text-sky-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                            className="text-sky-400 hover:text-white flex items-center gap-1 cursor-pointer font-bold"
                           >
                             {copiedId === "react_app" ? "Copied ✓" : "Copy App.jsx Code"}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TAB 2: NODE.JS BACKEND SETUP */}
-                  {activeVsCodeTab === "node" && (
-                    <div className="space-y-3">
-                      {/* Step 1: Folder Tree */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                        <span className="text-xs font-bold text-amber-300 font-mono block">
-                          📁 1. Node.js Folder Structure:
-                        </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300 leading-relaxed">
-                          {`my-node-api/
-├── server.js         <-- Root folder me (Main backend file)
-└── package.json      <-- Root folder me`}
-                        </pre>
-                      </div>
-
-                      {/* Step 2: Exact Terminal Commands */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                        <span className="text-xs font-bold text-emerald-400 font-mono block">
-                          🚀 2. VS Code Terminal me Run Karein:
-                        </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed">
-                          {`# 1. New Folder banayein aur enter karein
-mkdir my-node-api && cd my-node-api
-
-# 2. Package.json create karein
-npm init -y
-
-# 3. Express & CORS install karein
-npm install express cors dotenv
-
-# 4. Run Server File (server.js ko run karein)
-node server.js`}
-                        </pre>
-                        <p className="text-[11px] text-slate-300 font-sans">
-                          👉 Terminal me aayega: <code>Server active on http://localhost:5000</code>!
-                        </p>
-                      </div>
-
-                      {/* Step 3: What to copy */}
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                        <span className="text-xs font-bold text-emerald-400 font-mono block">
-                          📝 3. File Contents:
-                        </span>
-                        <div className="flex items-center justify-between text-[11px] bg-slate-900 p-2 rounded border border-slate-800">
-                          <span className="font-mono text-slate-300">server.js</span>
-                          <button
-                            onClick={() => handleCopyCode("node_srv", serverCode)}
-                            className="text-emerald-400 hover:text-white flex items-center gap-1 cursor-pointer"
-                          >
-                            {copiedId === "node_srv" ? "Copied ✓" : "Copy server.js Code"}
                           </button>
                         </div>
                       </div>
@@ -1327,7 +1471,7 @@ node server.js`}
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Clean Pedagogical Topic Breakdown Generator (Ultra-Simple Words)
+// Clean Pedagogical Topic Breakdown Generator (Ultra-Simple Words for 110 Chapters)
 // ─────────────────────────────────────────────────────────────────────────────
 function buildCleanTopicBreakdown({
   lessonTitle,
@@ -1346,239 +1490,301 @@ function buildCleanTopicBreakdown({
 }) {
   const combined = `${lessonTitle} ${topicTitle}`.toLowerCase();
 
-  // 1. React State & useState
-  if (combined.includes("state") || combined.includes("usestate")) {
+  // 1. Chapter 1: Getting Started with Node.js & HTTP Server
+  if (combined.includes("getting started") || combined.includes("chapter 1") || combined.includes("hello world")) {
     return {
-      title: "State & useState",
+      title: "Getting started with Node.js",
       definition:
         language === "hi"
-          ? "State कंपोनेंट की डिजिटल मेमोरी होती है। जब भी State बदलती है, React स्क्रीन को अपने आप नया डेटा दिखाने के लिए रिफ्रेश (Re-render) कर देता है।"
-          : "State is a component's memory. Whenever state changes, React automatically re-renders the screen to show the fresh updated data.",
+          ? "Node.js एक ओपन-सोर्स JavaScript रनटाइम एनवायरनमेंट है जो Chrome के V8 इंजन पर चलता है। यह आपको ब्राउज़र के बाहर सर्वर पर JavaScript कोड चलाने की ताकत देता है।"
+          : "Node.js is an open-source, cross-platform JavaScript runtime built on Chrome's V8 engine that executes JavaScript code outside a web browser to build fast backend servers.",
       whatItDoes:
         language === "hi"
           ? [
-              "यह डेटा को याद रखता है (जैसे यूजर का इनपुट, स्कोर या लोडिंग स्टेटस).",
-              "जब आप setter फंक्शन (जैसे setCount) चलाते हैं, यह स्क्रीन को तुरंत अपडेट करता है.",
-              "यह डेटा को हमेशा सेफ और प्रेडिक्टेबल रखता है.",
+              "बिना किसी Apache या IIS के सीधे JavaScript से HTTP वेब सर्वर बनाता है.",
+              "Non-blocking I/O मॉडल के ज़रिए एक ही समय में हज़ारों यूज़र्स की रिक्वेस्ट संभालता है.",
+              "REPL और CLI कमांड्स के ज़रिए टर्मिनल में तुरंत कोड टेस्ट करने की सुविधा देता है.",
             ]
           : [
-              "Holds dynamic data (like scores, form inputs, or modal open status).",
-              "Triggers an instant UI re-render whenever the setter function is called.",
-              "Keeps component state self-contained and predictable.",
+              "Creates lightweight, event-driven HTTP servers without complex server software.",
+              "Handles thousands of concurrent connections using single-threaded non-blocking I/O.",
+              "Provides an interactive REPL and command-line execution environment.",
             ],
       useCases:
         language === "hi"
-          ? ["काउंटर और स्कोरबोर्ड", "फॉर्म इनपुट और चेकबॉक्स", "डार्क/लाइट थीम टॉगल", "लोडिंग स्पिनर ऑन/ऑफ"]
-          : ["Counters and live scoreboards", "Form typing and checkboxes", "Dark/Light theme toggles", "Loading spinners"],
-      syntaxSnippet: `const [count, setCount] = useState(0);\n// To update:\nsetCount(count + 1);`,
+          ? ["RESTful API बैकएंड सर्वर", "रीयल-टाइम चैट और स्ट्रीमिंग ऐप्स", "माइक्रोसर्विसेज़ आर्किटेक्चर"]
+          : ["High-speed REST API servers", "Real-time chat & websocket backends", "Lightweight microservices"],
+      syntaxSnippet: `const http = require('http');\nconst server = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/plain' });\n  res.end('Hello World\\n');\n});\nserver.listen(1337, '127.0.0.1');`,
       seniorRule:
         language === "hi"
-          ? "State को कभी count = count + 1 करके डायरेक्ट मत बदलो, हमेशा setCount() का इस्तेमाल करो!"
-          : "Never mutate state directly (count = count + 1); always use the setter function (setCount).",
+          ? "हमेशा सर्वर को किसी पोर्ट पर listen() कराएं और रिस्पॉन्स के अंत में res.end() लिखना न भूलें!"
+          : "Always close HTTP response streams with res.end() or res.json() to prevent client socket hangs.",
       withoutThis:
         language === "hi"
-          ? "नॉर्मल variable बदलने पर स्क्रीन पर पुराना डेटा ही दिखता रहता था!"
-          : "Normal JS variables don't tell React to re-paint, leaving the screen frozen.",
+          ? "JavaScript सिर्फ ब्राउज़र में चलती थी, बैकएंड के लिए PHP या Java सीखना पड़ता था!"
+          : "JavaScript was strictly confined to browsers; backends required different languages.",
       withThis:
         language === "hi"
-          ? "State बदलते ही स्क्रीन पर नया डेटा 1 मिलीसेकंड में अपडेट हो जाता है!"
-          : "React instantly re-paints the screen with zero manual DOM manipulation!",
+          ? "Frontend और Backend दोनों जगह एक ही भाषा (JavaScript) का इस्तेमाल होता है!"
+          : "Full-stack development unified in a single, high-performance JavaScript language!",
       flowSteps: [
         {
-          phase: "1. User Action / Trigger",
-          whatHappens: language === "hi" ? "यूजर ने बटन पर क्लिक किया।" : "User clicks the interactive button in UI.",
-          dataState: "Event: onClick(e) fired in Event Queue",
+          phase: "1. Server Initialization",
+          whatHappens: language === "hi" ? "http.createServer() ने लिसनर रजिस्टर किया।" : "Node.js binds HTTP server to port 1337.",
+          dataState: "Port: 1337 bound on 127.0.0.1",
         },
         {
-          phase: "2. State Setter Invoked",
-          whatHappens: language === "hi" ? "setCount(prev => prev + 1) चला।" : "setCount(count + 1) schedules re-render in React Fiber.",
-          dataState: "Memory: Component State updated in Heap",
+          phase: "2. Incoming Connection",
+          whatHappens: language === "hi" ? "क्लाइंट ने GET रिक्वेस्ट भेजी।" : "Client TCP handshake accepted into Event Loop.",
+          dataState: "Req: IncomingMessage stream opened",
         },
         {
-          phase: "3. Virtual DOM Diffing",
-          whatHappens: language === "hi" ? "React ने नया UI ट्री कैलकुलेट किया।" : "React executes component and compares old vs new VDOM tree.",
-          dataState: "Reconciliation: Diff found on <h1> element",
+          phase: "3. Headers & Payload Writing",
+          whatHappens: language === "hi" ? "res.writeHead(200) सेट हुआ।" : "HTTP 200 OK headers pushed to response buffer.",
+          dataState: "Status: 200 OK Content-Type: text/plain",
         },
         {
-          phase: "4. Screen Repainted",
-          whatHappens: language === "hi" ? "ब्राउज़र स्क्रीन पर नया नंबर अपडेट हो गया!" : "DOM node patched on screen with zero flicker.",
-          dataState: "Output: Screen displays new value smoothly",
+          phase: "4. Response Termination",
+          whatHappens: language === "hi" ? "res.end('Hello World') से डेटा डिलीवर हुआ।" : "Response body flushed and connection cleanly closed.",
+          dataState: "Payload: 'Hello World\\n' delivered",
         },
       ],
     };
   }
 
-  // 2. React Components & Props
-  if (combined.includes("component") || combined.includes("prop") || combined.includes("jsx")) {
+  // 2. Chapter 2: npm (Node Package Manager)
+  if (combined.includes("npm") || combined.includes("chapter 2") || combined.includes("package.json")) {
     return {
-      title: "Components & Props",
+      title: "npm - Node Package Manager",
       definition:
         language === "hi"
-          ? "Component एक स्वतंत्र LEGO ब्लॉक की तरह होता है जो UI बनाता है। Props उसके अंदर भेजा जाने वाला डेटा (Input) होता है।"
-          : "A Component is a reusable building block that returns UI (JSX). Props are read-only inputs passed from parent to child.",
+          ? "npm दुनिया की सबसे बड़ी सॉफ्टवेयर रजिस्ट्री है। यह Node.js के लिए पैकेज मैनेजर है, जो बाहरी लाइब्रेरीज (Express, Mongoose, Lodash) को इंस्टॉल, शेयर और मैनेज करने में मदद करता है।"
+          : "npm is the default package manager for Node.js and the world's largest software registry. It handles dependency resolution, installation, and semantic versioning.",
       whatItDoes:
         language === "hi"
           ? [
-              "बड़ी वेबसाइट को छोटे-छोटे रियूजेबल ब्लॉक्स (Button, Card, Navbar) में तोड़ता है.",
-              "Props के ज़रिए एक ही डिज़ाइन में अलग-अलग डेटा दिखाया जा सकता है.",
-              "कोड को क्लीन और मेंटेन करने में आसान बनाता है.",
+              "`npm install <package>` से लाखों ओपन-सोर्स पैकेजेस 1 सेकंड में डाउनलोड करता है.",
+              "`package.json` में प्रोजेक्ट की सारी डिपेंडेंसीज और वर्जन रिकॉर्ड रखता है.",
+              "`npm run <script>` से ऑटोमेशन और बिल्ड स्क्रिप्ट्स चलाता है.",
             ]
           : [
-              "Breaks complex UIs into clean, reusable functions (Button, Card, Navbar).",
-              "Allows passing custom data into the same visual template.",
-              "Ensures unidirectional data flow from top to bottom.",
+              "Downloads and manages third-party libraries inside node_modules directory.",
+              "Maintains project metadata and dependencies in package.json.",
+              "Executes custom lifecycle scripts like dev, build, and test.",
             ],
       useCases:
         language === "hi"
-          ? ["यूजर प्रोफाइल कार्ड", "कस्टम बटन और मोडल", "प्रोडक्ट लिस्टिंग ग्रिड"]
-          : ["User profile cards", "Custom reusable buttons", "E-commerce product cards"],
-      syntaxSnippet: `function Card({ name, role }) {\n  return <div className="card"><h3>{name}</h3><p>{role}</p></div>;\n}`,
+          ? ["Express, CORS, Dotenv जैसे पैकेजेस इंस्टॉल करना", "प्रोजेक्ट का वर्जन मैनेज करना", "NPM पर अपना पैकेज पब्लिश करना"]
+          : ["Installing backend frameworks and utilities", "Managing semantic versioning (^1.0.0)", "Publishing custom enterprise modules"],
+      syntaxSnippet: `# Install dependencies:\nnpm install express cors dotenv\n\n# Run development script:\nnpm run dev`,
       seniorRule:
         language === "hi"
-          ? "Props हमेशा Read-Only होते हैं — चाइल्ड कंपोनेंट उन्हें कभी डायरेक्ट नहीं बदल सकता!"
-          : "Props are read-only (immutable). Never modify props inside child components.",
+          ? "node_modules फोल्डर को कभी Git पर पुश मत करो, हमेशा .gitignore में रखो!"
+          : "Always add node_modules to .gitignore; commit package.json and package-lock.json instead.",
       withoutThis:
         language === "hi"
-          ? "हर यूजर के लिए 100 बार अलग HTML कॉपी-पेस्ट करना पड़ता था!"
-          : "Duplicating 100s of lines of identical HTML for every single card.",
+          ? "हर लाइब्रेरी को मैन्युअल डाउनलोड करके फाइलों को प्रोजेक्ट में कॉपी करना पड़ता था!"
+          : "Manually downloading, linking, and maintaining versions of third-party zip files.",
       withThis:
         language === "hi"
-          ? "1 मास्टर कंपोनेंट बनाकर लाखों कार्ड 1 सेकंड में बन जाते हैं!"
-          : "Create 1 master component and render thousands of unique cards instantly!",
+          ? "1 कमांड में पूरी दुनिया के कोड को अपने प्रोजेक्ट में इस्तेमाल कर सकते हैं!"
+          : "Instant dependency management and reproducible installs across all machines!",
       flowSteps: [
         {
-          phase: "1. Parent Component Passes Props",
-          whatHappens: language === "hi" ? "Parent ने <Card name='Aman' /> रेंडर किया।" : "Parent passes { name: 'Aman' } to child.",
-          dataState: "Props Object: { name: 'Aman', role: 'Dev' }",
+          phase: "1. Read package.json",
+          whatHappens: language === "hi" ? "npm ने dependencies लिस्ट को पढ़ा।" : "npm reads required packages from package.json.",
+          dataState: "Dependencies: { express: '^4.18.2' }",
         },
         {
-          phase: "2. Child Receives & Evaluates",
-          whatHappens: language === "hi" ? "Card(props) फंक्शन ने डेटा पढ़ा।" : "Child component function runs with injected props.",
-          dataState: "Scope: Read-only Props bound to function",
+          phase: "2. Registry Resolution",
+          whatHappens: language === "hi" ? "NPM रजिस्ट्री से tarball डाउनलोड हुआ।" : "Resolves exact versions and downloads tarballs from registry.",
+          dataState: "Network: Fetching from registry.npmjs.org",
         },
         {
-          phase: "3. JSX Template Rendered",
-          whatHappens: language === "hi" ? "HTML में डेटा इंजेक्ट होकर स्क्रीन पर दिखा।" : "JSX nodes compiled into Virtual DOM nodes.",
-          dataState: "DOM: Painted on screen with customized text",
+          phase: "3. Dependency Tree Extraction",
+          whatHappens: language === "hi" ? "node_modules फोल्डर में पैकेज एक्सट्रेक्ट हुए।" : "Extracts code into node_modules and writes package-lock.json.",
+          dataState: "Disk: node_modules tree written",
         },
       ],
     };
   }
 
-  // 3. Express & Node.js REST API
-  if (combined.includes("node") || combined.includes("express") || combined.includes("route") || combined.includes("api")) {
+  // 3. Chapter 3: Web Apps With Express
+  if (combined.includes("express") || combined.includes("chapter 3") || combined.includes("middleware")) {
     return {
-      title: "Express REST API & Routing",
+      title: "Web Apps With Express",
       definition:
         language === "hi"
-          ? "Express एक हल्का Node.js फ्रेमवर्क है जो HTTP रिक्वेस्ट (GET, POST) को सुनकर सही डेटा (JSON) रिटर्न करता है।"
-          : "Express is a fast, unopinionated Node.js framework for building HTTP servers and REST API endpoints.",
+          ? "Express एक तेज़, फ्लेक्सिबल और मिनिमल Node.js वेब फ्रेमवर्क है जो शक्तिशाली राउटिंग, मिडलवेयर और JSON API आर्किटेक्चर प्रदान करता है।"
+          : "Express is a minimal and flexible Node.js web application framework that provides robust routing, middleware pipelines, and HTTP utilities.",
       whatItDoes:
         language === "hi"
           ? [
-              "किसी खास URL (जैसे /api/users) पर आने वाली रिक्वेस्ट को सुनता है.",
-              "डेटाबेस से डेटा निकालकर JSON फॉर्मेट में रिस्पॉन्स भेजता है.",
-              "मिडिलवेयर से ऑथेंटिकेशन और सिक्योरिटी चेक करता है.",
+              "GET, POST, PUT, DELETE जैसे HTTP रूट्स को 1 लाइन में हैंडल करता है.",
+              "मिडलवेयर (जैसे app.use(express.json())) से रिक्वेस्ट को प्रोसेस और वैलिडेट करता है.",
+              "JSON API और स्टैटिक फाइल्स को सुपरफास्ट स्पीड से सर्व करता है.",
             ]
           : [
-              "Listens for HTTP requests (GET, POST, PUT, DELETE) on specific URL paths.",
-              "Processes data and returns structured JSON responses with HTTP status codes.",
-              "Executes middleware pipelines for authentication, validation, and logging.",
+              "Simplifies HTTP routing for GET, POST, PUT, DELETE endpoints.",
+              "Executes layered middleware pipelines for authentication and parsing.",
+              "Serves dynamic JSON responses and static web assets seamlessly.",
             ],
       useCases:
         language === "hi"
-          ? ["यूजर लॉगिन और रजिस्ट्रेशन API", "डेटाबेस से प्रोडक्ट्स लोड करना", "पेमेंट गेटवे इंटीग्रेशन"]
-          : ["User auth & registration APIs", "Fetching database items", "Webhook and payment processing"],
-      syntaxSnippet: `app.get('/api/users', (req, res) => {\n  res.json([{ id: 1, name: 'Aman' }]);\n});`,
+          ? ["RESTful CRUD APIs", "यूजर ऑथेंटिकेशन और टोकन वेरिफिकेशन", "सिंगल पेज ऐप का बैकएंड सर्वर"]
+          : ["Enterprise REST APIs", "JWT Auth and security filters", "Full-stack application backends"],
+      syntaxSnippet: `const express = require('express');\nconst app = express();\n\napp.use(express.json());\n\napp.get('/api/users', (req, res) => {\n  res.json([{ id: 1, name: 'Aman' }]);\n});\n\napp.listen(5000);`,
       seniorRule:
         language === "hi"
-          ? "Middleware के अंत में next() कॉल करना कभी मत भूलो, वरना रिक्वेस्ट लटक जाएगी!"
-          : "Always call next() in custom middleware so the request doesn't hang indefinitely.",
+          ? "Middleware के अंत में next() कॉल करना कभी न भूलें, वरना रिक्वेस्ट लटक जाएगी!"
+          : "Always call next() in custom middleware to prevent request pipeline deadlocks.",
       withoutThis:
         language === "hi"
-          ? "रॉ Node http मॉड्यूल में 1 रूट बनाने के लिए 50 लाइन का भारी कोड लिखना पड़ता था!"
-          : "Writing 50+ lines of low-level boilerplate just to parse URLs and bodies.",
+          ? "रॉ Node.js में URL पार्स करने और रिक्वेस्ट बॉडी पढ़ने में 50+ लाइन का कोड लिखना पड़ता था!"
+          : "Writing 50+ lines of low-level boilerplate just to parse URLs and incoming request buffers.",
       withThis:
         language === "hi"
-          ? "1 लाइन में नया API रूट बन जाता है!"
-          : "Define clean, readable REST endpoints in 3 lines of code!",
+          ? "3 लाइन में पूरा REST API रूट तैयार हो जाता है!"
+          : "Write production-ready, clean REST endpoints in 3 lines of readable code!",
       flowSteps: [
         {
           phase: "1. HTTP Request Arrival",
-          whatHappens: language === "hi" ? "क्लाइंट ने GET /api/users रिक्वेस्ट भेजी।" : "Browser / Client sends HTTP GET /api/users.",
-          dataState: "Network: TCP packet received on Port 5000",
+          whatHappens: language === "hi" ? "क्लाइंट ने GET /api/users भेजा।" : "Incoming HTTP request enters Express middleware stack.",
+          dataState: "HTTP: GET /api/users Header",
         },
         {
-          phase: "2. Middleware & Router Match",
-          whatHappens: language === "hi" ? "CORS और JSON पार्सर के बाद रूट मैच हुआ।" : "Express runs middleware pipeline and matches route handler.",
-          dataState: "Router: Matched app.get('/api/users')",
+          phase: "2. Middleware & Route Match",
+          whatHappens: language === "hi" ? "CORS और JSON पार्सर के बाद रूट मैच हुआ।" : "Express matches path in route table.",
+          dataState: "Handler: (req, res) invoked",
         },
         {
-          phase: "3. Controller & Database Fetch",
-          whatHappens: language === "hi" ? "कंट्रोलर ने डेटाबेस से डेटा निकाला।" : "Handler queries array or DB for user objects.",
+          phase: "3. Controller Resolution",
+          whatHappens: language === "hi" ? "कंट्रोलर ने डेटाबेस से डेटा निकाला।" : "Business logic fetches requested JSON payload.",
           dataState: "Payload: [{ id: 1, name: 'Aman' }]",
         },
         {
-          phase: "4. HTTP 200 JSON Response",
-          whatHappens: language === "hi" ? "200 OK के साथ JSON क्लाइंट को डिलीवर हुआ।" : "res.json(data) sends 200 OK back to browser.",
-          dataState: "Network: HTTP 200 OK + application/json",
+          phase: "4. JSON Response Sent",
+          whatHappens: language === "hi" ? "200 OK के साथ JSON रिटर्न हुआ।" : "res.json(data) returns HTTP 200 OK payload.",
+          dataState: "Network: HTTP 200 OK application/json",
         },
       ],
     };
   }
 
-  // 4. Default Clean Breakdown for any other topic
+  // 4. Chapter 4: Filesystem I/O
+  if (combined.includes("filesystem") || combined.includes("chapter 4") || combined.includes("fs")) {
+    return {
+      title: "Filesystem I/O (fs module)",
+      definition:
+        language === "hi"
+          ? "Node.js का `fs` (FileSystem) मॉड्यूल फाइलों को पढ़ने, लिखने, डिलीट करने और डायरेक्टरी स्कैन करने के लिए नॉन-ब्लॉकिंग Asynchronous मेथड्स प्रदान करता है।"
+          : "The Node.js `fs` module provides asynchronous, non-blocking APIs to interact with the file system for reading, writing, updating, and streaming files.",
+      whatItDoes:
+        language === "hi"
+          ? [
+              "फाइलों को बिना सर्वर को रोके Asynchronously पढ़ता (`fs.readFile`) और लिखता है.",
+              "बड़ी फाइलों को मेमोरी क्रैश किए बिना Streams (`fs.createReadStream`) से ट्रांसफर करता है.",
+              "फोल्डर बनाने, रीनेम करने और फाइल डिलीट (`fs.unlink`) करने की सुविधा देता है.",
+            ]
+          : [
+              "Reads and writes files asynchronously without blocking the event loop.",
+              "Streams huge files chunk-by-chunk using minimal RAM.",
+              "Provides directory traversal, file watching, and deletion utilities.",
+            ],
+      useCases:
+        language === "hi"
+          ? ["सर्वर लॉग्स फाइल में सेव करना", "यूजर की अपलोड की गई फाइल्स प्रोसेस करना", "कॉन्फिगरेशन JSON फाइल्स लोड करना"]
+          : ["Writing application access logs", "Handling multipart file uploads", "Loading local configuration JSON"],
+      syntaxSnippet: `const fs = require('fs/promises');\n\nasync function readFile() {\n  const data = await fs.readFile('notes.txt', 'utf8');\n  console.log(data);\n}`,
+      seniorRule:
+        language === "hi"
+          ? "प्रोडक्शन में कभी Synchronous मेथड्स (जैसे readFileSync) मत यूज़ करो, वरना पूरे सर्वर की स्पीड धीमी हो जाएगी!"
+          : "Never use synchronous methods (readFileSync) in production request paths as they block the V8 thread.",
+      withoutThis:
+        language === "hi"
+          ? "बड़ी फाइल पढ़ते ही पूरा सर्वर फ्रीज हो जाता था और दूसरे यूजर्स इंतजार करते रहते थे!"
+          : "File operations blocked the server thread, freezing response times for all users.",
+      withThis:
+        language === "hi"
+          ? "लाखों फाइल्स बैकग्राउंड में नॉन-ब्लॉकिंग तरीके से प्रोसेस होती हैं!"
+          : "Non-blocking background I/O handles file operations with zero impact on latency!",
+      flowSteps: [
+        {
+          phase: "1. File Read Request",
+          whatHappens: language === "hi" ? "fs.readFile() कॉल हुआ।" : "V8 delegates file read syscall to Libuv thread pool.",
+          dataState: "Syscall: UV_FS_READ delegated",
+        },
+        {
+          phase: "2. Non-blocking Background Read",
+          whatHappens: language === "hi" ? "ऑपरेटिंग सिस्टम ने फाइल डिस्क से पढ़ी।" : "OS kernel reads bytes from SSD into buffer.",
+          dataState: "Buffer: Chunks read into RAM",
+        },
+        {
+          phase: "3. Callback Resolution",
+          whatHappens: language === "hi" ? "डेटा UTF-8 स्ट्रिंग में कन्वर्ट होकर मिला।" : "Promise resolves with file string contents.",
+          dataState: "Resolved: UTF-8 String output",
+        },
+      ],
+    };
+  }
+
+  // 5. Default Clean Breakdown for any other chapter in 110 Chapters
   return {
     title: topicTitle || lessonTitle,
     definition:
       lessonExplanation ||
       (language === "hi"
-        ? `${topicTitle || lessonTitle} सॉफ्टवेयर इंजीनियरिंग का एक महत्वपूर्ण कॉन्सेप्ट है जो आपके कोड को तेज, सुरक्षित और मेंटेन करने में आसान बनाता है।`
-        : `${topicTitle || lessonTitle} is an essential software engineering concept designed to make applications faster, reliable, and maintainable.`),
+        ? `${topicTitle || lessonTitle} Node.js एंटरप्राइज बैकएंड का एक महत्वपूर्ण चैप्टर है जो आपके कोड को स्केलेबल, तेज़ और सुरक्षित बनाता है।`
+        : `${topicTitle || lessonTitle} is an essential chapter from the Node.js enterprise curriculum designed for high-performance backend engineering.`),
     whatItDoes:
-      language === "hi"
-        ? [
-            "इनपुट डेटा को प्रोसेस करके सही आउटपुट देता है.",
-            "कोड को छोटे-छोटे समझने लायक मॉड्यूल्स में बांटता है.",
-            "एरर्स और अनपेक्षित बग्स को आने से रोकता है.",
-          ]
+      concepts && concepts.length > 0
+        ? concepts.map((c) => (language === "hi" ? `${c.title}: ${c.description}` : `${c.title} — ${c.description}`))
         : [
-            "Processes inputs predictably and outputs expected results.",
-            "Divides complex code into clean, modular building blocks.",
-            "Guards against runtime errors and state corruption.",
+            language === "hi"
+              ? "इनपुट डेटा को प्रोसेस करके सही आउटपुट देता है."
+              : "Processes inputs predictably and outputs expected results.",
+            language === "hi"
+              ? "कोड को छोटे-छोटे समझने लायक मॉड्यूल्स में बांटता है."
+              : "Divides complex code into clean, modular building blocks.",
+            language === "hi"
+              ? "एरर्स और अनपेक्षित बग्स को आने से रोकता है."
+              : "Guards against runtime errors and state corruption.",
           ],
     useCases:
       language === "hi"
-        ? ["रियल-वर्ल्ड प्रोडक्शन ऐप्स", "डेटा ट्रांसफॉर्मेशन और स्टोरेज", "यूजर इंटरफेस इंटरेक्शन"]
-        : ["Production web applications", "Data transformation & storage", "Interactive UI workflows"],
-    syntaxSnippet: `// ${topicTitle || lessonTitle} Pattern\nfunction handleAction() {\n  return { success: true };\n}`,
+        ? ["हाई-कन्करेंसी प्रोडक्शन बैकएंड्स", "डेटाबेस ट्रांजेक्शन और ऑथेंटिकेशन", "माइक्रोसर्विसेज और रीयल-टाइम कम्यूनिकेशन"]
+        : ["High-concurrency production web servers", "Database transactions and caching", "Microservices & distributed architectures"],
+    syntaxSnippet:
+      examples[0]?.solutionCode ||
+      examples[0]?.starterCode ||
+      `// ${topicTitle || lessonTitle} Pattern\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\napp.listen(5000);`,
     seniorRule:
       language === "hi"
-        ? "हमेशा साफ़, प्रेडिक्टेबल और टेस्टेबल कोड लिखें!"
-        : "Always write clean, deterministic, and modular code with clear error handling.",
+        ? "हमेशा साफ़, प्रेडिक्टेबल और टेस्टेबल कोड लिखें, और एरर्स को सही तरीके से कैच करें!"
+        : "Always write clean, deterministic, and modular code with proper error boundaries.",
     withoutThis:
       language === "hi"
-        ? "कोड उलझ जाता था और बग्स ढूंढना मुश्किल होता था।"
-        : "Fragile monolithic code prone to runtime bugs.",
+        ? "कोड उलझ जाता था और प्रोडक्शन में बग्स ढूंढना मुश्किल होता था।"
+        : "Fragile monolithic code prone to unhandled exceptions and performance bottlenecks.",
     withThis:
       language === "hi"
-        ? "साफ़-सुथरा कोड जिसे कोई भी आसानी से समझ और चला सकता है!"
-        : "Clean, testable code that scales smoothly!",
+        ? "साफ़-सुथरा कोड जिसे कोई भी आसानी से समझ, टेस्ट और डिप्लॉय कर सकता है!"
+        : "Clean, enterprise-grade architecture that scales effortlessly!",
     flowSteps: [
       {
-        phase: "1. Input Trigger",
+        phase: "1. Input Trigger & Call",
         whatHappens: language === "hi" ? "इनपुट डेटा सिस्टम में आया।" : "Input data enters the execution pipeline.",
         dataState: "State: PENDING in Event Queue",
       },
       {
-        phase: "2. Processing Logic",
+        phase: "2. Business Logic Execution",
         whatHappens: language === "hi" ? "कोर लॉजिक ने डेटा प्रोसेस किया।" : "Core algorithm processes logic in Call Stack.",
         dataState: "State: COMPUTING in Heap Memory",
       },
       {
-        phase: "3. Output Resolution",
+        phase: "3. Asynchronous Resolution",
         whatHappens: language === "hi" ? "सफलतापूर्वक रिजल्ट मिला।" : "Clean result returned to caller and UI rendered.",
-        dataState: "State: 200 OK / UI Painted",
+        dataState: "State: 200 OK / Output Resolved",
       },
     ],
   };

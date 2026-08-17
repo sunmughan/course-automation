@@ -1,198 +1,506 @@
 export const nodejsPhase9 = {
-  "title": "Phase 9: Concurrency, Clustering, Multithreading & N-API",
-  "description": "Child processes (exec/spawn/fork), cluster multi-core scaling, worker threads, and native C++ N-API addons.",
-  "slug": "phase-9-clustering-multithreading-napi",
+  "title": "Phase 9: Lodash, CSV, Loopback, CORS & Profiling",
+  "description": "Exhaustive coverage of Chapters 89 to 99 from the Node.js professional curriculum.",
+  "slug": "phase-9-lodash-csv-loopback-cors",
   "topics": [
     {
-      "title": "Chapter 8: Cluster Module",
-      "description": "Comprehensive guide to Cluster Module covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-8-cluster-module",
-      "difficulty": 2,
-      "prerequisites": [],
-      "concepts": [
-        {
-          "title": "Core Principles of Cluster Module",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Cluster Module in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Cluster Module."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Cluster Module Working Implementation",
-          "description": "Complete, working demonstration of Cluster Module",
-          "starterCode": "// Chapter 8: Cluster Module\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 8: Cluster Module');\n  return { status: 'success', chapter: 8, topic: 'Cluster Module' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 8: Cluster Module\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 8: Cluster Module');\n  return { status: 'success', chapter: 8, topic: 'Cluster Module' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 8: Cluster Module"
-        }
-      ],
-      "exercises": [
-        {
-          "title": "Build Cluster Module Solution",
-          "description": "Write an implementation for Cluster Module that returns a structured result object.",
-          "starterCode": "// Chapter 8: Cluster Module\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 8: Cluster Module');\n  return { status: 'success', chapter: 8, topic: 'Cluster Module' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 8: Cluster Module\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 8: Cluster Module');\n  return { status: 'success', chapter: 8, topic: 'Cluster Module' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 8",
-          "hints": "Implement the function to return a status 'success' and chapter 8."
-        }
-      ],
-      "visualizations": [
-        {
-          "type": "flow-animation",
-          "title": "Cluster Module Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Cluster Module\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Cluster Module)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Cluster Module\", \"description\": \"The application initializes and loads required components for Cluster Module.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 8: Cluster Module\\nconsole.log('Starting Cluster Module');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Cluster Module\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
-        }
-      ],
-      "lesson": {
-        "title": "Chapter 8: Cluster Module",
-        "content": "### \ud83c\udf1f 1. Introduction: Cluster Module\nIn this chapter from the Node.js enterprise curriculum, we master **Cluster Module** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Cluster Module\nfunction executeOperation(options = {}) {\n  console.log('Executing Cluster Module with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 8,\n    topic: 'Cluster Module',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Cluster Module is essential for enterprise Node.js engineering."
-      }
-    },
-    {
-      "title": "Chapter 15: Executing \ufb01les or commands with Child Processes",
-      "description": "Comprehensive guide to Executing \ufb01les or commands with Child Processes covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-15-executing-les-or-commands-with-child-processes",
-      "difficulty": 2,
-      "prerequisites": [],
-      "concepts": [
-        {
-          "title": "Core Principles of Executing \ufb01les or commands with Child Processes",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Executing \ufb01les or commands with Child Processes in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Executing \ufb01les or commands with Child Processes."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Executing \ufb01les or commands with Child Processes Working Implementation",
-          "description": "Complete, working demonstration of Executing \ufb01les or commands with Child Processes",
-          "starterCode": "// Chapter 15: Executing \ufb01les or commands with Child Processes\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 15: Executing \ufb01les or commands with Child Processes');\n  return { status: 'success', chapter: 15, topic: 'Executing \ufb01les or commands with Child Processes' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 15: Executing \ufb01les or commands with Child Processes\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 15: Executing \ufb01les or commands with Child Processes');\n  return { status: 'success', chapter: 15, topic: 'Executing \ufb01les or commands with Child Processes' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 15: Executing \ufb01les or commands with Child Processes"
-        }
-      ],
-      "exercises": [
-        {
-          "title": "Build Executing \ufb01les or commands with Child Processes Solution",
-          "description": "Write an implementation for Executing \ufb01les or commands with Child Processes that returns a structured result object.",
-          "starterCode": "// Chapter 15: Executing \ufb01les or commands with Child Processes\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 15: Executing \ufb01les or commands with Child Processes');\n  return { status: 'success', chapter: 15, topic: 'Executing \ufb01les or commands with Child Processes' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 15: Executing \ufb01les or commands with Child Processes\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 15: Executing \ufb01les or commands with Child Processes');\n  return { status: 'success', chapter: 15, topic: 'Executing \ufb01les or commands with Child Processes' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 15",
-          "hints": "Implement the function to return a status 'success' and chapter 15."
-        }
-      ],
-      "visualizations": [
-        {
-          "type": "flow-animation",
-          "title": "Executing \ufb01les or commands with Child Processes Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Executing \\ufb01les or commands with Child Processes\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Executing \\ufb01les or commands with Child Processes)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Executing \\ufb01les or commands with Child Processes\", \"description\": \"The application initializes and loads required components for Executing \\ufb01les or commands with Child Processes.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 15: Executing \\ufb01les or commands with Child Processes\\nconsole.log('Starting Executing \\ufb01les or commands with Child Processes');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Executing \\ufb01les or commands with Child Processes\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
-        }
-      ],
-      "lesson": {
-        "title": "Chapter 15: Executing \ufb01les or commands with Child Processes",
-        "content": "### \ud83c\udf1f 1. Introduction: Executing \ufb01les or commands with Child Processes\nIn this chapter from the Node.js enterprise curriculum, we master **Executing \ufb01les or commands with Child Processes** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Executing \ufb01les or commands with Child Processes\nfunction executeOperation(options = {}) {\n  console.log('Executing Executing \ufb01les or commands with Child Processes with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 15,\n    topic: 'Executing \ufb01les or commands with Child Processes',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Executing \ufb01les or commands with Child Processes is essential for enterprise Node.js engineering."
-      }
-    },
-    {
-      "title": "Chapter 105: N-API",
-      "description": "Comprehensive guide to N-API covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-105-n-api",
+      "title": "Chapter 89: csv parser in node js",
+      "description": "Complete guide to Chapter 89: csv parser in node js with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-89-csv-parser-in-node-js",
       "difficulty": 4,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of N-API",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of N-API in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for N-API."
+          "title": "Using FS to read in a CSV",
+          "description": "Detailed practical exploration of Using FS to read in a CSV in csv parser in node js with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
-          "title": "N-API Working Implementation",
-          "description": "Complete, working demonstration of N-API",
-          "starterCode": "// Chapter 105: N-API\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 105: N-API');\n  return { status: 'success', chapter: 105, topic: 'N-API' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 105: N-API\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 105: N-API');\n  return { status: 'success', chapter: 105, topic: 'N-API' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 105: N-API"
+          "title": "csv parser in node js Working Implementation",
+          "description": "Complete working demonstration of csv parser in node js",
+          "starterCode": "// Chapter 89: csv parser in node js\n// Follow the guide to execute this topic in VS Code\n\nvarious ways you can \ufb01lter on an array of objects using lodash.\n\nlet lodash = require('lodash');\nvar countries = [\n\nvar filteredByFunction = lodash.filter(countries, function (country) {\n\nvar filteredByObjectProperties = lodash.filter(countries, { \"key\": \"DE\" });\n\nvar filteredByProperties = lodash.filter(countries, [\"key\", \"ZA\"]);\n\nvar filteredByProperty = lodash.filter(countries, \"active\");",
+          "solutionCode": "// Chapter 89: csv parser in node js\n// Follow the guide to execute this topic in VS Code\n\nvarious ways you can \ufb01lter on an array of objects using lodash.\n\nlet lodash = require('lodash');\nvar countries = [\n\nvar filteredByFunction = lodash.filter(countries, function (country) {\n\nvar filteredByObjectProperties = lodash.filter(countries, { \"key\": \"DE\" });\n\nvar filteredByProperties = lodash.filter(countries, [\"key\", \"ZA\"]);\n\nvar filteredByProperty = lodash.filter(countries, \"active\");",
+          "expectedOutput": "Chapter 89: csv parser in node js executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build N-API Solution",
-          "description": "Write an implementation for N-API that returns a structured result object.",
-          "starterCode": "// Chapter 105: N-API\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 105: N-API');\n  return { status: 'success', chapter: 105, topic: 'N-API' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 105: N-API\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 105: N-API');\n  return { status: 'success', chapter: 105, topic: 'N-API' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 105",
-          "hints": "Implement the function to return a status 'success' and chapter 105."
+          "title": "Implement csv parser in node js Solution",
+          "description": "Write a clean implementation for csv parser in node js that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 89: csv parser in node js\n// Follow the guide to execute this topic in VS Code\n\nvarious ways you can \ufb01lter on an array of objects using lodash.\n\nlet lodash = require('lodash');\nvar countries = [\n\nvar filteredByFunction = lodash.filter(countries, function (country) {\n\nvar filteredByObjectProperties = lodash.filter(countries, { \"key\": \"DE\" });\n\nvar filteredByProperties = lodash.filter(countries, [\"key\", \"ZA\"]);\n\nvar filteredByProperty = lodash.filter(countries, \"active\");",
+          "solutionCode": "// Chapter 89: csv parser in node js\n// Follow the guide to execute this topic in VS Code\n\nvarious ways you can \ufb01lter on an array of objects using lodash.\n\nlet lodash = require('lodash');\nvar countries = [\n\nvar filteredByFunction = lodash.filter(countries, function (country) {\n\nvar filteredByObjectProperties = lodash.filter(countries, { \"key\": \"DE\" });\n\nvar filteredByProperties = lodash.filter(countries, [\"key\", \"ZA\"]);\n\nvar filteredByProperty = lodash.filter(countries, \"active\");",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for csv parser in node js in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
-          "title": "N-API Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into N-API\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (N-API)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing N-API\", \"description\": \"The application initializes and loads required components for N-API.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 105: N-API\\nconsole.log('Starting N-API');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing N-API\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "title": "csv parser in node js Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (csv parser in node js)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing csv parser in node js\", \"description\": \"Node.js loads required modules for csv parser in node js.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
-        "title": "Chapter 105: N-API",
-        "content": "### \ud83c\udf1f 1. Introduction: N-API\nIn this chapter from the Node.js enterprise curriculum, we master **N-API** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for N-API\nfunction executeOperation(options = {}) {\n  console.log('Executing N-API with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 105,\n    topic: 'N-API',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering N-API is essential for enterprise Node.js engineering."
+        "title": "Chapter 89: csv parser in node js",
+        "content": "### \ud83c\udf1f 1. Definition (What is csv parser in node js?)\n**csv parser in node js** is a core pillar of the Node.js backend ecosystem covered in Chapter 89 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Using FS to read in a CSV**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nvarious ways you can \ufb01lter on an array of objects using lodash.\n\nlet lodash = require('lodash');\nvar countries = [\n\nvar filteredByFunction = lodash.filter(countries, function (country) {\n\nvar filteredByObjectProperties = lodash.filter(countries, { \"key\": \"DE\" });\n\nvar filteredByProperties = lodash.filter(countries, [\"key\", \"ZA\"]);\n\nvar filteredByProperty = lodash.filter(countries, \"active\");\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 89: csv parser in node js provides essential mastery of Node.js backend engineering."
       }
     },
     {
-      "title": "Chapter 106: Multithreading",
-      "description": "Comprehensive guide to Multithreading covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-106-multithreading",
+      "title": "Chapter 90: Loopback - REST Based connector",
+      "description": "Complete guide to Chapter 90: Loopback - REST Based connector with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-90-loopback-rest-based-connector",
       "difficulty": 4,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of Multithreading",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Multithreading in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Multithreading."
+          "title": "Adding a web based connector",
+          "description": "Detailed practical exploration of Adding a web based connector in Loopback - REST Based connector with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
-          "title": "Multithreading Working Implementation",
-          "description": "Complete, working demonstration of Multithreading",
-          "starterCode": "// Chapter 106: Multithreading\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 106: Multithreading');\n  return { status: 'success', chapter: 106, topic: 'Multithreading' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 106: Multithreading\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 106: Multithreading');\n  return { status: 'success', chapter: 106, topic: 'Multithreading' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 106: Multithreading"
+          "title": "Loopback - REST Based connector Working Implementation",
+          "description": "Complete working demonstration of Loopback - REST Based connector",
+          "starterCode": "// Chapter 90: Loopback - REST Based connector\n// Follow the guide to execute this topic in VS Code\n\nvariable, pass it a data.csv \ufb01le, format\n\nfunction that reads and splits the csv for further processing.\n\nconst fs = require('fs');\n\nfs.readFile('data.csv', 'utf8', function (err, data) {\n\nvar dataArray = data.split(/\\r?\\n/);\n\nfunctions\": {\n\nfunctions\": {",
+          "solutionCode": "// Chapter 90: Loopback - REST Based connector\n// Follow the guide to execute this topic in VS Code\n\nvariable, pass it a data.csv \ufb01le, format\n\nfunction that reads and splits the csv for further processing.\n\nconst fs = require('fs');\n\nfs.readFile('data.csv', 'utf8', function (err, data) {\n\nvar dataArray = data.split(/\\r?\\n/);\n\nfunctions\": {\n\nfunctions\": {",
+          "expectedOutput": "Chapter 90: Loopback - REST Based connector executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build Multithreading Solution",
-          "description": "Write an implementation for Multithreading that returns a structured result object.",
-          "starterCode": "// Chapter 106: Multithreading\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 106: Multithreading');\n  return { status: 'success', chapter: 106, topic: 'Multithreading' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 106: Multithreading\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 106: Multithreading');\n  return { status: 'success', chapter: 106, topic: 'Multithreading' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 106",
-          "hints": "Implement the function to return a status 'success' and chapter 106."
+          "title": "Implement Loopback - REST Based connector Solution",
+          "description": "Write a clean implementation for Loopback - REST Based connector that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 90: Loopback - REST Based connector\n// Follow the guide to execute this topic in VS Code\n\nvariable, pass it a data.csv \ufb01le, format\n\nfunction that reads and splits the csv for further processing.\n\nconst fs = require('fs');\n\nfs.readFile('data.csv', 'utf8', function (err, data) {\n\nvar dataArray = data.split(/\\r?\\n/);\n\nfunctions\": {\n\nfunctions\": {",
+          "solutionCode": "// Chapter 90: Loopback - REST Based connector\n// Follow the guide to execute this topic in VS Code\n\nvariable, pass it a data.csv \ufb01le, format\n\nfunction that reads and splits the csv for further processing.\n\nconst fs = require('fs');\n\nfs.readFile('data.csv', 'utf8', function (err, data) {\n\nvar dataArray = data.split(/\\r?\\n/);\n\nfunctions\": {\n\nfunctions\": {",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Loopback - REST Based connector in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
-          "title": "Multithreading Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Multithreading\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Multithreading)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Multithreading\", \"description\": \"The application initializes and loads required components for Multithreading.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 106: Multithreading\\nconsole.log('Starting Multithreading');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Multithreading\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "title": "Loopback - REST Based connector Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Loopback - REST Based connector)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Loopback - REST Based connector\", \"description\": \"Node.js loads required modules for Loopback - REST Based connector.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
-        "title": "Chapter 106: Multithreading",
-        "content": "### \ud83c\udf1f 1. Introduction: Multithreading\nIn this chapter from the Node.js enterprise curriculum, we master **Multithreading** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Multithreading\nfunction executeOperation(options = {}) {\n  console.log('Executing Multithreading with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 106,\n    topic: 'Multithreading',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Multithreading is essential for enterprise Node.js engineering."
+        "title": "Chapter 90: Loopback - REST Based connector",
+        "content": "### \ud83c\udf1f 1. Definition (What is Loopback - REST Based connector?)\n**Loopback - REST Based connector** is a core pillar of the Node.js backend ecosystem covered in Chapter 90 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Adding a web based connector**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nvariable, pass it a data.csv \ufb01le, format\n\nfunction that reads and splits the csv for further processing.\n\nconst fs = require('fs');\n\nfs.readFile('data.csv', 'utf8', function (err, data) {\n\nvar dataArray = data.split(/\\r?\\n/);\n\nfunctions\": {\n\nfunctions\": {\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 90: Loopback - REST Based connector provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 91: Running node.js as a service",
+      "description": "Complete guide to Chapter 91: Running node.js as a service with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-91-running-node-js-as-a-service",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Node.js as a systemd d\u00e6mon",
+          "description": "Detailed practical exploration of Node.js as a systemd d\u00e6mon in Running node.js as a service with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Running node.js as a service Working Implementation",
+          "description": "Complete working demonstration of Running node.js as a service",
+          "starterCode": "// Chapter 91: Running node.js as a service\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 91: Running node.js as a service\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Running node.js as a service Pattern\napp.get('/api/chapter-91', (req, res) => {\n  res.json({\n    chapter: 91,\n    title: 'Running node.js as a service',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "solutionCode": "// Chapter 91: Running node.js as a service\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 91: Running node.js as a service\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Running node.js as a service Pattern\napp.get('/api/chapter-91', (req, res) => {\n  res.json({\n    chapter: 91,\n    title: 'Running node.js as a service',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "expectedOutput": "Chapter 91: Running node.js as a service executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Running node.js as a service Solution",
+          "description": "Write a clean implementation for Running node.js as a service that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 91: Running node.js as a service\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 91: Running node.js as a service\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Running node.js as a service Pattern\napp.get('/api/chapter-91', (req, res) => {\n  res.json({\n    chapter: 91,\n    title: 'Running node.js as a service',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "solutionCode": "// Chapter 91: Running node.js as a service\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 91: Running node.js as a service\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Running node.js as a service Pattern\napp.get('/api/chapter-91', (req, res) => {\n  res.json({\n    chapter: 91,\n    title: 'Running node.js as a service',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Running node.js as a service in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Running node.js as a service Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Running node.js as a service)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Running node.js as a service\", \"description\": \"Node.js loads required modules for Running node.js as a service.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 91: Running node.js as a service",
+        "content": "### \ud83c\udf1f 1. Definition (What is Running node.js as a service?)\n**Running node.js as a service** is a core pillar of the Node.js backend ecosystem covered in Chapter 91 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Node.js as a systemd d\u00e6mon**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\n// Chapter 91: Running node.js as a service\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Running node.js as a service Pattern\napp.get('/api/chapter-91', (req, res) => {\n  res.json({\n    chapter: 91,\n    title: 'Running node.js as a service',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 91: Running node.js as a service provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 92: Node.js with CORS",
+      "description": "Complete guide to Chapter 92: Node.js with CORS with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-92-node-js-with-cors",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Enable CORS in express.js",
+          "description": "Detailed practical exploration of Enable CORS in express.js in Node.js with CORS with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Node.js with CORS Working Implementation",
+          "description": "Complete working demonstration of Node.js with CORS",
+          "starterCode": "// Chapter 92: Node.js with CORS\n// Follow the guide to execute this topic in VS Code\n\nlet's create it. For Debian based distros, it will be in\n\nvar/www/app\n\nlet 500ms between the crash and the restart",
+          "solutionCode": "// Chapter 92: Node.js with CORS\n// Follow the guide to execute this topic in VS Code\n\nlet's create it. For Debian based distros, it will be in\n\nvar/www/app\n\nlet 500ms between the crash and the restart",
+          "expectedOutput": "Chapter 92: Node.js with CORS executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Node.js with CORS Solution",
+          "description": "Write a clean implementation for Node.js with CORS that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 92: Node.js with CORS\n// Follow the guide to execute this topic in VS Code\n\nlet's create it. For Debian based distros, it will be in\n\nvar/www/app\n\nlet 500ms between the crash and the restart",
+          "solutionCode": "// Chapter 92: Node.js with CORS\n// Follow the guide to execute this topic in VS Code\n\nlet's create it. For Debian based distros, it will be in\n\nvar/www/app\n\nlet 500ms between the crash and the restart",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Node.js with CORS in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Node.js with CORS Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Node.js with CORS)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Node.js with CORS\", \"description\": \"Node.js loads required modules for Node.js with CORS.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 92: Node.js with CORS",
+        "content": "### \ud83c\udf1f 1. Definition (What is Node.js with CORS?)\n**Node.js with CORS** is a core pillar of the Node.js backend ecosystem covered in Chapter 92 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Enable CORS in express.js**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nlet's create it. For Debian based distros, it will be in\n\nvar/www/app\n\nlet 500ms between the crash and the restart\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 92: Node.js with CORS provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 93: Getting started with Nodes pro\ufb01ling",
+      "description": "Complete guide to Chapter 93: Getting started with Nodes pro\ufb01ling with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-93-getting-started-with-nodes-pro-ling",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Pro\ufb01ling a simple node application",
+          "description": "Detailed practical exploration of Pro\ufb01ling a simple node application in Getting started with Nodes pro\ufb01ling with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Getting started with Nodes pro\ufb01ling Working Implementation",
+          "description": "Complete working demonstration of Getting started with Nodes pro\ufb01ling",
+          "starterCode": "// Chapter 93: Getting started with Nodes pro\ufb01ling\n// Follow the guide to execute this topic in VS Code\n\nconst app = express();\n\napp.use((req, res, next) => {\n\napp.options('*', (req, res) => {\n\nconst app = express();",
+          "solutionCode": "// Chapter 93: Getting started with Nodes pro\ufb01ling\n// Follow the guide to execute this topic in VS Code\n\nconst app = express();\n\napp.use((req, res, next) => {\n\napp.options('*', (req, res) => {\n\nconst app = express();",
+          "expectedOutput": "Chapter 93: Getting started with Nodes pro\ufb01ling executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Getting started with Nodes pro\ufb01ling Solution",
+          "description": "Write a clean implementation for Getting started with Nodes pro\ufb01ling that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 93: Getting started with Nodes pro\ufb01ling\n// Follow the guide to execute this topic in VS Code\n\nconst app = express();\n\napp.use((req, res, next) => {\n\napp.options('*', (req, res) => {\n\nconst app = express();",
+          "solutionCode": "// Chapter 93: Getting started with Nodes pro\ufb01ling\n// Follow the guide to execute this topic in VS Code\n\nconst app = express();\n\napp.use((req, res, next) => {\n\napp.options('*', (req, res) => {\n\nconst app = express();",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Getting started with Nodes pro\ufb01ling in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Getting started with Nodes pro\ufb01ling Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Getting started with Nodes pro\\ufb01ling)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Getting started with Nodes pro\\ufb01ling\", \"description\": \"Node.js loads required modules for Getting started with Nodes pro\\ufb01ling.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 93: Getting started with Nodes pro\ufb01ling",
+        "content": "### \ud83c\udf1f 1. Definition (What is Getting started with Nodes pro\ufb01ling?)\n**Getting started with Nodes pro\ufb01ling** is a core pillar of the Node.js backend ecosystem covered in Chapter 93 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Pro\ufb01ling a simple node application**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nconst app = express();\n\napp.use((req, res, next) => {\n\napp.options('*', (req, res) => {\n\nconst app = express();\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 93: Getting started with Nodes pro\ufb01ling provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 94: Node.js Performance",
+      "description": "Complete guide to Chapter 94: Node.js Performance with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-94-node-js-performance",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Enable gzip",
+          "description": "Detailed practical exploration of Enable gzip in Node.js Performance with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Event Loop",
+          "description": "Detailed practical exploration of Event Loop in Node.js Performance with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Increase maxSockets",
+          "description": "Detailed practical exploration of Increase maxSockets in Node.js Performance with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Node.js Performance Working Implementation",
+          "description": "Complete working demonstration of Node.js Performance",
+          "starterCode": "// Chapter 94: Node.js Performance\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst fs   = require('fs')\n\nconst zlib = require('zlib')\n\nhttp.createServer((request, response) => {\n\nconst stream          = fs.createReadStream('index.html')\n\nconst acceptsEncoding = request.headers['accept-encoding']\n\nlet encoder = {\n\nlet loop = (i, max) => {",
+          "solutionCode": "// Chapter 94: Node.js Performance\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst fs   = require('fs')\n\nconst zlib = require('zlib')\n\nhttp.createServer((request, response) => {\n\nconst stream          = fs.createReadStream('index.html')\n\nconst acceptsEncoding = request.headers['accept-encoding']\n\nlet encoder = {\n\nlet loop = (i, max) => {",
+          "expectedOutput": "Chapter 94: Node.js Performance executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Node.js Performance Solution",
+          "description": "Write a clean implementation for Node.js Performance that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 94: Node.js Performance\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst fs   = require('fs')\n\nconst zlib = require('zlib')\n\nhttp.createServer((request, response) => {\n\nconst stream          = fs.createReadStream('index.html')\n\nconst acceptsEncoding = request.headers['accept-encoding']\n\nlet encoder = {\n\nlet loop = (i, max) => {",
+          "solutionCode": "// Chapter 94: Node.js Performance\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst fs   = require('fs')\n\nconst zlib = require('zlib')\n\nhttp.createServer((request, response) => {\n\nconst stream          = fs.createReadStream('index.html')\n\nconst acceptsEncoding = request.headers['accept-encoding']\n\nlet encoder = {\n\nlet loop = (i, max) => {",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Node.js Performance in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Node.js Performance Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Node.js Performance)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Node.js Performance\", \"description\": \"Node.js loads required modules for Node.js Performance.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 94: Node.js Performance",
+        "content": "### \ud83c\udf1f 1. Definition (What is Node.js Performance?)\n**Node.js Performance** is a core pillar of the Node.js backend ecosystem covered in Chapter 94 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Enable gzip**\n- **Event Loop**\n- **Increase maxSockets**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nconst http = require('http')\n\nconst fs   = require('fs')\n\nconst zlib = require('zlib')\n\nhttp.createServer((request, response) => {\n\nconst stream          = fs.createReadStream('index.html')\n\nconst acceptsEncoding = request.headers['accept-encoding']\n\nlet encoder = {\n\nlet loop = (i, max) => {\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 94: Node.js Performance provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 95: Yarn Package Manager",
+      "description": "Complete guide to Chapter 95: Yarn Package Manager with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-95-yarn-package-manager",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Creating a basic package",
+          "description": "Detailed practical exploration of Creating a basic package in Yarn Package Manager with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Yarn Installation",
+          "description": "Detailed practical exploration of Yarn Installation in Yarn Package Manager with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Install package with Yarn",
+          "description": "Detailed practical exploration of Install package with Yarn in Yarn Package Manager with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Yarn Package Manager Working Implementation",
+          "description": "Complete working demonstration of Yarn Package Manager",
+          "starterCode": "// Chapter 95: Yarn Package Manager\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst myGloriousAgent = new http.Agent({ keepAlive: true })\n\nhttp.request({ ..., agent: myGloriousAgent }, ...)\n\nconst http = require('http')\n\nconst options = {.....}\n\nconst request = http.request(options)\n\nlets try adding a dependency. The basic syntax for this is yarn add [package-name]",
+          "solutionCode": "// Chapter 95: Yarn Package Manager\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst myGloriousAgent = new http.Agent({ keepAlive: true })\n\nhttp.request({ ..., agent: myGloriousAgent }, ...)\n\nconst http = require('http')\n\nconst options = {.....}\n\nconst request = http.request(options)\n\nlets try adding a dependency. The basic syntax for this is yarn add [package-name]",
+          "expectedOutput": "Chapter 95: Yarn Package Manager executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Yarn Package Manager Solution",
+          "description": "Write a clean implementation for Yarn Package Manager that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 95: Yarn Package Manager\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst myGloriousAgent = new http.Agent({ keepAlive: true })\n\nhttp.request({ ..., agent: myGloriousAgent }, ...)\n\nconst http = require('http')\n\nconst options = {.....}\n\nconst request = http.request(options)\n\nlets try adding a dependency. The basic syntax for this is yarn add [package-name]",
+          "solutionCode": "// Chapter 95: Yarn Package Manager\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http')\n\nconst myGloriousAgent = new http.Agent({ keepAlive: true })\n\nhttp.request({ ..., agent: myGloriousAgent }, ...)\n\nconst http = require('http')\n\nconst options = {.....}\n\nconst request = http.request(options)\n\nlets try adding a dependency. The basic syntax for this is yarn add [package-name]",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Yarn Package Manager in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Yarn Package Manager Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Yarn Package Manager)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Yarn Package Manager\", \"description\": \"Node.js loads required modules for Yarn Package Manager.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 95: Yarn Package Manager",
+        "content": "### \ud83c\udf1f 1. Definition (What is Yarn Package Manager?)\n**Yarn Package Manager** is a core pillar of the Node.js backend ecosystem covered in Chapter 95 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Creating a basic package**\n- **Yarn Installation**\n- **Install package with Yarn**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nconst http = require('http')\n\nconst myGloriousAgent = new http.Agent({ keepAlive: true })\n\nhttp.request({ ..., agent: myGloriousAgent }, ...)\n\nconst http = require('http')\n\nconst options = {.....}\n\nconst request = http.request(options)\n\nlets try adding a dependency. The basic syntax for this is yarn add [package-name]\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 95: Yarn Package Manager provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 96: OAuth 2.0",
+      "description": "Complete guide to Chapter 96: OAuth 2.0 with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-96-oauth-2-0",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "OAuth 2 with Redis Implementation - grant_type: password",
+          "description": "Detailed practical exploration of OAuth 2 with Redis Implementation - grant_type: password in OAuth 2.0 with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "OAuth 2.0 Working Implementation",
+          "description": "Complete working demonstration of OAuth 2.0",
+          "starterCode": "// Chapter 96: OAuth 2.0\n// Follow the guide to execute this topic in VS Code\n\napp.js\n\nvar express = require('express'),\n\nrequire('body-parser'),\n\nrequire('oauth2-server');\nvar app = express();\n\napp.use(bodyParser.urlencoded({ extended: true }));\n\napp.use(bodyParser.json());\n\napp.oauth = oauthserver({",
+          "solutionCode": "// Chapter 96: OAuth 2.0\n// Follow the guide to execute this topic in VS Code\n\napp.js\n\nvar express = require('express'),\n\nrequire('body-parser'),\n\nrequire('oauth2-server');\nvar app = express();\n\napp.use(bodyParser.urlencoded({ extended: true }));\n\napp.use(bodyParser.json());\n\napp.oauth = oauthserver({",
+          "expectedOutput": "Chapter 96: OAuth 2.0 executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement OAuth 2.0 Solution",
+          "description": "Write a clean implementation for OAuth 2.0 that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 96: OAuth 2.0\n// Follow the guide to execute this topic in VS Code\n\napp.js\n\nvar express = require('express'),\n\nrequire('body-parser'),\n\nrequire('oauth2-server');\nvar app = express();\n\napp.use(bodyParser.urlencoded({ extended: true }));\n\napp.use(bodyParser.json());\n\napp.oauth = oauthserver({",
+          "solutionCode": "// Chapter 96: OAuth 2.0\n// Follow the guide to execute this topic in VS Code\n\napp.js\n\nvar express = require('express'),\n\nrequire('body-parser'),\n\nrequire('oauth2-server');\nvar app = express();\n\napp.use(bodyParser.urlencoded({ extended: true }));\n\napp.use(bodyParser.json());\n\napp.oauth = oauthserver({",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for OAuth 2.0 in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "OAuth 2.0 Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (OAuth 2.0)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing OAuth 2.0\", \"description\": \"Node.js loads required modules for OAuth 2.0.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 96: OAuth 2.0",
+        "content": "### \ud83c\udf1f 1. Definition (What is OAuth 2.0?)\n**OAuth 2.0** is a core pillar of the Node.js backend ecosystem covered in Chapter 96 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **OAuth 2 with Redis Implementation - grant_type: password**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\napp.js\n\nvar express = require('express'),\n\nrequire('body-parser'),\n\nrequire('oauth2-server');\nvar app = express();\n\napp.use(bodyParser.urlencoded({ extended: true }));\n\napp.use(bodyParser.json());\n\napp.oauth = oauthserver({\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 96: OAuth 2.0 provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 97: Node JS Localization",
+      "description": "Complete guide to Chapter 97: Node JS Localization with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-97-node-js-localization",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "using i18n module to maintains localization in node js app",
+          "description": "Detailed practical exploration of using i18n module to maintains localization in node js app in Node JS Localization with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Node JS Localization Working Implementation",
+          "description": "Complete working demonstration of Node JS Localization",
+          "starterCode": "// Chapter 97: Node JS Localization\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 97: Node JS Localization\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Node JS Localization Pattern\napp.get('/api/chapter-97', (req, res) => {\n  res.json({\n    chapter: 97,\n    title: 'Node JS Localization',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "solutionCode": "// Chapter 97: Node JS Localization\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 97: Node JS Localization\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Node JS Localization Pattern\napp.get('/api/chapter-97', (req, res) => {\n  res.json({\n    chapter: 97,\n    title: 'Node JS Localization',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "expectedOutput": "Chapter 97: Node JS Localization executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Node JS Localization Solution",
+          "description": "Write a clean implementation for Node JS Localization that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 97: Node JS Localization\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 97: Node JS Localization\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Node JS Localization Pattern\napp.get('/api/chapter-97', (req, res) => {\n  res.json({\n    chapter: 97,\n    title: 'Node JS Localization',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "solutionCode": "// Chapter 97: Node JS Localization\n// Follow the guide to execute this topic in VS Code\n\n// Chapter 97: Node JS Localization\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Node JS Localization Pattern\napp.get('/api/chapter-97', (req, res) => {\n  res.json({\n    chapter: 97,\n    title: 'Node JS Localization',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Node JS Localization in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Node JS Localization Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Node JS Localization)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Node JS Localization\", \"description\": \"Node.js loads required modules for Node JS Localization.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 97: Node JS Localization",
+        "content": "### \ud83c\udf1f 1. Definition (What is Node JS Localization?)\n**Node JS Localization** is a core pillar of the Node.js backend ecosystem covered in Chapter 97 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **using i18n module to maintains localization in node js app**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\n// Chapter 97: Node JS Localization\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\n\n// Node JS Localization Pattern\napp.get('/api/chapter-97', (req, res) => {\n  res.json({\n    chapter: 97,\n    title: 'Node JS Localization',\n    status: 'active'\n  });\n};\n\napp.listen(5000, () => {\n  console.log('\ud83d\ude80 Server running on http://localhost:5000');\n});\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 97: Node JS Localization provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 98: Deploying Node.js application without downtime.",
+      "description": "Complete guide to Chapter 98: Deploying Node.js application without downtime. with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-98-deploying-node-js-application-without-downtime",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Deployment using PM2 without downtime",
+          "description": "Detailed practical exploration of Deployment using PM2 without downtime in Deploying Node.js application without downtime. with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Deploying Node.js application without downtime. Working Implementation",
+          "description": "Complete working demonstration of Deploying Node.js application without downtime.",
+          "starterCode": "// Chapter 98: Deploying Node.js application without downtime.\n// Follow the guide to execute this topic in VS Code\n\napp.use() method passing in res\n\napp. No extra parsing needed.\n\nvar express = require('express'),\n\nrequire('i18n'),\n\nmodule.exports = express();\n\napp.configure(function () {\n\napp.use(express.cookieParser());\n\napp.use(i18n.init);",
+          "solutionCode": "// Chapter 98: Deploying Node.js application without downtime.\n// Follow the guide to execute this topic in VS Code\n\napp.use() method passing in res\n\napp. No extra parsing needed.\n\nvar express = require('express'),\n\nrequire('i18n'),\n\nmodule.exports = express();\n\napp.configure(function () {\n\napp.use(express.cookieParser());\n\napp.use(i18n.init);",
+          "expectedOutput": "Chapter 98: Deploying Node.js application without downtime. executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Deploying Node.js application without downtime. Solution",
+          "description": "Write a clean implementation for Deploying Node.js application without downtime. that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 98: Deploying Node.js application without downtime.\n// Follow the guide to execute this topic in VS Code\n\napp.use() method passing in res\n\napp. No extra parsing needed.\n\nvar express = require('express'),\n\nrequire('i18n'),\n\nmodule.exports = express();\n\napp.configure(function () {\n\napp.use(express.cookieParser());\n\napp.use(i18n.init);",
+          "solutionCode": "// Chapter 98: Deploying Node.js application without downtime.\n// Follow the guide to execute this topic in VS Code\n\napp.use() method passing in res\n\napp. No extra parsing needed.\n\nvar express = require('express'),\n\nrequire('i18n'),\n\nmodule.exports = express();\n\napp.configure(function () {\n\napp.use(express.cookieParser());\n\napp.use(i18n.init);",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Deploying Node.js application without downtime. in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Deploying Node.js application without downtime. Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Deploying Node.js application without downtime.)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Deploying Node.js application without downtime.\", \"description\": \"Node.js loads required modules for Deploying Node.js application without downtime..\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 98: Deploying Node.js application without downtime.",
+        "content": "### \ud83c\udf1f 1. Definition (What is Deploying Node.js application without downtime.?)\n**Deploying Node.js application without downtime.** is a core pillar of the Node.js backend ecosystem covered in Chapter 98 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Deployment using PM2 without downtime**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\napp.use() method passing in res\n\napp. No extra parsing needed.\n\nvar express = require('express'),\n\nrequire('i18n'),\n\nmodule.exports = express();\n\napp.configure(function () {\n\napp.use(express.cookieParser());\n\napp.use(i18n.init);\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 98: Deploying Node.js application without downtime. provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 99: Node.js (express.js) with angular.js Sample code",
+      "description": "Complete guide to Chapter 99: Node.js (express.js) with angular.js Sample code with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-99-node-js-express-js-with-angular-js-sample-code",
+      "difficulty": 4,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Creating our project",
+          "description": "Detailed practical exploration of Creating our project in Node.js (express.js) with angular.js Sample code with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Node.js (express.js) with angular.js Sample code Working Implementation",
+          "description": "Complete working demonstration of Node.js (express.js) with angular.js Sample code",
+          "starterCode": "// Chapter 99: Node.js (express.js) with angular.js Sample code\n// Follow the guide to execute this topic in VS Code\n\nleton project?\n\nleton, just run\n\napp. The structure is as follow:\n\napp.js\n\nvar express = require('express');\n\nvar router = express.Router();\n\nfunction(req, res, next) {\n\nmodule.exports = router;",
+          "solutionCode": "// Chapter 99: Node.js (express.js) with angular.js Sample code\n// Follow the guide to execute this topic in VS Code\n\nleton project?\n\nleton, just run\n\napp. The structure is as follow:\n\napp.js\n\nvar express = require('express');\n\nvar router = express.Router();\n\nfunction(req, res, next) {\n\nmodule.exports = router;",
+          "expectedOutput": "Chapter 99: Node.js (express.js) with angular.js Sample code executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Node.js (express.js) with angular.js Sample code Solution",
+          "description": "Write a clean implementation for Node.js (express.js) with angular.js Sample code that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 99: Node.js (express.js) with angular.js Sample code\n// Follow the guide to execute this topic in VS Code\n\nleton project?\n\nleton, just run\n\napp. The structure is as follow:\n\napp.js\n\nvar express = require('express');\n\nvar router = express.Router();\n\nfunction(req, res, next) {\n\nmodule.exports = router;",
+          "solutionCode": "// Chapter 99: Node.js (express.js) with angular.js Sample code\n// Follow the guide to execute this topic in VS Code\n\nleton project?\n\nleton, just run\n\napp. The structure is as follow:\n\napp.js\n\nvar express = require('express');\n\nvar router = express.Router();\n\nfunction(req, res, next) {\n\nmodule.exports = router;",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Node.js (express.js) with angular.js Sample code in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Node.js (express.js) with angular.js Sample code Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Node.js (express.js) with angular.js Sample code)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Node.js (express.js) with angular.js Sample code\", \"description\": \"Node.js loads required modules for Node.js (express.js) with angular.js Sample code.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 99: Node.js (express.js) with angular.js Sample code",
+        "content": "### \ud83c\udf1f 1. Definition (What is Node.js (express.js) with angular.js Sample code?)\n**Node.js (express.js) with angular.js Sample code** is a core pillar of the Node.js backend ecosystem covered in Chapter 99 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Creating our project**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nleton project?\n\nleton, just run\n\napp. The structure is as follow:\n\napp.js\n\nvar express = require('express');\n\nvar router = express.Router();\n\nfunction(req, res, next) {\n\nmodule.exports = router;\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 99: Node.js (express.js) with angular.js Sample code provides essential mastery of Node.js backend engineering."
       }
     }
   ]

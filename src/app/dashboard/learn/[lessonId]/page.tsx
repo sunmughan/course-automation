@@ -28,6 +28,14 @@ interface LessonContent {
   prerequisites: { id: string; title: string; completed: boolean }[];
 }
 
+interface ChapterItem {
+  id: string;
+  title: string;
+  order: number;
+  moduleTitle: string;
+  isCompleted?: boolean;
+}
+
 interface LessonNavigation {
   prevLessonId: string | null;
   nextLessonId: string | null;
@@ -41,6 +49,7 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
   const { user } = useAuthContext();
   const [lesson, setLesson] = useState<LessonContent | null>(null);
   const [navigation, setNavigation] = useState<LessonNavigation | null>(null);
+  const [allChapters, setAllChapters] = useState<ChapterItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [completed, setCompleted] = useState(false);
@@ -59,6 +68,47 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
         setNavigation(data.navigation);
         if (data.progress?.status === "completed") {
           setCompleted(true);
+        }
+
+        // Fetch course syllabus to populate all 110 chapters in the sidebar
+        if (data.lesson?.course?.id) {
+          try {
+            const courseRes = await fetch(`/api/courses/${data.lesson.course.id}`, { headers: getAuthHeaders() });
+            if (courseRes.ok) {
+              const courseData = await courseRes.json();
+              const chapters: ChapterItem[] = [];
+              if (courseData.course?.modules) {
+                courseData.course.modules.forEach((mod: any) => {
+                  if (mod.topics) {
+                    mod.topics.forEach((top: any) => {
+                      if (top.lessons) {
+                        top.lessons.forEach((les: any) => {
+                          chapters.push({
+                            id: les.id,
+                            title: les.title || top.title,
+                            order: les.order || top.order || 0,
+                            moduleTitle: mod.title,
+                            isCompleted: false,
+                          });
+                        });
+                      } else {
+                        chapters.push({
+                          id: top.id,
+                          title: top.title,
+                          order: top.order || 0,
+                          moduleTitle: mod.title,
+                          isCompleted: false,
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+              setAllChapters(chapters);
+            }
+          } catch {
+            // Ignore course syllabus fetch failure
+          }
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load lesson");
@@ -105,6 +155,7 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
   return (
     <div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-hidden bg-slate-950">
       <UnifiedInteractiveClassroom
+        currentLessonId={lessonId}
         lessonTitle={lesson.title}
         topicTitle={lesson.topic.title}
         courseTitle={lesson.course.title}
@@ -113,6 +164,7 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
         lessonExplanation={lesson.explanation}
         concepts={lesson.concepts}
         examples={lesson.examples}
+        chaptersList={allChapters}
         isCompleted={completed}
         onCompleteLesson={handleComplete}
         hasNextLesson={Boolean(navigation?.nextLessonId)}
@@ -126,6 +178,9 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
           if (navigation?.prevLessonId) {
             router.push(`/dashboard/learn/${navigation.prevLessonId}`);
           }
+        }}
+        onSelectChapter={(targetLessonId) => {
+          router.push(`/dashboard/learn/${targetLessonId}`);
         }}
       />
     </div>

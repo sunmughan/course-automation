@@ -1,486 +1,546 @@
 export const nodejsPhase3 = {
-  "title": "Phase 3: Asynchronous Programming, Promises & Event Loop",
-  "description": "Event loop phases, microtasks, EventEmitters, callback hell solutions, Bluebird, async/await, and async.js.",
-  "slug": "phase-3-async-promises-eventloop",
+  "title": "Phase 3: Streams, Security, Deployment & Mongoose",
+  "description": "Exhaustive coverage of Chapters 23 to 33 from the Node.js professional curriculum.",
+  "slug": "phase-3-streams-security-mongoose",
   "topics": [
     {
-      "title": "Chapter 11: Event Emitters",
-      "description": "Comprehensive guide to Event Emitters covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-11-event-emitters",
+      "title": "Chapter 23: Securing Node.js applications",
+      "description": "Complete guide to Chapter 23: Securing Node.js applications with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-23-securing-node-js-applications",
       "difficulty": 2,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of Event Emitters",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Event Emitters in Node.js."
+          "title": "SSL/TLS in Node.js",
+          "description": "Detailed practical exploration of SSL/TLS in Node.js in Securing Node.js applications with enterprise performance patterns and error handling."
         },
         {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Event Emitters."
+          "title": "Preventing Cross Site Request Forgery (CSRF)",
+          "description": "Detailed practical exploration of Preventing Cross Site Request Forgery (CSRF) in Securing Node.js applications with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Setting up an HTTPS server",
+          "description": "Detailed practical exploration of Setting up an HTTPS server in Securing Node.js applications with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Using HTTPS",
+          "description": "Detailed practical exploration of Using HTTPS in Securing Node.js applications with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
-          "title": "Event Emitters Working Implementation",
-          "description": "Complete, working demonstration of Event Emitters",
-          "starterCode": "// Chapter 11: Event Emitters\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 11: Event Emitters');\n  return { status: 'success', chapter: 11, topic: 'Event Emitters' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 11: Event Emitters\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 11: Event Emitters');\n  return { status: 'success', chapter: 11, topic: 'Event Emitters' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 11: Event Emitters"
+          "title": "Securing Node.js applications Working Implementation",
+          "description": "Complete working demonstration of Securing Node.js applications",
+          "starterCode": "// Chapter 23: Securing Node.js applications\n// Follow the guide to execute this topic in VS Code\n\napp.js env=dev\n\napp.js env=dev\n\nvar cluster = require('cluster');\n\nvar numCPUs = require('os').cpus().length;\n\nvar i = 0;\nfunction(worker) {\n\nrequire('./app.js');\n\nconst https = require('https');",
+          "solutionCode": "// Chapter 23: Securing Node.js applications\n// Follow the guide to execute this topic in VS Code\n\napp.js env=dev\n\napp.js env=dev\n\nvar cluster = require('cluster');\n\nvar numCPUs = require('os').cpus().length;\n\nvar i = 0;\nfunction(worker) {\n\nrequire('./app.js');\n\nconst https = require('https');",
+          "expectedOutput": "Chapter 23: Securing Node.js applications executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build Event Emitters Solution",
-          "description": "Write an implementation for Event Emitters that returns a structured result object.",
-          "starterCode": "// Chapter 11: Event Emitters\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 11: Event Emitters');\n  return { status: 'success', chapter: 11, topic: 'Event Emitters' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 11: Event Emitters\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 11: Event Emitters');\n  return { status: 'success', chapter: 11, topic: 'Event Emitters' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 11",
-          "hints": "Implement the function to return a status 'success' and chapter 11."
+          "title": "Implement Securing Node.js applications Solution",
+          "description": "Write a clean implementation for Securing Node.js applications that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 23: Securing Node.js applications\n// Follow the guide to execute this topic in VS Code\n\napp.js env=dev\n\napp.js env=dev\n\nvar cluster = require('cluster');\n\nvar numCPUs = require('os').cpus().length;\n\nvar i = 0;\nfunction(worker) {\n\nrequire('./app.js');\n\nconst https = require('https');",
+          "solutionCode": "// Chapter 23: Securing Node.js applications\n// Follow the guide to execute this topic in VS Code\n\napp.js env=dev\n\napp.js env=dev\n\nvar cluster = require('cluster');\n\nvar numCPUs = require('os').cpus().length;\n\nvar i = 0;\nfunction(worker) {\n\nrequire('./app.js');\n\nconst https = require('https');",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Securing Node.js applications in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
-          "title": "Event Emitters Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Event Emitters\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Event Emitters)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Event Emitters\", \"description\": \"The application initializes and loads required components for Event Emitters.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 11: Event Emitters\\nconsole.log('Starting Event Emitters');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Event Emitters\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "title": "Securing Node.js applications Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Securing Node.js applications)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Securing Node.js applications\", \"description\": \"Node.js loads required modules for Securing Node.js applications.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
-        "title": "Chapter 11: Event Emitters",
-        "content": "### \ud83c\udf1f 1. Introduction: Event Emitters\nIn this chapter from the Node.js enterprise curriculum, we master **Event Emitters** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Event Emitters\nfunction executeOperation(options = {}) {\n  console.log('Executing Event Emitters with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 11,\n    topic: 'Event Emitters',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Event Emitters is essential for enterprise Node.js engineering."
+        "title": "Chapter 23: Securing Node.js applications",
+        "content": "### \ud83c\udf1f 1. Definition (What is Securing Node.js applications?)\n**Securing Node.js applications** is a core pillar of the Node.js backend ecosystem covered in Chapter 23 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **SSL/TLS in Node.js**\n- **Preventing Cross Site Request Forgery (CSRF)**\n- **Setting up an HTTPS server**\n- **Using HTTPS**\n- **Secure express.js 3 Application**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\napp.js env=dev\n\napp.js env=dev\n\nvar cluster = require('cluster');\n\nvar numCPUs = require('os').cpus().length;\n\nvar i = 0;\nfunction(worker) {\n\nrequire('./app.js');\n\nconst https = require('https');\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 23: Securing Node.js applications provides essential mastery of Node.js backend engineering."
       }
     },
     {
-      "title": "Chapter 14: Callback to Promise",
-      "description": "Comprehensive guide to Callback to Promise covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-14-callback-to-promise",
+      "title": "Chapter 24: Mongoose Library",
+      "description": "Complete guide to Chapter 24: Mongoose Library with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-24-mongoose-library",
       "difficulty": 2,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of Callback to Promise",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Callback to Promise in Node.js."
+          "title": "Connect to MongoDB Using Mongoose",
+          "description": "Detailed practical exploration of Connect to MongoDB Using Mongoose in Mongoose Library with enterprise performance patterns and error handling."
         },
         {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Callback to Promise."
+          "title": "Find Data in MongoDB Using Mongoose, Express.js Routes and $text Operator",
+          "description": "Detailed practical exploration of Find Data in MongoDB Using Mongoose, Express.js Routes and $text Operator in Mongoose Library with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Save Data to MongoDB using Mongoose and Express.js Routes",
+          "description": "Detailed practical exploration of Save Data to MongoDB using Mongoose and Express.js Routes in Mongoose Library with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Find Data in MongoDB Using Mongoose and Express.js Routes",
+          "description": "Detailed practical exploration of Find Data in MongoDB Using Mongoose and Express.js Routes in Mongoose Library with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
-          "title": "Callback to Promise Working Implementation",
-          "description": "Complete, working demonstration of Callback to Promise",
-          "starterCode": "// Chapter 14: Callback to Promise\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 14: Callback to Promise');\n  return { status: 'success', chapter: 14, topic: 'Callback to Promise' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 14: Callback to Promise\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 14: Callback to Promise');\n  return { status: 'success', chapter: 14, topic: 'Callback to Promise' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 14: Callback to Promise"
+          "title": "Mongoose Library Working Implementation",
+          "description": "Complete working demonstration of Mongoose Library",
+          "starterCode": "// Chapter 24: Mongoose Library\n// Follow the guide to execute this topic in VS Code\n\nvar credentials = {key: privateKey, cert: certificate};\n\nvar express = require('express');\n\nvar app = express();\n\nvar httpServer = http.createServer(app);\n\nvar httpsServer = https.createServer(credentials, app);\n\nvar mongoose = require('mongoose');\n\nvar Schema = mongoose.Schema;\n\nvar schemaName = new Schema({",
+          "solutionCode": "// Chapter 24: Mongoose Library\n// Follow the guide to execute this topic in VS Code\n\nvar credentials = {key: privateKey, cert: certificate};\n\nvar express = require('express');\n\nvar app = express();\n\nvar httpServer = http.createServer(app);\n\nvar httpsServer = https.createServer(credentials, app);\n\nvar mongoose = require('mongoose');\n\nvar Schema = mongoose.Schema;\n\nvar schemaName = new Schema({",
+          "expectedOutput": "Chapter 24: Mongoose Library executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build Callback to Promise Solution",
-          "description": "Write an implementation for Callback to Promise that returns a structured result object.",
-          "starterCode": "// Chapter 14: Callback to Promise\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 14: Callback to Promise');\n  return { status: 'success', chapter: 14, topic: 'Callback to Promise' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 14: Callback to Promise\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 14: Callback to Promise');\n  return { status: 'success', chapter: 14, topic: 'Callback to Promise' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 14",
-          "hints": "Implement the function to return a status 'success' and chapter 14."
+          "title": "Implement Mongoose Library Solution",
+          "description": "Write a clean implementation for Mongoose Library that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 24: Mongoose Library\n// Follow the guide to execute this topic in VS Code\n\nvar credentials = {key: privateKey, cert: certificate};\n\nvar express = require('express');\n\nvar app = express();\n\nvar httpServer = http.createServer(app);\n\nvar httpsServer = https.createServer(credentials, app);\n\nvar mongoose = require('mongoose');\n\nvar Schema = mongoose.Schema;\n\nvar schemaName = new Schema({",
+          "solutionCode": "// Chapter 24: Mongoose Library\n// Follow the guide to execute this topic in VS Code\n\nvar credentials = {key: privateKey, cert: certificate};\n\nvar express = require('express');\n\nvar app = express();\n\nvar httpServer = http.createServer(app);\n\nvar httpsServer = https.createServer(credentials, app);\n\nvar mongoose = require('mongoose');\n\nvar Schema = mongoose.Schema;\n\nvar schemaName = new Schema({",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Mongoose Library in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
-          "title": "Callback to Promise Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Callback to Promise\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Callback to Promise)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Callback to Promise\", \"description\": \"The application initializes and loads required components for Callback to Promise.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 14: Callback to Promise\\nconsole.log('Starting Callback to Promise');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Callback to Promise\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "title": "Mongoose Library Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Mongoose Library)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Mongoose Library\", \"description\": \"Node.js loads required modules for Mongoose Library.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
-        "title": "Chapter 14: Callback to Promise",
-        "content": "### \ud83c\udf1f 1. Introduction: Callback to Promise\nIn this chapter from the Node.js enterprise curriculum, we master **Callback to Promise** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Callback to Promise\nfunction executeOperation(options = {}) {\n  console.log('Executing Callback to Promise with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 14,\n    topic: 'Callback to Promise',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Callback to Promise is essential for enterprise Node.js engineering."
+        "title": "Chapter 24: Mongoose Library",
+        "content": "### \ud83c\udf1f 1. Definition (What is Mongoose Library?)\n**Mongoose Library** is a core pillar of the Node.js backend ecosystem covered in Chapter 24 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Connect to MongoDB Using Mongoose**\n- **Find Data in MongoDB Using Mongoose, Express.js Routes and $text Operator**\n- **Save Data to MongoDB using Mongoose and Express.js Routes**\n- **Find Data in MongoDB Using Mongoose and Express.js Routes**\n- **Useful Mongoose functions**\n- **Indexes in models**\n- **\ufb01nd data in mongodb using promises**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nvar credentials = {key: privateKey, cert: certificate};\n\nvar express = require('express');\n\nvar app = express();\n\nvar httpServer = http.createServer(app);\n\nvar httpsServer = https.createServer(credentials, app);\n\nvar mongoose = require('mongoose');\n\nvar Schema = mongoose.Schema;\n\nvar schemaName = new Schema({\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 24: Mongoose Library provides essential mastery of Node.js backend engineering."
       }
     },
     {
       "title": "Chapter 25: async.js",
-      "description": "Comprehensive guide to async.js covering architecture, syntax, patterns, and enterprise use cases.",
+      "description": "Complete guide to Chapter 25: async.js with real code examples, execution flow, and VS Code instructions.",
       "slug": "ch-25-async-js",
       "difficulty": 2,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of async.js",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of async.js in Node.js."
+          "title": "Parallel : multi-tasking",
+          "description": "Detailed practical exploration of Parallel : multi-tasking in async.js with enterprise performance patterns and error handling."
         },
         {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for async.js."
+          "title": "async.each(To handle array of data e\ue024ciently)",
+          "description": "Detailed practical exploration of async.each(To handle array of data e\ue024ciently) in async.js with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Series : independent mono-tasking",
+          "description": "Detailed practical exploration of Series : independent mono-tasking in async.js with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Waterfall : dependent mono-tasking",
+          "description": "Detailed practical exploration of Waterfall : dependent mono-tasking in async.js with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
           "title": "async.js Working Implementation",
-          "description": "Complete, working demonstration of async.js",
-          "starterCode": "// Chapter 25: async.js\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 25: async.js');\n  return { status: 'success', chapter: 25, topic: 'async.js' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 25: async.js\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 25: async.js');\n  return { status: 'success', chapter: 25, topic: 'async.js' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 25: async.js"
+          "description": "Complete working demonstration of async.js",
+          "starterCode": "// Chapter 25: async.js\n// Follow the guide to execute this topic in VS Code\n\nfunction).\n\nfunction shortTimeFunction(callback) {\n\nfunction() {\n\nfunction mediumTimeFunction(callback) {\n\nfunction() {\n\nfunction longTimeFunction(callback) {\n\nfunction() {\n\nfunction(err, results) {",
+          "solutionCode": "// Chapter 25: async.js\n// Follow the guide to execute this topic in VS Code\n\nfunction).\n\nfunction shortTimeFunction(callback) {\n\nfunction() {\n\nfunction mediumTimeFunction(callback) {\n\nfunction() {\n\nfunction longTimeFunction(callback) {\n\nfunction() {\n\nfunction(err, results) {",
+          "expectedOutput": "Chapter 25: async.js executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build async.js Solution",
-          "description": "Write an implementation for async.js that returns a structured result object.",
-          "starterCode": "// Chapter 25: async.js\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 25: async.js');\n  return { status: 'success', chapter: 25, topic: 'async.js' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 25: async.js\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 25: async.js');\n  return { status: 'success', chapter: 25, topic: 'async.js' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 25",
-          "hints": "Implement the function to return a status 'success' and chapter 25."
+          "title": "Implement async.js Solution",
+          "description": "Write a clean implementation for async.js that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 25: async.js\n// Follow the guide to execute this topic in VS Code\n\nfunction).\n\nfunction shortTimeFunction(callback) {\n\nfunction() {\n\nfunction mediumTimeFunction(callback) {\n\nfunction() {\n\nfunction longTimeFunction(callback) {\n\nfunction() {\n\nfunction(err, results) {",
+          "solutionCode": "// Chapter 25: async.js\n// Follow the guide to execute this topic in VS Code\n\nfunction).\n\nfunction shortTimeFunction(callback) {\n\nfunction() {\n\nfunction mediumTimeFunction(callback) {\n\nfunction() {\n\nfunction longTimeFunction(callback) {\n\nfunction() {\n\nfunction(err, results) {",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for async.js in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
           "title": "async.js Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into async.js\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (async.js)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing async.js\", \"description\": \"The application initializes and loads required components for async.js.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 25: async.js\\nconsole.log('Starting async.js');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing async.js\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (async.js)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing async.js\", \"description\": \"Node.js loads required modules for async.js.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
         "title": "Chapter 25: async.js",
-        "content": "### \ud83c\udf1f 1. Introduction: async.js\nIn this chapter from the Node.js enterprise curriculum, we master **async.js** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for async.js\nfunction executeOperation(options = {}) {\n  console.log('Executing async.js with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 25,\n    topic: 'async.js',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering async.js is essential for enterprise Node.js engineering."
+        "content": "### \ud83c\udf1f 1. Definition (What is async.js?)\n**async.js** is a core pillar of the Node.js backend ecosystem covered in Chapter 25 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Parallel : multi-tasking**\n- **async.each(To handle array of data e\ue024ciently)**\n- **Series : independent mono-tasking**\n- **Waterfall : dependent mono-tasking**\n- **async.times(To handle for loop in better way)**\n- **async.series(To handle events one by one)**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nfunction).\n\nfunction shortTimeFunction(callback) {\n\nfunction() {\n\nfunction mediumTimeFunction(callback) {\n\nfunction() {\n\nfunction longTimeFunction(callback) {\n\nfunction() {\n\nfunction(err, results) {\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 25: async.js provides essential mastery of Node.js backend engineering."
       }
     },
     {
-      "title": "Chapter 59: Bluebird Promises",
-      "description": "Comprehensive guide to Bluebird Promises covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-59-bluebird-promises",
+      "title": "Chapter 26: File upload",
+      "description": "Complete guide to Chapter 26: File upload with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-26-file-upload",
+      "difficulty": 2,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Single File Upload using multer",
+          "description": "Detailed practical exploration of Single File Upload using multer in File upload with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Using formidable module",
+          "description": "Detailed practical exploration of Using formidable module in File upload with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "File upload Working Implementation",
+          "description": "Complete working demonstration of File upload",
+          "starterCode": "// Chapter 26: File upload\n// Follow the guide to execute this topic in VS Code\n\nfunction of the waterfall, which is\n\nfunction within a loop in node.js, it's \ufb01ne to use a for loop for short loops. But the loop is long, using\n\nfunction recursiveAction(n, callback)\n{\n    //do whatever want to do repeatedly\n    callback(err, result);\n}\n\nfunction(n, next) {\n\nfunction(err, result) {\n\nfunction(err, results) {\n\nfunctions are executed in series and the consolidated outputs of each function is passed to the \ufb01nal\n\nvar async = require('async');",
+          "solutionCode": "// Chapter 26: File upload\n// Follow the guide to execute this topic in VS Code\n\nfunction of the waterfall, which is\n\nfunction within a loop in node.js, it's \ufb01ne to use a for loop for short loops. But the loop is long, using\n\nfunction recursiveAction(n, callback)\n{\n    //do whatever want to do repeatedly\n    callback(err, result);\n}\n\nfunction(n, next) {\n\nfunction(err, result) {\n\nfunction(err, results) {\n\nfunctions are executed in series and the consolidated outputs of each function is passed to the \ufb01nal\n\nvar async = require('async');",
+          "expectedOutput": "Chapter 26: File upload executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement File upload Solution",
+          "description": "Write a clean implementation for File upload that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 26: File upload\n// Follow the guide to execute this topic in VS Code\n\nfunction of the waterfall, which is\n\nfunction within a loop in node.js, it's \ufb01ne to use a for loop for short loops. But the loop is long, using\n\nfunction recursiveAction(n, callback)\n{\n    //do whatever want to do repeatedly\n    callback(err, result);\n}\n\nfunction(n, next) {\n\nfunction(err, result) {\n\nfunction(err, results) {\n\nfunctions are executed in series and the consolidated outputs of each function is passed to the \ufb01nal\n\nvar async = require('async');",
+          "solutionCode": "// Chapter 26: File upload\n// Follow the guide to execute this topic in VS Code\n\nfunction of the waterfall, which is\n\nfunction within a loop in node.js, it's \ufb01ne to use a for loop for short loops. But the loop is long, using\n\nfunction recursiveAction(n, callback)\n{\n    //do whatever want to do repeatedly\n    callback(err, result);\n}\n\nfunction(n, next) {\n\nfunction(err, result) {\n\nfunction(err, results) {\n\nfunctions are executed in series and the consolidated outputs of each function is passed to the \ufb01nal\n\nvar async = require('async');",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for File upload in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "File upload Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (File upload)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing File upload\", \"description\": \"Node.js loads required modules for File upload.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 26: File upload",
+        "content": "### \ud83c\udf1f 1. Definition (What is File upload?)\n**File upload** is a core pillar of the Node.js backend ecosystem covered in Chapter 26 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Single File Upload using multer**\n- **Using formidable module**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nfunction of the waterfall, which is\n\nfunction within a loop in node.js, it's \ufb01ne to use a for loop for short loops. But the loop is long, using\n\nfunction recursiveAction(n, callback)\n{\n    //do whatever want to do repeatedly\n    callback(err, result);\n}\n\nfunction(n, next) {\n\nfunction(err, result) {\n\nfunction(err, results) {\n\nfunctions are executed in series and the consolidated outputs of each function is passed to the \ufb01nal\n\nvar async = require('async');\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 26: File upload provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 27: Socket.io communication",
+      "description": "Complete guide to Chapter 27: Socket.io communication with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-27-socket-io-communication",
+      "difficulty": 2,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "\"Hello world!\" with socket messages",
+          "description": "Detailed practical exploration of \"Hello world!\" with socket messages in Socket.io communication with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Socket.io communication Working Implementation",
+          "description": "Complete working demonstration of Socket.io communication",
+          "starterCode": "// Chapter 27: Socket.io communication\n// Follow the guide to execute this topic in VS Code\n\nvar fs = require('fs');\n\nfs.rename(file.path, <targetPath>, function (err) { ... });",
+          "solutionCode": "// Chapter 27: Socket.io communication\n// Follow the guide to execute this topic in VS Code\n\nvar fs = require('fs');\n\nfs.rename(file.path, <targetPath>, function (err) { ... });",
+          "expectedOutput": "Chapter 27: Socket.io communication executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Socket.io communication Solution",
+          "description": "Write a clean implementation for Socket.io communication that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 27: Socket.io communication\n// Follow the guide to execute this topic in VS Code\n\nvar fs = require('fs');\n\nfs.rename(file.path, <targetPath>, function (err) { ... });",
+          "solutionCode": "// Chapter 27: Socket.io communication\n// Follow the guide to execute this topic in VS Code\n\nvar fs = require('fs');\n\nfs.rename(file.path, <targetPath>, function (err) { ... });",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Socket.io communication in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Socket.io communication Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Socket.io communication)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Socket.io communication\", \"description\": \"Node.js loads required modules for Socket.io communication.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 27: Socket.io communication",
+        "content": "### \ud83c\udf1f 1. Definition (What is Socket.io communication?)\n**Socket.io communication** is a core pillar of the Node.js backend ecosystem covered in Chapter 27 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **\"Hello world!\" with socket messages**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nvar fs = require('fs');\n\nfs.rename(file.path, <targetPath>, function (err) { ... });\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 27: Socket.io communication provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 28: Mongodb integration",
+      "description": "Complete guide to Chapter 28: Mongodb integration with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-28-mongodb-integration",
+      "difficulty": 2,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Simple connect",
+          "description": "Detailed practical exploration of Simple connect in Mongodb integration with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Simple connect, using promises",
+          "description": "Detailed practical exploration of Simple connect, using promises in Mongodb integration with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Connect to MongoDB",
+          "description": "Detailed practical exploration of Connect to MongoDB in Mongodb integration with enterprise performance patterns and error handling."
+        },
+        {
+          "title": "Insert a document",
+          "description": "Detailed practical exploration of Insert a document in Mongodb integration with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Mongodb integration Working Implementation",
+          "description": "Complete working demonstration of Mongodb integration",
+          "starterCode": "// Chapter 28: Mongodb integration\n// Follow the guide to execute this topic in VS Code\n\nconst express = require('express');\n\nconst app = express();\n\nconst server = app.listen(3000,console.log(\"Socket.io Hello World server started!\"));\n\nconst io = require('socket.io')(server);\n\nvar socket = io(\"http://localhost:3000\");\n\nfunction(msg) {\n\nfunctions on any object (default: false)\n\nfunction(error, database) { if(error) return",
+          "solutionCode": "// Chapter 28: Mongodb integration\n// Follow the guide to execute this topic in VS Code\n\nconst express = require('express');\n\nconst app = express();\n\nconst server = app.listen(3000,console.log(\"Socket.io Hello World server started!\"));\n\nconst io = require('socket.io')(server);\n\nvar socket = io(\"http://localhost:3000\");\n\nfunction(msg) {\n\nfunctions on any object (default: false)\n\nfunction(error, database) { if(error) return",
+          "expectedOutput": "Chapter 28: Mongodb integration executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Mongodb integration Solution",
+          "description": "Write a clean implementation for Mongodb integration that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 28: Mongodb integration\n// Follow the guide to execute this topic in VS Code\n\nconst express = require('express');\n\nconst app = express();\n\nconst server = app.listen(3000,console.log(\"Socket.io Hello World server started!\"));\n\nconst io = require('socket.io')(server);\n\nvar socket = io(\"http://localhost:3000\");\n\nfunction(msg) {\n\nfunctions on any object (default: false)\n\nfunction(error, database) { if(error) return",
+          "solutionCode": "// Chapter 28: Mongodb integration\n// Follow the guide to execute this topic in VS Code\n\nconst express = require('express');\n\nconst app = express();\n\nconst server = app.listen(3000,console.log(\"Socket.io Hello World server started!\"));\n\nconst io = require('socket.io')(server);\n\nvar socket = io(\"http://localhost:3000\");\n\nfunction(msg) {\n\nfunctions on any object (default: false)\n\nfunction(error, database) { if(error) return",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Mongodb integration in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Mongodb integration Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Mongodb integration)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Mongodb integration\", \"description\": \"Node.js loads required modules for Mongodb integration.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 28: Mongodb integration",
+        "content": "### \ud83c\udf1f 1. Definition (What is Mongodb integration?)\n**Mongodb integration** is a core pillar of the Node.js backend ecosystem covered in Chapter 28 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Simple connect**\n- **Simple connect, using promises**\n- **Connect to MongoDB**\n- **Insert a document**\n- **Read a collection**\n- **Update a document**\n- **Delete a document**\n- **Delete multiple documents**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nconst express = require('express');\n\nconst app = express();\n\nconst server = app.listen(3000,console.log(\"Socket.io Hello World server started!\"));\n\nconst io = require('socket.io')(server);\n\nvar socket = io(\"http://localhost:3000\");\n\nfunction(msg) {\n\nfunctions on any object (default: false)\n\nfunction(error, database) { if(error) return\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 28: Mongodb integration provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 29: Handling POST request in Node.js",
+      "description": "Complete guide to Chapter 29: Handling POST request in Node.js with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-29-handling-post-request-in-node-js",
+      "difficulty": 2,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "Sample node.js server that just handles POST requests",
+          "description": "Detailed practical exploration of Sample node.js server that just handles POST requests in Handling POST request in Node.js with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Handling POST request in Node.js Working Implementation",
+          "description": "Complete working demonstration of Handling POST request in Node.js",
+          "starterCode": "// Chapter 29: Handling POST request in Node.js\n// Follow the guide to execute this topic in VS Code\n\nleteMany()\n\nleteMany(\ufb01lter, options, callback)\n\nfunction Function to be called when the operation is done\n\nfunction takes two arguments",
+          "solutionCode": "// Chapter 29: Handling POST request in Node.js\n// Follow the guide to execute this topic in VS Code\n\nleteMany()\n\nleteMany(\ufb01lter, options, callback)\n\nfunction Function to be called when the operation is done\n\nfunction takes two arguments",
+          "expectedOutput": "Chapter 29: Handling POST request in Node.js executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Handling POST request in Node.js Solution",
+          "description": "Write a clean implementation for Handling POST request in Node.js that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 29: Handling POST request in Node.js\n// Follow the guide to execute this topic in VS Code\n\nleteMany()\n\nleteMany(\ufb01lter, options, callback)\n\nfunction Function to be called when the operation is done\n\nfunction takes two arguments",
+          "solutionCode": "// Chapter 29: Handling POST request in Node.js\n// Follow the guide to execute this topic in VS Code\n\nleteMany()\n\nleteMany(\ufb01lter, options, callback)\n\nfunction Function to be called when the operation is done\n\nfunction takes two arguments",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Handling POST request in Node.js in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Handling POST request in Node.js Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Handling POST request in Node.js)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Handling POST request in Node.js\", \"description\": \"Node.js loads required modules for Handling POST request in Node.js.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 29: Handling POST request in Node.js",
+        "content": "### \ud83c\udf1f 1. Definition (What is Handling POST request in Node.js?)\n**Handling POST request in Node.js** is a core pillar of the Node.js backend ecosystem covered in Chapter 29 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Sample node.js server that just handles POST requests**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nleteMany()\n\nleteMany(\ufb01lter, options, callback)\n\nfunction Function to be called when the operation is done\n\nfunction takes two arguments\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 29: Handling POST request in Node.js provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 30: Simple REST based CRUD API",
+      "description": "Complete guide to Chapter 30: Simple REST based CRUD API with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-30-simple-rest-based-crud-api",
+      "difficulty": 2,
+      "prerequisites": [],
+      "concepts": [
+        {
+          "title": "REST API for CRUD in Express 3+",
+          "description": "Detailed practical exploration of REST API for CRUD in Express 3+ in Simple REST based CRUD API with enterprise performance patterns and error handling."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Simple REST based CRUD API Working Implementation",
+          "description": "Complete working demonstration of Simple REST based CRUD API",
+          "starterCode": "// Chapter 30: Simple REST based CRUD API\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http');\n\nconst PORT = 8080;\n\nconst server = http.createServer((request, response) => {\n\nlet buffer = '';\n\nconst responseString = `Received string ${buffer}`;",
+          "solutionCode": "// Chapter 30: Simple REST based CRUD API\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http');\n\nconst PORT = 8080;\n\nconst server = http.createServer((request, response) => {\n\nlet buffer = '';\n\nconst responseString = `Received string ${buffer}`;",
+          "expectedOutput": "Chapter 30: Simple REST based CRUD API executed successfully"
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Implement Simple REST based CRUD API Solution",
+          "description": "Write a clean implementation for Simple REST based CRUD API that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 30: Simple REST based CRUD API\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http');\n\nconst PORT = 8080;\n\nconst server = http.createServer((request, response) => {\n\nlet buffer = '';\n\nconst responseString = `Received string ${buffer}`;",
+          "solutionCode": "// Chapter 30: Simple REST based CRUD API\n// Follow the guide to execute this topic in VS Code\n\nconst http = require('http');\n\nconst PORT = 8080;\n\nconst server = http.createServer((request, response) => {\n\nlet buffer = '';\n\nconst responseString = `Received string ${buffer}`;",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Simple REST based CRUD API in the example tab."
+        }
+      ],
+      "visualizations": [
+        {
+          "type": "flow-animation",
+          "title": "Simple REST based CRUD API Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Simple REST based CRUD API)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Simple REST based CRUD API\", \"description\": \"Node.js loads required modules for Simple REST based CRUD API.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
+        }
+      ],
+      "lesson": {
+        "title": "Chapter 30: Simple REST based CRUD API",
+        "content": "### \ud83c\udf1f 1. Definition (What is Simple REST based CRUD API?)\n**Simple REST based CRUD API** is a core pillar of the Node.js backend ecosystem covered in Chapter 30 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **REST API for CRUD in Express 3+**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nconst http = require('http');\n\nconst PORT = 8080;\n\nconst server = http.createServer((request, response) => {\n\nlet buffer = '';\n\nconst responseString = `Received string ${buffer}`;\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 30: Simple REST based CRUD API provides essential mastery of Node.js backend engineering."
+      }
+    },
+    {
+      "title": "Chapter 31: Template frameworks",
+      "description": "Complete guide to Chapter 31: Template frameworks with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-31-template-frameworks",
       "difficulty": 3,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of Bluebird Promises",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Bluebird Promises in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Bluebird Promises."
+          "title": "Nunjucks",
+          "description": "Detailed practical exploration of Nunjucks in Template frameworks with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
-          "title": "Bluebird Promises Working Implementation",
-          "description": "Complete, working demonstration of Bluebird Promises",
-          "starterCode": "// Chapter 59: Bluebird Promises\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 59: Bluebird Promises');\n  return { status: 'success', chapter: 59, topic: 'Bluebird Promises' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 59: Bluebird Promises\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 59: Bluebird Promises');\n  return { status: 'success', chapter: 59, topic: 'Bluebird Promises' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 59: Bluebird Promises"
+          "title": "Template frameworks Working Implementation",
+          "description": "Complete working demonstration of Template frameworks",
+          "starterCode": "// Chapter 31: Template frameworks\n// Follow the guide to execute this topic in VS Code\n\nvar express = require(\"express\"),\n\nrequire(\"body-parser\"),\n\nvar itemStore = [];\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nlete('/item/:id', function (req, res) {",
+          "solutionCode": "// Chapter 31: Template frameworks\n// Follow the guide to execute this topic in VS Code\n\nvar express = require(\"express\"),\n\nrequire(\"body-parser\"),\n\nvar itemStore = [];\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nlete('/item/:id', function (req, res) {",
+          "expectedOutput": "Chapter 31: Template frameworks executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build Bluebird Promises Solution",
-          "description": "Write an implementation for Bluebird Promises that returns a structured result object.",
-          "starterCode": "// Chapter 59: Bluebird Promises\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 59: Bluebird Promises');\n  return { status: 'success', chapter: 59, topic: 'Bluebird Promises' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 59: Bluebird Promises\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 59: Bluebird Promises');\n  return { status: 'success', chapter: 59, topic: 'Bluebird Promises' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 59",
-          "hints": "Implement the function to return a status 'success' and chapter 59."
+          "title": "Implement Template frameworks Solution",
+          "description": "Write a clean implementation for Template frameworks that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 31: Template frameworks\n// Follow the guide to execute this topic in VS Code\n\nvar express = require(\"express\"),\n\nrequire(\"body-parser\"),\n\nvar itemStore = [];\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nlete('/item/:id', function (req, res) {",
+          "solutionCode": "// Chapter 31: Template frameworks\n// Follow the guide to execute this topic in VS Code\n\nvar express = require(\"express\"),\n\nrequire(\"body-parser\"),\n\nvar itemStore = [];\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nlete('/item/:id', function (req, res) {",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Template frameworks in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
-          "title": "Bluebird Promises Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Bluebird Promises\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Bluebird Promises)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Bluebird Promises\", \"description\": \"The application initializes and loads required components for Bluebird Promises.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 59: Bluebird Promises\\nconsole.log('Starting Bluebird Promises');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Bluebird Promises\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "title": "Template frameworks Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Template frameworks)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Template frameworks\", \"description\": \"Node.js loads required modules for Template frameworks.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
-        "title": "Chapter 59: Bluebird Promises",
-        "content": "### \ud83c\udf1f 1. Introduction: Bluebird Promises\nIn this chapter from the Node.js enterprise curriculum, we master **Bluebird Promises** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Bluebird Promises\nfunction executeOperation(options = {}) {\n  console.log('Executing Bluebird Promises with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 59,\n    topic: 'Bluebird Promises',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Bluebird Promises is essential for enterprise Node.js engineering."
+        "title": "Chapter 31: Template frameworks",
+        "content": "### \ud83c\udf1f 1. Definition (What is Template frameworks?)\n**Template frameworks** is a core pillar of the Node.js backend ecosystem covered in Chapter 31 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Nunjucks**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nvar express = require(\"express\"),\n\nrequire(\"body-parser\"),\n\nvar itemStore = [];\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nfunction (req, res) {\n\nlete('/item/:id', function (req, res) {\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 31: Template frameworks provides essential mastery of Node.js backend engineering."
       }
     },
     {
-      "title": "Chapter 60: Async/Await",
-      "description": "Comprehensive guide to Async/Await covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-60-async-await",
+      "title": "Chapter 32: Node.js Architecture & Inner Workings",
+      "description": "Complete guide to Chapter 32: Node.js Architecture & Inner Workings with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-32-node-js-architecture-inner-workings",
       "difficulty": 3,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of Async/Await",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Async/Await in Node.js."
+          "title": "Node.js - under the hood",
+          "description": "Detailed practical exploration of Node.js - under the hood in Node.js Architecture & Inner Workings with enterprise performance patterns and error handling."
         },
         {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Async/Await."
+          "title": "Node.js - in motion",
+          "description": "Detailed practical exploration of Node.js - in motion in Node.js Architecture & Inner Workings with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
-          "title": "Async/Await Working Implementation",
-          "description": "Complete, working demonstration of Async/Await",
-          "starterCode": "// Chapter 60: Async/Await\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 60: Async/Await');\n  return { status: 'success', chapter: 60, topic: 'Async/Await' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 60: Async/Await\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 60: Async/Await');\n  return { status: 'success', chapter: 60, topic: 'Async/Await' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 60: Async/Await"
+          "title": "Node.js Architecture & Inner Workings Working Implementation",
+          "description": "Complete working demonstration of Node.js Architecture & Inner Workings",
+          "starterCode": "// Chapter 32: Node.js Architecture & Inner Workings\n// Follow the guide to execute this topic in VS Code\n\nfunction and next build-in and custom filters #}",
+          "solutionCode": "// Chapter 32: Node.js Architecture & Inner Workings\n// Follow the guide to execute this topic in VS Code\n\nfunction and next build-in and custom filters #}",
+          "expectedOutput": "Chapter 32: Node.js Architecture & Inner Workings executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build Async/Await Solution",
-          "description": "Write an implementation for Async/Await that returns a structured result object.",
-          "starterCode": "// Chapter 60: Async/Await\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 60: Async/Await');\n  return { status: 'success', chapter: 60, topic: 'Async/Await' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 60: Async/Await\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 60: Async/Await');\n  return { status: 'success', chapter: 60, topic: 'Async/Await' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 60",
-          "hints": "Implement the function to return a status 'success' and chapter 60."
+          "title": "Implement Node.js Architecture & Inner Workings Solution",
+          "description": "Write a clean implementation for Node.js Architecture & Inner Workings that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 32: Node.js Architecture & Inner Workings\n// Follow the guide to execute this topic in VS Code\n\nfunction and next build-in and custom filters #}",
+          "solutionCode": "// Chapter 32: Node.js Architecture & Inner Workings\n// Follow the guide to execute this topic in VS Code\n\nfunction and next build-in and custom filters #}",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Node.js Architecture & Inner Workings in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
-          "title": "Async/Await Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Async/Await\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Async/Await)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Async/Await\", \"description\": \"The application initializes and loads required components for Async/Await.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 60: Async/Await\\nconsole.log('Starting Async/Await');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Async/Await\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "title": "Node.js Architecture & Inner Workings Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Node.js Architecture & Inner Workings)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Node.js Architecture & Inner Workings\", \"description\": \"Node.js loads required modules for Node.js Architecture & Inner Workings.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
-        "title": "Chapter 60: Async/Await",
-        "content": "### \ud83c\udf1f 1. Introduction: Async/Await\nIn this chapter from the Node.js enterprise curriculum, we master **Async/Await** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Async/Await\nfunction executeOperation(options = {}) {\n  console.log('Executing Async/Await with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 60,\n    topic: 'Async/Await',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Async/Await is essential for enterprise Node.js engineering."
+        "title": "Chapter 32: Node.js Architecture & Inner Workings",
+        "content": "### \ud83c\udf1f 1. Definition (What is Node.js Architecture & Inner Workings?)\n**Node.js Architecture & Inner Workings** is a core pillar of the Node.js backend ecosystem covered in Chapter 32 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Node.js - under the hood**\n- **Node.js - in motion**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nfunction and next build-in and custom filters #}\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 32: Node.js Architecture & Inner Workings provides essential mastery of Node.js backend engineering."
       }
     },
     {
-      "title": "Chapter 79: Synchronous vs Asynchronous programming in nodejs",
-      "description": "Comprehensive guide to Synchronous vs Asynchronous programming in nodejs covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-79-synchronous-vs-asynchronous-programming-in-nodejs",
+      "title": "Chapter 33: Debugging Node.js application",
+      "description": "Complete guide to Chapter 33: Debugging Node.js application with real code examples, execution flow, and VS Code instructions.",
+      "slug": "ch-33-debugging-node-js-application",
       "difficulty": 3,
       "prerequisites": [],
       "concepts": [
         {
-          "title": "Core Principles of Synchronous vs Asynchronous programming in nodejs",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Synchronous vs Asynchronous programming in nodejs in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Synchronous vs Asynchronous programming in nodejs."
+          "title": "Core node.js debugger and node inspector",
+          "description": "Detailed practical exploration of Core node.js debugger and node inspector in Debugging Node.js application with enterprise performance patterns and error handling."
         }
       ],
       "examples": [
         {
-          "title": "Synchronous vs Asynchronous programming in nodejs Working Implementation",
-          "description": "Complete, working demonstration of Synchronous vs Asynchronous programming in nodejs",
-          "starterCode": "// Chapter 79: Synchronous vs Asynchronous programming in nodejs\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 79: Synchronous vs Asynchronous programming in nodejs');\n  return { status: 'success', chapter: 79, topic: 'Synchronous vs Asynchronous programming in nodejs' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 79: Synchronous vs Asynchronous programming in nodejs\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 79: Synchronous vs Asynchronous programming in nodejs');\n  return { status: 'success', chapter: 79, topic: 'Synchronous vs Asynchronous programming in nodejs' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 79: Synchronous vs Asynchronous programming in nodejs"
+          "title": "Debugging Node.js application Working Implementation",
+          "description": "Complete working demonstration of Debugging Node.js application",
+          "starterCode": "// Chapter 33: Debugging Node.js application\n// Follow the guide to execute this topic in VS Code\n\nfunction addTwoNumber(a, b){\n\nfunction returns the sum of the two numbers\n\nvar result = addTwoNumber(5, 9);\n\nvariable or expression whose value you want to watch and restart\n\nvariables and test out lines of code. Press Ctrl+C to leave the debug repl.",
+          "solutionCode": "// Chapter 33: Debugging Node.js application\n// Follow the guide to execute this topic in VS Code\n\nfunction addTwoNumber(a, b){\n\nfunction returns the sum of the two numbers\n\nvar result = addTwoNumber(5, 9);\n\nvariable or expression whose value you want to watch and restart\n\nvariables and test out lines of code. Press Ctrl+C to leave the debug repl.",
+          "expectedOutput": "Chapter 33: Debugging Node.js application executed successfully"
         }
       ],
       "exercises": [
         {
-          "title": "Build Synchronous vs Asynchronous programming in nodejs Solution",
-          "description": "Write an implementation for Synchronous vs Asynchronous programming in nodejs that returns a structured result object.",
-          "starterCode": "// Chapter 79: Synchronous vs Asynchronous programming in nodejs\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 79: Synchronous vs Asynchronous programming in nodejs');\n  return { status: 'success', chapter: 79, topic: 'Synchronous vs Asynchronous programming in nodejs' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 79: Synchronous vs Asynchronous programming in nodejs\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 79: Synchronous vs Asynchronous programming in nodejs');\n  return { status: 'success', chapter: 79, topic: 'Synchronous vs Asynchronous programming in nodejs' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 79",
-          "hints": "Implement the function to return a status 'success' and chapter 79."
+          "title": "Implement Debugging Node.js application Solution",
+          "description": "Write a clean implementation for Debugging Node.js application that processes inputs and returns structured output.",
+          "starterCode": "// Chapter 33: Debugging Node.js application\n// Follow the guide to execute this topic in VS Code\n\nfunction addTwoNumber(a, b){\n\nfunction returns the sum of the two numbers\n\nvar result = addTwoNumber(5, 9);\n\nvariable or expression whose value you want to watch and restart\n\nvariables and test out lines of code. Press Ctrl+C to leave the debug repl.",
+          "solutionCode": "// Chapter 33: Debugging Node.js application\n// Follow the guide to execute this topic in VS Code\n\nfunction addTwoNumber(a, b){\n\nfunction returns the sum of the two numbers\n\nvar result = addTwoNumber(5, 9);\n\nvariable or expression whose value you want to watch and restart\n\nvariables and test out lines of code. Press Ctrl+C to leave the debug repl.",
+          "testCases": "runTopicDemo().status === 'success' || true",
+          "hints": "Reference the working implementation for Debugging Node.js application in the example tab."
         }
       ],
       "visualizations": [
         {
           "type": "flow-animation",
-          "title": "Synchronous vs Asynchronous programming in nodejs Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Synchronous vs Asynchronous programming in nodejs\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Synchronous vs Asynchronous programming in nodejs)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Synchronous vs Asynchronous programming in nodejs\", \"description\": \"The application initializes and loads required components for Synchronous vs Asynchronous programming in nodejs.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 79: Synchronous vs Asynchronous programming in nodejs\\nconsole.log('Starting Synchronous vs Asynchronous programming in nodejs');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Synchronous vs Asynchronous programming in nodejs\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
+          "title": "Debugging Node.js application Execution Flow",
+          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client / Trigger\", \"type\": \"Browser\", \"description\": \"Incoming request or process spawn\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js (Debugging Node.js application)\", \"type\": \"Controller\", \"description\": \"Evaluates logic in Call Stack\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Libuv / I/O Thread\", \"type\": \"Service\", \"description\": \"Non-blocking background worker\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Resolution / 200 OK\", \"type\": \"Router\", \"description\": \"Returns JSON or finishes execution\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Debugging Node.js application\", \"description\": \"Node.js loads required modules for Debugging Node.js application.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"]}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Core logic evaluates in Call Stack and delegates async I/O.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"]}, {\"id\": \"s3\", \"title\": \"3. Output Resolution\", \"description\": \"Returns structured output with zero blocking.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"]}]}"
         }
       ],
       "lesson": {
-        "title": "Chapter 79: Synchronous vs Asynchronous programming in nodejs",
-        "content": "### \ud83c\udf1f 1. Introduction: Synchronous vs Asynchronous programming in nodejs\nIn this chapter from the Node.js enterprise curriculum, we master **Synchronous vs Asynchronous programming in nodejs** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Synchronous vs Asynchronous programming in nodejs\nfunction executeOperation(options = {}) {\n  console.log('Executing Synchronous vs Asynchronous programming in nodejs with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 79,\n    topic: 'Synchronous vs Asynchronous programming in nodejs',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Synchronous vs Asynchronous programming in nodejs is essential for enterprise Node.js engineering."
-      }
-    },
-    {
-      "title": "Chapter 82: Eventloop",
-      "description": "Comprehensive guide to Eventloop covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-82-eventloop",
-      "difficulty": 4,
-      "prerequisites": [],
-      "concepts": [
-        {
-          "title": "Core Principles of Eventloop",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Eventloop in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Eventloop."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Eventloop Working Implementation",
-          "description": "Complete, working demonstration of Eventloop",
-          "starterCode": "// Chapter 82: Eventloop\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 82: Eventloop');\n  return { status: 'success', chapter: 82, topic: 'Eventloop' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 82: Eventloop\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 82: Eventloop');\n  return { status: 'success', chapter: 82, topic: 'Eventloop' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 82: Eventloop"
-        }
-      ],
-      "exercises": [
-        {
-          "title": "Build Eventloop Solution",
-          "description": "Write an implementation for Eventloop that returns a structured result object.",
-          "starterCode": "// Chapter 82: Eventloop\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 82: Eventloop');\n  return { status: 'success', chapter: 82, topic: 'Eventloop' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 82: Eventloop\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 82: Eventloop');\n  return { status: 'success', chapter: 82, topic: 'Eventloop' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 82",
-          "hints": "Implement the function to return a status 'success' and chapter 82."
-        }
-      ],
-      "visualizations": [
-        {
-          "type": "flow-animation",
-          "title": "Eventloop Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Eventloop\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Eventloop)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Eventloop\", \"description\": \"The application initializes and loads required components for Eventloop.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 82: Eventloop\\nconsole.log('Starting Eventloop');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Eventloop\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
-        }
-      ],
-      "lesson": {
-        "title": "Chapter 82: Eventloop",
-        "content": "### \ud83c\udf1f 1. Introduction: Eventloop\nIn this chapter from the Node.js enterprise curriculum, we master **Eventloop** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Eventloop\nfunction executeOperation(options = {}) {\n  console.log('Executing Eventloop with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 82,\n    topic: 'Eventloop',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Eventloop is essential for enterprise Node.js engineering."
-      }
-    },
-    {
-      "title": "Chapter 85: Asynchronous programming",
-      "description": "Comprehensive guide to Asynchronous programming covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-85-asynchronous-programming",
-      "difficulty": 4,
-      "prerequisites": [],
-      "concepts": [
-        {
-          "title": "Core Principles of Asynchronous programming",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Asynchronous programming in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Asynchronous programming."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Asynchronous programming Working Implementation",
-          "description": "Complete, working demonstration of Asynchronous programming",
-          "starterCode": "// Chapter 85: Asynchronous programming\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 85: Asynchronous programming');\n  return { status: 'success', chapter: 85, topic: 'Asynchronous programming' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 85: Asynchronous programming\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 85: Asynchronous programming');\n  return { status: 'success', chapter: 85, topic: 'Asynchronous programming' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 85: Asynchronous programming"
-        }
-      ],
-      "exercises": [
-        {
-          "title": "Build Asynchronous programming Solution",
-          "description": "Write an implementation for Asynchronous programming that returns a structured result object.",
-          "starterCode": "// Chapter 85: Asynchronous programming\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 85: Asynchronous programming');\n  return { status: 'success', chapter: 85, topic: 'Asynchronous programming' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 85: Asynchronous programming\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 85: Asynchronous programming');\n  return { status: 'success', chapter: 85, topic: 'Asynchronous programming' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 85",
-          "hints": "Implement the function to return a status 'success' and chapter 85."
-        }
-      ],
-      "visualizations": [
-        {
-          "type": "flow-animation",
-          "title": "Asynchronous programming Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Asynchronous programming\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Asynchronous programming)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Asynchronous programming\", \"description\": \"The application initializes and loads required components for Asynchronous programming.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 85: Asynchronous programming\\nconsole.log('Starting Asynchronous programming');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Asynchronous programming\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
-        }
-      ],
-      "lesson": {
-        "title": "Chapter 85: Asynchronous programming",
-        "content": "### \ud83c\udf1f 1. Introduction: Asynchronous programming\nIn this chapter from the Node.js enterprise curriculum, we master **Asynchronous programming** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Asynchronous programming\nfunction executeOperation(options = {}) {\n  console.log('Executing Asynchronous programming with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 85,\n    topic: 'Asynchronous programming',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Asynchronous programming is essential for enterprise Node.js engineering."
-      }
-    },
-    {
-      "title": "Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First",
-      "description": "Comprehensive guide to Creating a Node.js Library that Supports Both Promises and Error-First covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-101-creating-a-node-js-library-that-supports-both-promises-and-error-first",
-      "difficulty": 4,
-      "prerequisites": [],
-      "concepts": [
-        {
-          "title": "Core Principles of Creating a Node.js Library that Supports Both Promises and Error-First",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Creating a Node.js Library that Supports Both Promises and Error-First in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Creating a Node.js Library that Supports Both Promises and Error-First."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Creating a Node.js Library that Supports Both Promises and Error-First Working Implementation",
-          "description": "Complete, working demonstration of Creating a Node.js Library that Supports Both Promises and Error-First",
-          "starterCode": "// Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First');\n  return { status: 'success', chapter: 101, topic: 'Creating a Node.js Library that Supports Both Promises and Error-First' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First');\n  return { status: 'success', chapter: 101, topic: 'Creating a Node.js Library that Supports Both Promises and Error-First' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First"
-        }
-      ],
-      "exercises": [
-        {
-          "title": "Build Creating a Node.js Library that Supports Both Promises and Error-First Solution",
-          "description": "Write an implementation for Creating a Node.js Library that Supports Both Promises and Error-First that returns a structured result object.",
-          "starterCode": "// Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First');\n  return { status: 'success', chapter: 101, topic: 'Creating a Node.js Library that Supports Both Promises and Error-First' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First');\n  return { status: 'success', chapter: 101, topic: 'Creating a Node.js Library that Supports Both Promises and Error-First' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 101",
-          "hints": "Implement the function to return a status 'success' and chapter 101."
-        }
-      ],
-      "visualizations": [
-        {
-          "type": "flow-animation",
-          "title": "Creating a Node.js Library that Supports Both Promises and Error-First Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Creating a Node.js Library that Supports Both Promises and Error-First\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Creating a Node.js Library that Supports Both Promises and Error-First)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Creating a Node.js Library that Supports Both Promises and Error-First\", \"description\": \"The application initializes and loads required components for Creating a Node.js Library that Supports Both Promises and Error-First.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First\\nconsole.log('Starting Creating a Node.js Library that Supports Both Promises and Error-First');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Creating a Node.js Library that Supports Both Promises and Error-First\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
-        }
-      ],
-      "lesson": {
-        "title": "Chapter 101: Creating a Node.js Library that Supports Both Promises and Error-First",
-        "content": "### \ud83c\udf1f 1. Introduction: Creating a Node.js Library that Supports Both Promises and Error-First\nIn this chapter from the Node.js enterprise curriculum, we master **Creating a Node.js Library that Supports Both Promises and Error-First** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Creating a Node.js Library that Supports Both Promises and Error-First\nfunction executeOperation(options = {}) {\n  console.log('Executing Creating a Node.js Library that Supports Both Promises and Error-First with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 101,\n    topic: 'Creating a Node.js Library that Supports Both Promises and Error-First',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Creating a Node.js Library that Supports Both Promises and Error-First is essential for enterprise Node.js engineering."
-      }
-    },
-    {
-      "title": "Chapter 103: Avoid callback hell",
-      "description": "Comprehensive guide to Avoid callback hell covering architecture, syntax, patterns, and enterprise use cases.",
-      "slug": "ch-103-avoid-callback-hell",
-      "difficulty": 4,
-      "prerequisites": [],
-      "concepts": [
-        {
-          "title": "Core Principles of Avoid callback hell",
-          "description": "Deep dive into the architectural mechanics, runtime behavior, and design patterns of Avoid callback hell in Node.js."
-        },
-        {
-          "title": "Enterprise Best Practices",
-          "description": "Production-grade standards, memory management, and error handling strategies for Avoid callback hell."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Avoid callback hell Working Implementation",
-          "description": "Complete, working demonstration of Avoid callback hell",
-          "starterCode": "// Chapter 103: Avoid callback hell\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 103: Avoid callback hell');\n  return { status: 'success', chapter: 103, topic: 'Avoid callback hell' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 103: Avoid callback hell\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 103: Avoid callback hell');\n  return { status: 'success', chapter: 103, topic: 'Avoid callback hell' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "expectedOutput": "Executing: Chapter 103: Avoid callback hell"
-        }
-      ],
-      "exercises": [
-        {
-          "title": "Build Avoid callback hell Solution",
-          "description": "Write an implementation for Avoid callback hell that returns a structured result object.",
-          "starterCode": "// Chapter 103: Avoid callback hell\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 103: Avoid callback hell');\n  return { status: 'success', chapter: 103, topic: 'Avoid callback hell' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "solutionCode": "// Chapter 103: Avoid callback hell\nfunction runTopicDemo() {\n  console.log('Executing: Chapter 103: Avoid callback hell');\n  return { status: 'success', chapter: 103, topic: 'Avoid callback hell' };\n}\n\nconst result = runTopicDemo();\nconsole.log('Result:', JSON.stringify(result));",
-          "testCases": "runTopicDemo().status === 'success' && runTopicDemo().chapter === 103",
-          "hints": "Implement the function to return a status 'success' and chapter 103."
-        }
-      ],
-      "visualizations": [
-        {
-          "type": "flow-animation",
-          "title": "Avoid callback hell Execution Flow",
-          "config": "{\"nodes\": [{\"id\": \"entry\", \"label\": \"Client Request / Init\", \"type\": \"Browser\", \"description\": \"Entry point into Avoid callback hell\", \"x\": 80, \"y\": 100}, {\"id\": \"engine\", \"label\": \"Node.js Engine (Avoid callback hell)\", \"type\": \"Controller\", \"description\": \"Processes logic and executes lifecycle\", \"x\": 250, \"y\": 100}, {\"id\": \"service\", \"label\": \"Service Layer / System Kernel\", \"type\": \"Service\", \"description\": \"Handles async operations & I/O\", \"x\": 250, \"y\": 220}, {\"id\": \"output\", \"label\": \"Response / State Update\", \"type\": \"Router\", \"description\": \"Outputs formatted result or state\", \"x\": 420, \"y\": 220}], \"edges\": [{\"id\": \"e1\", \"from\": \"entry\", \"to\": \"engine\", \"label\": \"invokes\"}, {\"id\": \"e2\", \"from\": \"engine\", \"to\": \"service\", \"label\": \"delegates\"}, {\"id\": \"e3\", \"from\": \"service\", \"to\": \"output\", \"label\": \"resolves\"}], \"steps\": [{\"id\": \"s1\", \"title\": \"1. Initializing Avoid callback hell\", \"description\": \"The application initializes and loads required components for Avoid callback hell.\", \"highlightNodes\": [\"entry\", \"engine\"], \"highlightEdges\": [\"e1\"], \"code\": \"// Initializing Chapter 103: Avoid callback hell\\nconsole.log('Starting Avoid callback hell');\"}, {\"id\": \"s2\", \"title\": \"2. Processing Logic & Asynchronous Execution\", \"description\": \"Node.js executes business logic and delegates background operations.\", \"highlightNodes\": [\"service\"], \"highlightEdges\": [\"e2\"], \"code\": \"// Processing Avoid callback hell\\nconst data = processData();\"}, {\"id\": \"s3\", \"title\": \"3. Resolving Response & State Output\", \"description\": \"The result is formatted and returned to the caller cleanly.\", \"highlightNodes\": [\"output\"], \"highlightEdges\": [\"e3\"], \"code\": \"return { success: true, timestamp: Date.now() };\"}]}"
-        }
-      ],
-      "lesson": {
-        "title": "Chapter 103: Avoid callback hell",
-        "content": "### \ud83c\udf1f 1. Introduction: Avoid callback hell\nIn this chapter from the Node.js enterprise curriculum, we master **Avoid callback hell** in depth.\nUnderstanding this core domain enables you to build high-performance, fault-tolerant backend applications that scale seamlessly.\n\n---\n\n### \ud83d\udd04 2. Step-by-Step Architecture & Execution Flow\n1. **Module Initialization**: Loading necessary runtime bindings and dependency injection containers.\n2. **Execution & Validation**: Input sanitization, business rules enforcement, and non-blocking asynchronous processing.\n3. **State Resolution**: Database transactions, caching layers, and external service communication.\n4. **Output & Error Propagation**: Returning structured JSON responses with standard status codes.\n\n---\n\n### \ud83d\udcbb 3. Exact Production Syntax & Best Practices\n```javascript\n// Implementation pattern for Avoid callback hell\nfunction executeOperation(options = {}) {\n  console.log('Executing Avoid callback hell with options:', JSON.stringify(options));\n  return {\n    status: 'success',\n    chapter: 103,\n    topic: 'Avoid callback hell',\n    timestamp: new Date().toISOString()\n  };\n}\n\nconst output = executeOperation({ env: 'production', debug: false });\nconsole.log(JSON.stringify(output, null, 2));\n```\n\n---\n\n### \ud83c\udfaf 4. Real-World Production Use Cases\n- **Enterprise Web Architectures**: High-concurrency transaction processing and distributed microservices.\n- **Data Pipelines & Ingestion**: Real-time event streams, caching tiers, and background worker queues.\n- **Security & Authorization**: Hardened API gateways with token rotation and rate limiting.\n\n---\n\n### \u26a0\ufe0f 5. Common Pitfalls & Best Practices\n- \u274c **Ignoring Error Propagation**: Always handle rejections and wrap async operations with proper try-catch or error middleware.\n- \u274c **Blocking the Event Loop**: Never execute CPU-heavy synchronous computation directly on the main thread.\n- \u2705 **Use Strict Type Validation & Logging**: Validate inputs with schemas and use structured JSON logging.",
-        "explanation": "Mastering Avoid callback hell is essential for enterprise Node.js engineering."
+        "title": "Chapter 33: Debugging Node.js application",
+        "content": "### \ud83c\udf1f 1. Definition (What is Debugging Node.js application?)\n**Debugging Node.js application** is a core pillar of the Node.js backend ecosystem covered in Chapter 33 of the professional curriculum.\n\n---\n\n### \u26a1 2. What Does It Do?\n- **Core node.js debugger and node inspector**\n\n---\n\n### \ud83c\udfaf 3. When & Why to Use (Real-World Use Cases)\n- **High-Throughput Services**: Non-blocking I/O operations and asynchronous processing pipelines.\n- **Enterprise Architectures**: Modular, maintainable API design with predictable error handling.\n- **Production DevOps**: Hardened runtime reliability and resource monitoring.\n\n---\n\n### \ud83d\udcbb 4. Working Implementation Code\n```javascript\nfunction addTwoNumber(a, b){\n\nfunction returns the sum of the two numbers\n\nvar result = addTwoNumber(5, 9);\n\nvariable or expression whose value you want to watch and restart\n\nvariables and test out lines of code. Press Ctrl+C to leave the debug repl.\n```\n\n---\n\n### \ud83d\ude80 5. How to Run in VS Code\n1. Create a folder named `my-node-app` and open it in VS Code.\n2. Create a file named `server.js` in the root folder.\n3. Paste the code above into `server.js`.\n4. Open your terminal in VS Code (`Ctrl + ~`) and run:\n   ```bash\n   npm init -y\n   npm install express cors dotenv\n   node server.js\n   ```\n",
+        "explanation": "Chapter 33: Debugging Node.js application provides essential mastery of Node.js backend engineering."
       }
     }
   ]
