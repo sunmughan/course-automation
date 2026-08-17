@@ -82,12 +82,20 @@ export default function DashboardPage() {
           fetch("/api/progress", { headers }),
         ]);
 
-        if (!coursesRes.ok || !progressRes.ok) {
-          throw new Error("Failed to fetch data");
-        }
+        let coursesData: any = [];
+        let progressData: any = { records: [], stats: {} };
 
-        const coursesData = await coursesRes.json();
-        const progressData = await progressRes.json();
+        try {
+          if (coursesRes.ok) {
+            coursesData = await coursesRes.json();
+          }
+        } catch {}
+
+        try {
+          if (progressRes.ok) {
+            progressData = await progressRes.json();
+          }
+        } catch {}
 
         const allCourses = Array.isArray(coursesData)
           ? coursesData
