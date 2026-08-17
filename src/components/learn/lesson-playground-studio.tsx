@@ -55,7 +55,7 @@ interface LessonPlaygroundStudioProps {
 
 export type StudioViewLayout = "split" | "editor_max" | "output_max";
 export type GuideCategory = "frontend_vanilla" | "frontend_react" | "backend_node" | "backend_express" | "fullstack_integration";
-export type ActiveEditorFile = "app" | "html" | "css";
+export type ActiveEditorFile = "app" | "html" | "css" | "server";
 
 export function LessonPlaygroundStudio({
   initialCode = "",
@@ -66,13 +66,16 @@ export function LessonPlaygroundStudio({
   const [activeSubTab, setActiveSubTab] = useState<"editor" | "examples" | "instructions">("editor");
   const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
 
-  // Multi-File State: JSX/JS, HTML, and CSS
+  // Multi-File State: JSX/JS, HTML, CSS, and Node.js Server
   const [appCode, setAppCode] = useState(
     initialCode || examples[0]?.solutionCode || examples[0]?.starterCode || "// Write your React component or JavaScript logic here\n"
   );
   const [htmlCode, setHtmlCode] = useState('<div id="root"></div>');
   const [cssCode, setCssCode] = useState(
     "body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 16px; background: #0f172a; color: #f8fafc; }\n.card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; max-width: 480px; }\nbutton { background: #0284c7; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; }\nbutton:hover { background: #0369a1; }"
+  );
+  const [serverCode, setServerCode] = useState(
+    "const express = require('express');\nconst cors = require('cors');\nrequire('dotenv').config();\n\nconst app = express();\nconst PORT = process.env.PORT || 5000;\n\napp.use(cors());\napp.use(express.json());\n\nconst users = [\n  { id: 1, name: 'Aman Kumar', role: 'Fullstack Learner' },\n  { id: 2, name: 'Neha Sharma', role: 'React Specialist' },\n  { id: 3, name: 'Rohan Verma', role: 'Node.js Backend Dev' }\n];\n\napp.get('/api/users', (req, res) => {\n  res.json(users);\n});\n\napp.get('/api/users/:id', (req, res) => {\n  const user = users.find(u => u.id === Number(req.params.id));\n  if (!user) return res.status(404).json({ error: 'User nahi mila!' });\n  res.json(user);\n});\n\napp.post('/api/users', (req, res) => {\n  const { name, role } = req.body;\n  if (!name) return res.status(400).json({ error: 'Name field zaroori hai!' });\n  const newUser = { id: Date.now(), name, role: role || 'Student' };\n  users.push(newUser);\n  res.status(201).json(newUser);\n});\n\napp.listen(PORT, () => {\n  console.log(`🚀 Server running on http://localhost:${PORT}`);\n});"
   );
 
   const [language, setLanguage] = useState(defaultLanguage);
@@ -81,7 +84,7 @@ export function LessonPlaygroundStudio({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [viewLayout, setViewLayout] = useState<StudioViewLayout>("split");
   const [isBrowserFullscreen, setIsBrowserFullscreen] = useState(false);
-  const [selectedGuide, setSelectedGuide] = useState<GuideCategory>("frontend_react");
+  const [selectedGuide, setSelectedGuide] = useState<GuideCategory>("backend_express");
   const [selectedExampleCode, setSelectedExampleCode] = useState<string | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -90,13 +93,16 @@ export function LessonPlaygroundStudio({
   const { output, error, events, loading, executionTime, executeCode, clearOutput } = useExecution();
 
   // Active code depending on selected tab
-  const currentEditorCode = activeFile === "app" ? appCode : activeFile === "html" ? htmlCode : cssCode;
-  const currentEditorLanguage = activeFile === "app" ? "javascript" : activeFile === "html" ? "html" : "css";
+  const currentEditorCode =
+    activeFile === "app" ? appCode : activeFile === "html" ? htmlCode : activeFile === "css" ? cssCode : serverCode;
+  const currentEditorLanguage =
+    activeFile === "app" ? "javascript" : activeFile === "html" ? "html" : activeFile === "css" ? "css" : "javascript";
 
   const handleEditorChange = (newVal: string) => {
     if (activeFile === "app") setAppCode(newVal);
     else if (activeFile === "html") setHtmlCode(newVal);
-    else setCssCode(newVal);
+    else if (activeFile === "css") setCssCode(newVal);
+    else setServerCode(newVal);
   };
 
   // Build live srcdoc for multi-file iframe preview (React 18 + Babel + CSS + HTML)
@@ -351,7 +357,7 @@ export function LessonPlaygroundStudio({
         <div className="flex flex-1 flex-col min-h-0">
           {/* File Switcher Tabs Bar (App.jsx, index.html, style.css) */}
           <div className="px-4 py-2 bg-slate-900 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 flex-wrap">
               <span className="text-[11px] font-bold text-slate-400 uppercase font-mono mr-1">
                 Project Files:
               </span>
@@ -387,6 +393,17 @@ export function LessonPlaygroundStudio({
               >
                 <Palette className="size-3.5 text-indigo-300" />
                 style.css
+              </button>
+              <button
+                onClick={() => setActiveFile("server")}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer ${
+                  activeFile === "server"
+                    ? "bg-emerald-600 text-white font-bold shadow-xs"
+                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <Cpu className="size-3.5 text-emerald-300" />
+                server.js (Node.js)
               </button>
             </div>
 
