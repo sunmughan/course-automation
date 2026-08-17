@@ -4,6 +4,8 @@ export interface OrgOverviewData {
   members: number;
   instructors: number;
   students: number;
+  activeUsers: number;
+  completionRate: number;
   teams: number;
   departments: number;
   curriculums: number;
@@ -70,7 +72,7 @@ export async function getOrgOverview(
     await Promise.all([
       prisma.organizationMember.findMany({
         where: { organizationId },
-        select: { role: true },
+        select: { userId: true, role: true },
       }),
       prisma.team.count({ where: { organizationId } }),
       prisma.department.count({ where: { organizationId } }),
@@ -82,11 +84,32 @@ export async function getOrgOverview(
   const instructors = memberRows.filter(
     (m) => m.role === "admin" || m.role === "instructor"
   ).length;
+  const userIds = memberRows.map((member) => member.userId);
+  const activeSince = new Date();
+  activeSince.setDate(activeSince.getDate() - 30);
+
+  const [sessions, progress] = userIds.length
+    ? await Promise.all([
+        prisma.session.findMany({
+          where: { userId: { in: userIds }, expires: { gte: activeSince } },
+          select: { userId: true },
+        }),
+        prisma.studentProgress.findMany({
+          where: { userId: { in: userIds } },
+          select: { status: true },
+        }),
+      ])
+    : [[], []];
+  const completed = progress.filter((item) => item.status === "completed").length;
 
   return {
     members: memberRows.length,
     instructors,
     students: memberRows.length - instructors,
+    activeUsers: new Set(sessions.map((session) => session.userId)).size,
+    completionRate: progress.length
+      ? Math.round((completed / progress.length) * 100)
+      : 0,
     teams,
     departments,
     curriculums,

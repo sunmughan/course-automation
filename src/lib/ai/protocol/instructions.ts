@@ -338,18 +338,40 @@ export function buildUserPrompt(
   }
 
   if (context.executionResult) {
-    parts.push("## Execution Result");
-    if (context.executionResult.output) {
-      parts.push("Output:", "```", context.executionResult.output, "```");
+    const exec = context.executionResult;
+    parts.push("## Execution Context");
+    if (exec.output) {
+      parts.push("Output:", "```", exec.output, "```");
     }
-    if (context.executionResult.error) {
-      parts.push("Error:", "```", context.executionResult.error, "```");
+    if (exec.error) {
+      parts.push("Error:", "```", exec.error, "```");
     }
-    parts.push(
-      `Time: ${context.executionResult.executionTime}ms`,
-      `Memory: ${context.executionResult.memoryUsed}MB`,
-      ""
-    );
+    if (exec.selectedLine) {
+      parts.push(`**Focus Line**: Student is asking specifically about Line ${exec.selectedLine}.`);
+    }
+    if (exec.selectedEvent) {
+      parts.push(
+        `**Focus Event**: Step ${exec.selectedEvent.sequence ?? exec.selectedEvent.step} [${exec.selectedEvent.type}] at Line ${exec.selectedEvent.line} (${exec.selectedEvent.variable || ""}).`
+      );
+    }
+    if (exec.events && exec.events.length > 0) {
+      parts.push("### Execution Trace Events:");
+      const eventList = exec.events.slice(0, 30).map((e, i) => {
+        const stepNum = e.sequence ?? e.step ?? i;
+        const line = e.line ? `Ln ${e.line}` : "global";
+        const v = e.variable ? `| var: ${e.variable} = ${JSON.stringify(e.value)}` : "";
+        const cs = e.callStack && e.callStack.length > 0 ? `| stack: [${e.callStack.join(", ")}]` : "";
+        return `- Step ${stepNum} [${e.type}] at ${line} ${v} ${cs}`.trim();
+      });
+      parts.push(eventList.join("\n"));
+      if (exec.events.length > 30) {
+        parts.push(`... (+${exec.events.length - 30} more events)`);
+      }
+    }
+    if (exec.executionTime !== undefined) {
+      parts.push(`Execution Time: ${exec.executionTime}ms`);
+    }
+    parts.push("");
   }
 
   if (context.conversationHistory.length > 0) {

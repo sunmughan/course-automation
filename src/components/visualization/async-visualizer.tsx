@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, CheckCircle2, XCircle, Timer, Layers, ArrowRight, Play } from "lucide-react";
+import { Clock, CheckCircle2, XCircle, Timer, Layers, ArrowRight, Play, Globe, Wifi } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import type { AsyncTrace, AsyncEvent } from "@/types";
@@ -13,6 +13,11 @@ interface AsyncVisualizerProps {
 }
 
 const eventTypeIcons: Record<string, typeof Clock> = {
+  ASYNC_START: Clock,
+  ASYNC_WAIT: Timer,
+  ASYNC_RESUME: Play,
+  NETWORK_REQUEST: Globe,
+  NETWORK_RESPONSE: Wifi,
   promise_create: Clock,
   promise_resolve: CheckCircle2,
   promise_reject: XCircle,
@@ -23,6 +28,11 @@ const eventTypeIcons: Record<string, typeof Clock> = {
 };
 
 const eventTypeColors: Record<string, string> = {
+  ASYNC_START: "border-l-blue-500 bg-blue-500/5",
+  ASYNC_WAIT: "border-l-amber-500 bg-amber-500/5",
+  ASYNC_RESUME: "border-l-green-500 bg-green-500/5",
+  NETWORK_REQUEST: "border-l-sky-500 bg-sky-500/5",
+  NETWORK_RESPONSE: "border-l-emerald-500 bg-emerald-500/5",
   promise_create: "border-l-blue-500 bg-blue-500/5",
   promise_resolve: "border-l-emerald-500 bg-emerald-500/5",
   promise_reject: "border-l-red-500 bg-red-500/5",
@@ -33,6 +43,11 @@ const eventTypeColors: Record<string, string> = {
 };
 
 const eventTypeLabels: Record<string, string> = {
+  ASYNC_START: "Async Start",
+  ASYNC_WAIT: "Async Wait",
+  ASYNC_RESUME: "Async Resume",
+  NETWORK_REQUEST: "Network Request",
+  NETWORK_RESPONSE: "Network Response",
   promise_create: "Promise Created",
   promise_resolve: "Promise Resolved",
   promise_reject: "Promise Rejected",
@@ -46,39 +61,49 @@ export function AsyncVisualizer({ trace, className }: AsyncVisualizerProps) {
   const [selectedPhase, setSelectedPhase] = useState<string | null>(null);
 
   const phases = useMemo(() => {
-    if (trace.timeline.length > 0) return trace.timeline;
+    if (trace.timeline && trace.timeline.length > 0) return trace.timeline;
     return [
-      { phase: "Execution", events: trace.events },
+      { phase: "Execution", events: trace.events || [] },
     ];
   }, [trace]);
 
   const filteredEvents = selectedPhase
-    ? phases.find((p) => p.phase === selectedPhase)?.events || trace.events
-    : trace.events;
+    ? phases.find((p) => p.phase === selectedPhase)?.events || trace.events || []
+    : trace.events || [];
 
-  const timelineStart = trace.events[0]?.timestamp || 0;
-  const timelineEnd = trace.events[trace.events.length - 1]?.timestamp || 0;
+  const timelineStart = trace.events?.[0]?.timestamp || 0;
+  const timelineEnd = trace.events?.[trace.events.length - 1]?.timestamp || 0;
   const timelineDuration = Math.max(timelineEnd - timelineStart, 1);
+
+  if (!trace.events || trace.events.length === 0) {
+    return (
+      <div className={cn("flex items-center justify-center p-8 rounded-lg border border-border bg-card", className)}>
+        <p className="text-sm text-muted-foreground">No async events in trace</p>
+      </div>
+    );
+  }
 
   return (
     <div className={cn("flex flex-col rounded-lg border border-border bg-card", className)}>
       <div className="flex items-center justify-between border-b border-border px-4 py-2">
         <div className="flex items-center gap-2">
           <span className="text-xs font-medium text-muted-foreground">Async Trace</span>
-          <div className="flex items-center gap-1.5">
-            <Badge variant="outline" className="h-4 text-[9px] px-1 gap-0.5">
-              <Clock className="h-2.5 w-2.5" />
-              {trace.summary.totalPromises} promises
-            </Badge>
-            <Badge variant="outline" className="h-4 text-[9px] px-1 gap-0.5">
-              <Timer className="h-2.5 w-2.5" />
-              {trace.summary.totalTimeouts} timeouts
-            </Badge>
-            <Badge variant="outline" className="h-4 text-[9px] px-1 gap-0.5">
-              <Layers className="h-2.5 w-2.5" />
-              {trace.summary.microtasks + trace.summary.macrotasks} tasks
-            </Badge>
-          </div>
+          {trace.summary && (
+            <div className="flex items-center gap-1.5">
+              <Badge variant="outline" className="h-4 text-[9px] px-1 gap-0.5">
+                <Clock className="h-2.5 w-2.5" />
+                {trace.summary.totalPromises} promises
+              </Badge>
+              <Badge variant="outline" className="h-4 text-[9px] px-1 gap-0.5">
+                <Timer className="h-2.5 w-2.5" />
+                {trace.summary.totalTimeouts} timeouts
+              </Badge>
+              <Badge variant="outline" className="h-4 text-[9px] px-1 gap-0.5">
+                <Layers className="h-2.5 w-2.5" />
+                {trace.summary.microtasks + trace.summary.macrotasks} tasks
+              </Badge>
+            </div>
+          )}
         </div>
         <div className="flex items-center gap-1">
           {phases.map((phase) => (
@@ -106,8 +131,7 @@ export function AsyncVisualizer({ trace, className }: AsyncVisualizerProps) {
             <AnimatePresence>
               {filteredEvents.map((event, index) => {
                 const Icon = eventTypeIcons[event.type] || Play;
-                const relativeTime = event.timestamp - timelineStart;
-                const leftPercent = (relativeTime / timelineDuration) * 100;
+                const label = eventTypeLabels[event.type] || event.type;
 
                 return (
                   <motion.div
@@ -120,76 +144,42 @@ export function AsyncVisualizer({ trace, className }: AsyncVisualizerProps) {
                       eventTypeColors[event.type] || "border-l-slate-500"
                     )}
                   >
-                    <div className="absolute left-[-1.15rem] top-3">
-                      <div className={cn(
-                        "h-2.5 w-2.5 rounded-full border-2 border-background",
-                        event.type.includes("resolve") ? "bg-emerald-500" :
-                        event.type.includes("reject") ? "bg-red-500" :
-                        event.type.includes("create") ? "bg-blue-500" :
-                        "bg-muted-foreground/50"
-                      )} />
-                    </div>
+                    <div className="absolute -left-[19px] top-3 h-2 w-2 rounded-full border border-background bg-border" />
+
+                    <Icon className="h-4 w-4 shrink-0 mt-0.5 text-muted-foreground" />
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <Icon className="h-3.5 w-3.5 text-muted-foreground" />
-                        <Badge variant="outline" className="h-4 text-[9px] px-1">
-                          {eventTypeLabels[event.type] || event.type}
+                        <Badge variant="outline" className="text-[10px] px-1 py-0 h-4">
+                          {label}
                         </Badge>
-                        <span className="text-[10px] text-muted-foreground font-mono">
-                          +{relativeTime}ms
+                        <span className="text-xs font-mono font-medium truncate">
+                          {event.description || event.type}
                         </span>
+                        {event.duration !== undefined && (
+                          <span className="text-[10px] text-muted-foreground font-mono ml-auto">
+                            {event.duration}ms
+                          </span>
+                        )}
                       </div>
-                      <p className="mt-0.5 text-xs text-foreground">{event.description}</p>
-                      {event.source && (
-                        <p className="text-[10px] text-muted-foreground font-mono mt-0.5">
-                          Source: {event.source}
-                        </p>
-                      )}
-                      {event.result !== undefined && (
-                        <p className="text-[10px] text-emerald-500 font-mono mt-0.5">
-                          Result: {JSON.stringify(event.result)}
-                        </p>
-                      )}
-                      {event.error && (
-                        <p className="text-[10px] text-red-500 font-mono mt-0.5">
-                          Error: {event.error}
-                        </p>
-                      )}
-                    </div>
 
-                    <div className="flex-shrink-0 w-16">
-                      <div className="relative h-1 mt-2 rounded-full bg-muted">
-                        <div
-                          className="absolute inset-y-0 left-0 rounded-full bg-primary/30"
-                          style={{ width: `${leftPercent}%` }}
-                        />
-                      </div>
+                      {event.source && (
+                        <div className="mt-1 text-[10px] font-mono text-muted-foreground/70">
+                          src: {event.source}
+                        </div>
+                      )}
+
+                      {event.error && (
+                        <div className="mt-1 text-xs text-red-500 font-mono">
+                          {event.error}
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 );
               })}
             </AnimatePresence>
           </div>
-        </div>
-      </div>
-
-      <div className="border-t border-border px-4 py-2">
-        <div className="flex items-center gap-4 text-[10px] text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <CheckCircle2 className="h-3 w-3 text-emerald-500" />
-            {trace.summary.resolvedPromises} resolved
-          </span>
-          {trace.summary.rejectedPromises > 0 && (
-            <span className="flex items-center gap-1">
-              <XCircle className="h-3 w-3 text-red-500" />
-              {trace.summary.rejectedPromises} rejected
-            </span>
-          )}
-          <span className="flex items-center gap-1">
-            <ArrowRight className="h-3 w-3" />
-            {timelineDuration}ms total
-          </span>
         </div>
       </div>
     </div>

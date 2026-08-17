@@ -6,6 +6,7 @@ import { providerHealthMonitor } from "./health-monitor";
 import { aiTracer } from "./tracing";
 import { buildContext, type ContextBuildOptions, type AIContext } from "./context";
 import { composePromptCompact, getModeSystemPrompt, getModeTaskInstruction } from "./prompts";
+import { createAIRequestId, persistAIRequest } from "./persistence";
 import type { TutorMode } from "@/types";
 
 export type OrchestrationMode = "parallel" | "chain" | "voting" | "debate" | "fallback";
@@ -59,6 +60,9 @@ export interface OrchestrationOptions {
   userId: string;
   temperature?: number;
   aggregationPrompt?: string;
+  requestId?: string;
+  organizationId?: string;
+  sessionId?: string;
 }
 
 const DEFAULT_AGENTS: AgentRole[] = [
@@ -80,7 +84,7 @@ const DEFAULT_AGENTS: AgentRole[] = [
       "You are a Patient Programming Teacher. Your goal is to educate and explain clearly. Use simple language, analogies, and step-by-step reasoning. Always check for understanding and encourage the learner.",
     expertise: ["explain", "simple_qa", "simplify", "visualization"],
     preferredProvider: "gemini",
-    preferredModel: "gemini-2.5-pro",
+    preferredModel: "gemini-3.7-flash",
   },
   {
     id: "code-reviewer",
@@ -90,7 +94,7 @@ const DEFAULT_AGENTS: AgentRole[] = [
       "You are a Meticulous Code Reviewer. Analyze code for correctness, style, performance, security, and maintainability. Point out anti-patterns, suggest improvements, and explain the reasoning behind each suggestion.",
     expertise: ["review", "debugging", "code_generation", "architecture"],
     preferredProvider: "gemini",
-    preferredModel: "gemini-2.5-pro",
+    preferredModel: "gemini-3.7-flash",
   },
   {
     id: "architect",
@@ -110,7 +114,7 @@ const DEFAULT_AGENTS: AgentRole[] = [
       "You are a Debugging Specialist. Your approach is methodical and scientific. Form hypotheses, test them, and trace through code execution. Focus on root cause analysis, not just symptom fixes.",
     expertise: ["debugging", "code_generation"],
     preferredProvider: "gemini",
-    preferredModel: "gemini-2.5-flash",
+    preferredModel: "gemini-3.5-flash",
   },
   {
     id: "interviewer",
@@ -190,6 +194,81 @@ export class AgentOrchestrator {
     }
   }
 
+  private async callAgentProvider(
+    options: OrchestrationOptions,
+    agent: AgentRole,
+    provider: string,
+    model: string,
+    messages: { role: string; content: string }[],
+    callOptions: { maxTokens?: number; temperature?: number }
+  ): Promise<ProviderCallResult> {
+    const requestId = createAIRequestId();
+    const startedAt = new Date();
+
+    try {
+      const result = await aiGateway.callProvider(provider, model, messages, {
+        ...callOptions,
+        userId: options.userId,
+        organizationId: options.organizationId,
+        requestId,
+        sessionId: options.sessionId,
+        agent: agent.id,
+        mode: options.mode,
+      });
+      const completedAt = new Date();
+      const attemptedProviders = result.attemptedProviders ?? [result.provider];
+      const attemptedModels = result.attemptedModels ?? [result.model];
+      const fallbackUsed = result.fallbackUsed ?? attemptedProviders.length > 1;
+      const finalProvider = result.finalProvider ?? result.provider;
+
+      await persistAIRequest({
+        requestId,
+        userId: options.userId,
+        organizationId: options.organizationId,
+        sessionId: options.sessionId,
+        provider: result.provider,
+        model: result.model,
+        agent: agent.id,
+        mode: options.mode,
+        startedAt,
+        completedAt,
+        latency: result.latency,
+        status: "success",
+        inputTokens: result.inputTokens,
+        outputTokens: result.outputTokens,
+        estimatedCost: result.cost,
+        fallbackUsed,
+        attemptedProviders,
+        attemptedModels,
+        finalProvider,
+      });
+
+      return { ...result, fallbackUsed, attemptedProviders, attemptedModels, finalProvider };
+    } catch (error) {
+      const completedAt = new Date();
+      const failure = error instanceof Error ? error : new Error(String(error));
+      await persistAIRequest({
+        requestId,
+        userId: options.userId,
+        organizationId: options.organizationId,
+        sessionId: options.sessionId,
+        provider,
+        model,
+        agent: agent.id,
+        mode: options.mode,
+        startedAt,
+        completedAt,
+        latency: completedAt.getTime() - startedAt.getTime(),
+        status: "failed",
+        error: failure.message,
+        attemptedProviders: [provider],
+        attemptedModels: [model],
+        finalProvider: null,
+      });
+      throw failure;
+    }
+  }
+
   private async executeParallel(
     options: OrchestrationOptions
   ): Promise<OrchestrationResult> {
@@ -200,14 +279,15 @@ export class AgentOrchestrator {
     const results = await Promise.all(
       agentTasks.map(async (task) => {
         try {
-          const result = await aiGateway.callProvider(
+          const result = await this.callAgentProvider(
+            options,
+            task.agentRole,
             task.allocation.provider,
             task.allocation.model,
             task.messages,
             {
               maxTokens: task.allocation.maxOutputTokens,
               temperature,
-              userId,
             }
           );
 
@@ -271,19 +351,25 @@ export class AgentOrchestrator {
         complexity,
         agentMessages.map((m) => m.content).join("\n"),
         userId
-      );
-
-      if (!allocation) continue;
+      ) || {
+        provider: agent.preferredProvider || "gemini",
+        model: agent.preferredModel || "gemini-3.5-flash",
+        estimatedInputTokens: 4096,
+        maxOutputTokens: 4096,
+        estimatedCost: 0.001,
+        isWithinBudget: true,
+      };
 
       try {
-        const result = await aiGateway.callProvider(
+        const result = await this.callAgentProvider(
+          options,
+          agent,
           allocation.provider,
           allocation.model,
           agentMessages,
           {
             maxTokens: allocation.maxOutputTokens,
             temperature,
-            userId,
           }
         );
 
@@ -328,14 +414,15 @@ export class AgentOrchestrator {
     const results = await Promise.all(
       agentTasks.map(async (task) => {
         try {
-          const result = await aiGateway.callProvider(
+          const result = await this.callAgentProvider(
+            options,
+            task.agentRole,
             task.allocation.provider,
             task.allocation.model,
             task.messages,
             {
               maxTokens: task.allocation.maxOutputTokens,
               temperature,
-              userId,
             }
           );
 
@@ -387,11 +474,13 @@ export class AgentOrchestrator {
     const initialResponses = await Promise.all(
       initialTasks.map(async (task) => {
         try {
-          const result = await aiGateway.callProvider(
+          const result = await this.callAgentProvider(
+            options,
+            task.agentRole,
             task.allocation.provider,
             task.allocation.model,
             task.messages,
-            { maxTokens: task.allocation.maxOutputTokens, temperature, userId }
+            { maxTokens: task.allocation.maxOutputTokens, temperature }
           );
           return { agentRole: task.agentRole, result };
         } catch {
@@ -437,11 +526,13 @@ export class AgentOrchestrator {
         if (!allocation) continue;
 
         try {
-          const result = await aiGateway.callProvider(
+          const result = await this.callAgentProvider(
+            options,
+            currentAgent.agentRole,
             allocation.provider,
             allocation.model,
             debatePrompt,
-            { maxTokens: allocation.maxOutputTokens, temperature: (temperature ?? 0.7) + 0.1, userId }
+            { maxTokens: allocation.maxOutputTokens, temperature: (temperature ?? 0.7) + 0.1 }
           );
 
           currentAgent.result = result;
@@ -475,6 +566,11 @@ export class AgentOrchestrator {
       complexity: classification.complexity,
       temperature,
       userId,
+      organizationId: options.organizationId,
+      requestId: options.requestId,
+      sessionId: options.sessionId,
+      agent: "auto-router",
+      mode: "fallback",
     });
 
     const agent: AgentRole = {
@@ -516,7 +612,7 @@ export class AgentOrchestrator {
         messages: agentMessages,
         allocation: allocation || {
           provider: "gemini",
-          model: "gemini-2.5-flash",
+          model: "gemini-3.5-flash",
           estimatedInputTokens: 4096,
           maxOutputTokens: 4096,
           estimatedCost: 0.001,
@@ -644,14 +740,23 @@ Provide your synthesis in this format:
 [Your comprehensive synthesis incorporating the best from all agents]`;
 
     try {
-      const synthesisResult = await aiGateway.callProvider(
+      const synthesisAgent: AgentRole = {
+        id: "synthesis",
+        name: "Synthesis Agent",
+        description: "Combines agent responses",
+        systemPromptAddition: "",
+        expertise: [],
+      };
+      const synthesisResult = await this.callAgentProvider(
+        options,
+        synthesisAgent,
         "gemini",
-        "gemini-2.5-flash",
+        "gemini-3.5-flash",
         [
           { role: "system", content: "You are a synthesis agent that combines multiple AI perspectives into a coherent answer." },
           { role: "user", content: synthesisPrompt },
         ],
-        { maxTokens: 4096, temperature: 0.3, userId: options.userId }
+        { maxTokens: 4096, temperature: 0.3 }
       );
 
       return `## Multi-Agent Consensus (${results.length} agents)\n\n${synthesisResult.content}\n\n<details>\n<summary>View Individual Agent Responses</summary>\n\n${individualResponses}\n</details>`;
@@ -747,6 +852,8 @@ Provide your synthesis in this format:
       temperature?: number;
       tutorMode?: TutorMode;
       contextOptions?: Partial<ContextBuildOptions>;
+      requestId?: string;
+      organizationId?: string;
     }
   ): Promise<OrchestrationResult> {
     const {
@@ -806,6 +913,9 @@ Provide your synthesis in this format:
       complexity,
       userId,
       temperature,
+      requestId: options.requestId,
+      organizationId: options.organizationId,
+      sessionId: options.contextOptions?.sessionId,
     });
   }
 

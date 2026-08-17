@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { createAIRequestId, persistAIRequest } from "./persistence";
 import { providerHealthMonitor } from "./health-monitor";
 import {
   aiGateway,
@@ -89,7 +90,9 @@ export class TokenRouter {
   }
 
   estimateTokens(text: string): number {
-    return aiGateway.estimateTokens(text);
+    return typeof aiGateway?.estimateTokens === "function"
+      ? aiGateway.estimateTokens(text)
+      : Math.ceil((text || "").length / 4);
   }
 
   estimateCost(providerName: string, modelName: string, inputTokens: number, outputTokens: number): number {
@@ -473,6 +476,11 @@ export class TokenRouter {
       preferredProvider?: string;
       preferredModel?: string;
       temperature?: number;
+      organizationId?: string;
+      requestId?: string;
+      sessionId?: string;
+      agent?: string;
+      mode?: string;
     }
   ): Promise<ProviderCallResult> {
     const userMessage = messages.find((m) => m.role === "user")?.content || "";
@@ -486,27 +494,119 @@ export class TokenRouter {
       );
     }
 
-    const allocation = this.getSmartAllocation(taskType, complexity, allText, remaining);
+    const primaryAllocation = this.getSmartAllocation(taskType, complexity, allText, remaining);
 
-    if (!allocation) {
+    if (!primaryAllocation) {
       throw new Error(
         `No model available within budget. Remaining: ${remaining.tokens.toLocaleString()} tokens, $${remaining.cost.toFixed(4)} cost.`
       );
     }
 
-    const result = await aiGateway.callProvider(
-      allocation.provider,
-      allocation.model,
-      messages,
-      {
-        maxTokens: allocation.maxOutputTokens,
-        temperature: options?.temperature,
+    const allCandidates = this.getAllCandidatesForTask(taskType, allText);
+    const candidateAllocations: TokenAllocation[] = [primaryAllocation];
+    for (const cand of allCandidates) {
+      if (!candidateAllocations.some((c) => c.provider === cand.provider && c.model === cand.model)) {
+        if (
+          cand.estimatedInputTokens + cand.maxOutputTokens <= remaining.tokens &&
+          cand.estimatedCost <= remaining.cost
+        ) {
+          candidateAllocations.push(cand);
+        }
       }
-    );
+    }
 
-    await this.recordUsage(userId, result);
+    const requestId = options?.requestId || createAIRequestId();
+    const startedAt = new Date();
+    const attemptedProviders: string[] = [];
+    const attemptedModels: string[] = [];
+    let lastError: Error | null = null;
 
-    return result;
+    for (const allocation of candidateAllocations) {
+      try {
+        attemptedProviders.push(allocation.provider);
+        attemptedModels.push(allocation.model);
+
+        const result = await aiGateway.callProvider(
+          allocation.provider,
+          allocation.model,
+          messages,
+          {
+            maxTokens: allocation.maxOutputTokens,
+            temperature: options?.temperature,
+            userId,
+            organizationId: options?.organizationId,
+            requestId,
+            sessionId: options?.sessionId,
+            agent: options?.agent,
+            mode: options?.mode,
+          }
+        );
+        const completedAt = new Date();
+        const fallbackUsed = attemptedProviders.length > 1;
+        const finalProvider = result.provider || allocation.provider;
+
+        await persistAIRequest({
+          requestId,
+          userId,
+          organizationId: options?.organizationId,
+          sessionId: options?.sessionId,
+          provider: result.provider,
+          model: result.model,
+          agent: options?.agent,
+          mode: options?.mode || taskType,
+          startedAt,
+          completedAt,
+          latency: result.latency,
+          status: "success",
+          inputTokens: result.inputTokens,
+          outputTokens: result.outputTokens,
+          estimatedCost: result.cost,
+          fallbackUsed,
+          attemptedProviders: [...attemptedProviders],
+          attemptedModels: [...attemptedModels],
+          finalProvider,
+        });
+        await this.recordUsage(userId, {
+          ...result,
+          fallbackUsed,
+          attemptedProviders: [...attemptedProviders],
+          attemptedModels: [...attemptedModels],
+          finalProvider,
+        });
+
+        return {
+          ...result,
+          fallbackUsed,
+          attemptedProviders: [...attemptedProviders],
+          attemptedModels: [...attemptedModels],
+          finalProvider,
+        };
+      } catch (error) {
+        lastError = error instanceof Error ? error : new Error(String(error));
+      }
+    }
+
+    const completedAt = new Date();
+    await persistAIRequest({
+      requestId,
+      userId,
+      organizationId: options?.organizationId,
+      sessionId: options?.sessionId,
+      provider: attemptedProviders.at(-1) || primaryAllocation.provider,
+      model: attemptedModels.at(-1) || primaryAllocation.model,
+      agent: options?.agent,
+      mode: options?.mode || taskType,
+      startedAt,
+      completedAt,
+      latency: completedAt.getTime() - startedAt.getTime(),
+      status: "failed",
+      error: lastError?.message || "Token budget execution failed",
+      fallbackUsed: attemptedProviders.length > 1,
+      attemptedProviders: [...attemptedProviders],
+      attemptedModels: [...attemptedModels],
+      finalProvider: null,
+    });
+    throw lastError || new Error("Token budget execution failed");
   }
 }
 

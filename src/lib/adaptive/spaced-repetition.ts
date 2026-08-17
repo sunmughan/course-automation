@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/db";
-import type { WeakTopic } from "./weak-detection";
 
 export interface SpacedRepetitionItem {
   id: string;
@@ -14,12 +13,13 @@ export interface SpacedRepetitionItem {
   isOverdue: boolean;
 }
 
-const DEFAULT_EASE = 2.5;
-const MIN_EASE = 1.3;
-const EASE_BONUS = 0.15;
-const EASE_PENALTY = 0.2;
-const INTERVAL_MODIFIER = 1.0;
+export const DEFAULT_EASE = 2.5;
+export const MIN_EASE = 1.3;
+export const INTERVAL_MODIFIER = 1.0;
 
+/**
+ * SuperMemo SM-2 Spaced Repetition calculation
+ */
 export function calculateNextReview(
   quality: number,
   previousInterval: number,
@@ -69,7 +69,7 @@ export async function getDueReviews(userId: string, courseId?: string): Promise<
     prisma.studentSkill.findMany({
       where: {
         userId,
-        ...(courseId ? {} : {}),
+        ...(courseId ? { topic: { module: { courseId } } } : {}),
       },
       orderBy: { lastAttemptAt: "asc" },
     }),
@@ -89,42 +89,56 @@ export async function getDueReviews(userId: string, courseId?: string): Promise<
   for (const skill of skills) {
     const topicName = topicMap.get(skill.topicId) || skill.skillName;
 
-    if (!skill.lastAttemptAt) {
-      items.push({
-        id: `sr-${skill.topicId}-0`,
-        topicId: skill.topicId,
-        topicName,
-        reviewCount: 0,
-        easeFactor: DEFAULT_EASE,
-        interval: 0,
-        nextReview: now,
-        lastReview: null,
-        isDue: true,
-        isOverdue: false,
-      });
-      continue;
+    // Use persisted SM-2 state if available, else compute on the fly
+    let ease = skill.easeFactor ?? DEFAULT_EASE;
+    let interval = skill.interval ?? 0;
+    let repetitions = skill.repetitions ?? skill.attempts ?? 0;
+    let nextReview = skill.nextReviewAt;
+
+    if (!nextReview) {
+      if (!skill.lastAttemptAt) {
+        items.push({
+          id: `sr-${skill.topicId}-0`,
+          topicId: skill.topicId,
+          topicName,
+          reviewCount: 0,
+          easeFactor: DEFAULT_EASE,
+          interval: 0,
+          nextReview: now,
+          lastReview: null,
+          isDue: true,
+          isOverdue: false,
+        });
+        continue;
+      }
+
+      const daysSinceLast = (now.getTime() - skill.lastAttemptAt.getTime()) / (1000 * 60 * 60 * 24);
+      const quality = getQualityFromScore(skill.score);
+      const sm2 = calculateNextReview(
+        quality,
+        Math.max(1, Math.round(daysSinceLast)),
+        ease,
+        repetitions
+      );
+      interval = sm2.interval;
+      ease = sm2.ease;
+      nextReview = sm2.nextReview;
     }
 
-    const daysSinceLast = (now.getTime() - skill.lastAttemptAt.getTime()) / (1000 * 60 * 60 * 24);
-    const quality = getQualityFromScore(skill.score);
-    const { interval, ease, nextReview } = calculateNextReview(
-      quality,
-      Math.max(1, Math.round(daysSinceLast)),
-      DEFAULT_EASE,
-      skill.attempts
-    );
+    const isDue = nextReview.getTime() <= now.getTime();
+    const isOverdue = nextReview.getTime() < now.getTime() - 24 * 60 * 60 * 1000;
 
     items.push({
-      id: `sr-${skill.topicId}-${skill.attempts}`,
+      id: `sr-${skill.topicId}-${repetitions}`,
       topicId: skill.topicId,
       topicName,
-      reviewCount: skill.attempts,
+      reviewCount: repetitions,
       easeFactor: ease,
       interval,
       nextReview,
       lastReview: skill.lastAttemptAt,
-      isDue: nextReview <= now,
-      isOverdue: nextReview < new Date(now.getTime() - 24 * 60 * 60 * 1000),
+      isDue,
+      isOverdue,
     });
   }
 
@@ -174,27 +188,6 @@ export async function markTopicReviewed(
   topicId: string,
   quality: number
 ): Promise<void> {
-  const skill = await prisma.studentSkill.findUnique({
-    where: { userId_topicId: { userId, topicId } },
-  });
-
-  if (!skill) return;
-
-  const { ease } = calculateNextReview(
-    quality,
-    1,
-    skill.score > 0 ? DEFAULT_EASE : DEFAULT_EASE,
-    skill.attempts
-  );
-
-  const scoreBoost = quality >= 3 ? 5 : quality >= 2 ? 2 : 0;
-
-  await prisma.studentSkill.update({
-    where: { userId_topicId: { userId, topicId } },
-    data: {
-      score: Math.min(100, skill.score + scoreBoost),
-      lastAttemptAt: new Date(),
-      attempts: { increment: 1 },
-    },
-  });
+  const { SkillEvaluationService } = await import("./skill-evaluation");
+  await SkillEvaluationService.recordSpacedRepetitionReview(userId, topicId, quality);
 }

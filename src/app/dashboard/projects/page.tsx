@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuthContext } from "@/components/providers/auth-provider";
+import { getAuthHeaders } from "@/lib/fetch-helpers";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,12 +9,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
 import { useRouter } from "next/navigation";
 import {
-  Code2,
   FolderGit2,
-  ChevronRight,
   Clock,
   Star,
-  Play,
   Layers,
   ArrowRight,
   Package,
@@ -42,22 +39,41 @@ interface ProjectData {
 }
 
 export default function ProjectsPage() {
-  const { user } = useAuthContext();
   const router = useRouter();
   const [projects, setProjects] = useState<ProjectData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const token = localStorage.getItem("auth-token");
         const res = await fetch("/api/courses?type=projects", {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: getAuthHeaders(),
         });
         if (res.ok) {
           const data = await res.json();
-          setProjects(data);
+          if (Array.isArray(data)) {
+            setProjects(data);
+          } else if (Array.isArray(data?.projects)) {
+            setProjects(data.projects);
+          } else if (Array.isArray(data?.courses)) {
+            setProjects(
+              data.courses.map((c: any) => ({
+                id: c.id,
+                title: c.title,
+                description: c.description,
+                difficulty: c.difficulty || 2,
+                course: {
+                  id: c.id,
+                  title: c.title,
+                  slug: c.slug,
+                },
+                submissions: c.submissions || [],
+              }))
+            );
+          } else {
+            setProjects([]);
+          }
         } else {
           setProjects([]);
         }
@@ -129,7 +145,7 @@ export default function ProjectsPage() {
         </p>
       </div>
 
-      {projects.length === 0 ? (
+      {!Array.isArray(projects) || projects.length === 0 ? (
         <Card className="bg-gray-900/50 border-gray-800">
           <CardContent className="p-12 text-center">
             <FolderGit2 className="h-12 w-12 text-gray-600 mx-auto mb-4" />
@@ -148,7 +164,7 @@ export default function ProjectsPage() {
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {projects.map((project) => {
+            {(Array.isArray(projects) ? projects : []).map((project) => {
               const lastSubmission = project.submissions?.[0];
               const hasSubmission = lastSubmission != null;
               const isCompleted =

@@ -473,21 +473,6 @@ export function AnimatedFlowExplainer({ config, className }: AnimatedFlowExplain
           >
             <Background color="hsl(var(--muted-foreground) / 0.08)" gap={20} />
             <Controls className="[&>button]:bg-card [&>button]:border-border [&>button]:text-muted-foreground" />
-            <MiniMap
-              nodeColor={(n) => {
-                const type = (n.data as FlowNodeData)?.type;
-                if (type === "Browser") return "#3b82f6";
-                if (type === "Router") return "#f59e0b";
-                if (type === "Controller") return "#a855f7";
-                if (type === "Service") return "#22c55e";
-                if (type === "Database") return "#ef4444";
-                if (type === "Cloud") return "#0ea5e9";
-                if (type === "API") return "#6366f1";
-                return "hsl(var(--muted))";
-              }}
-              maskColor="hsl(var(--background) / 0.8)"
-              style={{ backgroundColor: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }}
-            />
           </ReactFlow>
         </div>
 

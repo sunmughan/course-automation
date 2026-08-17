@@ -1,4 +1,5 @@
 import { randomUUID } from "crypto";
+import { prisma } from "@/lib/db";
 
 export type TraceEventType =
   | "request.start"
@@ -260,6 +261,111 @@ export class AITracer {
 
   getActiveTraces(): AITrace[] {
     return this.getAllTraces().filter((t) => t.status === "running");
+  }
+
+  async getPersistedTrace(requestId: string): Promise<Record<string, unknown> | null> {
+    try {
+      const record = await prisma.aIRequest.findUnique({
+        where: { requestId },
+      });
+      if (!record) return null;
+
+      let attemptedProviders: string[] = [];
+      let attemptedModels: string[] = [];
+      try {
+        attemptedProviders = JSON.parse(record.attemptedProviders || "[]");
+      } catch {
+        attemptedProviders = [];
+      }
+      try {
+        attemptedModels = JSON.parse(record.attemptedModels || "[]");
+      } catch {
+        attemptedModels = [];
+      }
+
+      return {
+        id: record.requestId,
+        requestId: record.requestId,
+        userId: record.userId,
+        organizationId: record.organizationId,
+        sessionId: record.sessionId,
+        provider: record.provider,
+        model: record.model,
+        agent: record.agent,
+        mode: record.mode,
+        status: record.status,
+        latency: record.latency,
+        cost: record.cost,
+        estimatedCost: record.estimatedCost,
+        inputTokens: record.inputTokens,
+        outputTokens: record.outputTokens,
+        totalTokens: record.totalTokens,
+        fallbackUsed: record.fallbackUsed,
+        attemptedProviders,
+        attemptedModels,
+        finalProvider: record.finalProvider,
+        error: record.error,
+        startedAt: record.startedAt,
+        completedAt: record.completedAt,
+        createdAt: record.createdAt,
+      };
+    } catch {
+      return null;
+    }
+  }
+
+  async getPersistedUserTraces(userId: string, limit: number = 50): Promise<Array<Record<string, unknown>>> {
+    try {
+      const records = await prisma.aIRequest.findMany({
+        where: { userId },
+        orderBy: { createdAt: "desc" },
+        take: limit,
+      });
+
+      return records.map((record) => {
+        let attemptedProviders: string[] = [];
+        let attemptedModels: string[] = [];
+        try {
+          attemptedProviders = JSON.parse(record.attemptedProviders || "[]");
+        } catch {
+          attemptedProviders = [];
+        }
+        try {
+          attemptedModels = JSON.parse(record.attemptedModels || "[]");
+        } catch {
+          attemptedModels = [];
+        }
+
+        return {
+          id: record.requestId,
+          requestId: record.requestId,
+          userId: record.userId,
+          organizationId: record.organizationId,
+          sessionId: record.sessionId,
+          provider: record.provider,
+          model: record.model,
+          agent: record.agent,
+          mode: record.mode,
+          status: record.status,
+          latency: record.latency,
+          cost: record.cost,
+          estimatedCost: record.estimatedCost,
+          inputTokens: record.inputTokens,
+          outputTokens: record.outputTokens,
+          totalTokens: record.totalTokens,
+          fallbackUsed: record.fallbackUsed,
+          attemptedProviders,
+          attemptedModels,
+          finalProvider: record.finalProvider,
+          error: record.error,
+          startedAt: record.startedAt,
+          completedAt: record.completedAt,
+          createdAt: record.createdAt,
+        };
+      });
+    } catch {
+      return [];
+    }
   }
 
   getTraceSummary(traceId: string): Record<string, unknown> | null {

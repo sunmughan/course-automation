@@ -212,6 +212,46 @@ export const ReviewOutput = z.object({
 });
 export type ReviewOutput = z.infer<typeof ReviewOutput>;
 
+export const EducationalExplanationOutput = z.object({
+  type: z.literal("educational-explanation").default("educational-explanation"),
+  answer: z.string().describe("Direct concise answer to the student's question"),
+  explanation: z.string().describe("Clear, in-depth educational explanation"),
+  steps: z.array(z.string()).default([]).describe("Step-by-step reasoning or execution steps"),
+  examples: z.array(z.string()).optional().describe("Illustrative code examples"),
+  visualization: z
+    .object({
+      highlightLines: z.array(z.number()).optional().describe("Line numbers in student code to visually highlight"),
+      highlightEvents: z.array(z.number()).optional().describe("Sequence indices of events to highlight in the timeline"),
+      focusVariable: z.string().optional().describe("Variable name to focus in Memory View"),
+      diagramType: z.string().optional().describe("Type of diagram if relevant (e.g. 'flowchart', 'mermaid')"),
+      diagramContent: z.string().optional().describe("Diagram code/definition"),
+    })
+    .optional()
+    .describe("Visual highlight instructions for the frontend visualizer"),
+  executionExplanation: z
+    .object({
+      whyExecuted: z.string().optional().describe("Why the specific line/block executed based on previous state"),
+      variableChanges: z
+        .array(
+          z.object({
+            variable: z.string(),
+            from: z.unknown().optional(),
+            to: z.unknown().optional(),
+            reason: z.string(),
+          })
+        )
+        .optional()
+        .describe("Variable mutations that triggered or resulted from this execution"),
+      callStackExplanation: z.string().optional().describe("Explanation of active call stack state"),
+    })
+    .optional()
+    .describe("Execution-specific details"),
+  mistakes: z.array(z.string()).optional().describe("Common mistakes or misconceptions related to this"),
+  hints: z.array(z.string()).optional().describe("Hints for next steps or related exercises"),
+  practice: z.array(z.string()).optional().describe("Follow-up practice questions or challenges"),
+});
+export type EducationalExplanationOutput = z.infer<typeof EducationalExplanationOutput>;
+
 export const StructuredOutput = z.discriminatedUnion("type", [
   ExplainOutput,
   CodeBreakdownOutput,
@@ -226,6 +266,7 @@ export const StructuredOutput = z.discriminatedUnion("type", [
   InterviewOutput,
   PracticeOutput,
   ReviewOutput,
+  EducationalExplanationOutput,
 ]);
 export type StructuredOutput = z.infer<typeof StructuredOutput>;
 
@@ -307,7 +348,46 @@ export function formatStructuredOutputForDisplay(output: StructuredOutput): stri
     case "simplify":
       return `## ELI5\n${output.eli5}\n\n## Explanation\n${output.simpleExplanation}\n\n## Analogy\n${output.analogy}`;
 
+    case "educational-explanation": {
+      const parts = [`## ${output.answer}`, output.explanation];
+      if (output.steps && output.steps.length > 0) {
+        parts.push(`### Steps\n${output.steps.map((s, idx) => `${idx + 1}. ${s}`).join("\n")}`);
+      }
+      if (output.executionExplanation?.whyExecuted) {
+        parts.push(`### Why This Executed\n${output.executionExplanation.whyExecuted}`);
+      }
+      if (output.executionExplanation?.variableChanges && output.executionExplanation.variableChanges.length > 0) {
+        parts.push(
+          `### Variable Changes\n${output.executionExplanation.variableChanges.map((vc) => `- **${vc.variable}**: ${vc.from !== undefined ? `${JSON.stringify(vc.from)} → ` : ""}${JSON.stringify(vc.to)} (${vc.reason})`).join("\n")}`
+        );
+      }
+      if (output.mistakes && output.mistakes.length > 0) {
+        parts.push(`### Common Mistakes to Avoid\n${output.mistakes.map((m) => `- ${m}`).join("\n")}`);
+      }
+      if (output.hints && output.hints.length > 0) {
+        parts.push(`### Hints\n${output.hints.map((h) => `- ${h}`).join("\n")}`);
+      }
+      if (output.practice && output.practice.length > 0) {
+        parts.push(`### Practice Challenges\n${output.practice.map((p) => `- ${p}`).join("\n")}`);
+      }
+      return parts.join("\n\n");
+    }
+
     default:
       return JSON.stringify(output, null, 2);
+  }
+}
+
+export function parseEducationalExplanation(
+  content: string
+): EducationalExplanationOutput | null {
+  try {
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) return null;
+    const json = JSON.parse(jsonMatch[0]);
+    if (!json.type) json.type = "educational-explanation";
+    return EducationalExplanationOutput.parse(json);
+  } catch {
+    return null;
   }
 }

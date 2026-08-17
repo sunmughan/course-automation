@@ -49,10 +49,10 @@ export const LANGUAGE_REGISTRY: Record<string, LanguageDefinition> = {
     name: "Python",
     extension: ".py",
     monacoLanguage: "python",
-    interpreter: "python3",
+    interpreter: process.platform === "win32" ? "python" : "python3",
     interpreterArgs: ["-u"],
     isCompiled: false,
-    executeCommand: (sourceFile) => `python3 -u "${sourceFile}"`,
+    executeCommand: (sourceFile) => (process.platform === "win32" ? `python -u "${sourceFile}"` : `python3 -u "${sourceFile}"`),
     defaultCode: `# Python\nprint("Hello, world!")\n`,
     aliases: ["py", "python", "python3"],
   },
@@ -149,6 +149,18 @@ export const LANGUAGE_REGISTRY: Record<string, LanguageDefinition> = {
     defaultCode: `# Markdown\n\nHello, **world**!\n`,
     aliases: ["md", "markdown"],
   },
+  php: {
+    id: "php",
+    name: "PHP",
+    extension: ".php",
+    monacoLanguage: "php",
+    interpreter: "php",
+    interpreterArgs: [],
+    isCompiled: false,
+    executeCommand: (sourceFile) => `php "${sourceFile}"`,
+    defaultCode: `<?php\n// PHP 8+ Modern Execution\necho "Hello, world!\\n";\n`,
+    aliases: ["php", "php8", "php-cli"],
+  },
 };
 
 export const EXECUTABLE_LANGUAGES: string[] = [
@@ -159,6 +171,7 @@ export const EXECUTABLE_LANGUAGES: string[] = [
   "c",
   "cpp",
   "kotlin",
+  "php",
 ];
 
 export const DISPLAY_ONLY_LANGUAGES: string[] = [

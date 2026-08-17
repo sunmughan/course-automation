@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { createAIRequestId, persistAIRequest } from "./persistence";
 import type { ProviderCallResult } from "./gateway";
 
 export interface TokenBudgetConfig {
@@ -243,23 +244,37 @@ export class TokenBudgetManager {
 
   async recordUsage(
     userId: string,
-    result: Omit<ProviderCallResult, "latency" | "cached" | "deduplicated">
+    result: Omit<ProviderCallResult, "latency" | "cached" | "deduplicated">,
+    context?: {
+      organizationId?: string;
+      requestId?: string;
+      sessionId?: string;
+      agent?: string;
+      mode?: string;
+    }
   ): Promise<void> {
     this.userCache.delete(userId);
 
     try {
-      await prisma.aIRequest.create({
-        data: {
-          userId,
-          provider: result.provider,
-          model: result.model,
-          mode: "chat",
-          inputTokens: result.inputTokens,
-          outputTokens: result.outputTokens,
-          cost: result.cost,
-          status: "success",
-          latency: 0,
-        },
+      const now = new Date();
+      await persistAIRequest({
+        userId,
+        organizationId: context?.organizationId,
+        sessionId: context?.sessionId,
+        agent: context?.agent,
+        requestId: context?.requestId || createAIRequestId(),
+        provider: result.provider,
+        model: result.model,
+        mode: context?.mode || "chat",
+        inputTokens: result.inputTokens,
+        outputTokens: result.outputTokens,
+        estimatedCost: result.cost,
+        status: "success",
+        startedAt: now,
+        completedAt: now,
+        attemptedProviders: [result.provider],
+        attemptedModels: [result.model],
+        finalProvider: result.provider,
       });
     } catch {
       // Non-critical
@@ -275,17 +290,19 @@ export class TokenBudgetManager {
     this.userCache.delete(userId);
 
     try {
-      await prisma.aIRequest.create({
-        data: {
-          userId,
-          provider,
-          model,
-          mode: "chat",
-          inputTokens: 0,
-          outputTokens: 0,
-          cost: 0,
-          status: "failed",
-        },
+      const now = new Date();
+      await persistAIRequest({
+        requestId: createAIRequestId(),
+        userId,
+        provider,
+        model,
+        mode: "chat",
+        status: "failed",
+        error: errorMessage,
+        startedAt: now,
+        completedAt: now,
+        attemptedProviders: [provider],
+        attemptedModels: [model],
       });
     } catch {
       // Non-critical

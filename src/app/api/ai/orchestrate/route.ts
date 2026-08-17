@@ -3,6 +3,8 @@ import { aiGateway } from "@/lib/ai/gateway";
 import { agentOrchestrator, type OrchestrationMode } from "@/lib/ai/orchestrator";
 import { apiHandler } from "@/lib/api-handler";
 import { aiSchemas, AppError } from "@/lib/errors";
+import { createAIRequestId } from "@/lib/ai/persistence";
+import { getAIOrganizationId } from "@/lib/ai/request-context";
 
 export const POST = apiHandler(async (ctx) => {
   const user = ctx.user!;
@@ -39,6 +41,7 @@ export const POST = apiHandler(async (ctx) => {
   });
 
   const startTime = performance.now();
+  const organizationId = await getAIOrganizationId(user.id);
 
   const result = await agentOrchestrator.executeWithContext({
     mode: "parallel" as OrchestrationMode,
@@ -49,6 +52,8 @@ export const POST = apiHandler(async (ctx) => {
       { role: "user", content: task },
     ],
     userId: user.id,
+    organizationId,
+    requestId: createAIRequestId(),
     contextOptions: {
       userId: user.id,
       sessionId: currentSessionId,
@@ -65,24 +70,6 @@ export const POST = apiHandler(async (ctx) => {
       content: result.finalContent,
     },
   });
-
-  for (const agentResult of result.agents) {
-    await prisma.aIRequest.create({
-      data: {
-        userId: user.id,
-        sessionId: currentSessionId,
-        provider: agentResult.result.provider,
-        model: agentResult.result.model,
-        mode: "explain",
-        inputTokens: agentResult.result.inputTokens,
-        outputTokens: agentResult.result.outputTokens,
-        latency: agentResult.result.latency,
-        cost: agentResult.result.cost,
-        status: "success",
-        fallbackUsed: result.mode === "fallback",
-      },
-    });
-  }
 
   return {
     sessionId: currentSessionId,

@@ -20,25 +20,38 @@ export interface DifficultyAssessment {
   reason: string;
 }
 
+export interface NextRecommendation {
+  type: "revision" | "prerequisite_remediation" | "next_topic" | "all_completed";
+  topicId?: string;
+  topicName?: string;
+  reason: string;
+  suggestedAction: string;
+  estimatedMinutes: number;
+  prerequisitesStatus: { met: boolean; unmetPrereqs: string[] };
+}
+
 export async function detectWeakTopics(userId: string, courseId?: string): Promise<WeakTopic[]> {
   const graph = await buildSkillGraph(userId, courseId);
 
-  const mistakeWhere: Record<string, unknown> = { userId };
-  if (courseId) {
-    mistakeWhere.topic = { module: { courseId } };
-  }
-
-  const assessmentWhere: Record<string, unknown> = { userId };
-  if (courseId) {
-    assessmentWhere.assessment = { lesson: { topic: { module: { courseId } } } };
-  }
-
+  const courseTopicIds = courseId
+    ? (await prisma.topic.findMany({
+        where: { module: { courseId } },
+        select: { id: true },
+      })).map((topic) => topic.id)
+    : null;
   const [mistakes, assessments] = await Promise.all([
-    prisma.studentMistake.findMany({ where: mistakeWhere as any }),
-    prisma.assessmentScore.findMany({
-      where: assessmentWhere as any,
-      include: { assessment: { include: { lesson: { select: { topicId: true } } } } },
+    prisma.studentMistake.findMany({
+      where: { userId, ...(courseTopicIds ? { topicId: { in: courseTopicIds } } : {}) },
     }),
+    courseId
+      ? prisma.assessmentScore.findMany({
+          where: { userId, assessment: { lesson: { topic: { module: { courseId } } } } },
+          include: { assessment: { include: { lesson: { select: { topicId: true } } } } },
+        })
+      : prisma.assessmentScore.findMany({
+          where: { userId },
+          include: { assessment: { include: { lesson: { select: { topicId: true } } } } },
+        }),
   ]);
 
   const mistakeMap = new Map<string, { count: number; errors: string[] }>();
@@ -66,11 +79,11 @@ export async function detectWeakTopics(userId: string, courseId?: string): Promi
     const mistakeInfo = mistakeMap.get(topicId);
     const scores = assessmentScores.get(topicId);
 
-    if (node.level === "beginner") {
+    if (node.level === "NOT_STARTED" || node.level === "BEGINNER") {
       reasons.push("Skill level is beginner");
     }
 
-    if (node.level === "developing") {
+    if (node.level === "DEVELOPING") {
       reasons.push("Still developing this skill");
     }
 
@@ -92,12 +105,16 @@ export async function detectWeakTopics(userId: string, courseId?: string): Promi
     const hasMasteredPrereqs = node.dependencies.length > 0 &&
       node.dependencies.every((depId) => {
         const depNode = graph.nodes.get(depId);
-        return depNode && depNode.level === "mastered";
+        return depNode && depNode.level === "MASTERED";
       });
+
+    if (node.dependencies.length > 0 && !hasMasteredPrereqs) {
+      reasons.push("Prerequisite topics are not yet mastered");
+    }
 
     if (node.lastAttemptAt) {
       const daysSinceLastAttempt = (Date.now() - node.lastAttemptAt.getTime()) / (1000 * 60 * 60 * 24);
-      if (daysSinceLastAttempt > 30 && node.level !== "mastered") {
+      if (daysSinceLastAttempt > 30 && node.level !== "MASTERED") {
         reasons.push(`Last practiced ${Math.round(daysSinceLastAttempt)} days ago`);
       }
     }
@@ -126,9 +143,9 @@ export async function detectWeakTopics(userId: string, courseId?: string): Promi
 function computePriority(node: SkillNode, mistakeCount: number, reasonCount: number): number {
   let priority = 0;
 
-  if (node.level === "beginner") priority += 40;
-  else if (node.level === "developing") priority += 30;
-  else if (node.level === "competent") priority += 10;
+  if (node.level === "NOT_STARTED" || node.level === "BEGINNER") priority += 40;
+  else if (node.level === "DEVELOPING") priority += 30;
+  else if (node.level === "COMPETENT") priority += 10;
 
   priority += Math.min(mistakeCount * 5, 25);
   priority += reasonCount * 5;
@@ -144,7 +161,7 @@ function generateRecommendedActions(
 ): string[] {
   const actions: string[] = [];
 
-  if (node.level === "beginner" || node.level === "developing") {
+  if (node.level === "NOT_STARTED" || node.level === "BEGINNER" || node.level === "DEVELOPING") {
     actions.push("Review the core concepts and re-read the lesson content");
     actions.push("Complete the practice exercises for this topic");
   }
@@ -215,4 +232,88 @@ export async function assessDifficulty(
   }
 
   return { currentLevel: defaultDifficulty, recommendedLevel, shouldAdjust, reason };
+}
+
+/**
+ * Generates the optimal next learning step respecting prerequisites and evidence.
+ */
+export async function generateNextRecommendation(
+  userId: string,
+  courseId?: string
+): Promise<NextRecommendation> {
+  const [graph, weakTopics] = await Promise.all([
+    buildSkillGraph(userId, courseId),
+    detectWeakTopics(userId, courseId),
+  ]);
+
+  // Check for critical weak topic first
+  const highPriorityWeak = weakTopics.find((w) => w.priority >= 70);
+  if (highPriorityWeak) {
+    const node = graph.nodes.get(highPriorityWeak.topicId);
+    const unmetPrereqs: string[] = [];
+
+    if (node && node.dependencies.length > 0) {
+      for (const depId of node.dependencies) {
+        const depNode = graph.nodes.get(depId);
+        if (!depNode || depNode.score < 60) {
+          unmetPrereqs.push(depNode?.topicName || depId);
+        }
+      }
+    }
+
+    if (unmetPrereqs.length > 0) {
+      return {
+        type: "prerequisite_remediation",
+        topicId: node?.dependencies[0],
+        topicName: unmetPrereqs[0],
+        reason: `Before continuing with "${highPriorityWeak.topicName}", you need to master prerequisite: ${unmetPrereqs.join(", ")}`,
+        suggestedAction: `Review and complete foundational exercises in ${unmetPrereqs[0]}`,
+        estimatedMinutes: 15,
+        prerequisitesStatus: { met: false, unmetPrereqs },
+      };
+    }
+
+    return {
+      type: "revision",
+      topicId: highPriorityWeak.topicId,
+      topicName: highPriorityWeak.topicName,
+      reason: `You have repeated mistakes or low mastery (${highPriorityWeak.score}%) in "${highPriorityWeak.topicName}".`,
+      suggestedAction: highPriorityWeak.recommendedActions[0] || "Review lesson and practice key exercises",
+      estimatedMinutes: 20,
+      prerequisitesStatus: { met: true, unmetPrereqs: [] },
+    };
+  }
+
+  // Find next uncompleted topic whose prerequisites are satisfied
+  for (const [topicId, node] of graph.nodes) {
+    if (node.level === "NOT_STARTED" || node.score < 60) {
+      const unmetPrereqs: string[] = [];
+      for (const depId of node.dependencies) {
+        const depNode = graph.nodes.get(depId);
+        if (!depNode || depNode.score < 60) {
+          unmetPrereqs.push(depNode?.topicName || depId);
+        }
+      }
+
+      if (unmetPrereqs.length === 0) {
+        return {
+          type: "next_topic",
+          topicId,
+          topicName: node.topicName,
+          reason: `Ready for your next topic: "${node.topicName}". All prerequisites are mastered.`,
+          suggestedAction: `Begin learning "${node.topicName}"`,
+          estimatedMinutes: 25,
+          prerequisitesStatus: { met: true, unmetPrereqs: [] },
+        };
+      }
+    }
+  }
+
+  return {
+    type: "all_completed",
+    reason: "Congratulations! You have demonstrated strong competency across all current topics.",
+    suggestedAction: "Take advanced capstone projects or scheduled spaced-repetition reviews.",
+    estimatedMinutes: 30,
+    prerequisitesStatus: { met: true, unmetPrereqs: [] },
+  };
 }

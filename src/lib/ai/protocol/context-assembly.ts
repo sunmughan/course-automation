@@ -240,21 +240,55 @@ export async function assembleContext(
   }
 
   if (aiContext.executionResult) {
-    const content = [
-      "## Execution Result",
-      aiContext.executionResult.output
-        ? `Output:\n\`\`\`\n${aiContext.executionResult.output.substring(0, 500)}\n\`\`\``
-        : "",
-      aiContext.executionResult.error
-        ? `Error:\n\`\`\`\n${aiContext.executionResult.error.substring(0, 500)}\n\`\`\``
-        : "",
-      `Time: ${aiContext.executionResult.executionTime}ms, Memory: ${aiContext.executionResult.memoryUsed}MB`,
-    ].join("\n");
+    const exec = aiContext.executionResult;
+    const parts = ["## Execution Result & Trace"];
+    if (exec.output) {
+      parts.push(`Output:\n\`\`\`\n${exec.output.substring(0, 1000)}\n\`\`\``);
+    }
+    if (exec.error) {
+      parts.push(`Error:\n\`\`\`\n${exec.error.substring(0, 1000)}\n\`\`\``);
+    }
+    if (exec.selectedLine) {
+      parts.push(`**User Query Focus**: Student is asking about **Line ${exec.selectedLine}**.`);
+    }
+    if (exec.selectedEvent) {
+      parts.push(
+        `**Selected Event Focus**: Event #${exec.selectedEvent.sequence ?? exec.selectedEvent.step} [${exec.selectedEvent.type}] at Line ${exec.selectedEvent.line} (Variable: ${exec.selectedEvent.variable || "none"}, Value: ${JSON.stringify(exec.selectedEvent.value)}).`
+      );
+    }
+    if (exec.events && exec.events.length > 0) {
+      parts.push("### Execution Trace Events:");
+      const eventLines = exec.events.slice(0, 35).map((e, idx) => {
+        const stepNum = e.sequence ?? e.step ?? idx;
+        const lineStr = e.line ? `Ln ${e.line}` : "global";
+        const varStr = e.variable ? `| var: ${e.variable} = ${JSON.stringify(e.value)}` : "";
+        const callStr = e.callStack && e.callStack.length > 0 ? `| stack: [${e.callStack.join(" > ")}]` : "";
+        const msgStr = e.message || e.payload?.message ? `| msg: "${e.message || e.payload?.message}"` : "";
+        return `- Step ${stepNum} [${e.type}] at ${lineStr} ${varStr} ${callStr} ${msgStr}`.trim();
+      });
+      parts.push(eventLines.join("\n"));
+      if (exec.events.length > 35) {
+        parts.push(`... (+${exec.events.length - 35} more execution events)`);
+      }
+    }
+    if (exec.executionTime !== undefined) {
+      parts.push(`Execution Duration: ${exec.executionTime}ms`);
+    }
+
+    const content = parts.join("\n\n");
     messages.push({
       role: "user",
       content,
       metadata: { priority: "high", tags: ["execution"] },
-      blocks: { code: [], diagrams: [], hints: [], questions: [], feedback: [], toolCalls: [], toolResults: [] },
+      blocks: {
+        code: [],
+        diagrams: [],
+        hints: [],
+        questions: [],
+        feedback: [],
+        toolCalls: [],
+        toolResults: [],
+      },
     });
     tokenBudget -= Math.ceil(content.length / 4);
   }

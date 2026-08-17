@@ -1,14 +1,14 @@
 import { prisma } from "@/lib/db";
 import { apiHandler } from "@/lib/api-handler";
 import { lessonSchemas, NotFoundError } from "@/lib/errors";
+import { synchronizeTopicSkill } from "@/lib/adaptive/skill-evaluation";
 
 export const POST = apiHandler(async (ctx) => {
   const { id } = await ctx.params;
   const user = ctx.user!;
-  const { score, timeSpent } = (ctx as any).body as {
-    score?: number;
-    timeSpent?: number;
-  };
+  const { score, timeSpent } = (ctx as unknown as {
+    body: { score?: number; timeSpent?: number };
+  }).body;
 
   const lesson = await prisma.lesson.findUnique({
     where: { id },
@@ -31,6 +31,9 @@ export const POST = apiHandler(async (ctx) => {
     throw new NotFoundError("Lesson");
   }
 
+  const existing = await prisma.studentProgress.findUnique({
+    where: { userId_lessonId: { userId: user.id, lessonId: id } },
+  });
   const progress = await prisma.studentProgress.upsert({
     where: {
       userId_lessonId: { userId: user.id, lessonId: id },
@@ -45,11 +48,13 @@ export const POST = apiHandler(async (ctx) => {
     },
     update: {
       status: "completed",
-      score: score ?? undefined,
-      timeSpent: timeSpent ? { increment: timeSpent } : undefined,
-      completedAt: new Date(),
+      score: score ?? existing?.score ?? null,
+      timeSpent: timeSpent ?? existing?.timeSpent ?? 0,
+      completedAt: existing?.completedAt ?? new Date(),
     },
   });
+
+  await synchronizeTopicSkill(user.id, lesson.topic.id);
 
   const courseId = lesson.topic.module.courseId;
 

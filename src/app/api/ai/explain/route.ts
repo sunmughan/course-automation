@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { TutorMode } from "@/types";
-import { prisma } from "@/lib/db";
 import { aiGateway } from "@/lib/ai/gateway";
 import { aiRouter } from "@/lib/ai/router";
+import { createAIRequestId } from "@/lib/ai/persistence";
+import { getAIOrganizationId } from "@/lib/ai/request-context";
 import { getModeSystemPrompt, getModeTaskInstruction } from "@/lib/ai/prompts";
 
 interface ExplainRequest {
@@ -78,9 +79,17 @@ Respond with the structured JSON format as specified.`;
     ];
 
     const startTime = performance.now();
+    const organizationId = userId && userId !== "anonymous"
+      ? await getAIOrganizationId(userId)
+      : undefined;
     const result = await aiRouter.executeWithFallback(messages, {
       temperature: 0.3,
       maxTokens: 8192,
+      userId: userId && userId !== "anonymous" ? userId : undefined,
+      organizationId,
+      requestId: createAIRequestId(),
+      agent: "tutor",
+      mode: tutorMode,
     });
     const latency = performance.now() - startTime;
 
@@ -101,23 +110,6 @@ Respond with the structured JSON format as specified.`;
         explanation: result.content,
         steps: [],
       };
-    }
-
-    if (userId && userId !== "anonymous") {
-      await prisma.aIRequest.create({
-        data: {
-          userId,
-          provider: result.provider,
-          model: result.model,
-          mode: tutorMode,
-          inputTokens: result.inputTokens,
-          outputTokens: result.outputTokens,
-          latency,
-          cost: result.cost,
-          status: "success",
-          fallbackUsed: false,
-        },
-      });
     }
 
     const response: ExplainResponse = {

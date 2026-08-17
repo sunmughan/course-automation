@@ -49,7 +49,7 @@ export function IDEPanel({
   );
 
   const handleRun = useCallback(async () => {
-    const result = await executeCode(code, language);
+    const result = await executeCode(code, language, language === "javascript");
     if (result) {
       onRunComplete?.(result.output, result.error);
     }

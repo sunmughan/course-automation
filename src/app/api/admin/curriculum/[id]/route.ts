@@ -40,6 +40,21 @@ export const PATCH = apiHandler(async (ctx) => {
     return Response.json({ error: "Curriculum not found", code: "NOT_FOUND" }, { status: 404 });
   }
 
+  if (body.status === "published" || body.status === "completed") {
+    const { canPublishCourse } = await import("@/lib/curriculum/coverage-engine");
+    const check = await canPublishCourse(curriculumId);
+    if (!check.allowed && check.reasons.length > 0 && !check.reasons.includes("Course not found")) {
+      return Response.json(
+        {
+          error: "Cannot publish curriculum with incomplete coverage",
+          code: "INCOMPLETE_COVERAGE",
+          reasons: check.reasons,
+        },
+        { status: 400 }
+      );
+    }
+  }
+
   const curriculum = await updateCurriculum(curriculumId, body);
 
   await logAudit({

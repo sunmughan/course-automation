@@ -35,7 +35,11 @@ model User {
   announcements  Announcement[]
   orgMemberships OrganizationMember[]
   teamMemberships TeamMember[]
-  auditLogs      AuditLog[]
+  auditLogs          AuditLog[]
+  interviews         InterviewSession[]
+  playgroundProjects PlaygroundProject[]
+  projectSessions    ProjectSession[]
+  projectExecutions  ProjectExecution[]
 }
 
 model Account {
@@ -309,19 +313,35 @@ model AIMessage {
 }
 
 model AIRequest {
-  id           String   @id @default(cuid())
-  userId       String
-  sessionId    String?
-  provider     String
-  model        String
-  mode         String
-  inputTokens  Int      @default(0)
-  outputTokens Int      @default(0)
-  latency      Float    @default(0)
-  cost         Float    @default(0)
-  status       String
-  fallbackUsed Boolean  @default(false)
-  createdAt    DateTime @default(now())
+  id                 String    @id @default(cuid())
+  requestId          String    @unique
+  userId             String
+  organizationId     String?
+  sessionId          String?
+  provider           String
+  model              String
+  agent               String?
+  mode                String
+  inputTokens         Int       @default(0)
+  outputTokens        Int       @default(0)
+  totalTokens         Int       @default(0)
+  latency             Float     @default(0)
+  cost                Float     @default(0)
+  estimatedCost       Float     @default(0)
+  status              String
+  error               String?
+  fallbackUsed        Boolean   @default(false)
+  attemptedProviders  String    @default("[]")
+  attemptedModels     String    @default("[]")
+  finalProvider       String?
+  startedAt           DateTime  @default(now())
+  completedAt         DateTime?
+  createdAt           DateTime  @default(now())
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([sessionId])
+  @@index([createdAt])
 }
 
 model AIProvider {
@@ -374,16 +394,23 @@ model RoutingRule {
 }
 
 model StudentSkill {
-  id        String   @id @default(cuid())
-  userId    String
-  topicId   String
-  skillName String
-  score     Float    @default(0)
-  status    String   @default("beginner")
-  attempts  Int      @default(0)
+  id            String    @id @default(cuid())
+  userId        String
+  topicId       String
+  skillName     String
+  score         Float     @default(0)
+  status        String    @default("beginner")
+  attempts      Int       @default(0)
   lastAttemptAt DateTime?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+
+  // Spaced Repetition (SM-2) State
+  easeFactor    Float     @default(2.5)
+  interval      Int       @default(0)
+  repetitions   Int       @default(0)
+  nextReviewAt  DateTime?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
   topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
@@ -443,6 +470,7 @@ model AssessmentQuestion {
   options      String?
   correctAnswer String
   explanation  String?
+  testCases    String?
   points       Int      @default(1)
   order        Int      @default(0)
 
@@ -457,6 +485,8 @@ model AssessmentScore {
   totalPoints  Float
   answers      String
   timeSpent    Int?
+  passed       Boolean  @default(false)
+  attempts     Int      @default(1)
   completedAt  DateTime @default(now())
 
   user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -492,22 +522,30 @@ model AnalyticsEvent {
 }
 
 model Batch {
-  id          String   @id @default(cuid())
-  name        String
-  description String?
-  instructorId String
-  courseId    String?
-  startDate   DateTime?
-  endDate     DateTime?
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String    @id @default(cuid())
+  name           String
+  description    String?
+  instructorId   String
+  courseId       String?
+  organizationId String?
+  departmentId   String?
+  startDate      DateTime?
+  endDate        DateTime?
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
-  instructor   User           @relation(fields: [instructorId], references: [id], onDelete: Cascade)
-  course       Course?        @relation(fields: [courseId], references: [id], onDelete: SetNull)
-  students     BatchStudent[]
-  assignments  Assignment[]
-  announcements Announcement[]
+  instructor     User          @relation(fields: [instructorId], references: [id], onDelete: Cascade)
+  course         Course?       @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  department     Department?   @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  students       BatchStudent[]
+  assignments    Assignment[]
+  announcements  Announcement[]
+
+  @@index([organizationId])
+  @@index([departmentId])
+  @@index([instructorId])
 }
 
 model BatchStudent {
@@ -609,6 +647,7 @@ model Organization {
   members          OrganizationMember[]
   teams            Team[]
   departments      Department[]
+  batches          Batch[]
   subscriptions    Subscription[]
   ssoConfigs       SSOConfig[]
   auditLogs        AuditLog[]
@@ -672,6 +711,7 @@ model Department {
   parent       Department?  @relation("DepartmentHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
   children     Department[] @relation("DepartmentHierarchy")
   teams        Team[]
+  batches      Batch[]
 }
 
 model AuditLog {
@@ -813,4 +853,129 @@ model Policy {
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@index([organizationId])
+}
+
+model InterviewSession {
+  id                String            @id @default(cuid())
+  userId            String
+  topicId           String?
+  courseId          String?
+  role              String            @default("Full-Stack Engineer")
+  targetLevel       String            @default("mid")
+  status            String            @default("in_progress")
+  currentDifficulty Int               @default(2)
+  overallScore      Float?
+  technicalAccuracy Float?
+  problemSolving    Float?
+  depth             Float?
+  communication     Float?
+  summaryFeedback   String?
+  startedAt         DateTime          @default(now())
+  completedAt       DateTime?
+  updatedAt         DateTime          @updatedAt
+
+  user  User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  turns InterviewTurn[]
+
+  @@index([userId])
+  @@index([topicId])
+}
+
+model InterviewTurn {
+  id                String            @id @default(cuid())
+  sessionId         String
+  turnNumber        Int
+  question          String
+  questionType      String            @default("technical")
+  difficulty        Int               @default(2)
+  candidateAnswer   String?
+  technicalAccuracy Float?
+  problemSolving    Float?
+  depth             Float?
+  communication     Float?
+  turnScore         Float?
+  evaluatorFeedback String?
+  strengths         String?
+  improvements      String?
+  followUpQuestion  String?
+  createdAt         DateTime          @default(now())
+
+  session InterviewSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+}
+
+model PlaygroundProject {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String?
+  isPublic    Boolean  @default(false)
+  settings    String   @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  files       ProjectFile[]
+  sessions    ProjectSession[]
+  executions  ProjectExecution[]
+
+  @@index([userId])
+}
+
+model ProjectFile {
+  id        String   @id @default(cuid())
+  projectId String
+  name      String
+  path      String
+  content   String   @default("")
+  language  String   @default("javascript")
+  isFolder  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project   PlaygroundProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, path])
+  @@index([projectId])
+}
+
+model ProjectSession {
+  id           String   @id @default(cuid())
+  projectId    String
+  userId       String
+  activeFileId String?
+  cursorPos    String?
+  openTabs     String   @default("[]")
+  lastActiveAt DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  project      PlaygroundProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([userId])
+}
+
+model ProjectExecution {
+  id            String   @id @default(cuid())
+  projectId     String
+  userId        String
+  entryFile     String   @default("src/main.js")
+  language      String   @default("javascript")
+  code          String
+  output        String   @default("")
+  error         String?
+  status        String   @default("success")
+  exitCode      Int?     @default(0)
+  executionTime Float?   @default(0)
+  memoryUsed    Float?   @default(0)
+  createdAt     DateTime @default(now())
+
+  project       PlaygroundProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user          User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([userId])
 }

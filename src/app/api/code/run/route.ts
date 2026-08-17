@@ -5,18 +5,40 @@ import { isExecutableLanguage } from "@/lib/execution/languages";
 import { prisma } from "@/lib/db";
 import { apiHandler } from "@/lib/api-handler";
 import { codeSchemas } from "@/lib/errors";
+import { SkillEvaluationService } from "@/lib/adaptive/skill-evaluation";
 
 export const POST = apiHandler(async (ctx) => {
   const user = ctx.user!;
   const body = (ctx as any).body as {
     code: string;
     language: string;
+    timeout?: number;
     trace?: boolean;
+    topicId?: string;
+    lessonId?: string;
   };
 
-  const { code, language = "javascript", trace = false } = body;
+  const { code, language = "javascript", timeout = 5000, trace = false, topicId, lessonId } = body;
 
-  const result = await executeMultiLanguage({ code, language, trace });
+  const result = await executeMultiLanguage({
+    code,
+    language,
+    trace,
+    timeoutMs: timeout,
+    userId: user.id,
+  });
+
+  const status = result.status || (result.error ? (result.exitCode === 124 ? "timeout" : "error") : "success");
+
+  if (result.error && topicId) {
+    await SkillEvaluationService.recordMistake(
+      user.id,
+      topicId,
+      lessonId || null,
+      code.slice(0, 1000),
+      result.error.slice(0, 500)
+    );
+  }
 
   await prisma.executionRun.create({
     data: {
@@ -25,7 +47,9 @@ export const POST = apiHandler(async (ctx) => {
       output: (result.output || "").slice(0, 10000),
       error: result.error,
       executionTime: result.executionTime,
-      status: result.error ? "error" : "success",
+      exitCode: result.exitCode ?? (result.error ? 1 : 0),
+      memoryUsed: result.memoryUsed || 0,
+      status,
       events: JSON.stringify(result.events),
     },
   });
@@ -38,6 +62,9 @@ export const POST = apiHandler(async (ctx) => {
         language,
         codeLength: code.length,
         duration: result.executionTime,
+        exitCode: result.exitCode,
+        memoryUsed: result.memoryUsed,
+        status,
         hasError: !!result.error,
         outputLength: (result.output || "").length,
         traceEnabled: trace,
@@ -50,6 +77,9 @@ export const POST = apiHandler(async (ctx) => {
     events: result.events,
     executionTime: result.executionTime,
     error: result.error,
+    exitCode: result.exitCode ?? (result.error ? 1 : 0),
+    memoryUsed: result.memoryUsed || 0,
+    status,
     trace: result.trace || null,
   };
 }, { requireAuth: true, bodySchema: codeSchemas.run });

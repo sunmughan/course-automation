@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { nanoid } from "nanoid";
-import type { TutorMode, AIChatMessage, ExecutionResult } from "@/types";
+import type { TutorMode, AIChatMessage, ExecutionResult, EducationalAIResponse } from "@/types";
 
 interface SendMessagePayload {
   message: string;
@@ -10,7 +10,9 @@ interface SendMessagePayload {
   code?: string;
   topicId?: string;
   lessonId?: string;
-  executionResult?: ExecutionResult;
+  executionResult?: ExecutionResult | null;
+  selectedLine?: number | null;
+  selectedEventIndex?: number | null;
 }
 
 interface ChatResponse {
@@ -18,6 +20,9 @@ interface ChatResponse {
   message: {
     role: "assistant";
     content: string;
+    educationalResponse?: EducationalAIResponse;
+    visualization?: EducationalAIResponse["visualization"];
+    structuredOutput?: unknown;
   };
   meta?: {
     provider: string;
@@ -43,6 +48,8 @@ export function useAiTutor(userId?: string | null) {
       topicId,
       lessonId,
       executionResult,
+      selectedLine,
+      selectedEventIndex,
     }: SendMessagePayload) => {
       if (!userId) {
         setError("You must be logged in to use the AI tutor");
@@ -84,6 +91,8 @@ export function useAiTutor(userId?: string | null) {
             lessonId,
             userId,
             executionResult,
+            selectedLine: selectedLine ?? undefined,
+            selectedEventIndex: selectedEventIndex ?? undefined,
           }),
           signal: abortRef.current.signal,
         });
@@ -102,6 +111,8 @@ export function useAiTutor(userId?: string | null) {
           id: nanoid(),
           role: "assistant",
           content: data.message.content,
+          structured: data.message.educationalResponse,
+          visualization: data.message.visualization || data.message.educationalResponse?.visualization,
           timestamp: new Date().toISOString(),
         };
 

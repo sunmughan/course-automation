@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import type { ExecutionEvent } from "@/types";
+import type { ExecutionEvent, VariableSnapshot } from "@/types";
 
 interface MemoryViewProps {
   events: ExecutionEvent[];
@@ -14,9 +14,22 @@ interface VariableEntry {
   name: string;
   value: unknown;
   type: string;
+  scope?: "global" | "function" | "block";
   prevValue?: unknown;
   changed: boolean;
 }
+
+const VARIABLE_EVENT_TYPES = new Set([
+  "VARIABLE_DECLARE",
+  "VARIABLE_ASSIGN",
+  "OBJECT_CREATE",
+  "OBJECT_UPDATE",
+  "variable_declare",
+  "variable_declaration",
+  "variable_assign",
+  "assignment",
+  "variable",
+]);
 
 function getVariableType(value: unknown): string {
   if (value === null) return "null";
@@ -35,18 +48,45 @@ function formatValue(value: unknown): string {
 
 export function MemoryView({ events, currentStep, className }: MemoryViewProps) {
   const variableMap = new Map<string, VariableEntry>();
+  const activeEvent = events[currentStep];
 
-  for (let i = 0; i <= currentStep; i++) {
-    const event = events[i];
-    if (event?.variable && event.type === "variable") {
-      const prev = variableMap.get(event.variable);
-      variableMap.set(event.variable, {
-        name: event.variable,
-        value: event.value,
-        type: getVariableType(event.value),
-        prevValue: prev?.value,
-        changed: prev !== undefined && prev.value !== event.value,
+  // If the active event contains a direct snapshot of the memory/heap, prioritize it
+  if (activeEvent?.snapshot && activeEvent.snapshot.length > 0) {
+    for (const snap of activeEvent.snapshot) {
+      variableMap.set(snap.name, {
+        name: snap.name,
+        value: snap.value,
+        type: snap.type || getVariableType(snap.value),
+        scope: snap.scope,
+        prevValue: snap.previousValue,
+        changed: Boolean(snap.changed),
       });
+    }
+  } else {
+    // Otherwise, accumulate variable events sequentially up to currentStep
+    for (let i = 0; i <= currentStep && i < events.length; i++) {
+      const event = events[i];
+      if (!event) continue;
+
+      const varName =
+        event.variable ||
+        (event.payload?.name as string) ||
+        (event.payload?.variable as string);
+
+      if (varName && VARIABLE_EVENT_TYPES.has(event.type)) {
+        const val = event.value !== undefined ? event.value : event.payload?.value;
+        const prev = variableMap.get(varName);
+        const payloadPrev = event.payload?.previousValue;
+
+        variableMap.set(varName, {
+          name: varName,
+          value: val,
+          type: getVariableType(val),
+          scope: event.scope as "global" | "function" | "block",
+          prevValue: payloadPrev !== undefined ? payloadPrev : prev?.value,
+          changed: prev !== undefined && prev.value !== val,
+        });
+      }
     }
   }
 
@@ -71,9 +111,12 @@ export function MemoryView({ events, currentStep, className }: MemoryViewProps) 
 
   return (
     <div className={cn("flex flex-col rounded-lg border border-border bg-card", className)}>
-      <div className="border-b border-border px-4 py-2">
+      <div className="border-b border-border px-4 py-2 flex items-center justify-between">
         <span className="text-xs font-medium text-muted-foreground">
           Memory State
+        </span>
+        <span className="text-[10px] text-muted-foreground font-mono">
+          {variableMap.size} variable{variableMap.size !== 1 ? "s" : ""}
         </span>
       </div>
 
@@ -121,7 +164,7 @@ export function MemoryView({ events, currentStep, className }: MemoryViewProps) 
                       >
                         {formatValue(entry.value)}
                       </motion.span>
-                      {entry.changed && (
+                      {entry.changed && entry.prevValue !== undefined && (
                         <span className="text-[10px] text-muted-foreground/60">
                           (was {formatValue(entry.prevValue)})
                         </span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuthContext } from "@/components/providers/auth-provider";
+import { getAuthHeaders } from "@/lib/fetch-helpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -48,7 +48,6 @@ interface SkillData {
 }
 
 export default function ProgressPage() {
-  const { user } = useAuthContext();
   const [progress, setProgress] = useState<ProgressData | null>(null);
   const [skills, setSkills] = useState<SkillData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -57,14 +56,10 @@ export default function ProgressPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const token = localStorage.getItem("auth-token");
+        const headers = getAuthHeaders();
         const [progressRes, skillsRes] = await Promise.all([
-          fetch("/api/progress", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          fetch("/api/progress?type=skills", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
+          fetch("/api/progress", { headers }),
+          fetch("/api/progress?type=skills", { headers }),
         ]);
 
         if (progressRes.ok) setProgress(await progressRes.json());

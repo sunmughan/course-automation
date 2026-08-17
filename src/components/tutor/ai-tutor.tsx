@@ -1,12 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Send, Loader2, Wand2, Trash2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Send, Loader2, Wand2, Trash2, ArrowDown, Sparkles, HelpCircle, Code, Play, ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -17,7 +15,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { useAiTutor } from "@/hooks/use-ai-tutor";
 import { AIChatMessage } from "@/components/tutor/ai-chat-message";
-import type { TutorMode } from "@/types";
+import { ImageGeneratorModal } from "@/components/ai/image-generator-modal";
+import type { TutorMode, ExecutionResult } from "@/types";
 
 const TUTOR_MODES: { value: TutorMode; label: string; description: string }[] =
   [
@@ -36,11 +35,23 @@ const TUTOR_MODES: { value: TutorMode; label: string; description: string }[] =
     { value: "review", label: "Review", description: "Review your code and suggest improvements" },
   ];
 
+const QUICK_PROMPTS = [
+  { icon: Sparkles, text: "Explain this topic in simple terms" },
+  { icon: Code, text: "Show me a real-world code example" },
+  { icon: Play, text: "Trace how this code executes step by step" },
+  { icon: HelpCircle, text: "Give me an interview question on this" },
+];
+
 interface AITutorProps {
   userId?: string | null;
   code?: string;
   topicId?: string;
   lessonId?: string;
+  executionResult?: ExecutionResult | null;
+  selectedLine?: number | null;
+  selectedEventIndex?: number | null;
+  onHighlightLine?: (line: number) => void;
+  onHighlightEvent?: (eventIndex: number) => void;
   className?: string;
 }
 
@@ -49,31 +60,77 @@ export function AITutor({
   code,
   topicId,
   lessonId,
+  executionResult,
+  selectedLine,
+  selectedEventIndex,
+  onHighlightLine,
+  onHighlightEvent,
   className,
 }: AITutorProps) {
   const { messages, loading, error, sendMessage, clearChat } = useAiTutor(userId);
   const [inputValue, setInputValue] = useState("");
   const [mode, setMode] = useState<TutorMode>("explain");
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [showScrollBottom, setShowScrollBottom] = useState(false);
+  const [visualStudioOpen, setVisualStudioOpen] = useState(false);
+  
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  const scrollToBottom = useCallback((smooth = true) => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "end" });
+    } else if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: smooth ? "smooth" : "auto",
+      });
     }
-  }, [messages]);
+  }, []);
 
-  const handleSend = useCallback(() => {
-    if (!inputValue.trim() || loading) return;
+  // Track scroll position to show/hide "Scroll to bottom" button
+  const handleScroll = useCallback(() => {
+    if (!scrollContainerRef.current) return;
+    const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+    const isScrolledUp = scrollHeight - scrollTop - clientHeight > 120;
+    setShowScrollBottom(isScrolledUp);
+  }, []);
+
+  // Automatically scroll to bottom when new messages arrive or loading begins
+  useEffect(() => {
+    scrollToBottom(true);
+  }, [messages, loading, scrollToBottom]);
+
+  const handleSendText = useCallback((textToSend: string) => {
+    if (!textToSend.trim() || loading) return;
     sendMessage({
-      message: inputValue,
+      message: textToSend,
       mode,
       code,
       topicId,
       lessonId,
+      executionResult,
+      selectedLine,
+      selectedEventIndex,
     });
     setInputValue("");
-  }, [inputValue, loading, mode, code, topicId, lessonId, sendMessage]);
+    setTimeout(() => scrollToBottom(true), 50);
+  }, [
+    loading,
+    mode,
+    code,
+    topicId,
+    lessonId,
+    executionResult,
+    selectedLine,
+    selectedEventIndex,
+    sendMessage,
+    scrollToBottom,
+  ]);
+
+  const handleSend = useCallback(() => {
+    handleSendText(inputValue);
+  }, [handleSendText, inputValue]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -92,11 +149,14 @@ export function AITutor({
   const selectedMode = TUTOR_MODES.find((m) => m.value === mode);
 
   return (
-    <div className={cn("flex h-full flex-col bg-card", className)}>
-      <div className="flex items-center justify-between gap-2 border-b border-border px-4 py-3">
+    <div className={cn("flex h-full flex-col bg-card overflow-hidden relative", className)}>
+      {/* Header bar */}
+      <div className="flex items-center justify-between gap-2 border-b border-border px-4 py-3 shrink-0 bg-card/80 backdrop-blur-xs">
         <div className="flex items-center gap-2">
-          <Wand2 className="h-4 w-4 text-primary" />
-          <span className="text-sm font-semibold">AI Tutor</span>
+          <div className="p-1 rounded-md bg-primary/10 text-primary">
+            <Wand2 className="h-4 w-4" />
+          </div>
+          <span className="text-sm font-semibold tracking-tight">AI Tutor</span>
         </div>
         <div className="flex items-center gap-2">
           <Select
@@ -114,11 +174,20 @@ export function AITutor({
               ))}
             </SelectContent>
           </Select>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 text-sky-400 hover:text-sky-300 hover:bg-sky-500/10"
+            onClick={() => setVisualStudioOpen(true)}
+            title="Zyloo AI Visual Studio (Generate Diagrams & UI Mockups)"
+          >
+            <ImageIcon className="h-4 w-4" />
+          </Button>
           {messages.length > 0 && (
             <Button
               variant="ghost"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 text-muted-foreground hover:text-destructive"
               onClick={handleClear}
               title="Clear chat"
             >
@@ -128,80 +197,132 @@ export function AITutor({
         </div>
       </div>
 
+      <ImageGeneratorModal
+        open={visualStudioOpen}
+        onOpenChange={setVisualStudioOpen}
+        onInsertToChat={(visualMd) => {
+          sendMessage({
+            message: `Please explain this generated architectural blueprint/diagram:${visualMd}`,
+            mode,
+            code,
+            topicId,
+            lessonId,
+          });
+        }}
+      />
+
+      {/* Active mode banner */}
       {selectedMode && selectedMode.value !== "explain" && (
-        <div className="px-4 py-2 border-b border-border">
+        <div className="px-4 py-2 border-b border-border flex items-center justify-between shrink-0 bg-muted/30">
           <Badge variant="secondary" className="text-[10px]">
             {selectedMode.label} Mode
           </Badge>
+          {selectedLine && (
+            <Badge variant="outline" className="text-[10px] font-mono">
+              Line {selectedLine} selected
+            </Badge>
+          )}
         </div>
       )}
 
-      <ScrollArea className="flex-1" ref={scrollRef}>
+      {/* Main scrollable message container */}
+      <div
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        className="flex-1 min-h-0 overflow-y-auto overscroll-contain divide-y divide-border/40 scroll-smooth"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
         {error && (
           <div className="px-4 py-3 m-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
             {error}
           </div>
         )}
+
         {messages.length === 0 && !error ? (
-          <div className="flex h-full flex-col items-center justify-center px-6 py-12 text-center">
-            <Wand2 className="mb-3 h-10 w-10 text-muted-foreground/40" />
-            <p className="text-sm text-muted-foreground">
-              Ask me anything about the code
+          <div className="flex min-h-full flex-col items-center justify-center px-6 py-10 text-center">
+            <div className="p-3 rounded-full bg-primary/10 text-primary mb-3">
+              <Wand2 className="h-8 w-8" />
+            </div>
+            <h3 className="text-sm font-semibold text-foreground">Ask AI Tutor</h3>
+            <p className="text-xs text-muted-foreground mt-1 max-w-xs">
+              Get instant explanations, step-by-step code breakdowns, debugging help, or practice challenges.
             </p>
-            <p className="mt-1 text-xs text-muted-foreground/60">
-              Select a mode above to get started
-            </p>
+
+            {/* Quick suggested prompts */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6 w-full max-w-md">
+              {QUICK_PROMPTS.map((qp, idx) => {
+                const Icon = qp.icon;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => handleSendText(qp.text)}
+                    className="flex items-center gap-2 p-2.5 rounded-lg border border-border/80 bg-card hover:bg-muted/60 text-left text-xs transition-colors group cursor-pointer"
+                  >
+                    <Icon className="size-3.5 text-primary shrink-0 group-hover:scale-110 transition-transform" />
+                    <span className="text-foreground/90 leading-tight">{qp.text}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         ) : (
-          <AnimatePresence>
-            {messages.map((msg) => (
-              <motion.div
-                key={msg.id}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <AIChatMessage message={msg} />
-              </motion.div>
+          <div className="py-2">
+            {messages.map((message) => (
+              <AIChatMessage
+                key={message.id}
+                message={message}
+                onHighlightLine={onHighlightLine}
+                onHighlightEvent={onHighlightEvent}
+              />
             ))}
-          </AnimatePresence>
-        )}
-
-        {loading && (
-          <div className="flex items-center gap-2 px-4 py-3">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10">
-              <Loader2 className="h-4 w-4 animate-spin text-primary" />
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-muted-foreground/40" />
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-muted-foreground/40 [animation-delay:0.2s]" />
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-muted-foreground/40 [animation-delay:0.4s]" />
-            </div>
+            {loading && (
+              <div className="flex items-center gap-2 px-4 py-3 text-sm text-muted-foreground animate-pulse">
+                <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                <span>Thinking & generating response...</span>
+              </div>
+            )}
           </div>
         )}
-      </ScrollArea>
+        <div ref={messagesEndRef} className="h-px w-full" />
+      </div>
 
-      <div className="border-t border-border p-3">
+      {/* Floating Scroll to Bottom Button */}
+      {showScrollBottom && (
+        <button
+          onClick={() => scrollToBottom(true)}
+          className="absolute bottom-18 right-6 p-2 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all z-20 flex items-center gap-1 text-xs cursor-pointer animate-bounce"
+          title="Scroll to latest message"
+        >
+          <ArrowDown className="size-4" />
+        </button>
+      )}
+
+      {/* Input bar */}
+      <div className="border-t border-border p-3 shrink-0 bg-card">
         <div className="flex items-center gap-2">
           <Input
             ref={inputRef}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask about the code..."
-            className="h-9 text-sm"
+            placeholder={
+              selectedLine
+                ? `Ask about line ${selectedLine}...`
+                : "Ask about this lesson, code, or concept..."
+            }
             disabled={loading}
+            className="flex-1 text-xs bg-background"
           />
           <Button
             size="icon"
-            className="h-9 w-9 flex-shrink-0"
             onClick={handleSend}
             disabled={!inputValue.trim() || loading}
+            className="h-8 w-8 shrink-0 cursor-pointer"
           >
             {loading ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
             ) : (
-              <Send className="h-4 w-4" />
+              <Send className="h-3.5 w-3.5" />
             )}
           </Button>
         </div>

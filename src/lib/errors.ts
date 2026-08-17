@@ -78,8 +78,14 @@ export const aiSchemas = {
   chat: z.object({
     message: z.string().min(1, "Message is required").max(10000),
     lessonId: z.string().optional(),
-    mode: z.enum(["explain", "quiz", "code", "debug", "general"]).default("general"),
+    topicId: z.string().optional(),
+    mode: z.string().default("explain"),
     conversationId: z.string().optional(),
+    code: z.string().optional(),
+    executionResult: z.any().optional(),
+    selectedLine: z.number().optional(),
+    selectedEventIndex: z.number().optional(),
+    enforceStructuredOutput: z.boolean().optional(),
   }),
 
   explain: z.object({
@@ -96,8 +102,10 @@ export const aiSchemas = {
 export const codeSchemas = {
   run: z.object({
     code: z.string().min(1, "Code is required").max(100000),
-    language: z.enum(["javascript", "python", "typescript", "java", "c", "cpp", "kotlin", "html", "css", "json", "sql", "markdown"]).default("javascript"),
+    language: z.enum(["javascript", "python", "typescript", "java", "c", "cpp", "kotlin", "html", "css", "json", "sql", "markdown", "php"]).default("javascript"),
     timeout: z.number().min(1000).max(30000).default(10000),
     trace: z.boolean().optional(),
+    topicId: z.string().optional(),
+    lessonId: z.string().optional(),
   }),
 };

@@ -1,19 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuthContext } from "@/components/providers/auth-provider";
+import { getAuthHeaders } from "@/lib/fetch-helpers";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useRouter } from "next/navigation";
 import {
-  Play,
   CheckCircle2,
   AlertCircle,
   Code2,
@@ -53,7 +49,6 @@ interface AssessmentResult {
 }
 
 export default function AssessmentsPage() {
-  const { user } = useAuthContext();
   const router = useRouter();
   const [assessments, setAssessments] = useState<AssessmentData[]>([]);
   const [activeAssessment, setActiveAssessment] = useState<AssessmentData | null>(null);
@@ -66,9 +61,8 @@ export default function AssessmentsPage() {
   useEffect(() => {
     async function fetchAssessments() {
       try {
-        const token = localStorage.getItem("auth-token");
         const res = await fetch("/api/progress?type=assessments", {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: getAuthHeaders(),
         });
         if (res.ok) {
           const data = await res.json();
@@ -93,12 +87,11 @@ export default function AssessmentsPage() {
     if (!activeAssessment) return;
     setSubmitting(true);
     try {
-      const token = localStorage.getItem("auth-token");
       const res = await fetch("/api/progress", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          ...getAuthHeaders(),
         },
         body: JSON.stringify({
           type: "assessment",

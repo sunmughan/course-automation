@@ -1,108 +1,21 @@
-import type { ExecutionEvent, ExecutionResult } from "@/types";
+import { spawn } from "child_process";
+import { writeFile, mkdir, rm } from "fs/promises";
+import { tmpdir } from "os";
+import { join } from "path";
+import { randomUUID } from "crypto";
+import type { ExecutionEvent, ExecutionResult, TraceStep } from "@/types";
+import { normalizeExecutionEvents } from "./event-normalizer";
 import { instrumentCode, buildTraceWrapper, analyzeTrace } from "./tracer";
 
-const MAX_EXECUTION_TIME_MS = 5000;
-
-function wrapCodeWithInterception(code: string): string {
-  return `
-    return (function() {
-      var __startTime = Date.now();
-      var __output = [];
-      var __step = 0;
-      var console = {
-        log: function() {
-          var args = Array.prototype.slice.call(arguments);
-          var formatted = args.map(function(a) {
-            try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-            catch(e) { return String(a); }
-          }).join(' ');
-          __output.push(formatted);
-        },
-        error: function() {
-          var args = Array.prototype.slice.call(arguments);
-          var formatted = args.map(function(a) {
-            try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-            catch(e) { return String(a); }
-          }).join(' ');
-          __output.push('[ERROR] ' + formatted);
-        },
-        warn: function() {
-          var args = Array.prototype.slice.call(arguments);
-          var formatted = args.map(function(a) {
-            try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-            catch(e) { return String(a); }
-          }).join(' ');
-          __output.push('[WARN] ' + formatted);
-        },
-        info: function() {
-          var args = Array.prototype.slice.call(arguments);
-          var formatted = args.map(function(a) {
-            try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-            catch(e) { return String(a); }
-          }).join(' ');
-          __output.push('[INFO] ' + formatted);
-        },
-        table: function() {},
-        time: function() {},
-        timeEnd: function() {},
-        clear: function() {},
-        assert: function() {},
-        debug: function() {},
-        dir: function() {},
-        group: function() {},
-        groupEnd: function() {},
-        groupCollapsed: function() {},
-        trace: function() {},
-        count: function() {},
-        countReset: function() {},
-      };
-
-      try {
-        ${code}
-      } catch (__execError) {
-        return {
-          error: __execError.message || String(__execError),
-          output: __output,
-          executionTime: Date.now() - __startTime
-        };
-      }
-
-      return {
-        error: null,
-        output: __output,
-        executionTime: Date.now() - __startTime
-      };
-    })();
-  `;
-}
+const DEFAULT_MAX_EXECUTION_TIME_MS = 5000;
+const MAX_OUTPUT_LENGTH = 50000;
 
 function sanitizeCode(code: string): void {
   const dangerousPatterns: [RegExp, string][] = [
-    [/import\s+/, "import statement"],
-    [/require\s*\(/, "require()"],
-    [/process\./, "process"],
-    [/globalThis\./, "globalThis"],
-    [/global\./, "global"],
+    [/process\.(exit|kill|chdir|abort|dlopen|binding|env)/, "process"],
     [/__proto__/, "__proto__"],
-    [/fetch\s*\(/, "fetch()"],
-    [/XMLHttpRequest/, "XMLHttpRequest"],
-    [/WebSocket/, "WebSocket"],
-    [/Worker\s*\(/, "Worker"],
+    [/child_process/, "child_process"],
     [/eval\s*\(/, "eval()"],
-    [/setTimeout\s*\(/, "setTimeout()"],
-    [/setInterval\s*\(/, "setInterval()"],
-    [/Function\s*\(/, "Function()"],
-    [/document\./, "document"],
-    [/window\./, "window"],
-    [/localStorage/, "localStorage"],
-    [/sessionStorage/, "sessionStorage"],
-    [/indexedDB/, "indexedDB"],
-    [/location\./, "location"],
-    [/history\./, "history"],
-    [/navigator\./, "navigator"],
-    [/alert\s*\(/, "alert()"],
-    [/prompt\s*\(/, "prompt()"],
-    [/confirm\s*\(/, "confirm()"],
   ];
 
   for (const [pattern, name] of dangerousPatterns) {
@@ -115,10 +28,13 @@ function sanitizeCode(code: string): void {
 export async function executeJavaScript(
   code: string,
   language: string = "javascript",
-  options?: { trace?: boolean }
+  options?: { trace?: boolean; timeoutMs?: number }
 ): Promise<ExecutionResult> {
   const startTime = Date.now();
   const enableTrace = options?.trace ?? false;
+  const timeoutMs = options?.timeoutMs && options.timeoutMs > 0 && options.timeoutMs <= 30000
+    ? options.timeoutMs
+    : DEFAULT_MAX_EXECUTION_TIME_MS;
 
   if (language !== "javascript") {
     return {
@@ -127,6 +43,8 @@ export async function executeJavaScript(
       events: [],
       executionTime: 0,
       memoryUsed: 0,
+      exitCode: 1,
+      status: "failed",
     };
   }
 
@@ -138,6 +56,8 @@ export async function executeJavaScript(
       events: [],
       executionTime: 0,
       memoryUsed: 0,
+      exitCode: 1,
+      status: "failed",
     };
   }
 
@@ -150,206 +70,483 @@ export async function executeJavaScript(
       events: [],
       executionTime: 0,
       memoryUsed: 0,
+      exitCode: 1,
+      status: "failed",
     };
   }
 
   if (enableTrace) {
-    return executeWithTrace(trimmedCode, startTime);
+    return executeWithTrace(trimmedCode, startTime, timeoutMs);
   }
 
-  return executeSimple(trimmedCode, startTime);
+  return executeSimple(trimmedCode, startTime, timeoutMs);
+}
+
+function runNodeIsolated(
+  runnerScript: string,
+  timeoutMs: number
+): Promise<{ stdout: string; stderr: string; exitCode: number; timedOut: boolean; memoryUsed: number }> {
+  return new Promise(async (resolve) => {
+    const workDir = join(tmpdir(), `js-run-${randomUUID()}`);
+    let isCleanedUp = false;
+
+    const cleanup = async () => {
+      if (!isCleanedUp) {
+        isCleanedUp = true;
+        try {
+          await rm(workDir, { recursive: true, force: true });
+        } catch {}
+      }
+    };
+
+    try {
+      await mkdir(workDir, { recursive: true });
+      const scriptPath = join(workDir, "runner.js");
+      await writeFile(scriptPath, runnerScript, "utf-8");
+
+      let stdout = "";
+      let stderr = "";
+      let timedOut = false;
+
+      const proc = spawn(
+        process.execPath,
+        ["--no-warnings", "--max-old-space-size=64", scriptPath],
+        {
+          cwd: workDir,
+          env: {
+            NODE_ENV: "production",
+            LANG: "en_US.UTF-8",
+          },
+          stdio: ["pipe", "pipe", "pipe"],
+        }
+      );
+
+      const timer = setTimeout(() => {
+        timedOut = true;
+        try {
+          proc.kill("SIGKILL");
+        } catch {}
+      }, timeoutMs);
+
+      proc.stdout.on("data", (chunk: Buffer) => {
+        if (stdout.length < MAX_OUTPUT_LENGTH * 2) {
+          stdout += chunk.toString("utf-8");
+        }
+      });
+
+      proc.stderr.on("data", (chunk: Buffer) => {
+        if (stderr.length < MAX_OUTPUT_LENGTH) {
+          stderr += chunk.toString("utf-8");
+        }
+      });
+
+      proc.on("close", async (code) => {
+        clearTimeout(timer);
+        await cleanup();
+
+        if (timedOut) {
+          resolve({
+            stdout: "",
+            stderr: `Execution timed out after ${Math.round(timeoutMs / 1000)} seconds`,
+            exitCode: 124,
+            timedOut: true,
+            memoryUsed: 0,
+          });
+          return;
+        }
+
+        resolve({
+          stdout,
+          stderr,
+          exitCode: code ?? 0,
+          timedOut: false,
+          memoryUsed: 0,
+        });
+      });
+
+      proc.on("error", async (err) => {
+        clearTimeout(timer);
+        await cleanup();
+        resolve({
+          stdout: "",
+          stderr: err.message || "Failed to spawn Node process",
+          exitCode: 1,
+          timedOut: false,
+          memoryUsed: 0,
+        });
+      });
+    } catch (err) {
+      await cleanup();
+      resolve({
+        stdout: "",
+        stderr: err instanceof Error ? err.message : "Isolation setup error",
+        exitCode: 1,
+        timedOut: false,
+        memoryUsed: 0,
+      });
+    }
+  });
 }
 
 async function executeSimple(
   code: string,
-  startTime: number
+  startTime: number,
+  timeoutMs: number
 ): Promise<ExecutionResult> {
-  const wrappedCode = wrapCodeWithInterception(code);
+  const runnerScript = `
+"use strict";
+var __logs = [];
+var console = {
+  log: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __logs.push(formatted);
+  },
+  error: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __logs.push('[ERROR] ' + formatted);
+  },
+  warn: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __logs.push('[WARN] ' + formatted);
+  },
+  info: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __logs.push('[INFO] ' + formatted);
+  },
+  table: function() {},
+  time: function() {},
+  timeEnd: function() {},
+  clear: function() {},
+  assert: function() {},
+  debug: function() {},
+  dir: function() {},
+  group: function() {},
+  groupEnd: function() {},
+  groupCollapsed: function() {},
+  trace: function() {},
+  count: function() {},
+  countReset: function() {},
+};
 
-  let result: {
-    error: string | null;
-    output: string[];
-    executionTime: number;
-  };
-
-  try {
-    const fn = new Function(wrappedCode);
-
-    const execPromise = new Promise<typeof result>((resolve) => {
-      try {
-        const rawResult = fn();
-        if (rawResult && typeof rawResult === "object" && "error" in rawResult) {
-          resolve(rawResult as typeof result);
-        } else {
-          resolve({
-            error: null,
-            output: [],
-            executionTime: Date.now() - startTime,
-          });
-        }
-      } catch (e) {
-        resolve({
-          error: (e as Error).message || "Execution error",
-          output: [],
-          executionTime: Date.now() - startTime,
-        });
-      }
-    });
-
-    const timeoutPromise = new Promise<typeof result>((_, reject) => {
-      setTimeout(() => {
-        reject(new Error("Execution timed out after 5 seconds"));
-      }, MAX_EXECUTION_TIME_MS);
-    });
-
-    result = await Promise.race([execPromise, timeoutPromise]);
-  } catch (e) {
-    const errorMsg = (e as Error).message || "Unknown execution error";
-    const isTimeout = errorMsg === "Execution timed out after 5 seconds";
+var __storage = {};
+var localStorage = {
+  getItem: function(k) { return __storage[k] !== undefined ? __storage[k] : null; },
+  setItem: function(k, v) { __storage[k] = String(v); },
+  removeItem: function(k) { delete __storage[k]; },
+  clear: function() { __storage = {}; }
+};
+var sessionStorage = localStorage;
+var document = {
+  getElementById: function(id) {
     return {
-      output: isTimeout ? "Execution timed out (5 second limit)" : errorMsg,
-      error: isTimeout ? "Execution timed out after 5 seconds" : null,
-      events: [],
-      executionTime: Date.now() - startTime,
+      id: id,
+      value: '',
+      textContent: '',
+      innerHTML: '',
+      style: {},
+      classList: { add: function(){}, remove: function(){}, toggle: function(){}, contains: function(){ return false; } },
+      addEventListener: function(evt, handler) {},
+      appendChild: function(c) { return c; },
+      remove: function() {}
+    };
+  },
+  querySelector: function(sel) { return this.getElementById(sel); },
+  querySelectorAll: function() { return []; },
+  createElement: function(tag) { return this.getElementById(tag); },
+  body: { appendChild: function(c) { return c; } },
+  addEventListener: function() {}
+};
+var window = typeof globalThis !== 'undefined' ? globalThis : {};
+window.document = document;
+window.localStorage = localStorage;
+window.sessionStorage = sessionStorage;
+window.alert = function(msg) { console.log('[Alert]', msg); };
+window.prompt = function() { return ''; };
+window.confirm = function() { return true; };
+
+try {
+  ${code}
+  process.stdout.write(JSON.stringify({ output: __logs, error: null }));
+} catch (__err) {
+  process.stdout.write(JSON.stringify({ output: __logs, error: __err.message || String(__err) }));
+}
+`;
+
+  const runResult = await runNodeIsolated(runnerScript, timeoutMs);
+  const executionTime = Date.now() - startTime;
+
+  if (runResult.timedOut) {
+    const errorMsg = `Execution timed out after ${Math.round(timeoutMs / 1000)} seconds`;
+    return {
+      output: `Execution timed out (${Math.round(timeoutMs / 1000)} second limit)`,
+      error: errorMsg,
+      events: [{ step: 1, type: "error", message: errorMsg }],
+      executionTime,
       memoryUsed: 0,
+      exitCode: 124,
+      status: "timeout",
     };
   }
 
-  const executionTime = Date.now() - startTime;
+  let parsedOutput: string[] = [];
+  let parsedError: string | null = null;
+
+  try {
+    const json = JSON.parse(runResult.stdout.trim());
+    parsedOutput = Array.isArray(json.output) ? json.output : [];
+    parsedError = json.error || null;
+  } catch {
+    if (runResult.stderr) {
+      parsedError = runResult.stderr.trim();
+    } else if (runResult.stdout) {
+      parsedOutput = [runResult.stdout.trim()];
+    }
+  }
+
+  if (runResult.exitCode !== 0 && !parsedError) {
+    parsedError = runResult.stderr || `Process exited with code ${runResult.exitCode}`;
+  }
 
   const events: ExecutionEvent[] = [];
-  if (result.output.length > 0) {
+  if (parsedOutput.length > 0) {
     events.push({
       step: 1,
       type: "output",
-      message: result.output.join("\n"),
+      message: parsedOutput.join("\n"),
     });
   }
 
-  if (result.error) {
+  if (parsedError) {
     events.push({
       step: 1,
       type: "error",
-      message: result.error,
+      message: parsedError,
     });
   }
 
   return {
-    output: result.output.join("\n"),
-    error: result.error || null,
+    output: parsedOutput.join("\n"),
+    error: parsedError,
     events,
     executionTime,
-    memoryUsed: 0,
+    memoryUsed: runResult.memoryUsed,
+    exitCode: parsedError ? (runResult.exitCode || 1) : 0,
+    status: parsedError ? "error" : "success",
   };
 }
 
 async function executeWithTrace(
   code: string,
-  startTime: number
+  startTime: number,
+  timeoutMs: number
 ): Promise<ExecutionResult> {
-  try {
-    const { instrumentedCode } = instrumentCode(code);
-    const wrappedCode = buildTraceWrapper(instrumentedCode);
+  const { instrumentedCode } = instrumentCode(code);
+  const traceBody = buildTraceWrapper(instrumentedCode);
 
-    const fn = new Function(wrappedCode);
+  const runnerScript = `
+"use strict";
+var __consoleOutputs = [];
+var console = {
+  log: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __consoleOutputs.push(formatted);
+    if (typeof __trace === 'function') {
+      __trace('console_output', 'console.log', formatted, 0, typeof depth !== 'undefined' ? depth : 0);
+    }
+  },
+  error: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __consoleOutputs.push('[ERROR] ' + formatted);
+    if (typeof __trace === 'function') {
+      __trace('console_output', 'console.error', formatted, 0, typeof depth !== 'undefined' ? depth : 0);
+    }
+  },
+  warn: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __consoleOutputs.push('[WARN] ' + formatted);
+  },
+  info: function() {
+    var args = Array.prototype.slice.call(arguments);
+    var formatted = args.map(function(a) {
+      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+      catch(e) { return String(a); }
+    }).join(' ');
+    __consoleOutputs.push('[INFO] ' + formatted);
+  },
+  table: function() {},
+  time: function() {},
+  timeEnd: function() {},
+  clear: function() {},
+  assert: function() {},
+  debug: function() {},
+  dir: function() {},
+  group: function() {},
+  groupEnd: function() {},
+  groupCollapsed: function() {},
+  trace: function() {},
+  count: function() {},
+  countReset: function() {},
+};
 
-    const execPromise = new Promise<{ traceEvents: unknown[]; output: string[] }>((resolve, reject) => {
-      try {
-        const rawResult = fn();
-        if (Array.isArray(rawResult)) {
-          resolve({ traceEvents: rawResult, output: [] });
-        } else if (rawResult && typeof rawResult === "object" && "error" in rawResult) {
-          const errResult = rawResult as { error: string; output: string[] };
-          resolve({
-            traceEvents: [{
-              step: 0,
-              type: "error",
-              message: errResult.error,
-              line: 0,
-              scope: "global",
-              callStack: [],
-              timestamp: Date.now(),
-            }],
-            output: errResult.output || [],
-          });
-        } else {
-          resolve({ traceEvents: [], output: [] });
-        }
-      } catch (e) {
-        resolve({
-          traceEvents: [{
-            step: 0,
-            type: "error",
-            message: (e as Error).message || "Execution error",
-            line: 0,
-            scope: "global",
-            callStack: [],
-            timestamp: Date.now(),
-          }],
-          output: [],
-        });
-      }
-    });
-
-    const timeoutPromise = new Promise<never>((_, reject) => {
-      setTimeout(() => reject(new Error("Execution timed out after 5 seconds")), MAX_EXECUTION_TIME_MS);
-    });
-
-    const { traceEvents, output } = await Promise.race([execPromise, timeoutPromise]);
-
-    const executionTime = Date.now() - startTime;
-
-    const events: ExecutionEvent[] = traceEvents.map((e: any, i: number) => ({
-      step: e.step || i + 1,
-      type: e.type || "expression",
-      variable: e.variable || e.name,
-      value: e.value,
-      line: e.line,
-      message: e.message || e.description,
-      scope: e.scope || "global",
-      callStack: e.callStack || [],
-      timestamp: e.timestamp,
-    }));
-
-    const { summary, maxDepth } = analyzeTrace(traceEvents as any);
-
-    const trace = {
-      steps: traceEvents.map((e: any, i: number) => ({
-        step: e.step || i + 1,
-        line: e.line || 0,
-        depth: e.depth || 0,
-        type: e.type || "expression",
-        description: e.description || "",
-        state: e.state || [],
-        callStack: e.callStack || [],
-        heap: e.heap || {},
-        timestamp: e.timestamp || Date.now(),
-      })),
-      totalSteps: traceEvents.length,
-      maxDepth,
-      summary,
-    };
-
-    const consoleOutput = traceEvents
-      .filter((e: any) => e.type === "console_output")
-      .map((e: any) => e.message || "")
-      .join("\n");
-
+var __storage = {};
+var localStorage = {
+  getItem: function(k) { return __storage[k] !== undefined ? __storage[k] : null; },
+  setItem: function(k, v) { __storage[k] = String(v); },
+  removeItem: function(k) { delete __storage[k]; },
+  clear: function() { __storage = {}; }
+};
+var sessionStorage = localStorage;
+var document = {
+  getElementById: function(id) {
     return {
-      output: output.length > 0 ? output.join("\n") : consoleOutput,
-      error: events.some((e) => e.type === "error") ? events.find((e) => e.type === "error")!.message || "Unknown error" : null,
-      events,
-      executionTime,
-      memoryUsed: 0,
-      trace,
+      id: id,
+      value: '',
+      textContent: '',
+      innerHTML: '',
+      style: {},
+      classList: { add: function(){}, remove: function(){}, toggle: function(){}, contains: function(){ return false; } },
+      addEventListener: function(evt, handler) {},
+      appendChild: function(c) { return c; },
+      remove: function() {}
     };
-  } catch (e) {
+  },
+  querySelector: function(sel) { return this.getElementById(sel); },
+  querySelectorAll: function() { return []; },
+  createElement: function(tag) { return this.getElementById(tag); },
+  body: { appendChild: function(c) { return c; } },
+  addEventListener: function() {}
+};
+var window = typeof globalThis !== 'undefined' ? globalThis : {};
+window.document = document;
+window.localStorage = localStorage;
+window.sessionStorage = sessionStorage;
+window.alert = function(msg) { console.log('[Alert]', msg); };
+window.prompt = function() { return ''; };
+window.confirm = function() { return true; };
+
+var __traceEvents = (function() {
+  ${traceBody}
+})();
+
+process.stdout.write("\\n__TRACE_OUTPUT_START__" + JSON.stringify({ traceEvents: __traceEvents || [], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
+`;
+
+  const runResult = await runNodeIsolated(runnerScript, timeoutMs);
+  const executionTime = Date.now() - startTime;
+
+  if (runResult.timedOut) {
+    const errorMsg = `Execution timed out after ${Math.round(timeoutMs / 1000)} seconds`;
     return {
       output: "",
-      error: (e as Error).message || "Trace execution failed",
-      events: [],
-      executionTime: Date.now() - startTime,
+      error: errorMsg,
+      events: [{ step: 1, type: "error", message: errorMsg }],
+      executionTime,
       memoryUsed: 0,
+      exitCode: 124,
+      status: "timeout",
     };
   }
+
+  let rawTraceEvents: unknown[] = [];
+  let runnerConsoleOutput: string[] = [];
+
+  const markerMatch = runResult.stdout.match(/__TRACE_OUTPUT_START__([\s\S]*?)__TRACE_OUTPUT_END__/);
+  if (markerMatch && markerMatch[1]) {
+    try {
+      const parsed = JSON.parse(markerMatch[1]);
+      rawTraceEvents = Array.isArray(parsed.traceEvents) ? parsed.traceEvents : [];
+      runnerConsoleOutput = Array.isArray(parsed.consoleOutput) ? parsed.consoleOutput : [];
+    } catch {}
+  }
+
+  if (rawTraceEvents.length === 0 && runResult.stdout) {
+    try {
+      const parsed = JSON.parse(runResult.stdout.trim());
+      if (Array.isArray(parsed)) {
+        rawTraceEvents = parsed;
+      }
+    } catch {
+      if (runResult.stderr) {
+        rawTraceEvents = [{
+          step: 0,
+          type: "error",
+          message: runResult.stderr,
+          line: 0,
+          scope: "global",
+          callStack: [],
+          timestamp: Date.now(),
+        }];
+      }
+    }
+  }
+
+  const events = normalizeExecutionEvents(rawTraceEvents as Parameters<typeof normalizeExecutionEvents>[0]);
+  const rawTraceSteps = rawTraceEvents as TraceStep[];
+  const { summary, maxDepth } = analyzeTrace(rawTraceSteps);
+
+  const trace = {
+    steps: rawTraceSteps.map((event, index) => ({
+      step: event.step ?? index,
+      line: event.line ?? 0,
+      depth: event.depth ?? 0,
+      type: event.type ?? "expression",
+      description: event.description ?? "",
+      state: event.state ?? [],
+      callStack: event.callStack ?? [],
+      heap: event.heap ?? {},
+      timestamp: event.timestamp ?? Date.now(),
+    })),
+    totalSteps: rawTraceEvents.length,
+    maxDepth,
+    summary,
+  };
+
+  const consoleOutput = runnerConsoleOutput.length > 0
+    ? runnerConsoleOutput.join("\n")
+    : (rawTraceSteps as any[])
+        .filter((event) => event.type === "console_output" || event.type === "OUTPUT")
+        .map((event) => event.value ?? event.description ?? event.payload?.message ?? "")
+        .join("\n");
+
+  const hasError = events.some((e) => e.type === "error");
+  const errorMessage = hasError ? events.find((e) => e.type === "error")?.message || "Trace error" : null;
+
+  return {
+    output: consoleOutput,
+    error: errorMessage,
+    events,
+    executionTime,
+    memoryUsed: 0,
+    exitCode: errorMessage ? 1 : 0,
+    status: errorMessage ? "error" : "success",
+    trace,
+  };
 }

@@ -11,8 +11,9 @@ import {
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { CallStack } from "@/components/visualization/call-stack";
+import { MemoryView } from "@/components/visualization/memory-view";
 import { cn } from "@/lib/utils";
-import { getLanguageDefinition } from "@/lib/execution/languages";
 import type { ExecutionEvent } from "@/types";
 
 interface CodeOutputProps {
@@ -53,8 +54,14 @@ export function CodeOutput({
 }: CodeOutputProps) {
   const consoleOutput = useMemo(() => {
     return events
-      .filter((e) => e.type === "output" || e.type === "log")
-      .map((e) => e.message || "")
+      .filter(
+        (e) =>
+          e.type === "OUTPUT" ||
+          e.type === "output" ||
+          e.type === "log" ||
+          e.type === "console_output"
+      )
+      .map((e) => e.message || (e.payload?.message as string) || "")
       .filter(Boolean);
   }, [events]);
 
@@ -63,6 +70,7 @@ export function CodeOutput({
   const hasOutput = output.length > 0;
   const hasConsole = consoleOutput.length > 0;
   const hasTests = testCases.length > 0;
+  const currentStep = events.length - 1;
 
   return (
     <div className={cn("flex flex-col bg-card", className)}>
@@ -99,6 +107,12 @@ export function CodeOutput({
                 {testCases.length}
               </span>
             )}
+          </TabsTrigger>
+          <TabsTrigger value="memory" className="text-xs">
+            Memory
+          </TabsTrigger>
+          <TabsTrigger value="call-stack" className="text-xs">
+            Call Stack
           </TabsTrigger>
         </TabsList>
 
@@ -211,6 +225,22 @@ export function CodeOutput({
               )}
             </div>
           </ScrollArea>
+        </TabsContent>
+
+        <TabsContent value="memory" className="flex-1 min-h-0">
+          <MemoryView
+            events={events}
+            currentStep={currentStep}
+            className="h-full rounded-none border-0"
+          />
+        </TabsContent>
+
+        <TabsContent value="call-stack" className="flex-1 min-h-0">
+          <CallStack
+            events={events}
+            currentStep={currentStep}
+            className="h-full rounded-none border-0"
+          />
         </TabsContent>
       </Tabs>
     </div>

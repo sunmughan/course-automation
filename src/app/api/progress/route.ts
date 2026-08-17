@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db";
 import { apiHandler } from "@/lib/api-handler";
 import { NotFoundError } from "@/lib/errors";
+import { synchronizeTopicSkill } from "@/lib/adaptive/skill-evaluation";
 
 export const GET = apiHandler(async (ctx) => {
   const user = ctx.user!;
@@ -30,7 +31,13 @@ export const GET = apiHandler(async (ctx) => {
       },
       orderBy: { createdAt: "desc" },
     });
-    return assessments;
+
+    if (assessments.length > 0) {
+      return assessments;
+    }
+
+    const { BASELINE_ASSESSMENTS } = await import("@/lib/assessments/engine");
+    return BASELINE_ASSESSMENTS;
   }
 
   let courseId: string | null = null;
@@ -50,12 +57,14 @@ export const GET = apiHandler(async (ctx) => {
     lessonWhere.topic = { module: { courseId } };
   }
 
+  const lessonIds = (await prisma.lesson.findMany({
+    where: lessonWhere,
+    select: { id: true },
+  })).map((lesson) => lesson.id);
   const progress = await prisma.studentProgress.findMany({
     where: {
       userId: user.id,
-      lessonId: {
-        in: (await prisma.lesson.findMany({ where: lessonWhere as any, select: { id: true } })).map((l) => l.id),
-      },
+      lessonId: { in: lessonIds },
     },
     orderBy: { updatedAt: "desc" },
   });
@@ -87,7 +96,7 @@ export const GET = apiHandler(async (ctx) => {
 
   const lessonMap = new Map(lessons.map((l) => [l.id, l]));
 
-  const totalLessons = await prisma.lesson.count({ where: lessonWhere as any });
+  const totalLessons = await prisma.lesson.count({ where: lessonWhere });
   const completedCount = progress.filter((p) => p.status === "completed").length;
   const inProgressCount = progress.filter((p) => p.status === "in_progress").length;
   const totalTimeSpent = progress.reduce((sum, p) => sum + p.timeSpent, 0);
@@ -126,59 +135,24 @@ export const POST = apiHandler(async (ctx) => {
   const body = await ctx.request.json();
 
   if (body.type === "assessment" && body.assessmentId && body.answers) {
-    const assessment = await prisma.assessment.findUnique({
-      where: { id: body.assessmentId },
-      include: { questions: true },
+    const { AssessmentEngine } = await import("@/lib/assessments/engine");
+    const result = await AssessmentEngine.evaluateAssessment({
+      assessmentId: body.assessmentId,
+      userId: user.id,
+      answers: body.answers,
+      timeSpent: body.timeSpent,
+      language: body.language || "javascript",
     });
 
-    if (!assessment) {
-      throw new NotFoundError("Assessment");
-    }
-
-    let score = 0;
-    let totalPoints = 0;
-    const answerResults: Array<{ questionId: string; correct: boolean; points: number }> = [];
-
-    for (const q of assessment.questions) {
-      totalPoints += q.points;
-      const userAnswer = body.answers[q.id] || "";
-      const correct = userAnswer.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase();
-      if (correct) score += q.points;
-      answerResults.push({ questionId: q.id, correct, points: q.points });
-    }
-
-    const percentage = Math.round((score / totalPoints) * 100);
-    const passed = percentage >= assessment.passingScore;
-
-    await prisma.assessmentScore.upsert({
-      where: {
-        userId_assessmentId: {
-          userId: user.id,
-          assessmentId: assessment.id,
-        },
-      },
-      create: {
-        userId: user.id,
-        assessmentId: assessment.id,
-        score,
-        totalPoints,
-        answers: JSON.stringify(answerResults),
-        timeSpent: body.timeSpent || null,
-      },
-      update: {
-        score,
-        totalPoints,
-        answers: JSON.stringify(answerResults),
-        timeSpent: body.timeSpent || null,
-        completedAt: new Date(),
-      },
-    });
-
-    const feedback = passed
-      ? "Excellent work! You've demonstrated strong understanding of this topic. Keep up the great progress!"
-      : "Good effort! Review the concepts you missed and try again. Practice makes perfect!";
-
-    return { score, totalPoints, passed, feedback };
+    return {
+      score: result.score,
+      totalPoints: result.totalPoints,
+      percentage: result.percentage,
+      passed: result.passed,
+      feedback: result.feedback,
+      results: result.results,
+      attempts: result.attempts,
+    };
   }
 
   const { lessonId, status, score: lessonScore, timeSpent } = body;
@@ -202,43 +176,6 @@ export const POST = apiHandler(async (ctx) => {
     throw new NotFoundError("Lesson");
   }
 
-  if (status === "completed") {
-    const topicSkill = await prisma.studentSkill.findUnique({
-      where: { userId_topicId: { userId: user.id, topicId: lesson.topic.id } },
-    });
-
-    const newScore = (topicSkill?.score || 0) + 10;
-    let newStatus = "beginner";
-    if (newScore >= 90) newStatus = "mastered";
-    else if (newScore >= 75) newStatus = "strong";
-    else if (newScore >= 60) newStatus = "competent";
-    else if (newScore >= 40) newStatus = "developing";
-
-    if (topicSkill) {
-      await prisma.studentSkill.update({
-        where: { userId_topicId: { userId: user.id, topicId: lesson.topic.id } },
-        data: {
-          score: newScore,
-          status: newStatus,
-          attempts: { increment: 1 },
-          lastAttemptAt: new Date(),
-        },
-      });
-    } else {
-      await prisma.studentSkill.create({
-        data: {
-          userId: user.id,
-          topicId: lesson.topic.id,
-          skillName: lesson.topic.title,
-          score: 10,
-          status: "beginner",
-          attempts: 1,
-          lastAttemptAt: new Date(),
-        },
-      });
-    }
-  }
-
   const existing = await prisma.studentProgress.findUnique({
     where: { userId_lessonId: { userId: user.id, lessonId } },
   });
@@ -256,10 +193,14 @@ export const POST = apiHandler(async (ctx) => {
     update: {
       status: status || existing?.status || "in_progress",
       score: lessonScore ?? existing?.score ?? null,
-      timeSpent: existing ? existing.timeSpent + (timeSpent ?? 0) : timeSpent ?? 0,
+      timeSpent: timeSpent ?? existing?.timeSpent ?? 0,
       completedAt: status === "completed" ? existing?.completedAt || new Date() : existing?.completedAt || null,
     },
   });
+
+  if (progress.status === "completed") {
+    await synchronizeTopicSkill(user.id, lesson.topic.id);
+  }
 
   return {
     progress: {

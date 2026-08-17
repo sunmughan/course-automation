@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuthContext } from "@/components/providers/auth-provider";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getAuthHeaders } from "@/lib/fetch-helpers";
+import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,9 +15,7 @@ import {
   Brain,
   Target,
   Zap,
-  Clock,
   CheckCircle2,
-  BookOpen,
   ArrowRight,
   RefreshCw,
   Lightbulb,
@@ -150,11 +148,11 @@ function getDifficultyBadge(difficulty: number) {
 }
 
 export default function AdaptivePage() {
-  const { user } = useAuthContext();
   const [skillGraph, setSkillGraph] = useState<SkillGraphData | null>(null);
   const [weakTopics, setWeakTopics] = useState<WeakTopicsData | null>(null);
   const [revision, setRevision] = useState<RevisionData | null>(null);
   const [exercises, setExercises] = useState<ExercisesData | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("skills");
   const [loading, setLoading] = useState(true);
   const [generatingExercises, setGeneratingExercises] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -162,18 +160,19 @@ export default function AdaptivePage() {
   async function fetchAllData() {
     try {
       setLoading(true);
-      const token = localStorage.getItem("auth-token");
-      const headers = { Authorization: `Bearer ${token}` };
+      const headers = getAuthHeaders();
 
-      const [skillRes, weakRes, revisionRes] = await Promise.all([
+      const [skillRes, weakRes, revisionRes, exercisesRes] = await Promise.all([
         fetch("/api/adaptive/skills", { headers }),
         fetch("/api/adaptive/recommendations", { headers }),
         fetch("/api/adaptive/revision", { headers }),
+        fetch("/api/adaptive/exercises", { headers }),
       ]);
 
       if (skillRes.ok) setSkillGraph(await skillRes.json());
       if (weakRes.ok) setWeakTopics(await weakRes.json());
       if (revisionRes.ok) setRevision(await revisionRes.json());
+      if (exercisesRes.ok) setExercises(await exercisesRes.json());
     } catch {
       setError("Failed to load adaptive learning data");
     } finally {
@@ -184,16 +183,19 @@ export default function AdaptivePage() {
   async function generateExercises() {
     try {
       setGeneratingExercises(true);
-      const token = localStorage.getItem("auth-token");
       const res = await fetch("/api/adaptive/exercises", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          ...getAuthHeaders(),
         },
         body: JSON.stringify({ count: 3 }),
       });
-      if (res.ok) setExercises(await res.json());
+      if (res.ok) {
+        const data = await res.json();
+        setExercises(data);
+        setActiveTab("exercises");
+      }
     } catch {
       setError("Failed to generate exercises");
     } finally {
@@ -203,12 +205,11 @@ export default function AdaptivePage() {
 
   async function markReviewed(topicId: string) {
     try {
-      const token = localStorage.getItem("auth-token");
       await fetch("/api/adaptive/revision", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          ...getAuthHeaders(),
         },
         body: JSON.stringify({ topicId, quality: 4 }),
       });
@@ -219,7 +220,7 @@ export default function AdaptivePage() {
   }
 
   useEffect(() => {
-    fetchAllData();
+    void Promise.resolve().then(fetchAllData);
   }, []);
 
   if (loading) {
@@ -368,7 +369,7 @@ export default function AdaptivePage() {
         </Card>
       </div>
 
-      <Tabs defaultValue="skills" className="w-full">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="bg-gray-900/50 border border-gray-800">
           <TabsTrigger value="skills">Skill Graph</TabsTrigger>
           <TabsTrigger value="weak">Weak Topics</TabsTrigger>

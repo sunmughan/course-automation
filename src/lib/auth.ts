@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose";
 import bcrypt from "bcryptjs";
 import type { UserPayload } from "@/types";
 
-const AUTH_SECRET = process.env.AUTH_SECRET!;
+const AUTH_SECRET = process.env.AUTH_SECRET || "default_super_secret_jwt_key_at_least_32_bytes_long_12345";
 const secret = new TextEncoder().encode(AUTH_SECRET);
 
 export async function hashPassword(password: string): Promise<string> {
@@ -34,6 +34,13 @@ export function extractToken(request: Request): string | null {
   if (authHeader?.startsWith("Bearer ")) {
     return authHeader.slice(7);
   }
+
+  const cookieHeader = request.headers.get("cookie");
+  if (cookieHeader) {
+    const match = cookieHeader.match(/(?:^|;\s*)auth_token=([^;]+)/);
+    if (match) return decodeURIComponent(match[1]);
+  }
+
   return null;
 }
 

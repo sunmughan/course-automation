@@ -5,6 +5,9 @@ import type { TaskCapability } from "./capability-matrix";
 import { scoreProvider, scoreAllProviders, generateFallbackChain, createScoringConfig, isScoreAcceptable } from "./scoring";
 import type { ProviderScore } from "./scoring";
 import { providerHealthMonitor } from "./health-monitor";
+import { persistAIRequest } from "./persistence";
+import { generateLocalResponse } from "./local-fallback";
+import { randomUUID } from "crypto";
 
 export type TaskType =
   | "explain"
@@ -263,7 +266,13 @@ export class AIRouter {
           provider: options.preferredProvider,
           model: options.preferredModel,
           score: prefScore?.totalScore || 1.0,
-          fallbackChain: decision?.fallbackChain || [],
+          fallbackChain: [
+            ...(decision?.fallbackChain || []),
+            ...aiGateway
+              .getActiveProviders()
+              .map((provider) => provider.name)
+              .filter((provider) => provider !== options.preferredProvider),
+          ],
           scoredCandidates: decision?.scoredCandidates || [],
           reasoning: `Using preferred provider: ${options.preferredProvider}/${options.preferredModel}`,
         };
@@ -271,7 +280,16 @@ export class AIRouter {
     }
 
     if (!decision) {
-      throw new Error("No AI providers available. Please check API keys and provider health.");
+      // No external providers available — create a dummy decision
+      // that will trigger the local fallback in executeWithFallback
+      decision = {
+        provider: "local",
+        model: "local-knowledge-base",
+        score: 0.5,
+        fallbackChain: [],
+        scoredCandidates: [],
+        reasoning: "No external AI providers available — using local fallback",
+      };
     }
 
     await this.saveRoutingDecision(decision, classification);
@@ -288,6 +306,11 @@ export class AIRouter {
       temperature?: number;
       complexity?: "low" | "medium" | "high";
       userId?: string;
+      organizationId?: string;
+      requestId?: string;
+      sessionId?: string;
+      agent?: string;
+      mode?: string;
       traceId?: string;
     }
   ): Promise<ProviderCallResult> {
@@ -298,7 +321,11 @@ export class AIRouter {
       complexity: options?.complexity,
     });
 
-    const providersToTry = [decision.provider, ...decision.fallbackChain];
+    const providersToTry = Array.from(new Set([decision.provider, ...decision.fallbackChain]));
+    const attemptedProviders: string[] = [];
+    const attemptedModels: string[] = [];
+    const requestId = options?.requestId || randomUUID();
+    const startedAt = new Date();
     let lastError: Error | null = null;
 
     for (const providerName of providersToTry) {
@@ -309,31 +336,106 @@ export class AIRouter {
 
         const model = providerName === decision.provider
           ? decision.model
-          : getBestModelForTask(
-              classification.capability,
-              classification.complexity,
-              "quality"
-            )?.modelName || "";
+          : provider.models.find((candidate) =>
+              candidate.capabilities.includes(classification.capability)
+            )?.name || provider.models[0]?.name || "";
 
         if (!model) continue;
+
+        attemptedProviders.push(providerName);
+        attemptedModels.push(model);
 
         const result = await aiGateway.callProvider(providerName, model, messages, {
           maxTokens: options?.maxTokens,
           temperature: options?.temperature,
           userId: options?.userId,
+          organizationId: options?.organizationId,
+          requestId,
+          sessionId: options?.sessionId,
+          agent: options?.agent,
+          mode: options?.mode,
           traceId: options?.traceId,
           task: classification.capability,
           complexity: classification.complexity,
         });
+        const completedAt = new Date();
+        const observed = {
+          ...result,
+          fallbackUsed: attemptedProviders.length > 1,
+          attemptedProviders: [...attemptedProviders],
+          attemptedModels: [...attemptedModels],
+          finalProvider: result.provider,
+        };
 
-        return result;
+        if (options?.userId) {
+          await persistAIRequest({
+            requestId,
+            userId: options.userId,
+            organizationId: options.organizationId,
+            sessionId: options.sessionId,
+            provider: result.provider,
+            model: result.model,
+            agent: options.agent,
+            mode: options.mode || classification.taskType,
+            startedAt,
+            completedAt,
+            latency: completedAt.getTime() - startedAt.getTime(),
+            status: "success",
+            inputTokens: result.inputTokens,
+            outputTokens: result.outputTokens,
+            estimatedCost: result.cost,
+            fallbackUsed: observed.fallbackUsed,
+            attemptedProviders,
+            attemptedModels,
+            finalProvider: result.provider,
+          });
+        }
+
+        return observed;
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
-        continue;
       }
     }
 
-    throw lastError || new Error("All AI providers failed");
+    if (options?.userId) {
+      const completedAt = new Date();
+      await persistAIRequest({
+        requestId,
+        userId: options.userId,
+        organizationId: options.organizationId,
+        sessionId: options.sessionId,
+        provider: attemptedProviders.at(-1) || decision.provider,
+        model: attemptedModels.at(-1) || decision.model,
+        agent: options.agent,
+        mode: options.mode || classification.taskType,
+        startedAt,
+        completedAt,
+        latency: completedAt.getTime() - startedAt.getTime(),
+        status: "fallback",
+        error: lastError?.message || "All AI providers failed — using local fallback",
+        fallbackUsed: true,
+        attemptedProviders,
+        attemptedModels,
+        finalProvider: "local",
+      });
+    }
+
+    // Use local knowledge-base fallback instead of throwing
+    console.log(
+      `[AI Router] All ${attemptedProviders.length} external providers failed. Using local fallback. Last error: ${lastError?.message}`
+    );
+    const localResult = generateLocalResponse(
+      userMessage,
+      (options?.mode as any) || "explain",
+      undefined
+    );
+    return {
+      ...localResult,
+      fallbackUsed: true,
+      attemptedProviders: [...attemptedProviders, "local"],
+      attemptedModels: [...attemptedModels, "local-knowledge-base"],
+      finalProvider: "local",
+    };
   }
 
   private async saveRoutingDecision(

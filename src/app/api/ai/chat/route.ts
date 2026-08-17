@@ -5,9 +5,10 @@ import { assembleContext } from "@/lib/ai/protocol/context-assembly";
 import { buildSystemPrompt, buildUserPrompt } from "@/lib/ai/protocol/instructions";
 import { conversationManager } from "@/lib/ai/protocol/conversation";
 import { createUserMessage, createAssistantMessage, flattenToOpenAI } from "@/lib/ai/protocol/messages";
-import { parseStructuredOutput, formatStructuredOutputForDisplay } from "@/lib/ai/protocol/outputs";
+import { parseStructuredOutput, formatStructuredOutputForDisplay, parseEducationalExplanation } from "@/lib/ai/protocol/outputs";
 import { executeTool, parseToolCallFromResponse } from "@/lib/ai/protocol/tools";
 import { detectErrorCategory, generateErrorExplanation } from "@/lib/ai/protocol/error-correction";
+import { getAIOrganizationId } from "@/lib/ai/request-context";
 import { apiHandler } from "@/lib/api-handler";
 import { aiSchemas, AppError } from "@/lib/errors";
 import type { TutorMode } from "@/types";
@@ -21,19 +22,28 @@ export const POST = apiHandler(async (ctx) => {
     mode: TutorMode;
     conversationId?: string;
     code?: string;
+    executionResult?: any;
+    selectedLine?: number;
+    selectedEventIndex?: number;
     enforceStructuredOutput?: boolean;
   };
 
-  const { message, lessonId, topicId, mode, conversationId, code, enforceStructuredOutput } = body;
+  const {
+    message,
+    lessonId,
+    topicId,
+    mode,
+    conversationId,
+    code,
+    executionResult,
+    selectedLine,
+    selectedEventIndex,
+    enforceStructuredOutput,
+  } = body;
 
   const activeProviders = aiGateway.getActiveProviders();
-  if (activeProviders.length === 0) {
-    throw new AppError(
-      "No AI providers are configured. Please set NVIDIA_API_KEY or GEMINI_API_KEY in your environment.",
-      503,
-      "SERVICE_UNAVAILABLE"
-    );
-  }
+  // Note: Even if no external providers are active, the AI router
+  // will fall back to the local knowledge-base, so we don't block here.
 
   let currentSessionId = conversationId;
   let turnIndex = 0;
@@ -92,6 +102,19 @@ export const POST = apiHandler(async (ctx) => {
     messageIndex: turnIndex,
   });
 
+  const assembledExecution = executionResult
+    ? {
+        ...executionResult,
+        selectedLine: selectedLine !== undefined ? selectedLine : executionResult.selectedLine,
+        selectedEventIndex:
+          selectedEventIndex !== undefined ? selectedEventIndex : executionResult.selectedEventIndex,
+        selectedEvent:
+          selectedEventIndex !== undefined && Array.isArray(executionResult.events)
+            ? executionResult.events[selectedEventIndex]
+            : executionResult.selectedEvent,
+      }
+    : undefined;
+
   const assembled = await assembleContext({
     userId: user.id,
     sessionId: currentSessionId,
@@ -99,6 +122,7 @@ export const POST = apiHandler(async (ctx) => {
     topicId,
     code,
     question: message,
+    executionResult: assembledExecution,
     maxContextTokens: 6000,
     includeRelatedTopics: true,
     includeSkillMap: true,
@@ -119,12 +143,18 @@ export const POST = apiHandler(async (ctx) => {
   ];
 
   const startTime = performance.now();
+  const organizationId = await getAIOrganizationId(user.id);
 
   let result;
   try {
     result = await aiRouter.executeWithFallback(messages, {
       complexity: "medium",
       userId: user.id,
+      organizationId,
+      requestId: ctx.requestId,
+      sessionId: currentSessionId,
+      agent: "tutor",
+      mode,
     });
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
@@ -162,6 +192,8 @@ export const POST = apiHandler(async (ctx) => {
     }
   }
 
+  const educationalResponse = parseEducationalExplanation(result.content);
+
   const toolCall = parseToolCallFromResponse(result.content);
   if (toolCall) {
     const toolResult = await executeTool(toolCall.name, toolCall.arguments);
@@ -179,22 +211,6 @@ export const POST = apiHandler(async (ctx) => {
       role: "assistant",
       content: displayContent,
       code: structuredOutput ? JSON.stringify(structuredOutput) : null,
-    },
-  });
-
-  await prisma.aIRequest.create({
-    data: {
-      userId: user.id,
-      sessionId: currentSessionId,
-      provider: result.provider,
-      model: result.model,
-      mode,
-      inputTokens: result.inputTokens,
-      outputTokens: result.outputTokens,
-      latency,
-      cost: result.cost,
-      status: "success",
-      fallbackUsed: false,
     },
   });
 
@@ -227,6 +243,8 @@ export const POST = apiHandler(async (ctx) => {
       content: displayContent,
       structuredOutput,
       toolResults,
+      educationalResponse: educationalResponse || undefined,
+      visualization: educationalResponse?.visualization || undefined,
     },
     meta: {
       provider: result.provider,

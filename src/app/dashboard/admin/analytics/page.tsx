@@ -35,6 +35,8 @@ interface OrgOverview {
   members: number;
   instructors: number;
   students: number;
+  activeUsers: number;
+  completionRate: number;
   teams: number;
   departments: number;
   curriculums: number;
@@ -69,60 +71,59 @@ export default function AnalyticsPage() {
   const [timeline, setTimeline] = useState<ActivityPoint[]>([]);
   const [loading, setLoading] = useState(false);
 
-  async function fetchOrgs() {
-    try {
-      const headers = getAuthHeaders();
-      const res = await fetch("/api/admin/organizations", { headers });
-      if (!res.ok) throw new Error("Failed to fetch organizations");
-      const data = await res.json();
-      const list = data.organizations || [];
-      setOrgs(list);
-      if (list.length > 0 && !orgId) {
-        setOrgId(list[0].id);
-      }
-    } catch {
-      setError("Failed to load organizations");
-    } finally {
-      setOrgsLoading(false);
-    }
-  }
-
-  async function fetchAnalytics(selectedOrgId: string) {
-    if (!selectedOrgId) return;
-    setLoading(true);
-    try {
-      const headers = getAuthHeaders();
-      const [overviewRes, aiRes, timelineRes] = await Promise.all([
-        fetch(`/api/admin/analytics?organizationId=${selectedOrgId}&view=overview`, { headers }),
-        fetch(`/api/admin/analytics?organizationId=${selectedOrgId}&view=ai`, { headers }),
-        fetch(`/api/admin/analytics?organizationId=${selectedOrgId}&view=timeline&days=30`, { headers }),
-      ]);
-
-      if (overviewRes.ok) {
-        const d = await overviewRes.json();
-        setOverview(d.overview || null);
-      }
-      if (aiRes.ok) {
-        const d = await aiRes.json();
-        setAi(d.ai || null);
-      }
-      if (timelineRes.ok) {
-        const d = await timelineRes.json();
-        setTimeline(d.timeline || []);
-      }
-    } catch {
-      setError("Failed to load analytics");
-    } finally {
-      setLoading(false);
-    }
-  }
-
   useEffect(() => {
-    fetchOrgs();
+    async function fetchOrgs() {
+      try {
+        const headers = getAuthHeaders();
+        const res = await fetch("/api/admin/organizations", { headers });
+        if (!res.ok) throw new Error("Failed to fetch organizations");
+        const data = await res.json();
+        const list = data.organizations || [];
+        setOrgs(list);
+        if (list.length > 0) {
+          setOrgId((currentOrgId) => currentOrgId || list[0].id);
+        }
+      } catch {
+        setError("Failed to load organizations");
+      } finally {
+        setOrgsLoading(false);
+      }
+    }
+    void fetchOrgs();
   }, []);
 
   useEffect(() => {
-    if (orgId) fetchAnalytics(orgId);
+    if (!orgId) return;
+
+    async function fetchAnalytics() {
+      setLoading(true);
+      try {
+        const headers = getAuthHeaders();
+        const [overviewRes, aiRes, timelineRes] = await Promise.all([
+          fetch(`/api/admin/analytics?organizationId=${orgId}&view=overview`, { headers }),
+          fetch(`/api/admin/analytics?organizationId=${orgId}&view=ai`, { headers }),
+          fetch(`/api/admin/analytics?organizationId=${orgId}&view=timeline&days=30`, { headers }),
+        ]);
+
+        if (overviewRes.ok) {
+          const d = await overviewRes.json();
+          setOverview(d.overview || null);
+        }
+        if (aiRes.ok) {
+          const d = await aiRes.json();
+          setAi(d.ai || null);
+        }
+        if (timelineRes.ok) {
+          const d = await timelineRes.json();
+          setTimeline(d.timeline || []);
+        }
+      } catch {
+        setError("Failed to load analytics");
+      } finally {
+        setLoading(false);
+      }
+    }
+    void fetchAnalytics();
   }, [orgId]);
 
   if (orgsLoading) return <AnalyticsSkeleton />;
@@ -224,6 +225,16 @@ export default function AnalyticsPage() {
                 label="Instructors"
                 value={overview.instructors}
                 icon={<UsersIcon className="size-5" />}
+              />
+              <StatCard
+                label="Active Users"
+                value={overview.activeUsers}
+                icon={<ActivityIcon className="size-5" />}
+              />
+              <StatCard
+                label="Completion Rate"
+                value={`${overview.completionRate}%`}
+                icon={<GraduationCapIcon className="size-5" />}
               />
               <StatCard
                 label="Teams"

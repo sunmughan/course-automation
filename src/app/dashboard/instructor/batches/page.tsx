@@ -124,12 +124,14 @@ export default function BatchesPage() {
           </p>
         </div>
         <Dialog open={showCreate} onOpenChange={setShowCreate}>
-          <DialogTrigger>
-            <Button>
-              <PlusIcon className="size-4 mr-2" />
-              Create Batch
-            </Button>
-          </DialogTrigger>
+          <DialogTrigger
+            render={
+              <Button>
+                <PlusIcon className="size-4 mr-2" />
+                Create Batch
+              </Button>
+            }
+          />
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Create New Batch</DialogTitle>

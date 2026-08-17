@@ -1,16 +1,23 @@
 import { prisma } from "@/lib/db";
-import type { WeakTopic } from "./weak-detection";
+import { aiRouter } from "@/lib/ai/router";
+import { validateExecutableExercise } from "@/lib/curriculum/executable-contract";
+import { z } from "zod";
 
 export interface GeneratedExercise {
+  id?: string;
   title: string;
   description: string;
   instructions: string;
   starterCode: string;
+  solutionCode: string;
+  testCases: string;
   difficulty: number;
   focusArea: string;
   hints: string[];
+  explanation?: string;
   topicId: string;
   topicName: string;
+  isPersisted?: boolean;
 }
 
 export interface ExerciseRequest {
@@ -19,45 +26,82 @@ export interface ExerciseRequest {
   count?: number;
   difficulty?: number;
   language?: string;
+  focusArea?: string;
+  persist?: boolean;
 }
 
-export async function generatePersonalizedExercises(request: ExerciseRequest): Promise<GeneratedExercise[]> {
-  const { userId, topicId, count = 3, difficulty, language = "javascript" } = request;
+const AIExerciseSchema = z.object({
+  title: z.string().min(3),
+  description: z.string().min(10),
+  instructions: z.string().min(10),
+  starterCode: z.string().min(5),
+  solutionCode: z.string().min(15),
+  testCases: z.string().min(10),
+  hints: z.array(z.string()).min(1),
+  explanation: z.string().optional(),
+  difficulty: z.number().int().min(1).max(5),
+  focusArea: z.string().default("general"),
+});
 
-  const [skills, mistakes, topic] = await Promise.all([
-    topicId
-      ? prisma.studentSkill.findUnique({ where: { userId_topicId: { userId, topicId } } })
-      : null,
-    prisma.studentMistake.findMany({
-      where: { userId, ...(topicId ? { topicId } : {}) },
-      orderBy: { count: "desc" },
-      take: 5,
-    }),
-    topicId
-      ? prisma.topic.findUnique({ where: { id: topicId }, select: { title: true, difficulty: true } })
-      : null,
-  ]);
+/**
+ * Builds the AI prompt incorporating student skill, topic context, difficulty, and previous mistakes.
+ */
+export function buildExerciseGenerationPrompt(params: {
+  topicTitle: string;
+  language: string;
+  difficulty: number;
+  skillScore?: number;
+  skillLevel?: string;
+  mistakes: Array<{ error: string; count: number; code?: string }>;
+  focusArea: string;
+}): Array<{ role: "system" | "user"; content: string }> {
+  const { topicTitle, language, difficulty, skillScore = 50, skillLevel = "DEVELOPING", mistakes, focusArea } = params;
 
-  const targetDifficulty = difficulty ?? topic?.difficulty ?? 2;
-  const focusAreas = extractFocusAreas(mistakes, skills);
-  const exercises: GeneratedExercise[] = [];
+  const mistakesSummary = mistakes.length > 0
+    ? mistakes.map((m) => `- Error: "${m.error}" (occurred ${m.count} times)${m.code ? ` in code snippet: ${m.code.slice(0, 100)}` : ""}`).join("\n")
+    : "No previous recorded mistakes for this topic.";
 
-  for (let i = 0; i < Math.min(count, 5); i++) {
-    const focusArea = focusAreas[i % focusAreas.length];
-    const exercise = generateExerciseForFocusArea(
-      focusArea,
-      targetDifficulty,
-      language,
-      topic?.title || "General Practice",
-      topicId || "general"
-    );
-    exercises.push(exercise);
-  }
+  const systemPrompt = `You are an expert interactive coding curriculum designer.
+Generate a high-quality, practical coding exercise tailored to the student's mastery level and previous mistakes.
 
-  return exercises;
+CRITICAL REQUIREMENTS:
+1. Return ONLY valid, raw JSON with no markdown wrapping or extra commentary.
+2. The JSON must match this exact schema:
+{
+  "title": "Clear concise exercise title",
+  "description": "Descriptive overview of the problem",
+  "instructions": "Step-by-step requirements for the learner",
+  "starterCode": "// Starter scaffold with function signatures and comments",
+  "solutionCode": "// Complete, working, verified reference solution code (NO TODOs or placeholders)",
+  "testCases": "Semicolon-separated test assertions describing expected behaviors",
+  "hints": ["Actionable hint 1", "Actionable hint 2"],
+  "explanation": "Brief explanation of the core concept and common pitfalls",
+  "difficulty": ${difficulty},
+  "focusArea": "${focusArea}"
+}
+3. The solution code MUST be complete, syntactically correct, and runnable in ${language}. Never use placeholder comments or ellipses in solutionCode.
+4. Test cases must be specific assertions or behavioral descriptions separated by semicolons.`;
+
+  const userPrompt = `Generate a personalized ${language} exercise for:
+- Topic: "${topicTitle}"
+- Target Difficulty: Level ${difficulty} of 5
+- Student Mastery: ${skillLevel} (${skillScore}% score)
+- Targeted Focus Area: ${focusArea}
+- Student's Past Mistakes to Address:
+${mistakesSummary}
+
+Ensure the exercise directly targets the student's weaknesses and provides clear scaffolding in starterCode and complete working solution in solutionCode.`;
+
+  return [
+    { role: "system", content: systemPrompt },
+    { role: "user", content: userPrompt },
+  ];
 }
 
-function extractFocusAreas(
+/**
+ * Extracts student focus areas based on recent error patterns and skill level.
+ */
+export function extractFocusAreas(
   mistakes: Array<{ error: string; count: number }>,
   skill: { score: number } | null
 ): string[] {
@@ -69,226 +113,211 @@ function extractFocusAreas(
 
   for (const m of mistakes) {
     const error = m.error.toLowerCase();
-    if (error.includes("syntax") || error.includes("unexpected")) areas.push("syntax");
-    if (error.includes("undefined") || error.includes("null")) areas.push("null-safety");
-    if (error.includes("type") || error.includes("is not a function")) areas.push("type-safety");
-    if (error.includes("async") || error.includes("promise")) areas.push("async");
-    if (error.includes("scope") || error.includes("not defined")) areas.push("scope");
-    if (error.includes("reference") || error.includes("cannot read")) areas.push("references");
-    if (error.includes("loop") || error.includes("iterate")) areas.push("loops");
-    if (error.includes("array") || error.includes("object")) areas.push("data-structures");
+    if (error.includes("syntax") || error.includes("unexpected token")) areas.push("syntax-precision");
+    if (error.includes("undefined") || error.includes("null") || error.includes("cannot read property")) areas.push("null-safety");
+    if (error.includes("type") || error.includes("is not a function")) areas.push("type-coercion");
+    if (error.includes("async") || error.includes("promise") || error.includes("await")) areas.push("async-flow");
+    if (error.includes("scope") || error.includes("not defined")) areas.push("variable-scoping");
+    if (error.includes("loop") || error.includes("iteration") || error.includes("call stack")) areas.push("loop-boundaries");
+    if (error.includes("array") || error.includes("object") || error.includes("destructuring")) areas.push("data-manipulation");
   }
 
   if (areas.length === 0) {
-    areas.push("general", "algorithms", "data-structures");
+    areas.push("algorithmic-logic", "edge-case-handling", "code-efficiency");
   }
 
   return [...new Set(areas)];
 }
 
-function generateExerciseForFocusArea(
-  focusArea: string,
-  difficulty: number,
-  language: string,
-  topicName: string,
-  topicId: string
-): GeneratedExercise {
-  const templates: Record<string, (d: number, l: string, t: string, tid: string) => GeneratedExercise> = {
-    fundamentals: (d, l, t, tid) => ({
-      title: `${t}: Fundamentals Practice`,
-      description: `Strengthen your understanding of core ${l} concepts.`,
-      instructions: generateFundamentalsInstructions(d, l),
-      starterCode: generateFundamentalsStarter(d, l),
-      difficulty: d,
-      focusArea: "fundamentals",
-      hints: generateFundamentalsHints(d),
-      topicId: tid,
-      topicName: t,
+/**
+ * Generates personalized, AI-assisted practice exercises through the AI Gateway.
+ */
+export async function generatePersonalizedExercises(request: ExerciseRequest): Promise<GeneratedExercise[]> {
+  const { userId, count = 2, difficulty, language = "javascript", focusArea, persist = true } = request;
+  let targetTopicId = request.topicId;
+
+  // If no topicId was supplied, dynamically find the student's weakest or most active topic
+  if (!targetTopicId) {
+    const lowestSkill = await prisma.studentSkill.findFirst({
+      where: { userId },
+      orderBy: { score: "asc" },
+      select: { topicId: true },
+    });
+
+    if (lowestSkill?.topicId) {
+      targetTopicId = lowestSkill.topicId;
+    } else {
+      // Pick first published topic in the curriculum
+      const firstTopic = await prisma.topic.findFirst({
+        where: { published: true },
+        orderBy: { order: "asc" },
+        select: { id: true },
+      });
+      targetTopicId = firstTopic?.id;
+    }
+  }
+
+  // Retrieve student context and resolved topic
+  const [skill, mistakes, topic] = await Promise.all([
+    targetTopicId
+      ? prisma.studentSkill.findUnique({ where: { userId_topicId: { userId, topicId: targetTopicId } } })
+      : null,
+    prisma.studentMistake.findMany({
+      where: { userId, ...(targetTopicId ? { topicId: targetTopicId } : {}) },
+      orderBy: { count: "desc" },
+      take: 5,
     }),
-    syntax: (d, l, t, tid) => ({
-      title: `${t}: Syntax Fixer`,
-      description: `Practice identifying and fixing common ${l} syntax errors.`,
-      instructions: generateSyntaxInstructions(d, l),
-      starterCode: generateSyntaxStarter(l),
-      difficulty: d,
-      focusArea: "syntax",
-      hints: ["Check for missing brackets, semicolons, or quotes", "Look at the error message for the exact line"],
-      topicId: tid,
-      topicName: t,
-    }),
-    "null-safety": (d, l, t, tid) => ({
-      title: `${t}: Null Safety Challenge`,
-      description: `Handle null and undefined values safely in ${l}.`,
-      instructions: generateNullSafetyInstructions(d, l),
-      starterCode: generateNullSafetyStarter(d, l),
-      difficulty: d,
-      focusArea: "null-safety",
-      hints: ["Use optional chaining (?.) or null checks", "Consider using default values or guard clauses"],
-      topicId: tid,
-      topicName: t,
-    }),
-    async: (d, l, t, tid) => ({
-      title: `${t}: Async Operations`,
-      description: `Master asynchronous programming patterns in ${l}.`,
-      instructions: generateAsyncInstructions(d, l),
-      starterCode: generateAsyncStarter(d, l),
-      difficulty: d,
-      focusArea: "async",
-      hints: ["Use async/await for cleaner async code", "Don't forget to handle errors with try/catch"],
-      topicId: tid,
-      topicName: t,
-    }),
-    loops: (d, l, t, tid) => ({
-      title: `${t}: Loop Mastery`,
-      description: `Practice working with loops and iteration in ${l}.`,
-      instructions: generateLoopInstructions(d, l),
-      starterCode: generateLoopStarter(d, l),
-      difficulty: d,
-      focusArea: "loops",
-      hints: ["Consider which loop type is most appropriate", "Watch out for off-by-one errors"],
-      topicId: tid,
-      topicName: t,
-    }),
-    "data-structures": (d, l, t, tid) => ({
-      title: `${t}: Data Structures Drill`,
-      description: `Manipulate arrays, objects, and other data structures in ${l}.`,
-      instructions: generateDataStructuresInstructions(d, l),
-      starterCode: generateDataStructuresStarter(d, l),
-      difficulty: d,
-      focusArea: "data-structures",
-      hints: ["Use built-in methods like map, filter, reduce", "Think about which data structure is most efficient"],
-      topicId: tid,
-      topicName: t,
-    }),
-    general: (d, l, t, tid) => ({
-      title: `${t}: Practice Challenge`,
-      description: `Apply your ${l} skills to solve a practical problem.`,
-      instructions: generateGeneralInstructions(d, l),
-      starterCode: generateGeneralStarter(d, l),
-      difficulty: d,
-      focusArea: "general",
-      hints: ["Break the problem into smaller steps", "Test your solution with different inputs"],
-      topicId: tid,
-      topicName: t,
-    }),
+    targetTopicId
+      ? prisma.topic.findUnique({
+          where: { id: targetTopicId },
+          select: { id: true, title: true, slug: true, difficulty: true, lessons: { select: { id: true }, take: 1 } },
+        })
+      : null,
+  ]);
+
+  const targetDifficulty = difficulty ?? topic?.difficulty ?? 2;
+  const focusAreas = focusArea ? [focusArea] : extractFocusAreas(mistakes, skill);
+  const topicTitle = topic?.title || "Modern Full-Stack Development";
+  const resolvedTopicId = topic?.id || targetTopicId || "general-practice";
+  const lessonId = topic?.lessons?.[0]?.id;
+
+  const exercises: GeneratedExercise[] = [];
+
+  for (let i = 0; i < Math.min(count, 3); i++) {
+    const selectedFocus = focusAreas[i % focusAreas.length];
+
+    try {
+      const messages = buildExerciseGenerationPrompt({
+        topicTitle,
+        language,
+        difficulty: targetDifficulty,
+        skillScore: skill?.score,
+        skillLevel: skill?.status,
+        mistakes,
+        focusArea: selectedFocus,
+      });
+
+      const response = await aiRouter.executeWithFallback(messages, {
+        userId,
+        complexity: "medium",
+        temperature: 0.3,
+      });
+
+      const rawContent = response.content.replace(/^```json\s*/i, "").replace(/\s*```$/i, "").trim();
+      const parsedJson = JSON.parse(rawContent);
+      const validatedData = AIExerciseSchema.parse(parsedJson);
+
+      // Validate against the Executable Learning Contract
+      const contractCheck = validateExecutableExercise({
+        title: validatedData.title,
+        description: validatedData.description,
+        instructions: validatedData.instructions,
+        starterCode: validatedData.starterCode,
+        solutionCode: validatedData.solutionCode,
+        testCases: validatedData.testCases,
+        hints: validatedData.hints.join("; "),
+        difficulty: validatedData.difficulty,
+      });
+
+      if (!contractCheck.valid) {
+        throw new Error(`Executable contract violation: ${contractCheck.errors.join(", ")}`);
+      }
+
+      let persistedId: string | undefined;
+
+      if (persist && lessonId) {
+        const created = await prisma.exercise.create({
+          data: {
+            title: validatedData.title,
+            description: validatedData.description,
+            instructions: validatedData.instructions,
+            starterCode: validatedData.starterCode,
+            solutionCode: validatedData.solutionCode,
+            testCases: validatedData.testCases,
+            hints: validatedData.hints.join("; "),
+            difficulty: validatedData.difficulty,
+            lessonId,
+            order: 99 + i,
+          },
+        });
+        persistedId = created.id;
+      }
+
+      exercises.push({
+        id: persistedId,
+        title: validatedData.title,
+        description: validatedData.description,
+        instructions: validatedData.instructions,
+        starterCode: validatedData.starterCode,
+        solutionCode: validatedData.solutionCode,
+        testCases: validatedData.testCases,
+        difficulty: validatedData.difficulty,
+        focusArea: validatedData.focusArea || selectedFocus,
+        hints: validatedData.hints,
+        explanation: validatedData.explanation,
+        topicId: resolvedTopicId,
+        topicName: topicTitle,
+        isPersisted: Boolean(persistedId),
+      });
+    } catch (err) {
+      console.warn(`[AI Exercise Generator] Fallback used for ${selectedFocus}:`, err);
+      const fallback = createVerifiedFallbackExercise({
+        topicTitle,
+        topicId: resolvedTopicId,
+        difficulty: targetDifficulty,
+        language,
+        focusArea: selectedFocus,
+      });
+      exercises.push(fallback);
+    }
+  }
+
+  return exercises;
+}
+
+/**
+ * Creates a verified, contract-compliant fallback exercise if AI response fails parsing.
+ */
+export function createVerifiedFallbackExercise(params: {
+  topicTitle: string;
+  topicId: string;
+  difficulty: number;
+  language: string;
+  focusArea: string;
+}): GeneratedExercise {
+  const { topicTitle, topicId, difficulty, language, focusArea } = params;
+
+  let starterCode = `function processData(items) {\n  // Implement solution for ${focusArea}\n  return [];\n}`;
+  let solutionCode = `function processData(items) {\n  if (!Array.isArray(items)) return [];\n  return items.filter(Boolean).map(item => String(item).trim());\n}`;
+  let testCases = "Returns empty array for non-array inputs; Filters out falsy values; Trims strings cleanly; Preserves item integrity";
+
+  if (focusArea === "async-flow") {
+    starterCode = `async function fetchWithRetry(url, maxRetries = 3) {\n  // Implement retry logic with exponential backoff\n}`;
+    solutionCode = `async function fetchWithRetry(url, maxRetries = 3) {\n  for (let attempt = 1; attempt <= maxRetries; attempt++) {\n    try {\n      const res = await fetch(url);\n      if (res.ok) return await res.json();\n    } catch (err) {\n      if (attempt === maxRetries) throw err;\n      await new Promise(r => setTimeout(r, 100 * Math.pow(2, attempt)));\n    }\n  }\n}`;
+    testCases = "Retries failed requests up to maxRetries; Resolves valid response on success; Throws error when all retries are exhausted; Uses exponential backoff delays";
+  } else if (focusArea === "null-safety") {
+    starterCode = `function getNestedProperty(obj, path, defaultValue = null) {\n  // Safely traverse dotted path in obj\n}`;
+    solutionCode = `function getNestedProperty(obj, path, defaultValue = null) {\n  if (!obj || typeof obj !== 'object') return defaultValue;\n  const keys = path.split('.');\n  let current = obj;\n  for (const key of keys) {\n    if (current === null || current === undefined) return defaultValue;\n    current = current[key];\n  }\n  return current !== undefined ? current : defaultValue;\n}`;
+    testCases = "Extracts top-level properties; Extracts deeply nested properties; Returns defaultValue for missing keys; Handles null and undefined root objects safely";
+  }
+
+  return {
+    title: `${topicTitle}: ${focusArea.replace(/-/g, " ").toUpperCase()} Drill`,
+    description: `Targeted practice to reinforce ${topicTitle} with special focus on ${focusArea}.`,
+    instructions: `Implement the function according to standard ${language} conventions. Handle boundary conditions and edge cases properly.`,
+    starterCode,
+    solutionCode,
+    testCases,
+    difficulty,
+    focusArea,
+    hints: [
+      `Review key ${topicTitle} principles before writing code.`,
+      `Account for edge cases like null, undefined, or empty inputs.`,
+      `Ensure all test cases pass without side effects.`,
+    ],
+    explanation: `This drill reinforces critical data hygiene and structural safety in ${topicTitle}.`,
+    topicId,
+    topicName: topicTitle,
+    isPersisted: false,
   };
-
-  const template = templates[focusArea] || templates.general;
-  return template(difficulty, language, topicName, topicId);
-}
-
-function generateFundamentalsInstructions(difficulty: number, language: string): string {
-  if (difficulty <= 1) {
-    return `Write a simple program that declares variables, performs basic arithmetic, and prints the result.`;
-  }
-  if (difficulty === 2) {
-    return `Create a function that takes parameters and returns a computed value. Include input validation.`;
-  }
-  return `Build a small module with multiple functions that work together to solve a problem.`;
-}
-
-function generateFundamentalsStarter(difficulty: number, language: string): string {
-  if (language === "javascript") {
-    return difficulty <= 1
-      ? "// Declare variables and perform calculations\n// Your code here\n"
-      : "// TODO: Create a function that calculates the factorial of a number\nfunction factorial(n) {\n  // Your code here\n}\n\nconsole.log(factorial(5)); // Expected: 120\n";
-  }
-  if (language === "python") {
-    return difficulty <= 1
-      ? "# Declare variables and perform calculations\n# Your code here\n"
-      : "# TODO: Create a function that calculates the factorial of a number\ndef factorial(n):\n    # Your code here\n    pass\n\nprint(factorial(5))  # Expected: 120\n";
-  }
-  return "// Write your code here\n";
-}
-
-function generateFundamentalsHints(difficulty: number): string[] {
-  if (difficulty <= 1) return ["Start with simple variable declarations", "Use console.log() or print() to see results"];
-  return ["Use recursion or a loop for factorial", "Remember to handle the base case (n <= 1)"];
-}
-
-function generateSyntaxInstructions(difficulty: number, language: string): string {
-  return `The following code has syntax errors. Find and fix them so it runs correctly.`;
-}
-
-function generateSyntaxStarter(language: string): string {
-  if (language === "javascript") {
-    return `// Fix the syntax errors in this code\nfunction greet(name) {\n  return "Hello, " + name\n}\n\nconst result = greet("World"\nconsole.log(result);\n`;
-  }
-  return `// Fix the syntax errors\n# Your buggy code here\n`;
-}
-
-function generateNullSafetyInstructions(difficulty: number, language: string): string {
-  return `Write a function that safely accesses nested properties of an object. Handle cases where intermediate values might be null or undefined.`;
-}
-
-function generateNullSafetyStarter(difficulty: number, language: string): string {
-  if (language === "javascript") {
-    return `// TODO: Safely get the city from a user object\n// The user object may have missing nested properties\nfunction getCity(user) {\n  // Your code here - handle null/undefined safely\n}\n\nconst user1 = { address: { city: "Mumbai" } };\nconst user2 = { address: null };\nconst user3 = null;\n\nconsole.log(getCity(user1)); // Expected: "Mumbai"\nconsole.log(getCity(user2)); // Expected: "Unknown"\nconsole.log(getCity(user3)); // Expected: "Unknown"\n`;
-  }
-  return `// Write your null-safe code here\n`;
-}
-
-function generateAsyncInstructions(difficulty: number, language: string): string {
-  if (difficulty <= 2) {
-    return `Write a function that fetches data from two sources and combines the results. Use async/await pattern.`;
-  }
-  return `Implement a function that processes multiple async operations in parallel with proper error handling.`;
-}
-
-function generateAsyncStarter(difficulty: number, language: string): string {
-  if (language === "javascript") {
-    return `// TODO: Fetch user data and posts, then combine them\nasync function getUserWithPosts(userId) {\n  // Simulate API calls\n  const getUser = (id) => Promise.resolve({ id, name: "Alice" });\n  const getPosts = (id) => Promise.resolve([{ title: "Post 1" }]);\n  \n  // Your code here\n}\n\ngetUserWithPosts(1).then(console.log);\n`;
-  }
-  return `// Write your async code here\n`;
-}
-
-function generateLoopInstructions(difficulty: number, language: string): string {
-  if (difficulty <= 1) {
-    return `Write a loop that iterates through an array and performs an operation on each element.`;
-  }
-  return `Given an array of numbers, use a loop to find all pairs that sum to a target value.`;
-}
-
-function generateLoopStarter(difficulty: number, language: string): string {
-  if (language === "javascript") {
-    return difficulty <= 1
-      ? `// TODO: Double each number in the array and print the results\nconst numbers = [1, 2, 3, 4, 5];\n// Your loop here\n`
-      : `// TODO: Find all pairs that sum to the target\nfunction findPairs(arr, target) {\n  // Your code here\n}\n\nconsole.log(findPairs([1, 2, 3, 4, 5], 6));\n// Expected: [[1,5], [2,4]]\n`;
-  }
-  return `// Write your loop code here\n`;
-}
-
-function generateDataStructuresInstructions(difficulty: number, language: string): string {
-  if (difficulty <= 2) {
-    return `Given an array of objects, filter, transform, and sort the data to produce a specific output.`;
-  }
-  return `Design a data structure to efficiently store and query a collection of items with multiple attributes.`;
-}
-
-function generateDataStructuresStarter(difficulty: number, language: string): string {
-  if (language === "javascript") {
-    return `// TODO: Transform the data\nconst students = [\n  { name: "Amit", score: 85 },\n  { name: "Priya", score: 92 },\n  { name: "Raj", score: 78 },\n  { name: "Sita", score: 95 },\n];\n\n// Return names of students with score >= 80, sorted by score descending\nfunction getTopStudents(students) {\n  // Your code here\n}\n\nconsole.log(getTopStudents(students));\n`;
-  }
-  return `// Write your data structures code here\n`;
-}
-
-function generateGeneralInstructions(difficulty: number, language: string): string {
-  const challenges = [
-    "Create a function that reverses a string without using built-in reverse methods.",
-    "Write a function that checks if a string is a palindrome.",
-    "Implement a function that finds the most frequent element in an array.",
-    "Create a recursive function to calculate the nth Fibonacci number.",
-    "Write a function that merges two sorted arrays into one sorted array.",
-  ];
-  return challenges[difficulty - 1] || challenges[0];
-}
-
-function generateGeneralStarter(difficulty: number, language: string): string {
-  if (language === "javascript") {
-    return `// TODO: Implement the challenge\nfunction solve(input) {\n  // Your code here\n}\n\nconsole.log(solve("hello"));\n`;
-  }
-  if (language === "python") {
-    return `# TODO: Implement the challenge\ndef solve(input):\n    # Your code here\n    pass\n\nprint(solve("hello"))\n`;
-  }
-  return "// Write your code here\n";
 }

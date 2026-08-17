@@ -1,5 +1,5 @@
 import { apiHandler } from "@/lib/api-handler";
-import { detectWeakTopics, assessDifficulty } from "@/lib/adaptive/weak-detection";
+import { detectWeakTopics, assessDifficulty, generateNextRecommendation } from "@/lib/adaptive/weak-detection";
 
 export const GET = apiHandler(async (ctx) => {
   const user = ctx.user!;
@@ -9,7 +9,10 @@ export const GET = apiHandler(async (ctx) => {
   const topicId = searchParams.get("topicId");
   const defaultDifficulty = parseInt(searchParams.get("defaultDifficulty") || "2", 10);
 
-  const weakTopics = await detectWeakTopics(user.id, courseId);
+  const [weakTopics, nextRecommendation] = await Promise.all([
+    detectWeakTopics(user.id, courseId),
+    generateNextRecommendation(user.id, courseId),
+  ]);
 
   let difficultyAssessment = null;
   if (topicId) {
@@ -17,6 +20,7 @@ export const GET = apiHandler(async (ctx) => {
   }
 
   return {
+    recommendation: nextRecommendation,
     weakTopics: weakTopics.map((w) => ({
       topicId: w.topicId,
       topicName: w.topicName,

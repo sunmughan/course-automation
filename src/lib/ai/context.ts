@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import type { ExecutionEvent } from "@/types";
 
 export interface AIContext {
   currentQuestion: string;
@@ -62,8 +63,12 @@ export interface MessageContext {
 export interface ExecutionContext {
   output: string;
   error: string | null;
-  executionTime: number;
-  memoryUsed: number;
+  executionTime?: number;
+  memoryUsed?: number;
+  events?: ExecutionEvent[];
+  selectedLine?: number | null;
+  selectedEventIndex?: number | null;
+  selectedEvent?: ExecutionEvent | null;
 }
 
 export interface ContextBuildOptions {

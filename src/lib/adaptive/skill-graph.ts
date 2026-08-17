@@ -1,6 +1,12 @@
 import { prisma } from "@/lib/db";
+import {
+  MASTERY_LEVELS,
+  getMasteryLevel,
+  synchronizeTopicSkill,
+  type MasteryLevel,
+} from "@/lib/adaptive/skill-evaluation";
 
-export type SkillLevel = "beginner" | "developing" | "competent" | "strong" | "mastered";
+export type SkillLevel = MasteryLevel;
 
 export interface SkillNode {
   topicId: string;
@@ -28,25 +34,22 @@ export interface SkillGraph {
 }
 
 const SCORE_THRESHOLDS: Record<SkillLevel, number> = {
-  beginner: 0,
-  developing: 20,
-  competent: 40,
-  strong: 60,
-  mastered: 80,
+  NOT_STARTED: 0,
+  BEGINNER: 20,
+  DEVELOPING: 40,
+  COMPETENT: 60,
+  STRONG: 75,
+  MASTERED: 90,
 };
 
-const LEVEL_ORDER: SkillLevel[] = ["beginner", "developing", "competent", "strong", "mastered"];
+const LEVEL_ORDER: SkillLevel[] = [...MASTERY_LEVELS];
 
 export function computeSkillLevel(score: number): SkillLevel {
-  if (score >= SCORE_THRESHOLDS.mastered) return "mastered";
-  if (score >= SCORE_THRESHOLDS.strong) return "strong";
-  if (score >= SCORE_THRESHOLDS.competent) return "competent";
-  if (score >= SCORE_THRESHOLDS.developing) return "developing";
-  return "beginner";
+  return getMasteryLevel(score);
 }
 
 export function computeMasteryPercent(score: number): number {
-  return Math.min(Math.round((score / SCORE_THRESHOLDS.mastered) * 100), 100);
+  return Math.min(Math.round(Math.max(score, 0)), 100);
 }
 
 export function getLevelProgress(score: number): number {
@@ -68,7 +71,7 @@ export function getNextLevel(currentLevel: SkillLevel): SkillLevel | null {
 
 export function getPointsToNextLevel(score: number): number {
   const currentLevel = computeSkillLevel(score);
-  if (currentLevel === "mastered") return 0;
+  if (currentLevel === "MASTERED") return 0;
   const nextThreshold = SCORE_THRESHOLDS[LEVEL_ORDER[LEVEL_ORDER.indexOf(currentLevel) + 1]];
   return Math.max(0, nextThreshold - score);
 }
@@ -107,7 +110,7 @@ export async function buildSkillGraph(userId: string, courseId?: string): Promis
     const score = skill?.score ?? 0;
     const level = computeSkillLevel(score);
     const mistakeCount = mistakeCounts.get(topic.id) || 0;
-    const isWeak = level === "beginner" || (level === "developing" && mistakeCount > 2);
+    const isWeak = level === "NOT_STARTED" || level === "BEGINNER" || (level === "DEVELOPING" && mistakeCount > 2);
 
     const node: SkillNode = {
       topicId: topic.id,
@@ -130,7 +133,7 @@ export async function buildSkillGraph(userId: string, courseId?: string): Promis
     }
   }
 
-  const masteredTopics = Array.from(nodes.values()).filter((n) => n.level === "mastered").length;
+  const masteredTopics = Array.from(nodes.values()).filter((n) => n.level === "MASTERED").length;
   const overallScore = nodes.size > 0
     ? Math.round(Array.from(nodes.values()).reduce((sum, n) => sum + n.score, 0) / nodes.size)
     : 0;
@@ -155,42 +158,30 @@ export async function updateSkillAfterLesson(
   lessonScore: number,
   timeSpent: number
 ): Promise<{ skill: SkillNode; leveledUp: boolean }> {
-  const topic = await prisma.topic.findUnique({
-    where: { id: topicId },
-    select: { title: true },
-  });
-
-  if (!topic) {
-    throw new Error(`Topic ${topicId} not found`);
-  }
-
+  void lessonScore;
+  void timeSpent;
   const existing = await prisma.studentSkill.findUnique({
     where: { userId_topicId: { userId, topicId } },
   });
+  const oldLevel = computeSkillLevel(existing?.score ?? 0);
+  const evaluation = await synchronizeTopicSkill(userId, topicId);
+  const [topic, skill] = await Promise.all([
+    prisma.topic.findUnique({
+      where: { id: topicId },
+      select: {
+        title: true,
+        prerequisites: { select: { prerequisiteId: true } },
+        dependedBy: { select: { topicId: true } },
+      },
+    }),
+    prisma.studentSkill.findUnique({
+      where: { userId_topicId: { userId, topicId } },
+    }),
+  ]);
 
-  const oldLevel = existing ? computeSkillLevel(existing.score) : "beginner";
-  const scoreIncrement = computeScoreIncrement(lessonScore, timeSpent);
-  const newScore = Math.min(100, (existing?.score ?? 0) + scoreIncrement);
-  const newLevel = computeSkillLevel(newScore);
-
-  const skill = await prisma.studentSkill.upsert({
-    where: { userId_topicId: { userId, topicId } },
-    create: {
-      userId,
-      topicId,
-      skillName: topic.title,
-      score: newScore,
-      status: newLevel,
-      attempts: 1,
-      lastAttemptAt: new Date(),
-    },
-    update: {
-      score: newScore,
-      status: newLevel,
-      attempts: { increment: 1 },
-      lastAttemptAt: new Date(),
-    },
-  });
+  if (!topic || !skill) {
+    throw new Error(`Topic ${topicId} not found`);
+  }
 
   return {
     skill: {
@@ -198,31 +189,16 @@ export async function updateSkillAfterLesson(
       topicName: topic.title,
       skillName: skill.skillName,
       score: skill.score,
-      level: newLevel,
+      level: evaluation.level,
       attempts: skill.attempts,
       lastAttemptAt: skill.lastAttemptAt,
-      dependencies: [],
-      dependents: [],
-      isWeak: newLevel === "beginner" || newLevel === "developing",
+      dependencies: topic.prerequisites.map((item) => item.prerequisiteId),
+      dependents: topic.dependedBy.map((item) => item.topicId),
+      isWeak: evaluation.level === "NOT_STARTED" || evaluation.level === "BEGINNER" || evaluation.level === "DEVELOPING",
       masteryPercent: computeMasteryPercent(skill.score),
     },
-    leveledUp: newLevel !== oldLevel,
+    leveledUp: LEVEL_ORDER.indexOf(evaluation.level) > LEVEL_ORDER.indexOf(oldLevel),
   };
-}
-
-function computeScoreIncrement(lessonScore: number, timeSpent: number): number {
-  let increment = 0;
-
-  if (lessonScore >= 90) increment = 15;
-  else if (lessonScore >= 70) increment = 10;
-  else if (lessonScore >= 50) increment = 5;
-  else increment = 2;
-
-  if (timeSpent > 300) {
-    increment += 2;
-  }
-
-  return increment;
 }
 
 export async function recordMistake(

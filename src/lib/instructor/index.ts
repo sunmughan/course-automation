@@ -1,13 +1,25 @@
 export {
   getBatchAnalytics,
   detectAtRiskStudents,
+  getStudentEvidenceDrillDown,
   generateAIInterventions,
   generateTeachingReport,
 } from "./analytics";
 
+export {
+  AIInstructorAssistant,
+} from "./assistant";
+
+export type {
+  InstructorAssistantQuery,
+  InstructorAssistantResponse,
+} from "./assistant";
+
 export type {
   BatchAnalytics,
   AtRiskStudent,
+  StudentDrillDownEvidence,
+  TopicDrillDownEvidence,
   AIIntervention,
   TeachingReport,
 } from "./analytics";

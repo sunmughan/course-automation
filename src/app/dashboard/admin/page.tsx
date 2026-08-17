@@ -11,16 +11,21 @@ import {
   Building2Icon,
   ShieldCheckIcon,
   ScrollTextIcon,
-  CreditCardIcon,
   UsersIcon,
   PlusIcon,
   ArrowRightIcon,
   ActivityIcon,
+  SlidersHorizontalIcon,
+  BarChart3Icon,
+  BrainIcon,
 } from "lucide-react";
 
 interface AdminStats {
   totalOrganizations: number;
   totalUsers: number;
+  activeUsers: number;
+  students: number;
+  instructors: number;
   activeSubscriptions: number;
   recentAuditCount: number;
 }
@@ -31,6 +36,7 @@ interface OrgSummary {
   slug: string;
   isActive: boolean;
   createdAt: string;
+  members?: any[];
 }
 
 export default function AdminDashboardPage() {
@@ -44,29 +50,18 @@ export default function AdminDashboardPage() {
       try {
         const headers = getAuthHeaders();
 
-        const [orgsRes, auditRes] = await Promise.all([
+        const [orgsRes, metricsRes] = await Promise.all([
           fetch("/api/admin/organizations", { headers }),
-          fetch("/api/admin/audit?limit=1", { headers }),
+          fetch("/api/admin/metrics", { headers }),
         ]);
 
-        if (!orgsRes.ok) throw new Error("Failed to fetch data");
+        if (!orgsRes.ok || !metricsRes.ok) throw new Error("Failed to fetch data");
 
         const orgsData = await orgsRes.json();
+        const metricsData = await metricsRes.json();
         const orgList: OrgSummary[] = orgsData.organizations || [];
         setOrgs(orgList);
-
-        let auditCount = 0;
-        if (auditRes.ok) {
-          const auditData = await auditRes.json();
-          auditCount = auditData.total || 0;
-        }
-
-        setStats({
-          totalOrganizations: orgList.length,
-          totalUsers: 0,
-          activeSubscriptions: orgList.filter((o) => o.isActive).length,
-          recentAuditCount: auditCount,
-        });
+        setStats(metricsData.metrics);
       } catch {
         setError("Failed to load admin dashboard");
       } finally {
@@ -126,10 +121,22 @@ export default function AdminDashboardPage() {
           color="green"
         />
         <StatCard
-          icon={CreditCardIcon}
-          label="Active Subscriptions"
-          value={stats?.activeSubscriptions ?? 0}
+          icon={UsersIcon}
+          label="Active Users"
+          value={stats?.activeUsers ?? 0}
           color="purple"
+        />
+        <StatCard
+          icon={UsersIcon}
+          label="Students"
+          value={stats?.students ?? 0}
+          color="green"
+        />
+        <StatCard
+          icon={UsersIcon}
+          label="Instructors"
+          value={stats?.instructors ?? 0}
+          color="blue"
         />
         <StatCard
           icon={ActivityIcon}
@@ -149,11 +156,13 @@ export default function AdminDashboardPage() {
             <Button
               variant="outline"
               size="sm"
-              render={<Link href="/dashboard/admin/organizations" />}
-            >
-              View All
-              <ArrowRightIcon className="size-4 ml-1" />
-            </Button>
+              render={
+                <Link href="/dashboard/admin/organizations">
+                  View All
+                  <ArrowRightIcon className="size-4 ml-1" />
+                </Link>
+              }
+            />
           </CardHeader>
           <CardContent>
             {orgs.length === 0 ? (
@@ -167,43 +176,30 @@ export default function AdminDashboardPage() {
                   variant="outline"
                   size="sm"
                   className="mt-4"
-                  render={<Link href="/dashboard/admin/organizations" />}
-                >
-                  <PlusIcon className="size-4 mr-2" />
-                  Create Organization
-                </Button>
+                  render={
+                    <Link href="/dashboard/admin/organizations">
+                      <PlusIcon className="size-4 mr-2" />
+                      Create Organization
+                    </Link>
+                  }
+                />
               </div>
             ) : (
               <div className="space-y-3">
                 {orgs.slice(0, 5).map((org) => (
                   <div
                     key={org.id}
-                    className="flex items-center gap-4 rounded-lg border p-4"
+                    className="flex items-center justify-between rounded-lg border p-3"
                   >
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <p className="font-medium truncate">{org.name}</p>
-                        <Badge
-                          variant={org.isActive ? "default" : "secondary"}
-                        >
-                          {org.isActive ? "Active" : "Inactive"}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {org.slug}
+                    <div>
+                      <p className="font-medium">{org.name}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {org.slug} • {org.members?.length ?? 0} members
                       </p>
                     </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      render={
-                        <Link
-                          href={`/dashboard/admin/organizations/${org.id}`}
-                        />
-                      }
-                    >
-                      <ArrowRightIcon className="size-4" />
-                    </Button>
+                    <Badge variant={org.isActive ? "default" : "secondary"}>
+                      {org.isActive ? "Active" : "Inactive"}
+                    </Badge>
                   </div>
                 ))}
               </div>
@@ -219,16 +215,22 @@ export default function AdminDashboardPage() {
           <CardContent>
             <div className="grid gap-3 sm:grid-cols-2">
               <QuickActionCard
+                icon={BrainIcon}
+                title="AI Configuration"
+                description="API keys, routing & 95+ models"
+                href="/dashboard/admin/ai-config"
+              />
+              <QuickActionCard
                 icon={Building2Icon}
                 title="Organizations"
                 description="Create and manage orgs"
                 href="/dashboard/admin/organizations"
               />
               <QuickActionCard
-                icon={CreditCardIcon}
-                title="Billing Plans"
-                description="Manage subscription plans"
-                href="/dashboard/admin/billing"
+                icon={SlidersHorizontalIcon}
+                title="Customization"
+                description="Curriculum & policies"
+                href="/dashboard/admin/customization"
               />
               <QuickActionCard
                 icon={ScrollTextIcon}
@@ -237,10 +239,10 @@ export default function AdminDashboardPage() {
                 href="/dashboard/admin/audit"
               />
               <QuickActionCard
-                icon={ShieldCheckIcon}
-                title="SSO Config"
-                description="Configure SSO providers"
-                href="/dashboard/admin/organizations"
+                icon={BarChart3Icon}
+                title="Analytics"
+                description="Platform performance & usage"
+                href="/dashboard/admin/analytics"
               />
             </div>
           </CardContent>

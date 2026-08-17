@@ -29,6 +29,7 @@ import {
   KeyIcon,
   SlidersHorizontalIcon,
   BarChart3Icon,
+  AwardIcon,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -49,8 +50,9 @@ const instructorNavItems = [
 
 const adminNavItems = [
   { href: "/dashboard/admin", label: "Admin", icon: ShieldCheckIcon },
+  { href: "/dashboard/admin/certificates", label: "Certificates", icon: AwardIcon },
+  { href: "/dashboard/admin/ai-config", label: "AI Configuration", icon: BrainIcon },
   { href: "/dashboard/admin/organizations", label: "Organizations", icon: Building2Icon },
-  { href: "/dashboard/admin/billing", label: "Billing", icon: CreditCardIcon },
   { href: "/dashboard/admin/customization", label: "Customization", icon: SlidersHorizontalIcon },
   { href: "/dashboard/admin/analytics", label: "Analytics", icon: BarChart3Icon },
   { href: "/dashboard/admin/audit", label: "Audit Logs", icon: ScrollTextIcon },

@@ -26,45 +26,36 @@ export const TOOL_REGISTRY: Record<string, ToolHandler> = {
   execute_code: {
     definition: {
       name: "execute_code",
-      description: "Execute JavaScript code in a sandboxed environment and return the output",
+      description: "Execute code in a safe sandboxed environment and return output and events",
       parameters: {
         type: "object",
         properties: {
-          code: { type: "string", description: "The JavaScript code to execute" },
-          language: { type: "string", description: "Programming language (javascript only for now)" },
+          code: { type: "string", description: "The source code to execute" },
+          language: { type: "string", description: "Programming language (e.g. javascript, python, typescript)" },
         },
         required: ["code"],
       },
     },
     execute: async (args) => {
-      const code = args.code as string;
-      const start = performance.now();
-      let output = "";
-      let error: string | null = null;
+      const code = (args.code as string) || "";
+      const language = (args.language as string) || "javascript";
+      const { executeMultiLanguage } = await import("@/lib/execution/multi-lang-sandbox");
 
-      try {
-        const logs: string[] = [];
-        const sandboxConsole = {
-          log: (...args: unknown[]) => logs.push(args.map(String).join(" ")),
-          error: (...args: unknown[]) => logs.push(`[ERROR] ${args.map(String).join(" ")}`),
-          warn: (...args: unknown[]) => logs.push(`[WARN] ${args.map(String).join(" ")}`),
-        };
-
-        const fn = new Function("console", `"use strict"; ${code}`);
-        fn(sandboxConsole);
-        output = logs.join("\n");
-      } catch (e) {
-        error = e instanceof Error ? e.message : String(e);
-      }
+      const result = await executeMultiLanguage({
+        code,
+        language,
+        trace: false,
+      });
 
       return {
-        output,
-        error,
-        executionTime: Math.round(performance.now() - start),
+        output: result.output || "",
+        error: result.error || null,
+        executionTime: result.executionTime || 0,
+        events: result.events || [],
       };
     },
     requiresAuth: false,
-    maxExecutionTimeMs: 5000,
+    maxExecutionTimeMs: 10000,
   },
   get_lesson_content: {
     definition: {
@@ -170,26 +161,97 @@ export const TOOL_REGISTRY: Record<string, ToolHandler> = {
   explain_concept: {
     definition: {
       name: "explain_concept",
-      description: "Generate a detailed explanation of a programming concept",
+      description: "Generate an in-depth AI explanation of a programming concept with context and examples",
       parameters: {
         type: "object",
         properties: {
           concept: { type: "string", description: "The concept to explain" },
           level: { type: "string", description: "Student level: beginner, intermediate, advanced", enum: ["beginner", "intermediate", "advanced"] },
+          course: { type: "string", description: "Optional course title or stream" },
+          lesson: { type: "string", description: "Optional lesson name" },
+          lessonId: { type: "string", description: "Optional lesson ID for database context lookup" },
+          code: { type: "string", description: "Optional current code context" },
+          context: { type: "string", description: "Optional additional relevant context" },
         },
         required: ["concept"],
       },
     },
     execute: async (args) => {
-      return {
-        concept: args.concept,
-        level: args.level || "intermediate",
-        status: "delegated_to_ai",
-        message: "This tool delegates to the AI model for explanation generation.",
-      };
+      const concept = (args.concept as string) || "";
+      const level = (args.level as string) || "intermediate";
+      const course = args.course as string | undefined;
+      const lesson = args.lesson as string | undefined;
+      const lessonId = args.lessonId as string | undefined;
+      const code = args.code as string | undefined;
+      const customContext = args.context as string | undefined;
+      const userId = args.userId as string | undefined;
+
+      let lessonInfo: { title: string; content: string } | null = null;
+      if (lessonId) {
+        try {
+          const { prisma } = await import("@/lib/db");
+          const found = await prisma.lesson.findUnique({
+            where: { id: lessonId },
+            select: { title: true, content: true },
+          });
+          if (found) lessonInfo = found;
+        } catch {
+          // Non-critical DB context lookup
+        }
+      }
+
+      const systemPrompt = `You are an expert programming tutor on SkillForge.
+Explain the requested programming concept thoroughly and clearly for a ${level} level student.
+Provide intuitive explanations, concrete code examples, and highlight practical use cases.`;
+
+      const userPromptParts: string[] = [`Please explain the concept: "${concept}"`];
+      userPromptParts.push(`Student Level: ${level}`);
+      if (course) userPromptParts.push(`Course: ${course}`);
+      if (lesson || lessonInfo?.title) userPromptParts.push(`Lesson: ${lesson || lessonInfo?.title}`);
+      if (lessonInfo?.content) userPromptParts.push(`Lesson Content Context: ${lessonInfo.content.slice(0, 1000)}`);
+      if (code) userPromptParts.push(`Current Student Code:\n\`\`\`\n${code}\n\`\`\``);
+      if (customContext) userPromptParts.push(`Additional Context: ${customContext}`);
+
+      try {
+        const { aiRouter } = await import("../router");
+        const { createAIRequestId } = await import("../persistence");
+
+        const result = await aiRouter.executeWithFallback(
+          [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userPromptParts.join("\n\n") },
+          ],
+          {
+            complexity: level === "advanced" ? "high" : level === "beginner" ? "low" : "medium",
+            userId: userId || undefined,
+            requestId: createAIRequestId(),
+            agent: "teacher",
+            mode: "explain",
+          }
+        );
+
+        return {
+          concept,
+          level,
+          explanation: result.content,
+          meta: {
+            provider: result.provider,
+            model: result.model,
+            latency: result.latency,
+            tokens: result.inputTokens + result.outputTokens,
+          },
+        };
+      } catch (error) {
+        return {
+          concept,
+          level,
+          explanation: `Explanation for "${concept}" (${level} level): A foundational programming concept. Please refer to course lessons for detailed breakdowns.`,
+          error: error instanceof Error ? error.message : "AI explanation failed",
+        };
+      }
     },
     requiresAuth: false,
-    maxExecutionTimeMs: 1000,
+    maxExecutionTimeMs: 15000,
   },
   search_knowledge: {
     definition: {

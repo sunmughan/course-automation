@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
 import { aiGateway } from "@/lib/ai/gateway";
 import { aiRouter } from "@/lib/ai/router";
+import { createAIRequestId } from "@/lib/ai/persistence";
+import { getAIOrganizationId } from "@/lib/ai/request-context";
 import { getModeSystemPrompt } from "@/lib/ai/prompts";
 
 interface DebugRequest {
@@ -87,9 +88,17 @@ Respond with the structured JSON format as specified.`;
     ];
 
     const startTime = performance.now();
+    const organizationId = userId && userId !== "anonymous"
+      ? await getAIOrganizationId(userId)
+      : undefined;
     const result = await aiRouter.executeWithFallback(messages, {
       temperature: 0.3,
       maxTokens: 8192,
+      userId: userId && userId !== "anonymous" ? userId : undefined,
+      organizationId,
+      requestId: createAIRequestId(),
+      agent: "debugger",
+      mode: "debug",
     });
     const latency = performance.now() - startTime;
 
@@ -114,23 +123,6 @@ Respond with the structured JSON format as specified.`;
         hints: [],
         preventionTips: [],
       };
-    }
-
-    if (userId && userId !== "anonymous") {
-      await prisma.aIRequest.create({
-        data: {
-          userId,
-          provider: result.provider,
-          model: result.model,
-          mode: "debug",
-          inputTokens: result.inputTokens,
-          outputTokens: result.outputTokens,
-          latency,
-          cost: result.cost,
-          status: "success",
-          fallbackUsed: false,
-        },
-      });
     }
 
     const response: DebugResponse = {

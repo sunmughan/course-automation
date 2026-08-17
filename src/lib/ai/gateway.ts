@@ -5,6 +5,12 @@ import { requestDeduplicator } from "./deduplication";
 import { tokenBudgetManager } from "./token-budget";
 import { modelCooldownManager } from "./cooldown";
 import { aiTracer } from "./tracing";
+import { createNvidiaAdapter } from "./providers/nvidia";
+import { createGeminiAdapter } from "./providers/gemini";
+import { createAgentRouterAdapter } from "./providers/agent-router";
+import { createTokenRouterAdapter } from "./providers/token-router";
+import { createZylooAdapter, ZYLOO_PROVIDER_CONFIG } from "./providers/zyloo";
+import type { AIProviderAdapter, ProviderAdapterDependencies } from "./providers";
 import { getCapabilityScore, checkContextWindow, getContextWindowUtilization } from "./capability-matrix";
 import type { TaskCapability } from "./capability-matrix";
 
@@ -42,6 +48,19 @@ export interface ProviderCallResult {
   routedTo?: string | null;
   cached?: boolean;
   deduplicated?: boolean;
+  fallbackUsed?: boolean;
+  attemptedProviders?: string[];
+  attemptedModels?: string[];
+  finalProvider?: string;
+}
+
+export interface AIRequestContext {
+  userId?: string;
+  organizationId?: string;
+  requestId?: string;
+  sessionId?: string;
+  agent?: string;
+  mode?: string;
 }
 
 export interface StreamChunk {
@@ -51,8 +70,7 @@ export interface StreamChunk {
   outputTokens?: number;
 }
 
-export interface GatewayCallOptions {
-  userId?: string;
+export interface GatewayCallOptions extends AIRequestContext {
   task?: TaskCapability;
   complexity?: "low" | "medium" | "high";
   maxTokens?: number;
@@ -74,7 +92,7 @@ const DEFAULT_PROVIDERS: AIProviderConfig[] = [
     name: "nvidia",
     baseUrl: "https://integrate.api.nvidia.com/v1",
     apiKey: process.env.NVIDIA_API_KEY || "",
-    priority: 0,
+    priority: 2,
     models: [
       {
         name: "meta/llama-3.3-70b-instruct",
@@ -106,25 +124,25 @@ const DEFAULT_PROVIDERS: AIProviderConfig[] = [
     name: "gemini",
     baseUrl: "https://generativelanguage.googleapis.com/v1beta",
     apiKey: process.env.GEMINI_API_KEY || "",
-    priority: 1,
+    priority: 0,
     models: [
       {
-        name: "gemini-2.5-pro",
+        name: "gemini-3.7-flash",
         maxTokens: 1048576,
         costPer1K: 0.00125,
         capabilities: ["explain", "code_generation", "debugging", "architecture", "visualization", "simple_qa", "deep-dive", "compare", "review", "socratic", "practice", "interview"],
       },
       {
-        name: "gemini-2.5-flash",
+        name: "gemini-3.5-flash",
         maxTokens: 1048576,
         costPer1K: 0.00015,
-        capabilities: ["simple_qa", "explain", "code_generation", "debugging", "hint", "simplify"],
+        capabilities: ["simple_qa", "explain", "code_generation", "debugging", "hint", "simplify", "deep-dive", "compare", "review", "socratic", "practice", "interview", "architecture", "visualization"],
       },
       {
-        name: "gemini-2.5-flash-lite",
+        name: "gemini-3.5-flash-lite",
         maxTokens: 1048576,
         costPer1K: 0.000075,
-        capabilities: ["simple_qa", "explain", "hint", "simplify"],
+        capabilities: ["simple_qa", "explain", "hint", "simplify", "code_generation", "debugging"],
       },
     ],
   },
@@ -159,7 +177,7 @@ const DEFAULT_PROVIDERS: AIProviderConfig[] = [
         capabilities: ["explain", "code_generation", "debugging", "architecture", "simple_qa", "review"],
       },
       {
-        name: "gemini-2.5-pro",
+        name: "gemini-3.5-flash",
         maxTokens: 1048576,
         costPer1K: 0.00125,
         capabilities: ["explain", "code_generation", "debugging", "architecture", "visualization", "simple_qa", "deep-dive", "compare", "review", "socratic", "practice", "interview"],
@@ -198,6 +216,7 @@ const DEFAULT_PROVIDERS: AIProviderConfig[] = [
       },
     ],
   },
+  ZYLOO_PROVIDER_CONFIG,
 ];
 
 export class AIGateway {
@@ -338,9 +357,15 @@ export class AIGateway {
   }
 
   private async pingProvider(provider: AIProviderConfig): Promise<boolean> {
+    const adapter = this.getProviderAdapter(provider);
+    const result = await adapter.healthCheck(provider);
+    return typeof result === "boolean" ? result : result.isHealthy;
+  }
+
+  private async pingProviderDirect(provider: AIProviderConfig): Promise<boolean> {
     try {
       if (provider.name === "gemini") {
-        const url = `${provider.baseUrl}/models/gemini-2.5-flash:generateContent?key=${provider.apiKey}`;
+        const url = `${provider.baseUrl}/models/gemini-3.5-flash-lite:generateContent?key=${provider.apiKey}`;
         const response = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -530,7 +555,7 @@ export class AIGateway {
             }
 
             if (options?.userId) {
-              await tokenBudgetManager.recordUsage(options.userId, callResult);
+              tokenBudgetManager.invalidateCache(options.userId);
             }
 
             if (cacheKey && !options?.skipCache) {
@@ -554,12 +579,7 @@ export class AIGateway {
             }
 
             if (options?.userId) {
-              await tokenBudgetManager.recordFailedUsage(
-                options.userId,
-                name,
-                model,
-                lastError.message
-              );
+              tokenBudgetManager.invalidateCache(options.userId);
             }
 
             if (attempt === maxRetries) {
@@ -586,19 +606,72 @@ export class AIGateway {
     return { ...result, deduplicated: wasDeduplicated };
   }
 
+  getProviderAdapter(provider: AIProviderConfig): AIProviderAdapter {
+    const dependencies: ProviderAdapterDependencies = {
+      generate: async (target: AIProviderConfig, targetModel: string, targetMessages: { role: string; content: string }[], targetOptions?: GatewayCallOptions) => {
+        if (target.name === "gemini") {
+          return this.callGemini(target, targetModel, targetMessages, targetOptions);
+        }
+        if (target.name === "tokenrouter") {
+          return this.callTokenRouter(target, targetModel, targetMessages, targetOptions);
+        }
+        return this.callOpenAICompatible(target, targetModel, targetMessages, targetOptions);
+      },
+      stream: (target: AIProviderConfig, targetModel: string, targetMessages: { role: string; content: string }[], targetOptions?: GatewayCallOptions) =>
+        this.streamProviderDirect(target, targetModel, targetMessages, targetOptions),
+      healthCheck: (target: AIProviderConfig) => this.pingProviderDirect(target),
+    };
+
+    if (provider.name === "gemini") {
+      return createGeminiAdapter(provider, dependencies);
+    }
+    if (provider.name === "tokenrouter") {
+      return createTokenRouterAdapter(provider, dependencies);
+    }
+    if (provider.name === "agentrouter") {
+      return createAgentRouterAdapter(provider, dependencies);
+    }
+    if (provider.name === "zyloo") {
+      return createZylooAdapter(provider, dependencies);
+    }
+    return createNvidiaAdapter(provider, dependencies);
+  }
+
   private async executeProviderCall(
     provider: AIProviderConfig,
     model: string,
     messages: { role: string; content: string }[],
-    options?: { maxTokens?: number; temperature?: number; signal?: AbortSignal }
+    options?: GatewayCallOptions
   ): Promise<Omit<ProviderCallResult, "latency" | "cached" | "deduplicated">> {
+    const adapter = this.getProviderAdapter(provider);
+    return adapter.generate(provider, model, messages, options);
+  }
+
+  private async *executeProviderStream(
+    provider: AIProviderConfig,
+    model: string,
+    messages: { role: string; content: string }[],
+    options?: GatewayCallOptions
+  ): AsyncGenerator<StreamChunk> {
+    const adapter = this.getProviderAdapter(provider);
+    yield* adapter.stream(provider, model, messages, options);
+  }
+
+  private async *streamProviderDirect(
+    provider: AIProviderConfig,
+    model: string,
+    messages: { role: string; content: string }[],
+    options?: GatewayCallOptions
+  ): AsyncGenerator<StreamChunk> {
     if (provider.name === "gemini") {
-      return this.callGemini(provider, model, messages, options);
+      yield* this.streamGemini(provider, model, messages, options);
+      return;
     }
     if (provider.name === "tokenrouter") {
-      return this.callTokenRouter(provider, model, messages, options);
+      yield* this.streamTokenRouter(provider, model, messages, options);
+      return;
     }
-    return this.callOpenAICompatible(provider, model, messages, options);
+    yield* this.streamOpenAICompatible(provider, model, messages, options);
   }
 
   async *callProviderStream(
@@ -629,13 +702,7 @@ export class AIGateway {
     }
 
     try {
-      if (provider.name === "gemini") {
-        yield* this.streamGemini(provider, model, messages, options);
-      } else if (provider.name === "tokenrouter") {
-        yield* this.streamTokenRouter(provider, model, messages, options);
-      } else {
-        yield* this.streamOpenAICompatible(provider, model, messages, options);
-      }
+      yield* this.executeProviderStream(provider, model, messages, options);
       providerHealthMonitor.recordSuccess(name, 0);
       modelCooldownManager.recordSuccess(name, model);
 

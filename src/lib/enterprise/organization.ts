@@ -191,6 +191,15 @@ function formatOrganization(org: {
   settings: string;
   createdAt: Date;
 }): OrganizationData {
+  let parsedSettings = {};
+  if (org.settings) {
+    try {
+      parsedSettings = typeof org.settings === "string" ? JSON.parse(org.settings) : org.settings;
+    } catch {
+      parsedSettings = {};
+    }
+  }
+
   return {
     id: org.id,
     name: org.name,
@@ -201,7 +210,7 @@ function formatOrganization(org: {
     accentColor: org.accentColor,
     customDomain: org.customDomain,
     isActive: org.isActive,
-    settings: JSON.parse(org.settings),
+    settings: parsedSettings,
     createdAt: org.createdAt.toISOString(),
   };
 }

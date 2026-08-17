@@ -35,18 +35,22 @@ export async function logAudit(data: {
   ipAddress?: string;
   userAgent?: string;
 }): Promise<void> {
-  await prisma.auditLog.create({
-    data: {
-      organizationId: data.organizationId || null,
-      userId: data.userId || null,
-      action: data.action,
-      resource: data.resource,
-      resourceId: data.resourceId || null,
-      details: data.details ? JSON.stringify(data.details) : null,
-      ipAddress: data.ipAddress || null,
-      userAgent: data.userAgent || null,
-    },
-  });
+  try {
+    await prisma.auditLog.create({
+      data: {
+        organizationId: data.organizationId || null,
+        userId: data.userId || null,
+        action: data.action,
+        resource: data.resource,
+        resourceId: data.resourceId || null,
+        details: data.details ? JSON.stringify(data.details) : null,
+        ipAddress: data.ipAddress || null,
+        userAgent: data.userAgent || null,
+      },
+    });
+  } catch (err) {
+    console.error("[logAudit error]:", err);
+  }
 }
 
 export async function queryAuditLogs(

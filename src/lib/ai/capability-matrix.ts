@@ -214,8 +214,8 @@ export const MODEL_CAPABILITY_MATRIX: Record<string, ModelCapabilityProfile> = {
     },
   },
 
-  "gemini/gemini-2.5-pro": {
-    modelName: "gemini-2.5-pro",
+  "gemini/gemini-3.7-flash": {
+    modelName: "gemini-3.7-flash",
     providerName: "gemini",
     maxContextTokens: 1048576,
     maxOutputTokens: 65536,
@@ -257,8 +257,8 @@ export const MODEL_CAPABILITY_MATRIX: Record<string, ModelCapabilityProfile> = {
     },
   },
 
-  "gemini/gemini-2.5-flash": {
-    modelName: "gemini-2.5-flash",
+  "gemini/gemini-3.5-flash": {
+    modelName: "gemini-3.5-flash",
     providerName: "gemini",
     maxContextTokens: 1048576,
     maxOutputTokens: 8192,
@@ -283,8 +283,8 @@ export const MODEL_CAPABILITY_MATRIX: Record<string, ModelCapabilityProfile> = {
     },
   },
 
-  "gemini/gemini-2.5-flash-lite": {
-    modelName: "gemini-2.5-flash-lite",
+  "gemini/gemini-3.5-flash-lite": {
+    modelName: "gemini-3.5-flash-lite",
     providerName: "gemini",
     maxContextTokens: 1048576,
     maxOutputTokens: 8192,
@@ -439,8 +439,8 @@ export const MODEL_CAPABILITY_MATRIX: Record<string, ModelCapabilityProfile> = {
     },
   },
 
-  "agentrouter/gemini-2.5-pro": {
-    modelName: "gemini-2.5-pro",
+  "agentrouter/gemini-3.5-flash": {
+    modelName: "gemini-3.5-flash",
     providerName: "agentrouter",
     maxContextTokens: 1048576,
     maxOutputTokens: 65536,
@@ -566,6 +566,96 @@ export const MODEL_CAPABILITY_MATRIX: Record<string, ModelCapabilityProfile> = {
       simple_qa: taskScore("simple_qa", 0.75, 0.98, 0.75),
       hint: taskScore("hint", 0.72, 0.98, 0.75),
       simplify: taskScore("simplify", 0.72, 0.98, 0.75),
+    },
+  },
+
+  "zyloo/claude-fable-5": {
+    modelName: "zyloo/claude-fable-5",
+    providerName: "zyloo",
+    maxContextTokens: 1048576,
+    maxOutputTokens: 16384,
+    costPer1KInput: 0.010,
+    costPer1KOutput: 0.050,
+    strengths: ["explain", "code_generation", "debugging", "architecture", "deep-dive", "reasoning", "review", "socratic", "practice", "interview"],
+    weaknesses: [],
+    supportedLanguages: ["en", "zh", "es", "code"],
+    fineTuned: false,
+    recommendedFor: ["frontier_reasoning", "complex_architecture", "deep_debugging"],
+    defaultScore: score({ quality: 0.98, latency: 0.85, cost: 0.7 }),
+    scores: {
+      explain: taskScore("explain", 0.98, 0.85, 0.7),
+      code_generation: taskScore("code_generation", 0.99, 0.85, 0.7),
+      debugging: taskScore("debugging", 0.98, 0.85, 0.7),
+      architecture: taskScore("architecture", 0.99, 0.85, 0.7),
+      "deep-dive": taskScore("deep-dive", 0.98, 0.85, 0.7),
+      reasoning: taskScore("reasoning", 0.99, 0.85, 0.7),
+    },
+  },
+
+  "zyloo/gpt-5.5": {
+    modelName: "zyloo/gpt-5.5",
+    providerName: "zyloo",
+    maxContextTokens: 200000,
+    maxOutputTokens: 16384,
+    costPer1KInput: 0.003,
+    costPer1KOutput: 0.012,
+    strengths: ["explain", "code_generation", "debugging", "architecture", "visualization", "simple_qa", "deep-dive", "compare", "review", "socratic", "practice", "interview"],
+    weaknesses: [],
+    supportedLanguages: ["en", "zh", "code"],
+    fineTuned: false,
+    recommendedFor: ["general_purpose", "fast_coding", "system_design"],
+    defaultScore: score({ quality: 0.95, latency: 0.9, cost: 0.85 }),
+    scores: {
+      explain: taskScore("explain", 0.95, 0.9, 0.85),
+      code_generation: taskScore("code_generation", 0.96, 0.9, 0.85),
+      debugging: taskScore("debugging", 0.94, 0.9, 0.85),
+      architecture: taskScore("architecture", 0.95, 0.9, 0.85),
+      visualization: taskScore("visualization", 0.92, 0.9, 0.85),
+    },
+  },
+
+  "zyloo/gemini-3.6-flash": {
+    modelName: "zyloo/gemini-3.6-flash",
+    providerName: "zyloo",
+    maxContextTokens: 1048576,
+    maxOutputTokens: 8192,
+    costPer1KInput: 0.00015,
+    costPer1KOutput: 0.00060,
+    strengths: ["simple_qa", "explain", "code_generation", "debugging", "hint", "simplify", "visualization"],
+    weaknesses: [],
+    supportedLanguages: ["en", "zh", "code"],
+    fineTuned: false,
+    recommendedFor: ["ultra_fast_tutoring", "multimodal_analysis", "cost_effective_qa"],
+    defaultScore: score({ quality: 0.92, latency: 0.96, cost: 0.98 }),
+    scores: {
+      explain: taskScore("explain", 0.92, 0.96, 0.98),
+      code_generation: taskScore("code_generation", 0.91, 0.95, 0.98),
+      debugging: taskScore("debugging", 0.89, 0.95, 0.98),
+      simple_qa: taskScore("simple_qa", 0.96, 0.98, 0.98),
+      hint: taskScore("hint", 0.94, 0.98, 0.98),
+      simplify: taskScore("simplify", 0.94, 0.98, 0.98),
+    },
+  },
+
+  "zyloo/deepseek-v4-pro": {
+    modelName: "zyloo/deepseek-v4-pro",
+    providerName: "zyloo",
+    maxContextTokens: 131072,
+    maxOutputTokens: 8192,
+    costPer1KInput: 0.00045,
+    costPer1KOutput: 0.00180,
+    strengths: ["explain", "code_generation", "debugging", "architecture", "reasoning"],
+    weaknesses: [],
+    supportedLanguages: ["en", "zh", "code"],
+    fineTuned: false,
+    recommendedFor: ["high_accuracy_coding", "mathematical_reasoning"],
+    defaultScore: score({ quality: 0.94, latency: 0.88, cost: 0.95 }),
+    scores: {
+      explain: taskScore("explain", 0.93, 0.88, 0.95),
+      code_generation: taskScore("code_generation", 0.96, 0.88, 0.95),
+      debugging: taskScore("debugging", 0.95, 0.88, 0.95),
+      architecture: taskScore("architecture", 0.92, 0.88, 0.95),
+      reasoning: taskScore("reasoning", 0.95, 0.88, 0.95),
     },
   },
 };

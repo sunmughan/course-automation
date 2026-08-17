@@ -16,7 +16,6 @@ import {
   ArrowRightIcon,
   PlusIcon,
   GraduationCapIcon,
-  ClockIcon,
   FileTextIcon,
   ActivityIcon,
 } from "lucide-react";
@@ -25,9 +24,10 @@ interface InstructorStats {
   totalBatches: number;
   totalStudents: number;
   activeStudents: number;
-  atRiskStudents: number;
+  completionRate: number;
   averageCompletion: number;
-  interventionsActive: number;
+  activeInterventions: number;
+  notStartedStudents: number;
 }
 
 interface BatchSummary {
@@ -43,7 +43,6 @@ export default function InstructorDashboardPage() {
   const { user } = useAuthContext();
   const [stats, setStats] = useState<InstructorStats | null>(null);
   const [batches, setBatches] = useState<BatchSummary[]>([]);
-  const [atRiskCount, setAtRiskCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -52,46 +51,17 @@ export default function InstructorDashboardPage() {
       try {
         const headers = getAuthHeaders();
 
-        const batchesRes = await fetch("/api/instructor/batches", { headers });
-        if (!batchesRes.ok) throw new Error("Failed to fetch batches");
+        const [batchesRes, metricsRes] = await Promise.all([
+          fetch("/api/instructor/batches", { headers }),
+          fetch("/api/instructor/metrics", { headers }),
+        ]);
+        if (!batchesRes.ok || !metricsRes.ok) throw new Error("Failed to fetch dashboard");
+
         const batchesData = await batchesRes.json();
+        const metricsData = await metricsRes.json();
         const batchList: BatchSummary[] = batchesData.batches || [];
         setBatches(batchList);
-
-        let totalAtRisk = 0;
-        for (const batch of batchList) {
-          try {
-            const riskRes = await fetch(
-              `/api/instructor/at-risk?batchId=${batch.id}`,
-              { headers }
-            );
-            if (riskRes.ok) {
-              const riskData = await riskRes.json();
-              const atRisk = riskData.atRisk || [];
-              totalAtRisk += atRisk.filter(
-                (s: { riskLevel: string }) => s.riskLevel !== "low"
-              ).length;
-            }
-          } catch {
-            // skip individual batch errors
-          }
-        }
-        setAtRiskCount(totalAtRisk);
-
-        setStats({
-          totalBatches: batchList.length,
-          totalStudents: batchList.reduce(
-            (sum, b) => sum + b._count.students,
-            0
-          ),
-          activeStudents: batchList.reduce(
-            (sum, b) => sum + (b.isActive ? b._count.students : 0),
-            0
-          ),
-          atRiskStudents: totalAtRisk,
-          averageCompletion: 0,
-          interventionsActive: 0,
-        });
+        setStats(metricsData.metrics);
       } catch {
         setError("Failed to load instructor dashboard");
       } finally {
@@ -152,8 +122,8 @@ export default function InstructorDashboardPage() {
         />
         <StatCard
           icon={AlertTriangleIcon}
-          label="At-Risk Students"
-          value={stats?.atRiskStudents ?? 0}
+          label="Not Started"
+          value={stats?.notStartedStudents ?? 0}
           color="orange"
         />
         <StatCard
@@ -164,6 +134,12 @@ export default function InstructorDashboardPage() {
         />
         <StatCard
           icon={TrendingUpIcon}
+          label="Completion Rate"
+          value={`${stats?.completionRate ?? 0}%`}
+          color="green"
+        />
+        <StatCard
+          icon={TrendingUpIcon}
           label="Avg. Completion"
           value={`${stats?.averageCompletion ?? 0}%`}
           color="green"
@@ -171,7 +147,7 @@ export default function InstructorDashboardPage() {
         <StatCard
           icon={FileTextIcon}
           label="Active Interventions"
-          value={stats?.interventionsActive ?? 0}
+          value={stats?.activeInterventions ?? 0}
           color="blue"
         />
       </div>

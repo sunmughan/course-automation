@@ -14,7 +14,6 @@ import {
   ArrowLeftIcon,
   UsersIcon,
   SettingsIcon,
-  CreditCardIcon,
   KeyIcon,
   ShieldCheckIcon,
   PlusIcon,
@@ -47,15 +46,6 @@ interface Member {
   joinedAt: string;
 }
 
-interface Subscription {
-  id: string;
-  planName: string;
-  status: string;
-  billingCycle: string;
-  currentPeriodEnd: string;
-  cancelAtPeriodEnd: boolean;
-}
-
 interface SSOConfig {
   id: string;
   provider: string;
@@ -71,7 +61,6 @@ export default function OrgDetailPage({
   const { id: orgId } = use(params);
   const [org, setOrg] = useState<OrgDetail | null>(null);
   const [members, setMembers] = useState<Member[]>([]);
-  const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [ssoConfigs, setSSOConfigs] = useState<SSOConfig[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -80,10 +69,9 @@ export default function OrgDetailPage({
   async function fetchData() {
     try {
       const headers = getAuthHeaders();
-      const [orgRes, membersRes, subRes, ssoRes] = await Promise.all([
+      const [orgRes, membersRes, ssoRes] = await Promise.all([
         fetch(`/api/admin/organizations/${orgId}`, { headers }),
         fetch(`/api/admin/organizations/${orgId}/members`, { headers }),
-        fetch(`/api/admin/billing/subscriptions?organizationId=${orgId}`, { headers }),
         fetch(`/api/admin/sso?organizationId=${orgId}`, { headers }),
       ]);
 
@@ -98,11 +86,6 @@ export default function OrgDetailPage({
       if (membersRes.ok) {
         const membersData = await membersRes.json();
         setMembers(membersData.members || []);
-      }
-
-      if (subRes.ok) {
-        const subData = await subRes.json();
-        setSubscription(subData.subscription);
       }
 
       if (ssoRes.ok) {
@@ -177,7 +160,6 @@ export default function OrgDetailPage({
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="members">Members</TabsTrigger>
-          <TabsTrigger value="billing">Billing</TabsTrigger>
           <TabsTrigger value="sso">SSO</TabsTrigger>
         </TabsList>
 
@@ -302,64 +284,6 @@ export default function OrgDetailPage({
                     </div>
                   ))}
                 </div>
-              )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="billing" className="space-y-6 mt-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Subscription</CardTitle>
-              <CardDescription>Billing and plan details</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {subscription ? (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-sm font-medium">Plan</p>
-                      <p className="text-sm text-muted-foreground">
-                        {subscription.planName}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">Status</p>
-                      <Badge
-                        variant={
-                          subscription.status === "active"
-                            ? "default"
-                            : "secondary"
-                        }
-                      >
-                        {subscription.status}
-                      </Badge>
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">Billing Cycle</p>
-                      <p className="text-sm text-muted-foreground">
-                        {subscription.billingCycle}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">Period Ends</p>
-                      <p className="text-sm text-muted-foreground">
-                        {new Date(
-                          subscription.currentPeriodEnd
-                        ).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-                  {subscription.cancelAtPeriodEnd && (
-                    <Badge variant="destructive">
-                      Cancels at period end
-                    </Badge>
-                  )}
-                </div>
-              ) : (
-                <p className="text-sm text-muted-foreground text-center py-4">
-                  No active subscription
-                </p>
               )}
             </CardContent>
           </Card>

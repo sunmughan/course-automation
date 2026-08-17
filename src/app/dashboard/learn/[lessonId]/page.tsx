@@ -12,6 +12,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AITutor } from "@/components/tutor/ai-tutor";
 import { IDEPanel } from "@/components/editor/ide-panel";
+import { MarkdownRenderer } from "@/components/ui/markdown-renderer";
 import { useAuthContext } from "@/components/providers/auth-provider";
 import { AnimatedFlowExplainer, generateFlowSteps, type AnimatedFlowConfig } from "@/components/visualization/animated-flow-explainer";
 import { CallStack } from "@/components/visualization/call-stack";
@@ -20,6 +21,8 @@ import { MermaidViewer } from "@/components/visualization/mermaid-viewer";
 import { CodeDiffViewer } from "@/components/visualization/code-diff-viewer";
 import { ExecutionTimeline } from "@/components/visualization/execution-timeline";
 import { AsyncVisualizer } from "@/components/visualization/async-visualizer";
+import { WhiteboardLessonExplainer } from "@/components/learn/whiteboard-lesson-explainer";
+import { LessonPlaygroundStudio } from "@/components/learn/lesson-playground-studio";
 import type { DiagramConfig, CodeDiff, ExecutionEvent, ExecutionTrace, AsyncTrace } from "@/types";
 import {
   ChevronLeftIcon,
@@ -33,6 +36,8 @@ import {
   ClockIcon,
   TrophyIcon,
   MessageCircleIcon,
+  PenToolIcon,
+  FileTextIcon,
 } from "lucide-react";
 
 interface LessonContent {
@@ -73,6 +78,8 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
   const [completing, setCompleting] = useState(false);
   const [courseProgress, setCourseProgress] = useState<{ completed: number; total: number; percentage: number } | null>(null);
   const [activeTab, setActiveTab] = useState("content");
+  const [contentView, setContentView] = useState<"whiteboard" | "reading">("whiteboard");
+  const [tutorInitialPrompt, setTutorInitialPrompt] = useState<string>("");
 
   useEffect(() => {
     async function fetchLesson() {
@@ -198,86 +205,137 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
               </TabsList>
             </div>
 
-            <TabsContent value="content" className="flex-1 overflow-hidden m-0 data-[state=inactive]:hidden">
-              <ScrollArea className="h-full">
-                <div className="max-w-3xl mx-auto px-6 py-8 space-y-8">
-                  <div className="prose prose-sm dark:prose-invert max-w-none">
-                    <div className="whitespace-pre-wrap leading-relaxed text-sm">
-                      {lesson.content}
-                    </div>
+            <TabsContent value="content" className="flex-1 min-h-0 overflow-hidden m-0 data-[state=inactive]:hidden flex flex-col">
+              {/* Learning View Switcher */}
+              <div className="flex items-center justify-between px-6 py-2 bg-muted/20 border-b border-border/60 shrink-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-muted-foreground font-medium">Mode:</span>
+                  <div className="flex items-center gap-1 bg-muted p-0.5 rounded-lg border border-border/50">
+                    <button
+                      onClick={() => setContentView("whiteboard")}
+                      className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
+                        contentView === "whiteboard"
+                          ? "bg-emerald-600 text-white shadow-xs"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <PenToolIcon className="size-3.5" />
+                      Interactive Whiteboard
+                    </button>
+                    <button
+                      onClick={() => setContentView("reading")}
+                      className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
+                        contentView === "reading"
+                          ? "bg-primary text-primary-foreground shadow-xs"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <FileTextIcon className="size-3.5" />
+                      Document Reading
+                    </button>
                   </div>
+                </div>
+                <span className="text-[11px] text-muted-foreground hidden sm:inline-block">
+                  {contentView === "whiteboard" ? "✨ Step-by-step animated teacher classroom" : "📄 Raw course text & notes"}
+                </span>
+              </div>
 
-                  {lesson.explanation && (
-                    <Card className="border-sky-500/20 bg-sky-500/5">
-                      <CardHeader className="pb-2">
-                        <CardTitle className="text-sm flex items-center gap-2">
-                          <LightbulbIcon className="size-4 text-sky-500" />
-                          Explanation
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground whitespace-pre-wrap">
-                          {lesson.explanation}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  )}
-
-                  {lesson.concepts.length > 0 && (
-                    <div className="space-y-3">
-                      <h3 className="text-sm font-semibold flex items-center gap-2">
-                        <ListChecksIcon className="size-4" />
-                        Key Concepts
-                      </h3>
-                      <div className="grid gap-2">
-                        {lesson.concepts.map((concept) => (
-                          <Card key={concept.id} className="border-muted">
-                            <CardHeader className="pb-1 pt-3 px-4">
-                              <CardTitle className="text-sm">{concept.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="pb-3 px-4">
-                              <p className="text-xs text-muted-foreground">{concept.description}</p>
-                            </CardContent>
-                          </Card>
-                        ))}
-                      </div>
+              {contentView === "whiteboard" ? (
+                <div className="p-4 sm:p-6 flex-1 overflow-y-auto">
+                  <WhiteboardLessonExplainer
+                    lessonTitle={lesson.title}
+                    topicTitle={lesson.topic.title}
+                    courseTitle={lesson.course.title}
+                    moduleTitle={lesson.module.title}
+                    lessonContent={lesson.content}
+                    lessonExplanation={lesson.explanation}
+                    concepts={lesson.concepts}
+                    examples={lesson.examples}
+                    visualizations={lesson.visualizations}
+                    onOpenPlayground={() => setActiveTab("playground")}
+                    onOpenAITutor={(prompt) => {
+                      if (prompt) setTutorInitialPrompt(prompt);
+                      setActiveTab("tutor");
+                    }}
+                  />
+                </div>
+              ) : (
+                <ScrollArea className="h-full flex-1">
+                  <div className="max-w-3xl mx-auto px-6 py-8 space-y-8">
+                    <div className="prose prose-sm dark:prose-invert max-w-none">
+                      <MarkdownRenderer content={lesson.content} />
                     </div>
-                  )}
 
-                  {lesson.prerequisites.length > 0 && (
-                    <Card className="border-amber-500/20 bg-amber-500/5">
-                      <CardHeader className="pb-2">
-                        <CardTitle className="text-sm">Prerequisites</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="space-y-1">
-                          {lesson.prerequisites.map((prereq) => (
-                            <div key={prereq.id} className="flex items-center gap-2 text-sm">
-                              {prereq.completed ? (
-                                <CheckCircle2Icon className="size-4 text-emerald-500" />
-                              ) : (
-                                <ClockIcon className="size-4 text-amber-500" />
-                              )}
-                              <span className={prereq.completed ? "text-muted-foreground line-through" : ""}>
-                                {prereq.title}
-                              </span>
-                              {!prereq.completed && (
-                                <Badge variant="outline" className="text-[10px] text-amber-500 border-amber-500/20">
-                                  Required
-                                </Badge>
-                              )}
-                            </div>
+                    {lesson.explanation && (
+                      <Card className="border-sky-500/20 bg-sky-500/5">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-sm flex items-center gap-2">
+                            <LightbulbIcon className="size-4 text-sky-500" />
+                            Explanation
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <MarkdownRenderer content={lesson.explanation} />
+                        </CardContent>
+                      </Card>
+                    )}
+
+                    {lesson.concepts.length > 0 && (
+                      <div className="space-y-3">
+                        <h3 className="text-sm font-semibold flex items-center gap-2">
+                          <ListChecksIcon className="size-4" />
+                          Key Concepts
+                        </h3>
+                        <div className="grid gap-2">
+                          {lesson.concepts.map((concept) => (
+                            <Card key={concept.id} className="border-muted">
+                              <CardHeader className="pb-1 pt-3 px-4">
+                                <CardTitle className="text-sm">{concept.title}</CardTitle>
+                              </CardHeader>
+                              <CardContent className="pb-3 px-4">
+                                <p className="text-xs text-muted-foreground">{concept.description}</p>
+                              </CardContent>
+                            </Card>
                           ))}
                         </div>
-                      </CardContent>
-                    </Card>
-                  )}
-                </div>
-              </ScrollArea>
+                      </div>
+                    )}
+
+                    {lesson.prerequisites.length > 0 && (
+                      <Card className="border-amber-500/20 bg-amber-500/5">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-sm">Prerequisites</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="space-y-1">
+                            {lesson.prerequisites.map((prereq) => (
+                              <div key={prereq.id} className="flex items-center gap-2 text-sm">
+                                {prereq.completed ? (
+                                  <CheckCircle2Icon className="size-4 text-emerald-500" />
+                                ) : (
+                                  <ClockIcon className="size-4 text-amber-500" />
+                                )}
+                                <span className={prereq.completed ? "text-muted-foreground line-through" : ""}>
+                                  {prereq.title}
+                                </span>
+                                {!prereq.completed && (
+                                  <Badge variant="outline" className="text-[10px] text-amber-500 border-amber-500/20">
+                                    Required
+                                  </Badge>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )}
+                  </div>
+                </ScrollArea>
+              )}
             </TabsContent>
 
-            <TabsContent value="examples" className="flex-1 overflow-hidden m-0 data-[state=inactive]:hidden">
-              <ScrollArea className="h-full">
+            <TabsContent value="examples" className="flex-1 min-h-0 overflow-hidden m-0 data-[state=inactive]:hidden flex flex-col">
+              <ScrollArea className="h-full flex-1">
                 <div className="max-w-3xl mx-auto px-6 py-8 space-y-6">
                   {lesson.examples.length === 0 ? (
                     <div className="text-center py-12 text-muted-foreground">
@@ -316,14 +374,16 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
               </ScrollArea>
             </TabsContent>
 
-            <TabsContent value="playground" className="flex-1 overflow-hidden m-0 data-[state=inactive]:hidden">
-              <IDEPanel
-                initialCode={lesson.examples[0]?.starterCode || "// Write your code here\n"}
+            <TabsContent value="playground" className="flex-1 min-h-0 overflow-hidden m-0 data-[state=inactive]:hidden flex flex-col">
+              <LessonPlaygroundStudio
+                initialCode={lesson.examples[0]?.solutionCode || lesson.examples[0]?.starterCode || "// Write your code here\n"}
+                examples={lesson.examples}
+                lessonTitle={lesson.title}
               />
             </TabsContent>
 
-            <TabsContent value="visualize" className="flex-1 overflow-hidden m-0 data-[state=inactive]:hidden">
-              <ScrollArea className="h-full">
+            <TabsContent value="visualize" className="flex-1 min-h-0 overflow-hidden m-0 data-[state=inactive]:hidden flex flex-col">
+              <ScrollArea className="h-full flex-1">
                 <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
                   {lesson.visualizations.length === 0 ? (
                     <div className="text-center py-12 text-muted-foreground">
@@ -370,6 +430,7 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
                                   args: f.variables || [],
                                   returnValue: f.returned || undefined,
                                   isExecuting: i === frames.length - 1,
+                                  depth: i,
                                 }))}
                               />
                             </CardContent>
@@ -474,12 +535,12 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
               </ScrollArea>
             </TabsContent>
 
-            <TabsContent value="tutor" className="flex-1 overflow-hidden m-0 data-[state=inactive]:hidden">
+            <TabsContent value="tutor" className="flex-1 min-h-0 overflow-hidden m-0 data-[state=inactive]:hidden flex flex-col h-full">
               <AITutor
                 userId={user?.id || null}
                 topicId={lesson.topic.id}
                 lessonId={lesson.id}
-                className="h-full border-0 rounded-none"
+                className="h-full flex-1 border-0 rounded-none"
               />
             </TabsContent>
           </Tabs>

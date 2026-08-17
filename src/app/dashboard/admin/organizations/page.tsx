@@ -121,12 +121,14 @@ export default function OrganizationsPage() {
           </p>
         </div>
         <Dialog open={showCreate} onOpenChange={setShowCreate}>
-          <DialogTrigger>
-            <Button>
-              <PlusIcon className="size-4 mr-2" />
-              Create Organization
-            </Button>
-          </DialogTrigger>
+          <DialogTrigger
+            render={
+              <Button>
+                <PlusIcon className="size-4 mr-2" />
+                Create Organization
+              </Button>
+            }
+          />
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Create Organization</DialogTitle>
