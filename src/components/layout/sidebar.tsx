@@ -133,7 +133,7 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
             return (
               <Button
                 key={item.href}
-                variant={isActive ? "secondary" : "ghost" }
+                variant={isActive ? "secondary" : "ghost"}
                 className={cn(
                   "justify-start text-xs font-medium cursor-pointer",
                   isActive ? "bg-sky-600/20 text-sky-300 font-bold border border-sky-500/30" : "text-slate-400 hover:text-white hover:bg-slate-900",
@@ -149,34 +149,34 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
         </nav>
       </ScrollArea>
 
-      {/* Bottom Section: My Profile Button + User Avatar Card + Logout (Full Height, No Cutoff) */}
-      <div className="border-t border-slate-800 p-2.5 bg-slate-950 space-y-2 shrink-0">
-        {/* My Profile Button (Placed cleanly above Demo Student) */}
+      {/* Bottom Section: Normal My Profile + Normal User Info (No Pills, No Boxes) */}
+      <div className="border-t border-slate-800 p-2 bg-slate-950 space-y-1 shrink-0">
+        {/* Normal My Profile Item */}
         <Button
           variant={pathname === "/dashboard/profile" ? "secondary" : "ghost"}
           className={cn(
             "w-full justify-start text-xs font-medium cursor-pointer",
-            pathname === "/dashboard/profile" ? "bg-sky-600 text-white font-bold" : "text-slate-300 hover:text-white hover:bg-slate-900 border border-slate-800/80",
+            pathname === "/dashboard/profile" ? "bg-sky-600/20 text-sky-300 font-bold" : "text-slate-400 hover:text-white hover:bg-slate-900",
             collapsed && "justify-center px-0"
           )}
           render={<Link href="/dashboard/profile" onClick={() => { if (isMobile && onClose) onClose(); }} />}
         >
           <UserIcon className="size-4 shrink-0 text-sky-400" />
-          {!collapsed && <span className="ml-2 font-bold">My Profile</span>}
+          {!collapsed && <span className="ml-2">My Profile</span>}
         </Button>
 
-        {/* User Avatar Info Box */}
+        {/* Normal Demo Student User Display */}
         <div
           className={cn(
-            "flex items-center gap-2 rounded-xl p-2 bg-slate-900/70 border border-slate-800/80",
-            collapsed && "justify-center p-1.5"
+            "flex items-center gap-2 p-1.5",
+            collapsed && "justify-center"
           )}
         >
-          <Avatar size="sm" className="border border-slate-700">
+          <Avatar size="sm" className="border border-slate-750 shrink-0">
             <AvatarFallback className="bg-sky-950 text-sky-300 font-bold text-xs">{initials}</AvatarFallback>
           </Avatar>
           {!collapsed && (
-            <div className="flex-1 truncate">
+            <div className="flex-1 truncate min-w-0">
               <p className="truncate text-xs font-bold text-white">
                 {user?.name || "Demo Student"}
               </p>
@@ -187,7 +187,7 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
           )}
         </div>
 
-        {/* Logout Button */}
+        {/* Normal Logout Button */}
         <Button
           variant="ghost"
           className={cn(
