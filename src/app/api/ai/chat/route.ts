@@ -12,6 +12,7 @@ import { getAIOrganizationId } from "@/lib/ai/request-context";
 import { apiHandler } from "@/lib/api-handler";
 import { aiSchemas, AppError } from "@/lib/errors";
 import type { TutorMode } from "@/types";
+import { validateAIQuality } from "@/lib/ai/quality-guard";
 
 export const POST = apiHandler(async (ctx) => {
   const user = ctx.user!;
@@ -192,7 +193,14 @@ export const POST = apiHandler(async (ctx) => {
     }
   }
 
-  const educationalResponse = parseEducationalExplanation(result.content);
+  // AI Quality Guard & Safety Validation
+  const { sanitizedContent } = validateAIQuality({
+    content: displayContent,
+    mode,
+  });
+  displayContent = sanitizedContent;
+
+  const educationalResponse = parseEducationalExplanation(displayContent);
 
   const toolCall = parseToolCallFromResponse(result.content);
   if (toolCall) {
