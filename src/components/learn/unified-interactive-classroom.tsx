@@ -544,7 +544,7 @@ export function UnifiedInteractiveClassroom({
       {/* ─────────────────────────────────────────────────────────────────────────────
           1. TOP SLIM HEADER BAR (BRAND / CHAPTERS / SLIM PILL / DESKTOP TOOLS / SUBHEADER TOGGLE)
           ───────────────────────────────────────────────────────────────────────────── */}
-      <header className="h-12 bg-slate-900 border-b border-slate-800 px-3 flex items-center justify-between gap-2 shrink-0 z-30">
+      <header className="min-h-14 sm:h-14 py-2 px-3 sm:px-5 bg-slate-900 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0 z-30">
         {/* Left: Back Button, Chapters Drawer Button, Slim Pill Title */}
         <div className="flex items-center gap-1.5 min-w-0">
           <button
@@ -740,11 +740,11 @@ export function UnifiedInteractiveClassroom({
           </div>
         </div>
 
-        {/* Right Corner: Subheader Toggle Icon (Show/Hide full width card below) */}
-        <div className="flex items-center gap-1">
+        {/* Right Corner: Mobile Subheader Toggle Icon (Mobile Only) */}
+        <div className="flex sm:hidden items-center gap-1">
           <button
             onClick={() => setShowSubheaderCard(!showSubheaderCard)}
-            className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
               showSubheaderCard
                 ? "bg-sky-600/20 text-sky-300 border-sky-500/40"
                 : "bg-slate-950 text-slate-400 border-slate-800 hover:text-white"
@@ -752,7 +752,7 @@ export function UnifiedInteractiveClassroom({
             title="Toggle Subheader Bar"
           >
             <PanelTop className="size-3.5" />
-            <span className="hidden sm:inline text-[11px]">{showSubheaderCard ? "Hide Bar" : "Show Bar"}</span>
+            <span className="text-[10px]">{showSubheaderCard ? "Hide Bar" : "Show Bar"}</span>
           </button>
         </div>
       </header>

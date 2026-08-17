@@ -82,7 +82,7 @@ export function Sidebar({ onClose, isMobile }: { onClose?: () => void; isMobile?
     <aside
       className={cn(
         "flex flex-col border-r border-slate-800 bg-slate-950 h-full min-h-screen transition-all duration-300",
-        collapsed ? "w-16" : "w-60"
+        isMobile ? "w-full" : collapsed ? "w-16" : "w-60"
       )}
     >
       {/* Sidebar Header */}
