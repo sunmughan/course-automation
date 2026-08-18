@@ -30,7 +30,7 @@ export const LANGUAGE_REGISTRY: Record<string, LanguageDefinition> = {
     isCompiled: false,
     executeCommand: (sourceFile) => `node --no-warnings "${sourceFile}"`,
     defaultCode: `// JavaScript\nconsole.log("Hello, world!");\n`,
-    aliases: ["js", "javascript", "node"],
+    aliases: ["js", "javascript", "node", "nodejs", "node.js"],
   },
   typescript: {
     id: "typescript",

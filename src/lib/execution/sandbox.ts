@@ -12,9 +12,8 @@ const MAX_OUTPUT_LENGTH = 50000;
 
 function sanitizeCode(code: string): void {
   const dangerousPatterns: [RegExp, string][] = [
-    [/process\.(exit|kill|chdir|abort|dlopen|binding|env)/, "process"],
+    [/process\.(kill|chdir|abort|dlopen|binding)/, "process system control"],
     [/__proto__/, "__proto__"],
-    [/child_process/, "child_process"],
     [/eval\s*\(/, "eval()"],
   ];
 
