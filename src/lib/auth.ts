@@ -2,7 +2,10 @@ import { SignJWT, jwtVerify } from "jose";
 import bcrypt from "bcryptjs";
 import type { UserPayload } from "@/types";
 
-const AUTH_SECRET = process.env.AUTH_SECRET || "default_super_secret_jwt_key_at_least_32_bytes_long_12345";
+const AUTH_SECRET =
+  process.env.AUTH_SECRET ||
+  process.env.JWT_SECRET ||
+  "default_super_secret_jwt_key_at_least_32_bytes_long_12345";
 const secret = new TextEncoder().encode(AUTH_SECRET);
 
 export async function hashPassword(password: string): Promise<string> {
