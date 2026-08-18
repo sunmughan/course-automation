@@ -57,6 +57,8 @@ export function useExecution(): UseExecutionReturn {
 
       try {
         const token = typeof window !== "undefined" ? localStorage.getItem("auth_token") : null;
+        const normalizedLang =
+          language === "nodejs" || language === "node" || language === "react" ? "javascript" : language;
 
         const res = await fetch("/api/code/run", {
           method: "POST",
@@ -64,35 +66,45 @@ export function useExecution(): UseExecutionReturn {
             "Content-Type": "application/json",
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
-          body: JSON.stringify({ code, language, trace: enableTrace }),
+          body: JSON.stringify({ code, language: normalizedLang, trace: enableTrace }),
           signal: controller.signal,
         });
 
+        const rawText = await res.text();
+        let data: any = null;
+        try {
+          data = JSON.parse(rawText);
+        } catch {
+          const errMsg = rawText.includes("<!DOCTYPE")
+            ? "Server execution engine encountered an error. Please verify backend service."
+            : rawText.slice(0, 300) || `Server returned error (${res.status})`;
+          setError(errMsg);
+          setLoading(false);
+          return null;
+        }
+
         if (!res.ok) {
-          const data = await res.json();
-          const errorMsg = data.error || `Execution failed with status ${res.status}`;
+          const errorMsg = data?.error || `Execution failed with status ${res.status}`;
           setError(errorMsg);
           setLoading(false);
           return null;
         }
 
-        const data: ExecutionResult = await res.json();
-
         if (controller.signal.aborted) return null;
 
-        setOutput(data.output);
-        setError(data.error);
-        setEvents(data.events);
-        setExecutionTime(data.executionTime);
+        setOutput(data.output || "");
+        setError(data.error || null);
+        setEvents(data.events || []);
+        setExecutionTime(data.executionTime || 0);
         setTrace(data.trace || null);
 
         const entry: ExecutionHistoryEntry = {
           id: `exec_${++idCounter}`,
           code,
-          output: data.output,
-          error: data.error,
-          events: data.events,
-          executionTime: data.executionTime,
+          output: data.output || "",
+          error: data.error || null,
+          events: data.events || [],
+          executionTime: data.executionTime || 0,
           trace: data.trace || null,
           timestamp: Date.now(),
         };
@@ -102,7 +114,7 @@ export function useExecution(): UseExecutionReturn {
         return data;
       } catch (err) {
         if ((err as Error).name === "AbortError") return null;
-        const message = err instanceof Error ? err.message : "Network error";
+        const message = err instanceof Error ? err.message : "Execution error";
         setError(message);
         return null;
       } finally {

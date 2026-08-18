@@ -2271,7 +2271,22 @@ function generateWhatItDoesPoints({
         ];
   }
 
-  // 2. HTML5 Specific Points
+  // 2. Node.js & Express Backend Specific Points (PRIORITY OVER JS)
+  if (combined.includes("node") || combined.includes("express") || combined.includes("backend")) {
+    return language === "hi"
+      ? [
+          "Non-blocking Asynchronous I/O se high-speed HTTP servers banata hai: Request aate hi event loop ke zariye bina block hue fast execute hota hai.",
+          "RESTful APIs aur Middleware pipelines execute karta hai: Routes (GET, POST, PUT, DELETE) aur auth tokens ko manage karta hai.",
+          "Database Operations aur Enterprise Backend Services serve karta hai: MongoDB, PostgreSQL aur microservices ke sath data securely sync karta hai.",
+        ]
+      : [
+          "Creates High-Speed Non-Blocking HTTP Servers: Processes thousands of concurrent requests via the V8 Event Loop without thread blockage.",
+          "Executes Express RESTful Routing & Middleware: Manages request-response pipelines, JWT auth headers, and endpoint validation.",
+          "Powers Robust Database & Microservice Layers: Connects securely to PostgreSQL, MongoDB, and external backend microservices.",
+        ];
+  }
+
+  // 3. HTML5 Specific Points
   if (combined.includes("html")) {
     return language === "hi"
       ? [
@@ -2286,7 +2301,7 @@ function generateWhatItDoesPoints({
         ];
   }
 
-  // 3. CSS3 Specific Points
+  // 4. CSS3 Specific Points
   if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid")) {
     return language === "hi"
       ? [
@@ -2298,21 +2313,6 @@ function generateWhatItDoesPoints({
           "Designs Fluid Responsive Layouts: Adapts UI seamlessly across mobile, tablet, and widescreen displays.",
           "Controls 1D/2D Alignment with Flexbox & Grid: Perfectly aligns, distributes, and centers elements in the DOM.",
           "Applies Modern Animations & Styling Rules: Transforms UI elements with colors, transitions, and micro-interactions.",
-        ];
-  }
-
-  // 4. JavaScript Specific Points
-  if (combined.includes("javascript") || combined.includes("js") || combined.includes("dom")) {
-    return language === "hi"
-      ? [
-          "Webpage ko Interactive aur Dynamic banata hai: Button click, form validation aur data calculations execute karta hai.",
-          "DOM Manipulation karta hai: Page reload kiye bina elements ko add, remove aur modify karta hai.",
-          "Asynchronous Operations (Fetch / Promises) handle karta hai: Server se background me live data mangwata hai.",
-        ]
-      : [
-          "Enables Dynamic Client-Side Interactivity: Validates forms, handles user inputs, and computes business logic.",
-          "Performs Direct DOM Traversal & Manipulation: Dynamically creates, updates, and removes HTML nodes on the fly.",
-          "Manages Asynchronous Execution with Promises: Fetches data in the background via fetch() and async/await.",
         ];
   }
 
@@ -2346,18 +2346,18 @@ function generateWhatItDoesPoints({
         ];
   }
 
-  // 7. Node.js Backend
-  if (combined.includes("node") || combined.includes("express")) {
+  // 7. Client-Side JavaScript Specific Points
+  if (combined.includes("javascript") || combined.includes("dom") || combined.includes("vanilla js")) {
     return language === "hi"
       ? [
-          "Non-blocking Asynchronous I/O se high-speed HTTP servers banata hai.",
-          "RESTful APIs aur JSON Endpoints ko efficiently serve karta hai.",
-          "Database Operations aur Authentication tokens ko securely process karta hai.",
+          "Webpage ko Interactive aur Dynamic banata hai: Button click, form validation aur data calculations execute karta hai.",
+          "DOM Manipulation karta hai: Page reload kiye bina elements ko add, remove aur modify karta hai.",
+          "Asynchronous Operations (Fetch / Promises) handle karta hai: Server se background me live data mangwata hai.",
         ]
       : [
-          "Creates high-speed event-driven HTTP backends using non-blocking I/O.",
-          "Serves RESTful APIs and middleware pipelines with sub-millisecond latency.",
-          "Executes database queries, authentication flows, and microservice communication.",
+          "Enables Dynamic Client-Side Interactivity: Validates forms, handles user inputs, and computes business logic.",
+          "Performs Direct DOM Traversal & Manipulation: Dynamically creates, updates, and removes HTML nodes on the fly.",
+          "Manages Asynchronous Execution with Promises: Fetches data in the background via fetch() and async/await.",
         ];
   }
 
@@ -2473,7 +2473,22 @@ function generateUseCases({
         ];
   }
 
-  // 2. HTML5 Use Cases
+  // 2. Node.js & Express Backend Specific Use Cases (PRIORITY OVER JS)
+  if (combined.includes("node") || combined.includes("express") || combined.includes("backend")) {
+    return language === "hi"
+      ? [
+          "हाई-स्पीड RESTful APIs और माइक्रो-सर्विसेज बैकएंड तैयार करना",
+          "डेटाबेस ट्रांजेक्शन्स (PostgreSQL / MongoDB) को नॉन-ब्लॉकिंग प्रोसेस करना",
+          "JWT ऑथेंटिकेशन और रोल-बेस्ड एक्सेस कंट्रोल (RBAC) सिस्टम बनाना",
+        ]
+      : [
+          "Creating high-speed event-driven RESTful APIs and microservices",
+          "Executing non-blocking database queries with PostgreSQL and MongoDB",
+          "Implementing robust JWT authentication and Role-Based Access Control",
+        ];
+  }
+
+  // 3. HTML5 Use Cases
   if (combined.includes("html")) {
     return language === "hi"
       ? [
@@ -2488,7 +2503,7 @@ function generateUseCases({
         ];
   }
 
-  // 3. CSS3 Use Cases
+  // 4. CSS3 Use Cases
   if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid")) {
     return language === "hi"
       ? [
@@ -2500,21 +2515,6 @@ function generateUseCases({
           "Fluid responsive grid layouts adjusting from mobile to 4K displays",
           "Pixel-perfect horizontal and vertical centering with CSS Flexbox",
           "Interactive hover transitions, card shadows, and micro-animations",
-        ];
-  }
-
-  // 4. JavaScript Use Cases
-  if (combined.includes("javascript") || combined.includes("js") || combined.includes("dom")) {
-    return language === "hi"
-      ? [
-          "पेज को रीलोड किए बिना यूजर इंटरैक्शन पर डायनामिक HTML चेंज करना",
-          "API से डेटा मंगाकर टेबल और लिस्ट्स को जावास्क्रिप्ट से भरना",
-          "क्लाइंट-साइड बिजनेस लॉजिक और कैलकुलेशन प्रोसेस करना",
-        ]
-      : [
-          "Zero-reload dynamic DOM manipulation on button clicks and inputs",
-          "Populating tables and lists dynamically from asynchronous APIs",
-          "Executing fast client-side calculations and business validations",
         ];
   }
 
@@ -2548,18 +2548,18 @@ function generateUseCases({
         ];
   }
 
-  // 7. Node.js Use Cases
-  if (combined.includes("node") || combined.includes("express")) {
+  // 7. Client-Side JavaScript Use Cases
+  if (combined.includes("javascript") || combined.includes("dom") || combined.includes("vanilla js")) {
     return language === "hi"
       ? [
-          "हाई-स्पीड RESTful APIs और माइक्रो-सर्विसेज बैकएंड बनाना",
-          "डेटाबेस ट्रांजेक्शन्स (MongoDB / PostgreSQL) को नॉन-ब्लॉकिंग प्रोसेस करना",
-          "JWT ऑथेंटिकेशन और रोल-बेस्ड एक्सेस कंट्रोल (RBAC) सिस्टम तैयार करना",
+          "पेज को रीलोड किए बिना यूजर इंटरैक्शन पर डायनामिक HTML चेंज करना",
+          "API से डेटा मंगाकर टेबल और लिस्ट्स को जावास्क्रिप्ट से भरना",
+          "क्लाइंट-साइड बिजनेस लॉजिक और कैलकुलेशन प्रोसेस करना",
         ]
       : [
-          "Creating high-speed event-driven RESTful APIs and microservices",
-          "Executing non-blocking database queries with PostgreSQL and MongoDB",
-          "Implementing robust JWT authentication and Role-Based Access Control",
+          "Zero-reload dynamic DOM manipulation on button clicks and inputs",
+          "Populating tables and lists dynamically from asynchronous APIs",
+          "Executing fast client-side calculations and business validations",
         ];
   }
 
