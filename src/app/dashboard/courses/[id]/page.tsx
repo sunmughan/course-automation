@@ -258,28 +258,35 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               <span>Course Curriculum ({course.modules.length} Learning Phases)</span>
             </h2>
             <p className="text-xs text-slate-400 font-mono mt-0.5">
-              Jump straight to React, JavaScript, CSS, HTML or any specific phase
+              Select any phase below to jump straight to React.js, TypeScript, JavaScript, CSS, or HTML5
             </p>
           </div>
 
+          {/* Quick Technology Filter Pills */}
           <div className="flex items-center gap-1.5 flex-wrap">
             {[
-              { id: "all", label: "All Phases", badge: "All" },
-              { id: "html", label: "HTML5", badge: "🟠 HTML5" },
-              { id: "css", label: "CSS3", badge: "🔵 CSS3" },
-              { id: "js", label: "JavaScript", badge: "🟡 JavaScript" },
-              { id: "react", label: "React.js", badge: "⚛️ React.js" },
-              { id: "ts", label: "TypeScript / Tooling", badge: "🔷 TypeScript" },
+              { id: "all", label: "All Phases", badge: "All Phases" },
+              { id: "html", label: "HTML5", badge: "🟠 HTML5 (Phase 1)" },
+              { id: "css", label: "CSS3", badge: "🔵 CSS3 (Phase 2-3)" },
+              { id: "javascript", label: "JavaScript", badge: "🟡 JavaScript (Phase 4)" },
+              { id: "typescript", label: "TypeScript", badge: "🔷 TypeScript (Phase 5)" },
+              { id: "react", label: "React.js", badge: "⚛️ React.js (Phase 6)" },
             ].map((filter) => (
               <button
                 key={filter.id}
                 onClick={() => {
                   if (filter.id === "all") {
-                    // expand first
                     if (course.modules.length > 0) setExpandedModules(new Set([course.modules[0].id]));
                   } else {
-                    // find matching module and expand it
-                    const target = course.modules.find(m => m.title.toLowerCase().includes(filter.id));
+                    const target = course.modules.find(
+                      (m, i) =>
+                        m.title.toLowerCase().includes(filter.id) ||
+                        (filter.id === "react" && (m.title.toLowerCase().includes("react") || i === 5)) ||
+                        (filter.id === "typescript" && (m.title.toLowerCase().includes("typescript") || i === 4)) ||
+                        (filter.id === "javascript" && (m.title.toLowerCase().includes("javascript") || i === 3)) ||
+                        (filter.id === "css" && (m.title.toLowerCase().includes("css") || i === 1 || i === 2)) ||
+                        (filter.id === "html" && (m.title.toLowerCase().includes("html") || i === 0))
+                    );
                     if (target) {
                       setExpandedModules(new Set([target.id]));
                       const el = document.getElementById(`module-${target.id}`);
@@ -287,7 +294,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                     }
                   }
                 }}
-                className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-slate-700 transition-all cursor-pointer shadow-xs"
+                className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-sky-500/50 transition-all cursor-pointer shadow-xs"
               >
                 {filter.badge}
               </button>
@@ -297,26 +304,26 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
         {course.modules.map((mod, idx) => {
           const isExpanded = expandedModules.has(mod.id);
-          const getTechBadge = (title: string) => {
+          const getTechBadge = (title: string, index: number) => {
             const lower = title.toLowerCase();
-            if (lower.includes("html") || lower.includes("web standards")) return { label: "HTML5 Core", color: "bg-orange-500/10 text-orange-400 border-orange-500/30" };
-            if (lower.includes("css") || lower.includes("responsive")) return { label: "CSS3 & Design", color: "bg-sky-500/10 text-sky-400 border-sky-500/30" };
-            if (lower.includes("react") || lower.includes("framework")) return { label: "React.js & Ecosystem", color: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30" };
-            if (lower.includes("javascript") || lower.includes("js") || lower.includes("dom")) return { label: "JavaScript Engine", color: "bg-amber-500/10 text-amber-400 border-amber-500/30" };
-            if (lower.includes("architecture") || lower.includes("bundler") || lower.includes("tooling")) return { label: "Architecture & Tooling", color: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30" };
-            if (lower.includes("typescript")) return { label: "TypeScript Pro", color: "bg-blue-500/10 text-blue-400 border-blue-500/30" };
-            if (lower.includes("next")) return { label: "Next.js Fullstack", color: "bg-purple-500/10 text-purple-400 border-purple-500/30" };
-            return { label: `Phase ${idx + 1}`, color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" };
+            if (lower.includes("react") || index === 5) return { label: "⚛️ React.js Mastery", color: "bg-cyan-500/20 text-cyan-300 border-cyan-500/50" };
+            if (lower.includes("typescript") || index === 4) return { label: "🔷 TypeScript Pro", color: "bg-blue-500/20 text-blue-300 border-blue-500/50" };
+            if (lower.includes("javascript") || lower.includes("js") || lower.includes("dom") || index === 3) return { label: "🟡 JavaScript Core", color: "bg-amber-500/20 text-amber-300 border-amber-500/50" };
+            if (lower.includes("css") || lower.includes("responsive") || lower.includes("layout") || index === 1 || index === 2) return { label: "🔵 CSS3 & Responsive", color: "bg-sky-500/20 text-sky-300 border-sky-500/50" };
+            if (lower.includes("html") || lower.includes("web") || index === 0) return { label: "🟠 HTML5 Web Standards", color: "bg-orange-500/20 text-orange-300 border-orange-500/50" };
+            if (lower.includes("node") || lower.includes("express")) return { label: "🟢 Node.js & Backend", color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/50" };
+            if (lower.includes("next")) return { label: "▲ Next.js Fullstack", color: "bg-purple-500/20 text-purple-300 border-purple-500/50" };
+            return { label: `Phase ${index + 1}`, color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/50" };
           };
 
-          const badge = getTechBadge(mod.title);
+          const badge = getTechBadge(mod.title, idx);
 
           return (
             <div
               key={mod.id}
               id={`module-${mod.id}`}
               className={`bg-slate-900/80 border rounded-2xl overflow-hidden transition-all shadow-md ${
-                isExpanded ? "border-sky-500/40 ring-1 ring-sky-500/20" : "border-slate-800 hover:border-slate-700"
+                isExpanded ? "border-sky-500/60 ring-1 ring-sky-500/30" : "border-slate-800 hover:border-slate-700"
               }`}
             >
               <button
@@ -325,10 +332,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1.5">
-                    <span className="text-[11px] font-mono font-extrabold px-2.5 py-0.5 rounded-md bg-sky-950 text-sky-300 border border-sky-800/80">
-                      Phase {idx + 1}
-                    </span>
-                    <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-md border ${badge.color}`}>
+                    <span className={`text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-md border ${badge.color}`}>
                       {badge.label}
                     </span>
                     <span className="text-xs text-slate-500 font-mono">

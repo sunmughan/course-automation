@@ -7,9 +7,9 @@ export const frontendCareerRoadmapCourse = {
   "order": 1,
   "modules": [
     {
-      "title": "Phase 1: Chapters 1 to 10",
-      "description": "Comprehensive coverage of chapters 1 to 10 in Complete Frontend Engineering Roadmap.",
-      "slug": "complete-frontend-engineering-roadmap-phase-1",
+      "title": "Phase 1: HTML5 & Semantic Web Fundamentals (Chapters 1 to 10)",
+      "description": "Master HTML5 tags, document structure, semantic headings, paragraphs, lists, links, images, tables, forms, and accessibility standards.",
+      "slug": "phase-1-html5-fundamentals",
       "topics": [
         {
           "title": "Chapter 1: Getting started with HTML",
@@ -492,9 +492,9 @@ export const frontendCareerRoadmapCourse = {
       ]
     },
     {
-      "title": "Phase 2: Chapters 11 to 20",
-      "description": "Comprehensive coverage of chapters 11 to 20 in Complete Frontend Engineering Roadmap.",
-      "slug": "complete-frontend-engineering-roadmap-phase-2",
+      "title": "Phase 2: CSS3 Fundamentals & Styling Rules (Chapters 11 to 20)",
+      "description": "Master CSS selectors, specificity, colors, typography, background styling, CSS syntax, data attributes, and external stylesheet linking.",
+      "slug": "phase-2-css3-fundamentals",
       "topics": [
         {
           "title": "Chapter 11: Data Attributes",
@@ -997,9 +997,9 @@ export const frontendCareerRoadmapCourse = {
       ]
     },
     {
-      "title": "Phase 3: Chapters 21 to 30",
-      "description": "Comprehensive coverage of chapters 21 to 30 in Complete Frontend Engineering Roadmap.",
-      "slug": "complete-frontend-engineering-roadmap-phase-3",
+      "title": "Phase 3: CSS3 Layouts, Box Model & Responsive Design (Chapters 21 to 30)",
+      "description": "Master the Box Model (Margin, Border, Padding), Flexbox, CSS Grid, Overflow, Positioning, Media Queries, and Mobile-First responsive layouts.",
+      "slug": "phase-3-css3-layouts-boxmodel",
       "topics": [
         {
           "title": "Chapter 21: Padding",
@@ -1502,9 +1502,9 @@ export const frontendCareerRoadmapCourse = {
       ]
     },
     {
-      "title": "Phase 4: Chapters 31 to 40",
-      "description": "Comprehensive coverage of chapters 31 to 40 in Complete Frontend Engineering Roadmap.",
-      "slug": "complete-frontend-engineering-roadmap-phase-4",
+      "title": "Phase 4: JavaScript Core Engine & Data Types (Chapters 31 to 40)",
+      "description": "Master modern JavaScript ES6+, data types (Strings, Numbers, Dates), arrays, objects, comparison operators, control flow, functions, and DOM manipulation.",
+      "slug": "phase-4-javascript-core-engine",
       "topics": [
         {
           "title": "Chapter 31: Strings",
@@ -2007,9 +2007,9 @@ export const frontendCareerRoadmapCourse = {
       ]
     },
     {
-      "title": "Phase 5: Chapters 41 to 50",
-      "description": "Comprehensive coverage of chapters 41 to 50 in Complete Frontend Engineering Roadmap.",
-      "slug": "complete-frontend-engineering-roadmap-phase-5",
+      "title": "Phase 5: TypeScript & Object-Oriented Architecture (Chapters 41 to 50)",
+      "description": "Master static typing with TypeScript, Enums, Interfaces, Type Narrowing, OOP Classes, Decorators, Generics, and enterprise application structuring.",
+      "slug": "phase-5-typescript-oop-architecture",
       "topics": [
         {
           "title": "Chapter 41: Enums",
@@ -2520,9 +2520,9 @@ export const frontendCareerRoadmapCourse = {
       ]
     },
     {
-      "title": "Phase 6: Chapters 51 to 60",
-      "description": "Comprehensive coverage of chapters 51 to 60 in Complete Frontend Engineering Roadmap.",
-      "slug": "complete-frontend-engineering-roadmap-phase-6",
+      "title": "Phase 6: React.js Complete Mastery \u2014 Components, State & Hooks (Chapters 51 to 60)",
+      "description": "Master React 19+ architecture, JSX, Functional Components, Props, State management with useState/useReducer, useEffect lifecycle, Custom Hooks, and TypeScript integration.",
+      "slug": "phase-6-reactjs-complete-mastery",
       "topics": [
         {
           "title": "Chapter 51: Using ReactJS with TypeScript",
