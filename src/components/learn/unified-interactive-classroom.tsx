@@ -152,6 +152,143 @@ interface UnifiedInteractiveClassroomProps {
   onSelectChapter?: (id: string) => void;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Dynamic Multi-Language Detection Engine across all 52+ Courses
+// ─────────────────────────────────────────────────────────────────────────────
+export function detectCourseLanguage({
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
+}: {
+  courseTitle?: string;
+  moduleTitle?: string;
+  lessonTitle?: string;
+  topicTitle?: string;
+}): string {
+  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+
+  if (
+    combined.includes("python") ||
+    combined.includes("django") ||
+    combined.includes("flask") ||
+    combined.includes("data science") ||
+    combined.includes("ai, large language") ||
+    combined.includes("prompt engineering") ||
+    combined.includes("autonomous agents")
+  ) {
+    return "python";
+  }
+  if (combined.includes("c++") || combined.includes("cpp")) {
+    return "cpp";
+  }
+  if (
+    combined.includes("c systems") ||
+    combined.includes("c programming") ||
+    combined.includes("c language") ||
+    (combined.includes("c ") && !combined.includes("c#") && !combined.includes("css"))
+  ) {
+    return "c";
+  }
+  if (
+    combined.includes("java enterprise") ||
+    combined.includes("spring") ||
+    combined.includes("hibernate") ||
+    combined.includes("jpa") ||
+    (combined.includes("java ") && !combined.includes("javascript"))
+  ) {
+    return "java";
+  }
+  if (combined.includes("c#") || combined.includes(".net") || combined.includes("dotnet") || combined.includes("entity framework")) {
+    return "csharp";
+  }
+  if (combined.includes("php")) {
+    return "php";
+  }
+  if (combined.includes("ruby") || combined.includes("rails")) {
+    return "ruby";
+  }
+  if (combined.includes("kotlin") || combined.includes("android native")) {
+    return "kotlin";
+  }
+  if (combined.includes("swift") || combined.includes("ios native") || combined.includes("objective-c")) {
+    return "swift";
+  }
+  if (
+    combined.includes("mysql") ||
+    combined.includes("postgresql") ||
+    combined.includes("sql server") ||
+    combined.includes("oracle") ||
+    combined.includes("database architecture") ||
+    combined.includes("relational database") ||
+    combined.includes("sql")
+  ) {
+    return "sql";
+  }
+  if (combined.includes("bash") || combined.includes("linux") || combined.includes("shell scripting") || combined.includes("devops") || combined.includes("git")) {
+    return "bash";
+  }
+  if (combined.includes("html") && !combined.includes("css") && !combined.includes("react") && !combined.includes("javascript")) {
+    return "html";
+  }
+  if (combined.includes("css") && !combined.includes("html") && !combined.includes("react") && !combined.includes("javascript")) {
+    return "css";
+  }
+  if (combined.includes("typescript") && !combined.includes("react")) {
+    return "typescript";
+  }
+
+  return "javascript";
+}
+
+export function detectExecutionLanguage({
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
+  activeFile = "app",
+  code = "",
+}: {
+  courseTitle?: string;
+  moduleTitle?: string;
+  lessonTitle?: string;
+  topicTitle?: string;
+  activeFile?: string;
+  code?: string;
+}): string {
+  if (activeFile === "html") return "html";
+  if (activeFile === "css") return "css";
+  if (activeFile === "package") return "json";
+  if (activeFile === "server") return "javascript";
+
+  const trimmed = (code || "").trim();
+
+  // 1. Explicit code syntax fingerprints
+  if (trimmed.startsWith("<!DOCTYPE") || trimmed.startsWith("<html") || (trimmed.startsWith("<div") && !trimmed.includes("import ") && !trimmed.includes("export "))) {
+    return "html";
+  }
+  if (trimmed.startsWith("#include <")) {
+    if (trimmed.includes("iostream") || trimmed.includes("std::") || trimmed.includes("cout") || trimmed.includes("class ")) return "cpp";
+    return "c";
+  }
+  if (trimmed.startsWith("public class ") || (trimmed.includes("public static void main") && !trimmed.includes("fun main"))) {
+    return "java";
+  }
+  if (trimmed.startsWith("<?php")) return "php";
+  if (trimmed.startsWith("CREATE TABLE") || trimmed.startsWith("SELECT ") || trimmed.startsWith("INSERT INTO") || trimmed.startsWith("UPDATE ") || trimmed.startsWith("DELETE FROM") || trimmed.startsWith("-- SQL") || trimmed.startsWith("--")) {
+    return "sql";
+  }
+  if (trimmed.startsWith("#!/usr/bin/env bash") || trimmed.startsWith("#!/bin/bash")) {
+    return "bash";
+  }
+  if (trimmed.startsWith("def ") || trimmed.startsWith("import numpy") || trimmed.startsWith("import pandas") || (trimmed.startsWith("import ") && !trimmed.includes("React") && !trimmed.includes("from '")) || (trimmed.includes("print(") && !trimmed.includes("console.log") && !trimmed.includes(";"))) {
+    return "python";
+  }
+
+  // 2. Course Context Fallback
+  return detectCourseLanguage({ courseTitle, moduleTitle, lessonTitle, topicTitle });
+}
+
 export function UnifiedInteractiveClassroom({
   currentLessonId,
   lessonTitle,
@@ -344,6 +481,30 @@ export function UnifiedInteractiveClassroom({
     }
   };
 
+  const detectedCourseLang = useMemo(() => {
+    return detectCourseLanguage({
+      courseTitle,
+      moduleTitle,
+      lessonTitle,
+      topicTitle,
+    });
+  }, [courseTitle, moduleTitle, lessonTitle, topicTitle]);
+
+  const mainFileName = useMemo(() => {
+    if (detectedCourseLang === "python") return "main.py";
+    if (detectedCourseLang === "java") return "Main.java";
+    if (detectedCourseLang === "cpp") return "main.cpp";
+    if (detectedCourseLang === "c") return "main.c";
+    if (detectedCourseLang === "sql") return "query.sql";
+    if (detectedCourseLang === "php") return "index.php";
+    if (detectedCourseLang === "ruby") return "main.rb";
+    if (detectedCourseLang === "bash") return "script.sh";
+    if (detectedCourseLang === "html") return "index.html";
+    if (detectedCourseLang === "css") return "style.css";
+    if (detectedCourseLang === "typescript") return "app.ts";
+    return "App.jsx";
+  }, [detectedCourseLang]);
+
   // Switch examples when lesson changes
   useEffect(() => {
     const initialCode = generateRichTopicCode({
@@ -386,8 +547,14 @@ export function UnifiedInteractiveClassroom({
       : activeFile === "css"
       ? cssCode
       : packageJsonCode;
-  const currentEditorLanguage =
-    activeFile === "html" ? "html" : activeFile === "css" ? "css" : activeFile === "package" ? "json" : "javascript";
+
+  const currentEditorLanguage = useMemo(() => {
+    if (activeFile === "html") return "html";
+    if (activeFile === "css") return "css";
+    if (activeFile === "package") return "json";
+    if (activeFile === "server") return "javascript";
+    return detectedCourseLang;
+  }, [activeFile, detectedCourseLang]);
 
   const handleEditorChange = (newVal: string) => {
     if (activeFile === "server") setServerCode(newVal);
@@ -559,9 +726,16 @@ export function UnifiedInteractiveClassroom({
       }
     }, 600);
 
-    const execLang = currentEditorLanguage === "html" ? "html" : currentEditorLanguage === "json" ? "json" : "javascript";
+    const execLang = detectExecutionLanguage({
+      courseTitle,
+      moduleTitle,
+      lessonTitle,
+      topicTitle,
+      activeFile,
+      code: currentEditorCode,
+    });
     await executeCode(currentEditorCode, execLang, true);
-  }, [currentEditorCode, currentEditorLanguage, executeCode, topicData.flowSteps.length]);
+  }, [currentEditorCode, activeFile, courseTitle, moduleTitle, lessonTitle, topicTitle, executeCode, topicData.flowSteps.length]);
 
   const [isExportingZip, setIsExportingZip] = useState(false);
 
@@ -1510,11 +1684,11 @@ export function UnifiedInteractiveClassroom({
                   }`}
                 >
                   <Sparkles className="size-3 text-sky-300" />
-                  <span>App.jsx</span>
+                  <span>{mainFileName}</span>
                 </button>
               )}
 
-              {(!isPureBackend || isFullstack) && (
+              {isFrontendDomain && (
                 <button
                   onClick={() => setActiveFile("html")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -1528,7 +1702,7 @@ export function UnifiedInteractiveClassroom({
                 </button>
               )}
 
-              {(!isPureBackend || isFullstack) && (
+              {isFrontendDomain && (
                 <button
                   onClick={() => setActiveFile("css")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -2768,14 +2942,14 @@ function generateWhatItDoesPoints({
   // Fallback Clean Points
   return language === "hi"
     ? [
-        `${topicTitle || lessonTitle} ke core concepts ko apply karta hai.`,
+        (topicTitle || lessonTitle) + " ke core concepts ko apply karta hai.",
         "Code ko modular, reusable aur maintainable banata hai.",
         "Runtime errors ko rokk kar fast performance deliver karta hai.",
       ]
     : [
-        `Applies the core principles of ${topicTitle || lessonTitle}.`,
-        "Structures code into modular, maintainable, and reusable blocks.",
-        "Prevents runtime exceptions and optimizes overall execution performance.",
+        "Applies core principles of " + (topicTitle || lessonTitle) + " efficiently.",
+        "Structures code to be modular, scalable, and easy to maintain.",
+        "Prevents runtime errors and enforces high-performance execution.",
       ];
 }
 
@@ -2795,62 +2969,10 @@ function generateUseCases({
   topicTitle: string;
   language: ExplanationLanguage;
 }): string[] {
-  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+  const combined = (courseTitle + " " + moduleTitle + " " + lessonTitle + " " + topicTitle).toLowerCase();
 
-  // 1. React.js Specific Use Cases
+  // 1. React & TypeScript Frontend Specific Use Cases
   if (combined.includes("react")) {
-    if (combined.includes("component") || combined.includes("stateless") || combined.includes("prop")) {
-      return language === "hi"
-        ? [
-            "नेविगेशन बार (Navbar), प्रोडक्ट कार्ड्स और फुटर जैसी रियूजेबल UI लाइब्रेरी बनाना",
-            "एटॉमिक डिजाइन सिस्टम (Design System) के कोर कंपोनेंट्स बनाना",
-            "डैशबोर्ड विगेट्स को पेरेंट से अलग-अलग डेटा पास करके रेंडर करना",
-          ]
-        : [
-            "Building modular UI component libraries (Navbar, Cards, Modals, Footers)",
-            "Creating scalable Design System tokens and enterprise UI components",
-            "Passing dynamic data across parent-child dashboard widgets via props",
-          ];
-    }
-    if (combined.includes("state") || combined.includes("usestate") || combined.includes("hook")) {
-      return language === "hi"
-        ? [
-            "शॉपिंग कार्ट में आइटम्स जोड़ना, हटाना और कुल कीमत लाइव कैलकुलेट करना",
-            "मल्टी-स्टेप फॉर्म विज़ार्ड और इनपुट वैलिडेशन स्टेट मैनेज करना",
-            "डार्क/लाइट थीम टॉगल और साइडबार ओपन/क्लोज स्थिति संभालना",
-          ]
-        : [
-            "Live E-commerce shopping cart counters and total price calculations",
-            "Multi-step registration form wizards with instant validation state",
-            "Dark/Light theme toggles and collapsible sidebar UI states",
-          ];
-    }
-    if (combined.includes("effect") || combined.includes("useeffect") || combined.includes("lifecycle")) {
-      return language === "hi"
-        ? [
-            "कंपोनेंट लोड होते ही बैकएंड REST API से लाइव JSON डेटा फ़ेच करना",
-            "वेबसॉकेट्स और रियल-टाइम चैट का कनेक्शन ओपन व क्लोज़ करना",
-            "ब्राउज़र लोकल स्टोरेज (LocalStorage) में यूजर प्रेफरेंस सिंक करना",
-          ]
-        : [
-            "Fetching live JSON data from REST APIs on component mount",
-            "Establishing and tearing down WebSocket real-time chat connections",
-            "Syncing reactive application state with browser LocalStorage",
-          ];
-    }
-    if (combined.includes("form") || combined.includes("input")) {
-      return language === "hi"
-        ? [
-            "सुरक्षित लॉगिन, साइनअप और ऑथेंटिकेशन फॉर्म्स प्रोसेस करना",
-            "सर्च बार में यूजर के टाइप करते ही ऑटो-सजेशन और लाइव फ़िल्टरिंग",
-            "कस्टम फ़ाइल अपलोड और ड्रैग-एंड-ड्रॉप प्रिव्यू तैयार करना",
-          ]
-        : [
-            "Secure Login and Registration form submission with validations",
-            "Real-time search bar autocomplete and debounce query filters",
-            "Custom file uploaders with drag-and-drop preview handling",
-          ];
-    }
     if (combined.includes("typescript") || combined.includes("type")) {
       return language === "hi"
         ? [
@@ -2877,7 +2999,7 @@ function generateUseCases({
         ];
   }
 
-  // 2. Node.js & Express Backend Specific Use Cases (PRIORITY OVER JS)
+  // 2. Node.js & Express Backend Specific Use Cases
   if (combined.includes("node") || combined.includes("express") || combined.includes("backend")) {
     return language === "hi"
       ? [
@@ -2969,19 +3091,19 @@ function generateUseCases({
 
   return language === "hi"
     ? [
-        `${topicTitle || lessonTitle} को प्रोडक्शन ग्रेड प्रोजेक्ट्स में लागू करना`,
+        (topicTitle || lessonTitle) + " को प्रोडक्शन ग्रेड प्रोजेक्ट्स में लागू करना",
         "मॉड्यूलर और स्केलेबल सॉफ्टवेयर आर्किटेक्चर तैयार करना",
         "इंडस्ट्री बेस्ट प्रैक्टिसेज के साथ सुरक्षित कोड डेवलप करना",
       ]
     : [
-        `Implementing ${topicTitle || lessonTitle} in production-grade software`,
+        "Implementing " + (topicTitle || lessonTitle) + " in production-grade software",
         "Designing modular, scalable, and testable code architectures",
         "Enforcing industry standard best practices for reliable execution",
       ];
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Dynamic Real-World Working Code Generator (Rich Structures, Not Generic Toggle)
+// Dynamic Real-World Multi-Language Working Code Generator
 // ─────────────────────────────────────────────────────────────────────────────
 function generateRichTopicCode({
   courseTitle = "",
@@ -2997,412 +3119,254 @@ function generateRichTopicCode({
   examples: ExampleItem[];
 }): string {
   const existingCode = examples[0]?.solutionCode || examples[0]?.starterCode;
-  // If database has an exhaustive, valid code example (over 120 chars and not generic Toggle), use it
-  if (existingCode && existingCode.length > 120 && !existingCode.includes("Toggle State") && !existingCode.includes("console.log('React")) {
+  if (existingCode && existingCode.length > 100 && !existingCode.includes("Toggle State") && !existingCode.includes("console.log('React")) {
     return existingCode;
   }
 
-  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+  const combined = (courseTitle + " " + moduleTitle + " " + lessonTitle + " " + topicTitle).toLowerCase();
 
-  // 1. React.js Component Architecture & Hierarchy
-  if (combined.includes("react")) {
-    if (combined.includes("component") || combined.includes("stateless") || combined.includes("getting started") || combined.includes("intro") || combined.includes("what is")) {
-      return `import React, { useState } from 'react';
-
-// 1. Child Component: Reusable Feature Card
-function FeatureCard({ title, desc, icon, badge, onSelect }) {
-  return (
-    <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 transition-all shadow-md flex flex-col justify-between">
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-2xl">{icon}</span>
-          <span className="px-2 py-0.5 text-[10px] font-mono font-bold rounded bg-sky-500/20 text-sky-300">
-            {badge}
-          </span>
-        </div>
-        <h3 className="text-sm font-bold text-white mb-1">{title}</h3>
-        <p className="text-xs text-slate-400 mb-4">{desc}</p>
-      </div>
-      <button
-        onClick={onSelect}
-        className="w-full py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-mono font-bold transition-all cursor-pointer"
-      >
-        Select Component →
-      </button>
-    </div>
-  );
-}
-
-// 2. Parent Component: Modular App Structure
-export default function App() {
-  const [selectedFeature, setSelectedFeature] = useState('Component Hierarchy');
-
-  const componentsList = [
-    { id: 1, title: 'Component Hierarchy', desc: 'Break complex UIs into independent, reusable functional building blocks.', icon: '🧩', badge: 'Architecture' },
-    { id: 2, title: 'Props & Data Flow', desc: 'Pass configuration and dynamic data from parent to child components.', icon: '⚡', badge: 'Reactive' },
-    { id: 3, title: 'Virtual DOM Diffing', desc: 'High-performance reconciliation that updates only changed DOM nodes.', icon: '⚛️', badge: 'Ultra-Fast' }
-  ];
-
-  return (
-    <div className="p-6 max-w-2xl mx-auto space-y-6 text-slate-100 font-sans">
-      <header className="border-b border-slate-800 pb-4">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400">
-            React.js Architecture
-          </span>
-        </div>
-        <h1 className="text-xl font-extrabold text-white">Modular Component Structure</h1>
-        <p className="text-xs text-slate-400 mt-1">
-          Parent component rendering multiple reusable Child components via Props.
-        </p>
-      </header>
-
-      {selectedFeature && (
-        <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center justify-between">
-          <span>Active Component: <strong>{selectedFeature}</strong></span>
-          <span className="text-[10px] bg-cyan-500/20 px-2 py-0.5 rounded font-bold">STATE SYNCED ✓</span>
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-        {componentsList.map((item) => (
-          <FeatureCard
-            key={item.id}
-            title={item.title}
-            desc={item.desc}
-            icon={item.icon}
-            badge={item.badge}
-            onSelect={() => setSelectedFeature(item.title)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}`;
-    }
-
-    if (combined.includes("state") || combined.includes("usestate")) {
-      return `import React, { useState } from 'react';
-
-export default function InteractiveTaskManager() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: 'Understand React Component Hierarchy', done: true },
-    { id: 2, text: 'Master useState & Immutable Array Updates', done: false },
-    { id: 3, text: 'Build Production-Ready Interactive Classroom', done: false }
-  ]);
-  const [inputVal, setInputVal] = useState('');
-
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    if (!inputVal.trim()) return;
-    setTasks([...tasks, { id: Date.now(), text: inputVal.trim(), done: false }]);
-    setInputVal('');
-  };
-
-  const toggleTask = (id) => {
-    setTasks(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t));
-  };
-
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(t => t.id !== id));
-  };
-
-  return (
-    <div className="p-6 max-w-lg mx-auto bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl space-y-5 font-sans text-slate-100">
-      <div>
-        <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
-          React State Engine
-        </span>
-        <h2 className="text-lg font-extrabold text-white mt-1">Interactive Task Manager</h2>
-        <p className="text-xs text-slate-400">
-          Demonstrates dynamic arrays, immutable updates, and reactive re-renders.
-        </p>
-      </div>
-
-      <form onSubmit={handleAddTask} className="flex gap-2">
-        <input
-          value={inputVal}
-          onChange={(e) => setInputVal(e.target.value)}
-          placeholder="Add a new learning goal..."
-          className="flex-1 px-3.5 py-2.5 text-xs rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 font-mono"
-        />
-        <button
-          type="submit"
-          className="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold font-mono rounded-xl cursor-pointer shadow-md"
-        >
-          Add +
-        </button>
-      </form>
-
-      <div className="space-y-2">
-        {tasks.map((t) => (
-          <div
-            key={t.id}
-            className="flex items-center justify-between p-3 rounded-2xl bg-slate-950 border border-slate-800/80 transition-all hover:border-slate-700"
-          >
-            <button
-              onClick={() => toggleTask(t.id)}
-              className="flex items-center gap-2.5 text-xs text-left cursor-pointer"
-            >
-              <span
-                className={\`size-4 rounded-md flex items-center justify-center text-[10px] font-bold \${
-                  t.done
-                    ? 'bg-emerald-500 text-slate-950'
-                    : 'border border-slate-700 text-transparent'
-                }\`}
-              >
-                ✓
-              </span>
-              <span className={t.done ? 'line-through text-slate-500' : 'text-slate-200'}>
-                {t.text}
-              </span>
-            </button>
-            <button
-              onClick={() => deleteTask(t.id)}
-              className="text-xs text-rose-400 hover:text-rose-300 font-mono px-2 cursor-pointer"
-              title="Delete Task"
-            >
-              ✕
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}`;
-    }
-
-    if (combined.includes("effect") || combined.includes("useeffect") || combined.includes("lifecycle")) {
-      return `import React, { useState, useEffect } from 'react';
-
-export default function LiveApiDataLoader() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [refreshCount, setRefreshCount] = useState(0);
-
-  useEffect(() => {
-    let isMounted = true;
-    setLoading(true);
-
-    // Simulate async network request with cleanup
-    const timer = setTimeout(() => {
-      if (isMounted) {
-        setUsers([
-          { id: 1, name: 'Siddharth Rao', role: 'Frontend Architect', active: true },
-          { id: 2, name: 'Ananya Sharma', role: 'Full-Stack Engineer', active: true },
-          { id: 3, name: 'Vikram Mehta', role: 'DevOps Specialist', active: false }
-        ]);
-        setLoading(false);
-      }
-    }, 700);
-
-    return () => {
-      isMounted = false;
-      clearTimeout(timer);
-    };
-  }, [refreshCount]);
-
-  return (
-    <div className="p-6 max-w-lg mx-auto bg-slate-900 border border-slate-800 rounded-3xl space-y-4 text-slate-100 font-sans shadow-xl">
-      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div>
-          <span className="text-xs font-mono text-emerald-400 font-bold uppercase">
-            React Lifecycle
-          </span>
-          <h2 className="text-lg font-bold text-white">useEffect Side-Effect Engine</h2>
-        </div>
-        <button
-          onClick={() => setRefreshCount((c) => c + 1)}
-          className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold rounded-xl cursor-pointer"
-        >
-          Refresh #{refreshCount + 1}
-        </button>
-      </div>
-
-      {loading ? (
-        <div className="p-8 text-center text-xs font-mono text-slate-400 animate-pulse bg-slate-950 rounded-2xl border border-slate-800">
-          ⚡ Fetching live API payload...
-        </div>
-      ) : (
-        <div className="space-y-2">
-          {users.map((u) => (
-            <div
-              key={u.id}
-              className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-950 border border-slate-800"
-            >
-              <div>
-                <h4 className="text-xs font-bold text-white font-mono">{u.name}</h4>
-                <p className="text-[11px] text-slate-400">{u.role}</p>
-              </div>
-              <span
-                className={\`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold \${
-                  u.active
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                    : 'bg-slate-800 text-slate-400'
-                }\`}
-              >
-                {u.active ? 'Active ✓' : 'Offline'}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}`;
-    }
-
-    if (combined.includes("typescript") || combined.includes("type")) {
-      return `import React, { useState } from 'react';
-
-// 1. Strict TypeScript Interfaces
-interface StudentProfile {
-  id: number;
-  name: string;
-  specialization: string;
-  progressPercentage: number;
-  isCertified: boolean;
-}
-
-interface StudentCardProps {
-  student: StudentProfile;
-  onCertify: (id: number) => void;
-}
-
-// 2. Type-Safe Functional Component
-function StudentCard({ student, onCertify }: StudentCardProps) {
-  return (
-    <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-      <div>
-        <h4 className="text-xs font-bold text-white font-mono">{student.name}</h4>
-        <p className="text-[11px] text-slate-400 font-mono">
-          {student.specialization} • {student.progressPercentage}% Complete
-        </p>
-      </div>
-      <button
-        onClick={() => onCertify(student.id)}
-        className="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-mono text-[11px] font-bold rounded-xl cursor-pointer"
-      >
-        {student.isCertified ? 'Certified ✓' : 'Issue Certificate'}
-      </button>
-    </div>
-  );
-}
-
-// 3. Main Type-Safe Application
-export default function App() {
-  const [students, setStudents] = useState<StudentProfile[]>([
-    { id: 1, name: 'Arjun Verma', specialization: 'Frontend & React', progressPercentage: 100, isCertified: true },
-    { id: 2, name: 'Pooja Nair', specialization: 'TypeScript Architecture', progressPercentage: 90, isCertified: false }
-  ]);
-
-  const handleCertify = (id: number) => {
-    setStudents((prev) =>
-      prev.map((s) => (s.id === id ? { ...s, isCertified: true, progressPercentage: 100 } : s))
-    );
-  };
-
-  return (
-    <div className="p-6 max-w-lg mx-auto bg-slate-900 border border-slate-800 rounded-3xl space-y-4 text-slate-100 font-sans shadow-xl">
-      <header className="border-b border-slate-800 pb-3">
-        <span className="text-xs font-mono text-blue-400 font-bold uppercase">
-          React + TypeScript Strict Typing
-        </span>
-        <h2 className="text-lg font-bold text-white">Type-Safe Interface Contracts</h2>
-      </header>
-      <div className="space-y-2.5">
-        {students.map((s) => (
-          <StudentCard key={s.id} student={s} onCertify={handleCertify} />
-        ))}
-      </div>
-    </div>
-  );
-}`;
-    }
+  // 1. Python 3 & AI / Data Science
+  if (combined.includes("python") || combined.includes("django") || combined.includes("flask") || combined.includes("data science") || combined.includes("ai, large language") || combined.includes("prompt engineering") || combined.includes("autonomous agents")) {
+    return "# Python 3 Enterprise Code Example\n" +
+      "import sys\n" +
+      "import json\n\n" +
+      "def execute_pipeline():\n" +
+      "    print(\"=== Python 3 Professional Track ===\")\n" +
+      "    print(f\"Topic: " + (topicTitle || lessonTitle) + "\")\n" +
+      "    \n" +
+      "    records = [\n" +
+      "        {\"id\": 101, \"task\": \"Data Ingestion Pipeline\", \"status\": \"COMPLETED\", \"score\": 98.4},\n" +
+      "        {\"id\": 102, \"task\": \"Model Inference Engine\", \"status\": \"COMPLETED\", \"score\": 95.2},\n" +
+      "        {\"id\": 103, \"task\": \"Vector Embedding Index\", \"status\": \"ACTIVE\", \"score\": 91.0}\n" +
+      "    ]\n" +
+      "    \n" +
+      "    completed = [r for r in records if r[\"status\"] == \"COMPLETED\"]\n" +
+      "    avg_score = sum(r[\"score\"] for r in completed) / len(completed)\n" +
+      "    \n" +
+      "    print(f\"Processed Records: {len(records)} total | {len(completed)} completed\")\n" +
+      "    print(f\"Average Accuracy Score: {avg_score:.2f}%\")\n" +
+      "    print(\"Execution Result: SUCCESS ✓\")\n\n" +
+      "if __name__ == \"__main__\":\n" +
+      "    execute_pipeline()";
   }
 
-  // 2. HTML5 Semantic Layout
+  // 2. Java Enterprise & Spring / Hibernate
+  if (combined.includes("java enterprise") || combined.includes("spring") || combined.includes("hibernate") || combined.includes("jpa") || (combined.includes("java ") && !combined.includes("javascript"))) {
+    return "// Java Enterprise Systems Example\n" +
+      "import java.util.*;\n\n" +
+      "public class Main {\n" +
+      "    public static void main(String[] args) {\n" +
+      "        System.out.println(\"=== Java Enterprise Systems ===\");\n" +
+      "        System.out.println(\"Topic: " + (topicTitle || lessonTitle) + "\");\n" +
+      "        \n" +
+      "        List<String> activeModules = Arrays.asList(\"SecurityFilter\", \"OrmContext\", \"RestEndpoint\");\n" +
+      "        System.out.println(\"Registered Components: \" + activeModules);\n" +
+      "        System.out.println(\"Architecture Status: ONLINE ✓\");\n" +
+      "    }\n" +
+      "}";
+  }
+
+  // 3. Modern C++ Systems
+  if (combined.includes("c++") || combined.includes("cpp")) {
+    return "// Modern C++ Systems Architecture\n" +
+      "#include <iostream>\n" +
+      "#include <vector>\n" +
+      "#include <numeric>\n" +
+      "#include <string>\n\n" +
+      "int main() {\n" +
+      "    std::cout << \"=== Modern C++ Systems Track ===\" << std::endl;\n" +
+      "    std::cout << \"Topic: " + (topicTitle || lessonTitle) + "\" << std::endl;\n" +
+      "    \n" +
+      "    std::vector<int> throughputs = {1200, 1450, 1680, 1920, 2100};\n" +
+      "    int total = std::accumulate(throughputs.begin(), throughputs.end(), 0);\n" +
+      "    double avg = static_cast<double>(total) / throughputs.size();\n" +
+      "    \n" +
+      "    std::cout << \"Throughput Samples: \" << throughputs.size() << \" intervals\" << std::endl;\n" +
+      "    std::cout << \"Average Engine Speed: \" << avg << \" req/sec\" << std::endl;\n" +
+      "    std::cout << \"Status: Zero Memory Leaks (RAII Enforced) ✓\" << std::endl;\n" +
+      "    return 0;\n" +
+      "}";
+  }
+
+  // 4. C Systems Programming
+  if (combined.includes("c systems") || combined.includes("c programming") || combined.includes("c language") || (combined.includes("c ") && !combined.includes("c#") && !combined.includes("css"))) {
+    return "// C Systems Programming Example\n" +
+      "#include <stdio.h>\n" +
+      "#include <stdlib.h>\n\n" +
+      "int main() {\n" +
+      "    printf(\"=== C Systems Programming ===\\n\");\n" +
+      "    printf(\"Topic: %s\\n\", \"" + (topicTitle || lessonTitle) + "\");\n" +
+      "    \n" +
+      "    size_t bytes = 512;\n" +
+      "    char* memory_block = (char*)malloc(bytes);\n" +
+      "    if (memory_block == NULL) {\n" +
+      "        fprintf(stderr, \"Heap allocation failed\\n\");\n" +
+      "        return 1;\n" +
+      "    }\n" +
+      "    \n" +
+      "    printf(\"Allocated %zu bytes of memory on heap at %p\\n\", bytes, (void*)memory_block);\n" +
+      "    free(memory_block);\n" +
+      "    printf(\"Memory safely released. Status: SUCCESS ✓\\n\");\n" +
+      "    return 0;\n" +
+      "}";
+  }
+
+  // 5. SQL & Relational Databases
+  if (combined.includes("mysql") || combined.includes("postgresql") || combined.includes("sql server") || combined.includes("oracle") || combined.includes("database architecture") || combined.includes("relational database") || combined.includes("sql")) {
+    return "-- SQL Interactive Database Sandbox\n" +
+      "CREATE TABLE students (\n" +
+      "    id INTEGER PRIMARY KEY,\n" +
+      "    name TEXT NOT NULL,\n" +
+      "    track TEXT NOT NULL,\n" +
+      "    score INTEGER\n" +
+      ");\n\n" +
+      "INSERT INTO students (name, track, score) VALUES \n" +
+      "('Arjun Sharma', 'Full-Stack Architecture', 96),\n" +
+      "('Priya Patel', 'AI & Machine Learning', 94),\n" +
+      "('Rohan Gupta', 'DevOps & Cloud', 89),\n" +
+      "('Sneha Reddy', 'Systems Engineering', 98);\n\n" +
+      "-- Query Top Performing Engineers\n" +
+      "SELECT \n" +
+      "    id,\n" +
+      "    name, \n" +
+      "    track, \n" +
+      "    score \n" +
+      "FROM students \n" +
+      "WHERE score >= 90\n" +
+      "ORDER BY score DESC;";
+  }
+
+  // 6. PHP 8 Enterprise
+  if (combined.includes("php")) {
+    return "<?php\n" +
+      "// PHP 8+ Modern Architecture\n" +
+      "declare(strict_types=1);\n\n" +
+      "echo \"=== PHP 8 Enterprise Track ===\\n\";\n" +
+      "echo \"Topic: " + (topicTitle || lessonTitle) + "\\n\";\n\n" +
+      "$response = [\n" +
+      "    \"service\" => \"Enterprise Microservice\",\n" +
+      "    \"version\" => phpversion(),\n" +
+      "    \"status\" => \"active\",\n" +
+      "    \"timestamp\" => date(\"Y-m-d H:i:s\")\n" +
+      "];\n\n" +
+      "echo json_encode($response, JSON_PRETTY_PRINT) . \"\\n\";\n" +
+      "echo \"Status: Dispatched HTTP 200 OK ✓\\n\";";
+  }
+
+  // 7. Ruby Programming
+  if (combined.includes("ruby") || combined.includes("rails")) {
+    return "# Ruby Enterprise Architecture\n" +
+      "puts \"=== Ruby Programming Track ===\"\n" +
+      "puts \"Topic: " + (topicTitle || lessonTitle) + "\"\n\n" +
+      "frameworks = [\"Ruby on Rails\", \"Sidekiq\", \"RSpec\"]\n" +
+      "puts \"Active Components: #{frameworks.join(', ')}\"\n" +
+      "puts \"Execution Status: SUCCESS ✓\"";
+  }
+
+  // 8. Bash & Linux Automation
+  if (combined.includes("bash") || combined.includes("linux") || combined.includes("shell scripting") || combined.includes("devops") || combined.includes("git")) {
+    return "#!/usr/bin/env bash\n" +
+      "# Shell Automation Pipeline\n" +
+      "echo \"=== Shell Automation Pipeline ===\"\n" +
+      "echo \"Topic: " + (topicTitle || lessonTitle) + "\"\n" +
+      "echo \"Current Environment: Linux Sandbox\"\n" +
+      "echo \"Working Directory: $(pwd)\"\n" +
+      "echo \"Status: Automation Tasks Completed Successfully ✓\"";
+  }
+
+  // 9. HTML5 Semantic Layout
   if (combined.includes("html")) {
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Semantic HTML5 Web Structure</title>
-  <style>
-    body { font-family: sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }
-    header, nav, main, footer { background: #1e293b; padding: 15px; border-radius: 10px; margin-bottom: 12px; }
-    nav a { color: #38bdf8; margin-right: 15px; text-decoration: none; font-weight: bold; }
-    .card { background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 8px; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Semantic HTML5 Architecture</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#courses">Courses</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <article class="card">
-      <h2>Article: Clean Web Standards</h2>
-      <p>Semantic tags improve SEO indexing and screen-reader accessibility.</p>
-    </article>
-  </main>
-  <footer>
-    <p>&copy; 2026 SkillForge Education Platform</p>
-  </footer>
-</body>
-</html>`;
+    return "<!DOCTYPE html>\n" +
+      "<html lang=\"en\">\n" +
+      "<head>\n" +
+      "  <meta charset=\"UTF-8\">\n" +
+      "  <title>Semantic HTML5 Web Structure</title>\n" +
+      "  <style>\n" +
+      "    body { font-family: sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }\n" +
+      "    header, nav, main, footer { background: #1e293b; padding: 15px; border-radius: 10px; margin-bottom: 12px; }\n" +
+      "    nav a { color: #38bdf8; margin-right: 15px; text-decoration: none; font-weight: bold; }\n" +
+      "    .card { background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 8px; }\n" +
+      "  </style>\n" +
+      "</head>\n" +
+      "<body>\n" +
+      "  <header>\n" +
+      "    <h1>Semantic HTML5 Architecture</h1>\n" +
+      "    <nav>\n" +
+      "      <a href=\"#home\">Home</a>\n" +
+      "      <a href=\"#courses\">Courses</a>\n" +
+      "      <a href=\"#contact\">Contact</a>\n" +
+      "    </nav>\n" +
+      "  </header>\n" +
+      "  <main>\n" +
+      "    <article class=\"card\">\n" +
+      "      <h2>Article: Clean Web Standards</h2>\n" +
+      "      <p>Semantic tags improve SEO indexing and screen-reader accessibility.</p>\n" +
+      "    </article>\n" +
+      "  </main>\n" +
+      "  <footer>\n" +
+      "    <p>&copy; 2026 SkillForge Education Platform</p>\n" +
+      "  </footer>\n" +
+      "</body>\n" +
+      "</html>";
   }
 
-  // 3. CSS3 Flexbox / Grid Responsive Layout
+  // 10. CSS3 Responsive Flexbox & Grid
   if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid")) {
-    return `/* Modern Responsive CSS3 Grid & Flexbox System */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  padding: 20px;
-}
-
-.card {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.2);
-}`;
+    return "/* Modern Responsive CSS3 Grid & Flexbox System */\n" +
+      ".dashboard-grid {\n" +
+      "  display: grid;\n" +
+      "  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n" +
+      "  gap: 16px;\n" +
+      "  padding: 20px;\n" +
+      "}\n\n" +
+      ".card {\n" +
+      "  background: #1e293b;\n" +
+      "  border: 1px solid #334155;\n" +
+      "  border-radius: 16px;\n" +
+      "  padding: 20px;\n" +
+      "  display: flex;\n" +
+      "  flex-direction: column;\n" +
+      "  justify-content: space-between;\n" +
+      "  transition: transform 0.2s ease, box-shadow 0.2s ease;\n" +
+      "}\n\n" +
+      ".card:hover {\n" +
+      "  transform: translateY(-4px);\n" +
+      "  box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.2);\n" +
+      "}";
   }
 
-  // Default fallback code
-  return `import React, { useState } from 'react';
+  // 11. React.js Component Architecture
+  if (combined.includes("react")) {
+    return "import React, { useState } from 'react';\n\n" +
+      "export default function App() {\n" +
+      "  const [active, setActive] = useState(true);\n" +
+      "  return (\n" +
+      "    <div className=\"p-6 max-w-md mx-auto bg-slate-900 border border-slate-800 rounded-3xl text-white space-y-3 font-sans\">\n" +
+      "      <h2 className=\"text-lg font-bold\">" + (topicTitle || 'Interactive Component') + "</h2>\n" +
+      "      <p className=\"text-xs text-slate-400\">Professional React component implementation.</p>\n" +
+      "      <button\n" +
+      "        onClick={() => setActive(!active)}\n" +
+      "        className=\"px-4 py-2 bg-sky-600 hover:bg-sky-500 rounded-xl text-xs font-mono font-bold cursor-pointer\"\n" +
+      "      >\n" +
+      "        Status: {active ? 'Active ✓' : 'Paused'}\n" +
+      "      </button>\n" +
+      "    </div>\n" +
+      "  );\n" +
+      "}";
+  }
 
-export default function App() {
-  const [active, setActive] = useState(true);
-  return (
-    <div className="p-6 max-w-md mx-auto bg-slate-900 border border-slate-800 rounded-3xl text-white space-y-3">
-      <h2 className="text-lg font-bold">${topicTitle || 'Interactive Component'}</h2>
-      <p className="text-xs text-slate-400">Professional React component implementation.</p>
-      <button
-        onClick={() => setActive(!active)}
-        className="px-4 py-2 bg-sky-600 hover:bg-sky-500 rounded-xl text-xs font-mono font-bold"
-      >
-        Status: {active ? 'Active ✓' : 'Paused'}
-      </button>
-    </div>
-  );
-}`;
+  // 12. Default Node.js / JavaScript Architecture
+  return "// " + (topicTitle || lessonTitle) + " - Interactive Code Execution\n" +
+    "const topicName = \"" + (topicTitle || 'Software Architecture') + "\";\n" +
+    "console.log(\"=== Execution Engine Active ===\");\n" +
+    "console.log(\"Running topic: \" + topicName);\n\n" +
+    "const metrics = {\n" +
+    "  status: \"ONLINE\",\n" +
+    "  executedAt: new Date().toISOString(),\n" +
+    "  environment: \"Sandboxed Multi-Language Runtime\"\n" +
+    "};\n\n" +
+    "console.log(\"Telemetry:\", JSON.stringify(metrics, null, 2));\n" +
+    "console.log(\"Status: Execution Completed Successfully ✓\");";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -3416,676 +3380,623 @@ function generateExactSyntaxBlueprint({
 }: {
   courseTitle?: string;
   moduleTitle?: string;
-  lessonTitle: string;
-  topicTitle: string;
+  lessonTitle?: string;
+  topicTitle?: string;
 }): string {
-  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+  const combined = (courseTitle + " " + moduleTitle + " " + lessonTitle + " " + topicTitle).toLowerCase();
 
   // 1. REACT.JS SYNTAX PATTERNS
   if (combined.includes("react")) {
     if (combined.includes("usestate") || combined.includes("state")) {
-      return `// 1. Hook Declaration (Getter & Setter Function)
-const [stateValue, setStateValue] = useState(initialValue);
-
-// 2. Direct Value Update
-setStateValue(newValue);
-
-// 3. Functional Update (Safe previous state access)
-setStateValue((prevState) => ({ ...prevState, updatedKey: newValue }));`;
+      return "// 1. Hook Declaration (Getter & Setter Function)\n" +
+        "const [stateValue, setStateValue] = useState(initialValue);\n\n" +
+        "// 2. Direct Value Update\n" +
+        "setStateValue(newValue);\n\n" +
+        "// 3. Functional Update (Safe previous state access)\n" +
+        "setStateValue((prevState) => ({ ...prevState, updatedKey: newValue }));";
     }
 
     if (combined.includes("useeffect") || combined.includes("effect") || combined.includes("lifecycle")) {
-      return `// React Side Effect & Lifecycle Formula
-useEffect(() => {
-  // 1. Mount or Dependency Update logic (API calls, subscriptions, timers)
-  const timerId = setInterval(() => { /* ... */ }, 1000);
-
-  // 2. Optional Cleanup function (Runs on unmount or before next execution)
-  return () => clearInterval(timerId);
-}, [dependency1, dependency2]); // Pass [] to run ONLY once on mount`;
+      return "// React Side Effect & Lifecycle Formula\n" +
+        "useEffect(() => {\n" +
+        "  // 1. Mount or Dependency Update logic (API calls, subscriptions, timers)\n" +
+        "  const timerId = setInterval(() => { /* ... */ }, 1000);\n\n" +
+        "  // 2. Optional Cleanup function (Runs on unmount or before next execution)\n" +
+        "  return () => clearInterval(timerId);\n" +
+        "}, [dependency1, dependency2]); // Pass [] to run ONLY once on mount";
     }
 
     if (combined.includes("useref") || combined.includes("ref")) {
-      return `// 1. Declare Mutable Reference / DOM Node Holder
-const elementRef = useRef(initialValue);
-
-// 2. Attach to JSX Element
-<input ref={elementRef} type="text" />
-
-// 3. Access current value directly without triggering re-render
-elementRef.current.focus();`;
+      return "// 1. Declare Mutable Reference / DOM Node Holder\n" +
+        "const elementRef = useRef(initialValue);\n\n" +
+        "// 2. Attach to JSX Element\n" +
+        "<input ref={elementRef} type=\"text\" />\n\n" +
+        "// 3. Access current value directly without triggering re-render\n" +
+        "elementRef.current.focus();";
     }
 
     if (combined.includes("usememo") || combined.includes("usecallback") || combined.includes("memo")) {
-      return `// Memoized Computed Value (Recalculates only when dependencies change)
-const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
-
-// Memoized Function Reference (Prevents child re-renders)
-const memoizedCallback = useCallback((arg) => handleAction(arg), [depA, depB]);`;
+      return "// Memoized Computed Value (Recalculates only when dependencies change)\n" +
+        "const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);\n\n" +
+        "// Memoized Function Reference (Prevents child re-renders)\n" +
+        "const memoizedCallback = useCallback((arg) => handleAction(arg), [depA, depB]);";
     }
 
     if (combined.includes("context") || combined.includes("usecontext")) {
-      return `// 1. Create Context Object
-const AppContext = React.createContext(defaultValue);
-
-// 2. Provider Component wraps child tree
-<AppContext.Provider value={{ currentUser, theme }}>
-  <ChildComponent />
-</AppContext.Provider>
-
-// 3. Consume in any descendant component
-const { currentUser, theme } = useContext(AppContext);`;
+      return "// 1. Create Context Object\n" +
+        "const AppContext = React.createContext(defaultValue);\n\n" +
+        "// 2. Provider Component wraps child tree\n" +
+        "<AppContext.Provider value={{ currentUser, theme }}>\n" +
+        "  <ChildComponent />\n" +
+        "</AppContext.Provider>\n\n" +
+        "// 3. Consume in any descendant component\n" +
+        "const { currentUser, theme } = useContext(AppContext);";
     }
 
     if (combined.includes("usereducer") || combined.includes("reducer")) {
-      return `// 1. Reducer Function Signature
-function reducer(state, action) {
-  switch (action.type) {
-    case 'ACTION_TYPE': return { ...state, key: action.payload };
-    default: return state;
-  }
-}
-
-// 2. Hook Declaration & Dispatch
-const [state, dispatch] = useReducer(reducer, initialState);
-dispatch({ type: 'ACTION_TYPE', payload: data });`;
+      return "// 1. Reducer Function Signature\n" +
+        "function reducer(state, action) {\n" +
+        "  switch (action.type) {\n" +
+        "    case 'ACTION_TYPE': return { ...state, key: action.payload };\n" +
+        "    default: return state;\n" +
+        "  }\n" +
+        "}\n\n" +
+        "// 2. Hook Declaration & Dispatch\n" +
+        "const [state, dispatch] = useReducer(reducer, initialState);\n" +
+        "dispatch({ type: 'ACTION_TYPE', payload: data });";
     }
 
     if (combined.includes("router") || combined.includes("route") || combined.includes("navigation")) {
-      return `// React Router SPA Route Setup Formula
-<BrowserRouter>
-  <Routes>
-    <Route path="/" element={<HomeLayout />}>
-      <Route index element={<Dashboard />} />
-      <Route path="items/:itemId" element={<ItemDetail />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
-  </Routes>
-</BrowserRouter>`;
+      return "// React Router SPA Route Setup Formula\n" +
+        "<BrowserRouter>\n" +
+        "  <Routes>\n" +
+        "    <Route path=\"/\" element={<HomeLayout />}>\n" +
+        "      <Route index element={<Dashboard />} />\n" +
+        "      <Route path=\"items/:itemId\" element={<ItemDetail />} />\n" +
+        "      <Route path=\"*\" element={<NotFound />} />\n" +
+        "    </Route>\n" +
+        "  </Routes>\n" +
+        "</BrowserRouter>";
     }
 
     if (combined.includes("prop") || combined.includes("component") || combined.includes("hierarchy") || combined.includes("getting started") || combined.includes("intro")) {
-      return `// Functional Component with Props Destructuring & Defaults
-function ComponentName({ title, count = 0, isActive = false, onAction }) {
-  return (
-    <div className="card-container" onClick={onAction}>
-      <h3>{title}</h3>
-      {isActive ? <span>Active: {count}</span> : <span>Inactive</span>}
-    </div>
-  );
-}
-
-export default ComponentName;`;
+      return "// Functional Component with Props Destructuring & Defaults\n" +
+        "function ComponentName({ title, count = 0, isActive = false, onAction }) {\n" +
+        "  return (\n" +
+        "    <div className=\"card-container\" onClick={onAction}>\n" +
+        "      <h3>{title}</h3>\n" +
+        "      {isActive ? <span>Active: {count}</span> : <span>Inactive</span>}\n" +
+        "    </div>\n" +
+        "  );\n" +
+        "}\n\n" +
+        "export default ComponentName;";
     }
 
     // Generic React Fallback
-    return `// React Component & State Declaration Formula
-import React, { useState, useEffect } from 'react';
-
-export default function ComponentName(props) {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    // Lifecycle setup logic
-  }, []);
-
-  return <div className="root-element">{props.children}</div>;
-}`;
+    return "// React Component & State Declaration Formula\n" +
+      "import React, { useState, useEffect } from 'react';\n\n" +
+      "export default function ComponentName(props) {\n" +
+      "  const [data, setData] = useState(null);\n\n" +
+      "  useEffect(() => {\n" +
+      "    // Lifecycle setup logic\n" +
+      "  }, []);\n\n" +
+      "  return <div className=\"root-element\">{props.children}</div>;\n" +
+      "}";
   }
 
   // 2. NODE.JS & EXPRESS BACKEND SYNTAX PATTERNS
   if (combined.includes("node") || combined.includes("express") || combined.includes("backend")) {
     if (combined.includes("route") || combined.includes("routing") || combined.includes("crud") || combined.includes("web app")) {
-      return `// Express.js REST Route Handler Formula
-app.METHOD('/api/resource/:id', (req, res, next) => {
-  const { id } = req.params;       // URL Parameters (:id)
-  const { filter } = req.query;     // Query Strings (?filter=value)
-  const payload = req.body;         // JSON Request Body
-
-  // HTTP Response status and JSON output
-  return res.status(200).json({ success: true, id, data: payload });
-});`;
+      return "// Express.js REST Route Handler Formula\n" +
+        "app.METHOD('/api/resource/:id', (req, res, next) => {\n" +
+        "  const { id } = req.params;       // URL Parameters (:id)\n" +
+        "  const { filter } = req.query;     // Query Strings (?filter=value)\n" +
+        "  const payload = req.body;         // JSON Request Body\n\n" +
+        "  // HTTP Response status and JSON output\n" +
+        "  return res.status(200).json({ success: true, id, data: payload });\n" +
+        "});";
     }
 
     if (combined.includes("middleware") || combined.includes("auth") || combined.includes("jwt") || combined.includes("security")) {
-      return `// Express Middleware Pipeline Signature: (req, res, next)
-function customMiddleware(req, res, next) {
-  const token = req.headers['authorization']?.split(' ')[1];
-  
-  if (!token) {
-    return res.status(401).json({ error: 'Unauthorized: No token provided' });
-  }
-
-  req.user = verifyToken(token); // Attach payload to request object
-  next(); // Pass execution control to next handler in chain
-}`;
+      return "// Express Middleware Pipeline Signature: (req, res, next)\n" +
+        "function customMiddleware(req, res, next) {\n" +
+        "  const token = req.headers['authorization']?.split(' ')[1];\n" +
+        "  \n" +
+        "  if (!token) {\n" +
+        "    return res.status(401).json({ error: 'Unauthorized: No token provided' });\n" +
+        "  }\n\n" +
+        "  req.user = verifyToken(token); // Attach payload to request object\n" +
+        "  next(); // Pass execution control to next handler in chain\n" +
+        "}";
     }
 
     if (combined.includes("error") || combined.includes("exception")) {
-      return `// Global Express Error Handler Signature: 4 Arguments (err, req, res, next)
-app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || 'Internal Server Error';
-
-  console.error('[Server Error]', err.stack);
-  res.status(statusCode).json({ success: false, error: message });
-});`;
+      return "// Global Express Error Handler Signature: 4 Arguments (err, req, res, next)\n" +
+        "app.use((err, req, res, next) => {\n" +
+        "  const statusCode = err.statusCode || 500;\n" +
+        "  const message = err.message || 'Internal Server Error';\n\n" +
+        "  console.error('[Server Error]', err.stack);\n" +
+        "  res.status(statusCode).json({ success: false, error: message });\n" +
+        "});";
     }
 
     if (combined.includes("file") || combined.includes("fs") || combined.includes("path") || combined.includes("stream")) {
-      return `// Node.js File System (fs/promises) & Path Resolution
-const fs = require('fs/promises');
-const path = require('path');
-
-const targetPath = path.join(__dirname, 'data', 'file.json');
-
-// Async Read & Write Operations
-const rawData = await fs.readFile(targetPath, 'utf-8');
-await fs.writeFile(targetPath, JSON.stringify(data, null, 2), 'utf-8');`;
+      return "// Node.js File System (fs/promises) & Path Resolution\n" +
+        "const fs = require('fs/promises');\n" +
+        "const path = require('path');\n\n" +
+        "const targetPath = path.join(__dirname, 'data', 'file.json');\n\n" +
+        "// Async Read & Write Operations\n" +
+        "const rawData = await fs.readFile(targetPath, 'utf-8');\n" +
+        "await fs.writeFile(targetPath, JSON.stringify(data, null, 2), 'utf-8');";
     }
 
     if (combined.includes("event") || combined.includes("emitter")) {
-      return `// Node.js EventEmitter Pattern Formula
-const EventEmitter = require('events');
-const eventBus = new EventEmitter();
-
-// 1. Subscribe to event
-eventBus.on('user:created', (user) => {
-  console.log('Sending welcome email to:', user.email);
-});
-
-// 2. Emit event with payload
-eventBus.emit('user:created', { id: 'u1', email: 'alex@codeair.tech' });`;
+      return "// Node.js EventEmitter Pattern Formula\n" +
+        "const EventEmitter = require('events');\n" +
+        "const eventBus = new EventEmitter();\n\n" +
+        "// 1. Subscribe to event\n" +
+        "eventBus.on('user:created', (user) => {\n" +
+        "  console.log('Sending welcome email to:', user.email);\n" +
+        "});\n\n" +
+        "// 2. Emit event with payload\n" +
+        "eventBus.emit('user:created', { id: 'u1', email: 'alex@codeair.tech' });";
     }
 
     // Generic Node.js & Express Fallback
-    return `// Node.js Express Server Setup Formula
-const express = require('express');
-const app = express();
-
-app.use(express.json()); // Parse incoming JSON bodies
-
-app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(\`Server active on port \${PORT}\`));`;
+    return "// Node.js Express Server Setup Formula\n" +
+      "const express = require('express');\n" +
+      "const app = express();\n\n" +
+      "app.use(express.json()); // Parse incoming JSON bodies\n\n" +
+      "app.get('/api/health', (req, res) => res.json({ status: 'ok' }));\n\n" +
+      "const PORT = process.env.PORT || 5000;\n" +
+      "app.listen(PORT, () => console.log('Server active on port ' + PORT));";
   }
 
   // 3. HTML5 SYNTAX PATTERNS
   if (combined.includes("html")) {
     if (combined.includes("form") || combined.includes("input")) {
-      return `<!-- HTML5 Form Declaration & Input Validation Syntax -->
-<form action="/api/submit" method="POST" enctype="multipart/form-data">
-  <label for="userEmail">Email Address:</label>
-  <input 
-    type="email" 
-    id="userEmail" 
-    name="email" 
-    required 
-    placeholder="user@example.com" 
-    autocomplete="email"
-  />
-  <button type="submit">Submit Form</button>
-</form>`;
+      return "<!-- HTML5 Form Declaration & Input Validation Syntax -->\n" +
+        "<form action=\"/api/submit\" method=\"POST\" enctype=\"multipart/form-data\">\n" +
+        "  <label for=\"userEmail\">Email Address:</label>\n" +
+        "  <input \n" +
+        "    type=\"email\" \n" +
+        "    id=\"userEmail\" \n" +
+        "    name=\"email\" \n" +
+        "    required \n" +
+        "    placeholder=\"user@example.com\" \n" +
+        "    autocomplete=\"email\"\n" +
+        "  />\n" +
+        "  <button type=\"submit\">Submit Form</button>\n" +
+        "</form>";
     }
 
     if (combined.includes("table")) {
-      return `<!-- HTML5 Semantic Table Syntax -->
-<table>
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>#101</td>
-      <td>React Masterclass</td>
-      <td>$49.99</td>
-    </tr>
-  </tbody>
-</table>`;
+      return "<!-- HTML5 Semantic Table Syntax -->\n" +
+        "<table>\n" +
+        "  <thead>\n" +
+        "    <tr>\n" +
+        "      <th scope=\"col\">ID</th>\n" +
+        "      <th scope=\"col\">Product Name</th>\n" +
+        "      <th scope=\"col\">Price</th>\n" +
+        "    </tr>\n" +
+        "  </thead>\n" +
+        "  <tbody>\n" +
+        "    <tr>\n" +
+        "      <td>#101</td>\n" +
+        "      <td>React Masterclass</td>\n" +
+        "      <td>$49.99</td>\n" +
+        "    </tr>\n" +
+        "  </tbody>\n" +
+        "</table>";
     }
 
     // Standard HTML5 Document Blueprint
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document Title</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header><nav><!-- Navigation links --></nav></header>
-  <main><article><!-- Primary page content --></article></main>
-  <footer><p>&copy; 2026 CodeCraft Platform</p></footer>
-</body>
-</html>`;
+    return "<!DOCTYPE html>\n" +
+      "<html lang=\"en\">\n" +
+      "<head>\n" +
+      "  <meta charset=\"UTF-8\" />\n" +
+      "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
+      "  <title>Document Title</title>\n" +
+      "  <link rel=\"stylesheet\" href=\"style.css\" />\n" +
+      "</head>\n" +
+      "<body>\n" +
+      "  <header><nav><!-- Navigation links --></nav></header>\n" +
+      "  <main><article><!-- Primary page content --></article></main>\n" +
+      "  <footer><p>&copy; 2026 SkillForge Platform</p></footer>\n" +
+      "</body>\n" +
+      "</html>";
   }
 
   // 4. CSS3 SYNTAX PATTERNS
   if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid") || combined.includes("responsive")) {
     if (combined.includes("flex") || combined.includes("flexbox")) {
-      return `/* CSS3 Flexbox Container & Alignment Rules */
-.flex-container {
-  display: flex;
-  flex-direction: row | column;
-  justify-content: flex-start | center | space-between | space-around;
-  align-items: stretch | center | flex-start | flex-end;
-  gap: 16px;
-  flex-wrap: wrap | nowrap;
-}
-
-.flex-item {
-  flex: 1 1 200px; /* flex-grow flex-shrink flex-basis */
-}`;
+      return "/* CSS3 Flexbox Container & Alignment Rules */\n" +
+        ".flex-container {\n" +
+        "  display: flex;\n" +
+        "  flex-direction: row | column;\n" +
+        "  justify-content: flex-start | center | space-between | space-around;\n" +
+        "  align-items: stretch | center | flex-start | flex-end;\n" +
+        "  gap: 16px;\n" +
+        "  flex-wrap: wrap | nowrap;\n" +
+        "}\n\n" +
+        ".flex-item {\n" +
+        "  flex: 1 1 200px; /* flex-grow flex-shrink flex-basis */\n" +
+        "}";
     }
 
     if (combined.includes("grid")) {
-      return `/* CSS3 Grid Layout Rules */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-template-rows: auto;
-  gap: 20px;
-  justify-items: stretch;
-  align-items: start;
-}`;
+      return "/* CSS3 Grid Layout Rules */\n" +
+        ".grid-container {\n" +
+        "  display: grid;\n" +
+        "  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n" +
+        "  grid-template-rows: auto;\n" +
+        "  gap: 20px;\n" +
+        "  justify-items: stretch;\n" +
+        "  align-items: start;\n" +
+        "}";
     }
 
     if (combined.includes("media") || combined.includes("responsive") || combined.includes("mobile")) {
-      return `/* Mobile-First Responsive Breakpoint Syntax */
-.container {
-  width: 100%;
-  padding: 12px;
-}
-
-@media (min-width: 768px) {
-  .container { width: 720px; padding: 20px; } /* Tablet */
-}
-
-@media (min-width: 1024px) {
-  .container { width: 960px; padding: 32px; } /* Desktop */
-}`;
+      return "/* Mobile-First Responsive Breakpoint Syntax */\n" +
+        ".container {\n" +
+        "  width: 100%;\n" +
+        "  padding: 12px;\n" +
+        "}\n\n" +
+        "@media (min-width: 768px) {\n" +
+        "  .container { width: 720px; padding: 20px; } /* Tablet */\n" +
+        "}\n\n" +
+        "@media (min-width: 1024px) {\n" +
+        "  .container { width: 960px; padding: 32px; } /* Desktop */\n" +
+        "}";
     }
 
     // Standard CSS Rule Syntax
-    return `/* CSS3 Rule Structure: Selector { Property: Value; } */
-.class-selector, #element-id, tag-name {
-  display: block;
-  margin: 0 auto;
-  padding: clamp(1rem, 2vw, 2.5rem);
-  color: var(--primary-color, #38bdf8);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}`;
+    return "/* CSS3 Rule Structure: Selector { Property: Value; } */\n" +
+      ".class-selector, #element-id, tag-name {\n" +
+      "  display: block;\n" +
+      "  margin: 0 auto;\n" +
+      "  padding: clamp(1rem, 2vw, 2.5rem);\n" +
+      "  color: var(--primary-color, #38bdf8);\n" +
+      "  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n" +
+      "}";
   }
 
   // 5. JAVASCRIPT (ES6+) SYNTAX PATTERNS
   if (combined.includes("javascript") || combined.includes("js") || combined.includes("dom") || combined.includes("string") || combined.includes("array")) {
     if (combined.includes("async") || combined.includes("await") || combined.includes("promise") || combined.includes("fetch")) {
-      return `// ES6+ Async/Await with Try/Catch Exception Handling Formula
-async function handleAsyncOperation(endpointUrl, requestPayload = {}) {
-  try {
-    const response = await fetch(endpointUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(requestPayload),
-    });
-
-    if (!response.ok) throw new Error(\`HTTP Error \${response.status}\`);
-    return await response.json();
-  } catch (error) {
-    console.error('Operation Failed:', error.message);
-    throw error;
-  }
-}`;
+      return "// ES6+ Async/Await with Try/Catch Exception Handling Formula\n" +
+        "async function handleAsyncOperation(endpointUrl, requestPayload = {}) {\n" +
+        "  try {\n" +
+        "    const response = await fetch(endpointUrl, {\n" +
+        "      method: 'POST',\n" +
+        "      headers: { 'Content-Type': 'application/json' },\n" +
+        "      body: JSON.stringify(requestPayload),\n" +
+        "    });\n\n" +
+        "    if (!response.ok) throw new Error('HTTP Error ' + response.status);\n" +
+        "    return await response.json();\n" +
+        "  } catch (error) {\n" +
+        "    console.error('Operation Failed:', error.message);\n" +
+        "    throw error;\n" +
+        "  }\n" +
+        "}";
     }
 
     if (combined.includes("array") || combined.includes("map") || combined.includes("filter") || combined.includes("reduce")) {
-      return `// Functional Array Transformation Methods Syntax
-const mappedArray   = array.map((item, index) => transform(item));
-const filteredArray = array.filter((item) => predicateCondition(item));
-const totalSum      = array.reduce((acc, curr) => acc + curr.value, initialValue);
-const targetItem    = array.find((item) => item.id === searchedId);
-const hasAnyMatch   = array.some((item) => item.status === 'active');`;
+      return "// Functional Array Transformation Methods Syntax\n" +
+        "const mappedArray   = array.map((item, index) => transform(item));\n" +
+        "const filteredArray = array.filter((item) => predicateCondition(item));\n" +
+        "const totalSum      = array.reduce((acc, curr) => acc + curr.value, initialValue);\n" +
+        "const targetItem    = array.find((item) => item.id === searchedId);\n" +
+        "const hasAnyMatch   = array.some((item) => item.status === 'active');";
     }
 
     if (combined.includes("destructur") || combined.includes("spread") || combined.includes("rest")) {
-      return `// Object & Array Destructuring + Spread Formulas
-const { id, title, role = 'student' } = userObject;
-const [firstItem, secondItem, ...remainingItems] = listArray;
-
-// Spread Operator (Immutable Clone / Merge)
-const clonedObject = { ...userObject, isVerified: true };
-const combinedList = [...listA, ...listB];`;
+      return "// Object & Array Destructuring + Spread Formulas\n" +
+        "const { id, title, role = 'student' } = userObject;\n" +
+        "const [firstItem, secondItem, ...remainingItems] = listArray;\n\n" +
+        "// Spread Operator (Immutable Clone / Merge)\n" +
+        "const clonedObject = { ...userObject, isVerified: true };\n" +
+        "const combinedList = [...listA, ...listB];";
     }
 
     if (combined.includes("dom") || combined.includes("event")) {
-      return `// DOM Node Selection & Event Listener Formula
-const actionButton = document.querySelector('#submit-btn');
-
-actionButton.addEventListener('click', (event) => {
-  event.preventDefault(); // Prevent default reload/submission
-  actionButton.classList.toggle('active');
-  actionButton.textContent = 'Processing...';
-});`;
+      return "// DOM Node Selection & Event Listener Formula\n" +
+        "const actionButton = document.querySelector('#submit-btn');\n\n" +
+        "actionButton.addEventListener('click', (event) => {\n" +
+        "  event.preventDefault(); // Prevent default reload/submission\n" +
+        "  actionButton.classList.toggle('active');\n" +
+        "  actionButton.textContent = 'Processing...';\n" +
+        "});";
     }
 
     if (combined.includes("class") || combined.includes("oop") || combined.includes("inheritance")) {
-      return `// ES6 Class Declaration & Inheritance Formula
-class BaseService {
-  constructor(serviceName) {
-    this.name = serviceName;
-  }
-}
-
-class AuthService extends BaseService {
-  constructor(serviceName, secretKey) {
-    super(serviceName); // Call parent constructor
-    this.secret = secretKey;
-  }
-
-  authenticate(user) {
-    return user.isValid();
-  }
-}`;
+      return "// ES6 Class Declaration & Inheritance Formula\n" +
+        "class BaseService {\n" +
+        "  constructor(serviceName) {\n" +
+        "    this.name = serviceName;\n" +
+        "  }\n" +
+        "}\n\n" +
+        "class AuthService extends BaseService {\n" +
+        "  constructor(serviceName, secretKey) {\n" +
+        "    super(serviceName); // Call parent constructor\n" +
+        "    this.secret = secretKey;\n" +
+        "  }\n\n" +
+        "  authenticate(user) {\n" +
+        "    return user.isValid();\n" +
+        "  }\n" +
+        "}";
     }
 
     // Generic JS Fallback
-    return `// JavaScript ES6+ Function & Variable Declaration Formula
-const CONSTANT_NAME = 'immutable_binding';
-let mutableVariable = 'can_be_reassigned';
-
-const calculateResult = (paramA, paramB = 0) => {
-  return paramA + paramB;
-};`;
+    return "// JavaScript ES6+ Function & Variable Declaration Formula\n" +
+      "const CONSTANT_NAME = 'immutable_binding';\n" +
+      "let mutableVariable = 'can_be_reassigned';\n\n" +
+      "const calculateResult = (paramA, paramB = 0) => {\n" +
+      "  return paramA + paramB;\n" +
+      "};";
   }
 
   // 6. TYPESCRIPT ENTERPRISE SYNTAX PATTERNS
   if (combined.includes("typescript") || combined.includes("type") || combined.includes("interface")) {
-    return `// TypeScript Interface, Type Alias & Generic Contract Formula
-type ExecutionStatus = 'idle' | 'running' | 'completed' | 'failed';
-
-interface BaseEntity {
-  readonly id: string;
-  createdAt: Date;
-}
-
-interface ServiceResponse<TData> extends BaseEntity {
-  status: ExecutionStatus;
-  payload: TData;
-  errorMessage?: string; // Optional field
-}
-
-async function requestApi<T>(url: string): Promise<ServiceResponse<T>> {
-  // Type-safe API client implementation
-}`;
+    return "// TypeScript Interface, Type Alias & Generic Contract Formula\n" +
+      "type ExecutionStatus = 'idle' | 'running' | 'completed' | 'failed';\n\n" +
+      "interface BaseEntity {\n" +
+      "  readonly id: string;\n" +
+      "  createdAt: Date;\n" +
+      "}\n\n" +
+      "interface ServiceResponse<TData> extends BaseEntity {\n" +
+      "  status: ExecutionStatus;\n" +
+      "  payload: TData;\n" +
+      "  errorMessage?: string; // Optional field\n" +
+      "}\n\n" +
+      "async function requestApi<T>(url: string): Promise<ServiceResponse<T>> {\n" +
+      "  // Type-safe API client implementation\n" +
+      "}";
   }
 
   // 7. JAVA ENTERPRISE & SPRING BOOT / HIBERNATE SYNTAX PATTERNS
   if (combined.includes("java") || combined.includes("spring") || combined.includes("hibernate") || combined.includes("jpa")) {
     if (combined.includes("spring") || combined.includes("boot") || combined.includes("controller")) {
-      return `// Spring Boot REST Controller Formula
-@RestController
-@RequestMapping("/api/v1/resources")
-public class ResourceController {
-    @Autowired
-    private ResourceService service;
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ResourceDto> getResource(@PathVariable Long id) {
-        return ResponseEntity.ok(service.findById(id));
-    }
-}`;
+      return "// Spring Boot REST Controller Formula\n" +
+        "@RestController\n" +
+        "@RequestMapping(\"/api/v1/resources\")\n" +
+        "public class ResourceController {\n" +
+        "    @Autowired\n" +
+        "    private ResourceService service;\n\n" +
+        "    @GetMapping(\"/{id}\")\n" +
+        "    public ResponseEntity<ResourceDto> getResource(@PathVariable Long id) {\n" +
+        "        return ResponseEntity.ok(service.findById(id));\n" +
+        "    }\n" +
+        "}";
     }
     if (combined.includes("hibernate") || combined.includes("jpa") || combined.includes("entity")) {
-      return `// JPA / Hibernate Entity Declaration Formula
-@Entity
-@Table(name = "users")
-public class UserEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, unique = true)
-    private String email;
-}`;
+      return "// JPA / Hibernate Entity Declaration Formula\n" +
+        "@Entity\n" +
+        "@Table(name = \"users\")\n" +
+        "public class UserEntity {\n" +
+        "    @Id\n" +
+        "    @GeneratedValue(strategy = GenerationType.IDENTITY)\n" +
+        "    private Long id;\n\n" +
+        "    @Column(nullable = false, unique = true)\n" +
+        "    private String email;\n" +
+        "}";
     }
-    return `// Java Enterprise Class & Method Formula
-package com.enterprise.service;
-
-public class DataService<T> implements IService<T> {
-    private final Repository<T> repository;
-
-    public DataService(Repository<T> repo) {
-        this.repository = repo;
-    }
-
-    public T processRecord(T entity) throws ServiceException {
-        return repository.save(entity);
-    }
-}`;
+    return "// Java Enterprise Class & Method Formula\n" +
+      "package com.enterprise.service;\n\n" +
+      "public class DataService<T> implements IService<T> {\n" +
+      "    private final Repository<T> repository;\n\n" +
+      "    public DataService(Repository<T> repo) {\n" +
+      "        this.repository = repo;\n" +
+      "    }\n\n" +
+      "    public T processRecord(T entity) throws ServiceException {\n" +
+      "        return repository.save(entity);\n" +
+      "    }\n" +
+      "}";
   }
 
   // 8. C# & .NET CORE / ENTITY FRAMEWORK SYNTAX PATTERNS
   if (combined.includes("c#") || combined.includes(".net") || combined.includes("dotnet") || combined.includes("entity framework")) {
-    return `// ASP.NET Core Controller & LINQ Query Formula
-[ApiController]
-[Route("api/[controller]")]
-public class ItemsController : ControllerBase {
-    private readonly AppDbContext _context;
-    public ItemsController(AppDbContext ctx) => _context = ctx;
-
-    [HttpGet("{id}")]
-    public async Task<ActionResult<ItemDto>> GetItemAsync(int id) {
-        var item = await _context.Items.FindAsync(id);
-        return item != null ? Ok(item) : NotFound();
-    }
-}`;
+    return "// ASP.NET Core Controller & LINQ Query Formula\n" +
+      "[ApiController]\n" +
+      "[Route(\"api/[controller]\")]\n" +
+      "public class ItemsController : ControllerBase {\n" +
+      "    private readonly AppDbContext _context;\n" +
+      "    public ItemsController(AppDbContext ctx) => _context = ctx;\n\n" +
+      "    [HttpGet(\"{id}\")]\n" +
+      "    public async Task<ActionResult<ItemDto>> GetItemAsync(int id) {\n" +
+      "        var item = await _context.Items.FindAsync(id);\n" +
+      "        return item != null ? Ok(item) : NotFound();\n" +
+      "    }\n" +
+      "}";
   }
 
   // 9. C++ MODERN SYSTEMS (C++17 / C++20)
   if (combined.includes("c++") || combined.includes("cpp")) {
-    return `// Modern C++ Template & Smart Pointer Formula
-#include <iostream>
-#include <memory>
-#include <vector>
-
-template <typename T>
-class SystemManager {
-private:
-    std::vector<T> dataStore;
-public:
-    void addItem(const T& item) { dataStore.push_back(item); }
-    [[nodiscard]] auto getSize() const noexcept -> size_t { return dataStore.size(); }
-};
-
-auto managerPtr = std::make_unique<SystemManager<int>>();`;
+    return "// Modern C++ Template & Smart Pointer Formula\n" +
+      "#include <iostream>\n" +
+      "#include <memory>\n" +
+      "#include <vector>\n\n" +
+      "template <typename T>\n" +
+      "class SystemManager {\n" +
+      "private:\n" +
+      "    std::vector<T> dataStore;\n" +
+      "public:\n" +
+      "    void addItem(const T& item) { dataStore.push_back(item); }\n" +
+      "    [[nodiscard]] auto getSize() const noexcept -> size_t { return dataStore.size(); }\n" +
+      "};\n\n" +
+      "auto managerPtr = std::make_unique<SystemManager<int>>();";
   }
 
   // 10. C SYSTEMS PROGRAMMING
   if (combined.includes("c systems") || combined.includes("c programming") || combined.includes("c language")) {
-    return `// C Systems Memory Allocation & Pointer Formula
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct {
-    int id;
-    char buffer[256];
-} SystemNode;
-
-SystemNode* node = (SystemNode*)malloc(sizeof(SystemNode));
-if (node == NULL) { return -1; }
-// Cleanup:
-free(node);`;
+    return "// C Systems Memory Allocation & Pointer Formula\n" +
+      "#include <stdio.h>\n" +
+      "#include <stdlib.h>\n\n" +
+      "typedef struct {\n" +
+      "    int id;\n" +
+      "    char buffer[256];\n" +
+      "} SystemNode;\n\n" +
+      "SystemNode* node = (SystemNode*)malloc(sizeof(SystemNode));\n" +
+      "if (node == NULL) { return -1; }\n" +
+      "// Cleanup:\n" +
+      "free(node);";
   }
 
   // 11. ANDROID & KOTLIN
   if (combined.includes("android") || combined.includes("kotlin")) {
-    return `// Kotlin Coroutines & Android ViewModel Formula
-class MainViewModel(private val repo: DataRepository) : ViewModel() {
-    private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
-    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
-
-    fun loadData() = viewModelScope.launch {
-        _uiState.value = UiState.Success(repo.fetchItems())
-    }
-}`;
+    return "// Kotlin Coroutines & Android ViewModel Formula\n" +
+      "class MainViewModel(private val repo: DataRepository) : ViewModel() {\n" +
+      "    private val _uiState = MutableStateFlow<UiState>(UiState.Loading)\n" +
+      "    val uiState: StateFlow<UiState> = _uiState.asStateFlow()\n\n" +
+      "    fun loadData() = viewModelScope.launch {\n" +
+      "        _uiState.value = UiState.Success(repo.fetchItems())\n" +
+      "    }\n" +
+      "}";
   }
 
   // 12. IOS & SWIFT / SWIFTUI
   if (combined.includes("ios") || combined.includes("swift") || combined.includes("objective-c")) {
-    return `// SwiftUI Declarative View & State Binding Formula
-import SwiftUI
-
-struct DashboardView: View {
-    @State private var isLoading: Bool = false
-    @StateObject private var viewModel = DashboardViewModel()
-
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("Dashboard").font(.headline)
-            Button("Refresh") { viewModel.fetch() }
-        }
-    }
-}`;
+    return "// SwiftUI Declarative View & State Binding Formula\n" +
+      "import SwiftUI\n\n" +
+      "struct DashboardView: View {\n" +
+      "    @State private var isLoading: Bool = false\n" +
+      "    @StateObject private var viewModel = DashboardViewModel()\n\n" +
+      "    var body: some View {\n" +
+      "        VStack(spacing: 16) {\n" +
+      "            Text(\"Dashboard\").font(.headline)\n" +
+      "            Button(\"Refresh\") { viewModel.fetch() }\n" +
+      "        }\n" +
+      "    }\n" +
+      "}";
   }
 
   // 13. PHP 8 & LARAVEL
   if (combined.includes("php") || combined.includes("laravel")) {
-    return `<?php
-declare(strict_types=1);
-
-namespace App\\Http\\Controllers;
-use App\\Models\\User;
-use Illuminate\\Http\\JsonResponse;
-
-class ApiController extends Controller {
-    public function show(int $id): JsonResponse {
-        $data = User::findOrFail($id);
-        return response()->json(['status' => 'success', 'data' => $data]);
-    }
-}`;
+    return "<?php\n" +
+      "declare(strict_types=1);\n\n" +
+      "namespace App\\Http\\Controllers;\n" +
+      "use App\\Models\\User;\n" +
+      "use Illuminate\\Http\\JsonResponse;\n\n" +
+      "class ApiController extends Controller {\n" +
+      "    public function show(int $id): JsonResponse {\n" +
+      "        $data = User::findOrFail($id);\n" +
+      "        return response()->json(['status' => 'success', 'data' => $data]);\n" +
+      "    }\n" +
+      "}";
   }
 
   // 14. RUBY & RUBY ON RAILS
   if (combined.includes("ruby") || combined.includes("rails")) {
-    return `# Ruby on Rails Controller & ActiveRecord Formula
-class Api::V1::ItemsController < ApplicationController
-  before_action :authenticate_user!
-
-  def index
-    @items = Item.where(active: true).order(created_at: :desc)
-    render json: { success: true, items: @items }
-  end
-end`;
+    return "# Ruby on Rails Controller & ActiveRecord Formula\n" +
+      "class Api::V1::ItemsController < ApplicationController\n" +
+      "  before_action :authenticate_user!\n\n" +
+      "  def index\n" +
+      "    @items = Item.where(active: true).order(created_at: :desc)\n" +
+      "    render json: { success: true, items: @items }\n" +
+      "  end\n" +
+      "end";
   }
 
   // 15. ANGULAR 2+
   if (combined.includes("angular")) {
-    return `// Angular Component & RxJS Observable Formula
-import { Component, OnInit, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-@Component({
-  selector: 'app-data-view',
-  standalone: true,
-  template: \`<div *ngIf="items$ | async as items">{{ items.length }} items</div>\`
-})
-export class DataViewComponent {
-  private http = inject(HttpClient);
-  items$: Observable<Item[]> = this.http.get<Item[]>('/api/items');
-}`;
+    return "// Angular Component & RxJS Observable Formula\n" +
+      "import { Component, OnInit, inject } from '@angular/core';\n" +
+      "import { HttpClient } from '@angular/common/http';\n" +
+      "import { Observable } from 'rxjs';\n\n" +
+      "@Component({\n" +
+      "  selector: 'app-data-view',\n" +
+      "  standalone: true,\n" +
+      "  template: '<div *ngIf=\"items$ | async as items\">{{ items.length }} items</div>'\n" +
+      "})\n" +
+      "export class DataViewComponent {\n" +
+      "  private http = inject(HttpClient);\n" +
+      "  items$: Observable<Item[]> = this.http.get<Item[]>('/api/items');\n" +
+      "}";
   }
 
   // 16. DATA STRUCTURES & ALGORITHMS (DSA)
   if (combined.includes("dsa") || combined.includes("data structure") || combined.includes("algorithm") || combined.includes("tree") || combined.includes("graph") || combined.includes("sort")) {
-    return `// Canonical Algorithm Formula (Time Complexity: O(log N) / O(N))
-function binarySearch(sortedArray, targetValue) {
-  let left = 0, right = sortedArray.length - 1;
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-    if (sortedArray[mid] === targetValue) return mid;
-    if (sortedArray[mid] < targetValue) left = mid + 1;
-    else right = mid - 1;
-  }
-  return -1; // Not found
-}`;
+    return "// Canonical Algorithm Formula (Time Complexity: O(log N) / O(N))\n" +
+      "function binarySearch(sortedArray, targetValue) {\n" +
+      "  let left = 0, right = sortedArray.length - 1;\n" +
+      "  while (left <= right) {\n" +
+      "    const mid = Math.floor((left + right) / 2);\n" +
+      "    if (sortedArray[mid] === targetValue) return mid;\n" +
+      "    if (sortedArray[mid] < targetValue) left = mid + 1;\n" +
+      "    else right = mid - 1;\n" +
+      "  }\n" +
+      "  return -1; // Not found\n" +
+      "}";
   }
 
   // 17. DEVOPS, BASH & POWERSHELL
   if (combined.includes("bash") || combined.includes("linux") || combined.includes("powershell") || combined.includes("devops") || combined.includes("git")) {
     if (combined.includes("powershell")) {
-      return `# PowerShell Automation Function Formula
-function Invoke-BuildPipeline {
-    [CmdletBinding()]
-    param([Parameter(Mandatory=$true)][string]$Environment)
-    
-    Write-Host "Deploying to $Environment..." -ForegroundColor Cyan
-    Get-Service -Name "AppService" | Restart-Service
-}`;
+      return "# PowerShell Automation Function Formula\n" +
+        "function Invoke-BuildPipeline {\n" +
+        "    [CmdletBinding()]\n" +
+        "    param([Parameter(Mandatory=$true)][string]$Environment)\n" +
+        "    \n" +
+        "    Write-Host \"Deploying to $Environment...\" -ForegroundColor Cyan\n" +
+        "    Get-Service -Name \"AppService\" | Restart-Service\n" +
+        "}";
     }
-    return `#!/usr/bin/env bash
-# Robust Bash Shell Scripting Formula
-set -euo pipefail
-
-TARGET_DIR="\${1:-./dist}"
-if [[ ! -d "$TARGET_DIR" ]]; then
-  echo "Error: Target directory $TARGET_DIR does not exist" >&2
-  exit 1
-fi
-echo "Deploying build artifacts from $TARGET_DIR..."`;
+    return "#!/usr/bin/env bash\n" +
+      "# Robust Bash Shell Scripting Formula\n" +
+      "set -euo pipefail\n\n" +
+      "TARGET_DIR=\"$1\"\n" +
+      "if [ ! -d \"$TARGET_DIR\" ]; then\n" +
+      "  echo \"Error: Target directory $TARGET_DIR does not exist\" >&2\n" +
+      "  exit 1\n" +
+      "fi\n" +
+      "echo \"Deploying build artifacts from $TARGET_DIR...\"";
   }
 
   // 18. PYTHON SYNTAX PATTERNS
   if (combined.includes("python") || combined.includes("django") || combined.includes("flask")) {
-    return `# Python 3 Function & Type Hints Formula
-from typing import Optional, List, Dict
-
-def process_data(
-    records: List[Dict[str, any]], 
-    threshold: float = 0.5
-) -> Dict[str, any]:
-    """Processes list of dict records with type annotations."""
-    valid_items = [r for r in records if r.get("score", 0) >= threshold]
-    return {"total": len(records), "valid_count": len(valid_items)}`;
+    return "# Python 3 Function & Type Hints Formula\n" +
+      "from typing import Optional, List, Dict\n\n" +
+      "def process_data(\n" +
+      "    records: List[Dict[str, any]], \n" +
+      "    threshold: float = 0.5\n" +
+      ") -> Dict[str, any]:\n" +
+      "    \"\"\"Processes list of dict records with type annotations.\"\"\"\n" +
+      "    valid_items = [r for r in records if r.get(\"score\", 0) >= threshold]\n" +
+      "    return {\"total\": len(records), \"valid_count\": len(valid_items)}";
   }
 
   // 19. DATABASE / SQL / MONGODB SYNTAX PATTERNS
   if (combined.includes("sql") || combined.includes("database") || combined.includes("query") || combined.includes("table") || combined.includes("mongo")) {
     if (combined.includes("mongo")) {
-      return `// MongoDB Aggregation Pipeline Formula
-db.collection.aggregate([
-  { $match: { status: 'completed' } },
-  { $group: { _id: '$userId', totalAmount: { $sum: '$amount' } } },
-  { $sort: { totalAmount: -1 } },
-  { $limit: 10 }
-]);`;
+      return "// MongoDB Aggregation Pipeline Formula\n" +
+        "db.collection.aggregate([\n" +
+        "  { $match: { status: 'completed' } },\n" +
+        "  { $group: { _id: '$userId', totalAmount: { $sum: '$amount' } } },\n" +
+        "  { $sort: { totalAmount: -1 } },\n" +
+        "  { $limit: 10 }\n" +
+        "]);";
     }
-    return `-- Standard SQL Query & Transaction Formula
-SELECT 
-  u.id, u.name, 
-  COUNT(o.id) AS total_orders
-FROM users u
-LEFT JOIN orders o ON u.id = o.user_id
-WHERE u.status = 'active'
-GROUP BY u.id, u.name
-HAVING COUNT(o.id) >= 1
-ORDER BY total_orders DESC
-LIMIT 20;`;
+    return "-- Standard SQL Query & Transaction Formula\n" +
+      "SELECT \n" +
+      "  u.id, u.name, \n" +
+      "  COUNT(o.id) AS total_orders\n" +
+      "FROM users u\n" +
+      "LEFT JOIN orders o ON u.id = o.user_id\n" +
+      "WHERE u.status = 'active'\n" +
+      "GROUP BY u.id, u.name\n" +
+      "HAVING COUNT(o.id) >= 1\n" +
+      "ORDER BY total_orders DESC\n" +
+      "LIMIT 20;";
   }
 
   // Final Universal Fallback
-  return `// ${topicTitle || lessonTitle} Syntax Blueprint
-// Declaration & Execution Formula:
-const ${topicTitle.toLowerCase().replace(/[^a-z0-9]+/g, "_") || "entity"} = new FeatureHandler({
-  configOption: true,
-  onSuccess: (result) => handleResult(result)
-});`;
+  const cleanId = (topicTitle || lessonTitle || "entity").toLowerCase().replace(/[^a-z0-9]+/g, "_");
+  return "// " + (topicTitle || lessonTitle) + " Syntax Blueprint\n" +
+    "// Declaration & Execution Formula:\n" +
+    "const " + cleanId + " = new FeatureHandler({\n" +
+    "  configOption: true,\n" +
+    "  onSuccess: (result) => handleResult(result)\n" +
+    "});";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -4098,19 +4009,19 @@ function generateSeniorRule({
   topicTitle = "",
   language,
 }: {
-  courseTitle: string;
-  moduleTitle: string;
-  lessonTitle: string;
-  topicTitle: string;
+  courseTitle?: string;
+  moduleTitle?: string;
+  lessonTitle?: string;
+  topicTitle?: string;
   language: ExplanationLanguage;
 }): string {
-  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+  const combined = (courseTitle + " " + moduleTitle + " " + lessonTitle + " " + topicTitle).toLowerCase();
 
   if (combined.includes("react")) {
     if (combined.includes("state") || combined.includes("usestate")) {
       return language === "hi"
-        ? "State ko kabhi directly mutate na karein (state.push nahi chalana); hamesha setter function aur spread operator (`[...prev, item]`) ka use karein!"
-        : "Never mutate state directly (e.g. state.push()); always use setter functions and immutable updates with spread syntax (`[...prev, item]`).";
+        ? "State ko kabhi directly mutate na karein (state.push nahi chalana); hamesha setter function aur spread operator ('[...prev, item]') ka use karein!"
+        : "Never mutate state directly (e.g. state.push()); always use setter functions and immutable updates with spread syntax ('[...prev, item]').";
     }
     if (combined.includes("effect") || combined.includes("useeffect")) {
       return language === "hi"
@@ -4135,11 +4046,11 @@ function generateSeniorRule({
     }
     if (combined.includes("middleware") || combined.includes("auth")) {
       return language === "hi"
-        ? "Middleware function ke har path me ya to `next()` call karein ya `res.status().json()` send karein, varna request hang ho jayegi!"
-        : "Ensure every code path in a middleware either calls `next()` or terminates with `res.json()`, otherwise client requests will hang indefinitely.";
+        ? "Middleware function ke har path me ya to 'next()' call karein ya 'res.status().json()' send karein, varna request hang ho jayegi!"
+        : "Ensure every code path in a middleware either calls 'next()' or terminates with 'res.json()', otherwise client requests will hang indefinitely.";
     }
     return language === "hi"
-      ? "Sensitive credentials ko `.env` me rakhein aur production me Helmet + Rate Limiter middlewares zarur lagayein!"
+      ? "Sensitive credentials ko .env me rakhein aur production me Helmet + Rate Limiter middlewares zarur lagayein!"
       : "Store sensitive secrets in environment variables (.env) and always attach security headers (Helmet) and rate limiters in production.";
   }
 
@@ -4151,7 +4062,7 @@ function generateSeniorRule({
 
   if (combined.includes("c++") || combined.includes("c systems")) {
     return language === "hi"
-      ? "Raw pointers ke bajaye RAII aur smart pointers (`std::unique_ptr`, `std::shared_ptr`) ka use karein taaki memory leaks na hon!"
+      ? "Raw pointers ke bajaye RAII aur smart pointers ('std::unique_ptr', 'std::shared_ptr') ka use karein taaki memory leaks na hon!"
       : "Enforce RAII principles and smart pointers (std::unique_ptr, std::shared_ptr) to eliminate manual memory leaks.";
   }
 
@@ -4163,13 +4074,13 @@ function generateSeniorRule({
 
   if (combined.includes("html")) {
     return language === "hi"
-      ? "Hamesha semantic HTML5 tags (`<main>`, `<nav>`, `<article>`, `<header>`) ka use karein; sirf `<div>` par depend na rahein!"
+      ? "Hamesha semantic HTML5 tags (<main>, <nav>, <article>, <header>) ka use karein; sirf <div> par depend na rahein!"
       : "Always write semantic HTML5 tags (<main>, <nav>, <article>, <header>) instead of generic <div> tags to ensure accessibility and SEO.";
   }
 
   if (combined.includes("css")) {
     return language === "hi"
-      ? "Fixed pixel widths (`width: 800px`) se bachein; hamesha responsive units (`rem`, `%`, `clamp()`, `minmax()`) aur Flexbox/Grid use karein!"
+      ? "Fixed pixel widths (width: 800px) se bachein; hamesha responsive units (rem, %, clamp(), minmax()) aur Flexbox/Grid use karein!"
       : "Avoid fixed pixel widths; use responsive units (rem, %, clamp(), minmax()) and Flexbox/Grid for fluid multi-device layouts.";
   }
 
@@ -4181,8 +4092,8 @@ function generateSeniorRule({
 
   if (combined.includes("javascript")) {
     return language === "hi"
-      ? "Hamesha strict equality (`===`) use karein aur `var` ke bajaye `const`/`let` ka istemal karein!"
-      : "Always use strict equality (`===`) to prevent unintended type coercion, and favor `const` over `let` and `var`.";
+      ? "Hamesha strict equality (===) use karein aur 'var' ke bajaye 'const'/'let' ka istemal karein!"
+      : "Always use strict equality (===) to prevent unintended type coercion, and favor 'const' over 'let' and 'var'.";
   }
 
   return language === "hi"
@@ -4212,7 +4123,7 @@ function buildCleanTopicBreakdown({
   examples: ExampleItem[];
   language: ExplanationLanguage;
 }) {
-  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+  const combined = (courseTitle + " " + moduleTitle + " " + lessonTitle + " " + topicTitle).toLowerCase();
 
   // 1. Detect Domain
   const isReact = combined.includes("react");
@@ -4241,8 +4152,8 @@ function buildCleanTopicBreakdown({
   const defaultDefinition =
     lessonExplanation ||
     (language === "hi"
-      ? `${topicTitle || lessonTitle} ${domainName} का एक महत्वपूर्ण विषय है जो आपके कोड को संरचित, आधुनिक और शक्तिशाली बनाता है।`
-      : `${topicTitle || lessonTitle} is a core foundation of ${domainName}, enabling clean, scalable, and professional software development.`);
+      ? (topicTitle || lessonTitle) + " " + domainName + " का एक महत्वपूर्ण विषय है जो आपके कोड को संरचित, आधुनिक और शक्तिशाली बनाता है।"
+      : (topicTitle || lessonTitle) + " is a core foundation of " + domainName + ", enabling clean, scalable, and professional software development.");
 
   const conceptPoints = generateWhatItDoesPoints({
     courseTitle,
@@ -4291,11 +4202,11 @@ function buildCleanTopicBreakdown({
     withThis:
       language === "hi"
         ? "साफ़, मॉडर्न और इंडस्ट्री-ग्रेड आर्किटेक्चर मिलता है!"
-        : `Clean, industry-standard ${domainName} implementation!`,
+        : "Clean, industry-standard " + domainName + " implementation!",
     flowSteps: [
       {
-        phase: `1. Initialize ${topicTitle || lessonTitle}`,
-        whatHappens: language === "hi" ? "कॉन्सेप्ट और इनपुट्स लोड हुए।" : `Initializes ${topicTitle || lessonTitle} parameters.`,
+        phase: "1. Initialize " + (topicTitle || lessonTitle),
+        whatHappens: language === "hi" ? "कॉन्सेप्ट और इनपुट्स लोड हुए।" : "Initializes " + (topicTitle || lessonTitle) + " parameters.",
         dataState: "State: INITIALIZED",
       },
       {
