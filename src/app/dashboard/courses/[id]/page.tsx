@@ -255,22 +255,22 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
           <div>
             <h2 className="text-base sm:text-lg font-bold text-white font-mono flex items-center gap-2">
               <LayersIcon className="size-4 text-sky-400" />
-              <span>Course Curriculum ({course.modules.length} Learning Phases)</span>
+              <span>Course Curriculum</span>
             </h2>
             <p className="text-xs text-slate-400 font-mono mt-0.5">
-              Select any phase below to jump straight to React.js, TypeScript, JavaScript, CSS, or HTML5
+              Select any section below to jump straight to React.js, TypeScript, JavaScript, CSS, or HTML5
             </p>
           </div>
 
           {/* Quick Technology Filter Pills */}
           <div className="flex items-center gap-1.5 flex-wrap">
             {[
-              { id: "all", label: "All Phases", badge: "All Phases" },
-              { id: "html", label: "HTML5", badge: "🟠 HTML5 (Phase 1)" },
-              { id: "css", label: "CSS3", badge: "🔵 CSS3 (Phase 2-3)" },
-              { id: "javascript", label: "JavaScript", badge: "🟡 JavaScript (Phase 4)" },
-              { id: "typescript", label: "TypeScript", badge: "🔷 TypeScript (Phase 5)" },
-              { id: "react", label: "React.js", badge: "⚛️ React.js (Phase 6)" },
+              { id: "all", label: "All", badge: "All" },
+              { id: "html", label: "HTML5", badge: "🟠 HTML5" },
+              { id: "css", label: "CSS3", badge: "🔵 CSS3" },
+              { id: "javascript", label: "JavaScript", badge: "🟡 JavaScript" },
+              { id: "typescript", label: "TypeScript", badge: "🔷 TypeScript" },
+              { id: "react", label: "React.js", badge: "⚛️ React.js" },
             ].map((filter) => (
               <button
                 key={filter.id}

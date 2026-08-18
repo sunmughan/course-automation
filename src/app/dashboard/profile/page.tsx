@@ -320,12 +320,12 @@ export default function ProfilePage() {
                             {isSwitching ? (
                               <>
                                 <Loader2 className="size-3 animate-spin" />
-                                <span>Switching...</span>
+                                <span>Enrolling...</span>
                               </>
                             ) : (
                               <>
                                 <Zap className="size-3 text-amber-400 fill-current" />
-                                <span>Switch to this Course</span>
+                                <span>Enroll</span>
                               </>
                             )}
                           </Button>

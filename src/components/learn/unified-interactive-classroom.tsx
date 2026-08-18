@@ -609,7 +609,7 @@ export function UnifiedInteractiveClassroom({
           <button
             onClick={() => setIsChaptersDrawerOpen(!isChaptersDrawerOpen)}
             className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-sky-600/20 text-sky-300 border border-sky-500/40 hover:bg-sky-600 hover:text-white transition-all cursor-pointer shrink-0 shadow-xs"
-            title="Open Curriculum & Learning Phases Drawer"
+            title="Open Curriculum & Chapters Drawer"
           >
             <ListOrdered className="size-3.5 text-sky-400" />
             <span>Chapters</span>
@@ -1895,7 +1895,7 @@ npm run dev`}
                       Course Curriculum
                     </h3>
                     <p className="text-[11px] text-slate-400 font-mono truncate">
-                      {courseTitle || "All Chapters & Learning Phases"}
+                      {courseTitle || "All Chapters & Topics"}
                     </p>
                   </div>
                 </div>
