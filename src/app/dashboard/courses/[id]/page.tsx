@@ -250,30 +250,86 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       </div>
 
       {/* Course Curriculum & Modules */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base sm:text-lg font-bold text-white font-mono flex items-center gap-2">
-            <LayersIcon className="size-4 text-sky-400" />
-            <span>Course Curriculum ({course.modules.length} Phases)</span>
-          </h2>
-          <span className="text-xs text-slate-500 font-mono hidden sm:inline">Click any module to inspect topics</span>
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 className="text-base sm:text-lg font-bold text-white font-mono flex items-center gap-2">
+              <LayersIcon className="size-4 text-sky-400" />
+              <span>Course Curriculum ({course.modules.length} Learning Phases)</span>
+            </h2>
+            <p className="text-xs text-slate-400 font-mono mt-0.5">
+              Jump straight to React, JavaScript, CSS, HTML or any specific phase
+            </p>
+          </div>
+
+          <div className="flex items-center gap-1.5 flex-wrap">
+            {[
+              { id: "all", label: "All Phases", badge: "All" },
+              { id: "html", label: "HTML5", badge: "🟠 HTML5" },
+              { id: "css", label: "CSS3", badge: "🔵 CSS3" },
+              { id: "js", label: "JavaScript", badge: "🟡 JavaScript" },
+              { id: "react", label: "React.js", badge: "⚛️ React.js" },
+              { id: "ts", label: "TypeScript / Tooling", badge: "🔷 TypeScript" },
+            ].map((filter) => (
+              <button
+                key={filter.id}
+                onClick={() => {
+                  if (filter.id === "all") {
+                    // expand first
+                    if (course.modules.length > 0) setExpandedModules(new Set([course.modules[0].id]));
+                  } else {
+                    // find matching module and expand it
+                    const target = course.modules.find(m => m.title.toLowerCase().includes(filter.id));
+                    if (target) {
+                      setExpandedModules(new Set([target.id]));
+                      const el = document.getElementById(`module-${target.id}`);
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}
+                className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-slate-700 transition-all cursor-pointer shadow-xs"
+              >
+                {filter.badge}
+              </button>
+            ))}
+          </div>
         </div>
 
         {course.modules.map((mod, idx) => {
           const isExpanded = expandedModules.has(mod.id);
+          const getTechBadge = (title: string) => {
+            const lower = title.toLowerCase();
+            if (lower.includes("html") || lower.includes("web standards")) return { label: "HTML5 Core", color: "bg-orange-500/10 text-orange-400 border-orange-500/30" };
+            if (lower.includes("css") || lower.includes("responsive")) return { label: "CSS3 & Design", color: "bg-sky-500/10 text-sky-400 border-sky-500/30" };
+            if (lower.includes("react") || lower.includes("framework")) return { label: "React.js & Ecosystem", color: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30" };
+            if (lower.includes("javascript") || lower.includes("js") || lower.includes("dom")) return { label: "JavaScript Engine", color: "bg-amber-500/10 text-amber-400 border-amber-500/30" };
+            if (lower.includes("architecture") || lower.includes("bundler") || lower.includes("tooling")) return { label: "Architecture & Tooling", color: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30" };
+            if (lower.includes("typescript")) return { label: "TypeScript Pro", color: "bg-blue-500/10 text-blue-400 border-blue-500/30" };
+            if (lower.includes("next")) return { label: "Next.js Fullstack", color: "bg-purple-500/10 text-purple-400 border-purple-500/30" };
+            return { label: `Phase ${idx + 1}`, color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" };
+          };
+
+          const badge = getTechBadge(mod.title);
+
           return (
             <div
               key={mod.id}
-              className="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden transition-all"
+              id={`module-${mod.id}`}
+              className={`bg-slate-900/80 border rounded-2xl overflow-hidden transition-all shadow-md ${
+                isExpanded ? "border-sky-500/40 ring-1 ring-sky-500/20" : "border-slate-800 hover:border-slate-700"
+              }`}
             >
               <button
                 className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-3 hover:bg-slate-850/60 cursor-pointer transition-colors"
                 onClick={() => toggleModule(mod.id)}
               >
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-sky-950 text-sky-400 border border-sky-800/60">
+                  <div className="flex items-center gap-2 flex-wrap mb-1.5">
+                    <span className="text-[11px] font-mono font-extrabold px-2.5 py-0.5 rounded-md bg-sky-950 text-sky-300 border border-sky-800/80">
                       Phase {idx + 1}
+                    </span>
+                    <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-md border ${badge.color}`}>
+                      {badge.label}
                     </span>
                     <span className="text-xs text-slate-500 font-mono">
                       {mod.topics.length} Topics
@@ -285,8 +341,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
+                  <span className="text-xs font-mono font-bold text-sky-400 hidden sm:inline">
+                    {isExpanded ? "Collapse ▲" : "View Topics ▼"}
+                  </span>
                   {isExpanded ? (
-                    <ChevronUpIcon className="size-4 text-slate-400" />
+                    <ChevronUpIcon className="size-4 text-sky-400" />
                   ) : (
                     <ChevronDownIcon className="size-4 text-slate-400" />
                   )}
@@ -300,7 +359,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                     return (
                       <div
                         key={topic.id}
-                        className="p-3 rounded-lg bg-slate-900 border border-slate-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-slate-700 transition-all"
+                        className="p-3.5 rounded-xl bg-slate-900 border border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-slate-700 hover:bg-slate-850/50 transition-all shadow-xs"
                       >
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap mb-1">
@@ -314,17 +373,21 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                           <h4 className="text-xs sm:text-sm font-semibold text-white truncate">
                             {topic.title}
                           </h4>
+                          {topic.description && (
+                            <p className="text-[11px] text-slate-400 line-clamp-1 mt-0.5">
+                              {topic.description}
+                            </p>
+                          )}
                         </div>
 
                         {firstLesson && (
                           <Button
                             size="sm"
-                            variant="outline"
-                            className="text-xs font-mono border-slate-700 hover:bg-sky-600 hover:text-white shrink-0 self-start sm:self-auto cursor-pointer"
+                            className="text-xs font-mono font-bold bg-sky-600 hover:bg-sky-500 text-white shrink-0 self-start sm:self-auto cursor-pointer shadow-md flex items-center gap-1.5 rounded-lg px-3 py-1.5"
                             onClick={() => router.push(`/dashboard/learn/${firstLesson.id}`)}
                           >
-                            <PlayIcon className="size-3 text-sky-400" />
-                            <span>Start Lesson</span>
+                            <PlayIcon className="size-3 text-white fill-current" />
+                            <span>Start Lesson ▶</span>
                           </Button>
                         )}
                       </div>

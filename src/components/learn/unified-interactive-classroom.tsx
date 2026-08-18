@@ -1830,6 +1830,176 @@ npm run dev`}
           </div>
         )}
       </div>
+
+      {/* ─────────────────────────────────────────────────────────────────────────────
+          7. CURRICULUM & CHAPTERS SIDEBAR DRAWER (SLIDE-IN FROM LEFT)
+          ───────────────────────────────────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {isChaptersDrawerOpen && (
+          <div className="fixed inset-0 z-50 flex">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsChaptersDrawerOpen(false)}
+              className="fixed inset-0 bg-slate-950/80 backdrop-blur-xs cursor-pointer"
+            />
+
+            {/* Slide-in Drawer */}
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 250 }}
+              className="relative w-full max-w-sm sm:max-w-md bg-slate-900 border-r border-slate-800 shadow-2xl flex flex-col h-full z-10 overflow-hidden"
+            >
+              {/* Drawer Header */}
+              <div className="p-4 border-b border-slate-800 bg-slate-900/90 flex items-center justify-between gap-3 shrink-0">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="p-2 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20 shrink-0">
+                    <ListOrdered className="size-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-bold text-white font-mono truncate">
+                      Course Curriculum
+                    </h3>
+                    <p className="text-[11px] text-slate-400 font-mono truncate">
+                      {courseTitle || "All Chapters & Learning Phases"}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setIsChaptersDrawerOpen(false)}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                  title="Close Drawer"
+                >
+                  <X className="size-4" />
+                </button>
+              </div>
+
+              {/* Search Bar & Quick Stats */}
+              <div className="p-3 border-b border-slate-800 bg-slate-950/50 space-y-2 shrink-0">
+                <div className="relative">
+                  <Search className="size-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={chapterSearchQuery}
+                    onChange={(e) => setChapterSearchQuery(e.target.value)}
+                    placeholder="Search React, JS, CSS, HTML..."
+                    className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 font-mono"
+                  />
+                  {chapterSearchQuery && (
+                    <button
+                      onClick={() => setChapterSearchQuery("")}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 cursor-pointer"
+                    >
+                      <X className="size-3" />
+                    </button>
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 px-1">
+                  <span>{filteredChapters.length} Lessons in Syllabus</span>
+                  <span className="text-sky-400 font-bold">1-Click Jump</span>
+                </div>
+              </div>
+
+              {/* Grouped Chapters List */}
+              <div className="flex-1 overflow-y-auto p-3 space-y-4">
+                {Object.entries(
+                  filteredChapters.reduce((acc, ch) => {
+                    const group = ch.moduleTitle || "General Curriculum";
+                    if (!acc[group]) acc[group] = [];
+                    acc[group].push(ch);
+                    return acc;
+                  }, {} as Record<string, typeof filteredChapters>)
+                ).map(([groupTitle, chapters], gIdx) => {
+                  const getTechBadge = (title: string) => {
+                    const lower = title.toLowerCase();
+                    if (lower.includes("html")) return { label: "HTML5", color: "bg-orange-500/10 text-orange-400 border-orange-500/30" };
+                    if (lower.includes("css") || lower.includes("responsive")) return { label: "CSS3", color: "bg-sky-500/10 text-sky-400 border-sky-500/30" };
+                    if (lower.includes("react")) return { label: "React.js", color: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30" };
+                    if (lower.includes("javascript") || lower.includes("js")) return { label: "JavaScript", color: "bg-amber-500/10 text-amber-400 border-amber-500/30" };
+                    if (lower.includes("node")) return { label: "Node.js", color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" };
+                    if (lower.includes("typescript")) return { label: "TypeScript", color: "bg-blue-500/10 text-blue-400 border-blue-500/30" };
+                    return { label: `Phase ${gIdx + 1}`, color: "bg-purple-500/10 text-purple-400 border-purple-500/30" };
+                  };
+
+                  const badge = getTechBadge(groupTitle);
+
+                  return (
+                    <div key={groupTitle} className="space-y-1.5">
+                      <div className="flex items-center justify-between gap-2 px-2 py-1">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border ${badge.color}`}>
+                            {badge.label}
+                          </span>
+                          <span className="text-xs font-bold text-slate-300 font-mono truncate">
+                            {groupTitle}
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-slate-500 font-mono shrink-0">
+                          {chapters.length} topics
+                        </span>
+                      </div>
+
+                      <div className="space-y-1">
+                        {chapters.map((ch, cIdx) => {
+                          const isCurrent = ch.id === currentLessonId;
+
+                          return (
+                            <button
+                              key={ch.id}
+                              onClick={() => {
+                                setIsChaptersDrawerOpen(false);
+                                if (onSelectChapter) {
+                                  onSelectChapter(ch.id);
+                                } else if (typeof window !== "undefined") {
+                                  window.location.href = `/dashboard/learn/${ch.id}`;
+                                }
+                              }}
+                              className={`w-full text-left p-2.5 rounded-xl border flex items-center justify-between gap-3 transition-all cursor-pointer ${
+                                isCurrent
+                                  ? "bg-sky-950/80 border-sky-500/80 text-sky-200 shadow-md ring-1 ring-sky-500/30"
+                                  : "bg-slate-950/60 border-slate-800/80 text-slate-300 hover:bg-slate-800/80 hover:border-slate-700"
+                              }`}
+                            >
+                              <div className="flex items-center gap-2.5 min-w-0">
+                                <span className={`size-5 rounded-md flex items-center justify-center text-[10px] font-mono font-bold shrink-0 ${
+                                  isCurrent
+                                    ? "bg-sky-500 text-slate-950 font-extrabold"
+                                    : "bg-slate-800 text-slate-400"
+                                }`}>
+                                  {cIdx + 1}
+                                </span>
+                                <span className="text-xs font-semibold truncate leading-tight">
+                                  {formatCleanLessonTitle(ch.title)}
+                                </span>
+                              </div>
+
+                              <div className="shrink-0 flex items-center gap-1">
+                                {isCurrent ? (
+                                  <span className="text-[10px] font-mono font-bold text-sky-400 bg-sky-500/10 px-1.5 py-0.5 rounded border border-sky-500/20 animate-pulse">
+                                    Current
+                                  </span>
+                                ) : (
+                                  <Play className="size-3 text-slate-500 group-hover:text-white" />
+                                )}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
