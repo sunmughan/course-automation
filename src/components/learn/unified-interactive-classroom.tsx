@@ -291,19 +291,23 @@ export function UnifiedInteractiveClassroom({
 
   // Switch examples when lesson changes
   useEffect(() => {
-    if (examples[0]?.solutionCode || examples[0]?.starterCode) {
-      const initialCode = examples[0]?.solutionCode || examples[0]?.starterCode;
-      setAppCode(initialCode);
-      // If code starts with node/express, default serverCode to it as well
-      if (initialCode.includes("express") || initialCode.includes("http") || initialCode.includes("require(")) {
-        setServerCode(initialCode);
-        setActiveVsCodeTab("node");
-      } else {
-        setActiveVsCodeTab("react");
-      }
+    const initialCode = generateRichTopicCode({
+      courseTitle,
+      moduleTitle,
+      lessonTitle,
+      topicTitle,
+      examples,
+    });
+    setAppCode(initialCode);
+    // If code starts with node/express, default serverCode to it as well
+    if (initialCode.includes("express") || initialCode.includes("http") || initialCode.includes("require(")) {
+      setServerCode(initialCode);
+      setActiveVsCodeTab("node");
+    } else {
+      setActiveVsCodeTab("react");
     }
     clearOutput();
-  }, [lessonTitle, examples, clearOutput]);
+  }, [lessonTitle, topicTitle, courseTitle, moduleTitle, examples, clearOutput]);
 
   // Active code depending on selected file tab
   const currentEditorCode =
@@ -2236,6 +2240,632 @@ function generateWhatItDoesPoints({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Dynamic Real-World Production Use Cases Generator
+// ─────────────────────────────────────────────────────────────────────────────
+function generateUseCases({
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
+  language,
+}: {
+  courseTitle: string;
+  moduleTitle: string;
+  lessonTitle: string;
+  topicTitle: string;
+  language: ExplanationLanguage;
+}): string[] {
+  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+
+  // 1. React.js Specific Use Cases
+  if (combined.includes("react")) {
+    if (combined.includes("component") || combined.includes("stateless") || combined.includes("prop")) {
+      return language === "hi"
+        ? [
+            "नेविगेशन बार (Navbar), प्रोडक्ट कार्ड्स और फुटर जैसी रियूजेबल UI लाइब्रेरी बनाना",
+            "एटॉमिक डिजाइन सिस्टम (Design System) के कोर कंपोनेंट्स बनाना",
+            "डैशबोर्ड विगेट्स को पेरेंट से अलग-अलग डेटा पास करके रेंडर करना",
+          ]
+        : [
+            "Building modular UI component libraries (Navbar, Cards, Modals, Footers)",
+            "Creating scalable Design System tokens and enterprise UI components",
+            "Passing dynamic data across parent-child dashboard widgets via props",
+          ];
+    }
+    if (combined.includes("state") || combined.includes("usestate") || combined.includes("hook")) {
+      return language === "hi"
+        ? [
+            "शॉपिंग कार्ट में आइटम्स जोड़ना, हटाना और कुल कीमत लाइव कैलकुलेट करना",
+            "मल्टी-स्टेप फॉर्म विज़ार्ड और इनपुट वैलिडेशन स्टेट मैनेज करना",
+            "डार्क/लाइट थीम टॉगल और साइडबार ओपन/क्लोज स्थिति संभालना",
+          ]
+        : [
+            "Live E-commerce shopping cart counters and total price calculations",
+            "Multi-step registration form wizards with instant validation state",
+            "Dark/Light theme toggles and collapsible sidebar UI states",
+          ];
+    }
+    if (combined.includes("effect") || combined.includes("useeffect") || combined.includes("lifecycle")) {
+      return language === "hi"
+        ? [
+            "कंपोनेंट लोड होते ही बैकएंड REST API से लाइव JSON डेटा फ़ेच करना",
+            "वेबसॉकेट्स और रियल-टाइम चैट का कनेक्शन ओपन व क्लोज़ करना",
+            "ब्राउज़र लोकल स्टोरेज (LocalStorage) में यूजर प्रेफरेंस सिंक करना",
+          ]
+        : [
+            "Fetching live JSON data from REST APIs on component mount",
+            "Establishing and tearing down WebSocket real-time chat connections",
+            "Syncing reactive application state with browser LocalStorage",
+          ];
+    }
+    if (combined.includes("form") || combined.includes("input")) {
+      return language === "hi"
+        ? [
+            "सुरक्षित लॉगिन, साइनअप और ऑथेंटिकेशन फॉर्म्स प्रोसेस करना",
+            "सर्च बार में यूजर के टाइप करते ही ऑटो-सजेशन और लाइव फ़िल्टरिंग",
+            "कस्टम फ़ाइल अपलोड और ड्रैग-एंड-ड्रॉप प्रिव्यू तैयार करना",
+          ]
+        : [
+            "Secure Login and Registration form submission with validations",
+            "Real-time search bar autocomplete and debounce query filters",
+            "Custom file uploaders with drag-and-drop preview handling",
+          ];
+    }
+    if (combined.includes("typescript") || combined.includes("type")) {
+      return language === "hi"
+        ? [
+            "एंटरप्राइज React ऐप्स में सख्त TypeScript इंटरफेस और प्रॉप टाइप्स लागू करना",
+            "कॉम्प्लेक्स स्टेट और API रिस्पॉन्स ऑब्जेक्ट्स को टाइप-सेफ बनाना",
+            "प्रोडक्शन में अनडिफाइंड प्रॉपर्टी एरर्स (Cannot read properties of undefined) को रोकना",
+          ]
+        : [
+            "Enforcing strict TypeScript interfaces and generic prop contracts",
+            "Type-safe management of complex state and asynchronous API payloads",
+            "Eliminating runtime undefined property exceptions across enterprise apps",
+          ];
+    }
+    return language === "hi"
+      ? [
+          "हाई-परफॉरमेंस सिंगल पेज वेब एप्लीकेशन्स (SPA) बनाना",
+          "क्लाइंट-साइड स्टेट और यूजर इंटरैक्शन को रिएक्टिव तरीके से मैनेज करना",
+          "एंटरप्राइज फ्रंटेंड आर्किटेक्चर में मॉडर्न React 19+ पैटर्न्स लागू करना",
+        ]
+      : [
+          "Building high-performance Single Page Applications (SPAs)",
+          "Managing reactive client-side state and rich interactive UI workflows",
+          "Implementing modern React 19+ architecture across enterprise projects",
+        ];
+  }
+
+  // 2. HTML5 Use Cases
+  if (combined.includes("html")) {
+    return language === "hi"
+      ? [
+          "सर्च इंजनों (Google SEO) के लिए सिमेंटिक वेब पेज लेआउट बनाना",
+          "स्क्रीन रीडर्स और एक्सेसिबिलिटी (a11y) के लिए सही सिमेंटिक टैग्स लगाना",
+          "मोबाइल और डेस्कटॉप के लिए रिस्पॉन्सिव वेब फॉर्म्स तैयार करना",
+        ]
+      : [
+          "Building semantic, SEO-optimized web documents (header, main, footer)",
+          "Ensuring WCAG screen reader accessibility across enterprise web apps",
+          "Creating cross-platform responsive forms and interactive media elements",
+        ];
+  }
+
+  // 3. CSS3 Use Cases
+  if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid")) {
+    return language === "hi"
+      ? [
+          "मोबाइल, टैबलेट और लैपटॉप पर बिना टूटे परफेक्ट रिस्पॉन्सिव ग्रिड लेआउट",
+          "नेविगेशन बार और बटनों को हॉरिजॉन्टली व वर्टिकली सेंटर में अलाइन करना",
+          "होवर इफेक्ट्स, कार्ड शैडोज और स्मूथ सीएसएस एनिमेशन जोड़ना",
+        ]
+      : [
+          "Fluid responsive grid layouts adjusting from mobile to 4K displays",
+          "Pixel-perfect horizontal and vertical centering with CSS Flexbox",
+          "Interactive hover transitions, card shadows, and micro-animations",
+        ];
+  }
+
+  // 4. JavaScript Use Cases
+  if (combined.includes("javascript") || combined.includes("js") || combined.includes("dom")) {
+    return language === "hi"
+      ? [
+          "पेज को रीलोड किए बिना यूजर इंटरैक्शन पर डायनामिक HTML चेंज करना",
+          "API से डेटा मंगाकर टेबल और लिस्ट्स को जावास्क्रिप्ट से भरना",
+          "क्लाइंट-साइड बिजनेस लॉजिक और कैलकुलेशन प्रोसेस करना",
+        ]
+      : [
+          "Zero-reload dynamic DOM manipulation on button clicks and inputs",
+          "Populating tables and lists dynamically from asynchronous APIs",
+          "Executing fast client-side calculations and business validations",
+        ];
+  }
+
+  // 5. TypeScript Use Cases
+  if (combined.includes("typescript") || combined.includes("type")) {
+    return language === "hi"
+      ? [
+          "प्रोडक्शन में डेटा टाइप मिसमैच के कारण होने वाले बग्स को पहले ही रोकना",
+          "बड़े एंटरप्राइज कोडबेस में ऑटो-कंप्लीट और सेफ रीफैक्टरिंग पाना",
+          "API रिस्पॉन्स के लिए सख्त टाइप डेफिनिशन और इंटरफेस बनाना",
+        ]
+      : [
+          "Catching runtime type mismatch bugs before deploying to production",
+          "Accelerating development with rich IDE autocompletion and refactoring",
+          "Enforcing strict type contracts for REST API request and response bodies",
+        ];
+  }
+
+  // 6. Python Use Cases
+  if (combined.includes("python")) {
+    return language === "hi"
+      ? [
+          "ऑटोमेशन स्क्रिप्ट्स और बैकएंड डेटा पाइपलाइन्स तैयार करना",
+          "पांडा और नम्पाई के साथ डेटा एनालिसिस व विज़ुअलाइज़ेशन करना",
+          "फास्टएपीआई और फ्लास्क के साथ हाई-स्पीड REST APIs बनाना",
+        ]
+      : [
+          "Building backend automation scripts and ETL data pipelines",
+          "Executing scientific data analysis and visualization workflows",
+          "Serving lightweight, high-performance REST APIs with FastAPI/Flask",
+        ];
+  }
+
+  // 7. Node.js Use Cases
+  if (combined.includes("node") || combined.includes("express")) {
+    return language === "hi"
+      ? [
+          "हाई-स्पीड RESTful APIs और माइक्रो-सर्विसेज बैकएंड बनाना",
+          "डेटाबेस ट्रांजेक्शन्स (MongoDB / PostgreSQL) को नॉन-ब्लॉकिंग प्रोसेस करना",
+          "JWT ऑथेंटिकेशन और रोल-बेस्ड एक्सेस कंट्रोल (RBAC) सिस्टम तैयार करना",
+        ]
+      : [
+          "Creating high-speed event-driven RESTful APIs and microservices",
+          "Executing non-blocking database queries with PostgreSQL and MongoDB",
+          "Implementing robust JWT authentication and Role-Based Access Control",
+        ];
+  }
+
+  return language === "hi"
+    ? [
+        `${topicTitle || lessonTitle} को प्रोडक्शन ग्रेड प्रोजेक्ट्स में लागू करना`,
+        "मॉड्यूलर और स्केलेबल सॉफ्टवेयर आर्किटेक्चर तैयार करना",
+        "इंडस्ट्री बेस्ट प्रैक्टिसेज के साथ सुरक्षित कोड डेवलप करना",
+      ]
+    : [
+        `Implementing ${topicTitle || lessonTitle} in production-grade software`,
+        "Designing modular, scalable, and testable code architectures",
+        "Enforcing industry standard best practices for reliable execution",
+      ];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Dynamic Real-World Working Code Generator (Rich Structures, Not Generic Toggle)
+// ─────────────────────────────────────────────────────────────────────────────
+function generateRichTopicCode({
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
+  examples = [],
+}: {
+  courseTitle: string;
+  moduleTitle: string;
+  lessonTitle: string;
+  topicTitle: string;
+  examples: ExampleItem[];
+}): string {
+  const existingCode = examples[0]?.solutionCode || examples[0]?.starterCode;
+  // If database has an exhaustive, valid code example (over 120 chars and not generic Toggle), use it
+  if (existingCode && existingCode.length > 120 && !existingCode.includes("Toggle State") && !existingCode.includes("console.log('React")) {
+    return existingCode;
+  }
+
+  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+
+  // 1. React.js Component Architecture & Hierarchy
+  if (combined.includes("react")) {
+    if (combined.includes("component") || combined.includes("stateless") || combined.includes("getting started") || combined.includes("intro") || combined.includes("what is")) {
+      return `import React, { useState } from 'react';
+
+// 1. Child Component: Reusable Feature Card
+function FeatureCard({ title, desc, icon, badge, onSelect }) {
+  return (
+    <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 transition-all shadow-md flex flex-col justify-between">
+      <div>
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-2xl">{icon}</span>
+          <span className="px-2 py-0.5 text-[10px] font-mono font-bold rounded bg-sky-500/20 text-sky-300">
+            {badge}
+          </span>
+        </div>
+        <h3 className="text-sm font-bold text-white mb-1">{title}</h3>
+        <p className="text-xs text-slate-400 mb-4">{desc}</p>
+      </div>
+      <button
+        onClick={onSelect}
+        className="w-full py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-mono font-bold transition-all cursor-pointer"
+      >
+        Select Component →
+      </button>
+    </div>
+  );
+}
+
+// 2. Parent Component: Modular App Structure
+export default function App() {
+  const [selectedFeature, setSelectedFeature] = useState('Component Hierarchy');
+
+  const componentsList = [
+    { id: 1, title: 'Component Hierarchy', desc: 'Break complex UIs into independent, reusable functional building blocks.', icon: '🧩', badge: 'Architecture' },
+    { id: 2, title: 'Props & Data Flow', desc: 'Pass configuration and dynamic data from parent to child components.', icon: '⚡', badge: 'Reactive' },
+    { id: 3, title: 'Virtual DOM Diffing', desc: 'High-performance reconciliation that updates only changed DOM nodes.', icon: '⚛️', badge: 'Ultra-Fast' }
+  ];
+
+  return (
+    <div className="p-6 max-w-2xl mx-auto space-y-6 text-slate-100 font-sans">
+      <header className="border-b border-slate-800 pb-4">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400">
+            React.js Architecture
+          </span>
+        </div>
+        <h1 className="text-xl font-extrabold text-white">Modular Component Structure</h1>
+        <p className="text-xs text-slate-400 mt-1">
+          Parent component rendering multiple reusable Child components via Props.
+        </p>
+      </header>
+
+      {selectedFeature && (
+        <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center justify-between">
+          <span>Active Component: <strong>{selectedFeature}</strong></span>
+          <span className="text-[10px] bg-cyan-500/20 px-2 py-0.5 rounded font-bold">STATE SYNCED ✓</span>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+        {componentsList.map((item) => (
+          <FeatureCard
+            key={item.id}
+            title={item.title}
+            desc={item.desc}
+            icon={item.icon}
+            badge={item.badge}
+            onSelect={() => setSelectedFeature(item.title)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}`;
+    }
+
+    if (combined.includes("state") || combined.includes("usestate")) {
+      return `import React, { useState } from 'react';
+
+export default function InteractiveTaskManager() {
+  const [tasks, setTasks] = useState([
+    { id: 1, text: 'Understand React Component Hierarchy', done: true },
+    { id: 2, text: 'Master useState & Immutable Array Updates', done: false },
+    { id: 3, text: 'Build Production-Ready Interactive Classroom', done: false }
+  ]);
+  const [inputVal, setInputVal] = useState('');
+
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    if (!inputVal.trim()) return;
+    setTasks([...tasks, { id: Date.now(), text: inputVal.trim(), done: false }]);
+    setInputVal('');
+  };
+
+  const toggleTask = (id) => {
+    setTasks(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t));
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(t => t.id !== id));
+  };
+
+  return (
+    <div className="p-6 max-w-lg mx-auto bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl space-y-5 font-sans text-slate-100">
+      <div>
+        <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
+          React State Engine
+        </span>
+        <h2 className="text-lg font-extrabold text-white mt-1">Interactive Task Manager</h2>
+        <p className="text-xs text-slate-400">
+          Demonstrates dynamic arrays, immutable updates, and reactive re-renders.
+        </p>
+      </div>
+
+      <form onSubmit={handleAddTask} className="flex gap-2">
+        <input
+          value={inputVal}
+          onChange={(e) => setInputVal(e.target.value)}
+          placeholder="Add a new learning goal..."
+          className="flex-1 px-3.5 py-2.5 text-xs rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 font-mono"
+        />
+        <button
+          type="submit"
+          className="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold font-mono rounded-xl cursor-pointer shadow-md"
+        >
+          Add +
+        </button>
+      </form>
+
+      <div className="space-y-2">
+        {tasks.map((t) => (
+          <div
+            key={t.id}
+            className="flex items-center justify-between p-3 rounded-2xl bg-slate-950 border border-slate-800/80 transition-all hover:border-slate-700"
+          >
+            <button
+              onClick={() => toggleTask(t.id)}
+              className="flex items-center gap-2.5 text-xs text-left cursor-pointer"
+            >
+              <span
+                className={\`size-4 rounded-md flex items-center justify-center text-[10px] font-bold \${
+                  t.done
+                    ? 'bg-emerald-500 text-slate-950'
+                    : 'border border-slate-700 text-transparent'
+                }\`}
+              >
+                ✓
+              </span>
+              <span className={t.done ? 'line-through text-slate-500' : 'text-slate-200'}>
+                {t.text}
+              </span>
+            </button>
+            <button
+              onClick={() => deleteTask(t.id)}
+              className="text-xs text-rose-400 hover:text-rose-300 font-mono px-2 cursor-pointer"
+              title="Delete Task"
+            >
+              ✕
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}`;
+    }
+
+    if (combined.includes("effect") || combined.includes("useeffect") || combined.includes("lifecycle")) {
+      return `import React, { useState, useEffect } from 'react';
+
+export default function LiveApiDataLoader() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [refreshCount, setRefreshCount] = useState(0);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    // Simulate async network request with cleanup
+    const timer = setTimeout(() => {
+      if (isMounted) {
+        setUsers([
+          { id: 1, name: 'Siddharth Rao', role: 'Frontend Architect', active: true },
+          { id: 2, name: 'Ananya Sharma', role: 'Full-Stack Engineer', active: true },
+          { id: 3, name: 'Vikram Mehta', role: 'DevOps Specialist', active: false }
+        ]);
+        setLoading(false);
+      }
+    }, 700);
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
+  }, [refreshCount]);
+
+  return (
+    <div className="p-6 max-w-lg mx-auto bg-slate-900 border border-slate-800 rounded-3xl space-y-4 text-slate-100 font-sans shadow-xl">
+      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div>
+          <span className="text-xs font-mono text-emerald-400 font-bold uppercase">
+            React Lifecycle
+          </span>
+          <h2 className="text-lg font-bold text-white">useEffect Side-Effect Engine</h2>
+        </div>
+        <button
+          onClick={() => setRefreshCount((c) => c + 1)}
+          className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold rounded-xl cursor-pointer"
+        >
+          Refresh #{refreshCount + 1}
+        </button>
+      </div>
+
+      {loading ? (
+        <div className="p-8 text-center text-xs font-mono text-slate-400 animate-pulse bg-slate-950 rounded-2xl border border-slate-800">
+          ⚡ Fetching live API payload...
+        </div>
+      ) : (
+        <div className="space-y-2">
+          {users.map((u) => (
+            <div
+              key={u.id}
+              className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-950 border border-slate-800"
+            >
+              <div>
+                <h4 className="text-xs font-bold text-white font-mono">{u.name}</h4>
+                <p className="text-[11px] text-slate-400">{u.role}</p>
+              </div>
+              <span
+                className={\`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold \${
+                  u.active
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    : 'bg-slate-800 text-slate-400'
+                }\`}
+              >
+                {u.active ? 'Active ✓' : 'Offline'}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}`;
+    }
+
+    if (combined.includes("typescript") || combined.includes("type")) {
+      return `import React, { useState } from 'react';
+
+// 1. Strict TypeScript Interfaces
+interface StudentProfile {
+  id: number;
+  name: string;
+  specialization: string;
+  progressPercentage: number;
+  isCertified: boolean;
+}
+
+interface StudentCardProps {
+  student: StudentProfile;
+  onCertify: (id: number) => void;
+}
+
+// 2. Type-Safe Functional Component
+function StudentCard({ student, onCertify }: StudentCardProps) {
+  return (
+    <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+      <div>
+        <h4 className="text-xs font-bold text-white font-mono">{student.name}</h4>
+        <p className="text-[11px] text-slate-400 font-mono">
+          {student.specialization} • {student.progressPercentage}% Complete
+        </p>
+      </div>
+      <button
+        onClick={() => onCertify(student.id)}
+        className="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-mono text-[11px] font-bold rounded-xl cursor-pointer"
+      >
+        {student.isCertified ? 'Certified ✓' : 'Issue Certificate'}
+      </button>
+    </div>
+  );
+}
+
+// 3. Main Type-Safe Application
+export default function App() {
+  const [students, setStudents] = useState<StudentProfile[]>([
+    { id: 1, name: 'Arjun Verma', specialization: 'Frontend & React', progressPercentage: 100, isCertified: true },
+    { id: 2, name: 'Pooja Nair', specialization: 'TypeScript Architecture', progressPercentage: 90, isCertified: false }
+  ]);
+
+  const handleCertify = (id: number) => {
+    setStudents((prev) =>
+      prev.map((s) => (s.id === id ? { ...s, isCertified: true, progressPercentage: 100 } : s))
+    );
+  };
+
+  return (
+    <div className="p-6 max-w-lg mx-auto bg-slate-900 border border-slate-800 rounded-3xl space-y-4 text-slate-100 font-sans shadow-xl">
+      <header className="border-b border-slate-800 pb-3">
+        <span className="text-xs font-mono text-blue-400 font-bold uppercase">
+          React + TypeScript Strict Typing
+        </span>
+        <h2 className="text-lg font-bold text-white">Type-Safe Interface Contracts</h2>
+      </header>
+      <div className="space-y-2.5">
+        {students.map((s) => (
+          <StudentCard key={s.id} student={s} onCertify={handleCertify} />
+        ))}
+      </div>
+    </div>
+  );
+}`;
+    }
+  }
+
+  // 2. HTML5 Semantic Layout
+  if (combined.includes("html")) {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic HTML5 Web Structure</title>
+  <style>
+    body { font-family: sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }
+    header, nav, main, footer { background: #1e293b; padding: 15px; border-radius: 10px; margin-bottom: 12px; }
+    nav a { color: #38bdf8; margin-right: 15px; text-decoration: none; font-weight: bold; }
+    .card { background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Semantic HTML5 Architecture</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <article class="card">
+      <h2>Article: Clean Web Standards</h2>
+      <p>Semantic tags improve SEO indexing and screen-reader accessibility.</p>
+    </article>
+  </main>
+  <footer>
+    <p>&copy; 2026 SkillForge Education Platform</p>
+  </footer>
+</body>
+</html>`;
+  }
+
+  // 3. CSS3 Flexbox / Grid Responsive Layout
+  if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid")) {
+    return `/* Modern Responsive CSS3 Grid & Flexbox System */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.2);
+}`;
+  }
+
+  // Default fallback code
+  return `import React, { useState } from 'react';
+
+export default function App() {
+  const [active, setActive] = useState(true);
+  return (
+    <div className="p-6 max-w-md mx-auto bg-slate-900 border border-slate-800 rounded-3xl text-white space-y-3">
+      <h2 className="text-lg font-bold">${topicTitle || 'Interactive Component'}</h2>
+      <p className="text-xs text-slate-400">Professional React component implementation.</p>
+      <button
+        onClick={() => setActive(!active)}
+        className="px-4 py-2 bg-sky-600 hover:bg-sky-500 rounded-xl text-xs font-mono font-bold"
+      >
+        Status: {active ? 'Active ✓' : 'Paused'}
+      </button>
+    </div>
+  );
+}`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Clean Pedagogical Topic Breakdown Generator (Ultra-Simple Words for 110 Chapters)
 // ─────────────────────────────────────────────────────────────────────────────
 function buildCleanTopicBreakdown({
@@ -2298,28 +2928,27 @@ function buildCleanTopicBreakdown({
     language,
   });
 
-  const cleanSnippet =
-    examples[0]?.starterCode ||
-    examples[0]?.solutionCode ||
-    (isReact
-      ? `import React, { useState } from 'react';\n\nexport default function ${formatCleanLessonTitle(topicTitle || 'App').replace(/[^a-zA-Z0-9]/g, '')}() {\n  const [active, setActive] = useState(true);\n  return (\n    <div className="p-4 bg-slate-900 text-white rounded-xl">\n      <h2 className="text-lg font-bold">${topicTitle}</h2>\n      <button onClick={() => setActive(!active)} className="mt-2 px-3 py-1 bg-sky-600 rounded">\n        Toggle\n      </button>\n    </div>\n  );\n}`
-      : isHtml
-      ? `<!DOCTYPE html>\n<html>\n  <head><title>${topicTitle}</title></head>\n  <body>\n    <h1>${topicTitle}</h1>\n    <p>Semantic HTML5 element demonstration.</p>\n  </body>\n</html>`
-      : isCss
-      ? `/* ${topicTitle} Styling */\n.card {\n  display: flex;\n  padding: 16px;\n  border-radius: 12px;\n  background: #1e293b;\n  color: #ffffff;\n}`
-      : isPython
-      ? `# ${topicTitle} in Python\ndef main():\n    print("Executing ${topicTitle}...")\n\nif __name__ == "__main__":\n    main()`
-      : `// ${topicTitle}\nconsole.log("${topicTitle} initialized");`);
+  const useCasesList = generateUseCases({
+    courseTitle,
+    moduleTitle,
+    lessonTitle,
+    topicTitle,
+    language,
+  });
+
+  const cleanSnippet = generateRichTopicCode({
+    courseTitle,
+    moduleTitle,
+    lessonTitle,
+    topicTitle,
+    examples,
+  });
 
   return {
     title: topicTitle || lessonTitle,
     definition: defaultDefinition,
     whatItDoes: conceptPoints,
-    useCases: [
-      `${domainName} Production Workflows`,
-      "Scalable Enterprise Implementations",
-      "Industry Standard Development Practices"
-    ],
+    useCases: useCasesList,
     syntaxSnippet: cleanSnippet,
     seniorRule:
       language === "hi"
