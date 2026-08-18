@@ -105,7 +105,7 @@ import { MemoryView } from "@/components/visualization/memory-view";
 
 export type ExplanationLanguage = "en" | "hi";
 export type FloatingPanelType = "flow" | "vscode_guide" | "ai_tutor" | "memory" | "quiz" | "interview";
-export type ActiveEditorFile = "app" | "html" | "css" | "server";
+export type ActiveEditorFile = "app" | "html" | "css" | "server" | "package";
 
 export interface ChapterItem {
   id: string;
@@ -194,7 +194,21 @@ export function UnifiedInteractiveClassroom({
 
 
   // Multi-File Code Editor State
-  const [activeFile, setActiveFile] = useState<ActiveEditorFile>("app");
+  const isPureBackend = useMemo(() => {
+    const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+    return (
+      (combined.includes("node") || combined.includes("backend") || combined.includes("express")) &&
+      !combined.includes("fullstack") &&
+      !combined.includes("react")
+    );
+  }, [courseTitle, moduleTitle, lessonTitle, topicTitle]);
+
+  const isFullstack = useMemo(() => {
+    const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+    return combined.includes("fullstack") || combined.includes("mern") || combined.includes("pern");
+  }, [courseTitle, moduleTitle, lessonTitle, topicTitle]);
+
+  const [activeFile, setActiveFile] = useState<ActiveEditorFile>(isPureBackend ? "server" : "app");
   const [appCode, setAppCode] = useState<string>(
     examples[0]?.solutionCode || examples[0]?.starterCode || "// Write code here\n"
   );
@@ -204,6 +218,26 @@ export function UnifiedInteractiveClassroom({
   );
   const [serverCode, setServerCode] = useState<string>(
     "const express = require('express');\nconst cors = require('cors');\nrequire('dotenv').config();\n\nconst app = express();\nconst PORT = process.env.PORT || 5000;\n\napp.use(cors());\napp.use(express.json());\n\nlet items = [\n  { id: 1, name: 'Sample Item 1' },\n  { id: 2, name: 'Sample Item 2' }\n];\n\napp.get('/api/items', (req, res) => {\n  res.json(items);\n});\n\napp.listen(PORT, () => {\n  console.log(`🚀 Server active on http://localhost:${PORT}`);\n});"
+  );
+  const [packageJsonCode, setPackageJsonCode] = useState<string>(
+    JSON.stringify(
+      {
+        name: "nodejs-express-app",
+        version: "1.0.0",
+        main: "server.js",
+        scripts: {
+          start: "node server.js",
+          dev: "nodemon server.js",
+        },
+        dependencies: {
+          express: "^4.18.2",
+          cors: "^2.8.5",
+          dotenv: "^16.0.3",
+        },
+      },
+      null,
+      2
+    )
   );
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -223,19 +257,18 @@ export function UnifiedInteractiveClassroom({
   }, [courseTitle, moduleTitle, lessonTitle, topicTitle]);
 
   const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack">(
-    isFrontendDomain ? "react" : "node"
+    isPureBackend ? "node" : "react"
   );
 
   useEffect(() => {
-    if (isFrontendDomain) {
-      setActiveVsCodeTab("react");
-    } else if (
-      (courseTitle + " " + moduleTitle).toLowerCase().includes("node") ||
-      (courseTitle + " " + moduleTitle).toLowerCase().includes("backend")
-    ) {
+    if (isPureBackend) {
+      setActiveFile("server");
       setActiveVsCodeTab("node");
+    } else if (isFrontendDomain) {
+      setActiveFile("app");
+      setActiveVsCodeTab("react");
     }
-  }, [isFrontendDomain, courseTitle, moduleTitle]);
+  }, [isPureBackend, isFrontendDomain]);
 
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
@@ -298,12 +331,23 @@ export function UnifiedInteractiveClassroom({
       topicTitle,
       examples,
     });
-    setAppCode(initialCode);
-    // If code starts with node/express, default serverCode to it as well
-    if (initialCode.includes("express") || initialCode.includes("http") || initialCode.includes("require(")) {
+
+    const isNode =
+      (courseTitle + " " + moduleTitle + " " + lessonTitle).toLowerCase().includes("node") ||
+      (courseTitle + " " + moduleTitle + " " + lessonTitle).toLowerCase().includes("backend") ||
+      (courseTitle + " " + moduleTitle + " " + lessonTitle).toLowerCase().includes("express") ||
+      initialCode.includes("express") ||
+      initialCode.includes("require(") ||
+      initialCode.includes("createServer");
+
+    if (isNode) {
       setServerCode(initialCode);
+      setAppCode(`// Frontend Client calling Node.js Server\nasync function testEndpoint() {\n  console.log('Sending request to server.js on port 5000...');\n}\ntestEndpoint();`);
+      setActiveFile("server");
       setActiveVsCodeTab("node");
     } else {
+      setAppCode(initialCode);
+      setActiveFile("app");
       setActiveVsCodeTab("react");
     }
     clearOutput();
@@ -311,15 +355,24 @@ export function UnifiedInteractiveClassroom({
 
   // Active code depending on selected file tab
   const currentEditorCode =
-    activeFile === "app" ? appCode : activeFile === "html" ? htmlCode : activeFile === "css" ? cssCode : serverCode;
+    activeFile === "server"
+      ? serverCode
+      : activeFile === "app"
+      ? appCode
+      : activeFile === "html"
+      ? htmlCode
+      : activeFile === "css"
+      ? cssCode
+      : packageJsonCode;
   const currentEditorLanguage =
-    activeFile === "app" ? "javascript" : activeFile === "html" ? "html" : activeFile === "css" ? "css" : "javascript";
+    activeFile === "html" ? "html" : activeFile === "css" ? "css" : activeFile === "package" ? "json" : "javascript";
 
   const handleEditorChange = (newVal: string) => {
-    if (activeFile === "app") setAppCode(newVal);
+    if (activeFile === "server") setServerCode(newVal);
+    else if (activeFile === "app") setAppCode(newVal);
     else if (activeFile === "html") setHtmlCode(newVal);
     else if (activeFile === "css") setCssCode(newVal);
-    else setServerCode(newVal);
+    else if (activeFile === "package") setPackageJsonCode(newVal);
   };
 
   // Build live srcdoc for multi-file iframe preview (React 18 + Babel + CSS + HTML + Node.js Mock)
@@ -450,8 +503,9 @@ export function UnifiedInteractiveClassroom({
       }
     }, 600);
 
-    await executeCode(appCode, "javascript", true);
-  }, [appCode, executeCode, topicData.flowSteps.length]);
+    const execLang = currentEditorLanguage === "html" ? "html" : currentEditorLanguage === "json" ? "json" : "javascript";
+    await executeCode(currentEditorCode, execLang, true);
+  }, [currentEditorCode, currentEditorLanguage, executeCode, topicData.flowSteps.length]);
 
   const handleCopyCode = (id: string, text: string) => {
     navigator.clipboard.writeText(text);
@@ -1203,50 +1257,75 @@ export function UnifiedInteractiveClassroom({
           <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-xs shrink-0 flex-wrap gap-2">
             {/* Multi-File Tabs with Clean Tech Icons */}
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
-              <button
-                onClick={() => setActiveFile("server")}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                  activeFile === "server"
-                    ? "bg-emerald-600 text-white shadow-xs"
-                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
-                }`}
-              >
-                <Cpu className="size-3 text-emerald-300" />
-                <span>server.js</span>
-              </button>
-              <button
-                onClick={() => setActiveFile("app")}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                  activeFile === "app"
-                    ? "bg-sky-600 text-white shadow-xs"
-                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
-                }`}
-              >
-                <Sparkles className="size-3 text-sky-300" />
-                <span>App.jsx</span>
-              </button>
-              <button
-                onClick={() => setActiveFile("html")}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                  activeFile === "html"
-                    ? "bg-amber-600 text-white shadow-xs"
-                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
-                }`}
-              >
-                <FileText className="size-3 text-amber-300" />
-                <span>index.html</span>
-              </button>
-              <button
-                onClick={() => setActiveFile("css")}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                  activeFile === "css"
-                    ? "bg-indigo-600 text-white shadow-xs"
-                    : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
-                }`}
-              >
-                <Palette className="size-3 text-indigo-300" />
-                <span>style.css</span>
-              </button>
+              {(isPureBackend || isFullstack) && (
+                <button
+                  onClick={() => setActiveFile("server")}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                    activeFile === "server"
+                      ? "bg-emerald-600 text-white shadow-xs"
+                      : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <Cpu className="size-3 text-emerald-300" />
+                  <span>server.js</span>
+                </button>
+              )}
+
+              {(!isPureBackend || isFullstack) && (
+                <button
+                  onClick={() => setActiveFile("app")}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                    activeFile === "app"
+                      ? "bg-sky-600 text-white shadow-xs"
+                      : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <Sparkles className="size-3 text-sky-300" />
+                  <span>App.jsx</span>
+                </button>
+              )}
+
+              {(!isPureBackend || isFullstack) && (
+                <button
+                  onClick={() => setActiveFile("html")}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                    activeFile === "html"
+                      ? "bg-amber-600 text-white shadow-xs"
+                      : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <FileText className="size-3 text-amber-300" />
+                  <span>index.html</span>
+                </button>
+              )}
+
+              {(!isPureBackend || isFullstack) && (
+                <button
+                  onClick={() => setActiveFile("css")}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                    activeFile === "css"
+                      ? "bg-indigo-600 text-white shadow-xs"
+                      : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <Palette className="size-3 text-indigo-300" />
+                  <span>style.css</span>
+                </button>
+              )}
+
+              {(isPureBackend || isFullstack) && (
+                <button
+                  onClick={() => setActiveFile("package")}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                    activeFile === "package"
+                      ? "bg-amber-600 text-white shadow-xs"
+                      : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <FileCode className="size-3 text-amber-300" />
+                  <span>package.json</span>
+                </button>
+              )}
             </div>
 
             {/* Run & Execute Button */}
