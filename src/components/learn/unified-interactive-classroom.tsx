@@ -3825,7 +3825,223 @@ async function requestApi<T>(url: string): Promise<ServiceResponse<T>> {
 }`;
   }
 
-  // 7. PYTHON SYNTAX PATTERNS
+  // 7. JAVA ENTERPRISE & SPRING BOOT / HIBERNATE SYNTAX PATTERNS
+  if (combined.includes("java") || combined.includes("spring") || combined.includes("hibernate") || combined.includes("jpa")) {
+    if (combined.includes("spring") || combined.includes("boot") || combined.includes("controller")) {
+      return `// Spring Boot REST Controller Formula
+@RestController
+@RequestMapping("/api/v1/resources")
+public class ResourceController {
+    @Autowired
+    private ResourceService service;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResourceDto> getResource(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+}`;
+    }
+    if (combined.includes("hibernate") || combined.includes("jpa") || combined.includes("entity")) {
+      return `// JPA / Hibernate Entity Declaration Formula
+@Entity
+@Table(name = "users")
+public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+}`;
+    }
+    return `// Java Enterprise Class & Method Formula
+package com.enterprise.service;
+
+public class DataService<T> implements IService<T> {
+    private final Repository<T> repository;
+
+    public DataService(Repository<T> repo) {
+        this.repository = repo;
+    }
+
+    public T processRecord(T entity) throws ServiceException {
+        return repository.save(entity);
+    }
+}`;
+  }
+
+  // 8. C# & .NET CORE / ENTITY FRAMEWORK SYNTAX PATTERNS
+  if (combined.includes("c#") || combined.includes(".net") || combined.includes("dotnet") || combined.includes("entity framework")) {
+    return `// ASP.NET Core Controller & LINQ Query Formula
+[ApiController]
+[Route("api/[controller]")]
+public class ItemsController : ControllerBase {
+    private readonly AppDbContext _context;
+    public ItemsController(AppDbContext ctx) => _context = ctx;
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ItemDto>> GetItemAsync(int id) {
+        var item = await _context.Items.FindAsync(id);
+        return item != null ? Ok(item) : NotFound();
+    }
+}`;
+  }
+
+  // 9. C++ MODERN SYSTEMS (C++17 / C++20)
+  if (combined.includes("c++") || combined.includes("cpp")) {
+    return `// Modern C++ Template & Smart Pointer Formula
+#include <iostream>
+#include <memory>
+#include <vector>
+
+template <typename T>
+class SystemManager {
+private:
+    std::vector<T> dataStore;
+public:
+    void addItem(const T& item) { dataStore.push_back(item); }
+    [[nodiscard]] auto getSize() const noexcept -> size_t { return dataStore.size(); }
+};
+
+auto managerPtr = std::make_unique<SystemManager<int>>();`;
+  }
+
+  // 10. C SYSTEMS PROGRAMMING
+  if (combined.includes("c systems") || combined.includes("c programming") || combined.includes("c language")) {
+    return `// C Systems Memory Allocation & Pointer Formula
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int id;
+    char buffer[256];
+} SystemNode;
+
+SystemNode* node = (SystemNode*)malloc(sizeof(SystemNode));
+if (node == NULL) { return -1; }
+// Cleanup:
+free(node);`;
+  }
+
+  // 11. ANDROID & KOTLIN
+  if (combined.includes("android") || combined.includes("kotlin")) {
+    return `// Kotlin Coroutines & Android ViewModel Formula
+class MainViewModel(private val repo: DataRepository) : ViewModel() {
+    private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
+    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+
+    fun loadData() = viewModelScope.launch {
+        _uiState.value = UiState.Success(repo.fetchItems())
+    }
+}`;
+  }
+
+  // 12. IOS & SWIFT / SWIFTUI
+  if (combined.includes("ios") || combined.includes("swift") || combined.includes("objective-c")) {
+    return `// SwiftUI Declarative View & State Binding Formula
+import SwiftUI
+
+struct DashboardView: View {
+    @State private var isLoading: Bool = false
+    @StateObject private var viewModel = DashboardViewModel()
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Dashboard").font(.headline)
+            Button("Refresh") { viewModel.fetch() }
+        }
+    }
+}`;
+  }
+
+  // 13. PHP 8 & LARAVEL
+  if (combined.includes("php") || combined.includes("laravel")) {
+    return `<?php
+declare(strict_types=1);
+
+namespace App\\Http\\Controllers;
+use App\\Models\\User;
+use Illuminate\\Http\\JsonResponse;
+
+class ApiController extends Controller {
+    public function show(int $id): JsonResponse {
+        $data = User::findOrFail($id);
+        return response()->json(['status' => 'success', 'data' => $data]);
+    }
+}`;
+  }
+
+  // 14. RUBY & RUBY ON RAILS
+  if (combined.includes("ruby") || combined.includes("rails")) {
+    return `# Ruby on Rails Controller & ActiveRecord Formula
+class Api::V1::ItemsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @items = Item.where(active: true).order(created_at: :desc)
+    render json: { success: true, items: @items }
+  end
+end`;
+  }
+
+  // 15. ANGULAR 2+
+  if (combined.includes("angular")) {
+    return `// Angular Component & RxJS Observable Formula
+import { Component, OnInit, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-data-view',
+  standalone: true,
+  template: \`<div *ngIf="items$ | async as items">{{ items.length }} items</div>\`
+})
+export class DataViewComponent {
+  private http = inject(HttpClient);
+  items$: Observable<Item[]> = this.http.get<Item[]>('/api/items');
+}`;
+  }
+
+  // 16. DATA STRUCTURES & ALGORITHMS (DSA)
+  if (combined.includes("dsa") || combined.includes("data structure") || combined.includes("algorithm") || combined.includes("tree") || combined.includes("graph") || combined.includes("sort")) {
+    return `// Canonical Algorithm Formula (Time Complexity: O(log N) / O(N))
+function binarySearch(sortedArray, targetValue) {
+  let left = 0, right = sortedArray.length - 1;
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (sortedArray[mid] === targetValue) return mid;
+    if (sortedArray[mid] < targetValue) left = mid + 1;
+    else right = mid - 1;
+  }
+  return -1; // Not found
+}`;
+  }
+
+  // 17. DEVOPS, BASH & POWERSHELL
+  if (combined.includes("bash") || combined.includes("linux") || combined.includes("powershell") || combined.includes("devops") || combined.includes("git")) {
+    if (combined.includes("powershell")) {
+      return `# PowerShell Automation Function Formula
+function Invoke-BuildPipeline {
+    [CmdletBinding()]
+    param([Parameter(Mandatory=$true)][string]$Environment)
+    
+    Write-Host "Deploying to $Environment..." -ForegroundColor Cyan
+    Get-Service -Name "AppService" | Restart-Service
+}`;
+    }
+    return `#!/usr/bin/env bash
+# Robust Bash Shell Scripting Formula
+set -euo pipefail
+
+TARGET_DIR="\${1:-./dist}"
+if [[ ! -d "$TARGET_DIR" ]]; then
+  echo "Error: Target directory $TARGET_DIR does not exist" >&2
+  exit 1
+fi
+echo "Deploying build artifacts from $TARGET_DIR..."`;
+  }
+
+  // 18. PYTHON SYNTAX PATTERNS
   if (combined.includes("python") || combined.includes("django") || combined.includes("flask")) {
     return `# Python 3 Function & Type Hints Formula
 from typing import Optional, List, Dict
@@ -3839,17 +4055,27 @@ def process_data(
     return {"total": len(records), "valid_count": len(valid_items)}`;
   }
 
-  // 8. DATABASE / SQL SYNTAX PATTERNS
-  if (combined.includes("sql") || combined.includes("database") || combined.includes("query") || combined.includes("table")) {
-    return `-- Standard SQL Query Formula
+  // 19. DATABASE / SQL / MONGODB SYNTAX PATTERNS
+  if (combined.includes("sql") || combined.includes("database") || combined.includes("query") || combined.includes("table") || combined.includes("mongo")) {
+    if (combined.includes("mongo")) {
+      return `// MongoDB Aggregation Pipeline Formula
+db.collection.aggregate([
+  { $match: { status: 'completed' } },
+  { $group: { _id: '$userId', totalAmount: { $sum: '$amount' } } },
+  { $sort: { totalAmount: -1 } },
+  { $limit: 10 }
+]);`;
+    }
+    return `-- Standard SQL Query & Transaction Formula
 SELECT 
-  column1, 
-  COUNT(column2) AS total_count
-FROM table_name
-WHERE status = 'active' AND created_at >= '2026-01-01'
-GROUP BY column1
-HAVING COUNT(column2) > 1
-ORDER BY total_count DESC
+  u.id, u.name, 
+  COUNT(o.id) AS total_orders
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE u.status = 'active'
+GROUP BY u.id, u.name
+HAVING COUNT(o.id) >= 1
+ORDER BY total_orders DESC
 LIMIT 20;`;
   }
 
@@ -3863,7 +4089,7 @@ const ${topicTitle.toLowerCase().replace(/[^a-z0-9]+/g, "_") || "entity"} = new 
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Dynamic Senior Rule Generator
+// Dynamic Senior Rule Generator (Covering all 52+ Course Domains)
 // ─────────────────────────────────────────────────────────────────────────────
 function generateSeniorRule({
   courseTitle = "",
@@ -3917,6 +4143,24 @@ function generateSeniorRule({
       : "Store sensitive secrets in environment variables (.env) and always attach security headers (Helmet) and rate limiters in production.";
   }
 
+  if (combined.includes("java") || combined.includes("spring") || combined.includes("c#") || combined.includes(".net")) {
+    return language === "hi"
+      ? "Enterprise architecture me Dependency Injection (DI) aur Interface-based loose coupling follow karein!"
+      : "Adhere to Dependency Injection (DI) and interface-based design patterns to maintain decoupled enterprise services.";
+  }
+
+  if (combined.includes("c++") || combined.includes("c systems")) {
+    return language === "hi"
+      ? "Raw pointers ke bajaye RAII aur smart pointers (`std::unique_ptr`, `std::shared_ptr`) ka use karein taaki memory leaks na hon!"
+      : "Enforce RAII principles and smart pointers (std::unique_ptr, std::shared_ptr) to eliminate manual memory leaks.";
+  }
+
+  if (combined.includes("android") || combined.includes("ios") || combined.includes("mobile")) {
+    return language === "hi"
+      ? "Main/UI Thread par kabhi heavy I/O na karein; hamesha Coroutines ya Background Dispatchers use karein!"
+      : "Never perform blocking disk/network operations on the Main UI thread; use Coroutines or background queues.";
+  }
+
   if (combined.includes("html")) {
     return language === "hi"
       ? "Hamesha semantic HTML5 tags (`<main>`, `<nav>`, `<article>`, `<header>`) ka use karein; sirf `<div>` par depend na rahein!"
@@ -3929,6 +4173,12 @@ function generateSeniorRule({
       : "Avoid fixed pixel widths; use responsive units (rem, %, clamp(), minmax()) and Flexbox/Grid for fluid multi-device layouts.";
   }
 
+  if (combined.includes("sql") || combined.includes("database")) {
+    return language === "hi"
+      ? "SQL Injection se bachne ke liye hamesha Parameterized Queries aur Prepared Statements use karein; indexes zarur banayein!"
+      : "Always use parameterized queries/prepared statements to prevent SQL injection and index high-frequency query columns.";
+  }
+
   if (combined.includes("javascript")) {
     return language === "hi"
       ? "Hamesha strict equality (`===`) use karein aur `var` ke bajaye `const`/`let` ka istemal karein!"
@@ -3936,7 +4186,7 @@ function generateSeniorRule({
   }
 
   return language === "hi"
-    ? "Clean code principles (DRY & Single Responsibility) ka palan karein aur error boundaries zarur implement karein!"
+    ? "Clean code principles (DRY & Single Responsibility) ka palan karein aur defensive error boundaries implement karein!"
     : "Follow clean code principles (DRY & Single Responsibility) and always implement defensive error handling.";
 }
 
