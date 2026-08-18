@@ -3406,6 +3406,541 @@ export default function App() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Pure Canonical Syntax Blueprint Generator (Precise Formulas & Signatures, Not Full Code Demos)
+// ─────────────────────────────────────────────────────────────────────────────
+function generateExactSyntaxBlueprint({
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
+}: {
+  courseTitle?: string;
+  moduleTitle?: string;
+  lessonTitle: string;
+  topicTitle: string;
+}): string {
+  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+
+  // 1. REACT.JS SYNTAX PATTERNS
+  if (combined.includes("react")) {
+    if (combined.includes("usestate") || combined.includes("state")) {
+      return `// 1. Hook Declaration (Getter & Setter Function)
+const [stateValue, setStateValue] = useState(initialValue);
+
+// 2. Direct Value Update
+setStateValue(newValue);
+
+// 3. Functional Update (Safe previous state access)
+setStateValue((prevState) => ({ ...prevState, updatedKey: newValue }));`;
+    }
+
+    if (combined.includes("useeffect") || combined.includes("effect") || combined.includes("lifecycle")) {
+      return `// React Side Effect & Lifecycle Formula
+useEffect(() => {
+  // 1. Mount or Dependency Update logic (API calls, subscriptions, timers)
+  const timerId = setInterval(() => { /* ... */ }, 1000);
+
+  // 2. Optional Cleanup function (Runs on unmount or before next execution)
+  return () => clearInterval(timerId);
+}, [dependency1, dependency2]); // Pass [] to run ONLY once on mount`;
+    }
+
+    if (combined.includes("useref") || combined.includes("ref")) {
+      return `// 1. Declare Mutable Reference / DOM Node Holder
+const elementRef = useRef(initialValue);
+
+// 2. Attach to JSX Element
+<input ref={elementRef} type="text" />
+
+// 3. Access current value directly without triggering re-render
+elementRef.current.focus();`;
+    }
+
+    if (combined.includes("usememo") || combined.includes("usecallback") || combined.includes("memo")) {
+      return `// Memoized Computed Value (Recalculates only when dependencies change)
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+
+// Memoized Function Reference (Prevents child re-renders)
+const memoizedCallback = useCallback((arg) => handleAction(arg), [depA, depB]);`;
+    }
+
+    if (combined.includes("context") || combined.includes("usecontext")) {
+      return `// 1. Create Context Object
+const AppContext = React.createContext(defaultValue);
+
+// 2. Provider Component wraps child tree
+<AppContext.Provider value={{ currentUser, theme }}>
+  <ChildComponent />
+</AppContext.Provider>
+
+// 3. Consume in any descendant component
+const { currentUser, theme } = useContext(AppContext);`;
+    }
+
+    if (combined.includes("usereducer") || combined.includes("reducer")) {
+      return `// 1. Reducer Function Signature
+function reducer(state, action) {
+  switch (action.type) {
+    case 'ACTION_TYPE': return { ...state, key: action.payload };
+    default: return state;
+  }
+}
+
+// 2. Hook Declaration & Dispatch
+const [state, dispatch] = useReducer(reducer, initialState);
+dispatch({ type: 'ACTION_TYPE', payload: data });`;
+    }
+
+    if (combined.includes("router") || combined.includes("route") || combined.includes("navigation")) {
+      return `// React Router SPA Route Setup Formula
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<HomeLayout />}>
+      <Route index element={<Dashboard />} />
+      <Route path="items/:itemId" element={<ItemDetail />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  </Routes>
+</BrowserRouter>`;
+    }
+
+    if (combined.includes("prop") || combined.includes("component") || combined.includes("hierarchy") || combined.includes("getting started") || combined.includes("intro")) {
+      return `// Functional Component with Props Destructuring & Defaults
+function ComponentName({ title, count = 0, isActive = false, onAction }) {
+  return (
+    <div className="card-container" onClick={onAction}>
+      <h3>{title}</h3>
+      {isActive ? <span>Active: {count}</span> : <span>Inactive</span>}
+    </div>
+  );
+}
+
+export default ComponentName;`;
+    }
+
+    // Generic React Fallback
+    return `// React Component & State Declaration Formula
+import React, { useState, useEffect } from 'react';
+
+export default function ComponentName(props) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Lifecycle setup logic
+  }, []);
+
+  return <div className="root-element">{props.children}</div>;
+}`;
+  }
+
+  // 2. NODE.JS & EXPRESS BACKEND SYNTAX PATTERNS
+  if (combined.includes("node") || combined.includes("express") || combined.includes("backend")) {
+    if (combined.includes("route") || combined.includes("routing") || combined.includes("crud") || combined.includes("web app")) {
+      return `// Express.js REST Route Handler Formula
+app.METHOD('/api/resource/:id', (req, res, next) => {
+  const { id } = req.params;       // URL Parameters (:id)
+  const { filter } = req.query;     // Query Strings (?filter=value)
+  const payload = req.body;         // JSON Request Body
+
+  // HTTP Response status and JSON output
+  return res.status(200).json({ success: true, id, data: payload });
+});`;
+    }
+
+    if (combined.includes("middleware") || combined.includes("auth") || combined.includes("jwt") || combined.includes("security")) {
+      return `// Express Middleware Pipeline Signature: (req, res, next)
+function customMiddleware(req, res, next) {
+  const token = req.headers['authorization']?.split(' ')[1];
+  
+  if (!token) {
+    return res.status(401).json({ error: 'Unauthorized: No token provided' });
+  }
+
+  req.user = verifyToken(token); // Attach payload to request object
+  next(); // Pass execution control to next handler in chain
+}`;
+    }
+
+    if (combined.includes("error") || combined.includes("exception")) {
+      return `// Global Express Error Handler Signature: 4 Arguments (err, req, res, next)
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'Internal Server Error';
+
+  console.error('[Server Error]', err.stack);
+  res.status(statusCode).json({ success: false, error: message });
+});`;
+    }
+
+    if (combined.includes("file") || combined.includes("fs") || combined.includes("path") || combined.includes("stream")) {
+      return `// Node.js File System (fs/promises) & Path Resolution
+const fs = require('fs/promises');
+const path = require('path');
+
+const targetPath = path.join(__dirname, 'data', 'file.json');
+
+// Async Read & Write Operations
+const rawData = await fs.readFile(targetPath, 'utf-8');
+await fs.writeFile(targetPath, JSON.stringify(data, null, 2), 'utf-8');`;
+    }
+
+    if (combined.includes("event") || combined.includes("emitter")) {
+      return `// Node.js EventEmitter Pattern Formula
+const EventEmitter = require('events');
+const eventBus = new EventEmitter();
+
+// 1. Subscribe to event
+eventBus.on('user:created', (user) => {
+  console.log('Sending welcome email to:', user.email);
+});
+
+// 2. Emit event with payload
+eventBus.emit('user:created', { id: 'u1', email: 'alex@codeair.tech' });`;
+    }
+
+    // Generic Node.js & Express Fallback
+    return `// Node.js Express Server Setup Formula
+const express = require('express');
+const app = express();
+
+app.use(express.json()); // Parse incoming JSON bodies
+
+app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(\`Server active on port \${PORT}\`));`;
+  }
+
+  // 3. HTML5 SYNTAX PATTERNS
+  if (combined.includes("html")) {
+    if (combined.includes("form") || combined.includes("input")) {
+      return `<!-- HTML5 Form Declaration & Input Validation Syntax -->
+<form action="/api/submit" method="POST" enctype="multipart/form-data">
+  <label for="userEmail">Email Address:</label>
+  <input 
+    type="email" 
+    id="userEmail" 
+    name="email" 
+    required 
+    placeholder="user@example.com" 
+    autocomplete="email"
+  />
+  <button type="submit">Submit Form</button>
+</form>`;
+    }
+
+    if (combined.includes("table")) {
+      return `<!-- HTML5 Semantic Table Syntax -->
+<table>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>#101</td>
+      <td>React Masterclass</td>
+      <td>$49.99</td>
+    </tr>
+  </tbody>
+</table>`;
+    }
+
+    // Standard HTML5 Document Blueprint
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Title</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><nav><!-- Navigation links --></nav></header>
+  <main><article><!-- Primary page content --></article></main>
+  <footer><p>&copy; 2026 CodeCraft Platform</p></footer>
+</body>
+</html>`;
+  }
+
+  // 4. CSS3 SYNTAX PATTERNS
+  if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid") || combined.includes("responsive")) {
+    if (combined.includes("flex") || combined.includes("flexbox")) {
+      return `/* CSS3 Flexbox Container & Alignment Rules */
+.flex-container {
+  display: flex;
+  flex-direction: row | column;
+  justify-content: flex-start | center | space-between | space-around;
+  align-items: stretch | center | flex-start | flex-end;
+  gap: 16px;
+  flex-wrap: wrap | nowrap;
+}
+
+.flex-item {
+  flex: 1 1 200px; /* flex-grow flex-shrink flex-basis */
+}`;
+    }
+
+    if (combined.includes("grid")) {
+      return `/* CSS3 Grid Layout Rules */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: auto;
+  gap: 20px;
+  justify-items: stretch;
+  align-items: start;
+}`;
+    }
+
+    if (combined.includes("media") || combined.includes("responsive") || combined.includes("mobile")) {
+      return `/* Mobile-First Responsive Breakpoint Syntax */
+.container {
+  width: 100%;
+  padding: 12px;
+}
+
+@media (min-width: 768px) {
+  .container { width: 720px; padding: 20px; } /* Tablet */
+}
+
+@media (min-width: 1024px) {
+  .container { width: 960px; padding: 32px; } /* Desktop */
+}`;
+    }
+
+    // Standard CSS Rule Syntax
+    return `/* CSS3 Rule Structure: Selector { Property: Value; } */
+.class-selector, #element-id, tag-name {
+  display: block;
+  margin: 0 auto;
+  padding: clamp(1rem, 2vw, 2.5rem);
+  color: var(--primary-color, #38bdf8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}`;
+  }
+
+  // 5. JAVASCRIPT (ES6+) SYNTAX PATTERNS
+  if (combined.includes("javascript") || combined.includes("js") || combined.includes("dom") || combined.includes("string") || combined.includes("array")) {
+    if (combined.includes("async") || combined.includes("await") || combined.includes("promise") || combined.includes("fetch")) {
+      return `// ES6+ Async/Await with Try/Catch Exception Handling Formula
+async function handleAsyncOperation(endpointUrl, requestPayload = {}) {
+  try {
+    const response = await fetch(endpointUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestPayload),
+    });
+
+    if (!response.ok) throw new Error(\`HTTP Error \${response.status}\`);
+    return await response.json();
+  } catch (error) {
+    console.error('Operation Failed:', error.message);
+    throw error;
+  }
+}`;
+    }
+
+    if (combined.includes("array") || combined.includes("map") || combined.includes("filter") || combined.includes("reduce")) {
+      return `// Functional Array Transformation Methods Syntax
+const mappedArray   = array.map((item, index) => transform(item));
+const filteredArray = array.filter((item) => predicateCondition(item));
+const totalSum      = array.reduce((acc, curr) => acc + curr.value, initialValue);
+const targetItem    = array.find((item) => item.id === searchedId);
+const hasAnyMatch   = array.some((item) => item.status === 'active');`;
+    }
+
+    if (combined.includes("destructur") || combined.includes("spread") || combined.includes("rest")) {
+      return `// Object & Array Destructuring + Spread Formulas
+const { id, title, role = 'student' } = userObject;
+const [firstItem, secondItem, ...remainingItems] = listArray;
+
+// Spread Operator (Immutable Clone / Merge)
+const clonedObject = { ...userObject, isVerified: true };
+const combinedList = [...listA, ...listB];`;
+    }
+
+    if (combined.includes("dom") || combined.includes("event")) {
+      return `// DOM Node Selection & Event Listener Formula
+const actionButton = document.querySelector('#submit-btn');
+
+actionButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent default reload/submission
+  actionButton.classList.toggle('active');
+  actionButton.textContent = 'Processing...';
+});`;
+    }
+
+    if (combined.includes("class") || combined.includes("oop") || combined.includes("inheritance")) {
+      return `// ES6 Class Declaration & Inheritance Formula
+class BaseService {
+  constructor(serviceName) {
+    this.name = serviceName;
+  }
+}
+
+class AuthService extends BaseService {
+  constructor(serviceName, secretKey) {
+    super(serviceName); // Call parent constructor
+    this.secret = secretKey;
+  }
+
+  authenticate(user) {
+    return user.isValid();
+  }
+}`;
+    }
+
+    // Generic JS Fallback
+    return `// JavaScript ES6+ Function & Variable Declaration Formula
+const CONSTANT_NAME = 'immutable_binding';
+let mutableVariable = 'can_be_reassigned';
+
+const calculateResult = (paramA, paramB = 0) => {
+  return paramA + paramB;
+};`;
+  }
+
+  // 6. TYPESCRIPT ENTERPRISE SYNTAX PATTERNS
+  if (combined.includes("typescript") || combined.includes("type") || combined.includes("interface")) {
+    return `// TypeScript Interface, Type Alias & Generic Contract Formula
+type ExecutionStatus = 'idle' | 'running' | 'completed' | 'failed';
+
+interface BaseEntity {
+  readonly id: string;
+  createdAt: Date;
+}
+
+interface ServiceResponse<TData> extends BaseEntity {
+  status: ExecutionStatus;
+  payload: TData;
+  errorMessage?: string; // Optional field
+}
+
+async function requestApi<T>(url: string): Promise<ServiceResponse<T>> {
+  // Type-safe API client implementation
+}`;
+  }
+
+  // 7. PYTHON SYNTAX PATTERNS
+  if (combined.includes("python") || combined.includes("django") || combined.includes("flask")) {
+    return `# Python 3 Function & Type Hints Formula
+from typing import Optional, List, Dict
+
+def process_data(
+    records: List[Dict[str, any]], 
+    threshold: float = 0.5
+) -> Dict[str, any]:
+    """Processes list of dict records with type annotations."""
+    valid_items = [r for r in records if r.get("score", 0) >= threshold]
+    return {"total": len(records), "valid_count": len(valid_items)}`;
+  }
+
+  // 8. DATABASE / SQL SYNTAX PATTERNS
+  if (combined.includes("sql") || combined.includes("database") || combined.includes("query") || combined.includes("table")) {
+    return `-- Standard SQL Query Formula
+SELECT 
+  column1, 
+  COUNT(column2) AS total_count
+FROM table_name
+WHERE status = 'active' AND created_at >= '2026-01-01'
+GROUP BY column1
+HAVING COUNT(column2) > 1
+ORDER BY total_count DESC
+LIMIT 20;`;
+  }
+
+  // Final Universal Fallback
+  return `// ${topicTitle || lessonTitle} Syntax Blueprint
+// Declaration & Execution Formula:
+const ${topicTitle.toLowerCase().replace(/[^a-z0-9]+/g, "_") || "entity"} = new FeatureHandler({
+  configOption: true,
+  onSuccess: (result) => handleResult(result)
+});`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Dynamic Senior Rule Generator
+// ─────────────────────────────────────────────────────────────────────────────
+function generateSeniorRule({
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
+  language,
+}: {
+  courseTitle: string;
+  moduleTitle: string;
+  lessonTitle: string;
+  topicTitle: string;
+  language: ExplanationLanguage;
+}): string {
+  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+
+  if (combined.includes("react")) {
+    if (combined.includes("state") || combined.includes("usestate")) {
+      return language === "hi"
+        ? "State ko kabhi directly mutate na karein (state.push nahi chalana); hamesha setter function aur spread operator (`[...prev, item]`) ka use karein!"
+        : "Never mutate state directly (e.g. state.push()); always use setter functions and immutable updates with spread syntax (`[...prev, item]`).";
+    }
+    if (combined.includes("effect") || combined.includes("useeffect")) {
+      return language === "hi"
+        ? "useEffect ke dependency array ko hamesha accurately define karein aur asynchronous listeners ke liye return cleanup function likhein taaki memory leak na ho!"
+        : "Always declare all reactive values in useEffect dependency arrays and return cleanup handlers to prevent memory leaks.";
+    }
+    if (combined.includes("prop") || combined.includes("component")) {
+      return language === "hi"
+        ? "Props hamesha read-only hote hain; child component me prop value change karne ke bajaye parent se callback function trigger karein!"
+        : "Props are strictly read-only; never mutate incoming props—pass callback handlers to notify parent components of changes.";
+    }
+    return language === "hi"
+      ? "React me business logic ko custom hooks me aur UI ko small presentational components me separate rakhein!"
+      : "Separate business logic into custom hooks and keep presentational UI components small and decoupled.";
+  }
+
+  if (combined.includes("node") || combined.includes("express") || combined.includes("backend")) {
+    if (combined.includes("route") || combined.includes("async")) {
+      return language === "hi"
+        ? "Async route handlers me hamesha try/catch ya express-async-handler use karein taaki unhandled promise rejection se server crash na ho!"
+        : "Always wrap async route handlers with try/catch or async middleware to catch unhandled promise rejections before they crash the server.";
+    }
+    if (combined.includes("middleware") || combined.includes("auth")) {
+      return language === "hi"
+        ? "Middleware function ke har path me ya to `next()` call karein ya `res.status().json()` send karein, varna request hang ho jayegi!"
+        : "Ensure every code path in a middleware either calls `next()` or terminates with `res.json()`, otherwise client requests will hang indefinitely.";
+    }
+    return language === "hi"
+      ? "Sensitive credentials ko `.env` me rakhein aur production me Helmet + Rate Limiter middlewares zarur lagayein!"
+      : "Store sensitive secrets in environment variables (.env) and always attach security headers (Helmet) and rate limiters in production.";
+  }
+
+  if (combined.includes("html")) {
+    return language === "hi"
+      ? "Hamesha semantic HTML5 tags (`<main>`, `<nav>`, `<article>`, `<header>`) ka use karein; sirf `<div>` par depend na rahein!"
+      : "Always write semantic HTML5 tags (<main>, <nav>, <article>, <header>) instead of generic <div> tags to ensure accessibility and SEO.";
+  }
+
+  if (combined.includes("css")) {
+    return language === "hi"
+      ? "Fixed pixel widths (`width: 800px`) se bachein; hamesha responsive units (`rem`, `%`, `clamp()`, `minmax()`) aur Flexbox/Grid use karein!"
+      : "Avoid fixed pixel widths; use responsive units (rem, %, clamp(), minmax()) and Flexbox/Grid for fluid multi-device layouts.";
+  }
+
+  if (combined.includes("javascript")) {
+    return language === "hi"
+      ? "Hamesha strict equality (`===`) use karein aur `var` ke bajaye `const`/`let` ka istemal karein!"
+      : "Always use strict equality (`===`) to prevent unintended type coercion, and favor `const` over `let` and `var`.";
+  }
+
+  return language === "hi"
+    ? "Clean code principles (DRY & Single Responsibility) ka palan karein aur error boundaries zarur implement karein!"
+    : "Follow clean code principles (DRY & Single Responsibility) and always implement defensive error handling.";
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Clean Pedagogical Topic Breakdown Generator (Ultra-Simple Words for 110 Chapters)
 // ─────────────────────────────────────────────────────────────────────────────
 function buildCleanTopicBreakdown({
@@ -3476,12 +4011,20 @@ function buildCleanTopicBreakdown({
     language,
   });
 
-  const cleanSnippet = generateRichTopicCode({
+  // Pure, authentic, concise syntax formula for Section 4
+  const exactSyntax = generateExactSyntaxBlueprint({
     courseTitle,
     moduleTitle,
     lessonTitle,
     topicTitle,
-    examples,
+  });
+
+  const seniorRuleText = generateSeniorRule({
+    courseTitle,
+    moduleTitle,
+    lessonTitle,
+    topicTitle,
+    language,
   });
 
   return {
@@ -3489,11 +4032,8 @@ function buildCleanTopicBreakdown({
     definition: defaultDefinition,
     whatItDoes: conceptPoints,
     useCases: useCasesList,
-    syntaxSnippet: cleanSnippet,
-    seniorRule:
-      language === "hi"
-        ? `हमेशा ${domainName} के बेस्ट प्रैक्टिसेज का पालन करें और साफ़-सुथरा कोड लिखें!`
-        : `Always follow standard ${domainName} design patterns and write clean, modular code.`,
+    syntaxSnippet: exactSyntax,
+    seniorRule: seniorRuleText,
     withoutThis:
       language === "hi"
         ? "कोड अनियंत्रित और मुश्किल हो जाता था।"
