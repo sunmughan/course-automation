@@ -245,6 +245,25 @@ export function UnifiedInteractiveClassroom({
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [outputTab, setOutputTab] = useState<"terminal" | "preview">("terminal");
+  const [isOutputMaximized, setIsOutputMaximized] = useState(false);
+  const [isAppFullscreen, setIsAppFullscreen] = useState(false);
+
+  const toggleAppFullscreen = useCallback(() => {
+    if (typeof document === "undefined") return;
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().then(() => setIsAppFullscreen(true)).catch(() => {});
+    } else {
+      document.exitFullscreen().then(() => setIsAppFullscreen(false)).catch(() => {});
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleFsChange = () => {
+      setIsAppFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", handleFsChange);
+    return () => document.removeEventListener("fullscreenchange", handleFsChange);
+  }, []);
   
   const isFrontendDomain = useMemo(() => {
     const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
@@ -259,7 +278,7 @@ export function UnifiedInteractiveClassroom({
     );
   }, [courseTitle, moduleTitle, lessonTitle, topicTitle]);
 
-  const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack">(
+  const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack" | "architecture">(
     isPureBackend ? "node" : "react"
   );
 
@@ -438,31 +457,65 @@ export function UnifiedInteractiveClassroom({
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    ${cssCode}
+    ${cssCode || ""}
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 p-4 font-sans">
-  ${htmlCode}
+<body class="bg-slate-950 text-slate-100 p-4 font-sans antialiased">
+  ${htmlCode && !htmlCode.includes("<html") ? htmlCode : ""}
   <div id="root"></div>
 
-  <script type="text/plain" id="__rawScript">${appCode}</script>
+  <script type="text/plain" id="__rawScript">${appCode || ""}</script>
   <script>
+    window.exports = {};
+    window.module = { exports: window.exports };
+    window.require = function(mod) {
+      if (mod === 'react') return window.React;
+      if (mod === 'react-dom' || mod === 'react-dom/client') return window.ReactDOM;
+      return {};
+    };
+    if (window.React) {
+      window.useState = React.useState;
+      window.useEffect = React.useEffect;
+      window.useRef = React.useRef;
+      window.useCallback = React.useCallback;
+      window.useMemo = React.useMemo;
+      window.useContext = React.useContext;
+      window.useReducer = React.useReducer;
+    }
+
     (function(){
       try {
         var raw = document.getElementById('__rawScript').textContent;
-        // Only transform if it's JS/JSX
-        if (raw && !raw.trim().startsWith('<!DOCTYPE') && !raw.trim().startsWith('<html')) {
-          var transpiled = Babel.transform(raw, { presets: ['react', 'env'] }).code;
-          var s = document.createElement('script');
-          s.textContent = transpiled;
-          document.body.appendChild(s);
-          if (typeof App !== 'undefined') {
-            ReactDOM.render(React.createElement(App), document.getElementById('root'));
+        if (!raw || !raw.trim()) return;
+
+        // Clean module imports and export default
+        var cleaned = raw
+          .replace(/import\\s+[\\s\\S]*?from\\s+['"][^'"]+['"];?/g, '')
+          .replace(/export\\s+default\\s+/g, 'window.App = ');
+
+        var transpiled = Babel.transform(cleaned, {
+          presets: [
+            ['react', { runtime: 'classic' }],
+            ['env', { modules: false }]
+          ]
+        }).code;
+
+        var s = document.createElement('script');
+        s.textContent = transpiled;
+        document.body.appendChild(s);
+
+        var TargetComponent = window.App || window.exports.default || window.module.exports || (typeof App !== 'undefined' ? App : null);
+        if (TargetComponent && typeof TargetComponent === 'function') {
+          var rootEl = document.getElementById('root');
+          if (ReactDOM.createRoot) {
+            ReactDOM.createRoot(rootEl).render(React.createElement(TargetComponent));
+          } else {
+            ReactDOM.render(React.createElement(TargetComponent), rootEl);
           }
         }
       } catch(err) {
         var box = document.createElement('div');
-        box.style = "background:#450a0a;color:#fca5a5;border:1px solid #ef4444;padding:12px;border-radius:8px;font-family:monospace;font-size:12px;margin:10px;";
+        box.style = "background:#450a0a;color:#fca5a5;border:1px solid #ef4444;padding:12px;border-radius:12px;font-family:monospace;font-size:12px;margin-top:12px;";
         box.innerHTML = "<strong>❌ Live Preview Note:</strong> " + err.message;
         document.body.appendChild(box);
       }
@@ -1034,6 +1087,16 @@ export function UnifiedInteractiveClassroom({
             </button>
           </div>
 
+          {/* Fullscreen App Toggle */}
+          <button
+            onClick={toggleAppFullscreen}
+            className="flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-semibold font-mono bg-slate-950 border border-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer"
+            title={isAppFullscreen ? "Exit Fullscreen" : "Enter Distraction-Free Fullscreen"}
+          >
+            {isAppFullscreen ? <Minimize2 className="size-3.5 text-sky-400" /> : <Maximize2 className="size-3.5" />}
+            <span className="hidden xl:inline">{isAppFullscreen ? "Exit" : "Full Screen"}</span>
+          </button>
+
           {/* Navigation: Prev / Next / Mark Done */}
           <div className="flex items-center gap-1 border-l border-slate-800 pl-1.5 ml-0.5">
             {onPrevLesson && (
@@ -1091,16 +1154,16 @@ export function UnifiedInteractiveClassroom({
           FULL-WIDTH SUBHEADER CARD (CENTERED NOTES | CODE | OUTPUT SWITCHER + [ MORE... ] FLOATING MODAL)
           ───────────────────────────────────────────────────────────────────────────── */}
       {showSubheaderCard && (
-        <div className="bg-slate-950 border-b border-slate-800 px-3 py-1.5 flex items-center justify-center sm:justify-between gap-2 shrink-0 z-20 animate-in slide-in-from-top-1 w-full">
-          {/* Chapter Breadcrumb (Desktop / Tablet Only - Hidden on Mobile) */}
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-400 font-mono truncate min-w-0">
+        <div className="bg-slate-950 border-b border-slate-800 px-3 py-1.5 flex items-center justify-between gap-2 shrink-0 z-20 animate-in slide-in-from-top-1 w-full">
+          {/* Chapter Breadcrumb (Desktop / Tablet / Mobile) */}
+          <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono truncate min-w-0">
             <span className="text-sky-400 font-bold truncate">{courseTitle}</span>
             <span>/</span>
             <span className="text-slate-300 truncate">{lessonTitle}</span>
           </div>
 
-          {/* Centered Switcher: Notes, Code, Output + [ ⚡ More... ] Button */}
-          <div className="flex items-center gap-1 bg-slate-900 p-0.5 rounded-xl border border-slate-800 shrink-0 mx-auto sm:mx-0">
+          {/* Centered Switcher: Notes, Code, Output + [ ⚡ More... ] Button (ONLY on Mobile/Tablet: lg:hidden) */}
+          <div className="flex lg:hidden items-center gap-1 bg-slate-900 p-0.5 rounded-xl border border-slate-800 shrink-0">
             <button
               onClick={() => setMobileActiveView("notes")}
               className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -1126,7 +1189,7 @@ export function UnifiedInteractiveClassroom({
               ⚡ Output
             </button>
 
-            {/* ⚡ More Button for Floating Modal */}
+            {/* ⚡ More Button for Floating Modal (ONLY visible on Mobile/Tablet) */}
             <button
               onClick={() => setIsFloatingToolsModalOpen(true)}
               className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition-all cursor-pointer shadow-xs flex items-center gap-1 ml-1"
@@ -1503,28 +1566,30 @@ export function UnifiedInteractiveClassroom({
                 className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs h-7 px-3 gap-1.5 shadow-sm cursor-pointer"
               >
                 <Play className="size-3 fill-current" />
-                {loading || isExecutionSyncing ? "Running Flow..." : "Run & Preview (Ctrl+Enter)"}
+                {loading || isExecutionSyncing ? "Running..." : "Run"}
               </Button>
             </div>
           </div>
 
-          {/* Monaco Code Editor (Scrollable Center Area) */}
-          <div className="flex-1 min-h-[200px]">
-            <MonacoEditor
-              value={currentEditorCode}
-              onChange={(val) => handleEditorChange(val || "")}
-              language={currentEditorLanguage}
-            />
-          </div>
+          {/* Monaco Code Editor (Scrollable Center Area - Collapsible when Output is Maximized) */}
+          {!isOutputMaximized && (
+            <div className="flex-1 min-h-[200px]">
+              <MonacoEditor
+                value={currentEditorCode}
+                onChange={(val) => handleEditorChange(val || "")}
+                language={currentEditorLanguage}
+              />
+            </div>
+          )}
 
-          {/* Bottom Terminal & Browser Preview Splitter */}
-          <div className="h-[230px] shrink-0 border-t border-slate-800 bg-slate-950 flex flex-col">
+          {/* Bottom Terminal & Browser Preview Splitter (Expands to Full Column when Maximized) */}
+          <div className={`${isOutputMaximized ? "flex-1 min-h-0" : "h-[240px] shrink-0 border-t border-slate-800"} bg-slate-950 flex flex-col`}>
             <div className="flex items-center justify-between px-3 py-1 bg-slate-900 border-b border-slate-800 text-xs shrink-0">
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setOutputTab("terminal")}
                   className={`flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-mono font-semibold transition-all cursor-pointer ${
-                    outputTab === "terminal" ? "bg-slate-800 text-emerald-400" : "text-slate-400 hover:text-white"
+                    outputTab === "terminal" ? "bg-slate-800 text-emerald-400 font-bold" : "text-slate-400 hover:text-white"
                   }`}
                 >
                   <Terminal className="size-3" />
@@ -1534,7 +1599,7 @@ export function UnifiedInteractiveClassroom({
                 <button
                   onClick={() => setOutputTab("preview")}
                   className={`flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-mono font-semibold transition-all cursor-pointer ${
-                    outputTab === "preview" ? "bg-slate-800 text-sky-400" : "text-slate-400 hover:text-white"
+                    outputTab === "preview" ? "bg-slate-800 text-sky-400 font-bold" : "text-slate-400 hover:text-white"
                   }`}
                 >
                   <Globe className="size-3" />
@@ -1542,9 +1607,17 @@ export function UnifiedInteractiveClassroom({
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
+              <div className="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
                 {executionTime !== undefined && <span>{executionTime.toFixed(1)}ms</span>}
-                <button onClick={clearOutput} className="hover:text-slate-300 cursor-pointer">
+                <button
+                  onClick={() => setIsOutputMaximized(!isOutputMaximized)}
+                  className="flex items-center gap-1 text-slate-400 hover:text-sky-300 px-1.5 py-0.5 rounded bg-slate-950 border border-slate-800 transition-colors cursor-pointer"
+                  title={isOutputMaximized ? "Restore Default Split View" : "Maximize Output & Live Preview Column"}
+                >
+                  {isOutputMaximized ? <Minimize2 className="size-3 text-sky-400" /> : <Maximize2 className="size-3" />}
+                  <span>{isOutputMaximized ? "Restore" : "Expand"}</span>
+                </button>
+                <button onClick={clearOutput} className="hover:text-white cursor-pointer px-1">
                   Clear
                 </button>
               </div>
@@ -1563,7 +1636,7 @@ export function UnifiedInteractiveClassroom({
                       {output}
                     </pre>
                   ) : !error ? (
-                    <span className="text-slate-500 italic">Click "Run &amp; Preview" to execute code and view logs.</span>
+                    <span className="text-slate-500 italic">Click "Run" to execute code and view output.</span>
                   ) : null}
                 </div>
               ) : (
@@ -1776,37 +1849,47 @@ export function UnifiedInteractiveClassroom({
               {/* TOOL B: 💻 HOW TO RUN IN VS CODE GUIDE (CLEAR LOCATION & RUN INSTRUCTIONS) */}
               {activeRightPanel === "vscode_guide" && (
                 <div className="space-y-4 text-xs">
-                  {/* Category Switcher: Node.js / React / Fullstack */}
-                  <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                  {/* Category Switcher: Node.js / React / Fullstack / Multi-File Guide */}
+                  <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800 flex-wrap">
                     <button
                       onClick={() => setActiveVsCodeTab("node")}
-                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
+                      className={`flex-1 min-w-[75px] py-1 rounded-lg text-center font-mono font-bold text-[11px] transition-all cursor-pointer ${
                         activeVsCodeTab === "node"
                           ? "bg-emerald-600 text-white shadow-xs"
                           : "text-slate-400 hover:text-white"
                       }`}
                     >
-                      🟢 Node.js Server
+                      🟢 Node Server
                     </button>
                     <button
                       onClick={() => setActiveVsCodeTab("react")}
-                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
+                      className={`flex-1 min-w-[75px] py-1 rounded-lg text-center font-mono font-bold text-[11px] transition-all cursor-pointer ${
                         activeVsCodeTab === "react"
                           ? "bg-sky-600 text-white shadow-xs"
                           : "text-slate-400 hover:text-white"
                       }`}
                     >
-                      ⚛️ React Frontend
+                      ⚛️ React UI
                     </button>
                     <button
                       onClick={() => setActiveVsCodeTab("fullstack")}
-                      className={`flex-1 py-1 rounded-lg text-center font-mono font-bold transition-all cursor-pointer ${
+                      className={`flex-1 min-w-[75px] py-1 rounded-lg text-center font-mono font-bold text-[11px] transition-all cursor-pointer ${
                         activeVsCodeTab === "fullstack"
                           ? "bg-purple-600 text-white shadow-xs"
                           : "text-slate-400 hover:text-white"
                       }`}
                     >
-                      🔗 Full-Stack
+                      🔗 Fullstack
+                    </button>
+                    <button
+                      onClick={() => setActiveVsCodeTab("architecture")}
+                      className={`flex-1 min-w-[95px] py-1 rounded-lg text-center font-mono font-bold text-[11px] transition-all cursor-pointer ${
+                        activeVsCodeTab === "architecture"
+                          ? "bg-amber-600 text-white shadow-xs"
+                          : "text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      📁 Multi-File Guide
                     </button>
                   </div>
 
@@ -1872,7 +1955,7 @@ export function UnifiedInteractiveClassroom({
                             className="text-[10px] font-mono text-emerald-400 hover:text-white flex items-center gap-1 cursor-pointer bg-slate-900 px-2 py-0.5 rounded border border-slate-800"
                           >
                             <Copy className="size-3" />
-                            <span>{copiedId === "node_cmds" ? "Copied ✓" : "Copy Commands"}</span>
+                            <span>{copiedId === "node_cmds" ? "Copied ✓" : "Copy"}</span>
                           </button>
                         </div>
                         <div
@@ -1960,7 +2043,7 @@ node server.js`}
                             className="text-[10px] font-mono text-sky-400 hover:text-white flex items-center gap-1 cursor-pointer bg-slate-900 px-2 py-0.5 rounded border border-slate-800"
                           >
                             <Copy className="size-3" />
-                            <span>{copiedId === "react_cmds" ? "Copied ✓" : "Copy Commands"}</span>
+                            <span>{copiedId === "react_cmds" ? "Copied ✓" : "Copy"}</span>
                           </button>
                         </div>
                         <div
@@ -2030,6 +2113,74 @@ npm run dev`}
                           </div>
                           <div className="p-2 bg-slate-900 rounded border border-slate-800">
                             <strong>Step 3:</strong> React app start karein (<code>npm run dev</code>) ➔ Done! 🎉
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 4: 📁 MULTI-FILE LINKING & ARCHITECTURE GUIDE */}
+                  {activeVsCodeTab === "architecture" && (
+                    <div className="space-y-3">
+                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5 max-w-full overflow-hidden">
+                        <span className="text-xs font-bold text-amber-400 font-mono block flex items-center gap-1.5">
+                          <span>📁 Multi-File Architecture: How Files Connect</span>
+                        </span>
+                        <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                          Jab project me multiple files hoti hain (jaise <code>server.js</code>, <code>App.jsx</code>, <code>index.html</code>, <code>style.css</code>), unka execution flow neeche diye hierarchy ke anusar chalta hai:
+                        </p>
+
+                        <div className="space-y-2 text-[11px] font-mono">
+                          {/* Item 1: index.html */}
+                          <div className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
+                            <div className="text-amber-300 font-bold flex items-center gap-1">
+                              <span>1. index.html (Root Entry Point)</span>
+                            </div>
+                            <p className="text-slate-400 font-sans text-[10px]">
+                              Browser sabse pehle <code>index.html</code> ko load karta hai. Iske andar:
+                            </p>
+                            <code className="text-cyan-300 block bg-slate-950 p-1.5 rounded text-[10px]">
+                              {`<link rel="stylesheet" href="/src/style.css">\n<script type="module" src="/src/main.jsx"></script>`}
+                            </code>
+                          </div>
+
+                          {/* Item 2: main.jsx */}
+                          <div className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
+                            <div className="text-sky-300 font-bold flex items-center gap-1">
+                              <span>2. src/main.jsx (React Root Launcher)</span>
+                            </div>
+                            <p className="text-slate-400 font-sans text-[10px]">
+                              <code>main.jsx</code> App component ko import karta hai aur <code>#root</code> me render karta hai:
+                            </p>
+                            <code className="text-cyan-300 block bg-slate-950 p-1.5 rounded text-[10px]">
+                              {`import App from './App.jsx';\nReactDOM.createRoot(document.getElementById('root')).render(<App />);`}
+                            </code>
+                          </div>
+
+                          {/* Item 3: App.jsx */}
+                          <div className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
+                            <div className="text-indigo-300 font-bold flex items-center gap-1">
+                              <span>3. src/App.jsx (Frontend Logic & State)</span>
+                            </div>
+                            <p className="text-slate-400 font-sans text-[10px]">
+                              Yahan UI elements, Hooks (<code>useState</code>, <code>useEffect</code>), aur Backend API calls hoti hain:
+                            </p>
+                            <code className="text-cyan-300 block bg-slate-950 p-1.5 rounded text-[10px]">
+                              {`// Backend server.js se live data connect karna:\nuseEffect(() => {\n  fetch('http://localhost:5000/api/data')\n    .then(r => r.json())\n    .then(data => setData(data));\n}, []);`}
+                            </code>
+                          </div>
+
+                          {/* Item 4: server.js */}
+                          <div className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
+                            <div className="text-emerald-300 font-bold flex items-center gap-1">
+                              <span>4. server.js (Node.js REST API Server)</span>
+                            </div>
+                            <p className="text-slate-400 font-sans text-[10px]">
+                              Express server Port 5000 par launch hota hai aur CORS enable karke React ko JSON send karta hai:
+                            </p>
+                            <code className="text-cyan-300 block bg-slate-950 p-1.5 rounded text-[10px]">
+                              {`const express = require('express');\nconst cors = require('cors');\nconst app = express();\napp.use(cors());\napp.get('/api/data', (req, res) => res.json({ status: 'ok' }));\napp.listen(5000);`}
+                            </code>
                           </div>
                         </div>
                       </div>
