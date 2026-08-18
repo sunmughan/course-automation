@@ -2035,6 +2035,207 @@ npm run dev`}
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Action-Oriented Bullet Generator for "What Does It Do?" (No Questions, Clear Points)
+// ─────────────────────────────────────────────────────────────────────────────
+function generateWhatItDoesPoints({
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
+  concepts = [],
+  language,
+}: {
+  courseTitle: string;
+  moduleTitle: string;
+  lessonTitle: string;
+  topicTitle: string;
+  concepts: ConceptItem[];
+  language: ExplanationLanguage;
+}): string[] {
+  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+
+  // 1. React.js Specific Points
+  if (combined.includes("react")) {
+    if (
+      combined.includes("get started") ||
+      combined.includes("getting started") ||
+      combined.includes("intro") ||
+      combined.includes("what is") ||
+      combined.includes("setup") ||
+      combined.includes("installation")
+    ) {
+      return language === "hi"
+        ? [
+            "UI ko Chhote Reusable Components me divide karta hai: Poore web app ko Header, Card, Button jaise alag-alag modules me baant-ta hai.",
+            "Virtual DOM se Fast Rendering deta hai: Page reload kiye bina sirf change hue data ko browser screen par update karta hai.",
+            "Declarative JSX Syntax pradan karta hai: JavaScript ke andar direct HTML-like UI templates likhne ki suvidha deta hai.",
+            "Unidirectional Data Flow maintain karta hai: Data hamesha Parent component se Child component ki taraf Props ke zariye flow hota hai.",
+          ]
+        : [
+            "Divides UI into Modular Reusable Components: Breaks down complex web pages into isolated, maintainable building blocks.",
+            "Enables High-Performance Virtual DOM Diffing: Updates only the modified DOM nodes without full browser page reloads.",
+            "Provides Declarative JSX Syntax: Allows writing HTML-like component markup directly within JavaScript logic.",
+            "Enforces One-Way Data Flow: Streams state predictably from parent components to child components via props.",
+          ];
+    }
+    if (combined.includes("state") || combined.includes("usestate") || combined.includes("hook")) {
+      return language === "hi"
+        ? [
+            "Component ki Dynamic Memory manage karta hai: User clicks, form inputs, toggle status ko component ke andar yaad rakhta hai.",
+            "Auto Re-render Trigger karta hai: Jab bhi state update hoti hai, React turant component ko naye data ke sath screen par render karta hai.",
+            "Immutable Updates ensure karta hai: State ko direct modify kiye bina safe setter function (setState) se update karta hai.",
+          ]
+        : [
+            "Manages Component Memory & Reactive State: Preserves user inputs, active tab status, and interactive UI states.",
+            "Triggers Automatic Reconciliation: Re-renders the component with fresh state values whenever setter is called.",
+            "Enforces Immutable State Transitions: Guarantees deterministic state updates using pure setter functions.",
+          ];
+    }
+    if (combined.includes("prop") || combined.includes("component") || combined.includes("stateless")) {
+      return language === "hi"
+        ? [
+            "Parent se Child me Data Pass karta hai: Components ke beech dynamic parameters aur configuration bhejne deta hai.",
+            "Read-Only Data Contract follow karta hai: Child component props ko change nahi kar sakta, jisse side effects aur bugs nahi aate.",
+            "Component ko Reusable banata hai: Ek hi component ko alag-alag props dekar 100 jagah alag data ke sath use kar sakte hain.",
+          ]
+        : [
+            "Streams Data from Parent to Child: Passes configuration and dynamic data into child components as custom attributes.",
+            "Enforces Read-Only Immutability: Prevents child components from mutating incoming props directly, eliminating bugs.",
+            "Maximizes Code Reusability: Allows rendering the same UI component across multiple views with varying props.",
+          ];
+    }
+    if (combined.includes("effect") || combined.includes("useeffect") || combined.includes("lifecycle")) {
+      return language === "hi"
+        ? [
+            "Side Effects ko Handle karta hai: Backend API se data fetch karna, timers set karna aur local storage update karna manage karta hai.",
+            "Lifecycle Phases control karta hai: Component mount hone par, update hone par ya screen se hatne par specific code run karta hai.",
+            "Memory Leaks rokne ke liye Cleanup karta hai: Return function ke zariye event listeners aur socket connections ko destroy karta hai.",
+          ]
+        : [
+            "Executes Asynchronous Side Effects: Handles REST API calls, WebSocket subscriptions, and DOM event listeners.",
+            "Controls Component Lifecycle Timing: Runs logic on component mount, dependency updates, and component unmount.",
+            "Performs Memory Cleanup: Destroys timers and unbinds event listeners in return callback to prevent memory leaks.",
+          ];
+    }
+    // Generic React Chapter
+    return language === "hi"
+      ? [
+          "React 19+ Modern Component Architecture ko implement karta hai.",
+          "Synthetic Events ke zariye User Interactions (Clicks, Submits) ko smoothly handle karta hai.",
+          "Clean, reactive aur high-performance UI components deliver karta hai.",
+        ]
+      : [
+          "Implements modern React 19+ functional architecture and declarative state management.",
+          "Handles synthetic browser events (clicks, inputs, submits) with zero performance lag.",
+          "Delivers clean, reactive, and enterprise-grade UI components.",
+        ];
+  }
+
+  // 2. HTML5 Specific Points
+  if (combined.includes("html")) {
+    return language === "hi"
+      ? [
+          "Webpage ka Semantic Structure banata hai: Content ko header, nav, main, section, footer me organize karta hai.",
+          "SEO aur Accessibility ko behtar karta hai: Search engines aur screen readers ko page ka sahi matlab samajhata hai.",
+          "Forms, Media aur Links ko embed karta hai: Text, Images, Videos aur Buttons ko browser me render karta hai.",
+        ]
+      : [
+          "Structures Semantic Web Documents: Organizes layout using standard elements (header, nav, main, section, footer).",
+          "Optimizes SEO and Screen Reader Accessibility: Provides structured meaning to search engines and assistive technologies.",
+          "Embeds Interactive Forms, Media, and Hyperlinks: Displays text, inputs, buttons, and multimedia assets.",
+        ];
+  }
+
+  // 3. CSS3 Specific Points
+  if (combined.includes("css") || combined.includes("flexbox") || combined.includes("grid")) {
+    return language === "hi"
+      ? [
+          "Responsive Layouts design karta hai: Mobile, Tablet aur Desktop par content ko automatic fit karta hai.",
+          "Flexbox aur Grid se Alignment control karta hai: Elements ko horizontally aur vertically perfectly center aur space karta hai.",
+          "Animations aur Visual Effects apply karta hai: Colors, hover states, transitions aur shadows se attractive UI banata hai.",
+        ]
+      : [
+          "Designs Fluid Responsive Layouts: Adapts UI seamlessly across mobile, tablet, and widescreen displays.",
+          "Controls 1D/2D Alignment with Flexbox & Grid: Perfectly aligns, distributes, and centers elements in the DOM.",
+          "Applies Modern Animations & Styling Rules: Transforms UI elements with colors, transitions, and micro-interactions.",
+        ];
+  }
+
+  // 4. JavaScript Specific Points
+  if (combined.includes("javascript") || combined.includes("js") || combined.includes("dom")) {
+    return language === "hi"
+      ? [
+          "Webpage ko Interactive aur Dynamic banata hai: Button click, form validation aur data calculations execute karta hai.",
+          "DOM Manipulation karta hai: Page reload kiye bina elements ko add, remove aur modify karta hai.",
+          "Asynchronous Operations (Fetch / Promises) handle karta hai: Server se background me live data mangwata hai.",
+        ]
+      : [
+          "Enables Dynamic Client-Side Interactivity: Validates forms, handles user inputs, and computes business logic.",
+          "Performs Direct DOM Traversal & Manipulation: Dynamically creates, updates, and removes HTML nodes on the fly.",
+          "Manages Asynchronous Execution with Promises: Fetches data in the background via fetch() and async/await.",
+        ];
+  }
+
+  // 5. TypeScript Specific Points
+  if (combined.includes("typescript") || combined.includes("type")) {
+    return language === "hi"
+      ? [
+          "Compile-Time Type Safety deta hai: Code run hone se pehle hi bugs aur data type mismatches ko pakad leta hai.",
+          "Interfaces aur Generics se Clean Architecture banata hai: Complex data structures ko strictly define karta hai.",
+          "IDE Autocomplete aur Refactoring ko boost karta hai: VS Code me faster autocomplete aur safe renaming provide karta hai.",
+        ]
+      : [
+          "Enforces Strict Compile-Time Type Safety: Catches bugs and type errors before code ever runs in production.",
+          "Defines Robust Interfaces & Generics: Structures complex enterprise schemas with strict type contracts.",
+          "Powers Rich IDE Autocompletion: Accelerates development with intelligent autocomplete and safe refactoring.",
+        ];
+  }
+
+  // 6. Python / Data Science
+  if (combined.includes("python")) {
+    return language === "hi"
+      ? [
+          "Clean, readable syntax me Data Processing aur Scripting execute karta hai.",
+          "OOPs aur Modular Architecture ke sath scalable programs banata hai.",
+          "Libraries aur Built-in Functions se complex tasks ko 2 line me solve karta hai.",
+        ]
+      : [
+          "Processes data and executes scripting workflows with clean, readable syntax.",
+          "Builds scalable applications using Object-Oriented and functional paradigms.",
+          "Leverages built-in standard library utilities for high-efficiency computation.",
+        ];
+  }
+
+  // 7. Node.js Backend
+  if (combined.includes("node") || combined.includes("express")) {
+    return language === "hi"
+      ? [
+          "Non-blocking Asynchronous I/O se high-speed HTTP servers banata hai.",
+          "RESTful APIs aur JSON Endpoints ko efficiently serve karta hai.",
+          "Database Operations aur Authentication tokens ko securely process karta hai.",
+        ]
+      : [
+          "Creates high-speed event-driven HTTP backends using non-blocking I/O.",
+          "Serves RESTful APIs and middleware pipelines with sub-millisecond latency.",
+          "Executes database queries, authentication flows, and microservice communication.",
+        ];
+  }
+
+  // Fallback Clean Points
+  return language === "hi"
+    ? [
+        `${topicTitle || lessonTitle} ke core concepts ko apply karta hai.`,
+        "Code ko modular, reusable aur maintainable banata hai.",
+        "Runtime errors ko rokk kar fast performance deliver karta hai.",
+      ]
+    : [
+        `Applies the core principles of ${topicTitle || lessonTitle}.`,
+        "Structures code into modular, maintainable, and reusable blocks.",
+        "Prevents runtime exceptions and optimizes overall execution performance.",
+      ];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Clean Pedagogical Topic Breakdown Generator (Ultra-Simple Words for 110 Chapters)
 // ─────────────────────────────────────────────────────────────────────────────
 function buildCleanTopicBreakdown({
@@ -2088,19 +2289,14 @@ function buildCleanTopicBreakdown({
       ? `${topicTitle || lessonTitle} ${domainName} का एक महत्वपूर्ण विषय है जो आपके कोड को संरचित, आधुनिक और शक्तिशाली बनाता है।`
       : `${topicTitle || lessonTitle} is a core foundation of ${domainName}, enabling clean, scalable, and professional software development.`);
 
-  const conceptPoints = concepts && concepts.length > 0
-    ? concepts.map(c => `${c.title}: ${c.description}`)
-    : [
-        language === "hi"
-          ? `${topicTitle || lessonTitle} के मुख्य सिद्धांतों को लागू करता है.`
-          : `Applies core architectural patterns of ${topicTitle || lessonTitle}.`,
-        language === "hi"
-          ? "कोड को मॉड्यूलर और दोबारा इस्तेमाल करने योग्य बनाता है."
-          : "Ensures modular, reusable, and predictable components.",
-        language === "hi"
-          ? "एरर्स को रोकता है और परफॉरमेंस को बेहतर बनाता है."
-          : "Guards against runtime issues and optimizes performance."
-      ];
+  const conceptPoints = generateWhatItDoesPoints({
+    courseTitle,
+    moduleTitle,
+    lessonTitle,
+    topicTitle,
+    concepts,
+    language,
+  });
 
   const cleanSnippet =
     examples[0]?.starterCode ||
