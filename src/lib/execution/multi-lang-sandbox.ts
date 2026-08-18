@@ -596,8 +596,16 @@ export async function executeMultiLanguage(
         };
       }
 
-      // Handle Display / Validation / DB Languages
-      if (language === "html") return executeHtmlPreview(trimmedCode);
+      // Handle Display / Validation / DB Languages & Auto-Detect HTML
+      if (
+        language === "html" ||
+        trimmedCode.startsWith("<!DOCTYPE") ||
+        trimmedCode.startsWith("<html") ||
+        trimmedCode.startsWith("<head") ||
+        (trimmedCode.startsWith("<div") && !trimmedCode.includes("import ") && !trimmedCode.includes("export "))
+      ) {
+        return executeHtmlPreview(trimmedCode);
+      }
       if (language === "css") return executeCssPreview(trimmedCode);
       if (language === "json") return executeJsonValidator(trimmedCode);
       if (language === "markdown") return executeMarkdownRenderer(trimmedCode);
@@ -609,8 +617,8 @@ export async function executeMultiLanguage(
         });
       }
 
-      // Handle JavaScript Isolated Runner
-      if (language === "javascript") {
+      // Handle JavaScript / Node.js Isolated Runner
+      if (language === "javascript" || language === "nodejs" || language === "node.js" || language === "node") {
         return executeJavaScript(trimmedCode, "javascript", { trace, timeoutMs });
       }
 

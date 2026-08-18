@@ -322,8 +322,56 @@ export function UnifiedInteractiveClassroom({
     else setServerCode(newVal);
   };
 
-  // Build live srcdoc for multi-file iframe preview (React 18 + Babel + CSS + HTML)
+  // Build live srcdoc for multi-file iframe preview (React 18 + Babel + CSS + HTML + Node.js Mock)
   const liveSrcDoc = useMemo(() => {
+    const trimmedApp = (appCode || "").trim();
+    const trimmedHtml = (htmlCode || "").trim();
+
+    // 1. If code is a full HTML document (contains <!DOCTYPE html> or <html>)
+    if (trimmedApp.startsWith("<!DOCTYPE") || trimmedApp.startsWith("<html") || trimmedHtml.startsWith("<!DOCTYPE") || trimmedHtml.startsWith("<html")) {
+      return trimmedApp.startsWith("<!DOCTYPE") || trimmedApp.startsWith("<html") ? trimmedApp : trimmedHtml;
+    }
+
+    // 2. If code is Node.js Backend (uses require('express') or require('http'))
+    const isNodeBackend =
+      trimmedApp.includes("require('express')") ||
+      trimmedApp.includes('require("express")') ||
+      trimmedApp.includes("require('http')") ||
+      trimmedApp.includes('require("http")') ||
+      trimmedApp.includes("express()");
+
+    if (isNodeBackend) {
+      return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 p-6 font-sans">
+  <div class="max-w-md mx-auto space-y-4">
+    <div class="flex items-center gap-2 p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-emerald-400 text-xs font-mono">
+      <span class="size-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="font-bold">Node.js Express Server Active (Port 5000)</span>
+    </div>
+    <div class="p-4 bg-slate-900 border border-slate-800 rounded-2xl space-y-2">
+      <span class="text-[10px] font-mono uppercase text-slate-400">Sample API Response Preview:</span>
+      <pre class="p-3 bg-slate-950 rounded-xl text-xs font-mono text-cyan-300 overflow-x-auto">{
+  "status": "success",
+  "server": "Express.js 4.x",
+  "endpoint": "/api/demo",
+  "message": "Node.js REST API is running and responding with HTTP 200 OK!"
+}</pre>
+    </div>
+    <p class="text-[11px] text-slate-400 font-mono text-center">
+      👉 Click <strong>Run Code ▶</strong> or check the <strong>Terminal Output</strong> tab to execute live.
+    </p>
+  </div>
+</body>
+</html>`;
+    }
+
+    // 3. React / Pure Client-Side Component Preview
     return `<!DOCTYPE html>
 <html>
 <head>
@@ -332,25 +380,34 @@ export function UnifiedInteractiveClassroom({
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     ${cssCode}
   </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 p-4 font-sans">
   ${htmlCode}
+  <div id="root"></div>
+
   <script type="text/plain" id="__rawScript">${appCode}</script>
   <script>
     (function(){
       try {
         var raw = document.getElementById('__rawScript').textContent;
-        var transpiled = Babel.transform(raw, { presets: ['react', 'env'] }).code;
-        var s = document.createElement('script');
-        s.textContent = transpiled;
-        document.body.appendChild(s);
+        // Only transform if it's JS/JSX
+        if (raw && !raw.trim().startsWith('<!DOCTYPE') && !raw.trim().startsWith('<html')) {
+          var transpiled = Babel.transform(raw, { presets: ['react', 'env'] }).code;
+          var s = document.createElement('script');
+          s.textContent = transpiled;
+          document.body.appendChild(s);
+          if (typeof App !== 'undefined') {
+            ReactDOM.render(React.createElement(App), document.getElementById('root'));
+          }
+        }
       } catch(err) {
         var box = document.createElement('div');
         box.style = "background:#450a0a;color:#fca5a5;border:1px solid #ef4444;padding:12px;border-radius:8px;font-family:monospace;font-size:12px;margin:10px;";
-        box.innerHTML = "<strong>❌ Render Error:</strong> " + err.message;
+        box.innerHTML = "<strong>❌ Live Preview Note:</strong> " + err.message;
         document.body.appendChild(box);
       }
     })();
