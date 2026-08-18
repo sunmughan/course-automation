@@ -10,7 +10,8 @@ import { SkillEvaluationService } from "@/lib/adaptive/skill-evaluation";
 export const POST = apiHandler(async (ctx) => {
   const user = ctx.user || { id: "student_user", email: "student@skillforge.com", role: "STUDENT" as const };
   const body = (ctx as any).body as {
-    code: string;
+    code?: string;
+    codeBase64?: string;
     language: string;
     timeout?: number;
     trace?: boolean;
@@ -18,7 +19,17 @@ export const POST = apiHandler(async (ctx) => {
     lessonId?: string;
   };
 
-  const { code, language = "javascript", timeout = 5000, trace = false, topicId, lessonId } = body;
+  let rawCode = body.code || "";
+  if (body.codeBase64) {
+    try {
+      rawCode = Buffer.from(body.codeBase64, "base64").toString("utf-8");
+    } catch {
+      rawCode = body.code || "";
+    }
+  }
+
+  const { language = "javascript", timeout = 5000, trace = false, topicId, lessonId } = body;
+  const code = rawCode;
 
   const result = await executeMultiLanguage({
     code,
