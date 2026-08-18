@@ -1,11 +1,11 @@
 import "dotenv/config";
 import { prisma } from "../src/lib/db";
-import { backendNodeJSCourse } from "../src/lib/curriculum/backend-nodejs-course";
+import { nodejsBackendCourse } from "../src/lib/curriculum/backend-nodejs-course";
 
 async function main() {
   console.log("⚡ Seeding Clean Node.js Course (110 Chapters)...");
 
-  const courseData = backendNodeJSCourse;
+  const courseData = nodejsBackendCourse;
 
   const course = await prisma.course.upsert({
     where: { slug: courseData.slug },
