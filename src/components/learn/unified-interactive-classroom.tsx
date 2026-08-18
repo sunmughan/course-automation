@@ -208,8 +208,36 @@ export function UnifiedInteractiveClassroom({
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [outputTab, setOutputTab] = useState<"terminal" | "preview">("terminal");
+  
+  const isFrontendDomain = useMemo(() => {
+    const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
+    return (
+      combined.includes("frontend") ||
+      combined.includes("react") ||
+      combined.includes("html") ||
+      combined.includes("css") ||
+      combined.includes("javascript") ||
+      combined.includes("ui") ||
+      combined.includes("angular")
+    );
+  }, [courseTitle, moduleTitle, lessonTitle, topicTitle]);
+
+  const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack">(
+    isFrontendDomain ? "react" : "node"
+  );
+
+  useEffect(() => {
+    if (isFrontendDomain) {
+      setActiveVsCodeTab("react");
+    } else if (
+      (courseTitle + " " + moduleTitle).toLowerCase().includes("node") ||
+      (courseTitle + " " + moduleTitle).toLowerCase().includes("backend")
+    ) {
+      setActiveVsCodeTab("node");
+    }
+  }, [isFrontendDomain, courseTitle, moduleTitle]);
+
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
-  const [activeVsCodeTab, setActiveVsCodeTab] = useState<"react" | "node" | "fullstack">("node");
 
   // Microphone Speech Input State
   const [isListeningMic, setIsListeningMic] = useState<boolean>(false);
@@ -330,6 +358,8 @@ export function UnifiedInteractiveClassroom({
   // Structured Pedagogical Breakdown (Definition, What Does It Do, Use Cases, Syntax)
   const topicData = useMemo(() => {
     return buildCleanTopicBreakdown({
+      courseTitle,
+      moduleTitle,
       lessonTitle,
       topicTitle,
       lessonExplanation,
@@ -337,7 +367,7 @@ export function UnifiedInteractiveClassroom({
       examples,
       language,
     });
-  }, [lessonTitle, topicTitle, lessonExplanation, concepts, examples, language]);
+  }, [courseTitle, moduleTitle, lessonTitle, topicTitle, lessonExplanation, concepts, examples, language]);
 
   // Handle Run Code with Real-Time Flow Pulse Sync
   const handleRunCode = useCallback(async () => {
@@ -2008,13 +2038,17 @@ npm run dev`}
 // Clean Pedagogical Topic Breakdown Generator (Ultra-Simple Words for 110 Chapters)
 // ─────────────────────────────────────────────────────────────────────────────
 function buildCleanTopicBreakdown({
-  lessonTitle,
-  topicTitle,
+  courseTitle = "",
+  moduleTitle = "",
+  lessonTitle = "",
+  topicTitle = "",
   lessonExplanation,
-  concepts,
-  examples,
+  concepts = [],
+  examples = [],
   language,
 }: {
+  courseTitle?: string;
+  moduleTitle?: string;
   lessonTitle: string;
   topicTitle: string;
   lessonExplanation?: string;
@@ -2022,303 +2056,102 @@ function buildCleanTopicBreakdown({
   examples: ExampleItem[];
   language: ExplanationLanguage;
 }) {
-  const combined = `${lessonTitle} ${topicTitle}`.toLowerCase();
+  const combined = `${courseTitle} ${moduleTitle} ${lessonTitle} ${topicTitle}`.toLowerCase();
 
-  // 1. Chapter 1: Getting Started with Node.js & HTTP Server
-  if (combined.includes("getting started") || combined.includes("chapter 1") || combined.includes("hello world")) {
-    return {
-      title: "Getting started with Node.js",
-      definition:
-        language === "hi"
-          ? "Node.js एक ओपन-सोर्स JavaScript रनटाइम एनवायरनमेंट है जो Chrome के V8 इंजन पर चलता है। यह आपको ब्राउज़र के बाहर सर्वर पर JavaScript कोड चलाने की ताकत देता है।"
-          : "Node.js is an open-source, cross-platform JavaScript runtime built on Chrome's V8 engine that executes JavaScript code outside a web browser to build fast backend servers.",
-      whatItDoes:
-        language === "hi"
-          ? [
-              "बिना किसी Apache या IIS के सीधे JavaScript से HTTP वेब सर्वर बनाता है.",
-              "Non-blocking I/O मॉडल के ज़रिए एक ही समय में हज़ारों यूज़र्स की रिक्वेस्ट संभालता है.",
-              "REPL और CLI कमांड्स के ज़रिए टर्मिनल में तुरंत कोड टेस्ट करने की सुविधा देता है.",
-            ]
-          : [
-              "Creates lightweight, event-driven HTTP servers without complex server software.",
-              "Handles thousands of concurrent connections using single-threaded non-blocking I/O.",
-              "Provides an interactive REPL and command-line execution environment.",
-            ],
-      useCases:
-        language === "hi"
-          ? ["RESTful API बैकएंड सर्वर", "रीयल-टाइम चैट और स्ट्रीमिंग ऐप्स", "माइक्रोसर्विसेज़ आर्किटेक्चर"]
-          : ["High-speed REST API servers", "Real-time chat & websocket backends", "Lightweight microservices"],
-      syntaxSnippet: `const http = require('http');\nconst server = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/plain' });\n  res.end('Hello World\\n');\n});\nserver.listen(1337, '127.0.0.1');`,
-      seniorRule:
-        language === "hi"
-          ? "हमेशा सर्वर को किसी पोर्ट पर listen() कराएं और रिस्पॉन्स के अंत में res.end() लिखना न भूलें!"
-          : "Always close HTTP response streams with res.end() or res.json() to prevent client socket hangs.",
-      withoutThis:
-        language === "hi"
-          ? "JavaScript सिर्फ ब्राउज़र में चलती थी, बैकएंड के लिए PHP या Java सीखना पड़ता था!"
-          : "JavaScript was strictly confined to browsers; backends required different languages.",
-      withThis:
-        language === "hi"
-          ? "Frontend और Backend दोनों जगह एक ही भाषा (JavaScript) का इस्तेमाल होता है!"
-          : "Full-stack development unified in a single, high-performance JavaScript language!",
-      flowSteps: [
-        {
-          phase: "1. Server Initialization",
-          whatHappens: language === "hi" ? "http.createServer() ने लिसनर रजिस्टर किया।" : "Node.js binds HTTP server to port 1337.",
-          dataState: "Port: 1337 bound on 127.0.0.1",
-        },
-        {
-          phase: "2. Incoming Connection",
-          whatHappens: language === "hi" ? "क्लाइंट ने GET रिक्वेस्ट भेजी।" : "Client TCP handshake accepted into Event Loop.",
-          dataState: "Req: IncomingMessage stream opened",
-        },
-        {
-          phase: "3. Headers & Payload Writing",
-          whatHappens: language === "hi" ? "res.writeHead(200) सेट हुआ।" : "HTTP 200 OK headers pushed to response buffer.",
-          dataState: "Status: 200 OK Content-Type: text/plain",
-        },
-        {
-          phase: "4. Response Termination",
-          whatHappens: language === "hi" ? "res.end('Hello World') से डेटा डिलीवर हुआ।" : "Response body flushed and connection cleanly closed.",
-          dataState: "Payload: 'Hello World\\n' delivered",
-        },
-      ],
-    };
-  }
+  // 1. Detect Domain
+  const isReact = combined.includes("react");
+  const isHtml = combined.includes("html") || combined.includes("doctype") || combined.includes("heading") || combined.includes("paragraph") || combined.includes("semantic");
+  const isCss = combined.includes("css") || combined.includes("responsive") || combined.includes("flexbox") || combined.includes("grid") || combined.includes("padding") || combined.includes("border");
+  const isJs = !isReact && (combined.includes("javascript") || combined.includes("js") || combined.includes("dom") || combined.includes("string") || combined.includes("array") || combined.includes("date"));
+  const isTs = combined.includes("typescript") || combined.includes("enum") || combined.includes("interface");
+  const isPython = combined.includes("python") || combined.includes("django") || combined.includes("flask");
+  const isJava = combined.includes("java ") || combined.includes("spring") || combined.includes("hibernate");
+  const isAndroid = combined.includes("android") || combined.includes("kotlin");
+  const isIos = combined.includes("ios") || combined.includes("swift");
+  const isNode = combined.includes("node") || combined.includes("express") || combined.includes("koa") || combined.includes("mongoose");
 
-  // 2. Chapter 2: npm (Node Package Manager)
-  if (combined.includes("npm") || combined.includes("chapter 2") || combined.includes("package.json")) {
-    return {
-      title: "npm - Node Package Manager",
-      definition:
-        language === "hi"
-          ? "npm दुनिया की सबसे बड़ी सॉफ्टवेयर रजिस्ट्री है। यह Node.js के लिए पैकेज मैनेजर है, जो बाहरी लाइब्रेरीज (Express, Mongoose, Lodash) को इंस्टॉल, शेयर और मैनेज करने में मदद करता है।"
-          : "npm is the default package manager for Node.js and the world's largest software registry. It handles dependency resolution, installation, and semantic versioning.",
-      whatItDoes:
-        language === "hi"
-          ? [
-              "`npm install <package>` से लाखों ओपन-सोर्स पैकेजेस 1 सेकंड में डाउनलोड करता है.",
-              "`package.json` में प्रोजेक्ट की सारी डिपेंडेंसीज और वर्जन रिकॉर्ड रखता है.",
-              "`npm run <script>` से ऑटोमेशन और बिल्ड स्क्रिप्ट्स चलाता है.",
-            ]
-          : [
-              "Downloads and manages third-party libraries inside node_modules directory.",
-              "Maintains project metadata and dependencies in package.json.",
-              "Executes custom lifecycle scripts like dev, build, and test.",
-            ],
-      useCases:
-        language === "hi"
-          ? ["Express, CORS, Dotenv जैसे पैकेजेस इंस्टॉल करना", "प्रोजेक्ट का वर्जन मैनेज करना", "NPM पर अपना पैकेज पब्लिश करना"]
-          : ["Installing backend frameworks and utilities", "Managing semantic versioning (^1.0.0)", "Publishing custom enterprise modules"],
-      syntaxSnippet: `# Install dependencies:\nnpm install express cors dotenv\n\n# Run development script:\nnpm run dev`,
-      seniorRule:
-        language === "hi"
-          ? "node_modules फोल्डर को कभी Git पर पुश मत करो, हमेशा .gitignore में रखो!"
-          : "Always add node_modules to .gitignore; commit package.json and package-lock.json instead.",
-      withoutThis:
-        language === "hi"
-          ? "हर लाइब्रेरी को मैन्युअल डाउनलोड करके फाइलों को प्रोजेक्ट में कॉपी करना पड़ता था!"
-          : "Manually downloading, linking, and maintaining versions of third-party zip files.",
-      withThis:
-        language === "hi"
-          ? "1 कमांड में पूरी दुनिया के कोड को अपने प्रोजेक्ट में इस्तेमाल कर सकते हैं!"
-          : "Instant dependency management and reproducible installs across all machines!",
-      flowSteps: [
-        {
-          phase: "1. Read package.json",
-          whatHappens: language === "hi" ? "npm ने dependencies लिस्ट को पढ़ा।" : "npm reads required packages from package.json.",
-          dataState: "Dependencies: { express: '^4.18.2' }",
-        },
-        {
-          phase: "2. Registry Resolution",
-          whatHappens: language === "hi" ? "NPM रजिस्ट्री से tarball डाउनलोड हुआ।" : "Resolves exact versions and downloads tarballs from registry.",
-          dataState: "Network: Fetching from registry.npmjs.org",
-        },
-        {
-          phase: "3. Dependency Tree Extraction",
-          whatHappens: language === "hi" ? "node_modules फोल्डर में पैकेज एक्सट्रेक्ट हुए।" : "Extracts code into node_modules and writes package-lock.json.",
-          dataState: "Disk: node_modules tree written",
-        },
-      ],
-    };
-  }
+  let domainName = "Software Engineering";
+  if (isReact) domainName = "React.js & Modern Frontend Architecture";
+  else if (isHtml) domainName = "HTML5 & Web Standards";
+  else if (isCss) domainName = "CSS3 & Responsive Design";
+  else if (isJs) domainName = "JavaScript ES6+";
+  else if (isTs) domainName = "TypeScript Enterprise";
+  else if (isPython) domainName = "Python 3 & Data Engineering";
+  else if (isJava) domainName = "Java Enterprise Systems";
+  else if (isAndroid) domainName = "Android Native Mobile";
+  else if (isIos) domainName = "iOS Native Mobile";
+  else if (isNode) domainName = "Node.js & Backend Architecture";
 
-  // 3. Chapter 3: Web Apps With Express
-  if (combined.includes("express") || combined.includes("chapter 3") || combined.includes("middleware")) {
-    return {
-      title: "Web Apps With Express",
-      definition:
-        language === "hi"
-          ? "Express एक तेज़, फ्लेक्सिबल और मिनिमल Node.js वेब फ्रेमवर्क है जो शक्तिशाली राउटिंग, मिडलवेयर और JSON API आर्किटेक्चर प्रदान करता है।"
-          : "Express is a minimal and flexible Node.js web application framework that provides robust routing, middleware pipelines, and HTTP utilities.",
-      whatItDoes:
-        language === "hi"
-          ? [
-              "GET, POST, PUT, DELETE जैसे HTTP रूट्स को 1 लाइन में हैंडल करता है.",
-              "मिडलवेयर (जैसे app.use(express.json())) से रिक्वेस्ट को प्रोसेस और वैलिडेट करता है.",
-              "JSON API और स्टैटिक फाइल्स को सुपरफास्ट स्पीड से सर्व करता है.",
-            ]
-          : [
-              "Simplifies HTTP routing for GET, POST, PUT, DELETE endpoints.",
-              "Executes layered middleware pipelines for authentication and parsing.",
-              "Serves dynamic JSON responses and static web assets seamlessly.",
-            ],
-      useCases:
-        language === "hi"
-          ? ["RESTful CRUD APIs", "यूजर ऑथेंटिकेशन और टोकन वेरिफिकेशन", "सिंगल पेज ऐप का बैकएंड सर्वर"]
-          : ["Enterprise REST APIs", "JWT Auth and security filters", "Full-stack application backends"],
-      syntaxSnippet: `const express = require('express');\nconst app = express();\n\napp.use(express.json());\n\napp.get('/api/users', (req, res) => {\n  res.json([{ id: 1, name: 'Aman' }]);\n});\n\napp.listen(5000);`,
-      seniorRule:
-        language === "hi"
-          ? "Middleware के अंत में next() कॉल करना कभी न भूलें, वरना रिक्वेस्ट लटक जाएगी!"
-          : "Always call next() in custom middleware to prevent request pipeline deadlocks.",
-      withoutThis:
-        language === "hi"
-          ? "रॉ Node.js में URL पार्स करने और रिक्वेस्ट बॉडी पढ़ने में 50+ लाइन का कोड लिखना पड़ता था!"
-          : "Writing 50+ lines of low-level boilerplate just to parse URLs and incoming request buffers.",
-      withThis:
-        language === "hi"
-          ? "3 लाइन में पूरा REST API रूट तैयार हो जाता है!"
-          : "Write production-ready, clean REST endpoints in 3 lines of readable code!",
-      flowSteps: [
-        {
-          phase: "1. HTTP Request Arrival",
-          whatHappens: language === "hi" ? "क्लाइंट ने GET /api/users भेजा।" : "Incoming HTTP request enters Express middleware stack.",
-          dataState: "HTTP: GET /api/users Header",
-        },
-        {
-          phase: "2. Middleware & Route Match",
-          whatHappens: language === "hi" ? "CORS और JSON पार्सर के बाद रूट मैच हुआ।" : "Express matches path in route table.",
-          dataState: "Handler: (req, res) invoked",
-        },
-        {
-          phase: "3. Controller Resolution",
-          whatHappens: language === "hi" ? "कंट्रोलर ने डेटाबेस से डेटा निकाला।" : "Business logic fetches requested JSON payload.",
-          dataState: "Payload: [{ id: 1, name: 'Aman' }]",
-        },
-        {
-          phase: "4. JSON Response Sent",
-          whatHappens: language === "hi" ? "200 OK के साथ JSON रिटर्न हुआ।" : "res.json(data) returns HTTP 200 OK payload.",
-          dataState: "Network: HTTP 200 OK application/json",
-        },
-      ],
-    };
-  }
+  const defaultDefinition =
+    lessonExplanation ||
+    (language === "hi"
+      ? `${topicTitle || lessonTitle} ${domainName} का एक महत्वपूर्ण विषय है जो आपके कोड को संरचित, आधुनिक और शक्तिशाली बनाता है।`
+      : `${topicTitle || lessonTitle} is a core foundation of ${domainName}, enabling clean, scalable, and professional software development.`);
 
-  // 4. Chapter 4: Filesystem I/O
-  if (combined.includes("filesystem") || combined.includes("chapter 4") || combined.includes("fs")) {
-    return {
-      title: "Filesystem I/O (fs module)",
-      definition:
+  const conceptPoints = concepts && concepts.length > 0
+    ? concepts.map(c => `${c.title}: ${c.description}`)
+    : [
         language === "hi"
-          ? "Node.js का `fs` (FileSystem) मॉड्यूल फाइलों को पढ़ने, लिखने, डिलीट करने और डायरेक्टरी स्कैन करने के लिए नॉन-ब्लॉकिंग Asynchronous मेथड्स प्रदान करता है।"
-          : "The Node.js `fs` module provides asynchronous, non-blocking APIs to interact with the file system for reading, writing, updating, and streaming files.",
-      whatItDoes:
+          ? `${topicTitle || lessonTitle} के मुख्य सिद्धांतों को लागू करता है.`
+          : `Applies core architectural patterns of ${topicTitle || lessonTitle}.`,
         language === "hi"
-          ? [
-              "फाइलों को बिना सर्वर को रोके Asynchronously पढ़ता (`fs.readFile`) और लिखता है.",
-              "बड़ी फाइलों को मेमोरी क्रैश किए बिना Streams (`fs.createReadStream`) से ट्रांसफर करता है.",
-              "फोल्डर बनाने, रीनेम करने और फाइल डिलीट (`fs.unlink`) करने की सुविधा देता है.",
-            ]
-          : [
-              "Reads and writes files asynchronously without blocking the event loop.",
-              "Streams huge files chunk-by-chunk using minimal RAM.",
-              "Provides directory traversal, file watching, and deletion utilities.",
-            ],
-      useCases:
+          ? "कोड को मॉड्यूलर और दोबारा इस्तेमाल करने योग्य बनाता है."
+          : "Ensures modular, reusable, and predictable components.",
         language === "hi"
-          ? ["सर्वर लॉग्स फाइल में सेव करना", "यूजर की अपलोड की गई फाइल्स प्रोसेस करना", "कॉन्फिगरेशन JSON फाइल्स लोड करना"]
-          : ["Writing application access logs", "Handling multipart file uploads", "Loading local configuration JSON"],
-      syntaxSnippet: `const fs = require('fs/promises');\n\nasync function readFile() {\n  const data = await fs.readFile('notes.txt', 'utf8');\n  console.log(data);\n}`,
-      seniorRule:
-        language === "hi"
-          ? "प्रोडक्शन में कभी Synchronous मेथड्स (जैसे readFileSync) मत यूज़ करो, वरना पूरे सर्वर की स्पीड धीमी हो जाएगी!"
-          : "Never use synchronous methods (readFileSync) in production request paths as they block the V8 thread.",
-      withoutThis:
-        language === "hi"
-          ? "बड़ी फाइल पढ़ते ही पूरा सर्वर फ्रीज हो जाता था और दूसरे यूजर्स इंतजार करते रहते थे!"
-          : "File operations blocked the server thread, freezing response times for all users.",
-      withThis:
-        language === "hi"
-          ? "लाखों फाइल्स बैकग्राउंड में नॉन-ब्लॉकिंग तरीके से प्रोसेस होती हैं!"
-          : "Non-blocking background I/O handles file operations with zero impact on latency!",
-      flowSteps: [
-        {
-          phase: "1. File Read Request",
-          whatHappens: language === "hi" ? "fs.readFile() कॉल हुआ।" : "V8 delegates file read syscall to Libuv thread pool.",
-          dataState: "Syscall: UV_FS_READ delegated",
-        },
-        {
-          phase: "2. Non-blocking Background Read",
-          whatHappens: language === "hi" ? "ऑपरेटिंग सिस्टम ने फाइल डिस्क से पढ़ी।" : "OS kernel reads bytes from SSD into buffer.",
-          dataState: "Buffer: Chunks read into RAM",
-        },
-        {
-          phase: "3. Callback Resolution",
-          whatHappens: language === "hi" ? "डेटा UTF-8 स्ट्रिंग में कन्वर्ट होकर मिला।" : "Promise resolves with file string contents.",
-          dataState: "Resolved: UTF-8 String output",
-        },
-      ],
-    };
-  }
+          ? "एरर्स को रोकता है और परफॉरमेंस को बेहतर बनाता है."
+          : "Guards against runtime issues and optimizes performance."
+      ];
 
-  // 5. Default Clean Breakdown for any other chapter in 110 Chapters
+  const cleanSnippet =
+    examples[0]?.starterCode ||
+    examples[0]?.solutionCode ||
+    (isReact
+      ? `import React, { useState } from 'react';\n\nexport default function ${formatCleanLessonTitle(topicTitle || 'App').replace(/[^a-zA-Z0-9]/g, '')}() {\n  const [active, setActive] = useState(true);\n  return (\n    <div className="p-4 bg-slate-900 text-white rounded-xl">\n      <h2 className="text-lg font-bold">${topicTitle}</h2>\n      <button onClick={() => setActive(!active)} className="mt-2 px-3 py-1 bg-sky-600 rounded">\n        Toggle\n      </button>\n    </div>\n  );\n}`
+      : isHtml
+      ? `<!DOCTYPE html>\n<html>\n  <head><title>${topicTitle}</title></head>\n  <body>\n    <h1>${topicTitle}</h1>\n    <p>Semantic HTML5 element demonstration.</p>\n  </body>\n</html>`
+      : isCss
+      ? `/* ${topicTitle} Styling */\n.card {\n  display: flex;\n  padding: 16px;\n  border-radius: 12px;\n  background: #1e293b;\n  color: #ffffff;\n}`
+      : isPython
+      ? `# ${topicTitle} in Python\ndef main():\n    print("Executing ${topicTitle}...")\n\nif __name__ == "__main__":\n    main()`
+      : `// ${topicTitle}\nconsole.log("${topicTitle} initialized");`);
+
   return {
     title: topicTitle || lessonTitle,
-    definition:
-      lessonExplanation ||
-      (language === "hi"
-        ? `${topicTitle || lessonTitle} Node.js एंटरप्राइज बैकएंड का एक महत्वपूर्ण चैप्टर है जो आपके कोड को स्केलेबल, तेज़ और सुरक्षित बनाता है।`
-        : `${topicTitle || lessonTitle} is an essential chapter from the Node.js enterprise curriculum designed for high-performance backend engineering.`),
-    whatItDoes:
-      concepts && concepts.length > 0
-        ? concepts.map((c) => (language === "hi" ? `${c.title}: ${c.description}` : `${c.title}: ${c.description}`))
-        : [
-            language === "hi"
-              ? "इनपुट डेटा को प्रोसेस करके सही आउटपुट देता है."
-              : "Processes inputs predictably and outputs expected results.",
-            language === "hi"
-              ? "कोड को समझने लायक मॉड्यूल्स में बांटता है."
-              : "Divides complex code into clean, modular building blocks.",
-            language === "hi"
-              ? "एरर्स और अनपेक्षित बग्स को रोकता है."
-              : "Guards against runtime errors and state corruption.",
-          ],
-    useCases:
-      language === "hi"
-        ? ["हाई-कन्करेंसी प्रोडक्शन बैकएंड्स", "डेटाबेस ट्रांजेक्शन और ऑथेंटिकेशन", "माइक्रोसर्विसेज और रीयल-टाइम कम्यूनिकेशन"]
-        : ["High-concurrency production web servers", "Database transactions and caching", "Microservices & distributed architectures"],
-    syntaxSnippet:
-      examples[0]?.solutionCode ||
-      examples[0]?.starterCode ||
-      `// ${topicTitle || lessonTitle} Pattern\nconst express = require('express');\nconst app = express();\n\napp.use(express.json());\napp.listen(5000);`,
+    definition: defaultDefinition,
+    whatItDoes: conceptPoints,
+    useCases: [
+      `${domainName} Production Workflows`,
+      "Scalable Enterprise Implementations",
+      "Industry Standard Development Practices"
+    ],
+    syntaxSnippet: cleanSnippet,
     seniorRule:
       language === "hi"
-        ? "हमेशा साफ़, प्रेडिक्टेबल और टेस्टेबल कोड लिखें, और एरर्स को सही तरीके से कैच करें!"
-        : "Always write clean, deterministic, and modular code with proper error boundaries.",
+        ? `हमेशा ${domainName} के बेस्ट प्रैक्टिसेज का पालन करें और साफ़-सुथरा कोड लिखें!`
+        : `Always follow standard ${domainName} design patterns and write clean, modular code.`,
     withoutThis:
       language === "hi"
-        ? "कोड उलझ जाता था और प्रोडक्शन में बग्स ढूंढना मुश्किल होता था।"
-        : "Fragile monolithic code prone to unhandled exceptions and performance bottlenecks.",
+        ? "कोड अनियंत्रित और मुश्किल हो जाता था।"
+        : "Unstructured code that is difficult to maintain and scale.",
     withThis:
       language === "hi"
-        ? "साफ़-सुथरा कोड जिसे कोई भी आसानी से समझ, टेस्ट और डिप्लॉय कर सकता है!"
-        : "Clean, enterprise-grade architecture that scales effortlessly!",
+        ? "साफ़, मॉडर्न और इंडस्ट्री-ग्रेड आर्किटेक्चर मिलता है!"
+        : `Clean, industry-standard ${domainName} implementation!`,
     flowSteps: [
       {
-        phase: "1. Input Trigger & Call",
-        whatHappens: language === "hi" ? "इनपुट डेटा सिस्टम में आया।" : "Input data enters the execution pipeline.",
-        dataState: "State: PENDING in Event Queue",
+        phase: `1. Initialize ${topicTitle || lessonTitle}`,
+        whatHappens: language === "hi" ? "कॉन्सेप्ट और इनपुट्स लोड हुए।" : `Initializes ${topicTitle || lessonTitle} parameters.`,
+        dataState: "State: INITIALIZED",
       },
       {
-        phase: "2. Business Logic Execution",
-        whatHappens: language === "hi" ? "कोर लॉजिक ने डेटा प्रोसेस किया।" : "Core algorithm processes logic in Call Stack.",
-        dataState: "State: COMPUTING in Heap Memory",
+        phase: "2. Execution & State Update",
+        whatHappens: language === "hi" ? "लॉजिक निष्पादित हुआ।" : "Executes logic and updates state.",
+        dataState: "State: PROCESSING",
       },
       {
-        phase: "3. Asynchronous Resolution",
-        whatHappens: language === "hi" ? "सफलतापूर्वक रिजल्ट मिला।" : "Clean result returned to caller and UI rendered.",
-        dataState: "State: 200 OK / Output Resolved",
+        phase: "3. Clean Resolution & Output",
+        whatHappens: language === "hi" ? "सफलतापूर्वक आउटपुट रेंडर हुआ।" : "Renders clean output and updates view.",
+        dataState: "State: RESOLVED / SUCCESS",
       },
     ],
   };
