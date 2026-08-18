@@ -43,33 +43,30 @@ export const POST = apiHandler(async (ctx) => {
     return { error: "No lessons available in this course" };
   }
 
-  const existingProgress = await prisma.studentProgress.findMany({
+  // 1. Record enrollment in EnrolledCourse table
+  await prisma.enrolledCourse.upsert({
     where: {
-      userId: user.id,
-      lessonId: { in: allLessonIds },
+      userId_courseId: {
+        userId: user.id,
+        courseId: course.id,
+      },
     },
-    select: { lessonId: true },
+    create: {
+      userId: user.id,
+      courseId: course.id,
+      status: "active",
+      progress: 0,
+    },
+    update: {
+      status: "active",
+    },
   });
-
-  const existingIds = new Set(existingProgress.map((p) => p.lessonId));
-  const newLessonIds = allLessonIds.filter((id) => !existingIds.has(id));
-
-  if (newLessonIds.length > 0) {
-    await prisma.$transaction(
-      newLessonIds.map((lessonId) =>
-        prisma.studentProgress.upsert({
-          where: { userId_lessonId: { userId: user.id, lessonId } },
-          create: { userId: user.id, lessonId, status: "not_started" },
-          update: {},
-        })
-      )
-    );
-  }
 
   return {
     enrolled: true,
+    courseId: course.id,
+    courseTitle: course.title,
+    slug: course.slug,
     totalLessons: allLessonIds.length,
-    newlyEnrolled: newLessonIds.length,
-    alreadyEnrolled: existingIds.size,
   };
 }, { requireAuth: true });
