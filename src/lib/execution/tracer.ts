@@ -323,10 +323,10 @@ function __trace(type, name, value, line, depth, payload) {
       scope: (depth || 0) > 0 ? "function" : "global",
       type: type,
       name: name,
-      value: value,
+      value: sanitizeForTrace(value),
       description: buildDescription(type, name, value, line),
-      payload: rawPayload,
-      state: __snapshotAll(),
+      payload: sanitizeForTrace(rawPayload),
+      state: sanitizeForTrace(__snapshotAll()),
       callStack: __callStack.slice(),
       heap: {},
       timestamp: Date.now()
@@ -373,11 +373,65 @@ function safeSerialize(val) {
   try {
     if (val === undefined) return "undefined";
     if (val === null) return "null";
-    if (typeof val === "function") return "[Function]";
-    if (typeof val === "object") return JSON.stringify(val);
-    return String(val);
+    if (typeof val === "function") return "[Function" + (val.name ? " " + val.name : "") + "]";
+    if (typeof val === "symbol") return val.toString();
+    if (typeof val === "bigint") return val.toString() + "n";
+    if (typeof val !== "object") return String(val);
+    
+    var seen = new Set();
+    return JSON.stringify(val, function(key, value) {
+      if (typeof value === "function") return "[Function" + (value.name ? " " + value.name : "") + "]";
+      if (typeof value === "symbol") return value.toString();
+      if (typeof value === "bigint") return value.toString() + "n";
+      if (typeof value === "object" && value !== null) {
+        if (seen.has(value)) return "[Circular]";
+        seen.add(value);
+        if (value.constructor && value.constructor.name && ["EventEmitter", "Socket", "Server", "WriteStream", "ReadStream"].includes(value.constructor.name)) {
+          return "[" + value.constructor.name + "]";
+        }
+      }
+      return value;
+    });
   } catch(e) {
-    return "[Unserializable]";
+    try {
+      if (val && val.constructor && val.constructor.name) {
+        return "[" + val.constructor.name + "]";
+      }
+    } catch(_) {}
+    return "[Object]";
+  }
+}
+
+function sanitizeForTrace(val, depth) {
+  if (depth === undefined) depth = 0;
+  if (depth > 2) return "[Object]";
+  if (val === undefined) return "undefined";
+  if (val === null) return null;
+  if (typeof val === "function") return "[Function" + (val.name ? " " + val.name : "") + "]";
+  if (typeof val === "symbol") return val.toString();
+  if (typeof val === "bigint") return val.toString() + "n";
+  if (typeof val !== "object") return val;
+  try {
+    if (Array.isArray(val)) {
+      return val.slice(0, 20).map(function(item) { return sanitizeForTrace(item, depth + 1); });
+    }
+    var cleaned = {};
+    var keys = Object.keys(val).slice(0, 20);
+    for (var k = 0; k < keys.length; k++) {
+      var key = keys[k];
+      if (key === "win32" || key === "posix" || key === "_events" || key === "_eventsCount") {
+        cleaned[key] = "[Internal]";
+        continue;
+      }
+      try {
+        cleaned[key] = sanitizeForTrace(val[key], depth + 1);
+      } catch(e) {
+        cleaned[key] = "[Unserializable]";
+      }
+    }
+    return cleaned;
+  } catch(e) {
+    return "[Object]";
   }
 }
 

@@ -93,7 +93,10 @@ import {
   Monitor,
   Search,
   ListOrdered,
+  Download,
+  Package,
 } from "lucide-react";
+import JSZip from "jszip";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MonacoEditor } from "@/components/editor/monaco-editor";
@@ -507,10 +510,173 @@ export function UnifiedInteractiveClassroom({
     await executeCode(currentEditorCode, execLang, true);
   }, [currentEditorCode, currentEditorLanguage, executeCode, topicData.flowSteps.length]);
 
+  const [isExportingZip, setIsExportingZip] = useState(false);
+
   const handleCopyCode = (id: string, text: string) => {
     navigator.clipboard.writeText(text);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const handleDownloadProjectZip = async () => {
+    try {
+      setIsExportingZip(true);
+      const zip = new JSZip();
+      const cleanSlug = (topicData.title || "project")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+
+      if (activeVsCodeTab === "node" || isPureBackend) {
+        // Node.js Backend Project
+        zip.file("server.js", serverCode || "// server.js\nconst express = require('express');\nconst app = express();\napp.get('/', (req, res) => res.json({ status: 'active' }));\napp.listen(5000, () => console.log('Server running on 5000'));\n");
+        zip.file(
+          "package.json",
+          JSON.stringify(
+            {
+              name: cleanSlug || "my-node-app",
+              version: "1.0.0",
+              description: topicData.title,
+              main: "server.js",
+              scripts: {
+                start: "node server.js",
+                dev: "node --watch server.js",
+              },
+              dependencies: {
+                express: "^4.19.2",
+                cors: "^2.8.5",
+                dotenv: "^16.4.5",
+              },
+            },
+            null,
+            2
+          )
+        );
+        zip.file(".env.example", "PORT=5000\nNODE_ENV=development\n");
+        zip.file(".gitignore", "node_modules/\n.env\n.DS_Store\n");
+        zip.file(
+          "README.md",
+          `# ${topicData.title}\n\nEnterprise Node.js Backend Project generated from SkillForge Classroom.\n\n## 🚀 Quick Start (Run on your system):\n\n1. **Install dependencies:**\n   \`\`\`bash\n   npm install\n   \`\`\`\n2. **Start the server:**\n   \`\`\`bash\n   npm start\n   \`\`\`\n3. **Test API in Browser/Postman:**\n   Open [http://localhost:5000](http://localhost:5000)\n\n*Zero-clutter project: node_modules is automatically installed when you run \`npm install\`.*`
+        );
+      } else if (activeVsCodeTab === "react") {
+        // React Frontend Project (Vite + React 19)
+        const src = zip.folder("src");
+        src?.file("App.jsx", appCode || "// App.jsx\nexport default function App() { return <h1>React App</h1>; }");
+        src?.file("style.css", cssCode || "/* style.css */\nbody { margin: 0; font-family: system-ui, sans-serif; }");
+        src?.file(
+          "main.jsx",
+          `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App.jsx';\nimport './style.css';\n\nReactDOM.createRoot(document.getElementById('root')).render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n`
+        );
+        zip.file(
+          "index.html",
+          htmlCode && htmlCode.includes("<html")
+            ? htmlCode
+            : `<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <title>${topicData.title}</title>\n  </head>\n  <body>\n    <div id="root"></div>\n    <script type="module" src="/src/main.jsx"></script>\n  </body>\n</html>`
+        );
+        zip.file(
+          "package.json",
+          JSON.stringify(
+            {
+              name: cleanSlug || "my-react-app",
+              private: true,
+              version: "1.0.0",
+              type: "module",
+              scripts: {
+                dev: "vite",
+                build: "vite build",
+                preview: "vite preview",
+              },
+              dependencies: {
+                react: "^19.0.0",
+                "react-dom": "^19.0.0",
+                "lucide-react": "^0.468.0",
+              },
+              devDependencies: {
+                "@vitejs/plugin-react": "^4.3.4",
+                vite: "^6.0.0",
+              },
+            },
+            null,
+            2
+          )
+        );
+        zip.file(
+          "vite.config.js",
+          `import { defineConfig } from 'vite';\nimport react from '@vitejs/plugin-react';\n\nexport default defineConfig({\n  plugins: [react()],\n});\n`
+        );
+        zip.file(".gitignore", "node_modules/\ndist/\n.DS_Store\n");
+        zip.file(
+          "README.md",
+          `# ${topicData.title}\n\nReact Application generated from SkillForge Classroom.\n\n## 🚀 Quick Start:\n\n1. **Install dependencies:**\n   \`\`\`bash\n   npm install\n   \`\`\`\n2. **Start development server:**\n   \`\`\`bash\n   npm run dev\n   \`\`\`\n3. **Open in Browser:**\n   [http://localhost:5173](http://localhost:5173)\n`
+        );
+      } else {
+        // Fullstack Project
+        const backend = zip.folder("backend");
+        backend?.file("server.js", serverCode || "// server.js\nconsole.log('Server running');");
+        backend?.file(
+          "package.json",
+          JSON.stringify(
+            {
+              name: `${cleanSlug}-backend`,
+              version: "1.0.0",
+              main: "server.js",
+              scripts: { start: "node server.js" },
+              dependencies: { express: "^4.19.2", cors: "^2.8.5", dotenv: "^16.4.5" },
+            },
+            null,
+            2
+          )
+        );
+
+        const frontend = zip.folder("frontend");
+        const fSrc = frontend?.folder("src");
+        fSrc?.file("App.jsx", appCode || "// App.jsx");
+        fSrc?.file("style.css", cssCode || "/* style.css */");
+        fSrc?.file(
+          "main.jsx",
+          `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App.jsx';\nimport './style.css';\n\nReactDOM.createRoot(document.getElementById('root')).render(<App />);\n`
+        );
+        frontend?.file(
+          "index.html",
+          `<!DOCTYPE html>\n<html><head><title>${topicData.title}</title></head><body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body></html>`
+        );
+        frontend?.file(
+          "package.json",
+          JSON.stringify(
+            {
+              name: `${cleanSlug}-frontend`,
+              version: "1.0.0",
+              type: "module",
+              scripts: { dev: "vite" },
+              dependencies: { react: "^19.0.0", "react-dom": "^19.0.0" },
+              devDependencies: { "@vitejs/plugin-react": "^4.3.4", vite: "^6.0.0" },
+            },
+            null,
+            2
+          )
+        );
+
+        zip.file(
+          "README.md",
+          `# ${topicData.title} - Fullstack Project\n\n## 🚀 Running the Fullstack App:\n\n### 1. Backend:\n\`\`\`bash\ncd backend\nnpm install\nnpm start\n\`\`\`\n\n### 2. Frontend:\n\`\`\`bash\ncd frontend\nnpm install\nnpm run dev\n\`\`\`\n`
+        );
+      }
+
+      const content = await zip.generateAsync({ type: "blob" });
+      const blobUrl = URL.createObjectURL(content);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = `${cleanSlug || "project"}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      console.error("Export zip error:", err);
+      alert("Could not generate ZIP package. Please try again.");
+    } finally {
+      setIsExportingZip(false);
+    }
   };
 
   // Auto-advance flow steps when playing
@@ -1644,6 +1810,37 @@ export function UnifiedInteractiveClassroom({
                     </button>
                   </div>
 
+                  {/* ONE-CLICK PROJECT EXPORT BANNER */}
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-indigo-950 via-slate-900 to-sky-950 border border-sky-500/40 flex items-center justify-between gap-3 shadow-lg">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-sky-300 font-mono">
+                        <Package className="size-4 text-sky-400 shrink-0" />
+                        <span>Export Ready-to-Run Project</span>
+                      </div>
+                      <p className="text-[11px] text-slate-300 font-sans mt-0.5">
+                        Clean ZIP with project files &amp; README (no heavy node_modules).
+                      </p>
+                    </div>
+                    <Button
+                      onClick={handleDownloadProjectZip}
+                      disabled={isExportingZip}
+                      size="sm"
+                      className="bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-mono text-xs font-bold px-3 py-1.5 shadow-md flex items-center gap-1.5 shrink-0 cursor-pointer"
+                    >
+                      {isExportingZip ? (
+                        <>
+                          <Loader2 className="size-3.5 animate-spin" />
+                          <span>Packaging...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Download className="size-3.5" />
+                          <span>Download .ZIP</span>
+                        </>
+                      )}
+                    </Button>
+                  </div>
+
                   {/* TAB 1: NODE.JS BACKEND SETUP */}
                   {activeVsCodeTab === "node" && (
                     <div className="space-y-3">
@@ -1661,11 +1858,35 @@ export function UnifiedInteractiveClassroom({
 
                       {/* Step 2: Exact Terminal Commands */}
                       <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
-                        <span className="text-xs font-bold text-emerald-400 font-mono block">
-                          🚀 2. VS Code Terminal me Run Karein:
-                        </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words">
-                          {`# 1. Folder create karein aur enter karein
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-emerald-400 font-mono">
+                            🚀 2. VS Code Terminal me Run Karein:
+                          </span>
+                          <button
+                            onClick={() =>
+                              handleCopyCode(
+                                "node_cmds",
+                                "mkdir my-node-app && cd my-node-app\nnpm init -y\nnpm install express cors dotenv\nnode server.js"
+                              )
+                            }
+                            className="text-[10px] font-mono text-emerald-400 hover:text-white flex items-center gap-1 cursor-pointer bg-slate-900 px-2 py-0.5 rounded border border-slate-800"
+                          >
+                            <Copy className="size-3" />
+                            <span>{copiedId === "node_cmds" ? "Copied ✓" : "Copy Commands"}</span>
+                          </button>
+                        </div>
+                        <div
+                          onDoubleClick={() =>
+                            handleCopyCode(
+                              "node_cmds",
+                              "mkdir my-node-app && cd my-node-app\nnpm init -y\nnpm install express cors dotenv\nnode server.js"
+                            )
+                          }
+                          title="Double-click to copy commands"
+                          className="group relative cursor-pointer"
+                        >
+                          <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words group-hover:border-emerald-500/50 transition-colors">
+                            {`# 1. Folder create karein aur enter karein
 mkdir my-node-app && cd my-node-app
 
 # 2. Package.json initialize karein
@@ -1676,7 +1897,11 @@ npm install express cors dotenv
 
 # 4. Run server file (server.js ko run karein)
 node server.js`}
-                        </pre>
+                          </pre>
+                          <span className="absolute bottom-1.5 right-2 text-[9px] text-slate-500 font-mono group-hover:text-emerald-400 transition-colors">
+                            💡 Double-click to copy
+                          </span>
+                        </div>
                         <p className="text-[11px] text-slate-300 font-sans">
                           👉 Terminal me aayega: <code>Server active on http://localhost:5000</code>!
                         </p>
@@ -1721,11 +1946,35 @@ node server.js`}
 
                       {/* Step 2: Exact Terminal Commands */}
                       <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2 max-w-full overflow-hidden">
-                        <span className="text-xs font-bold text-sky-400 font-mono block">
-                          🚀 2. VS Code Terminal me Run Karein:
-                        </span>
-                        <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-sky-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words">
-                          {`# 1. New React Project banayein
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-sky-400 font-mono">
+                            🚀 2. VS Code Terminal me Run Karein:
+                          </span>
+                          <button
+                            onClick={() =>
+                              handleCopyCode(
+                                "react_cmds",
+                                "npm create vite@latest my-react-app -- --template react\ncd my-react-app\nnpm install\nnpm run dev"
+                              )
+                            }
+                            className="text-[10px] font-mono text-sky-400 hover:text-white flex items-center gap-1 cursor-pointer bg-slate-900 px-2 py-0.5 rounded border border-slate-800"
+                          >
+                            <Copy className="size-3" />
+                            <span>{copiedId === "react_cmds" ? "Copied ✓" : "Copy Commands"}</span>
+                          </button>
+                        </div>
+                        <div
+                          onDoubleClick={() =>
+                            handleCopyCode(
+                              "react_cmds",
+                              "npm create vite@latest my-react-app -- --template react\ncd my-react-app\nnpm install\nnpm run dev"
+                            )
+                          }
+                          title="Double-click to copy commands"
+                          className="group relative cursor-pointer"
+                        >
+                          <pre className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] font-mono text-sky-300 leading-relaxed overflow-x-auto max-w-full whitespace-pre-wrap break-words group-hover:border-sky-500/50 transition-colors">
+                            {`# 1. New React Project banayein
 npm create vite@latest my-react-app -- --template react
 
 # 2. Folder me enter karein aur install karein
@@ -1734,7 +1983,11 @@ npm install
 
 # 3. React App Start Karein (Run File: main.jsx -> App.jsx)
 npm run dev`}
-                        </pre>
+                          </pre>
+                          <span className="absolute bottom-1.5 right-2 text-[9px] text-slate-500 font-mono group-hover:text-sky-400 transition-colors">
+                            💡 Double-click to copy
+                          </span>
+                        </div>
                         <p className="text-[11px] text-slate-300 font-sans">
                           👉 Browser me <strong>http://localhost:5173</strong> open ho jayega aur aapka code live chalega!
                         </p>

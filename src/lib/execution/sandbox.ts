@@ -195,37 +195,54 @@ async function executeSimple(
   const runnerScript = `
 "use strict";
 var __logs = [];
+function __safeFormat(a) {
+  try {
+    if (a === undefined) return "undefined";
+    if (a === null) return "null";
+    if (typeof a === "function") return "[Function" + (a.name ? " " + a.name : "") + "]";
+    if (typeof a === "symbol") return a.toString();
+    if (typeof a === "bigint") return a.toString() + "n";
+    if (typeof a !== "object") return String(a);
+    var seen = new Set();
+    return JSON.stringify(a, function(k, v) {
+      if (typeof v === "function") return "[Function" + (v.name ? " " + v.name : "") + "]";
+      if (typeof v === "symbol") return v.toString();
+      if (typeof v === "bigint") return v.toString() + "n";
+      if (typeof v === "object" && v !== null) {
+        if (seen.has(v)) return "[Circular]";
+        seen.add(v);
+        if (v.constructor && v.constructor.name && ["EventEmitter", "Socket", "Server", "WriteStream", "ReadStream"].includes(v.constructor.name)) {
+          return "[" + v.constructor.name + "]";
+        }
+      }
+      return v;
+    });
+  } catch(e) {
+    try {
+      if (a && a.constructor && a.constructor.name) return "[" + a.constructor.name + "]";
+    } catch(_) {}
+    return String(a);
+  }
+}
 var console = {
   log: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __logs.push(formatted);
   },
   error: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __logs.push('[ERROR] ' + formatted);
   },
   warn: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __logs.push('[WARN] ' + formatted);
   },
   info: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __logs.push('[INFO] ' + formatted);
   },
   table: function() {},
@@ -361,13 +378,55 @@ async function executeWithTrace(
   const runnerScript = `
 "use strict";
 var __consoleOutputs = [];
+function __safeFormat(a) {
+  try {
+    if (a === undefined) return "undefined";
+    if (a === null) return "null";
+    if (typeof a === "function") return "[Function" + (a.name ? " " + a.name : "") + "]";
+    if (typeof a === "symbol") return a.toString();
+    if (typeof a === "bigint") return a.toString() + "n";
+    if (typeof a !== "object") return String(a);
+    var seen = new Set();
+    return JSON.stringify(a, function(k, v) {
+      if (typeof v === "function") return "[Function" + (v.name ? " " + v.name : "") + "]";
+      if (typeof v === "symbol") return v.toString();
+      if (typeof v === "bigint") return v.toString() + "n";
+      if (typeof v === "object" && v !== null) {
+        if (seen.has(v)) return "[Circular]";
+        seen.add(v);
+        if (v.constructor && v.constructor.name && ["EventEmitter", "Socket", "Server", "WriteStream", "ReadStream"].includes(v.constructor.name)) {
+          return "[" + v.constructor.name + "]";
+        }
+      }
+      return v;
+    });
+  } catch(e) {
+    try {
+      if (a && a.constructor && a.constructor.name) return "[" + a.constructor.name + "]";
+    } catch(_) {}
+    return String(a);
+  }
+}
+function __safeJsonStringify(obj) {
+  var seen = new Set();
+  return JSON.stringify(obj, function(k, v) {
+    if (typeof v === "function") return "[Function" + (v.name ? " " + v.name : "") + "]";
+    if (typeof v === "symbol") return v.toString();
+    if (typeof v === "bigint") return v.toString() + "n";
+    if (typeof v === "object" && v !== null) {
+      if (seen.has(v)) return "[Circular]";
+      seen.add(v);
+      if (v.constructor && v.constructor.name && ["EventEmitter", "Socket", "Server", "WriteStream", "ReadStream"].includes(v.constructor.name)) {
+        return "[" + v.constructor.name + "]";
+      }
+    }
+    return v;
+  });
+}
 var console = {
   log: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __consoleOutputs.push(formatted);
     if (typeof __trace === 'function') {
       __trace('console_output', 'console.log', formatted, 0, typeof depth !== 'undefined' ? depth : 0);
@@ -375,10 +434,7 @@ var console = {
   },
   error: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __consoleOutputs.push('[ERROR] ' + formatted);
     if (typeof __trace === 'function') {
       __trace('console_output', 'console.error', formatted, 0, typeof depth !== 'undefined' ? depth : 0);
@@ -386,19 +442,19 @@ var console = {
   },
   warn: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __consoleOutputs.push('[WARN] ' + formatted);
+    if (typeof __trace === 'function') {
+      __trace('console_output', 'console.warn', formatted, 0, typeof depth !== 'undefined' ? depth : 0);
+    }
   },
   info: function() {
     var args = Array.prototype.slice.call(arguments);
-    var formatted = args.map(function(a) {
-      try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
-      catch(e) { return String(a); }
-    }).join(' ');
+    var formatted = args.map(__safeFormat).join(' ');
     __consoleOutputs.push('[INFO] ' + formatted);
+    if (typeof __trace === 'function') {
+      __trace('console_output', 'console.info', formatted, 0, typeof depth !== 'undefined' ? depth : 0);
+    }
   },
   table: function() {},
   time: function() {},
@@ -456,9 +512,9 @@ window.confirm = function() { return true; };
     var __traceEvents = await (async function() {
       ${traceBody}
     })();
-    process.stdout.write("\\n__TRACE_OUTPUT_START__" + JSON.stringify({ traceEvents: __traceEvents || [], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
+    process.stdout.write("\\n__TRACE_OUTPUT_START__" + __safeJsonStringify({ traceEvents: __traceEvents || [], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
   } catch(err) {
-    process.stdout.write("\\n__TRACE_OUTPUT_START__" + JSON.stringify({ traceEvents: [{ step: 0, type: "ERROR", message: err.message || String(err), line: 0, scope: "global", callStack: [], timestamp: Date.now() }], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
+    process.stdout.write("\\n__TRACE_OUTPUT_START__" + __safeJsonStringify({ traceEvents: [{ step: 0, type: "ERROR", message: err.message || String(err), line: 0, scope: "global", callStack: [], timestamp: Date.now() }], consoleOutput: __consoleOutputs }) + "__TRACE_OUTPUT_END__\\n");
   }
 })();
 `;
