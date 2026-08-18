@@ -103,6 +103,7 @@ export const codeSchemas = {
   run: z.object({
     code: z.string().max(100000).optional(),
     codeBase64: z.string().optional(),
+    isBase64: z.boolean().optional(),
     language: z.string().default("javascript"),
     timeout: z.number().min(1000).max(30000).default(10000),
     trace: z.boolean().optional(),

@@ -12,6 +12,7 @@ export const POST = apiHandler(async (ctx) => {
   const body = (ctx as any).body as {
     code?: string;
     codeBase64?: string;
+    isBase64?: boolean;
     language: string;
     timeout?: number;
     trace?: boolean;
@@ -23,6 +24,12 @@ export const POST = apiHandler(async (ctx) => {
   if (body.codeBase64) {
     try {
       rawCode = Buffer.from(body.codeBase64, "base64").toString("utf-8");
+    } catch {
+      rawCode = body.code || "";
+    }
+  } else if (body.isBase64 && body.code) {
+    try {
+      rawCode = Buffer.from(body.code, "base64").toString("utf-8");
     } catch {
       rawCode = body.code || "";
     }
