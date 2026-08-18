@@ -53,16 +53,27 @@ export const GET = apiHandler(async (ctx) => {
   let enrolled = false;
 
   if (user) {
-    const progress = await prisma.studentProgress.findMany({
-      where: {
-        userId: user.id,
-        lessonId: { in: allLessonIds },
-        status: "completed",
-      },
-      select: { lessonId: true },
-    });
-    completedLessonIds = progress.map((p) => p.lessonId);
-    enrolled = completedLessonIds.length > 0;
+    const [progress, enrolledRecord] = await Promise.all([
+      prisma.studentProgress.findMany({
+        where: {
+          userId: user.id,
+          status: "completed",
+        },
+        select: { lessonId: true },
+      }),
+      prisma.enrolledCourse.findFirst({
+        where: {
+          userId: user.id,
+          courseId: course.id,
+        },
+      }),
+    ]);
+
+    const allLessonIdSet = new Set(allLessonIds);
+    completedLessonIds = progress
+      .map((p) => p.lessonId)
+      .filter((id) => allLessonIdSet.has(id));
+    enrolled = !!enrolledRecord || completedLessonIds.length > 0;
   }
 
   const totalLessons = allLessonIds.length;

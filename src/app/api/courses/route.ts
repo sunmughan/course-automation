@@ -28,7 +28,7 @@ export const GET = apiHandler(async (ctx) => {
     },
   });
 
-  // Single fast query for user's progress records
+  // Single fast query for user's progress records and enrolled courses
   const userProgress = user
     ? await prisma.studentProgress.findMany({
         where: { userId: user.id },
@@ -36,6 +36,16 @@ export const GET = apiHandler(async (ctx) => {
       })
     : [];
 
+  const enrolledCourseRecords = user
+    ? await prisma.enrolledCourse.findMany({
+        where: { userId: user.id },
+        select: { courseId: true },
+      })
+    : [];
+
+  const enrolledCourseIdSet = new Set(
+    enrolledCourseRecords.map((e) => e.courseId)
+  );
   const completedLessonIdSet = new Set(
     userProgress.filter((p) => p.status === "completed").map((p) => p.lessonId)
   );
@@ -49,7 +59,9 @@ export const GET = apiHandler(async (ctx) => {
     );
     const totalLessons = allLessonIds.length;
     const completedLessons = allLessonIds.filter((id) => completedLessonIdSet.has(id)).length;
-    const isEnrolled = allLessonIds.some((id) => enrolledLessonIdSet.has(id));
+    const isEnrolled =
+      enrolledCourseIdSet.has(course.id) ||
+      allLessonIds.some((id) => enrolledLessonIdSet.has(id));
 
     return {
       id: course.id,
